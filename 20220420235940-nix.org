@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       85001a90-d92d-4f46-92d2-293bc3d93efe
+:END:
+#+title: nix
+#+date: [2022-04-20 Wed 23:59]
