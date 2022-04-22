@@ -1,3 +1,6 @@
 #+Title: Nix Readme
 
-[[id:85001a90-d92d-4f46-92d2-293bc3d93efe][nix]]
+[[file:20220420235940-nix.org][Nix]]
+
+** Links
+[[https://en.wikipedia.org/wiki/Linux][Linux Wikipedia]]
