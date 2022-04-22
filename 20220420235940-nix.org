@@ -4,4 +4,3 @@
 #+title: Nix
 #+date: [2022-04-20 Wed 23:59]
 
-[[https://en.wikipedia.org/wiki/Linux][Linux Wikipedia]]
