@@ -4,3 +4,12 @@
 #+title: Nix
 #+date: [2022-04-20 Wed 23:59]
 
+anatomy of a typical command
+ls -lh /etc | grep 'conf'
+<command> <options> <pipe> <command> <argument>
+
+** shortcuts
+ctrl + alt + T or super + T open terminal
+
+cursor movements
+ctrl +
