@@ -16,3 +16,5 @@ ctrl + alt + T or super + T open terminal
 cursor movements
 ctrl +
 
+
+testing
