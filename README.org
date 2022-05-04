@@ -2,5 +2,13 @@
 
 [[FILE:20220503191330-linux.org][linux]]
 
+@startuml
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: Another authentication Response
+@enduml
+
 ** Links
 [[https://en.wikipedia.org/wiki/Linux][Linux Wikipedia]]
