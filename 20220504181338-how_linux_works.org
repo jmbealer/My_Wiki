@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       89601283-3f61-4e49-9490-5a75d471bb6d
+:END:
+#+title: how-linux-works
+#+date: [2022-05-04 Wed 18:13]
