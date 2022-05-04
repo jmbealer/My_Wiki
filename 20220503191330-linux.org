@@ -1,0 +1,328 @@
+:PROPERTIES:
+:ID:       7c74d046-30f1-4eac-b49f-5ea691ef5b76
+:END:
+#+title: linux
+#+date: [2022-05-03 Tue 19:13]
+
+nice work
+
+anatomy of a typical command
+ls -lh /etc | grep 'conf'
+<command> <options> <pipe> <command> <argument>
+
+** shortcuts
+ctrl + alt + T or super + T open terminal
+
+cursor movements
+ctrl +
+
+
+testing
+
+* unsorted
+** unix/linux fundamentals and shell scripting
+Introduction to UNIX
++ design philosophy
++ system components
++ the shell and command entry
++ documentation
+Basic User Commands
++ logging in and logging out
++ command line editing
++ navigating the file system
++ viewing and copying files
++ controlling the terminal
++ sending and receiving mail
+Text Editing
++ types of editors
++ from ed to ex to vi
++ basic editor tasks with vi
++ editing multiple files
++ named buffers
++ vi startup file
+The File System
++ file system organization
++ file types
++ file and directory naming rules and conventions
++ commands for navigating the file system
++ introduction to inodes
++ ownership, permissions, and dates
++ manipulating files and links
++ manipulating directories
++ determining disk usage
++ other file system utilities
+UNIX Processes
++ the unix process model
++ process states
++ monitoring and controlling processes
+Introduction to Shell Syntax
++ shell functions
++ I/O redirection and pipes
++ command separation and grouping
++ background execution
++ filename expansion
++ shell variables
++ command substitution
++ quoting and escaping metacharacters
++ bash shell features
++ korn shell features
++ command execution
++ startup files
++ customizing the user environment
+Printing
++ printing under at&t unix
++ printing under bsd unix
+Multitasking and Batch Processing
++ multitasking
++ scheduled execution using cron
++ the at and batch commands
+Shell Programming
++ shell script features and capabilities
++ creating and running a script
++ working with variables
++ environment variables
++ working with data types
+  + formatting
+  + base conversion
+  + setting special attributes
++ input/output techniques
++ conditional constructs
+  + if/then
+  + else/elif
++ looping constructs
+  + for, while, until
++ math operators
+Advanced Shell Features
++ manipulating string
++ writing and calling
++ controlling process priorities
++ interpreting command line arguments
++ making script interactive
++ special shell variables
++ advanced I/O with streams
++ improving performance of scripts
+Text Manipulation Utilities
++ editing a file from a script
++ scripting with ed or sed
++ unix and linux utilities to manipulate files
++ regular expressions
++ grep and egrep
++ the stream editor sed
++ sorting in scripts
++ generating reports with awk
++ splitting large files
++ counting words, lines, and characters
++ transforming file contents
++ extracting text strings
+File Processing Utilities
++ examining and comparing files
++ reporting difference between files
++ comparing files of any format
++ displaying data in octal and hex
++ compressing data
++ converting file formats
+Backing Up Files
++ backup Media
++ unix device names
++ tar and cpio
++ file transport and conversion with dd
+Networking Commands
++ unix network applications
+  + remote execution commands
+  + remote activity reporting
+  + communicating with remote users
++ internet applications
+  + ftp, tftp, telnet
++ remote access control mechanisms
++ using the secure shell(ssh)
+
+** linux system administration
+System Administration Overview
+
+    UNIX, Linux and Open Source
+    Duties of the System Administrator
+    Superusers and the Root Login
+    Sharing Superuser Privileges with Others (su and sudo Commands)
+    TCP/IP Networking Fundamentals
+    Online Help
+
+	Installation and Configuration
+
+    Planning: Hardware and Software Considerations
+    Site Planning
+    Installation Methods and Types
+    Installation Classes
+    Partitions
+    Logical Volume Manager - LVM
+    File System Overview
+    Swap Partition Considerations
+    Other Partition Considerations
+    The Linux Boot Loader: grub
+    Software Package Selection
+    Adding and Configuring Peripherals
+    Printers
+    Graphics Controllers
+    Basic Networking Configuration
+    Booting to Recovery Mode
+
+Booting and Shutting Down Linux
+
+    Boot Sequence
+    The systemd Daemon
+    The systemctl Command
+    Targets vs. Run Levels
+    Modifying a Target
+    Service Unit Scripts
+    Changing System States
+    Booting into Rescue Mode
+    Shutdown Commands
+
+	Managing Software and Devices
+
+    Identifying Software Packages
+    Using rpm to Manage Software
+    Using yum to Manage Software
+    Installing and Removing Software
+    Identifying Devices
+    Displaying Device and System Information (PCI, USB)
+    Plug and Play Devices
+    Device Configuration Tools
+
+Managing Users and Groups
+
+    Setting Policies
+    User File Management
+    The /etc/passwd file
+    The /etc/shadow file
+    The /etc/group file
+    The /etc/gshadow file
+    Adding Users
+    Modifying User Accounts
+    Deleting User Accounts
+    Working with Groups
+    Setting User Environments
+    Login Configuration Files
+
+	The Linux File System
+
+    Filesystem Types
+    Conventional Directory Structure
+    Mounting a File System
+    The /etc/fstab File
+    Special Files (Device Files)
+    Inodes
+    Hard File Links
+    Soft File Links
+    Creating New File Systems with mkfs
+    The lost+found Directory
+    Repairing File Systems with fsck
+    The Journaling Attribute
+    File and Disk Management Tools
+
+Linux File Security
+
+    File Permissions
+    Directory Permissions
+    Octal Representation
+    Changing Permissions
+    Setting Default Permissions
+    Access Control Lists (ACLs)
+    The getfacl and setfacl commands
+    SUID Bit
+    SGID Bit
+    The Sticky Bit
+
+	Controlling Processes
+
+    Characteristics of Processes
+    Parent-Child Relationship
+    Examining Running Processes
+    Background Processes
+    Controlling Processes
+    Signaling Processes
+    Killing Processes
+    Automating Processes
+    cron and crontab
+    at and batch
+    System Processes (Daemons)
+
+Working with the Linux Kernel
+
+    Linux Kernel Components
+    Types of Kernels
+    Kernel Configuration Options
+    Recompiling the Kernel
+
+	Shell Scripting Overview
+
+    Shell Script Fundamentals
+    Bash Shell Syntax Overview
+    Shell Script Examples
+
+System Backups
+
+    Backup Concepts and Strategies
+    User Backups with the tar Command
+    System Backup Options
+    The xfsdump and xfsrestore Commands
+
+	Troubleshooting the System
+
+    Common Problems and Symptoms
+    Troubleshooting Steps
+    Repairing General Boot Problems
+    Repairing the GRUB 2 Boot Loader
+    Hard Drive Problems
+    Restoring Shared Libraries
+    System Logs and rsyslogd
+
+Basic Networking
+
+    Networking Services Overview
+    NetworkManager Introduction
+    Network Configuration Files Locations and Formats
+    Enabling and Restarting Network Services with systemtcl
+    Configuring Basic Networking Manually
+    Configuring Basic Networking with NetworkManager
+
+	LAMP Server Basics
+
+    LAMP Overview
+    Configuring the Apache Web Server
+    Common Directives
+    Apache Virtual Hosting
+    Configuring an Open Source Database
+        MySQL
+        MariaDB
+    PHP Basics
+    Perl CGI Scripting
+
+Introduction to System Security
+
+    Security Overview
+    Maintaining System Security
+    Server Access
+    Physical Security
+    Network Security
+    Security Tools
+    Port Probing with nmap
+    Intrusion Detection and Prevention
+    PAM Security Modules
+    Scanning the System
+    Maintaining File Integrity
+    Using Firewalls
+    Introduction to firewalld
+
+	The Samba File Sharing Facility
+
+    Configure Samba for Linux to Linux/UNIX File Sharing
+    Configure Samba for Linux to Windows File Sharing
+    Use the smbclient Utility to Transfer Files
+    Mount/Connect Samba Shares to Linux and Windows Clients
+
+Networked File Systems (NFS)
+
+    Using NFS to Access Remote File Systems
+    Configuring the NFS Server
+    Configuring the NFS Client
+    Exporting File Systems from the NFS Server to the NFS Client
