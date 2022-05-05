@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       8bb1d8d1-c11d-4a09-8ab4-1a8dc5995c15
+:END:
+#+title: lpi-linux_essentials
+#+date: [2022-05-05 Thu 09:32]
