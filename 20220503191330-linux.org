@@ -16,6 +16,8 @@ testing
 
 * unsorted books notes
 
+[[id:89601283-3f61-4e49-9490-5a75d471bb6d][how-linux-works]]
+
 ** linux productivity tools
 *** Basics
 anatomy of a typical command
