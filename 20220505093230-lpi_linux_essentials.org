@@ -8,11 +8,14 @@
 
 ** 1.1 Linux Evolution and Popular Operating Systems
 Weight: 2
+
 Description: Knowledge of Linux development and major distributions.
+
 Key Knowledge Areas:
     Distributions
     Embedded Systems
     Linux in the Cloud
+
 The following is a partial list of the used files, terms and utilities:
     Debian, Ubuntu (LTS)
     CentOS, openSUSE, Red Hat, SUSE
