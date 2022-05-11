@@ -12,7 +12,7 @@ Weight: 2
 Description: Knowledge of Linux development and major distributions.
 
 Key Knowledge Areas:
-    Distributions
+    + Distributions
     Embedded Systems
     Linux in the Cloud
 
