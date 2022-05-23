@@ -1,0 +1,61 @@
+:PROPERTIES:
+:ID:       b0e30896-a000-48ec-a220-1a022eb43c2b
+:END:
+#+title: yt-playlists
+#+date: [2022-05-09 Mon 08:25]
+
+Computing
+computer science compsci
+  dsa-cs
+cyber-security
+
+coding = software engineering swe
+  swe-clang
+  swe-golang
+  swe-assembly
+  swe-lisp
+  swe-html-css
+  swe-database
+  swe-javascript
+  swe-books
+
+hardware = computer engineering compeng
+data-analyst = data science ds
+devops = information technology it
+  git-Coding
+  it certs
+  virt
+  certs
+information systems not used
+
+linux
+  linux-cli
+  linux-apps
+  linux-dotfiles
+  linux-guix
+  linux-bspwm
+  linux-dwm
+  linux-gentoo
+  linux-arch
+  linux-setup
+  linux-books
+
+  vim
+
+  windows
+  emacs
+  ipad
+  text-editor
+  network
+  hacking
+  software
+  sites
+
+
+
+  headphone
+  ergonomics
+  workflow
+  keyboard
+  mobile
+  digita information

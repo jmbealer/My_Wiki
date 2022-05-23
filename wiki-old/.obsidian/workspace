@@ -1,0 +1,125 @@
+{
+  "main": {
+    "id": "401f2df3d89609ea",
+    "type": "split",
+    "children": [
+      {
+        "id": "16d0a0f89208823e",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "tesu-degree.md",
+            "mode": "preview",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "61bebad5840f67a2",
+    "type": "split",
+    "children": [
+      {
+        "id": "80b5ea382ff7f635",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "191a37f882bb636c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "6c2673e3065e8043",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a638e2e22071b95a",
+    "type": "split",
+    "children": [
+      {
+        "id": "eef6027c8030e184",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "303489461ded30ec",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "tesu-degree.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "018ce4445dd1fee6",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": false
+              }
+            }
+          },
+          {
+            "id": "f240252a2c2b49ca",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "tesu-degree.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "16d0a0f89208823e",
+  "lastOpenFiles": [
+    "tesu-degree.md",
+    "the-linux-command-line.md",
+    "vim-wip2.md",
+    "vim-wip.md",
+    "vim-quck-refer-wip2.md",
+    "vim-quick-anki.md",
+    "vim/Vimrc.md",
+    "vim/Vim2.md",
+    "vim/Vim-User-Manual.md",
+    "vim/Vim-Quick-Reference-Guide.md"
+  ]
+}

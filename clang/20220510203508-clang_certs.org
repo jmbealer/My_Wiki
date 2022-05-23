@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       aba4c4fe-deb5-4f35-8099-264cb2217536
+:END:
+#+title: clang-certs
+#+date: [2022-05-10 Tue 20:35]

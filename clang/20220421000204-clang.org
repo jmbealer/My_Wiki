@@ -1,0 +1,173 @@
+:PROPERTIES:
+:ID:       5c4573b4-c79d-4bcd-9fb8-7f22e64f1675
+:END:
+#+title: C Programming Language
+#+date: [2022-04-21 Thu 00:02]
+
+[[id:aba4c4fe-deb5-4f35-8099-264cb2217536][clang-certs]]
+
+* unsorted
+
+** c programming
+Overview of C
+
+    Operating System Independence
+    Design Goals and Capabilities
+    Flavors of C
+
+	Compiler Directives and the C Preprocessor
+
+    Compile-Time Directives
+    Use of typedef
+    C Preprocessor Syntax
+
+Fundamental Data Types, Storage Classes, and Scope
+
+    Fundamental Data Types and Qualifiers
+    Constants and Strings
+    Storage Classes
+    Scope and Block Structure
+    Scope and Data Hiding
+    Data Initialization
+
+	Pointers and Dynamic Allocation
+
+    Advantages of Pointers
+    User of Pointers
+    Pointer and Address Arithmetic
+    Dynamic Storage Allocation
+    sizeof Operator
+    Double Indirection
+
+Macros
+
+    Functions vs. Inlining
+    Purpose of Macros
+    Use of Macros
+        Making Code More Readable
+        Auto Adjustment of Compile Time Values
+        Conditional Compilation
+        Making Code Portable
+        Simplifying Complex Access Calculations
+    Advanced Micro Design Tips
+    Using Macros to Help Write Portable Programs
+    When to Use a Macro instead of a Function
+    Using Macros for Debugging
+
+	Arrays
+
+    Purpose of Arrays
+    Declaring an Array
+    Initializing an Array
+    Addressing Elements
+    Stepping Through an Array
+    Variable Size Arrays
+    Arrays of Pointers
+    Arrays of Strings
+    Passing an Array to a Function
+    Dynamic Memory Allocation
+    Multidimensional Arrays
+
+Basic Formatted I/O
+
+    Standard I/O Library
+    Character Set Encoding
+    Standard Input and Output
+    Character I/O Functions
+    Formatted I/O Functions
+    String Constants
+
+	Program Debugging
+
+    Problem Analysis
+    Instrumenting with printif
+    Instrumenting with ctrace
+    The Purpose of Debuggers
+    How Not to Use Debuggers
+    Symbolic Debuggers
+
+Operators and Expressions
+
+    Arithmetic, Logical, and Bit Operators
+    Precedence and Associativity
+    Assignment and Casting
+    The Conditional Operator
+
+	Flow Control Constructs
+
+    Conditional Constructs: if, switch
+    Looping Constructs: while, do, for
+    Programming Style
+
+Functions (Subroutines)
+
+    Purpose of Functions
+    Functions vs. Inlining
+    Automatic Variables
+    The Argument Stack
+    Passing By Value
+    Passing By Reference
+    Declaring External Functions
+    Function Prototyping
+    ANSI Prototyping
+    The _NO_PROTO Compiler Symbol
+    Varargs Functions
+    Passing a Function as an Argument
+    Designing Functions for Reusability
+    Calling a Function from Another Language
+    Returning a Dynamically Allocated Value Using Double Indirection
+    Casting the Return Value of a Function
+    Recursion and Reentrancy
+
+	Structures
+
+    Purpose of Structures
+    Defining and Declaring Structures
+    Accessing Members
+    Pointers to Structures
+    Dynamic Memory Allocation
+    Passing a Structure to a Function
+        As a Pointer
+        Passing the Actual Structure
+
+Advanced Structures and Unions
+
+    Nested Structures
+    Arrays of Structures
+    Bit Fields
+    Unions
+    Linked Lists
+
+	C Runtime Library Standard Functions
+
+    Character I/O
+    Unformatted File I/O
+    Formatted File I/O
+    Math Functions
+    Miscellaneous Functions
+
+Strings and Character Manipulation
+
+    Strings as Character Arrays
+    String Library Functions
+    Reading and Writing Strings
+
+	Accessing Command Line Arguments and Environment Symbols
+
+    argc and argv
+    Parsing Command Line Options
+    Accessing the Environment Array
+
+Structured Programming
+
+    Structuring Code for Quality, Reliability, Maintainability
+    Designing for Modularity and Reusability
+
+	Advanced Programming Consideration
+
+    Writing Portable Code
+    Use of Macros
+    ANSI C Limits
+    Feature Test Macros
+    Client/Server Design
+    Performance Considerations

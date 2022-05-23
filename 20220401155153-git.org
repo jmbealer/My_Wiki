@@ -1,0 +1,95 @@
+:PROPERTIES:
+:ID:       dea16eb4-d34a-421b-b037-9f3e606ec001
+:END:
+#+title: git
+
+what is git?
++ distributed version control system
++ replaced svn and cvs; which were centralized systems
++ a place where all code is stored is called a repository
+created by Linus Torvalds in 2005; and maintained by Junio Hamano since then.
+
+it is used for:
+tracking code changes
+tracking who made changes
+coding collaboration
+
+what does git do
+  manage projects with Repositories
+  Clone a project to work on a local copy
+  Control and track changes with Staging and Committing
+  Branch and Merge to allow for work on different parts and versions of a project
+  Pull the latest version of the project to a local copy
+  Push local updates to the main project
+
+Working with Git
+  Initialize Git on a folder, making it a Repository
+  Git now creates a hidden folder to keep track of changes in that folder
+  When a file is changed, added or deleted, it is considered modified
+  You select the modified files you want to Stage
+  The Staged files are Committed, which prompts Git to store a permanent snapshot
+  of the files
+  Git allows you to see the full history of every commit.
+  You can revert back to any previous commit.
+  Git does not store a separate copy of every file in every commit, but keeps
+  track of changes made in each commit!
+
+why Git
+developers can work together from anywhere in the world.
+developers can see the full history of the project.
+developers can revert to earlier versions of a project.
+
+what is GitHub
+git is not the same as github
+github makes tools that use git
+
+check if git is properly install
+by using the git --version command
+should show git version X.Y
+
+git configuration
+need to set name and email
+git config --global user.name "Name"
+git config --global user.email "Email"
+--global flag is using to change every repository on your computer
+  not using flag effects only current repository
+
+git init; creates a git repository
+
+files in a git repository are in one of two states
+tracked - files that git knows about and are added to the repository
+untracked - files that are in your working directory, but not added to the
+repository
+
+git staging environment
+staged files are files that are ready to be commmitted to the repository you are
+working on.
+git add: adds files to the staging enviroment
+  using --all instead of individual filenames will stage all changes (new,
+modified, and deleted) files.
+    git add -A: same
+
+why is it needed
+installation/usage
+role of gitlab/github/bitbucket
+
+cloning and pulling
+git clone <url>
+git status
+git pull
+
+creating repos
+git init: used on a existing repository
+git init <directory name>: creates a blank git repository
+
+common usage:
+git clone, remote
+  git remote -v
+git status
+  stage
+git add, commit
+git push, pull, fetch
+git branch, checkout
+git merge
+git log
+git diff
