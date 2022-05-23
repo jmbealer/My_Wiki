@@ -1,6 +1,3 @@
-#+Title: Linux Readme
+#+Title: My Wiki Readme
 
-[[FILE:20220503191330-linux.org][linux]]
-
-** Links
-[[https://en.wikipedia.org/wiki/Linux][Linux Wikipedia]]
+change linux into my main wiki for my notes.
