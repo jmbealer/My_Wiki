@@ -1,8 +1,58 @@
 :PROPERTIES:
 :ID:       380c2018-8c41-49bc-8f98-f17db74a9b8d
 :END:
-#+title: cli-shortcuts
+#+title: keyboard shortcuts
 #+date: [2022-05-09 Mon 18:58]
+
+also known as hotkey
+is a series of one or several keys to quickly invoke a software program or
+perform a preprogrammed action.
+
+
+general shortcuts
+File menu 	Alt+F 	Meta+`, then f 	Alt+f (gvim) or Ctrl+e (vim + NERDTree)
+
+Edit menu 	Alt+E 	Meta+`, then e 	Alt+e (gvim)
+View menu 	Alt+V
+Undo the last operation 	Ctrl+Z 	Ctrl+x, then u or Ctrl+/ or Alt+_ or Undo u
+Redo the last operation 	Ctrl+⇧ Shift+Z, or Ctrl+Y 	Ctrl+r
+Cut the selection and store it in the clipboard 	Ctrl+X, or ⇧ Shift+Del 	⌘ Cmd+X 	Ctrl+X 	Ctrl+w 	x
+
+or "ax to cut in register "a" or "+x to cut in system clipboard
+	Ctrl+X
+Copy the selection into the clipboard 	Ctrl+C, or Ctrl+Ins 	⌘ Cmd+C 	Ctrl+C 	Meta+w, or Ctrl+Ins 	y
+
+or "ay or "+y
+	Ctrl+C
+Paste contents of clipboard at cursor 	Ctrl+V,or ⇧ Shift+Ins 	⌘ Cmd+V 	Ctrl+V 	Ctrl+y, or ⇧ Shift+Ins 	p
+
+or "ap to paste the content of the "a" register or "+p to paste the content of the system clipboard
+	Ctrl+V
+Paste special 	⊞ Win+V 	Shift+Opt+Cmd+V 	Ctrl+⇧ Shift+V 	Meta+y 	Ctrl+⇧ Shift+V 	Ctrl+⇧ Shift+V
+Select all in focused control or window 	Ctrl+A 	⌘ Cmd+A 	Ctrl+A 	Ctrl+x, then h 	ggVG, unlikely ever needed as most commands take an optional range parameter. % means "all in focused windows" here so e.g. to copy all the text, use :%y 	Ctrl+A
+Cycle through installed keyboard languages / input methods 	Alt+⇧ Shift, or ⊞ Win+Space
+
+The latter displays a menu with the currently selected input method highlighted, and debuted in Windows 8.
+	Cmd+Space (not MBR)
+
+Configure desired keypress in Keyboard and Mouse Preferences, Keyboard Shortcuts, Select the next source in Input menu.[1]
+	Ctrl+Alt+K via KDE Keyboard
+
+Alt+⇧ Shift in GNOME
+	Ctrl+\ 		Ctrl+Space
+Print 	Ctrl+P 	⌘ Cmd+P 	Ctrl+P 			Ctrl+P
+Open Help Menu 			F1 in GNOME 			Ctrl+Alt+/
+Windows Mobility Center 	Windows 7: ⊞ Win+x
+
+Windows 10: ⊞ Win+x > b
+
+PowerUser (WinX) Menu 	Windows 10: ⊞ Win+x
+Restart Video Driver 	Windows 10: Ctrl+⇧ Shift+⊞ Win+B[2][3]
+text editing
+browsers/go menu
+window management
+
+[[https://en.wikipedia.org/wiki/Keyboard_shortcut][Keyboard shortcut]]
 
 * bash emacs
 
