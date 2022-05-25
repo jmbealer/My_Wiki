@@ -19,7 +19,6 @@ learning
   [[https://www.arcolinux.info/learning-path/][arcolinux]]
 
   freebsd handbook
-  openbsd manpage
 
 [[https://docs.linuxserver.io/][linuxserver]]
 
