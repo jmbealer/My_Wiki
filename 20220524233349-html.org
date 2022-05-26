@@ -5,6 +5,7 @@
 :END:
 # #+title: HTML
 #+date: [2022-05-24 Tue 23:33]
+#+FILETAGS: :html:
 
 * What is HTML
 
