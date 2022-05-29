@@ -3,7 +3,7 @@
 :END:
 #+title: Main Index
 
-this is the main index
+this is the main index.
 
 
 [[id:9112127d-96f8-47f7-b359-e1ceb5056d94][programming-idx]]
