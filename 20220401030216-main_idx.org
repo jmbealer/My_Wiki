@@ -9,6 +9,7 @@ this is the main index.
 [[id:9112127d-96f8-47f7-b359-e1ceb5056d94][programming-idx]]
 
 [[id:d8c234ae-93fa-4569-8d7b-d10ae08377a9][html]]
+[[id:bbad4e71-066d-4231-953a-3b5ed0891141][css]]
 
 [[id:7c74d046-30f1-4eac-b49f-5ea691ef5b76][linux]]
  [[id:8bb1d8d1-c11d-4a09-8ab4-1a8dc5995c15][LPI Linux Essentials Exam 010]]
