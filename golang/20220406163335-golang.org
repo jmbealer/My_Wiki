@@ -27,6 +27,21 @@
   - released by Google in 2009
 - a concurrent and fast compiled language with garbage collection.
 
+what is go
+- go is a cross-platform, open source programming language.
+- developed at Google in 2007
+- created by Robert Griesemer, Rob Pike, and Ken Thompson
+- syntax is similar to C
+
+what is go used for
+- web development (server-side)
+- development network-based programs.
+- developing cross-platform enterprise applications
+- cloud-native development
+
+fast run time and compile time
+garbage collection
+
 * Imports
 
 - Import path; "math/rand" = package rand.
@@ -47,23 +62,43 @@ Any un-exported names are not accessible from outside the package.
 
 * Basic Syntax
 
+A Go file consists of the following parts:
+- package declaration
+- import packages
+- functions
+- statements and expressions
+
 file extension <file>.go
 #+begin_src go
 package main // package declaration
 import "fmt" // the imported package "fmt" contains I/O functions.
-func main(){ // define a main function
+func main(){ // define a function called main
 	fmt.Println("hello")
 }
 #+end_src
 go run <file>.go
 
-"//" single-line comment
-"/*" multi-line comment
+each statement does not need a semicolon to end the line.
+"{" cannot be paced on a single line; creates an run time error.
+
+fmt.Println("hello") is a statement.
+go statement are separate by hitting enter key or by a semicolon(;).
+
+* Comments
+
+a comment is a text that is ignored upon execution.
+comments can be used to explain the code, and to make it more readable.
+comments can also be used to prevent code execution when testing an alternative code.
+
 comments will not be compiled.
 the go compiler will ignore all comments.
 
-each statement does not need a semicolon to end the line.
-"{" cannot be paced on a single line; creates an run time error.
+#+begin_src go
+// single-line comment
+/*
+   multi-line comment
+*/
+#+end_src
 
 * Identifier
 identifiers are used to name variables, functions, expressions, and so on.
@@ -240,6 +275,46 @@ func adder(args ...int) int {
 
 * Variables
 
+declaring (creating) variables
+- var keyword
+  use the var keyword, followed by variable name and type
+  var variableName type = value
+  can be used inside and outside of functions
+  variable declaration and value assignment can be done separately
+- := sign
+  use the := sign, followed by the variable value.
+  variableName := value
+  type is inferred: compiler decides the type of the variable, based on the value.
+  must assigin a value
+  can only be used inside functions
+  variable declaration and value assignment cannot be done separately
+
+variable declaration with inital value
+#+begin_src go
+var x string = "foo" //type is string
+var y = "bar" //type is inferred
+z := 2 //type is inferred
+#+end_src
+
+variable declaration without initial value
+- all variables are initialized
+- a variable without an initial value,will be set to the default value of its type
+
+value assignment after declaration
+varName = value
+
+multiple variable declaration
+var a, b, c int = 1, 2, 3
+if type keyword used you  can only declare one type of variable per line.
+  - if not you can declare different types of variables in the same line.
+
+#+begin_src go
+var a, b, c int = 1, 2, 3
+var a, b = 6, "hello"
+c, d := 7, "world"
+#+end_src
+
+
 the var statement declares a list of variables; as in function argument list,
 the type is last.
 type comes after the variable name
@@ -273,12 +348,17 @@ short variable declarations
 * Built-in Types
 
 bool
+- stores values with two states: true of false
 string
+- string - store text, such as "hello world". String values are surrounded by
+  double quotes.
 int int8 int16 int32 int64
+- int - stores integers, such as 123 or -123
 uint uint8 uint16 uint32 uint64 uintptr
 byte is alias for uint8
 rune is alias for uint32; represent a Unicode code point
 float32 float64
+- float32 - stores floating point numbers, with decimals, such as 19.99 or -19.99
 complex64 complex128
 
 the int, uint, and uintptr types are usually 32 bits wide on 32 bits wide on
