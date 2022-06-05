@@ -1,13 +1,15 @@
 :PROPERTIES:
 :ID:       bbad4e71-066d-4231-953a-3b5ed0891141
 :END:
-#+title: #+title: css
+#+title: CSS
 #+date: [2022-05-31 Tue 11:20]
 
 css :: cascading style sheets
 
 use to style the html content.
 
+
+css anatomy
 Ruleset Terms:
 
     Selector—The beginning of the ruleset used to target the element that will be styled.
@@ -35,3 +37,56 @@ Inline Style Terms:
     An external stylesheet separates CSS code from HTML, by using the “.css”.file extension.
     External stylesheets are the best approach when it comes to using HTML and CSS.
     External stylesheets are linked to HTML using the <link> element.
+
+Cascading Style Sheets or CSS is a language web developers use to style the HTML
+content on a web page.
+
+inline style and internal stylesheet are not best practices
+
+etup and Syntax
+Review
+
+Great work so far! By understanding how to incorporate CSS code into your HTML file, as well as learning some of the key terms, you’re on your way to creating spectacular websites with HTML and CSS.
+
+Let’s review what you learned so far:
+
+    The basic anatomy of CSS syntax written for both inline styles and stylesheets.
+    Some commonly used CSS terms, such as ruleset, selector, and declaration.
+    CSS inline styles can be written inside the opening HTML tag using the style attribute.
+    Inline styles can be used to style HTML, but it is not the best practice.
+    An internal stylesheet is written using the <style> element inside the <head> element of an HTML file.
+    Internal stylesheets can be used to style HTML but are also not best practice.
+    An external stylesheet separates CSS code from HTML, by using the “.css”.file extension.
+    External stylesheets are the best approach when it comes to using HTML and CSS.
+    External stylesheets are linked to HTML using the <link> element.
+
+
+Selectors
+Review
+
+Throughout this lesson, you learned how to select HTML elements with CSS and apply styles to them. Let’s review what you learned:
+
+    CSS can select HTML elements by type, class, ID, and attribute.
+    All elements can be selected using the universal selector.
+    An element can have different states using the pseudo-class selector.
+    Multiple CSS classes can be applied to one HTML element.
+    Classes can be reusable, while IDs can only be used once.
+    IDs are more specific than classes, and classes are more specific than type. That means IDs will override any styles from a class, and classes will override any styles from a type selector.
+    Multiple selectors can be chained together to select an element. This raises the specificity but can be necessary.
+    Nested elements can be selected by separating selectors with a space.
+    Multiple unrelated selectors can receive the same styles by separating the selector names with commas.
+
+Great work this lesson. With this knowledge, you’ll be able to use CSS to change the look and feel of websites to make them look great!
+
+Review Visual Rules
+
+Incredible work! You used CSS to alter text and images on a website. Throughout this lesson, you learned concepts including:
+
+    The font-family property defines the typeface of an element.
+    font-size controls the size of text displayed.
+    font-weight defines how thin or thick text is displayed.
+    The text-align property places text in the left, right, or center of its parent container.
+    Text can have two different color attributes: color and background-color. color defines the color of the text, while background-color defines the color behind the text.
+    CSS can make an element transparent with the opacity property.
+    CSS can also set the background of an element to an image with the background-image property.
+    The !important flag will override any style, however it should almost never be used, as it is extremely difficult to override.
