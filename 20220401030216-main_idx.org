@@ -10,6 +10,7 @@ this is the main index.
 
 [[id:d8c234ae-93fa-4569-8d7b-d10ae08377a9][html]]
 [[id:bbad4e71-066d-4231-953a-3b5ed0891141][css]]
+[[id:48f25267-5d79-46c4-acaf-eccb71c33bf6][javascript]]
 
 [[id:7c74d046-30f1-4eac-b49f-5ea691ef5b76][linux]]
  [[id:8bb1d8d1-c11d-4a09-8ab4-1a8dc5995c15][LPI Linux Essentials Exam 010]]
