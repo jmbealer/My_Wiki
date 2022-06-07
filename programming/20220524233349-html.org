@@ -1,34 +1,34 @@
 :PROPERTIES:
 :ID:       d8c234ae-93fa-4569-8d7b-d10ae08377a9
-:Title: Testing title
 :TOC: include all :ignore this
 :END:
-# #+title: HTML
+#+title: HTML
 #+date: [2022-05-24 Tue 23:33]
 #+FILETAGS: :html:
 
 * What is HTML
 
-html stands for hypertext markup language.
-a standard markup language for web pages.
+HTML stand for HyperText Markup Language.
 
-HyperText Markup Language (HTML)
-html is a simple data format used to create hypertext documents that are portable from one platform to another.
-The HTML (HyperText Markup Language) is used in most pages of the World Wide Web.
-HTML files contain both the primary text content and additional formatting markup,
-i.e. sequences of characters that tell web browsers how to display and handle the main content.
+HTML is a markup language that tells web browsers how to structure the webpage.
 
-html is the skeleton of all web pages.
-html provides structure to the content appearing on a website.
+HTML is used to create the structure and content of a webpage.
+
+HTML is the skeleton of all web pages.
+
 a markup language is a computer language that defines the structure and
 presentation of raw text.
-in html, the computer can interpret raw text that is wrapped in html elements.
-hypertext is text displayed on a computer or device that provides access ot
-other text through links, also known as hyperlink.
-html is composed of elements.
-these elements structure the webpage and define its content.
-opening tag + content + closing tag = element
-a tag and the content between it is called an html element.
+
+* html elements
+
+html consists of a series of elements.
+
+html elements structure the webpage and define its content.
+
+An HTML is the opening tag, followed by content, followed by the closing tag.
+
+Anatomy of an HTML element
+opening tag + content + closing tag
 
 html element :: a unit of content in html; formed with tags and content
 html tag :: the element name, surrounded by angle brackets.
@@ -36,7 +36,10 @@ opening tag :: first tag in the html element.
 content :: the information contained between the tags
 closing tag :: last tag in the html element.
 
-html structure
+HTML elements can be nested inside other elements. The enclosed element is the child of the enclosing parent element.
+
+* html structure
+
 html is organized as a collection of family tree relationships.
 child element :: is an element nested inside another element.
 the relationship between elements and their ancestor and descendent elements is
@@ -77,10 +80,7 @@ alt alternate text attribute bring meaning to the images
   controls attribute
 
 
-    HTML stands for HyperText Markup Language and is used to create the structure and content of a webpage.
-    Most HTML elements contain opening and closing tags with raw text or other HTML tags between them.
-    HTML elements can be nested inside other elements. The enclosed element is the child of the enclosing parent element.
-    Any visible content should be placed within the opening and closing <body> tags.
+
     Headings and sub-headings, <h1> to <h6> tags, are used to provide titles for sections of content.
     <p>, <span> and <div> tags specify text or blocks.
     The <em> and <strong> tags are used to emphasize text.
@@ -216,16 +216,6 @@ Let’s review some of the topics we covered throughout the lesson:
     <video>, <embed>, and <audio> elements are used for media files.
 
 Now, apply this knowledge to become a better Web Developer.
-
-
-
-#+begin_src html
-<!-- Single line Comment -->
-<!--
-    Multiple line
-    Comment
--->
-#+end_src
 
 Document Summary
 <!DOCTYPE> - defines the document type.
