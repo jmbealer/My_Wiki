@@ -1,5 +1,0 @@
-
-national guard
-reveres
-
-
