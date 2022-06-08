@@ -1,0 +1,386 @@
+:PROPERTIES:
+:ID:       d8c234ae-93fa-4569-8d7b-d10ae08377a9
+:TOC: include all :ignore this
+:END:
+#+title: HTML
+#+date: [2022-05-24 Tue 23:33]
+#+FILETAGS: :html:
+
+* What is HTML
+
+HTML stand for HyperText Markup Language.
+
+HTML is a markup language that tells web browsers how to structure the webpage.
+
+HTML is used to create the structure and content of a webpage.
+
+HTML is the skeleton of all web pages.
+
+a markup language is a computer language that defines the structure and
+presentation of raw text.
+
+* html elements
+
+html consists of a series of elements.
+
+html elements structure the webpage and define its content.
+
+An HTML is the opening tag, followed by content, followed by the closing tag.
+
+Anatomy of an HTML element
+opening tag + content + closing tag
+
+html element :: a unit of content in html; formed with tags and content
+html tag :: the element name, surrounded by angle brackets.
+opening tag :: first tag in the html element.
+content :: the information contained between the tags
+closing tag :: last tag in the html element.
+
+HTML elements can be nested inside other elements. The enclosed element is the child of the enclosing parent element.
+
+* html structure
+
+html is organized as a collection of family tree relationships.
+child element :: is an element nested inside another element.
+the relationship between elements and their ancestor and descendent elements is
+known as hierarchy.
+
+division element <div> a container that divides the page into sections.
+  these sections are very useful for grouping elements in your html.
+
+attritbutes are content added to the opening tag
+  name=value
+
+displaying text
+paragraphs(<p>) contain a block of plain text.
+<span> contains short pieces of text or other html
+  used to separate small pieces of content that are on the same line as other content.
+
+styling text
+<em> italic emphasis.
+<strong> bold emphasis.
+
+<br> line break
+  only need opening tag
+
+<ul> unordered list
+an unordered list outlines individual list items with a bullet point.
+<li> list item tag is used to describe an item in a list.
+<ol> ordered list are like unordered list, except that each list item is numbered.
+
+<img> add image
+  is a self-closing tag.
+  required attribute src
+self-closing tags may include or omit the final slash; both will render properly.
+alt alternate text attribute bring meaning to the images
+
+<video> add video
+  required attribute src
+  width and height attributes used to set size of the video display
+  controls attribute
+
+
+
+    Headings and sub-headings, <h1> to <h6> tags, are used to provide titles for sections of content.
+    <p>, <span> and <div> tags specify text or blocks.
+    The <em> and <strong> tags are used to emphasize text.
+    Line breaks are created with the <br> tag.
+    Ordered lists (<ol>) are numbered and unordered lists (<ul>) are bulleted.
+    Images (<img>) and videos (<video>) can be added by linking to an existing source.
+
+
+    <!DOCTYPE html>, the declaration specifying the version of HTML for the browser
+    The <html> tags that enclose all of your HTML code
+    The <head> tag that contains the metadata of a webpage, such as its <title>
+
+
+    The <!DOCTYPE html> declaration should always be the first line of code in your HTML files. This lets the browser know what version of HTML to expect.
+    The <html> element will contain all of your HTML code.
+    Information about the web page, like the title, belongs within the <head> of the page.
+    You can add a title to your web page by using the <title> element, inside of the head.
+    A webpage’s title appears in a browser’s tab.
+    Anchor tags (<a>) are used to link to internal pages, external pages or content on the same page.
+    You can create sections on a webpage and jump to them using <a> tags and adding ids to the elements you wish to jump to.
+    Whitespace between HTML elements helps make code easier to read while not changing how elements appear in the browser.
+    Indentation also helps make code easier to read. It makes parent-child relationships visible.
+    Comments are written in HTML using the following syntax: <!-- comment -->.
+
+
+    The <table> element creates a table.
+    The <tr> element adds rows to a table.
+    To add data to a row, you can use the <td> element.
+    Table headings clarify the meaning of data. Headings are added with the <th> element.
+    Table data can span columns using the colspan attribute.
+    Table data can span rows using the rowspan attribute.
+    Tables can be split into three main sections: a head, a body, and a footer.
+    A table’s head is created with the <thead> element.
+    A table’s body is created with the <tbody> element.
+    A table’s footer is created with the <tfoot> element.
+    All the CSS properties you learned about in this course can be applied to tables and their data.
+    scope attribute
+ row - this value makes it clear that the heading is for a row.
+col - this value makes it clear that the heading is for a column
+
+HTML: Structure
+CSS: Presentation
+JavaScript: Behavior
+
+PHP or similar: Backend
+CMS: Content Management
+
+The head of an HTML file contains all of the non-visual elements that help make the page work.
+
+
+The body tag follows the head tag.
+All visual-structural elements are contained within the body tag.
+Headings, paragraphs, lists, quotes, images, and links are just a few of the elements that can be contained within the body tag.
+The <body> tag defines the main content of the HTML document.
+
+To place a title on the tab describing the web page, add a <title> element to your head section:
+The title element is important because it describes the page and is used by search engines.
+
+HTML includes six levels of headings, which are ranked according to importance.
+These are <h1>, <h2>, <h3>, <h4>, <h5>, and <h6>.
+
+To create a horizontal line, use the <hr> tag.
+In HTML5, the <hr> tag defines a thematic break.
+
+The browser does not display comments, but they help document the HTML and add descriptions, reminders, and other notes.
+
+The <p> Element
+To create a paragraph, simply type in the <p> element with its opening and closing tags:
+Browsers automatically add an empty line before and after a paragraph.
+
+Single Line Break
+Opening the HTML file in the browser shows that a single line break has been added to the paragraph:
+The <br /> element has no end tag.
+
+
+    <section> - An element used to represent a standalone section for which a more specific element can’t be found. This usually has a heading as a child element. A section should make sense in the outline of a document, whereas <div> is used for styling. This is a semantic element you’ll learn more about in a later lesson.
+    class - A global attribute that has a list of classes pertaining to an element. You’ll see this used with <section> in the practice.
+    <hr> - An element that is used to a break between paragraph-level elements. It is displayed as a horizontal line. This is also a semantic element that you’ll learn more about in a later lesson.
+
+
+    The purpose of a <form> is to allow users to input information and send it.
+    The <form>‘s action attribute determines where the form’s information goes.
+    The <form>‘s method attribute determines how the information is sent and processed.
+    To add fields for users to input information we use the <input> element and set the type attribute to a field of our choosing:
+        Setting type to "text" creates a single row field for text input.
+        Setting type to "password" creates a single row field that censors text input.
+        Setting type to "number" creates a single row field for number input.
+        Setting type to "range" creates a slider to select from a range of numbers.
+        Setting type to "checkbox" creates a single checkbox which can be paired with other checkboxes.
+        Setting type to "radio" creates a radio button that can be paired with other radio buttons.
+        Setting type to "list" will pair the <input> with a <datalist> element if the id of both are the same.
+        Setting type to "submit" creates a submit button.
+    A <select> element is populated with <option> elements and renders a dropdown list selection.
+    A <datalist> element is populated with <option> elements and works with an <input> to search through choices.
+    A <textarea> element is a text input field that has a customizable area.
+    When a <form> is submitted, the name of the fields that accept input and the value of those fields are sent as name=value pairs.
+
+Using the <form> element in conjunction with the other elements listed above allows us to create sites that take into consideration the wants and needs of our users. Take the opportunity to take what you’ve learned, and apply it!
+
+Form Validation
+Review
+
+Awesome job adding client-side validation to <form>s!
+
+Let’s quickly recap:
+
+    Client-side validations happen in the browser before information is sent to a server.
+    Adding the required attribute to an input related element will validate that the input field has information in it.
+    Assigning a value to the min attribute of a number input element will validate an acceptable minimum value.
+    Assigning a value to the max attribute of a number input element will validate an acceptable maximum value.
+    Assigning a value to the minlength attribute of a text input element will validate an acceptable minimum number of characters.
+    Assigning a value to the maxlength attribute of a text input element will validate an acceptable maximum number of characters.
+    Assigning a regex to pattern matches the input to the provided regex.
+    If validations on a <form> do not pass, the user gets a message explaining why and the <form> cannot be submitted.
+
+These quick checks help ensure that input data is correct and safe for our servers. It also helps give users immediate feedback on what they need to fix instead of having to wait for a server to send back that information.
+
+Semantic HTML
+Review
+
+Congrats on completing this lesson on Semantic HTML! Now that you know the benefits of Semantic HTML and how to use it, you can incorporate semantic elements into your website to make it more accessible and to make the code easier to read.
+
+Let’s review some of the topics we covered throughout the lesson:
+
+    Semantic HTML introduces meaning to a page through specific elements that provide context as to what is in between the tags.
+    Semantic HTML is a modern standard and makes a website accessible for people who use screen readers to translate the webpage and improves your website’s SEO.
+    <header>, <nav> , <main> and <footer> create the basic structure of the webpage.
+    <section> defines elements in a document, such as chapters, headings, or any other area of the document with the same theme.
+    <article> holds content that makes sense on its own such as articles, blogs, comments, etc.
+    <aside> contains information that is related to the main content, but not required in order to understand the dominant information.
+    <figure> encapsulates all types of media.
+    <figcaption> is used to describe the media in <figure>.
+    <video>, <embed>, and <audio> elements are used for media files.
+
+Now, apply this knowledge to become a better Web Developer.
+
+Document Summary
+<!DOCTYPE> - defines the document type.
+  all html document must start with a <!DOCTYPE> declaration.
+  the declaration is not an HTML tag.
+  informs the browsers what document type to expect.
+<html lang="en">
+<head>
+<tile>
+<body>
+
+Basic HTML
+Tag 	Description
+<!DOCTYPE>  	Defines the document type
+<html> 	Defines an HTML document
+<head> 	Contains metadata/information for the document
+<title> 	Defines a title for the document
+<body> 	Defines the document's body
+  only content inside in display to the screen.
+<h1> to <h6> 	Defines HTML headings
+<p> 	Defines a paragraph
+<br> 	Inserts a single line break
+<hr> 	Defines a thematic change in the content
+<!--...--> 	Defines a comment
+Formatting
+
+<acronym> 	Not supported in HTML5. Use <abbr> instead.
+Defines an acronym
+<abbr> 	Defines an abbreviation or an acronym
+<address> 	Defines contact information for the author/owner of a document/article
+<b> 	Defines bold text
+<bdi> 	Isolates a part of text that might be formatted in a different direction from other text outside it
+<bdo> 	Overrides the current text direction
+<big> 	Not supported in HTML5. Use CSS instead.
+Defines big text
+<blockquote> 	Defines a section that is quoted from another source
+<center> 	Not supported in HTML5. Use CSS instead.
+Defines centered text
+<cite> 	Defines the title of a work
+<code> 	Defines a piece of computer code
+<del> 	Defines text that has been deleted from a document
+<dfn> 	Specifies a term that is going to be defined within the content
+<em> 	Defines emphasized text
+<font> 	Not supported in HTML5. Use CSS instead.
+Defines font, color, and size for text
+<i> 	Defines a part of text in an alternate voice or mood
+<ins> 	Defines a text that has been inserted into a document
+<kbd> 	Defines keyboard input
+<mark> 	Defines marked/highlighted text
+<meter> 	Defines a scalar measurement within a known range (a gauge)
+<pre> 	Defines preformatted text
+<progress> 	Represents the progress of a task
+<q> 	Defines a short quotation
+<rp> 	Defines what to show in browsers that do not support ruby annotations
+<rt> 	Defines an explanation/pronunciation of characters (for East Asian typography)
+<ruby> 	Defines a ruby annotation (for East Asian typography)
+<s> 	Defines text that is no longer correct
+<samp> 	Defines sample output from a computer program
+<small> 	Defines smaller text
+<strike> 	Not supported in HTML5. Use <del> or <s> instead.
+Defines strikethrough text
+<strong> 	Defines important text
+<sub> 	Defines subscripted text
+<sup> 	Defines superscripted text
+<template> 	Defines a container for content that should be hidden when the page loads
+<time> 	Defines a specific time (or datetime)
+<tt> 	Not supported in HTML5. Use CSS instead.
+Defines teletype text
+<u> 	Defines some text that is unarticulated and styled differently from normal text
+<var> 	Defines a variable
+<wbr> 	Defines a possible line-break
+Forms and Input
+Tag 	Description
+<form> 	Defines an HTML form for user input
+<input> 	Defines an input control
+<textarea> 	Defines a multiline input control (text area)
+<button> 	Defines a clickable button
+<select> 	Defines a drop-down list
+<optgroup> 	Defines a group of related options in a drop-down list
+<option> 	Defines an option in a drop-down list
+<label> 	Defines a label for an <input> element
+<fieldset> 	Groups related elements in a form
+<legend> 	Defines a caption for a <fieldset> element
+<datalist> 	Specifies a list of pre-defined options for input controls
+<output> 	Defines the result of a calculation
+Frames
+Tag 	Description
+<frame> 	Not supported in HTML5.
+Defines a window (a frame) in a frameset
+<frameset> 	Not supported in HTML5.
+Defines a set of frames
+<noframes> 	Not supported in HTML5.
+Defines an alternate content for users that do not support frames
+<iframe> 	Defines an inline frame
+Images
+Tag 	Description
+<img> 	Defines an image
+<map> 	Defines a client-side image map
+<area> 	Defines an area inside an image map
+<canvas> 	Used to draw graphics, on the fly, via scripting (usually JavaScript)
+<figcaption> 	Defines a caption for a <figure> element
+<figure> 	Specifies self-contained content
+<picture> 	Defines a container for multiple image resources
+<svg> 	Defines a container for SVG graphics
+Audio / Video
+Tag 	Description
+<audio> 	Defines sound content
+<source> 	Defines multiple media resources for media elements (<video>, <audio> and <picture>)
+<track> 	Defines text tracks for media elements (<video> and <audio>)
+<video> 	Defines a video or movie
+Links
+Tag 	Description
+<a> 	Defines a hyperlink
+<link> 	Defines the relationship between a document and an external resource (most used to link to style sheets)
+<nav> 	Defines navigation links
+Lists
+Tag 	Description
+<ul> 	Defines an unordered list
+<ol> 	Defines an ordered list
+<li> 	Defines a list item
+<dir> 	Not supported in HTML5. Use <ul> instead.
+Defines a directory list
+<dl> 	Defines a description list
+<dt> 	Defines a term/name in a description list
+<dd> 	Defines a description of a term/name in a description list
+Tables
+Tag 	Description
+<table> 	Defines a table
+<caption> 	Defines a table caption
+<th> 	Defines a header cell in a table
+<tr> 	Defines a row in a table
+<td> 	Defines a cell in a table
+<thead> 	Groups the header content in a table
+<tbody> 	Groups the body content in a table
+<tfoot> 	Groups the footer content in a table
+<col> 	Specifies column properties for each column within a <colgroup> element
+<colgroup> 	Specifies a group of one or more columns in a table for formatting
+Styles and Semantics
+Tag 	Description
+<style> 	Defines style information for a document
+<div> 	Defines a section in a document
+<span> 	Defines a section in a document
+<header> 	Defines a header for a document or section
+<footer> 	Defines a footer for a document or section
+<main> 	Specifies the main content of a document
+<section> 	Defines a section in a document
+<article> 	Defines an article
+<aside> 	Defines content aside from the page content
+<details> 	Defines additional details that the user can view or hide
+<dialog> 	Defines a dialog box or window
+<summary> 	Defines a visible heading for a <details> element
+<data> 	Adds a machine-readable translation of a given content
+Meta Info
+Tag 	Description
+<head> 	Defines information about the document
+<meta> 	Defines metadata about an HTML document
+<base> 	Specifies the base URL/target for all relative URLs in a document
+<basefont> 	Not supported in HTML5. Use CSS instead.
+Specifies a default color, size, and font for all text in a document
+Programming
+Tag 	Description
+<script> 	Defines a client-side script
+<noscript> 	Defines an alternate content for users that do not support client-side scripts
+<applet> 	Not supported in HTML5. Use <embed> or <object> instead.
+Defines an embedded applet
+<embed> 	Defines a container for an external (non-HTML) application
+<object> 	Defines an embedded object
+<param> 	Defines a parameter for an object
