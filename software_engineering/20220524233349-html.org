@@ -13,11 +13,14 @@ HTML stand for HyperText Markup Language.
 HTML is a markup language that tells web browsers how to structure the webpage.
 
 HTML is used to create the structure and content of a webpage.
+create the structure of a web page
 
 HTML is the skeleton of all web pages.
 
 a markup language is a computer language that defines the structure and
 presentation of raw text.
+
+hypertext digital text that reference other locations.
 
 * html elements
 
@@ -384,3 +387,26 @@ Defines an embedded applet
 <embed> 	Defines a container for an external (non-HTML) application
 <object> 	Defines an embedded object
 <param> 	Defines a parameter for an object
+
+As a foundational component of a website's display, HTML is a great language for adding these elements to a web page:
+
+    Text: Words and written content
+
+    Media: Images, videos, and other visual or auditory elements
+
+    Links: Clickable paths to other places, like other websites
+
+    Containers: Elements that are used to give web pages structure for layout purposes
+
+HTML element
+    A component of an HTML document
+HTML tag
+    Keywords that define how content in an HTML document appears on a web page
+HTML paragraph
+    A block of content, such as text, that is represented by a <p> element
+HTML heading
+    A title or subtitle used to break up, organize, and highlight content on a web page
+HTML attribute
+    An extra bit of information that is tied with certain elements and is written inside an opening tag
+Alternative text
+    Also called alt text, an image description that can be added as an image attribute in an HTML document
