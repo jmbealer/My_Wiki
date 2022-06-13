@@ -1,0 +1,136 @@
+:PROPERTIES:
+:ID:       c4ffc59c-65b7-4f0e-b749-bcd46ef75fb0
+:END:
+#+title: thinkful
+#+date: [2022-06-13 Mon 11:51]
+
+REPL
+    Read–eval–print loop, an interactive computer programming environment that lets you perform basic tasks
+Operator
+    A symbol that performs an operation on one or more variables and values
+Mathematical operator
+    An operator that performs an arithmetic calculation with one or more operands
+Assignment operator
+    An operator that assigns specific values in code
+
+Variable
+A named container that can store a changeable data value
+Function
+A block of code that describes a repeatable process or behavior
+
+const is used for constants, which are variables that can't be re-declared or updated.
+camelCasing
+
+Data type
+The type of value that a variable can have, such as string, number, or boolean
+  String
+  Number
+  Boolean
+  Null
+    The null data type is used to indicate that a variable has no value. Sometimes, null is used as the default value when other data isn't available.
+  Undefined
+    The undefined data type is a special value that, in a way, means exactly that—that a variable was never defined. Like null, undefined means empty. But null and undefined have a slightly different understanding of emptiness.
+    A null value means that the developer decided that the value was empty. It was a deliberate choice. An undefined value, on the other hand, means that the value was left empty, simply because nothing was ever assigned to it.
+    That means that you shouldn't assign a variable undefined, like in this command: let variable = undefined.
+String
+A sequence of letters, numerals, punctuation marks, or other characters, treated as text
+Integer
+Also called an int, a whole number that isn't written as a fraction or with a decimal point
+Floating-point number
+Also called a float, a number that includes a decimal point
+Boolean
+A binary variable with two possible values: true and false
+  Pronounced not or bang, ! inverts a boolean value. This means that !false turns into true, and !true turns into false.
+Coercion
+The process of converting a value from one data type to another
+  Number()
+  parseInt()
+  parseFloat()
+  toString()
+
+Manipulate text
+Concatenation
+The process of joining different values or pieces of text together
+Method
+A function that is attached to an object as one of the object's attributes
+"str".length;
+"STR".toLowerCase();
+"str".replace("str", "Str");
+toLowerCase(): This returns a string with all the letters lowercase.
+toUpperCase(): This returns a string with all the letters capitalized.
+trim(): This removes whitespace (spaces, tabs, and so forth) at the beginning and end of a string.
+replace(): This replaces part of a string with another string
+  replace(matchingString, newString)
+
+Control flow
+Also called flow of execution, the tools provided by a programming language to conditionally determine which set of instructions runs
+Conditional statement
+A statement that tells the code to perform different tasks based on different kinds of information
+  if blocks
+    if (condition) {
+      statement
+    }
+  else blocks
+    if (condition) {
+      statement1
+    } else {
+      statement2
+    }
+  else if blocks
+  if (condition) {
+    statement1
+  } else if {
+    statement2
+  } else {
+    statement3
+  }
+Order of operations
+Also called operator precedence, a collection of rules that govern the order in which operators are evaluated
+  Parentheses
+  Exponents
+  Multiplication
+  Division
+  Addition
+  Subtraction
+Truthy values
+Values that an if statement will treat as true
+!! turns anything to a boolean
+Falsy values
+Values that an if statement will treat as false
+  // Values that evaluate to `false`
+  false; // `false` itself
+  ""; // Empty string
+  0; // Zero
+  null;
+  undefined;
+  NaN; // Not a number
+Logical operators
+Operators that test whether a given condition is met
+  and &&, or ||, not !
+  && evaluates to true if the values on both sides are true.
+  || evaluates to true if either one of the values is true.
+  ! works on just one value, and gives the opposite of a value. Therefore, !true evaluates to false, and !false evaluates to true.
+  short-circuiting
+    && (and) returns the first falsy value, or the last value if no values are falsy.
+    || (or) returns the first truthy value, or the last value if no values are truthy.
+Comparison operators
+Mathematical symbols that compare two values
+  strict equality =====
+  loose equality ====
+  relational operators
+  greater than >
+  less than <
+  greater than >=
+  less than <=
+  not equal !==
+
+JavaScript array
+A collection of ordered items
+  [] empty array
+  arr[0]; call first array items
+  arr[0] = "foo";
+Mutation
+A change in the original data value
+push(): This adds an item to the end of an array. It returns the new length of the array.
+pop(): This removes the last item from the end of an array. It returns the last item.
+length: Just like the string tool length, this gives the length of the array—in other words, the number of items. You'll notice that length doesn't need parentheses. That's because it's technically a property and not a method.
