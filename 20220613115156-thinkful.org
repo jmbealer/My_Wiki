@@ -327,3 +327,38 @@ Function call
 You run the function using the name and parentheses, like bakeCake(). You can say that you run, call, or invoke the function.
 Arguments
 When you invoke a function, you pass in values between the parentheses, like favoriteFood("pizza"). In this case, "pizza" is the argument; in other words, it's the input to the function.
+
+Function scope
+    The "bubble" in which a variable is accessible or visible
+Tracing
+    The process of following values through a program
+Control flow
+    Also called flow of execution, the tools provided by a programming language to conditionally determine which set of instructions runs
+Loop
+    A construct that allows you to repeat a set of instructions a specific number of times, or until a specific condition is true
+Global scope
+    The scope that contains all other scopes
+
+variables created outside of functions are global
+variables created inside of functions are local
+Function parameters act like variables created inside a function
+each time call function it creates a new scope.
+
+shadowing javascript looks for a scope inside function then outside
+  inside beat outside
+
+ Summary: Scope rules
+Here's a summary of the scope rules that you've learned so far:
+Every variable is part of a scope.
+If the variable is created outside of any function, it's stored in the global scope.
+Variables in the global scope are visible everywhere.
+Each time that a function is called, it creates a new scope.
+If the variable is created inside a function, it gets stored inside the function's scope.
+Variables in a function scope are only visible inside the function.
+The function scope disappears when the function ends.
+Parameters get assigned function scope, as if they were variables created inside the function.
+Parameters get assigned the values from the arguments when the function is called.
+Scope is pretty complicated. In this lesson, you learned some essential scope rules. But there are still more scope rules, and you'll learn those later.
+
+Helper function
+A function that helps clean up code by handling a section of a larger function
