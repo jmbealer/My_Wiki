@@ -362,3 +362,401 @@ Scope is pretty complicated. In this lesson, you learned some essential scope ru
 
 Helper function
 A function that helps clean up code by handling a section of a larger function
+
+
+
+* html and css
+
+Hypertext Markup Language
+HTML, a straightforward programming language that is used to create the structure of a web page
+Hypertext
+Digital text that references other locations
+Markup language
+A class of computer languages that involve annotating documents in a way that is used to format the text syntactically but isn't visible to users
+Cascading Style Sheets
+A programming language designed to supplement HTML by adding formatting, design, and style details to web pages
+Style sheet language
+A class of computer languages that express and explain how a markup language or other structured document content should get presented
+Content delivery network
+Also known as a CDN, a network of servers that helps web page content to load more quickly
+index.html: All your HTML code will be written here.
+style.css: All your CSS code will be written here.
+script.js: All your JavaScript code will be written here
+
+** HTML
+
+As a foundational component of a website's display, HTML is a great language for adding these elements to a web page:
+
+Text: Words and written content
+Media: Images, videos, and other visual or auditory elements
+Links: Clickable paths to other places, like other websites
+Containers: Elements that are used to give web pages structure for layout purposes
+
+*** html basics
+
+HTML element
+A component of an HTML document
+HTML tag
+Keywords that define how content in an HTML document appears on a web page
+There are 16 elements that are self-closing, meaning they only require a single tag.
+The syntax of a self-closing tag is as follows: <element attributes />.
+HTML paragraph
+A block of content, such as text, that is represented by a <p> element
+HTML heading
+A title or subtitle used to break up, organize, and highlight content on a web page
+HTML attribute
+An extra bit of information that is tied with certain elements and is written inside an opening tag
+  attributes are always written inside the opening tag
+  attribute="value"
+Alternative text
+Also called alt text, an image description that can be added as an image attribute in an HTML document
+
+** CSS
+
+Notably, CSS can add many elements to HTML, such as those listed below.
+
+Text: CSS assigns specific fonts, text sizes, alignments, and colors to text.
+Media: CSS assigns the image sizes for images on a web page, and it can add rounded corners and fancy borders to those images.
+Links: CSS assigns colors to links.
+Containers: CSS assigns the height and width of containers on a web page, as well as the colors or images that are used in the background to provide structure and style.
+
+*** css basics
+
+CSS rule
+Also called a ruleset, the entire block of CSS code assigned to style an HTML element
+CSS selector
+Code that identifies what HTML element should be affected by the declaration block that follows the selector
+CSS property
+The general category or type of stylistic change that you'd like to make
+CSS value
+The specific change that you want to make, such as pixel size or color
+CSS declaration
+The property and value applied to the selector
+Hex color code
+Also called hex value, an alphanumeric code used to specify a color value
+
+<link href="style.css" rel="stylesheet" type="text/css" />
+
+css rulesets
+Rule or ruleset: This is the entire block of CSS code assigned to style an HTML element.
+Selector: This is the name of the HTML element that will be styled.
+Property: This is a set or family of attributes, or options, that you can change.
+Value: This is the specific change you want to make, such as pixel size or color.
+Declaration: This consists of both the property and the value assigned to the selector.
+
+p { font-size: 16px; }
+css rule = selector { property: value; }
+  {...} = declaration
+  selector = p
+  property = font-size:
+  value = value;
+
+Selectors and declarations
+A selector defines what element in the code should be affected by the declaration block that follows the selector.
+The selector refers to a specific HTML element, like a p element in the image above.
+In this case, every p element, or HTML paragraph, on the page will be styled by the information provided in the declaration block.
+The declaration block begins and ends with curly brackets {}.
+Each line inside of the {} represents a separate declaration, each of which applies a particular style or format to the referenced element.
+
+Properties and values
+Each declaration is made up of two components: a property and a value. At its most basic level, a CSS property is the general category or type of stylistic change you'd like to make. The value then specifies exactly what style you'd like to apply.
+There are hundreds of CSS properties and values. The CSS Properties Reference from Mozilla is a valuable resource that shares only the most common properties. And as you'll see, it's still a long list! In fact, you will regularly discover new CSS properties and values over the course of your career.
+In a declaration, the property is named first. It's followed by a colon :, then the value, and then a semicolon ; at the end. Structurally, declarations look like this: property: value;. One of the best ways to learn about properties and values is to see examples of how they work. Check out the one below. What do these declarations do?
+
+colors
+black #000000
+white #ffffff
+https://htmlcolorcodes.com/color-names/
+https://coolors.co/
+
+fonts fallbacks
+This coding concept is referred to as font stacks, and it helps prevent issues if a computer or browser can't assign the requested font to the specified text. The font stack tells the code that if the first font—in this case, Arial—doesn't load properly, it should try the next font in the list. The code will try each font until it finds one that works properly. These are called font fallbacks.
+
+Generally, the last font choice should be a general category of typeface that every device can work with. It likely won't be another specific font, but a broader type of font style, like serif or sans-serif. All of the following font categories will reliably show up on every machine, and can therefore be used at the end of your font stack.
+
+Serif: Serif fonts are often used for headings. The letters in these fonts have little tapered ends or tails, which add a stylistic accent to text and make letters and characters more attractive at larger sizes.
+Sans-serif: Sans-serif fonts are often used for paragraph text on websites. They have minimal flaring or tapering at the ends of letters, making smaller text easier to read.
+Monospace: These fonts are often used for code samples, and all of the letters have the same width.
+Cursive: This type of font has a playful, handwritten style, which can feel more emphatic than italics.
+Fantasy: This type of font has a whimsical, decorative style. But use this as a fallback with care; it's more limited than other font groups.
+
+More styles for text
+As you explore CSS further, you'll likely want to play around with other text-related properties. Here are some examples:
+font-style: This is how you can change the stylistic formatting of the font, such as adding italics (italic or oblique).
+font-weight: This is how you set the thinness or thickness of a font. There are usually values from 100 to 900 available.
+letter-spacing: This is how you determine the proximity of individual letters by increasing or decreasing the space between them, measured in pixels. For example, a value of 1px is fairly normal, or a value of -3px will pull the letters closer together.
+line-height: This is how you increase or decrease the space between lines of text. For example, you could apply 20px of space between lines of text.
+text-align: This property allows you to realign text to be center, left, right, or justified.
+text-decoration: This allows you to add additional formatting, like underline, overline (text with a horizontal line above it, often used in math notation), or line-through (also known as strikethrough).
+text-transform: This allows you to change the case of the letters, such as uppercase and lowercase.
+
+** find html and css
+
+Steps to finding the HTML
+Follow the steps below to view the HTML on the Mend website or another website of your choosing.
+Right-click the background or text of the web page, which will reveal a drop-down menu.
+Click the View Page Source option in the drop-down.
+The next page that opens up should reveal all of the HTML code on that web page. Take a moment to look around and review the HTML code. Although you aren't expected to understand any of this yet, you may be able to make sense of some of the code.
+
+Steps to finding the CSS
+The CSS code of a web page is often organized in another web file, which you'll need to look for. Follow the steps below.
+Right-click the background or text of the web page, which will reveal a drop-down menu.
+Click the View Page Source option in the drop-down.
+Once you're in the page source, hit Control+F (or Command+F on a Mac) to open up the Find bar. Then, search for .css.
+Your search will likely reveal more than one CSS file. How many CSS files are linked to this HTML page?
+If you can, click one of the .css links to find the CSS.
+
+** web page template
+
+The index
+A nice feature of Replit is that it provides the basic framework for a website built with HTML, CSS, and JavaScript. As mentioned above, this is useful because this code is used by every HTML page on the internet. In Replit, this foundational code can be found in the index.html file, or the index. This will help you get started.
+
+Screenshot of HTML code in index.html displayed in a REPL on the Replit website.
+Take a moment to explore and become familiar with the different parts of this core code. The pieces of the index are defined below.
+
+DOCTYPE
+<!DOCTYPE html>
+As the name DOCTYPE suggests, this line of code declares this document as an HTML5 web page. This tag is the first line of HTML code, and it is required to be the first line of code in every HTML5 web page. It's important to note that this is the only HTML tag written in capital letters—all other HTML tags should be written in lowercase.
+
+HTML
+<html>
+  ...
+</html>
+The <html> element identifies and contains the HTML code in HTML web pages. The opening and closing tags, <html> and </html>, wrap around all the HTML code that is related to the web page.
+
+Head
+<head>
+  ...
+</head>
+Every HTML web page has a <head> element. The <head> contains all the important information web browsers and search engines need regarding a web page. In a way, this element is the brains of the web page. Although the <head> holds vital information about the web page, nothing within it is displayed on the actual web page. It'll include several of the components that you'll read about below, like meta tags, the <title> element, and the <link> element.
+
+Meta tags
+<meta charset="utf-8" />
+The meta tag holds important information related to the data within the web page. The meta tag above is declaring the charset, or character set, to tell browsers how to process the characters and code within the file. What do you think this next meta tag does?
+
+<meta name="viewport" content="width=device-width" />
+The meta tag in this example sets the width of the web page to follow the screen-width of whichever device a user is looking at. For instance, the width of a computer monitor will be larger than the width of a phone screen, and this meta tag ensures that the web page displays properly across both devices. This meta tag will be particularly useful when you start building web pages that are responsive to different screen-widths.
+
+Title
+<title>replit</title>
+The <title> element defines the web page title, like replit above. You can see this title in the web page tab at the top of a web browser, but you won't be able to see it display on the web page itself. In fact, it might be a slightly different (or extended) version of the displayed name or title of the web page. The <title> is also the name that will be used when a web page is bookmarked on a web browser.
+
+Link
+<link href="style.css" rel="stylesheet" type="text/css" />
+The <link> element is used to connect and reference resources on the internet. In fact, it should seem familiar. You've used it in previous Replit projects to connect an external style.css file with the HTML web page.
+
+Using an external CSS page can make things easier. With a separate style.css file, you can keep all the core CSS code written in one place, and then multiple HTML pages can reference that CSS file. That way, you can update the CSS code on all your web pages simultaneously and consistently simply by changing that one CSS file. And although this link doesn't need to be in the <head> element of the HTML page, it is a best practice to put it there.
+
+The attribute rel stands for relationship—the relationship between the HTML document and the CSS file. The type specifies the media type of the linked file, and in this case, it's labeled as text/css. However, it's worth noting that the type attribute is no longer required in web pages, but it tends to stick around because, well, it doesn't hurt to have it.
+
+Body
+<body>
+  ...
+</body>
+The <body> element contains all the HTML code for the text, images, links, and containers used for the web page structure. All of the content-based HTML code that you've worked with in previous lessons would be placed within the <body>.
+
+Script
+<script src="script.js"></script>
+Similar to how the <link> element connects the HTML code to the CSS file, this <script> element pulls in the JavaScript code that is written in the script.js file. And just like it's a best practice to keep your CSS file in the <head>, it's a good idea to keep the script line of code at the bottom of the HTML page, below the other HTML code but just before the closing tag of the HTML element. This will allow the web page to load first (and faster) because the (heftier) JavaScript code will load last.
+
+You won't be adding JavaScript to your HTML and CSS projects just yet. For now, you can just leave this where it is (or you can delete it).
+
+The normalize.css file
+Believe it or not, web browsers have their own default styles for displaying HTML—which can lead to some unexpected or problematic changes to your website. So an <h1> element on one page may look slightly different in Chrome and Firefox, even if they are the same code. Fortunately, there's a solution: normalize.css. Watch the video below to learn more.
+
+
+Nicolas Gallagher's normalize.css is a CSS library that sets all HTML elements to display consistently across all supported web browsers. It's a small file that styles and formats headings, paragraphs, blockquotes, and other common HTML elements so that they appear identical (or very similar) on Chrome, Firefox, Safari, and other browsers.
+
+Although you can download the normalize.css file and manage it locally, it tends to work best if you link to the file from a content delivery network, or CDN. It's a good idea to load the normalize.css file first in the code, before applying your own style rules using your own style.css file. You can see this in the code sample below.
+
+Why is it better to reference normalize.css before your style.css file? Well, CSS will apply styles in the order that they appear in the code. This means that if you add the normalize.css file last, the styles in the normalize.css file may actually overwrite your styles! This concept will be covered in more depth in a later lesson. At this point, it's just important to remember which file to put in first.
+
+One other thing to keep in mind: the only difference between a normalize.css file and a normalize.min.css file is that the .min version has all the spaces and visual formatting removed. This makes the code harder to read, but it creates a smaller file size—which is very helpful when millions of websites are referencing it.
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    rel="stylesheet"
+    type="text/css"
+  />
+
+
+A note on index.html files
+The index.html icon
+Return for a moment to the ever-important index.html file. The filename index.html is significant. When a web browser opens a folder with multiple HTML files, it will always display the index.html page first, without that page needing to be referenced. The video below provides a bit more information.
+
+Every website's home page will be named index.html.
+Naturally, working with multiple projects that all have the web page index.html can be confusing. This is why making a logical file organization, with proper project folder names, is essential.
+The index.html file needs to be written in lowercase letters. Web file names tend to only use lowercase letters to prevent simple mistakes.
+
+But imagine if an index.html file is missing from a web directory. In this case, two things could happen, based on the web server's preferences:
+The web page opens a 404: File not found error, as seen below.
+Screenshot of GitHub's 404: File not found page.
+The web page displays a list of all the files in that directory, as seen below. However, this can be dangerous, as any file from this directory can be viewed and then downloaded. In this situation, the web page display will depend on your web hosting provider and how they handle directories without index.html files.
+
+Tips for naming folders and files
+Avoid spaces in your filenames. Never use spaces in any web file or folder names. Every space will be converted into a %20⁠, which can make the names of your folders and files unreadable. For example, the filename bad web page.html will look like this when viewed online: http://www.example.com/bad%20web%20page.html. Without spaces, that URL could be much cleaner and clearer.
+Use hyphens to separate your words. Use hyphens - rather than spaces. Turns out, search engine optimization, or SEO, appreciates hyphens. (And SEO helps determine how websites get ranked in users' search queries.) Here's a good use of hyphens: http://www.website.com/sub-folder/file-name.html.
+Avoid underscores to separate your words. Underscores, on the other hand, aren't preferable. SEO considers filenames with underscores as one full name, so underscores are not as good as hyphens when it comes to search engine ranking. Here's an example of what not to do: http://www.website.com/sub_folder/really_bad_topic.html.
+Use only lowercase letters. Web servers are case sensitive. For this reason, it's important to write both filenames and folder names in lowercase letters; this prevents confusion regarding what is or isn't capitalized.
+Use descriptive words. Use specific, descriptive words to explain what the file is, does, or shows. Using good names helps keep you organized, too. Consider these examples:
+Bad: image1.jpg
+Good: black-lab-puppy.jpg
+Bad: page.html
+Good: contact.html
+Do not use special characters: Rely on the letters of the alphabet (A through Z), the numbers 0 through 9, and hyphens (-). But web servers will not link properly to filenames or folders with special symbols or characters. For that reason, don't use these: ; / ? : @ = + \ $ , < > # % " { } | \ ^ [ ].
+
+** links and paths
+
+URL path
+A web address that directs the computer to the precise location of an asset or file, with each necessary step in the path separated by a forward slash
+Absolute link
+A link that uses the full URL path and can link to content outside of the current website
+Relative link
+A link that uses a path that connects one file to another file on the same server
+
+anchor elements = <a></a>
+anchor elements, represented by the <a>, to wrap around text or images to create a link.
+Inside the <a> element, there is an attribute called href. The href, which stands for hypertext reference, refers to the web page that will open when the link is clicked. The web page that opens is based on the specific URL path that is provided in the href
+
+absolute link paths
+Web server name: This is the www.webserver.com in the example below.
+Names of folder or folders: The path could require multiple folders and subfolders. This is seen in the /folder/subfolder/ below.
+Filename: Finally, the path ends with the filename itself: /filename.html.
+<a href="http://www.webserver.com/folder/subfolder/filename.html">Link</a>
+
+Relative link paths
+Names of folder or folders: The path could require multiple folders and subfolders. This is seen in the /folder/subfolder/ part of the code below.
+Filename: The path ends with the filename itself: /filename.html.
+<a href="folder/subfolder/filename.html">Link</a>
+
+Relative link paths can call, or retrieve, files from within the same directory, or they can follow a more complicated route into various folders and subfolders until they connect the path to the web page or image file. Like with absolute links, the / tracks the route into multiple locations to find the desired file, even within the same website. However, relative links work differently than absolute paths. Relative links are different from absolute paths in the following ways:
+
+With relative paths, the web page and the referencing file must be within the same website structure.
+With relative paths, the paths are dependent on where the file is located in reference to the web page.
+
+Here are some examples of relative link paths:
+about.html
+contact.html
+portfolio/project1/index.html
+portfolio/project2/index.html
+
+Here are some examples of relative image paths:
+images/waterfalls/iceland-waterfall.jpg
+gallery/nature/waterfall.jpg
+
+relative link paths up ../file
+<img src="../images/logo.jpg" />
+<img src="../../images/logo.jpg" />
+
+Open links in new tabs
+<a href="http://www.website.com" target="_blank">Link</a>
+
+Contact links
+Whenever you provide an email address or phone number within your website, you can use certain HTML attributes to make the links far more user friendly. Here is the complete collection of options for your reference:
+Including a basic email link
+Including an email link with a subject
+Adding CC and BCC to an email link
+Adding body text to an email Link
+Styling email links
+Including telephone links
+Opening file links
+Downloading file links
+
+   <!-- BASIC EMAIL LINK HERE -->
+    <p><a href="mailto:hello@yoursite.com">Email Me: </a></p>
+    <hr>
+
+** more web elements
+
+Unordered list
+Also called a bulleted list, a list with items that have no particular order
+Ordered list
+Also called a numbered list, a list with items that must be laid out in a specific sequence
+Horizontal rule
+Also called a page divider or a ruler, a line that separates distinct blocks of content
+Pseudo-class
+A CSS selector that selects HTML elements in a given state
+
+Code comments
+
+
+Here are some of the primary reasons for using comments in HTML, CSS, JavaScript, and most other programming languages:
+To describe and explain complicated code and create reminders for yourself and others
+To deliberately disable sections of code
+To improve collaboration with other developers working on the code, helping them clearly understand what needs to be added, fixed, or removed in the code
+To add titles to the sections of long pages of code to make the pages easier to scan
+It's important to note that HTML and CSS comments are not tags. They also are not written in the same way; they have a distinct syntax.
+
+HTML comments
+Comments in the HTML code are written with dashes – and an exclamation point !, all enclosed in two angle brackets <>. They're structured like this: <!-- HTML comment -->. Take a look at the example below.
+<!-- This would be an HTML comment. Useful notes can be placed here -->
+
+<!--
+  This works
+  for multiple
+  lines as well
+-->
+
+CSS comments
+Comments in CSS are written with asterisks * and forward slashes /. They're structured like this: /* CSS comment */. Take a look at the example below.
+
+/* Hello, commenting! */
+
+/*
+  I can also be on multiple lines!
+*/
+Any CSS code that sits between the opening /* symbol and the closing */ symbol is completely ignored by the web browser. Like in HTML and JS, CSS comments are grayed out in code editors.
+
+html lists
+Lists are used to break up and organize content within a web page, making it much easier for a user to read and understand.
+
+HTML supports two kinds of lists: unordered lists, for list items that have no particular order, and ordered lists, for items that must be laid out in a specific sequence or arrangement. Unordered lists often use bullets, and ordered lists often use consecutive numbers or letters.
+
+You'll use these HTML tags to make these lists:
+
+<ul>: This stands for unordered list. You'll use the opening tag <ul> and the closing tag </ul>.
+<ol>: This stands for ordered list. You'll use the opening tag <ol> and the closing tag </ol>.
+<li>: This stands for list item. You'll use the opening tag <li> and the closing tag </li> to set off every item in a list.
+
+Check out the examples below.
+<h2>My Hobbies</h2>
+<ul>
+  <li>Skiing</li>
+  <li>Painting</li>
+  <li>Coding</li>
+</ul>
+
+<h2>My Top 3 Movies</h2>
+<ol>
+  <li>Inside Out</li>
+  <li>Up</li>
+  <li>Coco</li>
+</ol>
+
+styling html list
+ul { }: This targets all unordered lists.
+ol { }: This targets all ordered lists.
+li { }: This targets all list items of both unordered and ordered lists.
+
+Embedded lists
+Sometimes, however, you might have a list item that has additional list items—a list within a list. Fortunately, HTML lets you nest lists inside one another.
+
+When you nest lists in HTML, the inner list, which is the sublist, will be indented inside the outer list. An indented sublist uses a circle icon, but with a little extra customization, you can create unique embedded lists with unique icons. Take a look at the code for these embedded lists below. Can you track where and how the sublists begin?
+
+<h1>Lessons to Write Today</h1>
+<ol>
+  <li>Lesson Introduction</li>
+  <li>HTML Lists
+    <ul>
+      <li>Unordered</li>
+      <li>Ordered</li>
+    </ul>
+  </li>
+  <li>Code Comments
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+    </ul>
+  </li>
+  <li>Link Breaks</li>
+  <li>RollOvers</li>
+</ol>
