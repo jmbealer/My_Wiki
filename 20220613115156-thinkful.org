@@ -760,3 +760,244 @@ When you nest lists in HTML, the inner list, which is the sublist, will be inden
   <li>Link Breaks</li>
   <li>RollOvers</li>
 </ol>
+
+Changing the position
+You also have the ability to shift the positioning of the list using the list-style-position property. Specifically, this allows you to move bullets or numbers inside or outside (which is the default) of the list-item container (you'll learn more about containers in subsequent lessons). This technique can be particularly useful if you're assigning a background color to a list and moving the bullets within the container.
+
+Page dividers and horizontal rules
+Page dividers allow you to organize web page content by creating a separation between distinct blocks of content. In HTML, these dividers are called horizontal rules (sometimes called rulers). You'll see these written into the HTML as <hr>. Horizontal rules are self-closing; in other words, there is no closing tag.
+
+Styling horizontal rules
+The horizontal rule in the REPL above was fairly simple, and generally, horizontal rules are pretty simple by default. But with a little CSS, they can be styled to display in better, more compelling ways. Here are some basic CSS styles for horizontal rules:
+height: This makes the border a certain height, in pixels (px).
+background-color: This makes the ruler a certain color inside the border.
+border: This requires three values to change the style of the border: the size in pixels, the color, and the stroke.
+margin-top: This adds empty space above the line.
+margin-bottom: This adds empty space below the line.
+
+Text-formatting elements
+There are 10 formatting elements in HTML that provide a default visual style to HTML text. These all change the visual style and formatting, but some also add meaning to the content and code, which can be useful for search engines. This is called semantic coding, which you'll learn more about later. For now, it's just important to know that it relies on logical descriptive terms to make it easier for search engines (and people) to read and understand what the code is doing.
+
+<b>: Sets the text in bold.
+<strong>: Sets the text in bold and is semantically important.
+<i>: Sets the text in italics.
+<em>: Sets the text in italics and is semantically important.
+<mark>: Sets the text as highlighted.
+<small>: Sets the text as smaller than the rest of the element.
+<del>: Sets the text to display as crossed out.
+<ins>: Sets the text to display as inserted by adding an underline to the text.
+<sub>: Sets the text as subscript, which is smaller and a bit below the other text.
+<sup>: Sets the text as superscript, which is smaller and a bit above the other text.
+
+Line break
+At times, you may want to create a line break in your web page. A break in a line of text can be created using <br>. Like horizontal rules, line breaks are self-closing—you only need to add the single opening tag: <br>. It's worth noting that in older versions of HTML, like HTML4, line breaks were written with a forward slash, </br>. You may see this from time to time in your online research.
+
+However, this HTML element should be used only to make line breaks. Don't use <br> to separate paragraphs of text or to create space between HTML elements. If you need to create space between text or images in CSS, you should work with margins or padding. But don't worry; you'll learn more about this in upcoming lessons.
+
+styling links
+Pseudo-classes
+Okay, you're ready for the next piece of the puzzle. The interactive links of HTML are referred to as a pseudo-class. Pseudo-classes are useful in changing the state of an element when the user engages with it, like in these situations:
+
+When an element, like a text link, has the cursor roll over (or hover over) it.
+When an element, like a text link, has the cursor click it.
+
+For anchor elements, which you've already learned a bit about, there are four pseudo-class selectors:
+a:link: This is the normal state of a text link.
+a:visited: This is the state of a text link that has already been visited by the current web browser.
+a:hover: This creates the rollover state for the element, which is triggered when the user's cursor rolls over, or hovers over, a link.
+a:active: This affects the state of the link when the user is actively clicking on it.
+
+Due to the cascading aspect of CSS, the order of these pseudo-classes is very important. They must be written on CSS page in the specific sequence outlined below:
+a:link
+a:visited
+a:hover
+a:active
+
+A clever way to help you remember the order of these pseudo-class selectors is this mnemonic device: L O V E HA TE. The order of the letters can help remind you of this order: L for link, V for visited, H for hover, and A for active.
+
+y setting the border-radius to 50% on all corners, you'll end up displaying a perfectly circular image, without the need for graphic design software
+
+** html containers
+
+HTML containers
+HTML elements that wrap around web page content—namely text, images, and links—in order to help you manage the layout and positioning of that content
+Semantic code
+Code that has a specific, logical meaning that helps describe the content that it is associated with
+Semantic container
+An HTML element designed to contain images, text, and links to help with page layout and positioning
+Search engine optimization
+SEO, the process of tailoring web content so that search engines will prioritize your website in relevant search queries
+
+Introduction to HTML containers
+So, what are containers? Containers are specific HTML elements that wrap around web page content—namely text, images, and links—in order to help you manage the layout and positioning of that content. These are the most common HTML5 container tags:
+
+<header> ... </header>
+<nav> ... </nav>
+<footer> ... </footer>
+<main> ... </main>
+<article> ... </article>
+<section> ... </section>
+<div> ... </div>
+
+Before you learn about what each does, you'll need to understand how these containers are similar and why they're important. Here are the similarities:
+
+They all work the exact same way.
+They all wrap around text, images, and links.
+They all provide the same starting shape and placement within the flow of the web page.
+
+And here's why they're important and how they work within the web:
+Search engines use containers to compare content across websites. Specifically, they look at the content within web page containers in order to rank the importance of one website over another. Therefore, using these containers properly and effectively will give your web pages more clout on the web.
+Containers make it easier to read code. The containers group relevant content within it, so it's easier to find what you're looking for. For instance, if you have a logo and navigation within a header container, then you know to look first for the <header>. There, you'll find the logo and navigation.
+
+Semantic code and containers
+At its most basic level, semantics is the study of the meaning of words and phrases. It involves looking at the logic behind language. As you began to see in the previous lesson, semantics play a role in HTML coding. Semantic code is code that has a specific, logical meaning that helps describe the content that it is associated with.
+
+In code, semantic elements more clearly, simply, and (in a way) literally express what they do than non-semantic elements. They do more than provide instructions about how the code should appear or what it should do. Semantic code also has semantic significance that makes it easier for search engines, computers, and programmers to read and understand how it operates.
+
+For instance, consider the text-formatting elements you learned about: <b> and <strong>. If you wanted to make text bold on your web page, you could use either. But the <b> isn't semantic—it doesn't have any other significance other than saying that the text should be presented as bold. An alternative, and better, semantic tag for bolding is <strong>. This tag is preferable because it's actually providing a robust description.
+
+But what is a semantic container? A semantic container is an HTML element designed to contain images, text, and links to help with page layout and positioning. But because it's semantic, a semantic container also has a specific meaning for search engines and the developer. Like semantic code, it helps describe the content that it is associated with.
+
+header container
+As you build web pages, you'll find that nearly every web page that you create should have a header container, which is enclosed in <header> and </header>. A header container helps identify the topics of the content in the web page. The header container may be placed over the navigation, or it can wrap around the navigation so the navigation sits within the header.
+
+As mentioned above, containers help search engines understand and organize websites. Therefore, when used properly, these containers can help improve the search engine optimization, or SEO, of a website, which deals with how search engines rank and prioritize websites in search queries.
+
+To improve the SEO of your website, make sure that the primary header on your web page contains the name of your company or the purpose of the web page. Typically, this will be displayed as a logo in the header.
+
+Because of the hierarchy of the web page content, placing the company or business name within a <h1> heading element will tell search engines you are prioritizing this element of content. Then, within the content sections of the web page, you can use <h2> elements for the important page section titles, and you can rely on <h3> (or smaller) elements for the subheadings of smaller sections on the web page.
+
+Grouping and arranging your content like this helps keep the web page organized for you, your audience, and search engines.
+
+<header> ... </header>
+
+navigation container
+As you might've guessed, the navigation container, set off by <nav> and </nav>, holds the primary navigation links for the website. A navigation container can be used multiple times, at both the top and the bottom of a web page, and contain the main web page links that help orient and guide users through the website. And when the navigation container is placed at the top of a web page, the navigation container can be placed above, below, or within a header container.
+
+Keep in mind that the navigation container does not need to contain every link within a web page. This container is reserved for the primary navigation links, which helps you and search engines understand what links it contains. Though you may still have questions about using navigation links and navigation containers, at this stage, you only need to understand the purpose of the navigation container. The detailed CSS styles used to create that actual navigation will be covered in more detail in future lessons.
+
+<header>
+<nav>...</nav>
+</header>
+
+footer container
+The footer container, which is set off by <footer> and </footer>, sits at the bottom of the web page. It contains important contextual information, such as relevant links or legal details, about the web page content that is placed above it.
+
+Each web page should have at least one footer. This is beneficial for both SEO and accessibility. The footer can contain different kinds of information, including the following:
+
+Copyright details
+Copyright links
+Credit to the website author or designer
+Links to related documents or web pages
+
+Main container
+The main container, enclosed in <main> and </main>, groups together all the main content of a web page.
+
+Note: There can only be one main container per HTML web page. It's essential to include only one main container.
+
+The main container should not contain any content that is repeated across files, such as the following:
+
+Sidebars
+Navigation links
+Copyright information
+Website logos
+Search forms
+
+Article container
+Next up: article containers. Article containers, set off by <article> and </article>, are useful for grouping related content within the web page, generally inside the main container. The content within an article container should be cohesive or connected in some way; the content in an article container should make sense if it were read or seen independently.
+
+For example, if an article container were distributed separately from the rest of the website, it should feel like it stands alone. The emphasis on using article containers for distinct, unique content comes from the container's purpose of self-containment: an article container that holds a weather report for Denver, Colorado, could be moved from one website to another without requiring any additional content or explanation of context. Content like news articles, blog posts, or user comments might be held in article containers. However, when article containers are embedded within other article containers, they are assumed to be part of the parent container and not separate ones.
+
+An article container should always have a heading, usually a heading between the size of an <h2> and an <h6>, because the <h1> should be the primary page heading. Here are some good types of content to contain in an article container:
+
+Blog post
+Forum post
+News story
+Comment
+
+Section container
+Now, you're ready for the section container. The section container, set off by <section> and </section>, groups together certain content within a web page, and it should always have a heading, usually an <h3>,<h4>,<h5>, or <h6>. The <h1> should be the primary page heading, and <h2> should be reserved for the article container heading.
+
+Sections can be used to group related content within article containers, and they are represented by the individual parts within a larger <article>. However, often other containers are better suited to this purpose than a section container. Try to avoid using section containers if other containers, such as article or navigation containers, are more appropriate. Div containers can also be better for styling purposes. And be sure to only use a section container if there is a heading at the start of the section.
+
+div container
+The div container, set off by <div> and </div>, is the most generic container in HTML. And unlike the other containers above, it has no semantic meaning. As you learned above, this means that div containers mean nothing semantically to search engines; they don't provide any additional description about the content they contain to you or the web.
+
+The div stands for division within the web page. Div containers, often referred to as divs, are used to structure web page content in a visual way. They are frequently used to position content within a web page. For instance, divs allow you to reposition content that is by default left aligned, allowing you to center the content within those structural containers discussed above.
+
+Link to locations within a web page
+In previous lessons, you learned how to link text or an image from one page to another web page. Now, you'll learn how to create a link that navigates to another location within the same page.
+
+Imagine that you have a single-page website, with your Home, About Us, Services, and Contact Information as blocks on the web page (which you'll learn more about shortly). In this situation, it can be helpful to contain that content within article containers. That way, the user can navigate to different information, contained in article containers, on the page using anchor links.
+
+But those links need to "know" where to navigate to. To ensure that a link takes the user to the correct destination on the web page, you need to assign an id attribute to the location that you want to link to. In this case, you'll add it to the article containers, like in the examples below.
+
+<article id="home">Full Home Content Here</article>
+<article id="about">Full About Content Here</article>
+<article id="services">Full Services Content Here</article>
+<article id="contact">Full Contact Content Here</article>
+Then, when linking to an anchor's id, you'll include a hash symbol # and then the id name that you assigned, as seen here.
+
+<a href="#contact">Contact Link</a>
+This link will take you to the contact section of the web page!
+
+Remember, it's important to follow the same naming conventions for id names as you would for web files.
+
+Backgrounds: Colors and images
+Just like other HTML elements, you can style containers. Specifically, you can give them different backgrounds, like a specific color or image. There are five properties that define the backgrounds for all HTML elements, including containers:
+
+background-color
+background-image
+background-repeat
+background-attachment
+background-position
+
+For now, you'll focus on learning about the first two: background-color and background-image. These are explained below. If you want to learn more, check out the MDN page on backgrounds, which provides more information about these properties.
+
+Background color
+As you may have guessed, the background-color property assigns a color to the background of an HTML element, such as a container. The color can be assigned using either a color name or a hex color code. Both of the examples below are valid.
+
+Color name: red
+Hex color code: #ff0000
+
+Background image
+The background-image property, on the other hand, assigns an image to display as the background of an HTML element. The background-image allows you to easily display an image behind the text within a container.
+
+An image in the background of an HTML element repeats by default. This means that it displays at its native size and then is duplicated, on the right and bottom of the image, to cover the entire background of the HTML element.
+
+** Intro to GitHub
+
+Version control systems
+Systems for managing changes to files, software, websites, and other computer or web-based programs
+Local repository
+Also called the local repo, the project folder that is stored on your computer
+Remote repository
+Also called the remote repo, the GitHub project folder that is stored on the GitHub.com website
+Owner
+The person who creates a repo, determines if it is public or private, and determines how code that is submitted to a project from others is managed
+Collaborator
+A person who has been invited by the repository owner to contribute to a project, and who has the ability to edit the code in that repo
+Commit
+Saving new changes to a version of a file, typically in a version control program like GitHub
+
+Version control: Version control allows many people to make and save changes for multiple versions of a project or program. This means you and other developers can experiment, make mistakes, and revert back to an earlier version if necessary.
+One safe place: These services securely store your projects in one safe place on the web. You can work locally and on more than one computer, but you always have an online backup. This one location makes storage easy and convenient.
+Collaboration: More often than not, coding projects require multiple people to work nearly simultaneously. Version control systems allow many different contributors to edit and change the same set of files at the same time.
+
+The GitHub language
+As you get started with GitHub, you'll need to learn the lingo. Here are some new GitHub terms and concepts that will prove useful to you in your time at Thinkful and in your career.
+Git: This is the open-source system used for version control. It's used by many companies, but GitHub is the most popular.
+GitHub.com: The website where users can store and manage versions of their code projects online.
+GitHub.io: The website that displays websites that are stored on GitHub.com online, for all users to view.
+GitHub Desktop: A free app that is installed locally on your computer. It makes it easy to update code projects from your computer to GitHub.com.
+Repository: This is a project's folder that contains all of the files for the project, as well as each file's revision history. This is commonly called a repo. There are local repositories, which are on your computer, and remote repositories, which are on GitHub.com. These will be explained in more depth below.
+Public repo: These are publicly accessible repositories. GitHub provides free access to any public repo.
+Private repo: This is a repo that only you (or others who you give access to) can see. GitHub also makes it free to store private repos; however, to access most of the functionality of a private repo, you'll need to pay a monthly fee.
+Owner: The person who creates a repo and therefore determines if it is public or private. They determine how code that is submitted to a project from others is managed.
+Collaborator: A person who has been invited by the repository owner to contribute to a project. They have been granted access to a repo, and they have the ability to edit the code in that repo.
+Commit: A fancy technical term that's used to refer to saving new changes to a version of a file.
+
+As noted above, when using GitHub for a project, you'll be working with two repos: a local repository and a remote repository. For any given project, these two repos would be the same. The difference is where you're making changes to the files.
+
+The local repository, or local repo, is the project folder that is stored on your computer. It's the local (in other words, not web-based) folder that contains all the files for the project. Edits can be made to any of these files, even if you're offline. When you're online, you can upload those changes to the files that are on GitHub.com.
+The remote repository, or remote repo, is the GitHub project folder that is stored on the GitHub.com website. If the remote repo is a public repo, anyone can view the code and the organization of those files. If it's a private repo, only people who are invited can view the code and files. These repos can be downloaded onto any computer and synced with changes made by any team members.
