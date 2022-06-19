@@ -4,49 +4,8 @@
 #+title: thinkful
 #+date: [2022-06-13 Mon 11:51]
 
-REPL
-    Read–eval–print loop, an interactive computer programming environment that lets you perform basic tasks
-Operator
-    A symbol that performs an operation on one or more variables and values
-Mathematical operator
-    An operator that performs an arithmetic calculation with one or more operands
-Assignment operator
-    An operator that assigns specific values in code
 
-Variable
-A named container that can store a changeable data value
-Function
-A block of code that describes a repeatable process or behavior
 
-const is used for constants, which are variables that can't be re-declared or updated.
-camelCasing
-
-Data type
-The type of value that a variable can have, such as string, number, or boolean
-  String
-  Number
-  Boolean
-  Null
-    The null data type is used to indicate that a variable has no value. Sometimes, null is used as the default value when other data isn't available.
-  Undefined
-    The undefined data type is a special value that, in a way, means exactly that—that a variable was never defined. Like null, undefined means empty. But null and undefined have a slightly different understanding of emptiness.
-    A null value means that the developer decided that the value was empty. It was a deliberate choice. An undefined value, on the other hand, means that the value was left empty, simply because nothing was ever assigned to it.
-    That means that you shouldn't assign a variable undefined, like in this command: let variable = undefined.
-String
-A sequence of letters, numerals, punctuation marks, or other characters, treated as text
-Integer
-Also called an int, a whole number that isn't written as a fraction or with a decimal point
-Floating-point number
-Also called a float, a number that includes a decimal point
-Boolean
-A binary variable with two possible values: true and false
-  Pronounced not or bang, ! inverts a boolean value. This means that !false turns into true, and !true turns into false.
-Coercion
-The process of converting a value from one data type to another
-  Number()
-  parseInt()
-  parseFloat()
-  toString()
 
 Manipulate text
 Concatenation
@@ -62,28 +21,6 @@ trim(): This removes whitespace (spaces, tabs, and so forth) at the beginning an
 replace(): This replaces part of a string with another string
   replace(matchingString, newString)
 
-Control flow
-Also called flow of execution, the tools provided by a programming language to conditionally determine which set of instructions runs
-Conditional statement
-A statement that tells the code to perform different tasks based on different kinds of information
-  if blocks
-    if (condition) {
-      statement
-    }
-  else blocks
-    if (condition) {
-      statement1
-    } else {
-      statement2
-    }
-  else if blocks
-  if (condition) {
-    statement1
-  } else if {
-    statement2
-  } else {
-    statement3
-  }
 Order of operations
 Also called operator precedence, a collection of rules that govern the order in which operators are evaluated
   Parentheses
@@ -363,6 +300,25 @@ Scope is pretty complicated. In this lesson, you learned some essential scope ru
 Helper function
 A function that helps clean up code by handling a section of a larger function
 
+// create findItems takes two args items and type return an array
+function findItems(items, matchType){
+  let matches = [];
+  // check if items is empty
+  if ( items.length === 0){
+    return "Your cart does not have any items in it."
+  }
+  // matching items with type
+  for (let i = 0; i < items.length; i++){
+    if (items[i].type.includes(matchType)){
+      matches.push(items[i]);
+    }
+  }
+  // check if matches is empty
+  if ( matches.length === 0){
+    return "No items found of that type. Please search for a different item."
+  }
+  return matches
+}
 
 
 * html and css
