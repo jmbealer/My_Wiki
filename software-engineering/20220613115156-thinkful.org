@@ -6,49 +6,18 @@
 
 * html and css
 
-Hypertext Markup Language
-HTML, a straightforward programming language that is used to create the structure of a web page
-Hypertext
-Digital text that references other locations
-Markup language
-A class of computer languages that involve annotating documents in a way that is used to format the text syntactically but isn't visible to users
+
 Cascading Style Sheets
 A programming language designed to supplement HTML by adding formatting, design, and style details to web pages
 Style sheet language
 A class of computer languages that express and explain how a markup language or other structured document content should get presented
+
 Content delivery network
 Also known as a CDN, a network of servers that helps web page content to load more quickly
-index.html: All your HTML code will be written here.
+
 style.css: All your CSS code will be written here.
 script.js: All your JavaScript code will be written here
 
-** HTML
-
-As a foundational component of a website's display, HTML is a great language for adding these elements to a web page:
-
-Text: Words and written content
-Media: Images, videos, and other visual or auditory elements
-Links: Clickable paths to other places, like other websites
-Containers: Elements that are used to give web pages structure for layout purposes
-
-*** html basics
-
-HTML element
-A component of an HTML document
-HTML tag
-Keywords that define how content in an HTML document appears on a web page
-There are 16 elements that are self-closing, meaning they only require a single tag.
-The syntax of a self-closing tag is as follows: <element attributes />.
-HTML paragraph
-A block of content, such as text, that is represented by a <p> element
-HTML heading
-A title or subtitle used to break up, organize, and highlight content on a web page
-HTML attribute
-An extra bit of information that is tied with certain elements and is written inside an opening tag
-  attributes are always written inside the opening tag
-  attribute="value"
-Alternative text
-Also called alt text, an image description that can be added as an image attribute in an HTML document
 
 ** CSS
 

@@ -6,7 +6,7 @@
 #+date: [2022-05-24 Tue 23:33]
 #+FILETAGS: :html:
 
-* What is HTML
+* What is HTML?
 
 HTML stand for HyperText Markup Language.
 
@@ -21,6 +21,30 @@ a markup language is a computer language that defines the structure and
 presentation of raw text.
 
 hypertext digital text that reference other locations.
+
+HTML stands for HyperText Markup Language
+HTML is skeleton of all web pages
+A markup language is a computer language that define the structure and
+presentation of raw text.
+HyperText is text displayed on a computer
+
+
+Hypertext Markup Language
+HTML, a straightforward programming language that is used to create the structure of a web page
+Hypertext
+Digital text that references other locations
+Markup language
+A class of computer languages that involve annotating documents in a way that is used to format the text syntactically but isn't visible to users
+
+index.html: All your HTML code will be written here.
+
+
+As a foundational component of a website's display, HTML is a great language for adding these elements to a web page:
+
+Text: Words and written content
+Media: Images, videos, and other visual or auditory elements
+Links: Clickable paths to other places, like other websites
+Containers: Elements that are used to give web pages structure for layout purposes
 
 * html elements
 
@@ -410,3 +434,22 @@ HTML attribute
     An extra bit of information that is tied with certain elements and is written inside an opening tag
 Alternative text
     Also called alt text, an image description that can be added as an image attribute in an HTML document
+
+* unsorted
+
+HTML element
+A component of an HTML document
+HTML tag
+Keywords that define how content in an HTML document appears on a web page
+There are 16 elements that are self-closing, meaning they only require a single tag.
+The syntax of a self-closing tag is as follows: <element attributes />.
+HTML paragraph
+A block of content, such as text, that is represented by a <p> element
+HTML heading
+A title or subtitle used to break up, organize, and highlight content on a web page
+HTML attribute
+An extra bit of information that is tied with certain elements and is written inside an opening tag
+  attributes are always written inside the opening tag
+  attribute="value"
+Alternative text
+Also called alt text, an image description that can be added as an image attribute in an HTML document

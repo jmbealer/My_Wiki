@@ -45,6 +45,17 @@ python
 programming.md
 prolang.md
 
+
+assembly
+scheme
+  racket
+c
+golang
+
+need fit bash in there
+vimlp
+Perl
+
 * [[file:README.org][Readme]]
 
 #+begin_src org

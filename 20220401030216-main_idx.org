@@ -36,6 +36,7 @@ test.sh
 testAnki.sh
 
 wiki-old
+[[id:b96af39a-3d47-4c7c-9da5-b3c4cbc673ad][programming]]
 
 [[id:7c74d046-30f1-4eac-b49f-5ea691ef5b76][linux]]
  [[id:8bb1d8d1-c11d-4a09-8ab4-1a8dc5995c15][LPI Linux Essentials Exam 010]]
