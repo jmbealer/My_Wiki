@@ -9,6 +9,11 @@ css :: cascading style sheets
 use to style the html content.
 
 
+Cascading Style Sheets
+A programming language designed to supplement HTML by adding formatting, design, and style details to web pages
+Style sheet language
+A class of computer languages that express and explain how a markup language or other structured document content should get presented
+
 css anatomy
 Ruleset Terms:
 

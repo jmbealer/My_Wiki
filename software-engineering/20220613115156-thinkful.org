@@ -7,10 +7,6 @@
 * html and css
 
 
-Cascading Style Sheets
-A programming language designed to supplement HTML by adding formatting, design, and style details to web pages
-Style sheet language
-A class of computer languages that express and explain how a markup language or other structured document content should get presented
 
 Content delivery network
 Also known as a CDN, a network of servers that helps web page content to load more quickly
