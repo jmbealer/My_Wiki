@@ -93,3 +93,54 @@ git branch, checkout
 git merge
 git log
 git diff
+
+
+** Intro to GitHub
+
+Version control systems
+Systems for managing changes to files, software, websites, and other computer or web-based programs
+Local repository
+Also called the local repo, the project folder that is stored on your computer
+Remote repository
+Also called the remote repo, the GitHub project folder that is stored on the GitHub.com website
+Owner
+The person who creates a repo, determines if it is public or private, and determines how code that is submitted to a project from others is managed
+Collaborator
+A person who has been invited by the repository owner to contribute to a project, and who has the ability to edit the code in that repo
+Commit
+Saving new changes to a version of a file, typically in a version control program like GitHub
+
+Version control: Version control allows many people to make and save changes for multiple versions of a project or program. This means you and other developers can experiment, make mistakes, and revert back to an earlier version if necessary.
+One safe place: These services securely store your projects in one safe place on the web. You can work locally and on more than one computer, but you always have an online backup. This one location makes storage easy and convenient.
+Collaboration: More often than not, coding projects require multiple people to work nearly simultaneously. Version control systems allow many different contributors to edit and change the same set of files at the same time.
+
+The GitHub language
+As you get started with GitHub, you'll need to learn the lingo. Here are some new GitHub terms and concepts that will prove useful to you in your time at Thinkful and in your career.
+Git: This is the open-source system used for version control. It's used by many companies, but GitHub is the most popular.
+GitHub.com: The website where users can store and manage versions of their code projects online.
+GitHub.io: The website that displays websites that are stored on GitHub.com online, for all users to view.
+GitHub Desktop: A free app that is installed locally on your computer. It makes it easy to update code projects from your computer to GitHub.com.
+Repository: This is a project's folder that contains all of the files for the project, as well as each file's revision history. This is commonly called a repo. There are local repositories, which are on your computer, and remote repositories, which are on GitHub.com. These will be explained in more depth below.
+Public repo: These are publicly accessible repositories. GitHub provides free access to any public repo.
+Private repo: This is a repo that only you (or others who you give access to) can see. GitHub also makes it free to store private repos; however, to access most of the functionality of a private repo, you'll need to pay a monthly fee.
+Owner: The person who creates a repo and therefore determines if it is public or private. They determine how code that is submitted to a project from others is managed.
+Collaborator: A person who has been invited by the repository owner to contribute to a project. They have been granted access to a repo, and they have the ability to edit the code in that repo.
+Commit: A fancy technical term that's used to refer to saving new changes to a version of a file.
+
+As noted above, when using GitHub for a project, you'll be working with two repos: a local repository and a remote repository. For any given project, these two repos would be the same. The difference is where you're making changes to the files.
+
+The local repository, or local repo, is the project folder that is stored on your computer. It's the local (in other words, not web-based) folder that contains all the files for the project. Edits can be made to any of these files, even if you're offline. When you're online, you can upload those changes to the files that are on GitHub.com.
+The remote repository, or remote repo, is the GitHub project folder that is stored on the GitHub.com website. If the remote repo is a public repo, anyone can view the code and the organization of those files. If it's a private repo, only people who are invited can view the code and files. These repos can be downloaded onto any computer and synced with changes made by any team members.
+
+More on custom domain names
+As noted briefly above, you can buy a custom domain name (URL) that can easily showcase your projects by pointing to your GitHub.io website. In fact, a domain name can be used to point to your GitHub account or any of the projects that are hosted on GitHub.io. When you're ready to purchase a custom domain name, follow the directions below. These are the two primary steps:
+
+Purchase your domain name and point the domain to GitHub.
+
+Update GitHub to point to the domain, too.
+
+A domain name usually costs around $10 for yearly access. (So, if Jenny were to create her web portfolio and host it publicly on GitHub, then she could run http://www.jennythinkful.com for around $10 per year!) Three popular domain sites are listed below:
+
+GoDaddy: The cost of a domain name is about $12 per year. Check out this tutorial to learn more.
+Name.com: The cost of a domain name is about $11 per year. Check out this tutorial to learn more.
+Namecheap: The cost of a domain name is about $10 per year. Check out this tutorial to learn more.

@@ -31,6 +31,8 @@ uses camelCasing
   camelCasingIsFun;
   youWillCamelCaseToo;
 
+script.js: All your JavaScript code will be written here
+
 * comments
 
 Comments are ignore when the program runs.
@@ -39,6 +41,17 @@ Comments allow you explain you code, in the code itself, without affecting your 
 
 // single-line comment
 `/* multi-line comment */`
+
+
+
+Code comments
+
+Here are some of the primary reasons for using comments in HTML, CSS, JavaScript, and most other programming languages:
+To describe and explain complicated code and create reminders for yourself and others
+To deliberately disable sections of code
+To improve collaboration with other developers working on the code, helping them clearly understand what needs to be added, fixed, or removed in the code
+To add titles to the sections of long pages of code to make the pages easier to scan
+It's important to note that HTML and CSS comments are not tags. They also are not written in the same way; they have a distinct syntax.
 
 * Variables
 

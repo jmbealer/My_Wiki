@@ -453,3 +453,411 @@ An extra bit of information that is tied with certain elements and is written in
   attribute="value"
 Alternative text
 Also called alt text, an image description that can be added as an image attribute in an HTML document
+
+
+Steps to finding the HTML
+Follow the steps below to view the HTML on the Mend website or another website of your choosing.
+Right-click the background or text of the web page, which will reveal a drop-down menu.
+Click the View Page Source option in the drop-down.
+The next page that opens up should reveal all of the HTML code on that web page. Take a moment to look around and review the HTML code. Although you aren't expected to understand any of this yet, you may be able to make sense of some of the code.
+
+
+Unordered list
+Also called a bulleted list, a list with items that have no particular order
+Ordered list
+Also called a numbered list, a list with items that must be laid out in a specific sequence
+Horizontal rule
+Also called a page divider or a ruler, a line that separates distinct blocks of content
+
+
+HTML comments
+Comments in the HTML code are written with dashes – and an exclamation point !, all enclosed in two angle brackets <>. They're structured like this: <!-- HTML comment -->. Take a look at the example below.
+<!-- This would be an HTML comment. Useful notes can be placed here -->
+
+<!--
+  This works
+  for multiple
+  lines as well
+-->
+
+html lists
+Lists are used to break up and organize content within a web page, making it much easier for a user to read and understand.
+
+HTML supports two kinds of lists: unordered lists, for list items that have no particular order, and ordered lists, for items that must be laid out in a specific sequence or arrangement. Unordered lists often use bullets, and ordered lists often use consecutive numbers or letters.
+
+You'll use these HTML tags to make these lists:
+
+<ul>: This stands for unordered list. You'll use the opening tag <ul> and the closing tag </ul>.
+<ol>: This stands for ordered list. You'll use the opening tag <ol> and the closing tag </ol>.
+<li>: This stands for list item. You'll use the opening tag <li> and the closing tag </li> to set off every item in a list.
+
+Check out the examples below.
+<h2>My Hobbies</h2>
+<ul>
+  <li>Skiing</li>
+  <li>Painting</li>
+  <li>Coding</li>
+</ul>
+
+<h2>My Top 3 Movies</h2>
+<ol>
+  <li>Inside Out</li>
+  <li>Up</li>
+  <li>Coco</li>
+</ol>
+
+Embedded lists
+Sometimes, however, you might have a list item that has additional list items—a list within a list. Fortunately, HTML lets you nest lists inside one another.
+
+When you nest lists in HTML, the inner list, which is the sublist, will be indented inside the outer list. An indented sublist uses a circle icon, but with a little extra customization, you can create unique embedded lists with unique icons. Take a look at the code for these embedded lists below. Can you track where and how the sublists begin?
+
+<h1>Lessons to Write Today</h1>
+<ol>
+  <li>Lesson Introduction</li>
+  <li>HTML Lists
+    <ul>
+      <li>Unordered</li>
+      <li>Ordered</li>
+    </ul>
+  </li>
+  <li>Code Comments
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+    </ul>
+  </li>
+  <li>Link Breaks</li>
+  <li>RollOvers</li>
+</ol>
+
+
+Page dividers and horizontal rules
+Page dividers allow you to organize web page content by creating a separation between distinct blocks of content. In HTML, these dividers are called horizontal rules (sometimes called rulers). You'll see these written into the HTML as <hr>. Horizontal rules are self-closing; in other words, there is no closing tag.
+
+Text-formatting elements
+There are 10 formatting elements in HTML that provide a default visual style to HTML text. These all change the visual style and formatting, but some also add meaning to the content and code, which can be useful for search engines. This is called semantic coding, which you'll learn more about later. For now, it's just important to know that it relies on logical descriptive terms to make it easier for search engines (and people) to read and understand what the code is doing.
+
+<b>: Sets the text in bold.
+<strong>: Sets the text in bold and is semantically important.
+<i>: Sets the text in italics.
+<em>: Sets the text in italics and is semantically important.
+<mark>: Sets the text as highlighted.
+<small>: Sets the text as smaller than the rest of the element.
+<del>: Sets the text to display as crossed out.
+<ins>: Sets the text to display as inserted by adding an underline to the text.
+<sub>: Sets the text as subscript, which is smaller and a bit below the other text.
+<sup>: Sets the text as superscript, which is smaller and a bit above the other text.
+
+
+Line break
+At times, you may want to create a line break in your web page. A break in a line of text can be created using <br>. Like horizontal rules, line breaks are self-closing—you only need to add the single opening tag: <br>. It's worth noting that in older versions of HTML, like HTML4, line breaks were written with a forward slash, </br>. You may see this from time to time in your online research.
+
+However, this HTML element should be used only to make line breaks. Don't use <br> to separate paragraphs of text or to create space between HTML elements. If you need to create space between text or images in CSS, you should work with margins or padding. But don't worry; you'll learn more about this in upcoming lessons.
+
+
+** web page template
+
+The index
+A nice feature of Replit is that it provides the basic framework for a website built with HTML, CSS, and JavaScript. As mentioned above, this is useful because this code is used by every HTML page on the internet. In Replit, this foundational code can be found in the index.html file, or the index. This will help you get started.
+
+Screenshot of HTML code in index.html displayed in a REPL on the Replit website.
+Take a moment to explore and become familiar with the different parts of this core code. The pieces of the index are defined below.
+
+DOCTYPE
+<!DOCTYPE html>
+As the name DOCTYPE suggests, this line of code declares this document as an HTML5 web page. This tag is the first line of HTML code, and it is required to be the first line of code in every HTML5 web page. It's important to note that this is the only HTML tag written in capital letters—all other HTML tags should be written in lowercase.
+
+HTML
+<html>
+  ...
+</html>
+The <html> element identifies and contains the HTML code in HTML web pages. The opening and closing tags, <html> and </html>, wrap around all the HTML code that is related to the web page.
+
+Head
+<head>
+  ...
+</head>
+Every HTML web page has a <head> element. The <head> contains all the important information web browsers and search engines need regarding a web page. In a way, this element is the brains of the web page. Although the <head> holds vital information about the web page, nothing within it is displayed on the actual web page. It'll include several of the components that you'll read about below, like meta tags, the <title> element, and the <link> element.
+
+Meta tags
+<meta charset="utf-8" />
+The meta tag holds important information related to the data within the web page. The meta tag above is declaring the charset, or character set, to tell browsers how to process the characters and code within the file. What do you think this next meta tag does?
+
+<meta name="viewport" content="width=device-width" />
+The meta tag in this example sets the width of the web page to follow the screen-width of whichever device a user is looking at. For instance, the width of a computer monitor will be larger than the width of a phone screen, and this meta tag ensures that the web page displays properly across both devices. This meta tag will be particularly useful when you start building web pages that are responsive to different screen-widths.
+
+Title
+<title>replit</title>
+The <title> element defines the web page title, like replit above. You can see this title in the web page tab at the top of a web browser, but you won't be able to see it display on the web page itself. In fact, it might be a slightly different (or extended) version of the displayed name or title of the web page. The <title> is also the name that will be used when a web page is bookmarked on a web browser.
+
+Link
+<link href="style.css" rel="stylesheet" type="text/css" />
+The <link> element is used to connect and reference resources on the internet. In fact, it should seem familiar. You've used it in previous Replit projects to connect an external style.css file with the HTML web page.
+
+Using an external CSS page can make things easier. With a separate style.css file, you can keep all the core CSS code written in one place, and then multiple HTML pages can reference that CSS file. That way, you can update the CSS code on all your web pages simultaneously and consistently simply by changing that one CSS file. And although this link doesn't need to be in the <head> element of the HTML page, it is a best practice to put it there.
+
+The attribute rel stands for relationship—the relationship between the HTML document and the CSS file. The type specifies the media type of the linked file, and in this case, it's labeled as text/css. However, it's worth noting that the type attribute is no longer required in web pages, but it tends to stick around because, well, it doesn't hurt to have it.
+
+Body
+<body>
+  ...
+</body>
+The <body> element contains all the HTML code for the text, images, links, and containers used for the web page structure. All of the content-based HTML code that you've worked with in previous lessons would be placed within the <body>.
+
+Script
+<script src="script.js"></script>
+Similar to how the <link> element connects the HTML code to the CSS file, this <script> element pulls in the JavaScript code that is written in the script.js file. And just like it's a best practice to keep your CSS file in the <head>, it's a good idea to keep the script line of code at the bottom of the HTML page, below the other HTML code but just before the closing tag of the HTML element. This will allow the web page to load first (and faster) because the (heftier) JavaScript code will load last.
+
+You won't be adding JavaScript to your HTML and CSS projects just yet. For now, you can just leave this where it is (or you can delete it).
+
+The normalize.css file
+Believe it or not, web browsers have their own default styles for displaying HTML—which can lead to some unexpected or problematic changes to your website. So an <h1> element on one page may look slightly different in Chrome and Firefox, even if they are the same code. Fortunately, there's a solution: normalize.css. Watch the video below to learn more.
+
+
+Nicolas Gallagher's normalize.css is a CSS library that sets all HTML elements to display consistently across all supported web browsers. It's a small file that styles and formats headings, paragraphs, blockquotes, and other common HTML elements so that they appear identical (or very similar) on Chrome, Firefox, Safari, and other browsers.
+
+Although you can download the normalize.css file and manage it locally, it tends to work best if you link to the file from a content delivery network, or CDN. It's a good idea to load the normalize.css file first in the code, before applying your own style rules using your own style.css file. You can see this in the code sample below.
+
+Why is it better to reference normalize.css before your style.css file? Well, CSS will apply styles in the order that they appear in the code. This means that if you add the normalize.css file last, the styles in the normalize.css file may actually overwrite your styles! This concept will be covered in more depth in a later lesson. At this point, it's just important to remember which file to put in first.
+
+One other thing to keep in mind: the only difference between a normalize.css file and a normalize.min.css file is that the .min version has all the spaces and visual formatting removed. This makes the code harder to read, but it creates a smaller file size—which is very helpful when millions of websites are referencing it.
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    rel="stylesheet"
+    type="text/css"
+  />
+
+
+A note on index.html files
+The index.html icon
+Return for a moment to the ever-important index.html file. The filename index.html is significant. When a web browser opens a folder with multiple HTML files, it will always display the index.html page first, without that page needing to be referenced. The video below provides a bit more information.
+
+Every website's home page will be named index.html.
+Naturally, working with multiple projects that all have the web page index.html can be confusing. This is why making a logical file organization, with proper project folder names, is essential.
+The index.html file needs to be written in lowercase letters. Web file names tend to only use lowercase letters to prevent simple mistakes.
+
+But imagine if an index.html file is missing from a web directory. In this case, two things could happen, based on the web server's preferences:
+The web page opens a 404: File not found error, as seen below.
+Screenshot of GitHub's 404: File not found page.
+The web page displays a list of all the files in that directory, as seen below. However, this can be dangerous, as any file from this directory can be viewed and then downloaded. In this situation, the web page display will depend on your web hosting provider and how they handle directories without index.html files.
+
+Tips for naming folders and files
+Avoid spaces in your filenames. Never use spaces in any web file or folder names. Every space will be converted into a %20⁠, which can make the names of your folders and files unreadable. For example, the filename bad web page.html will look like this when viewed online: http://www.example.com/bad%20web%20page.html. Without spaces, that URL could be much cleaner and clearer.
+Use hyphens to separate your words. Use hyphens - rather than spaces. Turns out, search engine optimization, or SEO, appreciates hyphens. (And SEO helps determine how websites get ranked in users' search queries.) Here's a good use of hyphens: http://www.website.com/sub-folder/file-name.html.
+Avoid underscores to separate your words. Underscores, on the other hand, aren't preferable. SEO considers filenames with underscores as one full name, so underscores are not as good as hyphens when it comes to search engine ranking. Here's an example of what not to do: http://www.website.com/sub_folder/really_bad_topic.html.
+Use only lowercase letters. Web servers are case sensitive. For this reason, it's important to write both filenames and folder names in lowercase letters; this prevents confusion regarding what is or isn't capitalized.
+Use descriptive words. Use specific, descriptive words to explain what the file is, does, or shows. Using good names helps keep you organized, too. Consider these examples:
+Bad: image1.jpg
+Good: black-lab-puppy.jpg
+Bad: page.html
+Good: contact.html
+Do not use special characters: Rely on the letters of the alphabet (A through Z), the numbers 0 through 9, and hyphens (-). But web servers will not link properly to filenames or folders with special symbols or characters. For that reason, don't use these: ; / ? : @ = + \ $ , < > # % " { } | \ ^ [ ].
+
+** links and paths
+
+URL path
+A web address that directs the computer to the precise location of an asset or file, with each necessary step in the path separated by a forward slash
+Absolute link
+A link that uses the full URL path and can link to content outside of the current website
+Relative link
+A link that uses a path that connects one file to another file on the same server
+
+anchor elements = <a></a>
+anchor elements, represented by the <a>, to wrap around text or images to create a link.
+Inside the <a> element, there is an attribute called href. The href, which stands for hypertext reference, refers to the web page that will open when the link is clicked. The web page that opens is based on the specific URL path that is provided in the href
+
+absolute link paths
+Web server name: This is the www.webserver.com in the example below.
+Names of folder or folders: The path could require multiple folders and subfolders. This is seen in the /folder/subfolder/ below.
+Filename: Finally, the path ends with the filename itself: /filename.html.
+<a href="http://www.webserver.com/folder/subfolder/filename.html">Link</a>
+
+Relative link paths
+Names of folder or folders: The path could require multiple folders and subfolders. This is seen in the /folder/subfolder/ part of the code below.
+Filename: The path ends with the filename itself: /filename.html.
+<a href="folder/subfolder/filename.html">Link</a>
+
+Relative link paths can call, or retrieve, files from within the same directory, or they can follow a more complicated route into various folders and subfolders until they connect the path to the web page or image file. Like with absolute links, the / tracks the route into multiple locations to find the desired file, even within the same website. However, relative links work differently than absolute paths. Relative links are different from absolute paths in the following ways:
+
+With relative paths, the web page and the referencing file must be within the same website structure.
+With relative paths, the paths are dependent on where the file is located in reference to the web page.
+
+Here are some examples of relative link paths:
+about.html
+contact.html
+portfolio/project1/index.html
+portfolio/project2/index.html
+
+Here are some examples of relative image paths:
+images/waterfalls/iceland-waterfall.jpg
+gallery/nature/waterfall.jpg
+
+relative link paths up ../file
+<img src="../images/logo.jpg" />
+<img src="../../images/logo.jpg" />
+
+Open links in new tabs
+<a href="http://www.website.com" target="_blank">Link</a>
+
+Contact links
+Whenever you provide an email address or phone number within your website, you can use certain HTML attributes to make the links far more user friendly. Here is the complete collection of options for your reference:
+Including a basic email link
+Including an email link with a subject
+Adding CC and BCC to an email link
+Adding body text to an email Link
+Styling email links
+Including telephone links
+Opening file links
+Downloading file links
+
+   <!-- BASIC EMAIL LINK HERE -->
+    <p><a href="mailto:hello@yoursite.com">Email Me: </a></p>
+    <hr>
+
+** html containers
+
+HTML containers
+HTML elements that wrap around web page content—namely text, images, and links—in order to help you manage the layout and positioning of that content
+Semantic code
+Code that has a specific, logical meaning that helps describe the content that it is associated with
+Semantic container
+An HTML element designed to contain images, text, and links to help with page layout and positioning
+Search engine optimization
+SEO, the process of tailoring web content so that search engines will prioritize your website in relevant search queries
+
+Introduction to HTML containers
+So, what are containers? Containers are specific HTML elements that wrap around web page content—namely text, images, and links—in order to help you manage the layout and positioning of that content. These are the most common HTML5 container tags:
+
+<header> ... </header>
+<nav> ... </nav>
+<footer> ... </footer>
+<main> ... </main>
+<article> ... </article>
+<section> ... </section>
+<div> ... </div>
+
+Before you learn about what each does, you'll need to understand how these containers are similar and why they're important. Here are the similarities:
+
+They all work the exact same way.
+They all wrap around text, images, and links.
+They all provide the same starting shape and placement within the flow of the web page.
+
+And here's why they're important and how they work within the web:
+Search engines use containers to compare content across websites. Specifically, they look at the content within web page containers in order to rank the importance of one website over another. Therefore, using these containers properly and effectively will give your web pages more clout on the web.
+Containers make it easier to read code. The containers group relevant content within it, so it's easier to find what you're looking for. For instance, if you have a logo and navigation within a header container, then you know to look first for the <header>. There, you'll find the logo and navigation.
+
+Semantic code and containers
+At its most basic level, semantics is the study of the meaning of words and phrases. It involves looking at the logic behind language. As you began to see in the previous lesson, semantics play a role in HTML coding. Semantic code is code that has a specific, logical meaning that helps describe the content that it is associated with.
+
+In code, semantic elements more clearly, simply, and (in a way) literally express what they do than non-semantic elements. They do more than provide instructions about how the code should appear or what it should do. Semantic code also has semantic significance that makes it easier for search engines, computers, and programmers to read and understand how it operates.
+
+For instance, consider the text-formatting elements you learned about: <b> and <strong>. If you wanted to make text bold on your web page, you could use either. But the <b> isn't semantic—it doesn't have any other significance other than saying that the text should be presented as bold. An alternative, and better, semantic tag for bolding is <strong>. This tag is preferable because it's actually providing a robust description.
+
+But what is a semantic container? A semantic container is an HTML element designed to contain images, text, and links to help with page layout and positioning. But because it's semantic, a semantic container also has a specific meaning for search engines and the developer. Like semantic code, it helps describe the content that it is associated with.
+
+header container
+As you build web pages, you'll find that nearly every web page that you create should have a header container, which is enclosed in <header> and </header>. A header container helps identify the topics of the content in the web page. The header container may be placed over the navigation, or it can wrap around the navigation so the navigation sits within the header.
+
+As mentioned above, containers help search engines understand and organize websites. Therefore, when used properly, these containers can help improve the search engine optimization, or SEO, of a website, which deals with how search engines rank and prioritize websites in search queries.
+
+To improve the SEO of your website, make sure that the primary header on your web page contains the name of your company or the purpose of the web page. Typically, this will be displayed as a logo in the header.
+
+Because of the hierarchy of the web page content, placing the company or business name within a <h1> heading element will tell search engines you are prioritizing this element of content. Then, within the content sections of the web page, you can use <h2> elements for the important page section titles, and you can rely on <h3> (or smaller) elements for the subheadings of smaller sections on the web page.
+
+Grouping and arranging your content like this helps keep the web page organized for you, your audience, and search engines.
+
+<header> ... </header>
+
+navigation container
+As you might've guessed, the navigation container, set off by <nav> and </nav>, holds the primary navigation links for the website. A navigation container can be used multiple times, at both the top and the bottom of a web page, and contain the main web page links that help orient and guide users through the website. And when the navigation container is placed at the top of a web page, the navigation container can be placed above, below, or within a header container.
+
+Keep in mind that the navigation container does not need to contain every link within a web page. This container is reserved for the primary navigation links, which helps you and search engines understand what links it contains. Though you may still have questions about using navigation links and navigation containers, at this stage, you only need to understand the purpose of the navigation container. The detailed CSS styles used to create that actual navigation will be covered in more detail in future lessons.
+
+<header>
+<nav>...</nav>
+</header>
+
+footer container
+The footer container, which is set off by <footer> and </footer>, sits at the bottom of the web page. It contains important contextual information, such as relevant links or legal details, about the web page content that is placed above it.
+
+Each web page should have at least one footer. This is beneficial for both SEO and accessibility. The footer can contain different kinds of information, including the following:
+
+Copyright details
+Copyright links
+Credit to the website author or designer
+Links to related documents or web pages
+
+Main container
+The main container, enclosed in <main> and </main>, groups together all the main content of a web page.
+
+Note: There can only be one main container per HTML web page. It's essential to include only one main container.
+
+The main container should not contain any content that is repeated across files, such as the following:
+
+Sidebars
+Navigation links
+Copyright information
+Website logos
+Search forms
+
+Article container
+Next up: article containers. Article containers, set off by <article> and </article>, are useful for grouping related content within the web page, generally inside the main container. The content within an article container should be cohesive or connected in some way; the content in an article container should make sense if it were read or seen independently.
+
+For example, if an article container were distributed separately from the rest of the website, it should feel like it stands alone. The emphasis on using article containers for distinct, unique content comes from the container's purpose of self-containment: an article container that holds a weather report for Denver, Colorado, could be moved from one website to another without requiring any additional content or explanation of context. Content like news articles, blog posts, or user comments might be held in article containers. However, when article containers are embedded within other article containers, they are assumed to be part of the parent container and not separate ones.
+
+An article container should always have a heading, usually a heading between the size of an <h2> and an <h6>, because the <h1> should be the primary page heading. Here are some good types of content to contain in an article container:
+
+Blog post
+Forum post
+News story
+Comment
+
+Section container
+Now, you're ready for the section container. The section container, set off by <section> and </section>, groups together certain content within a web page, and it should always have a heading, usually an <h3>,<h4>,<h5>, or <h6>. The <h1> should be the primary page heading, and <h2> should be reserved for the article container heading.
+
+Sections can be used to group related content within article containers, and they are represented by the individual parts within a larger <article>. However, often other containers are better suited to this purpose than a section container. Try to avoid using section containers if other containers, such as article or navigation containers, are more appropriate. Div containers can also be better for styling purposes. And be sure to only use a section container if there is a heading at the start of the section.
+
+div container
+The div container, set off by <div> and </div>, is the most generic container in HTML. And unlike the other containers above, it has no semantic meaning. As you learned above, this means that div containers mean nothing semantically to search engines; they don't provide any additional description about the content they contain to you or the web.
+
+The div stands for division within the web page. Div containers, often referred to as divs, are used to structure web page content in a visual way. They are frequently used to position content within a web page. For instance, divs allow you to reposition content that is by default left aligned, allowing you to center the content within those structural containers discussed above.
+
+Link to locations within a web page
+In previous lessons, you learned how to link text or an image from one page to another web page. Now, you'll learn how to create a link that navigates to another location within the same page.
+
+Imagine that you have a single-page website, with your Home, About Us, Services, and Contact Information as blocks on the web page (which you'll learn more about shortly). In this situation, it can be helpful to contain that content within article containers. That way, the user can navigate to different information, contained in article containers, on the page using anchor links.
+
+But those links need to "know" where to navigate to. To ensure that a link takes the user to the correct destination on the web page, you need to assign an id attribute to the location that you want to link to. In this case, you'll add it to the article containers, like in the examples below.
+
+<article id="home">Full Home Content Here</article>
+<article id="about">Full About Content Here</article>
+<article id="services">Full Services Content Here</article>
+<article id="contact">Full Contact Content Here</article>
+Then, when linking to an anchor's id, you'll include a hash symbol # and then the id name that you assigned, as seen here.
+
+<a href="#contact">Contact Link</a>
+This link will take you to the contact section of the web page!
+
+Remember, it's important to follow the same naming conventions for id names as you would for web files.
+
+Backgrounds: Colors and images
+Just like other HTML elements, you can style containers. Specifically, you can give them different backgrounds, like a specific color or image. There are five properties that define the backgrounds for all HTML elements, including containers:
+
+background-color
+background-image
+background-repeat
+background-attachment
+background-position
+
+For now, you'll focus on learning about the first two: background-color and background-image. These are explained below. If you want to learn more, check out the MDN page on backgrounds, which provides more information about these properties.
+
+Background color
+As you may have guessed, the background-color property assigns a color to the background of an HTML element, such as a container. The color can be assigned using either a color name or a hex color code. Both of the examples below are valid.
+
+Color name: red
+Hex color code: #ff0000
+
+Background image
+The background-image property, on the other hand, assigns an image to display as the background of an HTML element. The background-image allows you to easily display an image behind the text within a container.
+
+An image in the background of an HTML element repeats by default. This means that it displays at its native size and then is duplicated, on the right and bottom of the image, to cover the entire background of the HTML element.
