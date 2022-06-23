@@ -185,9 +185,20 @@ closing tag :: last tag in the html element.
 HTML elements can be nested inside other elements.
 The enclosed element is the child of the enclosing parent element.
 
+
+    The main parts of our element are as follows:
+
+    The opening tag: This consists of the name of the element (in this case, p), wrapped in opening and closing angle brackets. This states where the element begins or starts to take effect — in this case where the paragraph begins.
+    The closing tag: This is the same as the opening tag, except that it includes a forward slash before the element name. This states where the element ends — in this case where the paragraph ends. Failing to add a closing tag is one of the standard beginner errors and can lead to strange results.
+    The content: This is the content of the element, which in this case, is just text.
+    The element: The opening tag, the closing tag, and the content together comprise the element.
+
 #+begin_src html
+<!-- opening tag for paragraph element -->
 <p>
+  <!-- content for paragraph element -->
   Hello world!
+  <!-- closing tag for paragraph element -->
 </p>
 #+end_src
 
@@ -204,84 +215,41 @@ child element :: is an element nested inside another element.
 the relationship between elements and their ancestor and descendent elements is
 known as hierarchy.
 
-division element <div> a container that divides the page into sections.
-  these sections are very useful for grouping elements in your html.
 
 attritbutes are content added to the opening tag
   name=value
 
-displaying text
-paragraphs(<p>) contain a block of plain text.
-<span> contains short pieces of text or other html
-  used to separate small pieces of content that are on the same line as other content.
-
-styling text
-<em> italic emphasis.
-<strong> bold emphasis.
-
-<br> line break
-  only need opening tag
-
-<ul> unordered list
-an unordered list outlines individual list items with a bullet point.
-<li> list item tag is used to describe an item in a list.
-<ol> ordered list are like unordered list, except that each list item is numbered.
-
-<img> add image
-  is a self-closing tag.
-  required attribute src
-self-closing tags may include or omit the final slash; both will render properly.
-alt alternate text attribute bring meaning to the images
-
-<video> add video
-  required attribute src
-  width and height attributes used to set size of the video display
-  controls attribute
 
 
-
-    Headings and sub-headings, <h1> to <h6> tags, are used to provide titles for sections of content.
-    <p>, <span> and <div> tags specify text or blocks.
-    The <em> and <strong> tags are used to emphasize text.
-    Line breaks are created with the <br> tag.
-    Ordered lists (<ol>) are numbered and unordered lists (<ul>) are bulleted.
-    Images (<img>) and videos (<video>) can be added by linking to an existing source.
-
-
-    The main parts of our element are as follows:
-
-    The opening tag: This consists of the name of the element (in this case, p), wrapped in opening and closing angle brackets. This states where the element begins or starts to take effect — in this case where the paragraph begins.
-    The closing tag: This is the same as the opening tag, except that it includes a forward slash before the element name. This states where the element ends — in this case where the paragraph ends. Failing to add a closing tag is one of the standard beginner errors and can lead to strange results.
-    The content: This is the content of the element, which in this case, is just text.
-    The element: The opening tag, the closing tag, and the content together comprise the element.
 
     Attributes contain extra information about the element that you don't want to appear in the actual content. Here, class is the attribute name and editor-note is the attribute value. The class attribute allows you to give the element a non-unique identifier that can be used to target it (and any other elements with the same class value) with style information and other things.
 
 An attribute should always have the following:
-
     A space between it and the element name (or the previous attribute, if the element already has one or more attributes).
     The attribute name followed by an equal sign.
     The attribute value wrapped by opening and closing quotation marks.
 
-    Nesting elements
-
-You can put elements inside other elements too — this is called nesting. If we wanted to state that our cat is very grumpy, we could wrap the word "very" in a <strong> element, which means that the word is to be strongly emphasized:
-
+Nesting elements
+You can put elements inside other elements too — this is called nesting.
+If we wanted to state that our cat is very grumpy, we could wrap the word "very" in a <strong> element, which means that the word is to be strongly emphasized:
 <p>My cat is <strong>very</strong> grumpy.</p>
 
-You do however need to make sure that your elements are properly nested. In the example above, we opened the <p> element first, then the <strong> element; therefore, we have to close the <strong> element first, then the <p> element. The following is incorrect:
 
-<p>My cat is <strong>very grumpy.</p></strong>
-
-The elements have to open and close correctly so that they are clearly inside or outside one another. If they overlap as shown above, then your web browser will try to make the best guess at what you were trying to say, which can lead to unexpected results. So don't do it!
 Empty elements
-
 Some elements have no content and are called empty elements. Take the <img> element that we already have in our HTML page:
-
 <img src="images/firefox-icon.png" alt="My test image">
-
 This contains two attributes, but there is no closing </img> tag and no inner content. This is because an image element doesn't wrap content to affect it. Its purpose is to embed an image in the HTML page in the place it appears.
 
+
+* HTML comments
+Comments in the HTML code are written with dashes – and an exclamation point !, all enclosed in two angle brackets <>. They're structured like this: <!-- HTML comment -->. Take a look at the example below.
+<!-- This would be an HTML comment. Useful notes can be placed here -->
+
+<!--
+  This works
+  for multiple
+  lines as well
+-->
 
 * table
     The <table> element creates a table.
@@ -473,15 +441,6 @@ Horizontal rule
 Also called a page divider or a ruler, a line that separates distinct blocks of content
 
 
-HTML comments
-Comments in the HTML code are written with dashes – and an exclamation point !, all enclosed in two angle brackets <>. They're structured like this: <!-- HTML comment -->. Take a look at the example below.
-<!-- This would be an HTML comment. Useful notes can be placed here -->
-
-<!--
-  This works
-  for multiple
-  lines as well
--->
 
 html lists
 Lists are used to break up and organize content within a web page, making it much easier for a user to read and understand.
@@ -557,6 +516,46 @@ At times, you may want to create a line break in your web page. A break in a lin
 
 However, this HTML element should be used only to make line breaks. Don't use <br> to separate paragraphs of text or to create space between HTML elements. If you need to create space between text or images in CSS, you should work with margins or padding. But don't worry; you'll learn more about this in upcoming lessons.
 
+
+division element <div> a container that divides the page into sections.
+  these sections are very useful for grouping elements in your html.
+
+displaying text
+paragraphs(<p>) contain a block of plain text.
+<span> contains short pieces of text or other html
+  used to separate small pieces of content that are on the same line as other content.
+
+styling text
+<em> italic emphasis.
+<strong> bold emphasis.
+
+<br> line break
+  only need opening tag
+
+<ul> unordered list
+an unordered list outlines individual list items with a bullet point.
+<li> list item tag is used to describe an item in a list.
+<ol> ordered list are like unordered list, except that each list item is numbered.
+
+<img> add image
+  is a self-closing tag.
+  required attribute src
+self-closing tags may include or omit the final slash; both will render properly.
+alt alternate text attribute bring meaning to the images
+
+<video> add video
+  required attribute src
+  width and height attributes used to set size of the video display
+  controls attribute
+
+
+
+    Headings and sub-headings, <h1> to <h6> tags, are used to provide titles for sections of content.
+    <p>, <span> and <div> tags specify text or blocks.
+    The <em> and <strong> tags are used to emphasize text.
+    Line breaks are created with the <br> tag.
+    Ordered lists (<ol>) are numbered and unordered lists (<ul>) are bulleted.
+    Images (<img>) and videos (<video>) can be added by linking to an existing source.
 
 ** web page template
 
