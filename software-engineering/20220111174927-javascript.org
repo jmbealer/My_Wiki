@@ -33,7 +33,7 @@ uses camelCasing
 
 script.js: All your JavaScript code will be written here
 
-* what are javascript comments?
+* what are javascript comments? wip
 
 Comments are ignore when the program runs.
 Comments allow you explain you code, in the code itself, without affecting your program.
@@ -45,6 +45,7 @@ To improve collaboration with other developers working on the code, helping them
 To add titles to the sections of long pages of code to make the pages easier to scan
 It's important to note that HTML and CSS comments are not tags. They also are not written in the same way; they have a distinct syntax.
 
+** JavaScript Comments Examples
 #+begin_src js
 // single-line comment
 /*
