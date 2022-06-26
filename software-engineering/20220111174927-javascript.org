@@ -33,45 +33,29 @@ uses camelCasing
 
 script.js: All your JavaScript code will be written here
 
-* comments
+* what are javascript comments?
 
 Comments are ignore when the program runs.
 Comments allow you explain you code, in the code itself, without affecting your program.
 
-
-// single-line comment
-`/* multi-line comment */`
-
-
-
-Code comments
-
-Here are some of the primary reasons for using comments in HTML, CSS, JavaScript, and most other programming languages:
+Reasons to use code comments:
 To describe and explain complicated code and create reminders for yourself and others
 To deliberately disable sections of code
 To improve collaboration with other developers working on the code, helping them clearly understand what needs to be added, fixed, or removed in the code
 To add titles to the sections of long pages of code to make the pages easier to scan
 It's important to note that HTML and CSS comments are not tags. They also are not written in the same way; they have a distinct syntax.
 
+#+begin_src js
+// single-line comment
+/*
+  muli-line comment
+*/
+#+end_src
+
 * Variables
 
 Variable
 A named container that can store a changeable data value
-
-
-const stand for constants
-const keyword used to declare variables that can't be changed
-  const pi = 3.14;
-  pi = 3.1415; // This will throw an error because const variables can't be updated
-
-let variables, however, can be updated.
-let age = 22;
-age = 23; // let variables can be updated!
-
-var variables can be re-declared and updated. However, var variables aren't used anymore, and you should avoid using them.
-var age = 22;
-age = 23; // Although this works, don't use `var`!
-
 
 A variable is a container for storing data.
 A variable behaves as if it was the value that it contains.
@@ -79,37 +63,61 @@ A variable behaves as if it was the value that it contains.
 Variables hold reusable data in a program and associate it with a name.
 Variables are stored in memory.
 
-Two steps:
-  Declaration (var, let, const)
-  Assignment (= assignment operator)
-
-#+begin_src js
-let age; // declaration
-age = 22; // assignment
-console.log(age);
-
-let age1 = 33; // declaration and assignment
-console.log(age1);
-
-console.log(age, age1);
-#+end_src
-
-The var keyword is used in pre-ES6 versions of JS.
-let is the preferred way to declare a variable when it can be reassigned, and const is the preferred way to declare a variable with a constant value.
-Variables that have not been initialized store the primitive data type undefined.
-Mathematical assignment operators make it easy to calculate a new value and assign it to the same variable.
-The + operator is used to concatenate strings including string values held in variables.
-In ES6, template literals use backticks ` and ${} to interpolate values into a string.
-The typeof keyword returns the data type (as a string) of a value.
 
 Variables allow computers to store and manipulate data in a dynamic fashion.
 They do this by using a "label" to point to the data rather than using the data itself.
 Any of the eight data types may be stored in a variable.
 
 
+Two steps:
+  Declaration (var, let, const)
+  Assignment (= assignment operator)
 
 Declare JavaScript Variables
 In computer science, data is anything that is meaningful to the computer.
+
+
+
+
+
+var variables can be re-declared and updated. However, var variables aren't used anymore, and you should avoid using them.
+var age = 22;
+age = 23; // Although this works, don't use `var`!
+
+
+
+let variables, however, can be updated.
+let age = 22;
+age = 23; // let variables can be updated!
+
+
+
+
+
+nonst stand for constants
+const keyword used to declare variables that can't be changed
+  const pi = 3.14;
+  pi = 3.1415; // This will throw an error because const variables can't be updated
+
+
+
+
+
+
+
+
+The var keyword is used in pre-ES6 versions of JS.
+
+let is the preferred way to declare a variable when it can be reassigned
+
+const is the preferred way to declare a variable with a constant value.
+
+Variables that have not been initialized store the primitive data type undefined.
+
+
+
+
+
 
 Storing Values with the Assignment Operator
 In JavaScript, you can store a value in a variable with the assignment operator (=).
@@ -179,6 +187,26 @@ The console will display an error due to reassigning the value of FAV_PET.
 You should always name variables you don't want to reassign using the const keyword. This helps when you accidentally attempt to reassign a variable that is meant to stay constant.
 Note: It is common for developers to use uppercase variable identifiers for immutable values and lowercase or camelCase for mutable values (objects and arrays). You will learn more about objects, arrays, and immutable and mutable values in later challenges. Also in later challenges, you will see examples of uppercase, lowercase, or camelCase variable identifiers.
 Change the code so that all variables are declared using let or const. Use let when you want the variable to change, and const when you want the variable to remain constant. Also, rename variables declared with const to conform to common practices. Do not change the strings assigned to the variables.
+
+#+begin_src js
+let age; // declaration
+age = 22; // assignment
+console.log(age);
+
+let age1 = 33; // declaration and assignment
+console.log(age1);
+
+console.log(age, age1);
+
+// constants variables
+const PI = 3.14;
+
+// var variables:
+var age; // declaration bad practice
+age = 22; // assignment bad practice
+var age1 = 33 // decllaration and assignment
+#+end_src
+
 
 * data types
 
@@ -417,6 +445,12 @@ Understanding Boolean Values
 Another data type is the Boolean. Booleans may only be one of two values: true or false. They are basically little on-off switches, where true is on and false is off. These two states are mutually exclusive.
 Note: Boolean values are never written with quotes. The strings "true" and "false" are not Boolean and have no special meaning in JavaScript.
 Modify the welcomeToBooleans function so that it returns true instead of false when the run button is clicked.
+
+
+Mathematical assignment operators make it easy to calculate a new value and assign it to the same variable.
+The + operator is used to concatenate strings including string values held in variables.
+In ES6, template literals use backticks ` and ${} to interpolate values into a string.
+The typeof keyword returns the data type (as a string) of a value.
 
 * operator
 
@@ -1854,3 +1888,14 @@ Values that an if statement will treat as false
 
 Tracing
     The process of following values through a program
+
+conditional statements
+    An if statement checks a condition and will execute a task if that condition evaluates to true.
+    if...else statements make binary decisions and execute different code blocks based on a provided condition.
+    We can add more conditions using else if statements.
+    Comparison operators, including <, >, <=, >=, ===, and !== can compare two values.
+    The logical and operator, &&, or “and”, checks if both provided expressions are truthy.
+    The logical operator ||, or “or”, checks if either provided expression is truthy.
+    The bang operator, !, switches the truthiness and falsiness of a value.
+    The ternary operator is shorthand to simplify concise if...else statements.
+    A switch statement can be used to simplify the process of writing multiple else if statements. The break keyword stops the remaining cases from being checked and executed in a switch statement.
