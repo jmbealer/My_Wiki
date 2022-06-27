@@ -30,7 +30,7 @@ insert snippets
 c-cpp.md
 c-lang.md
 
-[[id:48f25267-5d79-46c4-acaf-eccb71c33bf6][javascript]]
+[[id:63bc8d8d-4fc8-4b34-8881-43ace1415a53][javascript]]
 
 [[id:d8c234ae-93fa-4569-8d7b-d10ae08377a9][HTML]]
 HTML.md
