@@ -433,19 +433,6 @@ But with JavaScript, methods and properties are also available to primitive valu
 
 
 
-JavaScript String Length
-The length property returns the length of a string:
-Example
-let txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let length = txt.length;
-"str".length;
-Find the Length of a String
-You can find the length of a String value by writing .length after the string variable or string literal.
-console.log("Alan Peter".length);
-The value 10 would be displayed in the console. Note that the space character between "Alan" and "Peter" is also counted.
-For example, if we created a variable const firstName = "Ada", we could find out how long the string Ada is by using the firstName.length property.
-Use the .length property to set lastNameLength to the number of characters in lastName.
-
 
 Method
 A function that is attached to an object as one of the object's attributes
@@ -752,12 +739,34 @@ String Properties and Methods
 Normally, strings like "John Doe", cannot have methods or properties because they are not objects.
 
 But with JavaScript, methods and properties are also available to strings, because JavaScript treats strings as objects when executing methods and properties.
+
 JavaScript String Methods
 Method 	Description
 charAt() 	Returns the character at a specified index (position)
 charCodeAt() 	Returns the Unicode of the character at a specified index
 concat() 	Returns two or more joined strings
-endsWith() 	Returns if a string ends with a specified value
+
+endsWith() method
++ The endsWith() method returns true if a string ends with a specified value.
++ Otherwise it returns false.
++ The endsWith() method is case sensitive.
++ string.endsWith(searchvalue, length)
++ searchvalue	Required. The string to search for.
++ length	Optional. The length of the string to search. Default value is the length of the string.
++ A boolean :	true if the string ends with the value, otherwise false.
+
+#+begin_src js
+let text = "Hello world";
+// check if text ends with world
+let result = text.endsWith("world"); // returns true
+let text1 = "Hello World";
+// check if text1 ends with world
+let result1 = text1.endsWith("world"); // returns false; case sensitive
+
+let text2 = "Hello world, welcome to the universe.";
+let result2 = text2.endsWith("world", 11);
+#+end_src
+
 fromCharCode() 	Returns Unicode values as characters
 includes() 	Returns if a string contains a specified value
 indexOf() 	Returns the index (position) of the first occurrence of a value in a string
@@ -779,21 +788,38 @@ toString() 	Returns a string or a string object as a string
 toUpperCase() 	Returns a string converted to uppercase letters
 trim() 	Returns a string with removed whitespaces
 valueOf() 	Returns the primitive value of a string or a string object
+
 Note
-
 All string methods return a new value.
-
 They do not change the original variable.
 
 *** JavaScript String Properties
 
-Property 	Description
+constructor property
++ The constructor property returns the string's constructor function
++ The constructor property returns the function that created the String prototype.
++ constructor returns: function String() { [native code] }
++ string.constructor
 
-constructor :: Returns the string's constructor function
+length property
++ The length property returns the length of a string
++ The length property of an empty string is 0.
++ string.length
++ return value is number that's length of the string.
 
-length :: Returns the length of a string
+You can find the length of a String value by writing .length after the string variable or string literal.
 
-prototype :: Allows you to add properties and methods to an object
+#+begin_src js
+let myStr = "foo"; // returns foo
+// store the length of myStr into strLength
+let strLength = myStr.length; // returns 3
+let myStr = ""; // returns empty string
+let strLength = myStr.length; // returns 0
+print to console the string buzz length
+console.log("buzz".length); // returns 4
+#+end_src
+
+The prototype property :: Allows you to add properties and methods to an object
 
 *** String HTML Wrapper Methods
 
