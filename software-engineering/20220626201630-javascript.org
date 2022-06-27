@@ -788,8 +788,11 @@ They do not change the original variable.
 *** JavaScript String Properties
 
 Property 	Description
+
 constructor :: Returns the string's constructor function
+
 length :: Returns the length of a string
+
 prototype :: Allows you to add properties and methods to an object
 
 *** String HTML Wrapper Methods
