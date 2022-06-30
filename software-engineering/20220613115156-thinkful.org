@@ -1641,8 +1641,73 @@ console.log(mySequence);  // => [1,2,3,4]
 
 function receives a reference to the item - the local variable assigned to this item is impacting the original item
 
-
 ** references
+
+Primitive data type Also called a primitive or a simple data type, a data type containing variables that store values
+Reference data type Also called a reference or a complex data type, a data type containing variables that store addresses to locations in memory
+
+Primitive data types
+JavaScript has several data types that are passed by value.
+These are often called primitive data types, or simply primitives, and you've already learned a bit about them!
+Primitive data types in JavaScript include strings, numbers, and booleans, as well as null and undefined.
+When a primitive data type is assigned to a variable, that variable gets its own copy.
+
+Take a look at the following line of code:
+
+const title = "Mort";
+In this example, the variable title contains the string "Mort". If you reassign the value contained by title to another variable, such as name, both variables will contain their own copy of that value. You can see this below.
+
+let title = "Mort";
+const name = title;
+title = "Equal Rites";
+console.log(title, name); //> "Equal Rites", "Mort"
+The above code is very important. Although it may seem obvious, you should take a moment to understand what's happening here. When title is reassigned to "Equal Rites", notice that the name variable still holds its own copy of "Mort".
+
+Now, take a look at another example. As you read over this, what do you expect to be logged?
+
+let price = 1000;
+let salePrice = price;
+salePrice -= 100;
+console.log(price, salePrice); //> 1000 900
+In the code above, the price variable will still be the number 1000, while the salePrice variable will be 900. Despite the modification of salePrice, price retains its own copy of the value 1000.
+
+Reference data types
+But there's another kind of data type: reference data types. Reference data types, sometimes just called references, in JavaScript include functions, objects, and arrays. When a reference data type is assigned to a variable, the variable will contain a reference (also called a pointer) to the data.
+
+Take a look at the following example. What do you expect to happen here?
+
+const book = { title: "Mort", author: "Terry Pratchett" };
+const mort = book;
+book.price = 789;
+console.log(mort); //> { title: "Mort", author: "Terry Pratchett", price: 789 }
+Are you surprised by the result? Both the book variable and the mort variable point toward the same reference. That means that if you modify the object through one variable, the other variable will have that same modification.
+
+This is further illustrated by the following two examples. Here's the first:
+
+const author = {};
+const book = {};
+console.log(author === book); //> false
+In the above console.log() statement, two empty objects, author and book, are compared with one another. When the === sign is used, it compares these objects' references.
+
+These objects may look the same. However, the statement resolves to false. That is because author and book each store their own references to different objects.
+
+Now, check out this example:
+
+const sourcery = { title: "Sourcery", author: "Terry Pratchett" };
+const favoriteBook = sourcery;
+console.log(sourcery === favoriteBook); //> true
+In the above console.log() statement, sourcery and favoriteBook contain references to the same object. When the === sign is used, it compares these references and resolves to true.
+
+This works the same way for arrays, as well. Take a look:
+
+const books = ["Mort", "Sourcery", "Equal Rites"];
+const series = books;
+series.push("Guards! Guards!");
+console.log(books); //> [ "Mort", "Sourcery", "Equal Rites", "Guards! Guards!" ]
+In the above example, push() changes the array to include a new title. This mutates the original array, which both books and series are pointing toward.
+
+Note: In the examples above, const is used instead of let to store an array or object. And yet, the values inside of these arrays and objects can be changed. Ultimately, const only stops reassignment, without changing the values inside of the reference itself (in other words, the array or object).
+
 ** writing readable code
 ** assessemnt: js foundations
 
