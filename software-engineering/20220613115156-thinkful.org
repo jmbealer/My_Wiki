@@ -186,64 +186,370 @@ The output of process.argv would be as follows:
 Notice that it now sees Pretzel Bean as two distinct arguments.
 
 ** modules
+
+Learning Objective
+By the end of this lesson, you will be able to create and connect your own modules.
+
+Overview
+Using JavaScript with Node is quite powerful. However, this combination can become even more useful when you add Node modules into the mix. In this lesson, you will learn about local modules, which are one of the three different types of modules. At this point in your journey, learning how to make use of modules will allow you to better organize the JavaScript code that you write on your machine.
+
+What is a module?
+In Node, each file is treated as a separate module. A module, sometimes also referred to as a package, can contain any JavaScript code. It most commonly exports an object or a function. The exported value then becomes available in other modules.
+
+Put simply, each file in a Node project is its own module. You can then export data from that file to be used in another file.
+
+Do this
+Create a new folder
+In this lesson, you will be asked to make a few different files to practice the concepts that you are learning. Create a new folder with a memorable name, like learning-node-modules/.
+
+Local modules
+The best way to understand modules is to create and use them. For example, take a look at the following code. Imagine that it is in a file called plants.js.
+
+function findPlantById(plants, id) {
+  let result = null;
+  for (let i = 0; i < plants.length; i++) {
+    let plant = plants[i];
+    if (plant.id === id) {
+      result = plant;
+    }
+  }
+  return result;
+}
+
+module.exports = findPlantById;
+The above function expects an array of objects as the first argument passed to the function, where each object has an id. It then accepts an id. The function then loops through all of the plants and returns the one that has a matching id. If none match, it returns null.
+
+At the end of the code block shown above, you may have noticed the following line:
+
+module.exports = findPlantById;
+This line indicates that the file is a module. A function is being exported from this file.
+
+You can use this function in another file. For example, take a look at the following code. Imagine that it is in a file called main.js.
+
+let find = require("./plants");
+let plants = [
+  { id: 1, name: "Garden Rocket Arugula" },
+  { id: 2, name: "Watercress" },
+  { id: 3, name: "Royal Rose Radicchio" },
+];
+
+const result = find(plants, 2);
+console.log(result);
+The new and important part of the code above is the require() function. The require() function takes a path as an argument. If no file extension is given, it will assume that the file is a JavaScript file. It looks into that file and then finds what is exported, and whatever is exported is returned from the require() function.
+
+So, in the above file, the following happens:
+
+The findPlantById() function is imported from the plants.js file. Notice that it is assigned to a new name, find, although it can be assigned any name.
+
+A plants variable is declared, which points to an array of objects with IDs.
+
+The find() function is called with the appropriate arguments.
+
+Do this
+Create a module
+In the folder that you've created, create two new files: plants.js and main.js. Copy the above content into the files as appropriate, and then run the main.js file.
+
+You will see the following output:
+
+{ id: 2, name: "Watercress" }
+View the default value
+In your plants.js file, comment out the line that is exporting the function, as follows:
+
+// module.exports = findPlantById;
+Then, at the top of your main.js file, add the following line:
+
+console.log(require("./plants.js"));
+What do you see? You should see an empty object. By default, if you require a file that doesn't have a module.exports statement, you will receive an empty object.
+
+Now, undo the changes that you made in this step.
+
+Export an object
+After you've undone the changes from the above task, update your plants.js file with the following export statement. This export statement should replace the one that you already have.
+
+module.exports = { findPlantById: findPlantById };
+Now, you are exporting an object instead of a function. How would you update your code in main.js so that you can still call the function?
+
+There are a few ways that could work, but one option is to update the code as follows:
+
+let plantFunctions = require("./plants");
+let plants = [
+  { id: 1, name: "Garden Rocket Arugula" },
+  { id: 2, name: "Watercress" },
+  { id: 3, name: "Royal Rose Radicchio" },
+];
+
+console.log(plantFunctions.findPlantById(plants, 2));
+
 ** the package.json file
+
+Configuration file Any file that's necessary to run an overall project but may not have explicit code inside of it
+
+Each folder that you create and plan to run with Node can be considered a Node package or project.
+These projects can contain a configuration file, package.json, which gives additional information about the project.
+This configuration file also allows for some interesting functionality through the use of npm, the command-line tool that you installed at the beginning of this module.
+
+Configuration files
+So far, the files that you've created have been JavaScript files that you've been able to run with Node.
+These files are, obviously, critical to running code in that they have code in them.
+As you advance throughout this program, you will also come across a number of configuration files, which are essential to larger projects.
+Configuration files can generally be described as any file that's necessary to run an overall project but may not have explicit code (functions) inside of it.
+
+For example, your text editor (whether it's Visual Studio Code, Sublime, or something else) likely has a settings file that defines how your text editor works. These settings may determine how your code is spaced or what colors your text editor shows. These settings don't explicitly run your text editor, but they do shape how the text editor is run.
+
+The package.json file
+For Node projects, the main configuration file is the package.json file. This file contains meta information about the project and allows you to customize some commands that can be run.
+
+The package.json file can be created through npm. After navigating to the folder where you want to create your project, you can create a package.json file by running the following command on the command line:
+
+npm init -y
+The above command will create a new package.json file in the directory where it was run. It will also fill in some default values.
+
+Note: Each Node project should only have a single package.json file.
+
+Do this
+Create a package.json file
+Create a new directory called first-package-json on your computer. On your command line, navigate to that directory and run the above command to create a package.json file.
+
+Take a look at the file that was just created. Note that it looks similar to a JavaScript object.
+
+JSON
+The file that you created isn't a JavaScript file—it's a JSON file. JSON stands for JavaScript Object Notation, which is different from JavaScript. JSON looks like a JavaScript object but has more limitations. In particular, when writing JSON, you must consider the following:
+
+All keys in a JSON file must be wrapped in quotations.
+
+A JSON file cannot include JavaScript comments or variables. Instead, the file must only contain a single JavaScript object.
+
+Values such as booleans, numbers, strings, arrays, and other objects are valid in JSON.
+
+Keys
+If you used the command suggested earlier in this lesson, your package.json file will look something like this by default:
+
+{
+  "name": "first-package-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+All of the above keys are optional. But there are a few that you will want to keep—especially the following:
+
+name: This is the name of your package. By default, it will take the name from your folder's name.
+
+description: This is a description of your project. You can place whatever you want here.
+
+scripts: This is where you will set up scripts to be run through npm. You will learn more about scripts below.
+
+You can learn more about the package.json file and other keys in the package.json documentation.
+
+Scripts
+Right now, one of the most useful skills that you can learn is how to build scripts with the package.json file. The scripts key has a value that is an object. Each key in that object is the name of a script that can be run from the command line. The value associated with that key is a string containing any valid command-line code. Running that script with npm will execute the code on the command line.
+
+For example, take the following default script:
+
+{
+  "test": "echo \"Error: no test specified\" && exit 1"
+}
+This script can be run with the following command:
+
+npm run test
+When the above command is run on the command line in the folder where the package.json file exists, it will run the value as a script. Here's an example:
+
+Example of running npm test
+After npm run test was run, the value of the test command was run. That is, a specific message was echoed.
+
+You can create new scripts by adding new key-value pairs. For example, the following script will simply run the pwd command on the command line.
+
+"print-working-directory": "pwd"
+To run the command, you would type the following:
+
+npm run print-working-directory
+Note: If you try to include the above script, make sure to use the correct syntax for your JSON file.
+
+Do this
+Run JavaScript with npm
+In the first-package-json folder, create a new file called main.js. Add the following code to it:
+
+console.log("Hello, world!");
+Then, add a script called dev that will run the following command:
+
+node main.js
+Afterward, on the command line, you should be able to run the following command and see "Hello, world!" printed to the console.
+
+npm run dev
+Default commands
+The npm program expects you to use some common terms like start and test. For these common terms, you can skip the run part of the command.
+
+npm test
+However, you will still need to use the run part of the command for custom scripts.
+
+npm run dev
+More of the supported scripts can be found in the npm scripts documentation.
+
 ** installing packages
+
+
+Open-source Code that is available to be viewed, downloaded, and edited by anyone
+
+The npm tool can help you install and manage these packages.
+
+Viewing packages
+https://npmjs.com/ - where javascript packages can be found
+
+
+Moment
+Take a look at the Moment package.
+This page shows you information about how to install the package, how it can be used, and various statistics on the package's usage.
+For example, this package describes itself as "a lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates."
+
+You also can see that this package has been downloaded often and has been updated recently.
+When you're assessing whether or not to use a package, it is a good idea to look at these statistics.
+
+Note: You may notice from the documentation that the Moment package is now a legacy project and is no longer being updated. However, Moment continues to be a very popular and useful package, and you'll work with it throughout this lesson.
+
+Reading documentation
+You learned that the Moment package can help parse and format dates in JavaScript.
+How does it do this? To answer this question, you will need to read the documentation.
+
+So far, you have likely only seen documentation on the official JavaScript language from MDN.
+MDN is a great resource, but it doesn't contain documentation on packages.
+
+Now, you will need to look instead at the specific package and its documentation.
+Thankfully, Moment has fantastic documentation, which can be found at Moment's website.
+
+Reading documentation is its own skill, and it can be challenging at first. As you come across phrases and terms that you don't understand, you will need to be patient and look up new concepts.
+
+Installing
+You can install a package with a simple npm command:
+
+npm install <package-name>
+npm i <package-name>
+
+Running this command (while changing <package-name> to the name of the package) will do the following:
+If a node_modules/ folder doesn't already exist, a node_modules/ folder will be created in the current directory.
+If a package-lock.json file doesn't already exist, a package-lock.json file will be created in the current directory.
+If a package.json file does already exist, the package and its version number will be recorded in the package.json file.
+The package will be downloaded from the web to your computer.
+In general, you always want to have a package.json file before running any install commands.
+
+
+Do this
+Create a JavaScript project
+First, complete the following steps:
+
+Create a new directory called installing-packages.
+
+Then, create a package.json file and a main.js file.
+
+In the package.json file, create a start script that runs your main.js file with Node.
+
+Finally, include the following in your main.js file:
+
+console.log("The current date is: " + Date.now());
+When you run your script, you will see something like the following show in your terminal:
+
+The current date is: 1592329893846
+Install the Moment package
+The above date isn't very useful! Instead, try using the Moment package. Install Moment using the following command:
+
+npm install moment
+Then, require the Moment package in your main.js file:
+
+let moment = require("moment");
+Run your code and confirm that the output looks the same as it did before.
+
+Use Moment
+Now it is time to actually use Moment. Before looking at the solution below, try reading the Moment documentation yourself, and look for how you might display a more human-readable date format.
+
+If you're having a hard time, try looking at the display format section of the documentation. As you can see, there are actually several ways to display dates with Moment.
+
+If you're still having trouble, you can replace your console.log() statement with the following:
+
+console.log("The current date is: " + moment().format("MMMM Do, YYYY"));
+Dependencies
+Whenever you install a package with npm install or npm i, the installation will be recorded in your package.json file under a key titled dependencies. It will look something like this:
+
+"dependencies": {
+  "moment": "^2.26.0"
+}
+The string value next to the package name is the version number for that package. If you are interested in the version number syntax, you may optionally read more about it in the package.json dependencies documentation.
+
+Developer dependencies
+In the future, you may also see a command like this:
+
+npm install <package-name> --save-dev
+The --save-dev flag will be included for packages that are necessary only for the development of the project, not for running it. Packages installed with that flag will show up under the devDependencies key instead of dependencies.
+
+The reason behind this will be explained whenever it is asked of you. For now, just keep in mind that you may see this flag.
+
+The package-lock.json file
+The package-lock.json file is automatically created whenever you install a package. Similarly to package.json, package-lock.json is a configuration file.
+
+The difference is that you will never need to edit this file. The package-lock.json file is essentially metadata for package.json. Although it is required, it does not require any management by you.
+
+You can read more about the package-lock.json file in the package-lock.json documentation.
+
+Node modules
+When you install a package, that package's code will be added to a node_modules folder. Modules that aren't created by you or installed in Node will be contained in this folder.
+
+As you'll see, the installed packages also have a package.json file. If the installed package has its own dependencies, those packages will also be installed.
+
+You can delete the node_modules folder at any time and reinstall the packages by using the npm install command without providing a package name. By default, npm install will install everything listed in your package.json file.
+
+Do this
+Browse the node_modules/ folder
+Take a look inside the node_modules/ folder inside your installing-packages/ directory. You will see a single folder: moment/.
+
+Look around the folder briefly, and try to find the package.json file. As you can see, Moment is just another Node project, like the one that you have!
+
 ** Assesment: JavaScript on your machine
 
 * mod 4 JavaScript foundations
 
 ** error types
+*** Runtime errors
 
-Key Terms
-Reference error - An error that occurs when some variable being referenced doesn't exist or can't be accessed
-Syntax error - An error that occurs when some part of the predefined JavaScript syntax is being used incorrectly
-Type error - An error that occurs when you misuse a data type in JavaScript, meaning that an operation can't be performed
-Silent error - An error that doesn't immediately surface when the code is run
-
-Runtime errors
-When you see an error, it will probably read something like this:
+errorType: description of the error
 SyntaxError: function statement requires a name
 
-Take a moment to examine the different pieces of this message.
-The first part of the message, before the colon :, refers to the error type.
-In this case, the error type is SyntaxError.
+*** Reference errors
 
-In this lesson, you'll learn about all three of the common error types in JavaScript: reference errors (ReferenceError), syntax errors (SyntaxError), and type errors (TypeError).
+Reference error - An error that occurs when some variable being referenced doesn't exist or can't be accessed
 
-The second part of the error message—the part that follows the colon—is a description of the error that has occurred.
-In the example above, the error description is function statement requires a name.
+In console.log statement the variable customerName is misspelled
 
-Reference errors
-Take a look at the following code. Can you spot the error?
-
-const customerName = "Alfie Lee";
-console.log(customrName);
-As you probably noticed, the variable customerName was misspelled when it was inputted into the console.log() statement.
-Where the code should read customerName, it actually reads customrName.
-And though it may seem like a minor issue, using consistent spelling in your code is essential.
-When you run this code, it will reveal an error.
-
-This is an example of a ReferenceError.
-The error that will surface because of this misspelling will look like the following:
-
-ReferenceError: customrName is not defined
 A reference error tells you that some variable being referenced doesn't exist.
 You can fix this kind of error by finding the offending reference and checking for the correct name.
 
 But a ReferenceError could also surface if the variable cannot be accessed at all.
-Can you identify this issue in the code below?
-
-function addSalesTax(total, salesTax) {
-  let result = total * (1 + salesTax);
-  return result;
-}
-console.log(result);
 
 In the above example, the result variable does exist, but it exists only inside the addSalesTax() function.
 Attempting to access that variable outside of that function would lead to a ReferenceError.
 (This is because of a concept called scope, which you'll learn about later in this module.)
 
-Syntax errors
+#+begin_src js
+// reference error caused by misspelling variable name
+const customerName = "Alfie Lee";
+// customerName is mis-spelled
+console.log(customrName); // returns ReferenceError: customrName is not defined
+
+// reference error caused variable can't be accessed
+function addSalesTax(total, salesTax) { //func takes parameters total and salesTax
+    let result = total * (1 + salesTax); // declare result asign total times (salesTax plus one)
+    return result; // return results
+}
+// trying print result but result but result only exist is local scope of function
+console.log(result); //returns ReferenceError: result is not defined
+#+end_src
+
+*** Syntax errors
+
+Syntax error - An error that occurs when some part of the predefined JavaScript syntax is being used incorrectly
+
 A syntax error will occur when some part of the predefined JavaScript syntax is used incorrectly, such as a character is used twice or not used at all.
 These errors are common for developers due to the simple fact that coding uses many symbols and characters that people don't otherwise use.
 For instance, because curly brackets {} are unusual in regular typing, it can be easy to forget one.
@@ -287,8 +593,10 @@ SyntaxError: expected expression, got '}'
 That isn't very helpful, and you'd have to do the legwork of resolving the issue.
 This is one of the many reasons that it's important to write your code legibly.
 
+*** Type errors
 
-Type errors
+Type error - An error that occurs when you misuse a data type in JavaScript, meaning that an operation can't be performed
+
 And finally, you'll learn about the TypeError.
 A type error will occur when you misuse a data type in JavaScript, meaning that an operation can't be performed.
 One of the most common ways that this error will occur is through a situation like this:
@@ -307,7 +615,10 @@ let price = 9.99;
 console.log(price.trim); //> undefined
 You may be surprised to find that calling trim as a property on price doesn't fail—instead, it returns an undefined. But when you try to invoke the undefined property, that is when you get your error.
 
-Silent errors
+*** Silent errors
+
+Silent error - An error that doesn't immediately surface when the code is run
+
 The three errors described above are caught and revealed to you when you run your JavaScript code. However, it's also possible for errors to occur as you are writing code but not immediately surface when you run it. This type of error is called a silent error.
 
 For example, take a look at the following code. Do you see any problems?
@@ -1709,35 +2020,137 @@ In the above example, push() changes the array to include a new title. This muta
 Note: In the examples above, const is used instead of let to store an array or object. And yet, the values inside of these arrays and objects can be changed. Ultimately, const only stops reassignment, without changing the values inside of the reference itself (in other words, the array or object).
 
 ** writing readable code
-** assessemnt: js foundations
 
-* unsorted
 
-1. Understand the problem - aka "reflect the question back into your our words."
-    -  Do you understand all the words used in stating the problem?
-    -  What are you asked to find or show?
-    -  Can you restate the problem in your own words?
-    -  Can you think of a picture or diagram that might help you understand the problem?
-    -  Is there enough information to enable you to find a solution?
+earning Objective
+By the end of this lesson, you will be able to refactor code to be more readable and more efficient.
 
-2. Devise a plan - aka "Pseudocode"
-    * Guess and check           |   * Look for a pattern
-    * Make an orderly list      |   * Draw a picture
-    * Eliminate possibilities   |   * Solve a simpler problem
-    * Use symmetry              |   * Use a model
-    * Consider special cases    |   * Work backwards
-    * Use direct reasoning      |   * Use a formula
-    * Solve an equation         |   * Be ingenious
+Overview
+At this point, you've learned several important JavaScript concepts. You're familiar with some essential JavaScript syntax, statements, and code-writing tools. And now, it's time to take those skills and refine them. In this lesson, you'll learn some techniques and best practices for writing readable code.
 
-3. Carry out the plan - aka "code your Pseudocode"
-    * Third. Carry out your plan.
-    * Carrying out your plan of the solution, check each step. Can you see clearly that the step is correct? Can you prove that it is correct?
+Key Terms
+Guard clause
+A statement that evaluates to a boolean that determines whether or not a function should continue running
+As you know, developers should aim to write code that is clear, clean, and easy to read. And this lesson is all about helping you do that. Of course, there are different approaches and techniques, and the advice provided in this lesson reflects that subjectivity. None of the techniques included here are required. However, they will improve the readability of your code, and using them will show other developers (and potential employers) that you're thoughtful, careful, and professional.
 
-4. Look back - aka "refactor"
-    * Fourth. Examine the solution obtained.
-    * Can you check the result? Can you check the argument?
-    * Can you derive the solution differently? Can you see it at a glance?
-    * Can you use the result, or the method, for some other problem?
+For more advice on how to write code well, speak with experts in the field. Many developers have strong opinions on how to write code that is more legible and maintainable. Gathering information from different experts will help inform your preferences and practices.
+
+Don't repeat yourself
+One important rule that you will often hear as a developer is not to repeat yourself. In fact, don't repeat yourself is often abbreviated to DRY, and the whole idea is often captured in the following advice: write DRY code. Generally, this idea is used specifically in the context of functions. Because functions allow you to wrap up repeated code within a function, they can be particularly helpful when it comes to writing DRY code.
+
+However, this is only one way to think about the phrase "don't repeat yourself." Take a look at the following data and function. Spend a few moments reviewing it to make sure you understand what is happening. What do you notice? Then, try running the function yourself.
+
+const authors = [
+  {
+    id: 1,
+    name: {
+      firstName: "Philip",
+      surname: "Pullman",
+    },
+    series: ["His Dark Materials", "Sally Lockhart"],
+  },
+  {
+    id: 2,
+    name: {
+      firstName: "Terry",
+      lastName: "Pratchett",
+    },
+    series: ["Discworld", "Long Earth"],
+  },
+];
+
+function getAllSeries(authors) {
+  const result = [];
+  for (let i = 0; i < authors.length; i++) {
+    for (let j = 0; j < authors[i].series.length; j++) {
+      result.push(authors[i].series[j]);
+    }
+  }
+  return result;
+}
+
+getAllSeries(authors);
+//> [ 'His Dark Materials', 'Sally Lockhart', 'Discworld', 'Long Earth' ]
+In the above function, there is some duplicate code. Can you see it? The code shows authors[i] multiple times.
+
+But maybe that can be tightened up. Instead, you could assign this value to the variable. Check it out:
+
+function getAllSeries(authors) {
+  const result = [];
+  for (let i = 0; i < authors.length; i++) {
+    const author = authors[i];
+    for (let j = 0; j < author.series.length; j++) {
+      result.push(author.series[j]);
+    }
+  }
+  return result;
+}
+Although you've technically made the above function a bit longer, it's now much clearer. It also avoids using authors[i] multiple times.
+
+If you want to try out the code, you can use this REPL:
+
+
+Return early
+Another important rule is to return early. At its most basic level, the return-early mindset involves writing a function that terminates or throws an error as soon as something is wrong, with the goal of yielding the correct result—the one that you'd expect—at the end of the function.
+
+To better understand this idea, take a look at the following function. This code sample expects inputted data that is similar to that authors array from above.
+
+function getSeriesListById(authors, id) {
+  let selected = null;
+  for (let i = 0; i < authors.length; i++) {
+    const author = authors[i];
+    if (author.id === id) selected = author;
+  }
+
+  if (id) {
+    if (selected) {
+      const message = `Series list: ${selected.series.join(", ")}`;
+      return message;
+    } else {
+      return [];
+    }
+  } else {
+    return "No ID provided.";
+  }
+}
+In the above function, the authors array and an id are given to the function. If the id matches one of the authors, the code returns the series for that author. Otherwise, it returns an empty array. If no id is inputted, it returns a string at the end saying so: No ID provided.
+
+The above code isn't that complicated. But it can be made simpler by returning early. Check it out:
+
+function getSeriesListById(authors, id) {
+  if (!id) return "No ID provided.";
+
+  let selected = null;
+  for (let i = 0; i < authors.length; i++) {
+    const author = authors[i];
+    if (author.id === id) selected = author;
+  }
+  if (!selected) return [];
+
+  return `Series list: ${selected.series.join(", ")}`;
+}
+In this modified example, the function stops if there is no id inputted rather than running despite the lack of id. In fact, when the function stops, the same string from above, No ID provided, is returned. But you'll notice that this happens near the beginning of the function, rather than at the end. This means that the code below that point does not have to run, and it is letting you know as soon as possible that there's no id inputted.
+
+This is sometimes referred to as a guard clause. A guard clause is a statement that evaluates to a boolean that determines whether or not a function should continue running. Implementing guard clauses in your code will make your code much more efficient and easier to read.
+
+Avoid boolean returns
+One final rule is to avoid boolean returns when possible. Although this isn't always possible, you can often avoid explicitly returning true and false by returning the expression that is evaluating the statement.
+
+For example, take a look at the following function. What do you notice?
+
+function moreThanThreeAuthors(authors) {
+  if (authors.length > 3) {
+    return true;
+  } else {
+    return false;
+  }
+}
+The function above just checks if there are more than three authors in the given array. But you can actually write a stronger, shorter function with the following:
+
+function moreThanThreeAuthors(authors) {
+  return authors.length > 3;
+}
+The conditional statement will already be evaluated to a boolean, so you don't need to explicitly return true or false.
 
 
 DRY (Don't repeat yourself) & Writing readable code
@@ -1803,3 +2216,35 @@ function getAllGames(characters) {
 }
 
 getAllGames(characters);
+
+** assessemnt: js foundations
+
+* unsorted
+
+1. Understand the problem - aka "reflect the question back into your our words."
+    -  Do you understand all the words used in stating the problem?
+    -  What are you asked to find or show?
+    -  Can you restate the problem in your own words?
+    -  Can you think of a picture or diagram that might help you understand the problem?
+    -  Is there enough information to enable you to find a solution?
+
+2. Devise a plan - aka "Pseudocode"
+    * Guess and check           |   * Look for a pattern
+    * Make an orderly list      |   * Draw a picture
+    * Eliminate possibilities   |   * Solve a simpler problem
+    * Use symmetry              |   * Use a model
+    * Consider special cases    |   * Work backwards
+    * Use direct reasoning      |   * Use a formula
+    * Solve an equation         |   * Be ingenious
+
+3. Carry out the plan - aka "code your Pseudocode"
+    * Third. Carry out your plan.
+    * Carrying out your plan of the solution, check each step. Can you see clearly that the step is correct? Can you prove that it is correct?
+
+4. Look back - aka "refactor"
+    * Fourth. Examine the solution obtained.
+    * Can you check the result? Can you check the argument?
+    * Can you derive the solution differently? Can you see it at a glance?
+    * Can you use the result, or the method, for some other problem?
+
+
