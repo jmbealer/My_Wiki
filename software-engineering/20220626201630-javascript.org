@@ -33,6 +33,14 @@ uses camelCasing
 
 script.js: All your JavaScript code will be written here
 
+
+JavaScript was written by Brendan Eich to enhance static web pages.
+JavaScript was built specifically as a tool for the web rather than for building software.
+
+Node.js - Node
+Node, which was created by Ryan Dahl in 2009, allows you to run JavaScript projects on your machine.
+It also allows you to configure the project environment.
+
 * what are javascript comments? wip
 
 Comments are ignore when the program runs.

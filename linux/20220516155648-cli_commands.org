@@ -3,6 +3,94 @@
 :END:
 #+title: cli-commands
 #+date: [2022-05-16 Mon 15:56]
+
+
+* Command-line basics
+
+Command line - text interface
+Command line is a user interface that navigated by typing commands at prompts, instead of using a mouse.
+
+
+Command-line shell - command line - shell
+shell is the place where you enter your commands in the terminal program
+
+Command-line arguments are text values that follow after a command
+
+Current working directory is the folder that you're currently in
+
+What is the command line?
+
+You may also hear the term prompt, which refers even more specifically to the place where you type commands right after a specific symbol like $.
+
+The terms that relate to the command line can be a bit confusing, and many terms overlap with one another.
+In general, if you hear or see any of the following terms, what is likely being referenced is a program where you can type commands:
+Terminal
+Command line
+Shell
+Prompt
+
+
+Commands
+You can write commands on the command line and then run them by pressing the Enter key.
+Commands are like functions for the terminal, and you can call them with different arguments.
+And just like functions, commands can also fail if you use them incorrectly.
+
+This command makes use of command-line arguments, which are text values that follow after a command.
+Like functions, commands can have multiple arguments.
+Sometimes arguments are required; other times, they are not.
+
+Flags
+A flag is essentially a setting that you can set when you're using a command on the command line.
+Multiple flags can sometimes be used with the same command.
+
+Home directory - A directory on your computer for your user account
+Nondestructive commands - You can safely run the following commands from the command line without thinking too much about it. At worst, you may end up with extra files and folders that you didn't mean to create.
+
+
+Destructive commands
+The following commands are potentially destructive.
+That is, they may result in files or folders being deleted from your system permanently.
+
+* file paths
+
+File extension A suffix at the end of a filename, indicating the document type
+Tree structure A type of structure that includes a single root and multiple levels of organization
+Absolute file path A path that starts from the root of your entire system
+Relative file path A path to a file from a specific location
+
+Folders and files
+A folder (also called a directory) is an empty container for multiple files.
+And a file is any document on your machine.
+
+Typically, files include a file extension, such as .txt, .doc, or .md.
+A file extension is placed at the end of the name of a file to represent what kind of document it is.
+
+* the Terminal
+
+GUI - Graphical user interface
+GUI - the user interface on your computer that allows you to click programs, drag around windows, and generally manage your screen
+
+A GUI (graphical user interface) is a system of interactive visual components for computer software.
+A GUI displays objects that convey information, and represent actions that can be taken by the user
+
+
+CLI - Command-line interface
+CLI - a text-based interface where you can accomplish many tasks, such as creating, moving, copying, and deleting files and folders
+
+A shell is a software interface that's often a command line interface that enables the user to interact with the computer
+
+What is a terminal?
+The original terminals were physical pieces of hardware.
+But nowadays, the word terminal can also be used to refer to a program that simulates a physical terminal.
+
+Terminal programs recreate the experience of working on a computer using a command-line interface instead of a GUI.
+In general, just about any operation that you could do with a mouse can be done through a terminal program.
+You can create and edit files as well as start and stop programs.
+
+* commands
+
+need to tldr on commands
+
 - $ # (root) is called a shell prompt, It appears when the terminal is ready to
   accept a command.
 - Filesystem organized a computer's files and directories into a tree structure
@@ -11,14 +99,14 @@
   - each parent directory can contain more child directories and files.
 - folders and directories are sames
 - Files and directories on your computer are organized into a filesystem.
-- pwd output the name of the current working directory.
 - ls list all files and directories in the working directory.
 - cd switches you into the directories you specify.
 - mkdir create a new directory in the working directory.
+** touch
 - touch create a new file inside the working directory.
-- cd ../.. move two levels up
-- man [OPTIONS] [[section] page ...] ...
-  - Format and display manual pages.
+touch - change a file access and modification time (atime, mtime).
+** man [OPTIONS] [[section] page ...] ...
+man - Format and display manual pages.
   - An interface to the system reference manuals.
   - man [command] - display the man page for a command
   - man [command.7] - display the man page for a command from section 7
@@ -28,13 +116,21 @@
   - man -k "search string" search for manpages containing a search string
 - cht.sh [OPTIONS|QUERY] - show example usage of a command
 - hier learn unix/linux file system hierarchy
-- pwd [options]...
-  - Print name of current/working directory.
-  - Print the full filename of the current working directory.
-  - pwd -P --physical
+** pwd [options]...
+
+pwd - print name of current/working directory.
+pwd -P, --physical
     - avoid all symlinks
-- ls [OPTIONS]... [FILE]...
-  - List directory contents
+Print the current directory, and resolve all symlinks (i.e. show the "physical" path):
+
+
+pwd -L, --logical
+  Print the current logical directory:
+
+      pwd --logical
+
+** ls [OPTIONS]... [FILE]...
+ls - List directory contents
   - List information about the FILEs (the current directory by default)
     - Sort entries alphabetically if none of -cftuvSUX nor --sort is secified.
   - ls -l
@@ -43,7 +139,9 @@
   - ls -lh
   - ls -lS
   - ls -ltr
-- cd [-L|-P] [directory]
+
+** cd [-L|-P] [directory]
+cd - change the current working directory.
   - change the working directory
   - cd
     - Go the home directory of current user.
@@ -51,31 +149,56 @@
     - Go up to the parent of the current directory.
   - cd -
     - Go to the previously chosen directory.
-- mkdir [OPTION]... DIRECTORY...
+  - cd ../.. move two levels up
+
+** mkdir [OPTION]... DIRECTORY...
+mkdir - creates a directory.
   - make directories
   - create the DIRECTORY(ies), if they do not already exist.
   - Mandatory arguments to long options are mandatory for short options too.
   - mkdir -p, --parents
     - no error if existing, make parent directories as needed
     - Create directory recursively (useful for creating nested dirs)
-- echo [short-option]... [string]...
-  - display a line of text
-  - Echo the STRING(s) to standard output.
+** echo [short-option]... [string]...
+  - echo - print given arguments
+  - Print a text message. Note: quotes are optional:
+    - echo "Hello World"
+  - Print a message with environment variables:
+    echo "My path is $PATH"
+  - Print a message without the trailing newline:
+    - echo -n "Hello World"
+  - Append a message to the file:
+    - echo "Hello World" >> file.txt
+
+  - Enable interpretation of backslash escapes (special characters):
+    - echo -e "Column 1\tColumn 2"
+
+
 - cat [OPTION]... [FILE]...
   - concatenate files and print on the standard ouput
   - concatenate FILE(s) to standard output.
   - With no FILE, or when FILE is -, read standard input.
-- cp [OPTION]... SOURCE... DIRECTORY or [-T]... SOURCE... DIRECTORY or -t
+
+** cp [OPTION]... SOURCE... DIRECTORY or [-T]... SOURCE... DIRECTORY or -t
+cp - copy files and directories.
     DIRECTORY SOURCE...
   - Copy files and directories.
   - Copy SOURCE to DEST, or multiple SOURCE(s) to DIRECTORY.
-- mv [OPTION]... SOURCE... DIRECTORY or [-T]... SOURCE... DIRECTORY or -t
+
+** mv [OPTION]... SOURCE... DIRECTORY or [-T]... SOURCE... DIRECTORY or -t
+mv - move or rename files and directories.
     DIRECTORY SOURCE...
   - move (rename) files
   - Rename SOURCE to DEST, or move SOURCE(s) to DIRECTORY.
   - Mandatory arguments to long options are mandatory for short option too.
-- rm [OPTION]... [FILE]...
-  - remove files or directories
+
+** rmdir
+rmdir - removes an empty directory.
+
+** rm [OPTION]... [FILE]...
+rm - remove files or directories.
+rm -r - removes an non-empty directories
+
 - head [OPTION]... [FILE]...
   - Output the first part of files. (10 lines)
   - Print the first 10 lines of each FILE to standard output.
@@ -253,9 +376,9 @@
 
 man - read a manual page
 apropos - find what man page is appropriate
-pwd - print working directory
 cd - change directory
-echo - print some arguments
+
+
 ls - list directory
 find - find files
 mkdir - make directory
@@ -272,7 +395,6 @@ history - see previous commands from this shell
 head - print the start
 tail - print the end
 mkdir - make directory
-rmdir - remove directory
 grep - find things inside files
 cat - print the whole file
 man - read a manual page for a program
@@ -283,3 +405,5 @@ exit - exit the shell
 sudo - become the super user, root (DANGER - only use when necessary)
 chmod - change permission modifiers
 chown -  change ownership
+
+--help flag
