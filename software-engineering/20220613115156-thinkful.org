@@ -1151,6 +1151,55 @@ console.log(model); // "Corolla"
 drive(); // The care is driving!
 console.log(numberOfWheels); // undefined
 
+peculiarities of accessing objects
+const littleYacht = {
+  floorColor: "red",
+  maximumLbs: 1000,
+  inOperation: true,
+  christened: false,
+  hornSound: "Ride of the Walkeries",
+  "Dock Name": "oceania",
+  //Dock Name: "oceania",
+
+  playHorn: function() {
+    console.log(littleYacht.hornSound);
+  }
+};
+
+console.log(littleYacht.floorColor);
+console.log(littleYacht["floorColor"]);
+// console.log(littleYacht[floorColor]);
+
+console.log(littleYacht["Dock Name"]);
+// console.log(littleYacht.Dock Name);
+
+the in operator
+check existence of a key in an object:
+const myObj = {
+  color: "red",
+  shape: "circle",
+  size: "4cm"
+}
+
+console.log("shape" in myObj); // => true
+console.log("height" in myObj); // => false
+
+methods are properties of objects which are functions
+const car = {
+  make: "Toyota",
+  model: "Corolla",
+  // this is a method
+  drive() {
+    console.log("The car is driving!");
+  },
+  // it's shorthand for this
+  useHorn: function() {
+    console.log("Beep");
+  }
+}
+
+car.drive(); // Logs out "The car is driving!"
+car.useHorn(); // Logs out "Beep"
 
 ** object shorthand and spread
 
@@ -1245,6 +1294,90 @@ const sale = {
 */
 
 In the above example, the product and salesTax values are expanded with the spread operator, just like before. But this time, the priceInCents key is added to overwrite the priceInCents key that was stored in the product variable.
+
+
+Property value shorthand (for Objects)
+A convenient shorthand method for creating an object if your local variable name matches the new object's key
+
+// Function that returns a new 'cat' object:
+function createCat(name) {
+  const color = getRandomColor();
+
+  return {
+    eyes: 2,
+    legs: 4,
+    name,     // same as name: name
+    color,    // same as color: color
+  };
+}
+
+const myCat = createCat('tabby');
+
+example:
+{
+  eyes: 2,
+  legs: 4,
+  name: 'tabby',
+  color: 'blue'
+}
+
+
+Spread operator (...) with objects
+    Helps us manage merging objects
+    Creates a new object
+    Be aware of the order in which merging is done
+
+const littleYacht = {
+    "Dock Name": "oceania",
+    floorColor: "red",
+    christened: false,
+    hornSound: "Ride of the Walkeries",
+    playHorn() {
+        console.log(littleYacht.hornSound);
+    }
+};
+
+const littleYacht2 = {
+    roofColor: "green",  // new key, will be added
+    christened: true     // duplicate key, will be overwritten
+};
+
+const newYacht = { ...littleYacht, ...littleYacht2 };
+
+The this keyword
+    (Generally) used in methods to refer to properties of an object
+    Don't need to know the variable name of the object itself
+
+const littleYacht = {
+    hornSound: "Ride of the Walkeries",
+    playHorn: function() {
+      // Equivalent to littleYacht.hornSound
+      console.log(this.hornSound);
+    }
+};
+
+littleYacht.playHorn(); // Ride of the Walkeries
+
+
+What does this refer to?
+    this is assigned a value at the moment the method is invoked, and not when it is defined
+    this is assigned to the object to the left of the dot when the function was called
+
+const littleYacht = {
+  hornSound: "Ride of the Walkeries",
+  playHorn: function() {
+    console.log(this.hornSound);
+  }
+};
+
+littleYacht.playHorn(); // Ride of the Walkeries
+
+const biggerYacht = {
+  hornSound: "Fog Horn",
+  playHorn: littleYacht.playHorn
+};
+
+biggerYacht.playHorn(); // Fog Horn
 
 ** scope
 
@@ -1480,6 +1613,35 @@ function calculateTotal(products = [], { discountPercentage, salesTax = 0.0825 }
   return result * (1 + salesTax);
 }
 
+
+An aside: Pass by reference or value?
+
+    Primitives (string, number, boolean) are passed by value
+    Complex data types (arrays, objects) are passed by reference
+
+let myNumber = 10;
+
+function passedPrimitive(num) {
+  num = 20;
+}
+
+passedPrimitive(myNumber);
+console.log(myNumber);   // => 10
+
+function receives a copy of the value - local scope cannot impact the original variable
+
+const mySequence = [1,2,3];
+
+function passedComplex(arr) {
+  arr.push(4);
+}
+
+passedComplex(mySequence);
+console.log(mySequence);  // => [1,2,3,4]
+
+function receives a reference to the item - the local variable assigned to this item is impacting the original item
+
+
 ** references
 ** writing readable code
 ** assessemnt: js foundations
@@ -1511,3 +1673,68 @@ function calculateTotal(products = [], { discountPercentage, salesTax = 0.0825 }
     * Can you check the result? Can you check the argument?
     * Can you derive the solution differently? Can you see it at a glance?
     * Can you use the result, or the method, for some other problem?
+
+
+DRY (Don't repeat yourself) & Writing readable code
+
+Simplify condition based functions by returning the comparison instead of true or false explicitly
+
+function isAdult(age){
+  if(age > 17){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+function isAdult(age){
+  return age > 17;
+}
+
+
+DRY (Don't repeat yourself) & Writing readable code
+
+const characters = [
+  {
+    id: 1,
+    name: {
+      firstName: "Sonic",
+      lastname: "Hedgehog",
+    },
+    games: ["Sonic 1", "Sonic 2"],
+  },
+  {
+    id: 2,
+    name: {
+      firstName: "Lara",
+      lastName: "Croft",
+    },
+    games: ["Tomb Raider", "Tomb Raider 2"],
+  },
+];
+
+function getAllGames(characters) {
+  const result = [];
+  for (let i = 0; i < characters.length; i++) {
+    for (let j = 0; j < characters[i].games.length; j++) {
+      result.push(characters[i].games[j]);
+    }
+  }
+  return result;
+}
+
+getAllGames(characters);
+
+function getAllGames(characters) {
+  const result = [];
+  for (let i = 0; i < characters.length; i++) {
+    const character = characters[i];
+    for (let j = 0; j < character.games.length; j++) {
+      result.push(character.games[j]);
+    }
+  }
+  return result;
+}
+
+getAllGames(characters);
