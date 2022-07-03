@@ -333,8 +333,10 @@ Unicode covers (almost) all the characters, punctuations, and symbols in the wor
 * what are javascript comments? wip
 
 Comments are ignore when the program runs.
+Comments are ignored, and will not be executed:
 
 Comments allow you explain you code, in the code itself, without affecting your program.
+JavaScript comments can be used to explain JavaScript code, and to make it more readable.
 
 Reasons to use code comments:
 + To describe and explain complicated code and create reminders for yourself and others
@@ -343,74 +345,21 @@ Reasons to use code comments:
 + To add titles to the sections of long pages of code to make the pages easier to scan
 + It's important to note that HTML and CSS comments are not tags. They also are not written in the same way; they have a distinct syntax.
 
-JavaScript Comments
-Not all JavaScript statements are "executed".
-Code after double slashes // or between /* and */ is treated as a comment.
-Comments are ignored, and will not be executed:
-let x = 5;   // I will be executed
-// x = 6;   I will NOT be executed
-
-You will learn more about comments in a later chapter.
-
-JavaScript Comments
-
-JavaScript comments can be used to explain JavaScript code, and to make it more readable.
 
 JavaScript comments can also be used to prevent execution, when testing alternative code.
-Single Line Comments
 
+Single Line Comments
 Single line comments start with //.
 
-Any text between // and the end of the line will be ignored by JavaScript (will not be executed).
-
-This example uses a single-line comment before each code line:
-Example
-// Change heading:
-document.getElementById("myH").innerHTML = "My First Page";
-
-// Change paragraph:
-document.getElementById("myP").innerHTML = "My first paragraph.";
-
-This example uses a single line comment at the end of each line to explain the code:
-Example
-let x = 5;      // Declare x, give it the value of 5
-let y = x + 2;  // Declare y, give it the value of x + 2
 Multi-line Comments
-
 Multi-line comments start with /* and end with */.
 
 Any text between /* and */ will be ignored by JavaScript.
 
-This example uses a multi-line comment (a comment block) to explain the code:
-Example
-/*
-The code below will change
-the heading with id = "myH"
-and the paragraph with id = "myP"
-in my web page:
-*/
-document.getElementById("myH").innerHTML = "My First Page";
-document.getElementById("myP").innerHTML = "My first paragraph.";
+multi-line comment - a comment block
 
-It is most common to use single line comments.
 Block comments are often used for formal documentation.
-Using Comments to Prevent Execution
-
 Using comments to prevent execution of code is suitable for code testing.
-
-Adding // in front of a code line changes the code lines from an executable line to a comment.
-
-This example uses // to prevent execution of one of the code lines:
-Example
-//document.getElementById("myH").innerHTML = "My First Page";
-document.getElementById("myP").innerHTML = "My first paragraph.";
-
-This example uses a comment block to prevent execution of multiple lines:
-Example
-/*
-document.getElementById("myH").innerHTML = "My First Page";
-document.getElementById("myP").innerHTML = "My first paragraph.";
-*/
 
 ** JavaScript Comments Examples
 #+begin_src js
@@ -692,6 +641,104 @@ Exercise:
 
 Create a variable called carName and assign the value Volvo to it.
 
+
+** variables thinkful
+
+In your earlier work with JavaScript, you practiced the basics of declaring variables with the let keyword.
+But that was just the beginning! In this lesson, you'll learn about two other methods of declaring variables, and you'll explore when you should use each approach.
+
+The let keyword
+
+As you've learned, the let keyword is used to declare variables in JavaScript. Here's some refresher code for your review:
+
+let price = 9.99;
+
+You can also reassign variables that have already been created using let. Here's an example:
+
+let price = 9.99;
+
+price = 8.5;
+
+However, if you declare a variable with let, you cannot use let to later define that same variable. See the error below:
+
+let price = 9.99;
+
+let price = 8.5; //> Uncaught SyntaxError: Identifier 'price' has already been declared
+
+This SyntaxError is pretty useful. It will stop you from accidentally recreating the same variable later on in your program when you don't intend to do so.
+
+But here's something that might surprise you: let is actually a fairly new feature of JavaScript. Now, you'll take a step back to learn about two other variable-declaring features: var and const.
+The var keyword
+
+In the past, variables were declared with the keyword var. Here is what var looks like in action:
+
+var productName = "Jogger Sweatpants";
+
+Just like with let, variables created with the var keyword can be reassigned. However, var doesn't have the same restrictions as let when it comes to declaring variables with the same name. See the example below:
+
+var productName = "Jogger Sweatpants";
+
+productName = "Men's Jogger Sweatpants";
+
+var productName = "Woman's Jogger Sweatpants";
+
+Because var is an older method of declaring variables, you will often see var referenced in older code. However, you shouldn't use var in your code unless you have a very specific reason to do so. This lesson aims only to briefly introduce you to the concept of var and how it works. Later in this program, you will learn more about when, where, and why you might use var in your work.
+The const keyword
+
+At first blush, the const keyword may seem very similar to let. Using const, you can declare variables much like you would with let. And just like let, you also can't use it to create another variable of the same name.
+
+const size = "M";
+
+const size = "L"; //> Uncaught SyntaxError: Identifier 'size' has already been declared
+
+However, with const, you also can't reassign the value. See below:
+
+const size = "M";
+
+size = "S"; //> Uncaught TypeError: Assignment to constant variable.
+
+Ultimately, there is no performance benefit to using one method over another—const, let, and var will each allow you to declare a variable, which is what you want to do. But there is a workflow benefit. The intended purpose of both const and let is to help developers make fewer mistakes.
+
+By allowing developers to create variables that cannot be declared again, const and let act a bit like a safety net. As you develop larger applications, you will find it challenging to create concise, descriptive, and unique variable names. Often, developers will attempt to use a variable name in their code, forgetting that they've already used that variable name higher up. That's where const and let can help. They prevent developers from making unintended mistakes when declaring their variables.
+Warning: Using const with arrays and objects
+
+But const also has some other traits that are worth discussing. And when it comes to arrays and objects, using const can be a bit tricky.
+
+Take a look at the following code. It works as you may expect:
+
+const product = { priceInCents: 2100, name: "Yellow Beanie", size: "M" };
+
+
+product = { priceInCents: 2100, name: "Red Beanie", size: "L" };
+
+//> Uncaught TypeError: Assignment to constant variable.
+
+In the above case, you aren't able to reassign the value of const, as intended. The following code, on the other hand, does run.
+
+const product = { priceInCents: 2100, name: "Yellow Beanie", size: "M" };
+
+product.name = "Red Beanie";
+
+product.size = "L";
+
+Although you can't reassign the variable completely with const, you can change the values inside of the object. The same goes for arrays. Take a look:
+
+const sizes = [8, 10, 12, 14];
+
+sizes[4] = 16;
+
+The reasons behind this behavior will be covered in a later lesson. For now, you're just getting familiar with the way that const works.
+What method should you use?
+
+At this point, you might be wondering which method of declaring variables you should use. Here's the process that you should follow when determining whether to use let, const, or var:
+
+    Use const primarily; this will be your go-to. Moving forward, you'll want to declare most of your variables using const.
+
+    Use let if you need to reassign a value. This is a common requirement during for loops and sometimes with if statements.
+
+    Don't use var unless necessary, like when working in a codebase that uses it. However, that will likely only happen in the distant future. As mentioned above, there are other reasons to use (and to not use) var, but those will be covered in a different lesson. For now, just avoid it.
+
+    var makes variable global even in functions
 
 ** var keyword
 
@@ -2638,6 +2685,271 @@ For a complete String reference, go to our:
 Complete JavaScript String Reference.
 
 The reference contains descriptions and examples of all string properties and methods.
+
+** strings thinkful
+
+1.5 hoursAverage Reading Time
+Learning Objective
+
+By the end of this lesson, you will be able to access parts of a string with bracket notation and methods. You'll also be able to create an array from a string, join arrays into strings, and write strings that embed expressions using template literals.
+Overview
+
+In this lesson, you'll learn more about how to write strings in JavaScript and explore new ways to access different parts of a string. You'll also learn how to transform a string into an array.
+Key Terms
+
+Template literal
+    A JavaScript feature that makes string concatenation, embedded expressions, and formatting easier
+
+Remember when you first started learning about JavaScript data types? Now that you're familiar with some of the basics, you're ready to dive deeper into one specific data type: the string.
+Accessing strings
+
+As you know, a string data type is used to represent text. Strings are set off in quotes, and they can contain a variety of characters, such as letters, numbers, and symbols. So when it comes to accessing strings, you'll essentially be targeting individual characters in order to perform a specific task.
+
+Take a look at the following string. What do you see?
+
+const pangram = "The Five Boxing Wizards Jump Quickly.";
+
+As you may have noticed, the pangram string uses every letter of the alphabet. The string is also written in Title Case—in other words, the first letter of every word is uppercase. Imagine you want to update this string so that it's in Sentence case, which means that only the first letter of the sentence is uppercase. How might you do that? You'd follow these general steps:
+
+    Make sure that the first letter of the sentence is uppercase.
+
+    Make all other letters lowercase.
+
+To do this, you'll need to access individual characters in the string.
+Characters: A refresher
+
+Before moving forward, you may need a quick refresher on characters. As mentioned above, characters in strings can be alphanumeric characters, punctuation marks, spaces between words, or other types of symbols that increase the length of the string. Consider the example from above:
+
+const pangram = "The Five Boxing Wizards Jump Quickly.";
+
+pangram.length; //> 37
+
+The pangram string is 37 characters long. That includes the period . and empty spaces between words, but not the double quotes (" and ") enclosing the string. You'll learn a bit more about how to work with quotes in strings below.
+Bracket notation
+
+Back to the task at hand: changing this string from title case into sentence case. One way that you could do this is by using bracket notation. Just like with arrays, bracket notation can be used to access individual characters at any given index of a string. Here's an example of how bracket notation can be used:
+
+const word = "Wizards";
+
+word[0]; //> "W"
+
+word[2]; //> "z"
+
+word[9]; //> undefined
+
+Now, take a look at the following function, which will solve the case problem that you've been given. What do you notice?
+
+function sentenceCase(sentence) {
+
+  const firstCharacter = sentence[0];
+
+  let result = firstCharacter.toUpperCase();
+
+
+  for (let i = 1; i < sentence.length; i++) {
+
+    const character = sentence[i];
+
+    result += character.toLowerCase();
+
+  }
+
+
+  return result;
+
+}
+
+Take a moment to walk through the above code. Here's what it's doing:
+
+    It creates a new variable called firstCharacter. It sets firstCharacter to be equal to the first character of the inputted sentence string, using bracket notation.
+
+    It creates a new variable called result. It sets that variable to be equal to the firstCharacter variable, set to uppercase with the toUpperCase() method.
+
+    It begins a for loop, which starts at an index of 1, thus skipping over the first character of the sentence.
+
+    In the for loop, the variable character is created, which is set to be equal to sentence[i]. With bracket notation, you can access each character of a string, just like you would each item of an array.
+
+    The code adds the character to the result variable, setting it to lowercase at the same time.
+
+    Finally, return result will return the result for you.
+
+The substr() method
+
+But bracket notation is just one approach. You can also solve your casing problem using a built-in JavaScript method, called the substr() method, which will actually make this process a little easier. Check out the code sample below:
+
+function sentenceCase(sentence) {
+
+  const first = sentence.substr(0, 1);
+
+  const rest = sentence.substr(1);
+
+
+  return first.toUpperCase() + rest.toLowerCase();
+
+}
+
+The substr() method, also called the substring method, allows you to extract a specific section of characters in a string. It takes two arguments:
+
+    The index of the first character to include in the substring
+
+    The number of characters to extract
+
+The above function works as follows:
+
+    It sets the first variable to be equal to only the first character. In other words, substr(0, 1) means that the substring will begin on index 0 and only include 1 character.
+
+    It sets the rest variable to be equal to every character starting from the first index. If you do not include a second argument, like in substr(1), the substring will consist of every character following the given index.
+
+    It joins the two strings together, using toUpperCase() and toLowerCase() as appropriate.
+
+Do this
+Use substr()
+
+Time to try it yourself. Take a look at the following examples of substr(). Before running the code on your own, evaluate the code in your head and predict what will happen.
+
+const title = "Guards! Guards!";
+
+// Use console.log(); to see the output
+
+title.substr(3); //> ?
+
+title.substr(6, 4); //> ?
+
+title.substr(25); //> ?
+
+Splitting and joining strings
+
+Now that you've looked at a couple of ways to access string characters, take a step back to analyze the functions at work here.
+
+As the name suggests, the sentenceCase() function could be described as one that capitalizes the first character in a string and sets all other characters to lowercase. That's what you were trying to do above. But you could also reuse this function to create a titleize() function in order to turn phrases into titles (with title case formatting). For example, you could expect the titleize() function to work like this:
+
+const title = "the light FANTASTIC";
+
+titleize(title); //> "The Light Fantastic";
+
+There are a few ways to accomplish this task. Below is one approach that makes use of the split() and join() methods, seen below.
+
+function titleize(title) {
+
+  const words = title.split(" ");
+
+  let result = [];
+
+
+  for (let i = 0; i < words.length; i++) {
+
+    const capitalized = sentenceCase(words[i]);
+
+    result.push(capitalized);
+
+  }
+
+
+  return result.join(" ");
+
+}
+
+
+titleize("the light FANTASTIC"); //> "The Light Fantastic"
+
+In the code sample above, the split() method separates the string based on the string given to it as an argument. Here's an example:
+
+const title = "the light FANTASTIC";
+
+title.split(" "); //> [ "the", "light", "FANTASTIC" ]
+
+The argument given to split() is a string with a space. Therefore, an array is created in which each new item is separated by the string. Notice that in the resulting array above, all of the spaces have been removed.
+
+Now, take a look at the join() method. The join() method is called on an array and joins all the elements in that array together with the supplied argument. In the case of the titleize() function, the join() joins all the capitalized words into a single string, separated by spaces.
+
+const result = ["The", "Light", "Fantastic"];
+
+result.join(" "); //> "The Light Fantastic";
+
+If you want to learn more, check out the Mozilla Developer Network (MDN) resources on the split() method and the join() method.
+Do this
+Use split() and join()
+
+Take a look at the following examples of split() and join(). Before running the code on your own, evaluate the code in your head and predict what will happen.
+
+const title = "Guards! Guards!";
+
+title.split("!"); //> ?
+
+title.split(""); //> ?
+
+title.split("guards"); //> ?
+
+
+const titleArr = ["The", "Light", "Fantastic"];
+
+titleArr.join("-"); //> ?
+
+titleArr.join("_-_"); //> ?
+
+titleArr.join(); //> ?
+
+Template literals
+
+Joining together multiple strings can end up looking pretty messy. Previously, you've had to concatenate multiple parts of a string with the + operator to accomplish this task. Take a look at how the following function concatenates strings.
+
+function bookSale(title, priceInCents) {
+
+  const price = (priceInCents / 100).toFixed(2);
+
+  return titleize(title) + " is on sale for $" + price + ".";
+
+}
+
+
+bookSale("the light fantastic", 950); //> "The Light Fantastic is on sale for $9.50."
+
+The above function works, but it doesn't look that great. Fortunately, JavaScript has a feature called template literals, which can help make this function look cleaner and clearer. Check it out:
+
+function bookSale(title, priceInCents) {
+
+  const price = (priceInCents / 100).toFixed(2);
+
+  return `${titleize(title)} is on sale for $${price}.`;
+
+}
+
+Template literals allow you to embed expressions and avoid using multiple + operators just to join a string. The syntax of a template literal is seen here: `${titleize(title)} is on sale for $${price}.` Here are the key pieces:
+
+    Begin and end your string using backticks, which look like this `. They are accessible on the tilde ~ key on your keyboard.
+
+    Place variables or expressions inside of curly braces {}, which should be preceded by a dollar sign $. It should look like this: ${}.
+
+Do this
+Use template literals
+
+Given the variables below, construct a string using template literals that results in the following sentence.
+
+The price of 'Interesting Times' by Terry Pratchett is $8.99.
+
+const title = "Interesting Times";
+
+const author = "Terry Pratchett";
+
+const price = 8.99;
+
+If you're having trouble, you can peek at the answer below.
+
+`The price of '${title}' by ${author} is $${price}.`;
+
+Escaping strings
+
+When reviewing older code, you may see examples like the snippet below:
+
+const firstSentence = "Will tugged at his mother's hand and said, \"Come on, come on...\"";
+
+This string was created with double quotes, but that there are also double quotes in the string. The backslash \ that you see here is used to escape the string.
+
+Escaping a string means that you're providing a backslash to allow for the following character to be seen as part of the string rather than part of the syntax. In the example above, the \ tells JavaScript that it should treat this double quote as part of the string, not as the closing quotation.
+
+The sample string above is just fine. But as you've learned, template literals offer a better way to write it:
+
+const firstSentence = `Will tugged at his mother's hand and said, "Come on, come on..."`;
 
 * Numbers
 
@@ -4996,6 +5308,476 @@ alert();
 
 Start the Exercise
 
+** destructuring and rest thinkful
+
+Deep destructuring The process of destructuring multiple levels of an array or other object
+Destructuring The process of unpacking the properties or values in an array or other object and assigning them into distinct variables
+Rest operator An operator that condenses entries in arrays and other objects
+
+Destructuring objects
+
+
+Now, take a moment to examine the object in the code sample below.
+const product = {
+  title: "The Golden Compass",
+  priceInCents: 799,
+  author: {
+    firstName: "Philip",
+    surname: "Pullman",
+  },
+};
+
+When working with an object, you'll often need to use some, but not all, of the available keys.
+
+Consider this example:
+function printAuthorAndTitle(product) {
+  return `${product.title} by ${product.author.firstName} ${product.author.surname}`;
+}
+
+The above function works just fine.
+However, the return statement ends up being a bit long because you have to repeat the product variable multiple times.
+In this case, you might update the above function to the one below, hoping to make it easier to read:
+
+function printAuthorAndTitle(product) {
+  const author = product.author;
+  const title = product.title;
+  return `${title} by ${author.firstName} ${author.surname}`;
+}
+
+The second function is more legible than the first.
+But it still looks clunky; after all, the product variable continues to be repeated multiple times.
+Fortunately, there's another option: destructuring.
+When you destructure an object or array, you're unpacking the properties or values and assigning them into distinct variables.
+
+Take a look at the following version of the function above, which makes use of destructuring. What do you notice?
+
+function printAuthorAndTitle(product) {
+
+  const { author, title } = product;
+
+  return `${title} by ${author.firstName} ${author.surname}`;
+
+}
+
+In this example, two new const variables are being created: author and title.
+
+Notice how these new variables are wrapped in curly brackets {} before the = sign.
+This is the destructuring syntax.
+Those variables are set to whatever keys can be found inside of the product object.
+If a key isn't found, it will be set to undefined.
+
+Take a look:
+const { yearPublished } = product;
+console.log(yearPublished); //> undefined
+Because product doesn't contain a yearPublished key, undefined would be logged to the console.
+
+And what's more, you can destructure multiple levels into an object. Check it out.
+
+function printAuthorAndTitle(product) {
+  const {
+    author: { firstName, surname },
+    title,
+  } = product;
+  return `${title} by ${firstName} ${surname}`;
+}
+
+In the above function, the author key, which also points to an object, is further destructured to access the firstName and surname keys.
+Note that there is no author variable in this function.
+The only variables that are created are firstName, surname, and title.
+
+Do this
+Destructure an object
+
+Take a look at the following object. Practice destructuring all of the keys from this object.
+
+const author = {
+  name: {
+    firstName: "Philip",
+    surname: "Pullman",
+  },
+  birthday: "1946-10-19",
+};
+
+When you're done, you can compare your work to this solution:
+
+const {name} = author;
+
+const firstName = name.firstName;
+
+const surname = name.surname
+
+console.log(firstName); //> 'Philip'
+
+console.log(surname); //> 'Pullman'
+
+Missing keys
+
+Review the following code. What do you expect will happen? Make a prediction, and then run the code for yourself.
+
+const author = {
+  name: {
+    firstName: "Philip",
+    surname: "Pullman",
+  },
+  birthday: "1946-10-19",
+};
+
+
+const { firstName } = author;
+
+console.log(firstName);
+
+As you can see, firstName ends up being undefined because the author object doesn't have a key called firstName. The firstName key belongs to the nested object that the name key points to.
+
+Deep destructuring
+Examine the code sample below. What do you expect will happen? Make a prediction, and then run the code for yourself.
+
+const author = {
+  name: {
+    firstName: "Philip",
+    surname: "Pullman",
+  },
+  birthday: "1946-10-19",
+};
+
+const {
+  name: { firstName },
+} = author;
+console.log(firstName);
+console.log(name);
+
+In this case, firstName will be printed out as "Philip". But trying to print name will cause a ReferenceError.
+
+When you use the syntax above to do deep destructuring, you're able to dive into and unpack multiple levels of an object. However, you won't have access to every value along the way. Furthermore, deep destructuring can cause some issues if the key is missing.
+
+For example, take a look at the code below.
+
+const author = {
+  birthday: "1946-10-19",
+};
+
+const {
+  name: { firstName },
+} = author;
+
+If you run this code, you will receive the following error:
+
+Uncaught TypeError: Cannot read property 'firstName' of undefined
+
+If you use deep destructuring, you'll need to make sure that the inputted object or array is of the right shape. This will help prevent errors like this one.
+Destructuring arrays
+
+As you know, objects are accessed by their keys. Arrays, on the other hand, are accessed by their index. In the above example, object keys were used to destructure objects and create variables. The process for arrays is similar, except that you'll use those specific positions in the array to create the variables. To begin, check out the array below:
+
+const genres = [
+  "Fantasy",
+  "Fiction",
+  "Nonfiction",
+  "Science Fiction",
+  "Young Adult",
+];
+
+You can destructure this array by doing the following:
+
+const [first, second] = genres;
+console.log(first); //> 'Fantasy'
+console.log(second); //> 'Fiction'
+
+In the above example, two new variables are created: first and second. Those variable names are set to the elements at index 0 and index 1. The rest of the elements are ignored.
+Do this
+Destructure an array
+
+Take a look at the following array. Practice destructuring the first, second, and third values from this array.
+
+const authors = [
+  "Ursula K. Le Guin",
+  "Brandon Sanderson",
+  "Terry Pratchett",
+  "Neil Gaiman",
+  "J. R. R. Tolkien",
+];
+
+const [first, second, third] = authors;
+
+The rest operator
+
+As you've seen, destructuring is an extremely valuable tool. But that being said, destructuring an array on its own is only so useful. It's much more useful when it pairs up with another tool: the rest operator.
+Take a look at the code sample below. What do you notice?
+
+const [first, second, ...otherGenres] = genres;
+console.log(first); //> 'Fantasy'
+console.log(second); //> 'Fiction'
+console.log(otherGenres); //> [ 'Nonfiction', 'Science Fiction', 'Young Adult' ]
+
+In this example, there are two variables: first and second. Those are followed by the syntax that makes up the rest operator: the three periods ... and a variable name, which in this case is otherGenres. The variable that follows ... will contain all of the remaining array elements that weren't destructured. This can be very useful for splitting apart an array.
+Destructuring parameters
+
+You can also use destructuring in functions in order to destructure the parameters. Take a look at this example:
+
+function printAuthorAndTitle({ author, title }) {
+
+  return `${title} by ${author.firstName} ${author.surname}`;
+
+}
+
+
+printAuthorAndTitle(product); //> 'The Golden Compass by Philip Pullman'
+
+The above syntax, once understood, is useful for at least two reasons:
+
+    You know that the expected input into the function is an object.
+
+    The function is concise and easy to read.
+
+However, there is a downside to this approach: if you need to access the entire inputted object, you have no way to do so.
+
+object destructuring
+quickly extract prop values from objects and assign to local variable.
+commonly used to aid readability.
+const car = {
+  make: "Toyota",
+  model: "Corolla",
+  drive() {
+    console.log("The car is driving!");
+  }
+}
+
+// Destructure values from car
+const {make, model, drive, numberOfWheels} = car;
+
+console.log(make); // "Toyota"
+console.log(model); // "Corolla"
+drive(); // The care is driving!
+console.log(numberOfWheels); // undefined
+
+peculiarities of accessing objects
+const littleYacht = {
+  floorColor: "red",
+  maximumLbs: 1000,
+  inOperation: true,
+  christened: false,
+  hornSound: "Ride of the Walkeries",
+  "Dock Name": "oceania",
+  //Dock Name: "oceania",
+
+  playHorn: function() {
+    console.log(littleYacht.hornSound);
+  }
+};
+
+console.log(littleYacht.floorColor);
+console.log(littleYacht["floorColor"]);
+// console.log(littleYacht[floorColor]);
+
+console.log(littleYacht["Dock Name"]);
+// console.log(littleYacht.Dock Name);
+
+the in operator
+check existence of a key in an object:
+const myObj = {
+  color: "red",
+  shape: "circle",
+  size: "4cm"
+}
+
+console.log("shape" in myObj); // => true
+console.log("height" in myObj); // => false
+
+methods are properties of objects which are functions
+const car = {
+  make: "Toyota",
+  model: "Corolla",
+  // this is a method
+  drive() {
+    console.log("The car is driving!");
+  },
+  // it's shorthand for this
+  useHorn: function() {
+    console.log("Beep");
+  }
+}
+
+car.drive(); // Logs out "The car is driving!"
+car.useHorn(); // Logs out "Beep"
+
+** object shorthand and spread thinkful
+
+Object shorthand JavaScript syntax that supports the creation of objects using values stored in variables, where the variable name becomes the key and the stored value becomes the value in the key-value pair
+Spread operator An operator that expands entries in arrays and other objects
+
+Object shorthand
+Newer versions of JavaScript have made it even easier for you to streamline your code by allowing you to create object shorthands.
+Object shorthand syntax means that you can create objects using values that you've stored in variables.
+
+Take a look:
+const title = "Infernal Devices";
+const author = "K.W. Jeter";
+const book = { title, author };
+
+Notice that in the above code, there is no colon : symbol to distinguish a key from a value. So, what are the keys and values of this object?
+
+console.log(book); //> { title: "Infernal Devices", author: "K.W. Jeter" }
+
+Here, JavaScript takes the name of the variable and sets that to be the key. It then sets the value to be whatever is stored in that variable. This works with more complicated data types, as well.
+
+const product = { book, priceInCents: 1950 };
+
+With this shorthand tool, you can write cleaner code. The above code would result in the following:
+
+{
+  book: {
+    title: "Infernal Devices",
+    author: "K.W. Jeter",
+  },
+  priceInCents: 1950,
+};
+
+The spread operator
+The spread operator allows you to easily combine arrays and objects without a lot of complicated code.
+For example, with what you know now, how would you go about combining the following two arrays?
+
+const ownedBooks = ["Infernal Devices", "Foundation"];
+const wishlist = ["Good Omens", "Guards! Guards!"];
+
+At first glance, you'd probably see that you could loop through one array and push each item into the other, or you could use the concat() method, which you can learn more about in MDN's array documentation.
+And yet, it can be even easier than that.
+
+Review the code below. What do you notice?
+
+const allBooks = [...ownedBooks, ...wishlist];
+//> [ "Infernal Devices", "Foundation", "Good Omens", "Guards! Guards!" ]
+
+Do you see the three periods ...?
+When ... is used with an existing array on the right side of the = sign, it will expand the entries inside of that array.
+In the above case, both arrays are expanded into a new array, so that all of the array elements appear next to one another.
+
+This can also be accomplished with objects, as follows:
+
+const salesTax = { state: "Washington", tax: 0.065 };
+const sale = { ...product, ...salesTax };
+/*
+  {
+    book: {
+      title: "Infernal Devices",
+      author: "K.W. Jeter",
+    },
+    priceInCents: 1950,
+    state: "Washington",
+    tax: 0.065
+  };
+*/
+
+In the example above, the product object contains the book key and the priceInCents key.
+The salesTax object contains the state and tax keys.
+Those keys are all placed into a new object in the variable sale.
+Note how the book object wasn't expanded; the spread operator expands only one level deep.
+
+You also can overwrite keys in an object where you're using shorthand. You can do this by simply using the key once again. Take a look:
+
+const sale = {
+  ...product,
+  ...salesTax,
+  priceInCents: product.priceInCents * (1 + salesTax.tax),
+};
+
+/*
+  {
+    book: {
+      title: "Infernal Devices",
+      author: "K.W. Jeter",
+    },
+    priceInCents: 2076.75,
+    state: "Washington",
+    tax: 0.065
+  };
+*/
+
+In the above example, the product and salesTax values are expanded with the spread operator, just like before. But this time, the priceInCents key is added to overwrite the priceInCents key that was stored in the product variable.
+
+
+Property value shorthand (for Objects)
+A convenient shorthand method for creating an object if your local variable name matches the new object's key
+
+// Function that returns a new 'cat' object:
+function createCat(name) {
+  const color = getRandomColor();
+
+  return {
+    eyes: 2,
+    legs: 4,
+    name,     // same as name: name
+    color,    // same as color: color
+  };
+}
+
+const myCat = createCat('tabby');
+
+example:
+{
+  eyes: 2,
+  legs: 4,
+  name: 'tabby',
+  color: 'blue'
+}
+
+
+Spread operator (...) with objects
+    Helps us manage merging objects
+    Creates a new object
+    Be aware of the order in which merging is done
+
+const littleYacht = {
+    "Dock Name": "oceania",
+    floorColor: "red",
+    christened: false,
+    hornSound: "Ride of the Walkeries",
+    playHorn() {
+        console.log(littleYacht.hornSound);
+    }
+};
+
+const littleYacht2 = {
+    roofColor: "green",  // new key, will be added
+    christened: true     // duplicate key, will be overwritten
+};
+
+const newYacht = { ...littleYacht, ...littleYacht2 };
+
+The this keyword
+    (Generally) used in methods to refer to properties of an object
+    Don't need to know the variable name of the object itself
+
+const littleYacht = {
+    hornSound: "Ride of the Walkeries",
+    playHorn: function() {
+      // Equivalent to littleYacht.hornSound
+      console.log(this.hornSound);
+    }
+};
+
+littleYacht.playHorn(); // Ride of the Walkeries
+
+
+What does this refer to?
+    this is assigned a value at the moment the method is invoked, and not when it is defined
+    this is assigned to the object to the left of the dot when the function was called
+
+const littleYacht = {
+  hornSound: "Ride of the Walkeries",
+  playHorn: function() {
+    console.log(this.hornSound);
+  }
+};
+
+littleYacht.playHorn(); // Ride of the Walkeries
+
+const biggerYacht = {
+  hornSound: "Fog Horn",
+  playHorn: littleYacht.playHorn
+};
+
+biggerYacht.playHorn(); // Fog Horn
+
 * Undefined
 * operator
 
@@ -6286,6 +7068,146 @@ Create a switch statement that will alert "Hello" if fruits is "banana", and "We
 
 Start the Exercise
 
+** control flow thinkful
+
+Control flow
+1.5 hoursAverage Reading Time
+Learning Objective
+By the end of this lesson, you will be able to write if/else statements concisely. You'll also be able to use switch statements to control the flow of programs.
+
+Overview
+You already know how to use if/else statements to control the flow of code. And although you can always effectively control the flow of the code with the if/else statements that you've learned so far, there are some additional tools that can make your code simpler. In this lesson, you will explore different ways of writing if/else statements. You'll also learn about switch statements, which offer another way of controlling the flow of programs.
+
+It's important to know the various tools that you have available as a developer. Ultimately, the tool that you'll use in specific cases will likely come down to your personal preferences.
+
+Start by watching the video below, which provides a brief introduction to simple if statements and the switch statement. Then, read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+
+
+Single-line if statements
+There's a lot of talk about if/else statements. And with good reason—they're pretty useful. But sometimes you don't need an else statement as part of your conditional. Take a look:
+
+function getPrice(product) {
+  let price = product.priceInCents;
+  if (product.onSale) {
+    price = price * 0.9;
+  }
+
+  return price;
+}
+
+const product = {
+  priceInCents: 2100,
+  name: "Red Beanie",
+  size: "L",
+  onSale: true,
+};
+getPrice(product); //> 1890
+Here, the getPrice() function applies a 10% discount to any item that has onSale set to a truthy value. And although the above code sample is perfectly fine, you may also see the following:
+
+function getPrice(product) {
+  let price = product.priceInCents;
+  if (product.onSale) price = price * 0.9;
+
+  return price;
+}
+This function definition, by contrast, has removed that set of curly brackets {} and has instead added the remaining line, price=price*0.9, to the line above it. However, you should only consolidate lines like this in your own code if the content inside the block is very short. Otherwise, it will be too difficult to read.
+
+It's important to note that there is no substantive difference between these two options. They simply look different.
+
+The conditional operator
+The conditional operator, also commonly called the ternary operator, is a way to write a short if/else statement. It should be used only if the overall if/else statement is very short. The syntax works like this:
+
+(conditional expression) ? (expression if true) : (expression if false)
+Take a look at the following rewrite of the getPrice() function. As you can see, this function is now much more concise, which makes it cleaner and easier to read.
+
+function getPrice(product) {
+  return product.onSale ? product.priceInCents * 0.9 : product.priceInCents;
+}
+To make sure you understand what is happening here, take a moment to break this down. The expression before the question mark is the conditional. If it evaluates to a truthy value, the expression after the ? will be returned. But if the conditional evaluates to a falsy value, the expression after the colon : will be returned.
+
+When it comes to comparing the options discussed here, there's no one best approach. The single-line if statement, the conditional operator, and a full if/else statement can all work for you. Over time, you'll develop preferences based on which method you find to be clearest and easiest to read. However, because you're still learning the ropes, you should default to writing out the full statement for the time being. This will help you become comfortable with the process before you start abbreviating it.
+
+To learn more, check out MDN's page about the conditional operator.
+
+The switch statement
+Sometimes, like in the cases noted above, your if/else statements can be quite short. But sometimes, they can be very long.
+
+Take a look at this example. What do you think this code does?
+
+function getStateSalesTax(stateAbbreviation) {
+  let result;
+  if (stateAbbreviation === "CA") {
+    result = 0.0725;
+  } else if (stateAbbreviation === "CO") {
+    result = 0.029;
+  } else if (stateAbbreviation === "GA") {
+    result = 0.04;
+  } else if (stateAbbreviation === "VT") {
+    result = 0.06;
+  } else {
+    result = 0;
+  }
+
+  return result;
+}
+The code above is actually pretty straightforward—depending on the state that is inputted, a different value (in this case, a sales tax amount) is returned. But this might feel a bit clunky. Fortunately, there's another way that you could write the function above: with the switch statement.
+
+function getStateSalesTax(stateAbbreviation) {
+  let result;
+  switch (stateAbbreviation) {
+    case "CA":
+      result = 0.0725;
+      break;
+    case "CO":
+      result = 0.029;
+      break;
+    case "GA":
+      result = 0.04;
+      break;
+    case "VT":
+      result = 0.06;
+      break;
+    default:
+      result = 0;
+  }
+
+  return result;
+}
+So, what's happening here? Right after the switch keyword is introduced, the given expression is evaluated. Then, a matching case is searched for using strict equality. If anything matches, it runs the code in that case. The break keyword stops the current switch statement, preventing the code from running for any more cases. If no matching value is found, the default runs.
+
+Usually, case statements will use break between each case. This can help you avoid getting behavior or results that you don't expect.
+
+Sometimes, the fallthrough behavior is helpful. For example, look at this code sample:
+
+function getStateSalesTax(stateAbbreviation) {
+  let result;
+  switch (stateAbbreviation) {
+    case "CA":
+      result = 0.0725;
+      break;
+    case "CO":
+      result = 0.029;
+      break;
+    case "GA":
+      result = 0.04;
+      break;
+    case "MD":
+    case "VT":
+    case "WV":
+      result = 0.06;
+      break;
+    default:
+      result = 0;
+  }
+
+  return result;
+}
+In this example, "MD", "VT", and "WV" all have the same sales tax. Entering any one of those values will set the result to the same value.
+
+The two functions discussed above will work in similar ways. Ultimately, it'll be up to you when you want to use a switch statement instead of a longer if/else statement.
+
+If you want to learn more, consult MDN's page on the switch statement.
+
 * Function
 
 A Function is a block of code that describes a repeatable process or behavior
@@ -6633,6 +7555,194 @@ function myFunction() {
 
 Start the Exercise
 
+** default parameter thinkful
+
+Setting defaults
+Take a look at the following function. What do you notice?
+
+function calculatePriceInDollars(priceInCents) {
+  return priceInCents / 100;
+}
+
+This simple function converts cents to dollars.
+It takes a number—in this case, a specific amount of money—and then divides it by 100.
+However, if no argument is entered when the function is called, it will result in NaN.
+This can be seen below.
+
+calculatePriceInDollars(100); //> 1  (Returns 1 because 100 cents = 1 dollar)
+calculatePriceInDollars(250); //> 2.5
+calculatePriceInDollars(); //> NaN
+
+But imagine that you want the value to be 0 instead of NaN if no argument is entered.
+In this case, you can set 0 as the default for the priceInCents parameter.
+Setting a default means that you've identified a value to be there even if a specific value is missing from the function call.
+
+function calculatePriceInDollars(priceInCents = 0) {
+  return priceInCents / 100;
+}
+
+calculatePriceInDollars(); //> 0
+
+To set a default, place an equals sign = after the parameter name, followed by whatever value you want to use as the default. This value can be anything valid in JavaScript.
+
+If the value of that parameter is undefined when the function is called, it will be replaced with the value that you've provided.
+
+Why use defaults?
+At this point, you may be wondering: instead of using default parameters, shouldn't you just make sure that your functions are always called correctly?
+Indeed, in the above example of the calculatePriceInDollars() function, it might seem like it would make more sense to just always use an argument.
+And in general, this is true—it is better to simply use your functions as intended rather than set numerous defaults.
+
+However, defaults can be particularly useful in a few circumstances:
+    If there is a typical case for your function, but you want to allow for certain options, you might use defaults.
+    If one or more of the argument values that you're using come from an outside source, you might use defaults because you won't necessarily be able to control the input values.
+
+Consider the example below.
+
+function welcomeMessage(name, isReturnCustomer = false) {
+  const message = isReturnCustomer ? "Welcome back" : "Welcome";
+  return `${message}, ${name}!`;
+}
+
+You may expect the above function to pass in only a single argument typically. However, if the customer is a returning customer, you could easily change the message by adding a second argument. In this case, the function could use defaults to allow for a typical case with some options.
+
+Object defaults
+Now, you'll investigate object defaults.
+
+Code setup
+You'll use the code below for the following examples. So take a moment to review this function and figure out how it's used.
+
+// Function definition
+function calculateTotal(products, { discountPercentage, salesTax }) {
+  let result = 0;
+  for (let i = 0; i < products.length; i++) {
+    const { priceInCents, quantity } = products[i];
+    result += priceInCents * quantity;
+  }
+
+  if (discountPercentage) result *= 1 - discountPercentage;
+  return result * (1 + salesTax);
+}
+
+// Inputs
+const products = [
+  {
+    name: "Black Longline T-Shirt",
+    priceInCents: 1500,
+    size: "M",
+    quantity: 2,
+  },
+  {
+    name: "Light Wash Stretch Skinny Jeans",
+    priceInCents: 6000,
+    size: 32,
+    quantity: 1,
+  },
+];
+const options = { discountPercentage: 0.1, salesTax: 0.0825 };
+
+// Function call
+calculateTotal(products, options); //> 8768.25
+
+The above function takes in an array of products and calculates the total. If discountPercentage is included in the options parameter, it will apply a discount. It will then add salesTax to the total.
+
+Do this
+Run calculateTotal()
+
+Copy the function above and paste it into a place or program, such as a code editor, where you can edit it and then run the function. Try changing the quantities and options to see what happens.
+Set an object as a default
+
+Now, in the case of the function above, imagine that there are no discounts, and you just want to use a standard sales tax. In this situation, you may want to just call the function without passing anything in. However, this will result in an error.
+
+calculateTotal(products);
+//> Uncaught TypeError:
+//> Cannot destructure property 'discountAmount' of 'undefined' as it is undefined.
+
+The issue above is that there is no object to destructure, so the code fails to create those variables. But just like you saw above, you can set a default parameter by adding an = sign followed by the default value.
+
+function calculateTotal(products, { discountPercentage, salesTax } = {}) {
+  // ...
+}
+
+What is happening in the function signature above? Take a look:
+    If there is an object passed in as the second argument, the code will destructure that argument and assign the discountPercentage and salesTax variables.
+    If there isn't an object passed in as the second argument, the code will default to an object. Then it will attempt to destructure that empty object. The variables will exist, but they will both be set to undefined.
+
+Update calculateTotal()
+Update the calculateTotal() function with the above code. Try running it once more, only passing in products as an argument. Is the result what you expected? Or is it different?
+
+Default key values
+If you run the function above without a second argument, it will run. But it will give you an undesirable result.
+
+calculateTotal(products); //> NaN
+
+In this case, the result will be NaN because salesTax is undefined. This problem can be solved by using more defaults.
+
+function calculateTotal(products, { discountPercentage, salesTax = 0.0825 } = {}) {
+  // ...
+}
+
+The code above sets a default value for the key in the object. If salesTax is undefined, salesTax will in fact be set to the value of 0.0825.
+Now, if you call this function with products as the only argument, it will work correctly.
+
+calculateTotal(products); //> 9742.5
+
+Do this
+Include default values
+
+Update your calculateTotal() function so that it includes a default for the salesTax value. Try running the function once again. What is the result?
+
+Setting a default array
+With this practice under your belt, you're ready for one final modification. You can update the code so that if products happens to be undefined, the function will just return 0. Specifically, you would change the function signature to look like the one below:
+
+function calculateTotal(products = [], { discountPercentage, salesTax } = {}) {
+  // ...
+}
+
+The above code sets the default for products to be an empty array. This means that the for loop will still be able to run.
+
+calculateTotal(); //> 0
+
+The entire updated function is below.
+
+function calculateTotal(products = [], { discountPercentage, salesTax = 0.0825 } = {}) {
+  let result = 0;
+  for (let i = 0; i < products.length; i++) {
+    const { priceInCents, quantity } = products[i];
+    result += priceInCents * quantity;
+  }
+
+  if (discountPercentage) result *= 1 - discountPercentage;
+  return result * (1 + salesTax);
+}
+
+
+An aside: Pass by reference or value?
+
+    Primitives (string, number, boolean) are passed by value
+    Complex data types (arrays, objects) are passed by reference
+
+let myNumber = 10;
+
+function passedPrimitive(num) {
+  num = 20;
+}
+
+passedPrimitive(myNumber);
+console.log(myNumber);   // => 10
+
+function receives a copy of the value - local scope cannot impact the original variable
+
+const mySequence = [1,2,3];
+
+function passedComplex(arr) {
+  arr.push(4);
+}
+
+passedComplex(mySequence);
+console.log(mySequence);  // => [1,2,3,4]
+
+function receives a reference to the item - the local variable assigned to this item is impacting the original item
+
 * JavaScript Arrow Function
 Arrow functions were introduced in ES6.
 
@@ -6720,6 +7830,656 @@ The following table defines the first browser versions with full support for Arr
 Chrome 45	Edge 12	Firefox 22	Safari 10	Opera 32
 Sep, 2015	Jul, 2015	May, 2013	Sep, 2016	Sep, 2015
 
+* advanced functions
+** overview: advanced functions
+
+JavaScript allows you to pass functions as if they were objects.
+With this ability, you will learn how to implement the accumulator pattern that you learned early on, using different native array methods.
+
+** function expressions and arrow functions
+
+Key Terms
+Function expression A function created in a place where there would otherwise be a value
+Anonymous function A function that doesn't have a name
+Arrow syntax A way to write a compact function expression by using an arrow => to define the function
+Arrow functions are shorter than the functions that you've written so far, and they can make it easier to see what's happening when there are lots of functions. They're also used frequently in higher-order functions, asynchronous code, and React. These are topics that you'll learn about later on.
+
+Different types of functions
+Read through this lesson and complete the practice work required. This will give you a full understanding of these concepts.
+
+In JavaScript, there are two different ways to create functions: function declarations and function expressions.
+
+A function declaration (also called a function definition or function statement) is JavaScript code that creates a new function with a name. This is the most common way to create functions, and it's the approach that you've seen so far in this program.
+
+A function expression is a function created in a place where there would otherwise be a value. Functions created this way may or may not have a name.
+
+Suppose that you wish to create a function that accepts a park object in the form { name: "Biscayne", rating: 4.2 } and returns "Excellent!" if the rating was greater than 4 and "Good" otherwise. Here are three different ways to implement that same function:
+
+// Function declaration
+function ratingAsText(park) {
+  console.log("This is a function declaration.");
+  return park.rating > 4 ? "Excellent!" : "Good";
+}
+
+// Function expression
+const ratingAsTextNamed = function ratingToWord(park) {
+  console.log("This is a function expression that has a name.");
+  return park.rating > 4 ? "Excellent!" : "Good";
+};
+
+// Anonymous function expression
+const ratingAsTextAnonymous = function (park) {
+  console.log("This is an anonymous function that does not have a name.");
+  return park.rating > 4 ? "Excellent!" : "Good";
+};
+The first function is a function declaration. It is the typical way to define functions. If you wanted to call this function, you would use the name of the function along with the argument list. For example, you could call ratingAsText(park).
+
+The second function consists of two parts: the constant (ratingAsTextNamed ) and the function expression (ratingToWord(park)). Notice that the ratingToWord(park) function expression uses exactly the same syntax as a function declaration. The only difference is that the function is being assigned to a variable. You can call this function with ratingAsTextNamed(park). However, you cannot call the function using ratingToWord(park) unless the function is calling itself (you will learn more about this later).
+
+The last function does not have a name, meaning that it is an anonymous function. It is an expression that is assigned to the variable ratingAsTextAnonymous, and it can be called with ratingAsTextAnonymous(park).
+
+Arrow functions
+Now, take a look at the following function expression:
+
+const location = {
+  name: "Arches",
+  state: "Utah",
+  geo: {
+    lat: 38.68,
+    lon: -109.57,
+  },
+};
+
+const getLocationState = function (location) {
+  return location.state;
+};
+The above function will return the state value of a given location object. Recall the different parts of the function syntax:
+
+Labeled function syntax
+You can rewrite this function using arrow syntax, like this:
+
+Labeled arrow syntax
+Instead of using the function keyword, this syntax uses an arrow => to define the function. Notice that the rest of the syntax is essentially the same.
+
+const getLocationState = (location) => {
+  return location.state;
+};
+There are a couple of important facts to keep in mind when using an arrow function:
+
+If there is only one parameter, the parentheses () around the parameter are optional. For example, the function above accepts just one parameter, location, so you can leave out the parentheses around the parameter and write it like this:
+
+const getLocationState = location => {
+  return location.state;
+};
+If the function consists of just a single return statement, you can omit the curly brackets {} and just have the arrow point to the value being returned. For example, the body of the above function consists of just the statement return location.state, you can drop the return keyword and the {}. This means that you can write the function in an even more concise way:
+
+const getLocationState = location => location.state;
+Next, take a look at some more examples of arrow functions and their equivalent function declarations.
+
+Get location name
+// Arrow function
+const getLocationName = (location) => location.name;
+
+// Function declaration
+function getLocationName(location) {
+  return location.name;
+}
+Get Google Map URL
+Tip
+The return value in this function is quite long. If you still want to avoid using the return keyword, you can use parentheses.
+
+// Arrow function
+const getGoogleMapURL = ({ geo: { lat, lon } }, zoom = 10) => (
+  `https://www.google.com/maps/@${lat},${lon},${zoom}z`
+);
+
+// Function declaration
+function getLocationCoordinates({ geo: { lat, lon } }, zoom = 10) {
+  return `https://www.google.com/maps/@${lat},${lon},${zoom}z`;
+}
+Which is better?
+At the moment, there is no "right" answer as to whether you should use a function declaration or a function expression. Arrow functions are a newer feature of JavaScript, and you will see them often in upcoming lessons.
+
+Note: Later on, you'll learn another reason to use arrow functions. This reason will have to do with the this keyword and something called execution context.
+
+const cal = (length) => length ** 3;
+
+** higher-order functions
+
+Callback function Also called a callback, a function that is passed into another function as an argument
+
+Previously, you've learned to use loops to deal with data in arrays.
+For example, you may have looped through an array to find a particular item, or to find all the items within a particular constraint.
+
+These kinds of problems aren't unique. JavaScript has built-in array methods that can help you accomplish common data-manipulation tasks.
+
+Higher-order functions
+
+
+The built-in array methods that you will learn in this lesson and the next few are all called higher-order functions.
+
+Key Term
+Higher-order function: Any function that either accepts a function as one of its incoming arguments or returns a function
+
+Higher-order functions are incredibly powerful, and they are used a lot in JavaScript.
+Allowing for a function as an input or an output can lead to some very customizable tools.
+
+For example, suppose that you created a shop and wished to give discounts on some items. You could create a function to calculate the discounted price as follows:
+
+#+begin_src js
+// using arrow function
+// declaring constant variable with two parameters price and discount
+// then times price by discount
+const discountedPrice = (price, discount) => price * discount;
+#+end_src
+
+const discountedPrice = (price, discount) => price * discount;
+
+Then you could call the function to calculate final prices for some items with a 10% discount, like this:
+const finalPriceBed = discountedPrice(200, 0.9); // 90% of $200
+const finalPricePillow = discountedPrice(52, 0.9); // 90% of $52
+const finalPriceCurtain = discountedPrice(32, 0.9); // 90% of 32
+
+Did you notice that in each case, you are passing the same value of 0.9? Instead, you could simply make a new function that calculates the 10% discount, and then you wouldn't need to pass that argument each time. But what if you sometimes wanted to give 25% discounts? You would then need another function that calculates the 25% discount.
+
+You can use a higher-order function that generates the functions that you need. For example, consider the following function. What does it return?
+const discountedPrice = (discount) => {
+  return (price) => price * discount;
+}
+The function above returns a function that accepts a single parameter price and multiplies the price by the discount provided. You can use it to first create a function that calculates the 10% discount, and then use the generated function to calculate the discounts.
+
+const tenPercentDiscount = discountedPrice(0.9);
+const finalPriceBed = tenPercentDiscount(200); // 90% of $200
+const finalPricePillow = tenPercentDiscount(52); // 90% of $52
+const finalPriceCurtain = tenPercentDiscount(32); // 90% of 32
+And if you wanted to, you could later modify this function to calculate a 25% discount, like this:
+
+const twentyFivePercentDiscount = discountedPrice(0.75);
+const finalPriceBed = twentyFivePercentDiscount(200); // 75% of $200
+const finalPricePillow = twentyFivePercentDiscount(52); // 75% of $52
+const finalPriceCurtain = twentyFivePercentDiscount(32); // 75% of 32
+This example is quite trivial, but over time, you will encounter many examples of higher-order functions that behave in a similar manner.
+
+One final note on this example: the discountedPrice() function above was deliberately written with an explicit return statement. Because this function returns a single value, you can use a more concise syntax and drop the return statement. In other words, you could rewrite this function as follows:
+
+const discountedPrice = discount => price => price * discount;
+Despite the simple definition, higher-order functions can be difficult to understand and write. For now, you will learn about existing higher-order functions that are built into JavaScript. Later on, you will write your own.
+
+The forEach() method
+You can use the following Replit to follow along with the lesson and run code examples for the forEach() method:
+
+
+Take a look at the following array of park information:
+
+let parks = [
+  { name: "Biscayne", rating: 4.2 },
+  { name: "Grand Canyon", rating: 5 },
+  { name: "Gateway Arch", rating: 4.5 },
+  { name: "Indiana Dunes", rating: 4.1 },
+];
+It's common to write a loop to do something for each element in an array, like this:
+
+for (let i = 0; i < parks.length; i++) {
+  console.log(parks[i].name);
+}
+// Biscayne
+// Grand Canyon
+// Gateway Arch
+// Indiana Dunes
+Because you are doing the same thing to each element of the array, you can write a function to perform that same task with each element. Then you can call that function repeatedly in the loop.
+
+const logPark = (park) => console.log(park.name);
+
+for (let i = 0; i < parks.length; i++) {
+  logPark(parks[i]);
+}
+You can think of the for loop as applying this function to each element of the array, one at a time. The function gets each item in succession. In this example, the function parameter park is called, because that's helpful for remembering what the item is.
+
+The forEach() method lets you do this without a for loop. This lets you think about the items themselves, instead of counting indexes.
+
+To see the syntax, take a look at the following example, which is equivalent to the loop above.
+
+parks.forEach(logPark);
+// Biscayne
+// Grand Canyon
+// Gateway Arch
+// Indiana Dunes
+The forEach() method accepts a function as an argument. The function that you pass to the method is referred to as a callback function. In other words, a callback function is a function that is passed into another function as an argument.
+
+How forEach() works
+Where does park come from? That is, how does forEach() know what to put there? The forEach() method is a higher-order function, in that it takes a callback function as its argument.
+
+So you provide forEach() with a callback function. Then, internally, forEach() executes that callback function once for each element of the array.
+
+In some instances, you may use an anonymous function as the callback. Take a look at the following example. This is equivalent to the code above, but it has been rewritten to use an anonymous function.
+
+parks.forEach((park) => console.log(park.name));
+// Biscayne
+// Grand Canyon
+// Gateway Arch
+// Indiana Dunes
+In the example above, you aren't passing a named function to forEach(); rather, you are defining an anonymous function in the invocation of forEach().
+
+Customizing forEach()
+Just like for any other function, you could call the argument anything that you want, and you would get the same results. You can see this in action below:
+
+parks.forEach((element) => {
+  console.log(element.name);
+});
+// Biscayne
+// Grand Canyon
+// Gateway Arch
+// Indiana Dunes
+But naming the argument after what the item means is more helpful to other developers, so the examples in this program will stick to that.
+
+The forEach() method also gives you access to other arguments that you can use in the function, including the index and the original collection.
+
+parks.forEach((park, index, collection) => {
+  console.log(`(${index + 1}/${collection.length}) ${park.name}`);
+});
+// (1/4) Biscayne
+// (2/4) Grand Canyon
+// (3/4) Gateway Arch
+// (4/4) Indiana Dunes
+In the above example, you can see that you have access to the individual element at each point in the array, the index at that point, and then the entire collection.
+
+** find, filter
+
+By the end of this lesson, you will be able to use find(), filter(), map(), some(), and every() to solve various problems.
+
+Overview
+Now that you have some understanding of how to use forEach(), you are ready to learn other array methods that work in a similar fashion. In this lesson, you'll learn how to use the built-in array methods find(), filter(), map(), some(), and every().
+
+Start by watching the video below, which provides a brief introduction to this topic. Then, read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+
+
+The find() method
+In this lesson, you'll work with the parks data again.
+
+const parks = [
+  { name: "Biscayne", rating: 4.2 },
+  { name: "Grand Canyon", rating: 5 },
+  { name: "Gateway Arch", rating: 4.5 },
+  { name: "Indiana Dunes", rating: 4.1 },
+];
+Sometimes, you'll want to write a loop to find an item in an array. Here's an example that uses a loop to find a park that has a specific name:
+
+let found = null;
+for (let i = 0; i < parks.length; i++) {
+  const park = parks[i];
+  if (park.name === "Biscayne") found = park;
+}
+console.log(found); //> { name: "Biscayne", rating: 4.2 }
+Once again, you can extract the logic from this loop into a function. Take a look at the function below. This function, parkNameIsBiscayne(), accepts a single park object and returns true if the name of the park is "Biscayne" and false otherwise. You can then call that function in the loop.
+
+const parkNameIsBiscayne = (park) => park.name === "Biscayne";
+
+let found = null;
+for (let i = 0; i < parks.length; i++) {
+  const park = parks[i];
+  if (parkNameIsBiscayne(park)) found = park;
+}
+console.log(found); //> { name: "Biscayne", rating: 4.2 }
+Here, you are using the loop to visit each element in the array and perform a comparison. If the comparison is true, you select that item from the array. And if the comparison never returns true, you don't select anything from the array.
+
+You could also use a built-in array method to do this; the find() method encapsulates this functionality. With find(), you can provide a callback function that implements the comparison that you wish to perform. Then, find() will apply this comparison to each element of the array.
+
+Take a look at how you could perform the above task using the find() method:
+
+let found = parks.find((park) => park.name === "Biscayne");
+console.log(found); //> { name: "Biscayne", rating: 4.2 }
+The find() method uses the callback function to decide whether each item matches, and it does the rest of the work from the loop. It returns the first item that matches the condition, even if more than one item matches. If there is no match, find() returns undefined.
+
+Here's a visual summary of this method:
+
+The find() method
+The find() method operates on an array of items and returns a single item.
+
+Do this
+Use find()
+Using the above parks dataset, use the find() function to write code that finds the park with a rating of 4.1.
+
+The filter() method
+const parks = [
+  { name: "Biscayne", rating: 4.2 },
+  { name: "Grand Canyon", rating: 5 },
+  { name: "Gateway Arch", rating: 4.5 },
+  { name: "Indiana Dunes", rating: 4.1 },
+];
+Sometimes, you'll want to build up a new list of items that meet a particular condition. Take a look at some code that does that with a for loop:
+
+let result = [];
+for (let i = 0; i < parks.length; i++) {
+  const park = parks[i];
+  if (park.rating >= 4.5) result.push(park);
+}
+console.log(result); // [ { name: "Grand Canyon", rating: 5 }, { name: "Gateway Arch", rating: 4.5 } ]
+You can use the filter() method to achieve the same goal. This method builds a new array of only the items that match a certain condition. Take a look at the example below to see how this works. Once again, the comparison that was done in the body of the loop has been refactored into a callback function.
+
+let result = parks.filter((park) => park.rating >= 4.5);
+console.log(result); // [ { name: "Grand Canyon", rating: 5 }, { name: "Gateway Arch", rating: 4.5 } ]
+This method filters the array so that you have only some of the items. It's pretty similar to find(), except that it returns an array of all the matching items, instead of just the first match.
+
+Keep in mind that filter() returns a new array. The old array will still have the same items. It is also possible for the returned array to be empty, if no element matches the criterion that's given in the function.
+
+Here's a quick summary of this method:
+
+The filter() method
+The filter() method operates on an array of items and returns a new array of items that match the criterion.
+
+Do this
+Use filter()
+Using the above parks dataset, write code using the filter() function to find the parks with names that begin with the letter "G".
+
+The map() method
+The loop below creates a new array that just contains the names of all of the parks.
+
+const parks = [
+  { name: "Biscayne", rating: 4.2 },
+  { name: "Grand Canyon", rating: 5 },
+  { name: "Gateway Arch", rating: 4.5 },
+  { name: "Indiana Dunes", rating: 4.1 },
+];
+
+const result = [];
+for (let i = 0; i < parks.length; i++) {
+  result.push(parks[i].name);
+}
+console.log(result); // [ "Biscayne", "Grand Canyon", "Gateway Arch", "Indiana Dunes" ]
+Basically, this code processes each item in the array and creates a new value for each item in the original array. Each item in the original array maps to an item in the new array.
+
+You can achieve this same goal with the built-in map() method, as follows:
+
+const result = parks.map((park) => park.name);
+console.log(result); // [ "Biscayne", "Grand Canyon", "Gateway Arch", "Indiana Dunes" ]
+Just like the other array methods that you've been looking at, map() will run the callback function for each of the items in the array. The map() method uses the callback function to create the items for the new array. In this case, the code adds the park.name for each park to the new array.
+
+The map() method works in lots of situations—not just ones where you want to pick one value from each of a list of objects. This method works in any situation where you want to transform each value of an array into another value.
+
+Here's a quick summary of this method:
+
+The map() method
+The map() method operates on an array of items and creates a new array of items the same size as the original array.
+
+Do this
+Use map()
+Using the above parks dataset, use the map() method to write code that returns an array of strings, where each string is the name of the park next to its rating. The end result should look something like this:
+
+["Biscayne: 4.2", "Grand Canyon: 5", "Gateway Arch: 4.5", "Indiana Dunes: 4.1"];
+When you're done, compare your work to this solution:
+
+const result = parks.map((park) => `${park.name}: ${park.rating}`);
+console.log(result); // ["Biscayne: 4.2", "Grand Canyon: 5", "Gateway Arch: 4.5", "Indiana Dunes: 4.1"];
+The some() method
+Sometimes, you'll just want to check if some condition is met in your array. The following code checks whether or not any of the parks have a rating of greater than 4.
+
+const parks = [
+  { name: "Biscayne", rating: 4.2 },
+  { name: "Grand Canyon", rating: 5 },
+  { name: "Gateway Arch", rating: 4.5 },
+  { name: "Indiana Dunes", rating: 4.1 },
+];
+
+let result = false;
+for (let i = 0; i < parks.length; i++) {
+  if (parks[i].rating > 4) result = true;
+}
+console.log(result); // true
+You can achieve this same goal with the built-in some() method, like this:
+
+const result = parks.some((park) => park.rating > 4);
+console.log(result); // true
+The some() method accepts a callback function that implements a comparison that is executed for each item in the array, similar to the previous methods. If the callback function returns true for any item in the array, then the entire some() method returns true.
+
+This method is more efficient than the for loop shown above, in that it returns immediately as soon as the condition is met. The some() method is useful for quick checks like this, and it's different from the other methods in this lesson in that it returns a boolean value instead of an array.
+
+Here's a quick summary of this method:
+
+The some() method
+The some() method operates on an array of items and returns a boolean value.
+
+Do this
+Use some()
+Using the above parks dataset, use the some() function to write code that returns whether or not the "Grand Arches" park is included in the array.
+
+The every() method
+At times, you may want to check whether every item in an array matches some condition. The every() method has you covered. Take a look:
+
+const parks = [
+  { name: "Biscayne", rating: 4.2 },
+  { name: "Grand Canyon", rating: 5 },
+  { name: "Gateway Arch", rating: 4.5 },
+  { name: "Indiana Dunes", rating: 4.1 },
+];
+
+const result = parks.every((park) => park.rating > 4);
+console.log(result); // true
+The every() method works by checking the condition given against every item in the array. If that condition ever fails, it will return false. Otherwise, it will return true. Once again, the comparator is implemented in the callback function passed to the method.
+
+Here's a quick summary of this method:
+
+The every() method
+The every() method operates on an array of items and returns a boolean value.
+
+Do this
+Use every()
+Using the above parks dataset, use the every() function to write code that returns whether or not every park has a rating between 4.2 and 4.6.
+
+Iteration over objects
+Another way that you could store the parks data is with the following object:
+
+let parks = {
+  "Biscayne": 4.2,
+  "Grand Canyon": 5,
+  "Gateway Arch": 4.5,
+  "Indiana Dunes": 4.1,
+};
+How might you use the methods that you've learned with an object? If you want to get all the keys as an array, you can use the built-in JavaScript method Object.keys(), like this:
+
+Object.keys(parks); // => ["Biscayne", "Grand Canyon", "Gateway Arch", "Indiana Dunes"];
+With the keys as an array, you can use the array methods that you've learned, like this:
+
+Object.keys(parks).filter((name) => {
+  const rating = parks[name];
+  return rating >= 4.5;
+}); // => ["Grand Canyon", "Gateway Arch"]
+Note: There's also a method to get the values from an object. To learn more, check out the MDN documentation on Object.values().
+
+Don't forget to return!
+All of these methods require that you return some value inside the callback function. Not doing so could have unintended consequences, as demonstrated here:
+
+const parks = [
+  { name: "Biscayne", rating: 4.2 },
+  { name: "Grand Canyon", rating: 5 },
+  { name: "Gateway Arch", rating: 4.5 },
+  { name: "Indiana Dunes", rating: 4.1 },
+];
+
+const result = parks.map((park) => {
+  park.name; // This value isn't returned by the callback
+});
+console.log(result); // [ undefined, undefined, undefined, undefined ]
+In the above code, because park.name isn't being returned, the inner function's return value is undefined. This means that undefined will take the place of each item.
+
+So if you are seeing strange results, make sure that you are returning within the callback function.
+
+** reduce
+
+Learning Objective
+By the end of this lesson, you will be able to use reduce() to solve different problems.
+
+Overview
+You've seen several powerful array methods so far. In this lesson, you'll learn another: reduce(). As you'll see, reduce() is a tool that generalizes the accumulator pattern that you learned earlier in this program.
+
+Overview of the reduce() method
+Start by watching the video below, which provides a brief introduction to this topic. Then, read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+
+
+The basics of reduce()
+Earlier in this program, you learned about the accumulator pattern. In this pattern, you use a loop to build up a new value. Each step of the loop gets one item from the array and combines it with an accumulator, like a running total.
+
+Take a look at an example with a for loop:
+
+const areas = [768, 1004.2, 433.1];
+let result = 0;
+for (let i = 0; i < areas.length; i++) {
+  result += areas[i];
+}
+console.log(result); //> 2205.3
+The reduce() method is another way to express the accumulator pattern. This method turns an array of values into a single value. Like many of the other methods here, it will pass each value into a function, step by step. The reduce() method will also pass in the return value from the previous step.
+
+For example, take a look at the following code. This code uses reduce() to achieve the same results as the code above.
+
+const areas = [768, 1004.2, 433.1];
+let result = areas.reduce((total, area) => total + area);
+console.log(result); //> 2205.3
+The reduce() method takes two arguments: a function and an optional starting value. In the example above, the optional initial value isn't used. However, consider that there may be different scenarios where setting an initial value may be useful. For example, if you have an initial area that you want to add, you can simply add it as an argument, as shown below.
+
+const areas = [768, 1004.2, 433.1];
+let initialValue = 200;
+let result = areas.reduce((total, area) => total + area, initialValue);
+console.log(result); //> 2405.3
+The function passed into the reduce() function is similar to the other functions that you've seen, except that it includes an additional parameter: the initialValue. The initial value parameter represents the following:
+
+On the first iteration, the accumulator value (total in the above function) is set to the second parameter (200 in the above function).
+
+On every subsequent iteration, the accumulator value is set to whatever was returned from the previous iteration.
+
+So, the above code works as follows:
+
+The areas and initialValue values are defined.
+
+The reduce() method takes a function that adds the accumulator and the current element. The first iteration will add 200 and 768.
+
+The result of the first iteration will become the accumulator in the next iteration.
+
+Once all iterations are finished, the value is stored in the result variable.
+
+The result is logged out.
+
+Do this
+Add logging for understanding
+The reduce() method can be difficult to understand. Try running the following code, and look at the logged statements.
+
+const areas = [768, 1004.2, 433.1];
+let initialValue = 200;
+let result = areas.reduce((total, area, index) => {
+  console.log(`index: ${index}`, `total: ${total}`, `area: ${area}`);
+  return total + area;
+}, initialValue);
+console.log(result); //> 2405.3
+You will see something like this:
+
+index: 0 total: 200 area: 768
+index: 1 total: 968 area: 1004.2
+index: 2 total: 1972.2 area: 433.1
+2405.3
+As you can see above, the value of area is added to total at each step.
+
+Remove the initial value
+The second argument in reduce() is optional. So, what happens if it is removed? Try running the following code to find out.
+
+const areas = [768, 1004.2, 433.1];
+let result = areas.reduce((total, area, index) => {
+  console.log(`index: ${index}`, `total: ${total}`, `area: ${area}`);
+  return total + area;
+});
+console.log(result); //> 2205.3
+You will see something like this:
+
+index: 1 total: 768 area: 1004.2
+index: 2 total: 1772.2 area: 433.1
+2205.3
+Notice that for the first iteration, total is set to the first value of the areas array, and area is set to the second value.
+
+Complex usage
+The initial value that reduce() uses can be any data type, just like how the accumulator could be anything when you're using the accumulator pattern. This allows for some pretty powerful but complex usage of the reduce() method.
+
+For example, take a look at the code below. This code accumulates array values into an object.
+
+const parks = [
+  { name: "Acadia", areaInSquareKm: 198.6 },
+  { name: "Crater Lake", areaInSquareKm: 741.5 },
+  { name: "Kenai Fjords", areaInSquareKm: 2710 },
+  { name: "Zion", areaInSquareKm: 595.9 },
+];
+
+const parkToAreasObject = parks.reduce((result, park) => {
+  result[park.name] = park.areaInSquareKm;
+  return result;
+}, {});
+Running the code above produces the following value for the result variable:
+
+{
+  Acadia: 198.6,
+  'Crater Lake': 741.5,
+  'Kenai Fjords': 2710,
+  Zion: 595.9
+}
+At each step in the function given to reduce(), a new key is created in the given object. The value assigned to that key is the areaInSquareKm value. Then, the overall object is returned so that it can serve as the accumulator (result) in the next iteration.
+
+** sort
+
+Learning Objective
+By the end of this lesson, you will be able to use sort() to sort arrays in various ways.
+
+Overview
+Sorting is often a starting step when you're solving other problems. But sorting can be a deep and difficult topic on its own. Until you're ready to dive into building your own sorting function, you can use JavaScript's built-in sort() method. You'll learn how to do just that in this lesson.
+
+Basics of sort()
+Start by watching the video below, which provides a brief introduction to this topic. Then, read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+
+
+The sort() method takes a function and uses that function to sort an array based on the given criteria. For example, take a look at the function below. This function sorts the parks based on the rating of each park.
+
+const parks = [
+  { name: "Biscayne", rating: 4.2 },
+  { name: "Grand Canyon", rating: 5 },
+  { name: "Gateway Arch", rating: 4.5 },
+  { name: "Indiana Dunes", rating: 4.1 },
+];
+
+parks.sort((parkA, parkB) => (parkA.rating > parkB.rating ? 1 : -1));
+console.log(parks);
+In the above code, you can see that the function passed in to sort() has two parameters. Each parameter, on the first iteration, represents the first and second element of the array. The ratings are then compared for each park.
+
+If the number returned is negative, the first item (parkA) will be moved before the second item (parkB). The opposite is true if the number is positive. This iteration then continues, but with the second and third items.
+
+If 0 is returned, the items won't change places.
+
+You may also see code that follows the format shown below, particularly when you're sorting based on a number. The effect of this code is similar to that of the previous code sample.
+
+parks.sort((parkA, parkB) => parkA.rating - parkB.rating);
+console.log(parks);
+Sorting strings
+You can compare strings with the greater-than > and less-than < symbols in JavaScript.
+
+"Biscayne" < "Grand Canyon"; //> true
+The above code returns true because the letter B comes before the letter G. However, it isn't quite as simple as it seems. For example, look at this code:
+
+"biscayne" < "Grand Canyon"; //> false
+Strings do not get compared alphabetically; instead, they're compared based on their character value. This means that sorting strings can be a bit more unreliable than you might expect. Still, with some ingenuity, it is possible to do a passable job of sorting strings. For example, you could modify your function as follows:
+
+parks.sort((parkA, parkB) =>
+  parkA.name.toLowerCase() > parkB.name.toLowerCase() ? 1 : -1
+);
+console.log(parks);
+Caveats for using sort()
+Be careful with sort(). It has several peculiarities that can lead to bugs. Here are a few to watch out for:
+
+It expects you to return a negative number for items that should be earlier in the list, and a positive number for items that should be later in the list.
+
+It changes the array in place. In other words, it doesn't return a new array—it mutates the existing array. The parks dataset changed its order in the above example.
+
+It has a default behavior if you don't pass in a function, but this default behavior might not be what you want.
+
+For more insight into the default behavior, take a look at the following code.
+
+["Biscayne", "grand canyon", "Gateway arch"].sort();
+//> [ 'Biscayne', 'Gateway arch', 'grand canyon' ]
+This could be what you want, but it is almost always better to provide a function so that you can determine the effect of sort().
+
+** assessment
 * JavaScript Modules
 Modules
 JavaScript modules allow you to break up your code into separate files.
@@ -6994,6 +8754,80 @@ In a web browser, global variables are deleted when you close the browser window
 Function Arguments
 
 Function arguments (parameters) work as local variables inside functions.
+
+** scope thinkful
+
+Sibling scopes Two or more scopes that share a common parent scope
+
+Complex scope
+The following video breaks down how to evaluate functions with complicated scope and diagram the scope of programs.
+Start by watching the video, and then read through the rest of the lesson and complete the practice work required.
+This will give you a full understanding of these concepts.
+
+When you use let and const, you can easily separate scope by simply looking for the curly brackets {}.
+Each pair of curly brackets gives you a new level of scope.
+
+Additionally, anything inside of a set of curly brackets can access reference variables that are set outside of it.
+See if you can separate the scopes in the code sample below:
+
+const DISCOUNT_PERCENTAGE = 0.15;
+function discountPricesInCents(products) {
+  const result = [];
+
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+    let price = product.priceInCents;
+    if (DISCOUNT_PERCENTAGE > 0) {
+      const multiplier = 1 - DISCOUNT_PERCENTAGE;
+      price = product.priceInCents * multiplier;
+    }
+    result.push(price);
+  }
+
+  return result;
+}
+
+The above code relies on different rules for block scope and global scope. Here are the details:
+
+    In the discountPricesInCents() function, you can access DISCOUNT_PERCENTAGE because it's part of the global scope.
+    Later on, if you were to call discountPricesInCents(), you would be accessing it from the global scope.
+    In the for loop statement, you're able to access the products parameter because it is shared inside the function scope. If you tried to log products outside of the function, you would get an error.
+    Inside of the for loop, you're able to access products and DISCOUNT_PERCENTAGE because they are both in outer scopes.
+    However, i, product, and price are accessible only within the for loop. You can't access those variables outside of the curly brackets.
+    Finally, multiplier is accessible only inside of the if statement. It can't be accessed outside of that statement.
+
+Diagramming scope
+As you can see above, a complex scope can be hard to understand. To gain some clarity, developers often find it useful to diagram out the scope for a particular function or program. Here's one way to diagram scope:
+Diagramming scope
+
+The above diagram demonstrates the following:
+    Each distinct background color represents a level of scope. For example, the if statement scope is enclosed inside of the for loop scope.
+    At each arrow, a new scope is introduced. For example, inside of the function scope is a for loop scope.
+    Each scope has access to the variables of its containers. For example, the function scope has access to the global scope, and the if statement scope has access to all other scopes.
+
+Reminder: Variable declarations and scope
+As you know, variables declared with let and const can only ever be declared once.
+But there's one exception to this rule: you may declare variables that are in sibling scopes.
+For example, pay attention to the price variable in the following code sample:
+
+const DISCOUNT_PERCENTAGE = 0.15;
+const product = {
+  name: "Black Longline T-Shirt",
+  priceInCents: 1500,
+  availableSizes: ["XS", "S", "XL", "XXL"],
+};
+
+
+if (DISCOUNT_PERCENTAGE > 0) {
+  const multiplier = 1 - DISCOUNT_PERCENTAGE;
+  const price = product.priceInCents * multiplier;
+  console.log(price);
+} else {
+  const price = product.priceInCents;
+  console.log(price);
+}
+
+In the case above, price is declared twice as a const variable, but the scopes are separate. That means that they can both be declared successfully on their own.
 
 * iterate
 
@@ -7651,6 +9485,91 @@ for (const x of fruits) {
   // code block to be executed
 }
 
+** looping over objects thinkful
+
+Transforming objects into arrays
+One way of looping over objects is to "cheat."
+In this context, "cheating" means that instead of looping over an object, you'll actually transform part of the object into an array.
+There are two methods that allow you to "cheat" in this way: Object.values() and Object.keys().
+
+Accessing values
+Often, you'll use objects to connect two pieces of information together.
+For example, the following object connects names with addresses.
+
+const people = {
+  "Lee Finch": { address: "913 Hunts Lane", isCustomer: true },
+  "Whitney Shawna": { address: "392 Norfolk Street", isCustomer: false },
+  "Gabrielle Mayo": { address: "934 Engert Avenue", isCustomer: false },
+};
+
+However, what if you need to access just the values? You can do this by using Object.values(), passing in the object.
+This method will return an array of all the values in any given object.
+
+See the example below:
+const addresses = Object.values(people);
+//> [
+//>   { address: "913 Hunts Lane", isCustomer: true },
+//>   { address: "392 Norfolk Street", isCustomer: false },
+//>   { address: "934 Engert Avenue", isCustomer: false },
+//> ]
+You can now loop over these values as you would in an array. Pretty nifty!
+
+Accessing keys
+Now, imagine that you need to access just the keys of an object.
+This is where a similar method, Object.keys(), comes in handy.
+
+Take a look:
+const names = Object.keys(people);
+//> [ "Lee Finch", "Whitney Shawna", "Gabrielle Mayo" ];
+And yet again, you're set up to loop over this array however you like.
+
+Looping over objects
+Generally, the two methods described above will be sufficient for the work that you'll do.
+They'll help you "cheat" to create an array that you can then loop over as needed.
+However, sometimes it'll be easier to loop through an object on its own.
+In those cases, you will use a for/in loop.
+
+
+Now, take a look at the code sample below:
+for (let name in people) {
+  const person = people[name];
+  const address = person.address;
+  console.log(`Sending mail to ${name} at ${address}.`);
+}
+In the above for/in loop, people is the entire object, and name will be every object key. The code will run as many times as there are keys within the for/in loop block. This will allow you access to every key and value in the object.
+
+This same process can be performed by using Object.keys() in place of the for/in syntax.
+However, the for/in syntax is generally recommended because it takes less code and more clearly demonstrates the purpose of the code.
+
+Do this
+Use a for/in loop
+
+Try running the following code directly. Can you identify the data types of people, name, person, and address here? Take a moment to consider what those data types might be and to predict what the code will do before you run it.
+
+const people = {
+  "Lee Finch": { address: "913 Hunts Lane", isCustomer: true },
+  "Whitney Shawna": { address: "392 Norfolk Street", isCustomer: false },
+  "Gabrielle Mayo": { address: "934 Engert Avenue", isCustomer: false },
+};
+
+
+for (let name in people) {
+  const person = people[name];
+  const address = person.address;
+  console.log(`Sending mail to ${name} at ${address}.`);
+}
+
+for-in loops
+use it to iterate over the keys of objects
+let object = {
+  name: "Alice",
+  location: "Sealand"
+};
+for (let key in object) {
+  //  Logs "name Alice",  "location Sealand"
+  console.log(key, object[key]);
+};
+
 * Math.
 
 Generate Random Fractions with JavaScript
@@ -7981,6 +9900,204 @@ Coding conventions are not used by computers. Most rules have little impact on t
 Indentation and extra spaces are not significant in small scripts.
 
 For code in development, readability should be preferred. Larger production scripts should be minified.
+
+** writing readable code thinkful
+
+
+earning Objective
+By the end of this lesson, you will be able to refactor code to be more readable and more efficient.
+
+Overview
+At this point, you've learned several important JavaScript concepts. You're familiar with some essential JavaScript syntax, statements, and code-writing tools. And now, it's time to take those skills and refine them. In this lesson, you'll learn some techniques and best practices for writing readable code.
+
+Key Terms
+Guard clause
+A statement that evaluates to a boolean that determines whether or not a function should continue running
+As you know, developers should aim to write code that is clear, clean, and easy to read. And this lesson is all about helping you do that. Of course, there are different approaches and techniques, and the advice provided in this lesson reflects that subjectivity. None of the techniques included here are required. However, they will improve the readability of your code, and using them will show other developers (and potential employers) that you're thoughtful, careful, and professional.
+
+For more advice on how to write code well, speak with experts in the field. Many developers have strong opinions on how to write code that is more legible and maintainable. Gathering information from different experts will help inform your preferences and practices.
+
+Don't repeat yourself
+One important rule that you will often hear as a developer is not to repeat yourself. In fact, don't repeat yourself is often abbreviated to DRY, and the whole idea is often captured in the following advice: write DRY code. Generally, this idea is used specifically in the context of functions. Because functions allow you to wrap up repeated code within a function, they can be particularly helpful when it comes to writing DRY code.
+
+However, this is only one way to think about the phrase "don't repeat yourself." Take a look at the following data and function. Spend a few moments reviewing it to make sure you understand what is happening. What do you notice? Then, try running the function yourself.
+
+const authors = [
+  {
+    id: 1,
+    name: {
+      firstName: "Philip",
+      surname: "Pullman",
+    },
+    series: ["His Dark Materials", "Sally Lockhart"],
+  },
+  {
+    id: 2,
+    name: {
+      firstName: "Terry",
+      lastName: "Pratchett",
+    },
+    series: ["Discworld", "Long Earth"],
+  },
+];
+
+function getAllSeries(authors) {
+  const result = [];
+  for (let i = 0; i < authors.length; i++) {
+    for (let j = 0; j < authors[i].series.length; j++) {
+      result.push(authors[i].series[j]);
+    }
+  }
+  return result;
+}
+
+getAllSeries(authors);
+//> [ 'His Dark Materials', 'Sally Lockhart', 'Discworld', 'Long Earth' ]
+In the above function, there is some duplicate code. Can you see it? The code shows authors[i] multiple times.
+
+But maybe that can be tightened up. Instead, you could assign this value to the variable. Check it out:
+
+function getAllSeries(authors) {
+  const result = [];
+  for (let i = 0; i < authors.length; i++) {
+    const author = authors[i];
+    for (let j = 0; j < author.series.length; j++) {
+      result.push(author.series[j]);
+    }
+  }
+  return result;
+}
+Although you've technically made the above function a bit longer, it's now much clearer. It also avoids using authors[i] multiple times.
+
+If you want to try out the code, you can use this REPL:
+
+
+Return early
+Another important rule is to return early. At its most basic level, the return-early mindset involves writing a function that terminates or throws an error as soon as something is wrong, with the goal of yielding the correct result—the one that you'd expect—at the end of the function.
+
+To better understand this idea, take a look at the following function. This code sample expects inputted data that is similar to that authors array from above.
+
+function getSeriesListById(authors, id) {
+  let selected = null;
+  for (let i = 0; i < authors.length; i++) {
+    const author = authors[i];
+    if (author.id === id) selected = author;
+  }
+
+  if (id) {
+    if (selected) {
+      const message = `Series list: ${selected.series.join(", ")}`;
+      return message;
+    } else {
+      return [];
+    }
+  } else {
+    return "No ID provided.";
+  }
+}
+In the above function, the authors array and an id are given to the function. If the id matches one of the authors, the code returns the series for that author. Otherwise, it returns an empty array. If no id is inputted, it returns a string at the end saying so: No ID provided.
+
+The above code isn't that complicated. But it can be made simpler by returning early. Check it out:
+
+function getSeriesListById(authors, id) {
+  if (!id) return "No ID provided.";
+
+  let selected = null;
+  for (let i = 0; i < authors.length; i++) {
+    const author = authors[i];
+    if (author.id === id) selected = author;
+  }
+  if (!selected) return [];
+
+  return `Series list: ${selected.series.join(", ")}`;
+}
+In this modified example, the function stops if there is no id inputted rather than running despite the lack of id. In fact, when the function stops, the same string from above, No ID provided, is returned. But you'll notice that this happens near the beginning of the function, rather than at the end. This means that the code below that point does not have to run, and it is letting you know as soon as possible that there's no id inputted.
+
+This is sometimes referred to as a guard clause. A guard clause is a statement that evaluates to a boolean that determines whether or not a function should continue running. Implementing guard clauses in your code will make your code much more efficient and easier to read.
+
+Avoid boolean returns
+One final rule is to avoid boolean returns when possible. Although this isn't always possible, you can often avoid explicitly returning true and false by returning the expression that is evaluating the statement.
+
+For example, take a look at the following function. What do you notice?
+
+function moreThanThreeAuthors(authors) {
+  if (authors.length > 3) {
+    return true;
+  } else {
+    return false;
+  }
+}
+The function above just checks if there are more than three authors in the given array. But you can actually write a stronger, shorter function with the following:
+
+function moreThanThreeAuthors(authors) {
+  return authors.length > 3;
+}
+The conditional statement will already be evaluated to a boolean, so you don't need to explicitly return true or false.
+
+
+DRY (Don't repeat yourself) & Writing readable code
+
+Simplify condition based functions by returning the comparison instead of true or false explicitly
+
+function isAdult(age){
+  if(age > 17){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+function isAdult(age){
+  return age > 17;
+}
+
+
+DRY (Don't repeat yourself) & Writing readable code
+
+const characters = [
+  {
+    id: 1,
+    name: {
+      firstName: "Sonic",
+      lastname: "Hedgehog",
+    },
+    games: ["Sonic 1", "Sonic 2"],
+  },
+  {
+    id: 2,
+    name: {
+      firstName: "Lara",
+      lastName: "Croft",
+    },
+    games: ["Tomb Raider", "Tomb Raider 2"],
+  },
+];
+
+function getAllGames(characters) {
+  const result = [];
+  for (let i = 0; i < characters.length; i++) {
+    for (let j = 0; j < characters[i].games.length; j++) {
+      result.push(characters[i].games[j]);
+    }
+  }
+  return result;
+}
+
+getAllGames(characters);
+
+function getAllGames(characters) {
+  const result = [];
+  for (let i = 0; i < characters.length; i++) {
+    const character = characters[i];
+    for (let j = 0; j < character.games.length; j++) {
+      result.push(character.games[j]);
+    }
+  }
+  return result;
+}
+
+getAllGames(characters);
 
 * JavaScript Best Practices
 Avoid global variables, avoid new, avoid ==, avoid eval()
@@ -8863,3 +10980,192 @@ Example
 
 </body>
 </html>
+
+** error types thinkful
+*** Runtime errors
+
+errorType: description of the error
+SyntaxError: function statement requires a name
+
+*** Reference errors
+
+Reference error - An error that occurs when some variable being referenced doesn't exist or can't be accessed
+
+In console.log statement the variable customerName is misspelled
+
+A reference error tells you that some variable being referenced doesn't exist.
+You can fix this kind of error by finding the offending reference and checking for the correct name.
+
+But a ReferenceError could also surface if the variable cannot be accessed at all.
+
+In the above example, the result variable does exist, but it exists only inside the addSalesTax() function.
+Attempting to access that variable outside of that function would lead to a ReferenceError.
+(This is because of a concept called scope, which you'll learn about later in this module.)
+
+#+begin_src js
+// reference error caused by misspelling variable name
+const customerName = "Alfie Lee";
+// customerName is mis-spelled
+console.log(customrName); // returns ReferenceError: customrName is not defined
+
+// reference error caused variable can't be accessed
+function addSalesTax(total, salesTax) { //func takes parameters total and salesTax
+    let result = total * (1 + salesTax); // declare result asign total times (salesTax plus one)
+    return result; // return results
+}
+// trying print result but result but result only exist is local scope of function
+console.log(result); //returns ReferenceError: result is not defined
+#+end_src
+
+*** Syntax errors
+
+Syntax error - An error that occurs when some part of the predefined JavaScript syntax is being used incorrectly
+
+A syntax error will occur when some part of the predefined JavaScript syntax is used incorrectly, such as a character is used twice or not used at all.
+These errors are common for developers due to the simple fact that coding uses many symbols and characters that people don't otherwise use.
+For instance, because curly brackets {} are unusual in regular typing, it can be easy to forget one.
+
+Take a look at the following code. Can you find what's missing?
+
+function printWelcome () {
+  console.log("Welcome to our store!";
+}
+Above, you'll see that the console.log() statement is missing a closing parenthesis ).
+The error that would surface because of the above code would be as follows:
+
+SyntaxError: missing ) after argument list
+Although that message is fairly straightforward, it often isn't that simple.
+It can be challenging to actually resolve a SyntaxError with longer, more complex code.
+In the case of a SyntaxError, you often just need to look through your code patiently and carefully for the missing or extra symbol.
+
+Correctly indenting your code and using a code formatter can be useful for identifying (and preventing) issues like this.
+For example, take a look at the following code.
+
+function openInstructions (weather, temperatureInCelsius) {
+if (weather && temperatureInCelsius) {
+  if (weather === "sunny") {
+  if (temperatureInCelsius > 20) {
+    return "Set up the patio and put out umbrellas. Open indoor windows.";
+  } else { return "Set up the patios, umbrellas optional. Open indoor windows."; }
+  } else if (weather === "rainy") {
+    if (temperatureInCelsius > 10) {
+      return "Open indoor windows slightly.";
+    } else { return "Keep windows closed." } }
+  }
+} else {
+  return "Please set the `weather` and `temperatureInCelsius` variables.";
+}
+}
+
+openInstructions("sunny", 18);
+If you were to run the above code, you would receive this message in the console:
+
+SyntaxError: expected expression, got '}'
+That isn't very helpful, and you'd have to do the legwork of resolving the issue.
+This is one of the many reasons that it's important to write your code legibly.
+
+*** Type errors
+
+Type error - An error that occurs when you misuse a data type in JavaScript, meaning that an operation can't be performed
+
+And finally, you'll learn about the TypeError.
+A type error will occur when you misuse a data type in JavaScript, meaning that an operation can't be performed.
+One of the most common ways that this error will occur is through a situation like this:
+
+price.trim(); //> TypeError: price.trim is not a function
+As it turns out, the trim() function, when called on a string, removes extra whitespace from the beginning and the end of that string.
+So in this case, why would price.trim() not be a function? Well, this error is likely telling you that price isn't actually a string.
+
+To better understand what's going on, take a look at the whole picture:
+
+let price = 9.99;
+price.trim(); //> TypeError: price.trim is not a function
+You might expect this error to tell you that price isn't the right data type, rather than telling you that trim() isn't a function. To better understand why the error is described the way it is, try running the following code:
+
+let price = 9.99;
+console.log(price.trim); //> undefined
+You may be surprised to find that calling trim as a property on price doesn't fail—instead, it returns an undefined. But when you try to invoke the undefined property, that is when you get your error.
+
+*** Silent errors
+
+Silent error - An error that doesn't immediately surface when the code is run
+
+The three errors described above are caught and revealed to you when you run your JavaScript code. However, it's also possible for errors to occur as you are writing code but not immediately surface when you run it. This type of error is called a silent error.
+
+For example, take a look at the following code. Do you see any problems?
+
+function formatPrice(priceInCents) {
+  let formattedPrice = "$" + (priceInCents / 100).setFixed(2);
+  return formattedPrice;
+}
+You may not notice any issues with this code right off the bat. And even when you run this code sample, no errors will surface. It is only when you invoke the function that you will see the error:
+
+TypeError: (priceInCents / 100).setFixed is not a function
+In this case, the function uses setFixed(), which is not a function, instead of toFixed(), which is a function. When working with complex applications with multiple functions, you'll need to be aware of silent errors like this one.
+
+** references thinkful
+
+Primitive data type Also called a primitive or a simple data type, a data type containing variables that store values
+Reference data type Also called a reference or a complex data type, a data type containing variables that store addresses to locations in memory
+
+Primitive data types
+JavaScript has several data types that are passed by value.
+These are often called primitive data types, or simply primitives, and you've already learned a bit about them!
+Primitive data types in JavaScript include strings, numbers, and booleans, as well as null and undefined.
+When a primitive data type is assigned to a variable, that variable gets its own copy.
+
+Take a look at the following line of code:
+
+const title = "Mort";
+In this example, the variable title contains the string "Mort". If you reassign the value contained by title to another variable, such as name, both variables will contain their own copy of that value. You can see this below.
+
+let title = "Mort";
+const name = title;
+title = "Equal Rites";
+console.log(title, name); //> "Equal Rites", "Mort"
+The above code is very important. Although it may seem obvious, you should take a moment to understand what's happening here. When title is reassigned to "Equal Rites", notice that the name variable still holds its own copy of "Mort".
+
+Now, take a look at another example. As you read over this, what do you expect to be logged?
+
+let price = 1000;
+let salePrice = price;
+salePrice -= 100;
+console.log(price, salePrice); //> 1000 900
+In the code above, the price variable will still be the number 1000, while the salePrice variable will be 900. Despite the modification of salePrice, price retains its own copy of the value 1000.
+
+Reference data types
+But there's another kind of data type: reference data types. Reference data types, sometimes just called references, in JavaScript include functions, objects, and arrays. When a reference data type is assigned to a variable, the variable will contain a reference (also called a pointer) to the data.
+
+Take a look at the following example. What do you expect to happen here?
+
+const book = { title: "Mort", author: "Terry Pratchett" };
+const mort = book;
+book.price = 789;
+console.log(mort); //> { title: "Mort", author: "Terry Pratchett", price: 789 }
+Are you surprised by the result? Both the book variable and the mort variable point toward the same reference. That means that if you modify the object through one variable, the other variable will have that same modification.
+
+This is further illustrated by the following two examples. Here's the first:
+
+const author = {};
+const book = {};
+console.log(author === book); //> false
+In the above console.log() statement, two empty objects, author and book, are compared with one another. When the === sign is used, it compares these objects' references.
+
+These objects may look the same. However, the statement resolves to false. That is because author and book each store their own references to different objects.
+
+Now, check out this example:
+
+const sourcery = { title: "Sourcery", author: "Terry Pratchett" };
+const favoriteBook = sourcery;
+console.log(sourcery === favoriteBook); //> true
+In the above console.log() statement, sourcery and favoriteBook contain references to the same object. When the === sign is used, it compares these references and resolves to true.
+
+This works the same way for arrays, as well. Take a look:
+
+const books = ["Mort", "Sourcery", "Equal Rites"];
+const series = books;
+series.push("Guards! Guards!");
+console.log(books); //> [ "Mort", "Sourcery", "Equal Rites", "Guards! Guards!" ]
+In the above example, push() changes the array to include a new title. This mutates the original array, which both books and series are pointing toward.
+
+Note: In the examples above, const is used instead of let to store an array or object. And yet, the values inside of these arrays and objects can be changed. Ultimately, const only stops reassignment, without changing the values inside of the reference itself (in other words, the array or object).
