@@ -1,10 +1,10 @@
 :PROPERTIES:
 :ID:       63bc8d8d-4fc8-4b34-8881-43ace1415a53
 :END:
-#+title: javascript
+#+title: JavaScript
 #+date: [2022-06-26 Sun 20:16]
 
-* Introduction to JavaScript
+** Introduction to JavaScript
 
 console.log() prints to the console
     Data is printed, or logged, to the console, a panel that displays messages, with console.log().
@@ -12,8 +12,6 @@ console.log() prints to the console
 
 window.alert(); creates a popup
   window.alert("hello");
-
-
 
 
 Built-in objects, including Math, are collections of methods and properties that JavaScript provides.
@@ -53,7 +51,7 @@ The ECMAScript standard does not include any input/output (I/O), such as network
 JavaScript engines were originally used only in web browsers, but are now core components of some servers and a variety of applications.
 The most popular runtime system for this usage is Node.js.
 
-* JavaScript Statements
+** JavaScript Statements
 
 JavaScript Programs
 A computer program is a list of "instructions" to be "executed" by a computer.
@@ -86,7 +84,7 @@ JavaScript Code Blocks
 JavaScript statements can be grouped together in code blocks, inside curly brackets {...}.
 The purpose of code blocks is to define statements to be executed together.
 
-** JavaScript Keywords
+*** JavaScript Keywords
 
 JavaScript statements often start with a keyword to identify the JavaScript action to be performed.
 
@@ -195,7 +193,7 @@ while (condition) {
   code block to be executed
 }
 
-** js Statements Example
+*** js Statements Example
 
 Example
 let x, y, z;    // Statement 1
@@ -244,7 +242,7 @@ function myFunction() {
   document.getElementById("demo2").innerHTML = "How are you?";
 }
 
-* JavaScript Syntax
+** JavaScript Syntax
 
 JavaScript syntax is the set of rules, how JavaScript programs are constructed:
 
@@ -330,7 +328,26 @@ JavaScript Character Set
 JavaScript uses the Unicode character set.
 Unicode covers (almost) all the characters, punctuations, and symbols in the world.
 
-* what are javascript comments? wip
+
+JavaScript Identifiers
+All JavaScript variables must be identified with unique names.
+
+These unique names are called identifiers.
+
+Identifiers can be short names (like x and y) or more descriptive names (age, sum, totalVolume).
+
+The general rules for constructing names for variables (unique identifiers) are:
+
+    Names can contain letters, digits, underscores, and dollar signs.
+    Names must begin with a letter
+    Names can also begin with $ and _ (but we will not use it in this tutorial)
+    Names are case sensitive (y and Y are different variables)
+    Reserved words (like JavaScript keywords) cannot be used as names
+
+Note
+JavaScript identifiers are case-sensitive.
+
+** what are javascript comments? wip
 
 Comments are ignore when the program runs.
 Comments are ignored, and will not be executed:
@@ -356,12 +373,12 @@ Multi-line comments start with /* and end with */.
 
 Any text between /* and */ will be ignored by JavaScript.
 
-multi-line comment - a comment block
+multi-line comment - a comment block.
 
 Block comments are often used for formal documentation.
 Using comments to prevent execution of code is suitable for code testing.
 
-** JavaScript Comments Examples
+*** JavaScript Comments Examples
 #+begin_src js
 // single-line comment
 /*
@@ -369,7 +386,11 @@ Using comments to prevent execution of code is suitable for code testing.
 */
 #+end_src
 
-* Variables
+** Variables
+
+What are Variables?
+
+Variables are containers for storing data (storing data values).
 
 A variable is a named container that can stroe a changeable data value.
 
@@ -381,11 +402,8 @@ Variables hold reusable data in a program and associate it with a name.
 
 Variables are stored in memory.
 
-
 Variables allow computers to store and manipulate data in a dynamic fashion.
 They do this by using a "label" to point to the data rather than using the data itself.
-Any of the eight data types may be stored in a variable.
-
 
 Two steps:
   Declaration (var, let, const)
@@ -401,9 +419,7 @@ JavaScript Variables
 In a programming language, variables are used to store data values.
 JavaScript uses the keywords var, let and const to declare variables.
 An equal sign is used to assign values to variables.
-In this example, x is defined as a variable. Then, x is assigned (given) the value 6:
-let x;
-x = 6;
+
 
 JavaScript Variables
 4 Ways to Declare a JavaScript Variable:
@@ -413,122 +429,15 @@ JavaScript Variables
     Using const
     Using nothing
 
-What are Variables?
-
-Variables are containers for storing data (storing data values).
-
-In this example, x, y, and z, are variables, declared with the var keyword:
-Example
-var x = 5;
-var y = 6;
-var z = x + y;
-
-In this example, x, y, and z, are variables, declared with the let keyword:
-Example
-let x = 5;
-let y = 6;
-let z = x + y;
-
-In this example, x, y, and z, are undeclared variables:
-Example
-x = 5;
-y = 6;
-z = x + y;
-
-From all the examples above, you can guess:
-
-    x stores the value 5
-    y stores the value 6
-    z stores the value 11
-
-When to Use JavaScript var?
-
-Always declare JavaScript variables with var,let, orconst.
-
-The var keyword is used in all JavaScript code from 1995 to 2015.
-
-The let and const keywords were added to JavaScript in 2015.
-
-If you want your code to run in older browser, you must use var.
-When to Use JavaScript const?
-
-If you want a general rule: always declare variables with const.
-
-If you think the value of the variable can change, use let.
-
-In this example, price1, price2, and total, are variables:
-Example
-const price1 = 5;
-const price2 = 6;
-let total = price1 + price2;
-
-The two variables price1 and price2 are declared with the const keyword.
-
-These are constant values and cannot be changed.
-
-The variable total is declared with the let keyword.
-
-This is a value that can be changed.
-Just Like Algebra
-
-Just like in algebra, variables hold values:
-let x = 5;
-let y = 6;
-
-Just like in algebra, variables are used in expressions:
-let z = x + y;
-
-From the example above, you can guess that the total is calculated to be 11.
-Note
 
 Variables are containers for storing values.
-JavaScript Identifiers
 
-All JavaScript variables must be identified with unique names.
 
-These unique names are called identifiers.
 
-Identifiers can be short names (like x and y) or more descriptive names (age, sum, totalVolume).
 
-The general rules for constructing names for variables (unique identifiers) are:
 
-    Names can contain letters, digits, underscores, and dollar signs.
-    Names must begin with a letter
-    Names can also begin with $ and _ (but we will not use it in this tutorial)
-    Names are case sensitive (y and Y are different variables)
-    Reserved words (like JavaScript keywords) cannot be used as names
 
-Note
 
-JavaScript identifiers are case-sensitive.
-The Assignment Operator
-
-In JavaScript, the equal sign (=) is an "assignment" operator, not an "equal to" operator.
-
-This is different from algebra. The following does not make sense in algebra:
-x = x + 5
-
-In JavaScript, however, it makes perfect sense: it assigns the value of x + 5 to x.
-
-(It calculates the value of x + 5 and puts the result into x. The value of x is incremented by 5.)
-Note
-
-The "equal to" operator is written like == in JavaScript.
-JavaScript Data Types
-
-JavaScript variables can hold numbers like 100 and text values like "John Doe".
-
-In programming, text values are called text strings.
-
-JavaScript can handle many types of data, but for now, just think of numbers and strings.
-
-Strings are written inside double or single quotes. Numbers are written without quotes.
-
-If you put a number in quotes, it will be treated as a text string.
-Example
-const pi = 3.14;
-let person = "John Doe";
-let answer = 'Yes I am!';
 Declaring a JavaScript Variable
 
 Creating a variable in JavaScript is called "declaring" a variable.
@@ -547,10 +456,6 @@ You can also assign a value to the variable when you declare it:
 let carName = "Volvo";
 
 In the example below, we create a variable called carName and assign the value "Volvo" to it.
-
-Then we "output" the value inside an HTML paragraph with id="demo":
-Example
-<p id="demo"></p>
 
 <script>
 let carName = "Volvo";
@@ -642,7 +547,7 @@ Exercise:
 Create a variable called carName and assign the value Volvo to it.
 
 
-** variables thinkful
+*** variables thinkful
 
 In your earlier work with JavaScript, you practiced the basics of declaring variables with the let keyword.
 But that was just the beginning! In this lesson, you'll learn about two other methods of declaring variables, and you'll explore when you should use each approach.
@@ -740,7 +645,7 @@ At this point, you might be wondering which method of declaring variables you sh
 
     var makes variable global even in functions
 
-** var keyword
+*** var keyword
 
 var keyword isnt used anymore, and you should avoid using them.
 var variables can be re-declared and updated.
@@ -756,7 +661,7 @@ In a small application, you might not run into this type of problem.
 But as your codebase becomes larger, you might accidentally overwrite a variable that you did not intend to.
 Because this behavior does not throw an error, searching for and fixing bugs becomes more difficult.
 
-** let keyword
+*** let keyword
 
 let variables, however, can be updated.
 let is the preferred way to declare a variable when it can be reassigned
@@ -911,7 +816,22 @@ Example
 carName = "Saab";
 let carName = "Volvo";
 
-** const keyword
+
+The variable total is declared with the let keyword.
+
+This is a value that can be changed.
+Just Like Algebra
+
+Just like in algebra, variables hold values:
+let x = 5;
+let y = 6;
+
+Just like in algebra, variables are used in expressions:
+let z = x + y;
+
+From the example above, you can guess that the total is calculated to be 11.
+
+*** const keyword
 
 const keyword stand for constants
 const keyword used to declare variables that can't be changed
@@ -1114,7 +1034,24 @@ Example
 alert (carName);
 const carName = "Volvo";
 
-** unsorted variable
+
+When to Use JavaScript const?
+
+If you want a general rule: always declare variables with const.
+
+If you think the value of the variable can change, use let.
+
+In this example, price1, price2, and total, are variables:
+Example
+const price1 = 5;
+const price2 = 6;
+let total = price1 + price2;
+
+The two variables price1 and price2 are declared with the const keyword.
+
+These are constant values and cannot be changed.
+
+*** unsorted variable
 
 Initializing Variables with the Assignment Operator
 It is common to initialize a variable to an initial value in the same line as it is declared.
@@ -1140,7 +1077,7 @@ var someVariable;
 var anotherVariableName;
 var thisVariableNameIsSoLong;
 
-** JavaScript Variables
+*** js Variables examples
 
 #+begin_src js
 // declare a variable myVar without initial value:
@@ -1172,7 +1109,37 @@ myStr = myVar; // returns foo
 
 #+end_src
 
-* javaScript data types and data structures wip
+
+In this example, x is defined as a variable. Then, x is assigned (given) the value 6:
+let x;
+x = 6;
+
+
+In this example, x, y, and z, are variables, declared with the var keyword:
+Example
+var x = 5;
+var y = 6;
+var z = x + y;
+
+In this example, x, y, and z, are variables, declared with the let keyword:
+Example
+let x = 5;
+let y = 6;
+let z = x + y;
+
+In this example, x, y, and z, are undeclared variables:
+Example
+x = 5;
+y = 6;
+z = x + y;
+
+From all the examples above, you can guess:
+
+    x stores the value 5
+    y stores the value 6
+    z stores the value 11
+
+** javaScript data types and data structures wip
 
 what is the difference between data types and data structures
 
@@ -1437,7 +1404,7 @@ const x = {
 
 Start the Exercise
 
-* javascript strings wip
+** javascript strings wip
 
 Strings are characters wrapped in single or double quotes
 
@@ -1593,7 +1560,7 @@ let txt = "Hello World!";
 let x = ;
 alert(x);
 
-** Escape Sequences in Strings
+*** Escape Sequences in Strings
 
 Escaping Literal Quotes in Strings with and without backslashes
 'foo\'s bar'
@@ -1622,7 +1589,7 @@ ThirdLine
 You will need to use escape sequences to insert special characters correctly. You will also need to follow the spacing as it looks above, with no spaces between escape sequences or words.
 Note: The indentation for SecondLine is achieved with the tab escape character, not spaces.
 
-** concatenation
+*** concatenation
 
 The process of joining different values or pieces of text together
 
@@ -1662,7 +1629,7 @@ ourStr += anAdjective;
 ourStr would have the value freeCodeCamp is awesome!.
 Set someAdjective to a string of at least 3 characters and append it to myStr using the += operator.
 
-** bracket Notation
+*** bracket Notation
 
 Use Bracket Notation to Find the First Character in a String
 Bracket notation is a way to get a character at a specific index within a string.
@@ -1714,7 +1681,7 @@ thirdToLastLetter would have a value of the string s.
 Use bracket notation to find the second-to-last character in the lastName string.
 Hint: Try looking at the example above if you get stuck.
 
-** String methods and properties
+*** String methods and properties
 
 String methods help you to work with strings.
 
@@ -2549,7 +2516,7 @@ Note
 All string methods return a new value.
 They do not change the original variable.
 
-*** JavaScript String Properties
+**** JavaScript String Properties
 
 constructor property
 + The constructor property returns the string's constructor function
@@ -2577,7 +2544,7 @@ console.log("buzz".length); // returns 4
 
 The prototype property :: Allows you to add properties and methods to an object
 
-*** String HTML Wrapper Methods
+**** String HTML Wrapper Methods
 
 HTML wrapper methods return a string wrapped inside an HTML tag.
 
@@ -2597,7 +2564,7 @@ strike() 	Displays a string with a strikethrough
 sub() 	Displays a string as subscript text
 sup() 	Displays a string as superscript text
 
-** JavaScript Template Literals
+*** JavaScript Template Literals
 
 Synonyms:
 
@@ -2673,7 +2640,7 @@ Browser Support
 Template Literals is an ES6 feature (JavaScript 2015).
 
 It is supported in all modern browsers:
-				
+
 Chrome 	Edge 	Firefox 	Safari 	Opera
 Yes 	Yes 	Yes 	Yes 	Yes
 
@@ -2686,7 +2653,7 @@ Complete JavaScript String Reference.
 
 The reference contains descriptions and examples of all string properties and methods.
 
-** strings thinkful
+*** strings thinkful
 
 1.5 hoursAverage Reading Time
 Learning Objective
@@ -2951,7 +2918,7 @@ The sample string above is just fine. But as you've learned, template literals o
 
 const firstSentence = `Will tugged at his mother's hand and said, "Come on, come on..."`;
 
-* Numbers
+** Numbers
 
 Numbers are any number without quotes: 23.8879
 
@@ -3187,7 +3154,7 @@ Complete JavaScript Number Reference.
 
 The reference contains descriptions and examples of all Number properties and methods.
 
-** JavaScript Number Methods
+*** JavaScript Number Methods
 
 Number methods help you work with numbers.
 Number Methods and Properties
@@ -3382,7 +3349,7 @@ Complete JavaScript Number Reference.
 
 The reference contains descriptions and examples of all Number properties and methods.
 
-* boolean
+** boolean
 
 Understanding Boolean Values
 Another data type is the Boolean. Booleans may only be one of two values: true or false. They are basically little on-off switches, where true is on and false is off. These two states are mutually exclusive.
@@ -3517,7 +3484,7 @@ For a complete reference, go to our Complete JavaScript Boolean Reference.
 
 The reference contains descriptions and examples of all Boolean properties and methods.
 
-* array
+** array
 
 Store Multiple Values in one Variable using JavaScript Arrays
 With JavaScript array variables, we can store several pieces of data in one place.
@@ -3916,7 +3883,7 @@ let x = ;
 
 Start the Exercise
 
-** JavaScript Array Methods
+*** JavaScript Array Methods
 Converting Arrays to Strings
 
 The JavaScript method toString() converts an array to a string of (comma separated) array values.
@@ -4147,7 +4114,7 @@ const fruits = ["Banana", "Orange", "Apple"];
 
 Start the Exercise
 
-** JavaScript Sorting Arrays
+*** JavaScript Sorting Arrays
 Sorting an Array
 
 The sort() method sorts an array alphabetically:
@@ -4359,7 +4326,7 @@ const fruits = ["Banana", "Orange", "Apple", "Kiwi"];
 
 Start the Exercise
 
-** JavaScript Array Iteration
+*** JavaScript Array Iteration
 
 Array iteration methods operate on every array item.
 JavaScript Array forEach()
@@ -4756,7 +4723,7 @@ Complete JavaScript Array Reference.
 
 The reference contains descriptions and examples of all Array properties and methods.
 
-** JavaScript Array Const
+*** JavaScript Array Const
 ECMAScript 2015 (ES6)
 
 in 2015, JavaScript introduced an important new keyword: const.
@@ -4891,7 +4858,7 @@ Complete JavaScript Array Reference.
 
 The reference contains descriptions and examples of all Array properties and methods.
 
-* objects
+** objects
 
 Build JavaScript Objects
 You may have heard the term object before.
@@ -5308,7 +5275,7 @@ alert();
 
 Start the Exercise
 
-** destructuring and rest thinkful
+*** destructuring and rest thinkful
 
 Deep destructuring The process of destructuring multiple levels of an array or other object
 Destructuring The process of unpacking the properties or values in an array or other object and assigning them into distinct variables
@@ -5600,7 +5567,7 @@ const car = {
 car.drive(); // Logs out "The car is driving!"
 car.useHorn(); // Logs out "Beep"
 
-** object shorthand and spread thinkful
+*** object shorthand and spread thinkful
 
 Object shorthand JavaScript syntax that supports the creation of objects using values stored in variables, where the variable name becomes the key and the stored value becomes the value in the key-value pair
 Spread operator An operator that expands entries in arrays and other objects
@@ -5778,8 +5745,8 @@ const biggerYacht = {
 
 biggerYacht.playHorn(); // Fog Horn
 
-* Undefined
-* operator
+** Undefined
+** operator
 
 JavaScript Operators
 Example
@@ -5808,14 +5775,14 @@ JavaScript Arithmetic Operators
 
 Arithmetic operators are used to perform arithmetic on numbers:
 Operator 	Description
-+ 	Addition
-- 	Subtraction
-* 	Multiplication
-** 	Exponentiation (ES2016)
-/ 	Division
-% 	Modulus (Division Remainder)
-++ 	Increment
--- 	Decrement
++ + 	Addition
++ - 	Subtraction
++ * 	Multiplication
++ ** 	Exponentiation (ES2016)
++ / 	Division
++ % 	Modulus (Division Remainder)
++ ++ 	Increment
++ -- 	Decrement
 
 Arithmetic operators are fully described in the JS Arithmetic chapter.
 JavaScript Assignment Operators
@@ -6196,333 +6163,8 @@ Arithmetic operators perform arithmetic on numbers (literals or variables).
 Operator 	Description
 + 	Addition
 - 	Subtraction
-* 	Multiplication
-** 	Exponentiation (ES2016)
-/ 	Division
-% 	Modulus (Remainder)
-++ 	Increment
--- 	Decrement
-Arithmetic Operations
 
-A typical arithmetic operation operates on two numbers.
-
-The two numbers can be literals:
-Example
-let x = 100 + 50;
-
-or variables:
-Example
-let x = a + b;
-
-or expressions:
-Example
-let x = (100 + 50) * a;
-Operators and Operands
-
-The numbers (in an arithmetic operation) are called operands.
-
-The operation (to be performed between the two operands) is defined by an operator.
-Operand 	Operator 	Operand
-100 	+ 	50
-Adding
-
-The addition operator (+) adds numbers:
-Example
-let x = 5;
-let y = 2;
-let z = x + y;
-Subtracting
-
-The subtraction operator (-) subtracts numbers.
-Example
-let x = 5;
-let y = 2;
-let z = x - y;
-Multiplying
-
-The multiplication operator (*) multiplies numbers.
-Example
-let x = 5;
-let y = 2;
-let z = x * y;
-Dividing
-
-The division operator (/) divides numbers.
-Example
-let x = 5;
-let y = 2;
-let z = x / y;
-Remainder
-
-The modulus operator (%) returns the division remainder.
-Example
-let x = 5;
-let y = 2;
-let z = x % y;
-
-In arithmetic, the division of two integers produces a quotient and a remainder.
-
-In mathematics, the result of a modulo operation is the remainder of an arithmetic division.
-Incrementing
-
-The increment operator (++) increments numbers.
-Example
-let x = 5;
-x++;
-let z = x;
-Decrementing
-
-The decrement operator (--) decrements numbers.
-Example
-let x = 5;
-x--;
-let z = x;
-Exponentiation
-
-The exponentiation operator (**) raises the first operand to the power of the second operand.
-Example
-let x = 5;
-let z = x ** 2;          // result is 25
-
-x ** y produces the same result as Math.pow(x,y):
-Example
-let x = 5;
-let z = Math.pow(x,2);   // result is 25
-Operator Precedence
-
-Operator precedence describes the order in which operations are performed in an arithmetic expression.
-Example
-let x = 100 + 50 * 3;
-
-Is the result of example above the same as 150 * 3, or is it the same as 100 + 150?
-
-Is the addition or the multiplication done first?
-
-As in traditional school mathematics, the multiplication is done first.
-
-Multiplication (*) and division (/) have higher precedence than addition (+) and subtraction (-).
-
-And (as in school mathematics) the precedence can be changed by using parentheses:
-Example
-let x = (100 + 50) * 3;
-
-When using parentheses, the operations inside the parentheses are computed first.
-
-When many operations have the same precedence (like addition and subtraction), they are computed from left to right:
-Example
-let x = 100 + 50 - 3;
-JavaScript Operator Precedence Values
-
-Pale red entries indicates ECMAScript 2015 (ES6) or higher.
-Value 	Operator 	Description 	Example
-21 	( ) 	Expression grouping 	(3 + 4)
-
-20 	. 	Member 	person.name
-20 	[] 	Member 	person["name"]
-20 	() 	Function call 	myFunction()
-20 	new 	Create 	new Date()
-
-18 	++ 	Postfix Increment 	i++
-18 	-- 	Postfix Decrement 	i--
-
-17 	++ 	Prefix Increment 	++i
-17 	-- 	Prefix Decrement 	--i
-17 	! 	Logical not 	!(x==y)
-17 	typeof 	Type 	typeof x
-
-16 	** 	Exponentiation (ES2016) 	10 ** 2
-
-15 	* 	Multiplication 	10 * 5
-15 	/ 	Division 	10 / 5
-15 	% 	Division Remainder 	10 % 5
-
-14 	+ 	Addition 	10 + 5
-14 	- 	Subtraction 	10 - 5
-
-13 	<< 	Shift left 	x << 2
-13 	>> 	Shift right 	x >> 2
-13 	>>> 	Shift right (unsigned) 	x >>> 2
-
-12 	< 	Less than 	x < y
-12 	<= 	Less than or equal 	x <= y
-12 	> 	Greater than 	x > y
-12 	>= 	Greater than or equal 	x >= y
-12 	in 	Property in Object 	"PI" in Math
-12 	instanceof 	Instance of Object 	instanceof Array
-
-11 	== 	Equal 	x == y
-11 	=== 	Strict equal 	x === y
-11 	!= 	Unequal 	x != y
-11 	!== 	Strict unequal 	x !== y
-
-10 	& 	Bitwise AND 	x & y
-9 	^ 	Bitwise XOR 	x ^ y
-8 	| 	Bitwise OR 	x | y
-7 	&& 	Logical AND 	x && y
-6 	|| 	Logical OR 	x || y
-5 	?? 	Nullish Coalescing 	x ?? y
-4 	? : 	Condition 	? "Yes" : "No"
-
-3 	+= 	Assignment 	x += y
-3 	/= 	Assignment 	x /= y
-3 	-= 	Assignment 	x -= y
-3 	*= 	Assignment 	x *= y
-3 	%= 	Assignment 	x %= y
-3 	<<= 	Assignment 	x <<= y
-3 	>>= 	Assignment 	x >>= y
-3 	>>>= 	Assignment 	x >>>= y
-3 	&= 	Assignment 	x &= y
-3 	^= 	Assignment 	x ^= y
-3 	|= 	Assignment 	x |= y
-
-2 	yield 	Pause Function 	yield x
-1 	, 	Comma 	5 , 6
-
-Expressions in parentheses are fully computed before the value is used in the rest of the expression.
-
-JavaScript Assignment
-JavaScript Assignment Operators
-
-Assignment operators assign values to JavaScript variables.
-Operator 	Example 	Same As
-= 	x = y 	x = y
-+= 	x += y 	x = x + y
--= 	x -= y 	x = x - y
-*= 	x *= y 	x = x * y
-/= 	x /= y 	x = x / y
-%= 	x %= y 	x = x % y
-<<= 	x <<= y 	x = x << y
->>= 	x >>= y 	x = x >> y
->>>= 	x >>>= y 	x = x >>> y
-&= 	x &= y 	x = x & y
-^= 	x ^= y 	x = x ^ y
-|= 	x |= y 	x = x | y
-**= 	x **= y 	x = x ** y
-
-The **= operator is a part of ECMAScript 2016.
-Assignment Examples
-
-The = assignment operator assigns a value to a variable.
-Assignment
-let x = 10;
-
-The += assignment operator adds a value to a variable.
-Assignment
-let x = 10;
-x += 5;
-
-The -= assignment operator subtracts a value from a variable.
-Assignment
-let x = 10;
-x -= 5;
-
-The *= assignment operator multiplies a variable.
-Assignment
-let x = 10;
-x *= 5;
-
-The /= assignment divides a variable.
-Assignment
-let x = 10;
-x /= 5;
-
-The %= assignment operator assigns a remainder to a variable.
-Assignment
-let x = 10;
-x %= 5;
-Test Yourself With Exercises
-Exercise:
-
-Use the correct assignment operator that will result in x being 15 (same as x = x + y).
-
-x = 10;
-y = 5;
-x  y;
-
-
-Start the Exercise
-
-
-JavaScript Comparison and Logical Operators
-
-Comparison and Logical operators are used to test for true or false.
-Comparison Operators
-
-Comparison operators are used in logical statements to determine equality or difference between variables or values.
-
-Given that x = 5, the table below explains the comparison operators:
-Operator 	Description 	Comparing 	Returns 	Try it
-== 	equal to 	x == 8 	false
-x == 5 	true
-x == "5" 	true
-=== 	equal value and equal type 	x === 5 	true
-x === "5" 	false
-!= 	not equal 	x != 8 	true
-!== 	not equal value or not equal type 	x !== 5 	false
-x !== "5" 	true
-x !== 8 	true
-> 	greater than 	x > 8 	false
-< 	less than 	x < 8 	true
->= 	greater than or equal to 	x >= 8 	false
-<= 	less than or equal to 	x <= 8 	true
-How Can it be Used
-
-Comparison operators can be used in conditional statements to compare values and take action depending on the result:
-if (age < 18) text = "Too young to buy alcohol";
-
-You will learn more about the use of conditional statements in the next chapter of this tutorial.
-Logical Operators
-
-Logical operators are used to determine the logic between variables or values.
-
-Given that x = 6 and y = 3, the table below explains the logical operators:
-Operator 	Description 	Example 	Try it
-&& 	and 	(x < 10 && y > 1) is true
-|| 	or 	(x == 5 || y == 5) is false
-! 	not 	!(x == y) is true
-Conditional (Ternary) Operator
-
-JavaScript also contains a conditional operator that assigns a value to a variable based on some condition.
-Syntax
-variablename = (condition) ? value1:value2
-Example
-let voteable = (age < 18) ? "Too young":"Old enough";
-
-If the variable age is a value below 18, the value of the variable voteable will be "Too young", otherwise the value of voteable will be "Old enough".
-Comparing Different Types
-
-Comparing data of different types may give unexpected results.
-
-When comparing a string with a number, JavaScript will convert the string to a number when doing the comparison. An empty string converts to 0. A non-numeric string converts to NaN which is always false.
-Case 	Value 	Try
-2 < 12 	true
-2 < "12" 	true
-2 < "John" 	false
-2 > "John" 	false
-2 == "John" 	false
-"2" < "12" 	false
-"2" > "12" 	true
-"2" == "12" 	false
-
-When comparing two strings, "2" will be greater than "12", because (alphabetically) 1 is less than 2.
-
-To secure a proper result, variables should be converted to the proper type before comparison:
-age = Number(age);
-if (isNaN(age)) {
-  voteable = "Input is not a number";
-} else {
-  voteable = (age < 18) ? "Too young" : "Old enough";
-}
-Test Yourself With Exercises
-Exercise:
-
-Choose the correct comparison operator to alert true, when x is greater than y.
-
-x = 10;
-y = 5;
-alert(x  y);
-
-* control flow
+** control flow
 
 Control flow Also called flow of execution,
 the tools provided by a programming language to conditionally determine which set of instructions runs
@@ -7068,7 +6710,7 @@ Create a switch statement that will alert "Hello" if fruits is "banana", and "We
 
 Start the Exercise
 
-** control flow thinkful
+*** control flow thinkful
 
 Control flow
 1.5 hoursAverage Reading Time
@@ -7208,7 +6850,7 @@ The two functions discussed above will work in similar ways. Ultimately, it'll b
 
 If you want to learn more, consult MDN's page on the switch statement.
 
-* Function
+** Function
 
 A Function is a block of code that describes a repeatable process or behavior
 
@@ -7555,7 +7197,7 @@ function myFunction() {
 
 Start the Exercise
 
-** default parameter thinkful
+*** default parameter thinkful
 
 Setting defaults
 Take a look at the following function. What do you notice?
@@ -7743,7 +7385,7 @@ console.log(mySequence);  // => [1,2,3,4]
 
 function receives a reference to the item - the local variable assigned to this item is impacting the original item
 
-* JavaScript Arrow Function
+** JavaScript Arrow Function
 Arrow functions were introduced in ES6.
 
 Arrow functions allow us to write shorter function syntax:
@@ -7830,13 +7472,13 @@ The following table defines the first browser versions with full support for Arr
 Chrome 45	Edge 12	Firefox 22	Safari 10	Opera 32
 Sep, 2015	Jul, 2015	May, 2013	Sep, 2016	Sep, 2015
 
-* advanced functions
-** overview: advanced functions
+** advanced functions
+*** overview: advanced functions
 
 JavaScript allows you to pass functions as if they were objects.
 With this ability, you will learn how to implement the accumulator pattern that you learned early on, using different native array methods.
 
-** function expressions and arrow functions
+*** function expressions and arrow functions
 
 Key Terms
 Function expression A function created in a place where there would otherwise be a value
@@ -7944,7 +7586,7 @@ Note: Later on, you'll learn another reason to use arrow functions. This reason 
 
 const cal = (length) => length ** 3;
 
-** higher-order functions
+*** higher-order functions
 
 Callback function Also called a callback, a function that is passed into another function as an argument
 
@@ -8083,7 +7725,7 @@ parks.forEach((park, index, collection) => {
 // (4/4) Indiana Dunes
 In the above example, you can see that you have access to the individual element at each point in the array, the index at that point, and then the entire collection.
 
-** find, filter
+*** find, filter
 
 By the end of this lesson, you will be able to use find(), filter(), map(), some(), and every() to solve various problems.
 
@@ -8303,7 +7945,7 @@ In the above code, because park.name isn't being returned, the inner function's 
 
 So if you are seeing strange results, make sure that you are returning within the callback function.
 
-** reduce
+*** reduce
 
 Learning Objective
 By the end of this lesson, you will be able to use reduce() to solve different problems.
@@ -8418,7 +8060,7 @@ Running the code above produces the following value for the result variable:
 }
 At each step in the function given to reduce(), a new key is created in the given object. The value assigned to that key is the areaInSquareKm value. Then, the overall object is returned so that it can serve as the accumulator (result) in the next iteration.
 
-** sort
+*** sort
 
 Learning Objective
 By the end of this lesson, you will be able to use sort() to sort arrays in various ways.
@@ -8479,8 +8121,8 @@ For more insight into the default behavior, take a look at the following code.
 //> [ 'Biscayne', 'Gateway arch', 'grand canyon' ]
 This could be what you want, but it is almost always better to provide a function so that you can determine the effect of sort().
 
-** assessment
-* JavaScript Modules
+*** assessment
+** JavaScript Modules
 Modules
 JavaScript modules allow you to break up your code into separate files.
 
@@ -8545,7 +8187,7 @@ Modules only work with the HTTP(s) protocol.
 
 A web-page opened via the file:// protocol cannot use import / export.
 
-* Scope
+** Scope
 
 Global Scope and Functions
 In JavaScript, scope refers to the visibility of variables. Variables which are defined outside of a function block have Global scope. This means, they can be seen everywhere in your JavaScript code.
@@ -8755,7 +8397,7 @@ Function Arguments
 
 Function arguments (parameters) work as local variables inside functions.
 
-** scope thinkful
+*** scope thinkful
 
 Sibling scopes Two or more scopes that share a common parent scope
 
@@ -8829,7 +8471,7 @@ if (DISCOUNT_PERCENTAGE > 0) {
 
 In the case above, price is declared twice as a const variable, but the scopes are separate. That means that they can both be declared successfully on their own.
 
-* iterate
+** iterate
 
 Iterate with JavaScript While Loops
 You can run the same code multiple times by using a loop.
@@ -9008,7 +8650,7 @@ for () {
 Loop
     A construct that allows you to repeat a set of instructions a specific number of times, or until a specific condition is true
 
-** JavaScript For Loop
+*** JavaScript For Loop
 
 Loops can execute a block of code a number of times.
 JavaScript Loops
@@ -9153,7 +8795,7 @@ let i;
 
 Start the Exercise
 
-** JavaScript For In
+*** JavaScript For In
 The For In Loop
 
 The JavaScript for in statement loops through the properties of an Object:
@@ -9225,7 +8867,7 @@ function myFunction(value) {
   txt += value;
 }
 
-** JavaScript For Of
+*** JavaScript For Of
 The For Of Loop
 
 The JavaScript for of statement loops through the values of an iterable object.
@@ -9269,7 +8911,7 @@ The While Loop
 
 The while loop and the do/while loop are explained in the next chapter.
 
-** JavaScript While Loop
+*** JavaScript While Loop
 
 Loops can execute a block of code as long as a specified condition is true.
 The While Loop
@@ -9344,7 +8986,7 @@ let i = 0;
   i++
   }
 
-** JavaScript Break and Continue
+*** JavaScript Break and Continue
 
 The break statement "jumps out" of a loop.
 
@@ -9415,7 +9057,7 @@ for (i = 0; i < 10; i++) {
 
 Start the Exercise
 
-** JavaScript Iterables
+*** JavaScript Iterables
 
 Iterables are iterable objects (like Arrays).
 
@@ -9485,7 +9127,7 @@ for (const x of fruits) {
   // code block to be executed
 }
 
-** looping over objects thinkful
+*** looping over objects thinkful
 
 Transforming objects into arrays
 One way of looping over objects is to "cheat."
@@ -9570,7 +9212,7 @@ for (let key in object) {
   console.log(key, object[key]);
 };
 
-* Math.
+** Math.
 
 Generate Random Fractions with JavaScript
 Random numbers are useful for creating random behavior.
@@ -9596,14 +9238,14 @@ Here's the formula we'll use. Take a moment to read it and try to understand wha
 Math.floor(Math.random() * (max - min + 1)) + min
 Create a function called randomRange that takes a range myMin and myMax and returns a random whole number that's greater than or equal to myMin, and is less than or equal to myMax, inclusive.
 
-* resources
+** resources
 
-** finish
+*** finish
 
 freeCodeCamp Basic JavaScript
   i didn't understand recursion without loop
 
-* html dom
+** html dom
 
 get the element iwth the specified id:
 document.getElementById(elementID)
@@ -9634,7 +9276,7 @@ document.getElementById("demo").style.fontSize = "35px";
 document.getElementById("demo").style.display = "none";
 #+end_src
 
-* JavaScript Events
+** JavaScript Events
 
 HTML events are "things" that happen to HTML elements.
 
@@ -9715,7 +9357,7 @@ The <button> element should do something when someone clicks on it. Try to fix i
 
 Start the Exercise
 
-* JavaScript Style Guide
+** JavaScript Style Guide
 Always use the same coding conventions for all your JavaScript projects.
 
 JavaScript Coding Conventions
@@ -9901,7 +9543,7 @@ Indentation and extra spaces are not significant in small scripts.
 
 For code in development, readability should be preferred. Larger production scripts should be minified.
 
-** writing readable code thinkful
+*** writing readable code thinkful
 
 
 earning Objective
@@ -10099,7 +9741,7 @@ function getAllGames(characters) {
 
 getAllGames(characters);
 
-* JavaScript Best Practices
+** JavaScript Best Practices
 Avoid global variables, avoid new, avoid ==, avoid eval()
 
 Avoid Global Variables
@@ -10297,7 +9939,7 @@ The eval() function is used to run text as code. In almost all cases, it should 
 
 Because it allows arbitrary code to be run, it also represents a security problem.
 
-* JavaScript Common Mistakes
+** JavaScript Common Mistakes
 This chapter points out some common JavaScript mistakes.
 
 Accidentally Using the Assignment Operator
@@ -10536,7 +10178,7 @@ Because of this, you must test for not undefined before you can test for not nul
 Correct:
 if (typeof myObj !== "undefined" && myObj !== null)
 
-* JavaScript Performance
+** JavaScript Performance
 How to speed up your JavaScript code.
 
 Reduce Activity in Loops
@@ -10604,7 +10246,7 @@ Avoid using the with keyword. It has a negative effect on speed. It also clutter
 
 The with keyword is not allowed in strict mode.
 
-* JavaScript Reserved Words
+** JavaScript Reserved Words
 In JavaScript you cannot use these reserved words as variables, labels, or function names:
 abstract 	arguments 	await* 	boolean
 break 	byte 	case 	catch
@@ -10678,7 +10320,7 @@ onblur 	onclick 	onerror 	onfocus
 onkeydown 	onkeypress 	onkeyup 	onmouseover
 onload 	onmouseup 	onmousedown 	onsubmit
 
-* unsorted
+** unsorted
 
 REPL stand for Read-eval-print loop
   an interactive computer programming environment that lets you perform basic tasks
@@ -10720,7 +10362,7 @@ conditional statements
     The ternary operator is shorthand to simplify concise if...else statements.
     A switch statement can be used to simplify the process of writing multiple else if statements. The break keyword stops the remaining cases from being checked and executed in a switch statement.
 
-** JavaScript Where To
+*** JavaScript Where To
 
 The <script> Tag
 
@@ -10847,7 +10489,7 @@ This example uses no path to link to myScript.js:
 Example
 <script src="myScript.js"></script>
 
-** JavaScript Output
+*** JavaScript Output
 JavaScript Display Possibilities
 
 JavaScript can "display" data in different ways:
@@ -10981,13 +10623,13 @@ Example
 </body>
 </html>
 
-** error types thinkful
-*** Runtime errors
+*** error types thinkful
+**** Runtime errors
 
 errorType: description of the error
 SyntaxError: function statement requires a name
 
-*** Reference errors
+**** Reference errors
 
 Reference error - An error that occurs when some variable being referenced doesn't exist or can't be accessed
 
@@ -11017,7 +10659,7 @@ function addSalesTax(total, salesTax) { //func takes parameters total and salesT
 console.log(result); //returns ReferenceError: result is not defined
 #+end_src
 
-*** Syntax errors
+**** Syntax errors
 
 Syntax error - An error that occurs when some part of the predefined JavaScript syntax is being used incorrectly
 
@@ -11064,7 +10706,7 @@ SyntaxError: expected expression, got '}'
 That isn't very helpful, and you'd have to do the legwork of resolving the issue.
 This is one of the many reasons that it's important to write your code legibly.
 
-*** Type errors
+**** Type errors
 
 Type error - An error that occurs when you misuse a data type in JavaScript, meaning that an operation can't be performed
 
@@ -11086,7 +10728,7 @@ let price = 9.99;
 console.log(price.trim); //> undefined
 You may be surprised to find that calling trim as a property on price doesn't fail—instead, it returns an undefined. But when you try to invoke the undefined property, that is when you get your error.
 
-*** Silent errors
+**** Silent errors
 
 Silent error - An error that doesn't immediately surface when the code is run
 
@@ -11103,7 +10745,7 @@ You may not notice any issues with this code right off the bat. And even when yo
 TypeError: (priceInCents / 100).setFixed is not a function
 In this case, the function uses setFixed(), which is not a function, instead of toFixed(), which is a function. When working with complex applications with multiple functions, you'll need to be aware of silent errors like this one.
 
-** references thinkful
+*** references thinkful
 
 Primitive data type Also called a primitive or a simple data type, a data type containing variables that store values
 Reference data type Also called a reference or a complex data type, a data type containing variables that store addresses to locations in memory
