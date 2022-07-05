@@ -386,15 +386,9 @@ Using comments to prevent execution of code is suitable for code testing.
 */
 #+end_src
 
-** Variables
-
-What are Variables?
+** what are js variables? wip
 
 Variables are containers for storing data (storing data values).
-
-A variable is a named container that can stroe a changeable data value.
-
-A variable is a container for storing data.
 
 A variable behaves as if it was the value that it contains.
 
@@ -402,248 +396,131 @@ Variables hold reusable data in a program and associate it with a name.
 
 Variables are stored in memory.
 
+
 Variables allow computers to store and manipulate data in a dynamic fashion.
 They do this by using a "label" to point to the data rather than using the data itself.
+
+In computer science, data is anything that is meaningful to the computer.
 
 Two steps:
   Declaration (var, let, const)
   Assignment (= assignment operator)
 
-Declare JavaScript Variables
-In computer science, data is anything that is meaningful to the computer.
-
-Variables that have not been initialized store the primitive data type undefined.
 
 
-JavaScript Variables
-In a programming language, variables are used to store data values.
-JavaScript uses the keywords var, let and const to declare variables.
+
 An equal sign is used to assign values to variables.
 
 
-JavaScript Variables
-4 Ways to Declare a JavaScript Variable:
 
-    Using var
-    Using let
-    Using const
-    Using nothing
-
-
-Variables are containers for storing values.
-
-
-
-
-
-
-
+Declare JavaScript Variables
 Declaring a JavaScript Variable
 
 Creating a variable in JavaScript is called "declaring" a variable.
 
-You declare a JavaScript variable with the var or the let keyword:
-var carName;
-or:
-let carName;
+JavaScript uses the keywords var, let and const to declare variables.
 
 After the declaration, the variable has no value (technically it is undefined).
-
-To assign a value to the variable, use the equal sign:
-carName = "Volvo";
-
-You can also assign a value to the variable when you declare it:
-let carName = "Volvo";
-
-In the example below, we create a variable called carName and assign the value "Volvo" to it.
-
-<script>
-let carName = "Volvo";
-document.getElementById("demo").innerHTML = carName;
-</script>
-Note
-
-It's a good programming practice to declare all variables at the beginning of a script.
-One Statement, Many Variables
-
-You can declare many variables in one statement.
-
-Start the statement with let and separate the variables by comma:
-Example
-let person = "John Doe", carName = "Volvo", price = 200;
-
-A declaration can span multiple lines:
-Example
-let person = "John Doe",
-carName = "Volvo",
-price = 200;
-Value = undefined
-
-In computer programs, variables are often declared without a value. The value can be something that has to be calculated, or something that will be provided later, like user input.
-
 A variable declared without a value will have the value undefined.
 
-The variable carName will have the value undefined after the execution of this statement:
-Example
-let carName;
-Re-Declaring JavaScript Variables
+It's a good programming practice to declare all variables at the beginning of a script.
 
-If you re-declare a JavaScript variable declared with var, it will not lose its value.
 
-The variable carName will still have the value "Volvo" after the execution of these statements:
-Example
-var carName = "Volvo";
-var carName;
-Note
+In computer programs, variables are often declared without a value.
+The value can be something that has to be calculated, or something that will be provided later, like user input.
 
-You cannot re-declare a variable declared with let or const.
 
-This will not work:
-let carName = "Volvo";
-let carName;
-JavaScript Arithmetic
 
-As with algebra, you can do arithmetic with JavaScript variables, using operators like = and +:
-Example
-let x = 5 + 2 + 3;
-
-You can also add strings, but strings will be concatenated:
-Example
-let x = "John" + " " + "Doe";
-
-Also try this:
-Example
-let x = "5" + 2 + 3;
-Note
-
-If you put a number in quotes, the rest of the numbers will be treated as strings, and concatenated.
-
-Now try this:
-Example
-let x = 2 + 3 + "5";
 JavaScript Dollar Sign $
-
 Since JavaScript treats a dollar sign as a letter, identifiers containing $ are valid variable names:
 Example
 let $ = "Hello World";
 let $$$ = 2;
 let $myMoney = 5;
-
 Using the dollar sign is not very common in JavaScript, but professional programmers often use it as an alias for the main function in a JavaScript library.
-
 In the JavaScript library jQuery, for instance, the main function $ is used to select HTML elements. In jQuery $("p"); means "select all p elements".
-JavaScript Underscore (_)
 
+JavaScript Underscore (_)
 Since JavaScript treats underscore as a letter, identifiers containing _ are valid variable names:
 Example
 let _lastName = "Johnson";
 let _x = 2;
 let _100 = 5;
-
 Using the underscore is not very common in JavaScript, but a convention among professional programmers is to use it as an alias for "private (hidden)" variables.
-Test Yourself With Exercises
-Exercise:
-
-Create a variable called carName and assign the value Volvo to it.
 
 
-*** variables thinkful
-
-In your earlier work with JavaScript, you practiced the basics of declaring variables with the let keyword.
-But that was just the beginning! In this lesson, you'll learn about two other methods of declaring variables, and you'll explore when you should use each approach.
-
-The let keyword
-
-As you've learned, the let keyword is used to declare variables in JavaScript. Here's some refresher code for your review:
-
-let price = 9.99;
-
-You can also reassign variables that have already been created using let. Here's an example:
-
-let price = 9.99;
-
-price = 8.5;
-
-However, if you declare a variable with let, you cannot use let to later define that same variable. See the error below:
-
-let price = 9.99;
-
-let price = 8.5; //> Uncaught SyntaxError: Identifier 'price' has already been declared
-
-This SyntaxError is pretty useful. It will stop you from accidentally recreating the same variable later on in your program when you don't intend to do so.
-
-But here's something that might surprise you: let is actually a fairly new feature of JavaScript. Now, you'll take a step back to learn about two other variable-declaring features: var and const.
-The var keyword
-
-In the past, variables were declared with the keyword var. Here is what var looks like in action:
-
-var productName = "Jogger Sweatpants";
-
-Just like with let, variables created with the var keyword can be reassigned. However, var doesn't have the same restrictions as let when it comes to declaring variables with the same name. See the example below:
-
-var productName = "Jogger Sweatpants";
-
-productName = "Men's Jogger Sweatpants";
-
-var productName = "Woman's Jogger Sweatpants";
-
-Because var is an older method of declaring variables, you will often see var referenced in older code. However, you shouldn't use var in your code unless you have a very specific reason to do so. This lesson aims only to briefly introduce you to the concept of var and how it works. Later in this program, you will learn more about when, where, and why you might use var in your work.
-The const keyword
-
-At first blush, the const keyword may seem very similar to let. Using const, you can declare variables much like you would with let. And just like let, you also can't use it to create another variable of the same name.
-
-const size = "M";
-
-const size = "L"; //> Uncaught SyntaxError: Identifier 'size' has already been declared
-
-However, with const, you also can't reassign the value. See below:
-
-const size = "M";
-
-size = "S"; //> Uncaught TypeError: Assignment to constant variable.
-
-Ultimately, there is no performance benefit to using one method over another—const, let, and var will each allow you to declare a variable, which is what you want to do. But there is a workflow benefit. The intended purpose of both const and let is to help developers make fewer mistakes.
-
-By allowing developers to create variables that cannot be declared again, const and let act a bit like a safety net. As you develop larger applications, you will find it challenging to create concise, descriptive, and unique variable names. Often, developers will attempt to use a variable name in their code, forgetting that they've already used that variable name higher up. That's where const and let can help. They prevent developers from making unintended mistakes when declaring their variables.
-Warning: Using const with arrays and objects
-
-But const also has some other traits that are worth discussing. And when it comes to arrays and objects, using const can be a bit tricky.
-
-Take a look at the following code. It works as you may expect:
-
-const product = { priceInCents: 2100, name: "Yellow Beanie", size: "M" };
+ That's where const and let can help. They prevent developers from making unintended mistakes when declaring their variables.
 
 
-product = { priceInCents: 2100, name: "Red Beanie", size: "L" };
-
-//> Uncaught TypeError: Assignment to constant variable.
-
-In the above case, you aren't able to reassign the value of const, as intended. The following code, on the other hand, does run.
-
-const product = { priceInCents: 2100, name: "Yellow Beanie", size: "M" };
-
-product.name = "Red Beanie";
-
-product.size = "L";
-
-Although you can't reassign the variable completely with const, you can change the values inside of the object. The same goes for arrays. Take a look:
-
-const sizes = [8, 10, 12, 14];
-
-sizes[4] = 16;
-
-The reasons behind this behavior will be covered in a later lesson. For now, you're just getting familiar with the way that const works.
 What method should you use?
 
 At this point, you might be wondering which method of declaring variables you should use. Here's the process that you should follow when determining whether to use let, const, or var:
 
     Use const primarily; this will be your go-to. Moving forward, you'll want to declare most of your variables using const.
-
     Use let if you need to reassign a value. This is a common requirement during for loops and sometimes with if statements.
-
     Don't use var unless necessary, like when working in a codebase that uses it. However, that will likely only happen in the distant future. As mentioned above, there are other reasons to use (and to not use) var, but those will be covered in a different lesson. For now, just avoid it.
 
     var makes variable global even in functions
+
+Initializing Variables with the Assignment Operator
+It is common to initialize a variable to an initial value in the same line as it is declared.
+var myVar = 0;
+Creates a new variable called myVar and assigns it an initial value of 0.
+Define a variable a with var and initialize it to a value of 9.
+
+
+
+Understanding Uninitialized Variables
+When JavaScript variables are declared, they have an initial value of undefined.
+If you do a mathematical operation on an undefined variable your result will be NaN which means "Not a Number".
+If you concatenate a string with an undefined variable, you will get a string of undefined.
+
+Compare Scopes of the var and let Keywords
+If you are unfamiliar with let, check out this challenge about the difference bewteen let and var.
+When you declare a variable with the var keyword, it is declared globally, or locally if declared inside a function.
+The let keyword behaves similarly, but with some extra features. When you declare a variable with the let keyword inside a block, statement, or expression, its scope is limited to that block, statement, or expression.
+For example:
+var numArray = [];
+for (var i = 0; i < 3; i++) {
+  numArray.push(i);
+}
+console.log(numArray);
+console.log(i);
+Here the console will display the values [0, 1, 2] and 3.
+With the var keyword, i is declared globally. So when i++ is executed, it updates the global variable. This code is similar to the following:
+var numArray = [];
+var i;
+for (i = 0; i < 3; i++) {
+  numArray.push(i);
+}
+console.log(numArray);
+console.log(i);
+Here the console will display the values [0, 1, 2] and 3.
+This behavior will cause problems if you were to create a function and store it for later use inside a for loop that uses the i variable. This is because the stored function will always refer to the value of the updated global i variable.
+var printNumTwo;
+for (var i = 0; i < 3; i++) {
+  if (i === 2) {
+    printNumTwo = function() {
+      return i;
+    };
+  }
+}
+console.log(printNumTwo());
+Here the console will display the value 3.
+As you can see, printNumTwo() prints 3 and not 2. This is because the value assigned to i was updated and the printNumTwo() returns the global i and not the value i had when the function was created in the for loop. The let keyword does not follow this behavior:
+let printNumTwo;
+for (let i = 0; i < 3; i++) {
+  if (i === 2) {
+    printNumTwo = function() {
+      return i;
+    };
+  }
+}
+console.log(printNumTwo());
+console.log(i);
+Here the console will display the value 2, and an error that i is not defined.
+i is not defined because it was not declared in the global scope. It is only declared within the for loop statement. printNumTwo() returned the correct value because three different i variables with unique values (0, 1, and 2) were created by the let keyword within the loop statement.
+
 
 *** var keyword
 
@@ -660,6 +537,20 @@ The console then displays the string David.
 In a small application, you might not run into this type of problem.
 But as your codebase becomes larger, you might accidentally overwrite a variable that you did not intend to.
 Because this behavior does not throw an error, searching for and fixing bugs becomes more difficult.
+
+
+The var keyword
+In the past, variables were declared with the keyword var.
+Here is what var looks like in action:
+var productName = "Jogger Sweatpants";
+Just like with let, variables created with the var keyword can be reassigned.
+However, var doesn't have the same restrictions as let when it comes to declaring variables with the same name.
+See the example below:
+var productName = "Jogger Sweatpants";
+productName = "Men's Jogger Sweatpants";
+var productName = "Woman's Jogger Sweatpants";
+Because var is an older method of declaring variables, you will often see var referenced in older code.
+However, you shouldn't use var in your code unless you have a very specific reason to do so.
 
 *** let keyword
 
@@ -830,6 +721,17 @@ Just like in algebra, variables are used in expressions:
 let z = x + y;
 
 From the example above, you can guess that the total is calculated to be 11.
+
+The let keyword
+As you've learned, the let keyword is used to declare variables in JavaScript. Here's some refresher code for your review:
+let price = 9.99;
+You can also reassign variables that have already been created using let. Here's an example:
+let price = 9.99;
+price = 8.5;
+However, if you declare a variable with let, you cannot use let to later define that same variable. See the error below:
+let price = 9.99;
+let price = 8.5; //> Uncaught SyntaxError: Identifier 'price' has already been declared
+This SyntaxError is pretty useful. It will stop you from accidentally recreating the same variable later on in your program when you don't intend to do so.
 
 *** const keyword
 
@@ -1051,31 +953,55 @@ The two variables price1 and price2 are declared with the const keyword.
 
 These are constant values and cannot be changed.
 
-*** unsorted variable
 
-Initializing Variables with the Assignment Operator
-It is common to initialize a variable to an initial value in the same line as it is declared.
-var myVar = 0;
-Creates a new variable called myVar and assigns it an initial value of 0.
-Define a variable a with var and initialize it to a value of 9.
+The const keyword
+const size = "M";
+const size = "L"; //> Uncaught SyntaxError: Identifier 'size' has already been declared
+However, with const, you also can't reassign the value. See below:
+const size = "M";
+size = "S"; //> Uncaught TypeError: Assignment to constant variable.
 
 
 
-Understanding Uninitialized Variables
-When JavaScript variables are declared, they have an initial value of undefined.
-If you do a mathematical operation on an undefined variable your result will be NaN which means "Not a Number".
-If you concatenate a string with an undefined variable, you will get a string of undefined.
-Initialize the three variables a, b, and c with 5, 10, and "I am a" respectively so that they will not be undefined.
+Warning: Using const with arrays and objects
+But const also has some other traits that are worth discussing.
+And when it comes to arrays and objects, using const can be a bit tricky.
 
-Understanding Case Sensitivity in Variables
-In JavaScript all variables and function names are case sensitive. This means that capitalization matters.
-MYVAR is not the same as MyVar nor myvar. It is possible to have multiple distinct variables with the same name but different casing. It is strongly recommended that for the sake of clarity, you do not use this language feature.
-Best Practice
-Write variable names in JavaScript in camelCase. In camelCase, multi-word variable names have the first word in lowercase and the first letter of each subsequent word is capitalized.
-Examples:
-var someVariable;
-var anotherVariableName;
-var thisVariableNameIsSoLong;
+Take a look at the following code. It works as you may expect:
+const product = { priceInCents: 2100, name: "Yellow Beanie", size: "M" };
+product = { priceInCents: 2100, name: "Red Beanie", size: "L" };
+//> Uncaught TypeError: Assignment to constant variable.
+In the above case, you aren't able to reassign the value of const, as intended. The following code, on the other hand, does run.
+
+const product = { priceInCents: 2100, name: "Yellow Beanie", size: "M" };
+product.name = "Red Beanie";
+product.size = "L";
+Although you can't reassign the variable completely with const, you can change the values inside of the object. The same goes for arrays. Take a look:
+
+const sizes = [8, 10, 12, 14];
+
+sizes[4] = 16;
+
+Mutate an Array Declared with const
+
+If you are unfamiliar with const, check out this challenge about the const keyword.
+
+The const declaration has many use cases in modern JavaScript.
+
+Some developers prefer to assign all their variables using const by default, unless they know they will need to reassign the value. Only in that case, they use let.
+
+However, it is important to understand that objects (including arrays and functions) assigned to a variable using const are still mutable. Using the const declaration only prevents reassignment of the variable identifier.
+
+const s = [5, 6, 7];
+s = [1, 2, 3];
+s[2] = 45;
+console.log(s);
+
+s = [1, 2, 3] will result in an error. The console.log will display the value [5, 6, 45].
+
+As you can see, you can mutate the object [5, 6, 7] itself and the variable s will still point to the altered array [5, 6, 45]. Like all arrays, the array elements in s are mutable, but because const was used, you cannot use the variable identifier s to point to a different array using the assignment operator.
+
+An array is declared as const s = [5, 7, 2]. Change the array to [2, 5, 7] using various element assignments.
 
 *** js Variables examples
 
@@ -1138,6 +1064,45 @@ From all the examples above, you can guess:
     x stores the value 5
     y stores the value 6
     z stores the value 11
+
+You declare a JavaScript variable with the var or the let keyword:
+var carName;
+or:
+let carName;
+
+To assign a value to the variable, use the equal sign:
+carName = "Volvo";
+
+You can also assign a value to the variable when you declare it:
+let carName = "Volvo";
+
+One Statement, Many Variables
+You can declare many variables in one statement.
+
+Start the statement with let and separate the variables by comma:
+Example
+let person = "John Doe", carName = "Volvo", price = 200;
+
+A declaration can span multiple lines:
+Example
+let person = "John Doe",
+carName = "Volvo",
+price = 200;
+Value = undefined
+
+
+Re-Declaring JavaScript Variables
+If you re-declare a JavaScript variable declared with var, it will not lose its value.
+The variable carName will still have the value "Volvo" after the execution of these statements:
+Example
+var carName = "Volvo";
+var carName;
+Note
+You cannot re-declare a variable declared with let or const.
+
+This will not work:
+let carName = "Volvo";
+let carName;
 
 ** javaScript data types and data structures wip
 
@@ -2918,7 +2883,7 @@ The sample string above is just fine. But as you've learned, template literals o
 
 const firstSentence = `Will tugged at his mother's hand and said, "Come on, come on..."`;
 
-** Numbers
+** js Numbers wip
 
 Numbers are any number without quotes: 23.8879
 
@@ -3484,38 +3449,116 @@ For a complete reference, go to our Complete JavaScript Boolean Reference.
 
 The reference contains descriptions and examples of all Boolean properties and methods.
 
-** array
+** js array
+
+an array is a special variable, that can store more than one value.
+an element is a value in an array.
+arrays use zero-based indexing
 
 Store Multiple Values in one Variable using JavaScript Arrays
-With JavaScript array variables, we can store several pieces of data in one place.
-You start an array declaration with an opening square bracket, end it with a closing square bracket, and put a comma between each entry, like this:
-const sandwich = ["peanut butter", "jelly", "bread"];
-Modify the new array myArray so that it contains both a string and a number (in that order).
-
-Nest one Array within Another Array
-You can also nest arrays within other arrays, like below:
-const teams = [["Bulls", 23], ["White Sox", 45]];
+nested array
 This is also called a multi-dimensional array.
-Create a nested array called myArray.
+
+An array is a special variable, which can hold more than one value:
+An array can hold many values under a single name, and you can access the values by referring to an index number.
+
+
+Mutation A change in the original data value
+
+
+Arrays are Objects
+Arrays are a special type of objects. The typeof operator in JavaScript returns "object" for arrays.
+
+
+Associative Arrays
+Many programming languages support arrays with named indexes.
+
+Arrays with named indexes are called associative arrays (or hashes).
+
+JavaScript does not support arrays with named indexes.
+
+In JavaScript, arrays always use numbered indexes.
+Example
+const person = [];
+person[0] = "John";
+person[1] = "Doe";
+person[2] = 46;
+person.length;    // Will return 3
+person[0];        // Will return "John"
+
+WARNING !!
+If you use named indexes, JavaScript will redefine the array to an object.
+
+After that, some array methods and properties will produce incorrect results.
+ Example:
+const person = [];
+person["firstName"] = "John";
+person["lastName"] = "Doe";
+person["age"] = 46;
+person.length;     // Will return 0
+person[0];         // Will return undefined
+
+The Difference Between Arrays and Objects
+In JavaScript, arrays use numbered indexes.
+In JavaScript, objects use named indexes.
+
+Arrays are a special kind of objects, with numbered indexes.
+When to Use Arrays. When to use Objects.
+    JavaScript does not support associative arrays.
+    You should use objects when you want the element names to be strings (text).
+    You should use arrays when you want the element names to be numbers.
+
+
+How to Recognize an Array
+A common question is: How do I know if a variable is an array?
+
+The problem is that the JavaScript operator typeof returns "object":
+const fruits = ["Banana", "Orange", "Apple"];
+let type = typeof fruits;
+
+The typeof operator returns object because a JavaScript array is an object.
+Solution 1:
+
+To solve this problem ECMAScript 5 (JavaScript 2009) defined a new method Array.isArray():
+Array.isArray(fruits);
+Solution 2:
+
+The instanceof operator returns true if an object is created by a given constructor:
+const fruits = ["Banana", "Orange", "Apple"];
+
+fruits instanceof Array;
+
+*** js array create
+
+create/declare array/array literal
+
+
+array Syntax:
+const arrName = [ele1, ele2, ...];
+
+It is a common practice to declare arrays with the const keyword.
+
+
+Spaces and line breaks are not important. A declaration can span multiple lines:
+
+
+Using the JavaScript Keyword new
+The following example also creates an Array, and assigns values to it:
+Example
+const cars = new Array("Saab", "Volvo", "BMW");
+The two examples above do exactly the same.
+There is no need to use new Array().
+For simplicity, readability and execution speed, use the array literal method.
+
+*** js array access
 
 Access Array Data with Indexes
-We can access the data inside arrays using indexes.
-Array indexes are written in the same bracket notation that strings use, except that instead of specifying a character, they are specifying an entry in the array. Like strings, arrays use zero-based indexing, so the first element in an array has an index of 0.
-Example
-const array = [50, 60, 70];
-console.log(array[0]);
-const data = array[1];
-The console.log(array[0]) prints 50, and data has the value 60.
-Create a variable called myData and set it to equal the first value of myArray using bracket notation.
+arrayBracketnotation
+array[0]
 
 Modify Array Data With Indexes
 Unlike strings, the entries of arrays are mutable and can be changed freely, even if the array was declared with const.
-Example
-const ourArray = [50, 40, 30];
-ourArray[0] = 15;
-ourArray now has the value [15, 40, 30].
 Note: There shouldn't be any spaces between the array name and the square brackets, like array [0]. Although JavaScript is able to process this correctly, this may confuse other programmers reading your code.
-Modify the data stored at index 0 of myArray to a value of 45.
 
 Access Multi-Dimensional Arrays With Indexes
 One way to think of a multi-dimensional array, is as an array of arrays. When you use brackets to access your array, the first set of brackets refers to the entries in the outer-most (the first level) array, and each additional pair of brackets refers to the next level of entries inside.
@@ -3532,6 +3575,135 @@ arr[3][0][1];
 arr[3] is [[10, 11, 12], 13, 14], arr[3][0] is [10, 11, 12], and arr[3][0][1] is 11.
 Note: There shouldn't be any spaces between the array name and the square brackets, like array [0][0] and even this array [0] [0] is not allowed. Although JavaScript is able to process this correctly, this may confuse other programmers reading your code.
 Using bracket notation select an element from myArray such that myData is equal to 8.
+
+
+Accessing Nested Arrays
+As we have seen in earlier examples, objects can contain both nested objects and nested arrays. Similar to accessing nested objects, array bracket notation can be chained to access nested arrays.
+Here is an example of how to access a nested array:
+const ourPets = [
+  {
+    animalType: "cat",
+    names: [
+      "Meowzer",
+      "Fluffy",
+      "Kit-Cat"
+    ]
+  },
+  {
+    animalType: "dog",
+    names: [
+      "Spot",
+      "Bowser",
+      "Frankie"
+    ]
+  }
+];
+ourPets[0].names[1];
+ourPets[1].names[0];
+ourPets[0].names[1] would be the string Fluffy, and ourPets[1].names[0] would be the string Spot.
+Using dot and bracket notation, set the variable secondTree to the second item in the trees list from the myPlants object.
+
+Accessing Array Elements
+
+You access an array element by referring to the index number:
+const cars = ["Saab", "Volvo", "BMW"];
+let car = cars[0];
+
+Note: Array indexes start with 0.
+
+[0] is the first element. [1] is the second element.
+Changing an Array Element
+
+This statement changes the value of the first element in cars:
+cars[0] = "Opel";
+Example
+const cars = ["Saab", "Volvo", "BMW"];
+cars[0] = "Opel";
+Access the Full Array
+
+With JavaScript, the full array can be accessed by referring to the array name:
+Example
+const cars = ["Saab", "Volvo", "BMW"];
+document.getElementById("demo").innerHTML = cars;
+
+*** js array examples
+#+begin_src js
+// const arrName = [ele1, ele2, ...];
+
+// declare an empty array; named myArr
+const myArr = [];
+// declare an array; named myArr with strings foo, bar and buzz
+const myArr = ["foo", "bar", "buzz"];
+// declare an array that span multiple line
+// array named myArr; element are strings foo, bar, buzz
+const myArr = [
+    "foo",
+    "bar",
+    "buzz"
+];
+const myArr []; // an empty array
+// add strings foo, bar, buzz to myArr using bracket notation
+myArr[0] = "foo";
+myArr[1] = "bar";
+myArr[2] = "buzz";
+const myArr = [["Bulls", 23], ["White", 45]]; // nest array; multi-dimensional array.
+
+// access myArr elements using bracket notation.
+const myArr = [50, 60, 70];
+// access first element
+array[0]; // 50
+// access second element
+array[1]; // 60
+
+#+end_src
+
+*** JavaScript Array Methods
+
+
+Adding Array Elements
+The easiest way to add a new element to an array is using the push() method:
+Example
+const fruits = ["Banana", "Orange", "Apple"];
+fruits.push("Lemon");  // Adds a new element (Lemon) to fruits
+
+New element can also be added to an array using the length property:
+Example
+const fruits = ["Banana", "Orange", "Apple"];
+fruits[fruits.length] = "Lemon";  // Adds "Lemon" to fruits
+
+WARNING !
+
+Adding elements with high indexes can create undefined "holes" in an array:
+Example
+const fruits = ["Banana", "Orange", "Apple"];
+fruits[6] = "Lemon";  // Creates undefined "holes" in fruits
+
+push(): This adds an item to the end of an array. It returns the new length of the array.
+pop(): This removes the last item from the end of an array. It returns the last item.
+length: Just like the string tool length, this gives the length of the array—in other words, the number of items. You'll notice that length doesn't need parentheses. That's because it's technically a property and not a method.
+
+Array Properties and Methods
+The real strength of JavaScript arrays are the built-in array properties and methods:
+cars.length   // Returns the number of elements
+cars.sort()   // Sorts the array
+
+Array methods are covered in the next chapters.
+The length Property
+
+The length property of an array returns the length of an array (the number of array elements).
+Example
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let length = fruits.length;
+
+The length property is always one more than the highest array index.
+Accessing the First Array Element
+Example
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fruit = fruits[0];
+Accessing the Last Array Element
+Example
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fruit = fruits[fruits.length - 1];
 
 Manipulate Arrays With push()
 An easy way to append data to the end of an array is via the push() function.
@@ -3574,316 +3746,6 @@ ourArray.unshift("Happy");
 After the shift, ourArray would have the value ["J", "cat"]. After the unshift, ourArray would have the value ["Happy", "J", "cat"].
 Add ["Paul", 35] to the beginning of the myArray variable using unshift().
 
-Accessing Nested Arrays
-As we have seen in earlier examples, objects can contain both nested objects and nested arrays. Similar to accessing nested objects, array bracket notation can be chained to access nested arrays.
-Here is an example of how to access a nested array:
-const ourPets = [
-  {
-    animalType: "cat",
-    names: [
-      "Meowzer",
-      "Fluffy",
-      "Kit-Cat"
-    ]
-  },
-  {
-    animalType: "dog",
-    names: [
-      "Spot",
-      "Bowser",
-      "Frankie"
-    ]
-  }
-];
-ourPets[0].names[1];
-ourPets[1].names[0];
-ourPets[0].names[1] would be the string Fluffy, and ourPets[1].names[0] would be the string Spot.
-Using dot and bracket notation, set the variable secondTree to the second item in the trees list from the myPlants object.
-
-JavaScript array
-A collection of ordered items
-  [] empty array
-  arr[0]; call first array items
-  arr[0] = "foo";
-Mutation
-A change in the original data value
-push(): This adds an item to the end of an array. It returns the new length of the array.
-pop(): This removes the last item from the end of an array. It returns the last item.
-length: Just like the string tool length, this gives the length of the array—in other words, the number of items. You'll notice that length doesn't need parentheses. That's because it's technically a property and not a method.
-
-JavaScript Arrays
-
-An array is a special variable, which can hold more than one value:
-const cars = ["Saab", "Volvo", "BMW"];
-Why Use Arrays?
-
-If you have a list of items (a list of car names, for example), storing the cars in single variables could look like this:
-let car1 = "Saab";
-let car2 = "Volvo";
-let car3 = "BMW";
-
-However, what if you want to loop through the cars and find a specific one? And what if you had not 3 cars, but 300?
-
-The solution is an array!
-
-An array can hold many values under a single name, and you can access the values by referring to an index number.
-Creating an Array
-
-Using an array literal is the easiest way to create a JavaScript Array.
-
-Syntax:
-const array_name = [item1, item2, ...];
-
-It is a common practice to declare arrays with the const keyword.
-
-Learn more about const with arrays in the chapter: JS Array Const.
-Example
-const cars = ["Saab", "Volvo", "BMW"];
-
-Spaces and line breaks are not important. A declaration can span multiple lines:
-Example
-const cars = [
-  "Saab",
-  "Volvo",
-  "BMW"
-];
-
-You can also create an array, and then provide the elements:
-Example
-const cars = [];
-cars[0]= "Saab";
-cars[1]= "Volvo";
-cars[2]= "BMW";
-Using the JavaScript Keyword new
-
-The following example also creates an Array, and assigns values to it:
-Example
-const cars = new Array("Saab", "Volvo", "BMW");
-
-The two examples above do exactly the same.
-
-There is no need to use new Array().
-
-For simplicity, readability and execution speed, use the array literal method.
-Accessing Array Elements
-
-You access an array element by referring to the index number:
-const cars = ["Saab", "Volvo", "BMW"];
-let car = cars[0];
-
-Note: Array indexes start with 0.
-
-[0] is the first element. [1] is the second element.
-Changing an Array Element
-
-This statement changes the value of the first element in cars:
-cars[0] = "Opel";
-Example
-const cars = ["Saab", "Volvo", "BMW"];
-cars[0] = "Opel";
-Access the Full Array
-
-With JavaScript, the full array can be accessed by referring to the array name:
-Example
-const cars = ["Saab", "Volvo", "BMW"];
-document.getElementById("demo").innerHTML = cars;
-Arrays are Objects
-
-Arrays are a special type of objects. The typeof operator in JavaScript returns "object" for arrays.
-
-But, JavaScript arrays are best described as arrays.
-
-Arrays use numbers to access its "elements". In this example, person[0] returns John:
-Array:
-const person = ["John", "Doe", 46];
-
-Objects use names to access its "members". In this example, person.firstName returns John:
-Object:
-const person = {firstName:"John", lastName:"Doe", age:46};
-Array Elements Can Be Objects
-
-JavaScript variables can be objects. Arrays are special kinds of objects.
-
-Because of this, you can have variables of different types in the same Array.
-
-You can have objects in an Array. You can have functions in an Array. You can have arrays in an Array:
-myArray[0] = Date.now;
-myArray[1] = myFunction;
-myArray[2] = myCars;
-Array Properties and Methods
-
-The real strength of JavaScript arrays are the built-in array properties and methods:
-cars.length   // Returns the number of elements
-cars.sort()   // Sorts the array
-
-Array methods are covered in the next chapters.
-The length Property
-
-The length property of an array returns the length of an array (the number of array elements).
-Example
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-let length = fruits.length;
-
-The length property is always one more than the highest array index.
-Accessing the First Array Element
-Example
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-let fruit = fruits[0];
-Accessing the Last Array Element
-Example
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-let fruit = fruits[fruits.length - 1];
-Looping Array Elements
-
-One way to loop through an array, is using a for loop:
-Example
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-let fLen = fruits.length;
-
-let text = "<ul>";
-for (let i = 0; i < fLen; i++) {
-  text += "<li>" + fruits[i] + "</li>";
-}
-text += "</ul>";
-
-You can also use the Array.forEach() function:
-Example
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-
-let text = "<ul>";
-fruits.forEach(myFunction);
-text += "</ul>";
-
-function myFunction(value) {
-  text += "<li>" + value + "</li>";
-}
-Adding Array Elements
-
-The easiest way to add a new element to an array is using the push() method:
-Example
-const fruits = ["Banana", "Orange", "Apple"];
-fruits.push("Lemon");  // Adds a new element (Lemon) to fruits
-
-New element can also be added to an array using the length property:
-Example
-const fruits = ["Banana", "Orange", "Apple"];
-fruits[fruits.length] = "Lemon";  // Adds "Lemon" to fruits
-
-WARNING !
-
-Adding elements with high indexes can create undefined "holes" in an array:
-Example
-const fruits = ["Banana", "Orange", "Apple"];
-fruits[6] = "Lemon";  // Creates undefined "holes" in fruits
-Associative Arrays
-
-Many programming languages support arrays with named indexes.
-
-Arrays with named indexes are called associative arrays (or hashes).
-
-JavaScript does not support arrays with named indexes.
-
-In JavaScript, arrays always use numbered indexes.
-Example
-const person = [];
-person[0] = "John";
-person[1] = "Doe";
-person[2] = 46;
-person.length;    // Will return 3
-person[0];        // Will return "John"
-
-WARNING !!
-If you use named indexes, JavaScript will redefine the array to an object.
-
-After that, some array methods and properties will produce incorrect results.
- Example:
-const person = [];
-person["firstName"] = "John";
-person["lastName"] = "Doe";
-person["age"] = 46;
-person.length;     // Will return 0
-person[0];         // Will return undefined
-The Difference Between Arrays and Objects
-
-In JavaScript, arrays use numbered indexes.
-
-In JavaScript, objects use named indexes.
-
-Arrays are a special kind of objects, with numbered indexes.
-When to Use Arrays. When to use Objects.
-
-    JavaScript does not support associative arrays.
-    You should use objects when you want the element names to be strings (text).
-    You should use arrays when you want the element names to be numbers.
-
-JavaScript new Array()
-
-JavaScript has a built in array constructor new Array().
-
-But you can safely use [] instead.
-
-These two different statements both create a new empty array named points:
-const points = new Array();
-const points = [];
-
-These two different statements both create a new array containing 6 numbers:
-const points = new Array(40, 100, 1, 5, 25, 10);
-const points = [40, 100, 1, 5, 25, 10];
-
-The new keyword can produce some unexpected results:
-// Create an array with three elements:
-const points = new Array(40, 100, 1);
-// Create an array with two elements:
-const points = new Array(40, 100);
-// Create an array with one element ???
-const points = new Array(40);
-A Common Error
-const points = [40];
-
-is not the same as:
-const points = new Array(40);
-// Create an array with one element:
-const points = [40];
-// Create an array with 40 undefined elements:
-const points = new Array(40);
-How to Recognize an Array
-
-A common question is: How do I know if a variable is an array?
-
-The problem is that the JavaScript operator typeof returns "object":
-const fruits = ["Banana", "Orange", "Apple"];
-let type = typeof fruits;
-
-The typeof operator returns object because a JavaScript array is an object.
-Solution 1:
-
-To solve this problem ECMAScript 5 (JavaScript 2009) defined a new method Array.isArray():
-Array.isArray(fruits);
-Solution 2:
-
-The instanceof operator returns true if an object is created by a given constructor:
-const fruits = ["Banana", "Orange", "Apple"];
-
-fruits instanceof Array;
-Complete Array Reference
-
-For a complete Array reference, go to our:
-
-Complete JavaScript Array Reference.
-
-The reference contains descriptions and examples of all Array properties and methods.
-Test Yourself With Exercises
-Exercise:
-
-Get the value "Volvo" from the cars array.
-
-const cars = ["Saab", "Volvo", "BMW"];
-let x = ;
-
-
-Start the Exercise
-
-*** JavaScript Array Methods
 Converting Arrays to Strings
 
 The JavaScript method toString() converts an array to a string of (comma separated) array values.
@@ -4327,6 +4189,30 @@ const fruits = ["Banana", "Orange", "Apple", "Kiwi"];
 Start the Exercise
 
 *** JavaScript Array Iteration
+
+Looping Array Elements
+One way to loop through an array, is using a for loop:
+Example
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fLen = fruits.length;
+
+let text = "<ul>";
+for (let i = 0; i < fLen; i++) {
+  text += "<li>" + fruits[i] + "</li>";
+}
+text += "</ul>";
+
+You can also use the Array.forEach() function:
+Example
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+let text = "<ul>";
+fruits.forEach(myFunction);
+text += "</ul>";
+
+function myFunction(value) {
+  text += "<li>" + value + "</li>";
+}
 
 Array iteration methods operate on every array item.
 JavaScript Array forEach()
@@ -4858,6 +4744,37 @@ Complete JavaScript Array Reference.
 
 The reference contains descriptions and examples of all Array properties and methods.
 
+
+JavaScript new Array()
+JavaScript has a built in array constructor new Array().
+
+But you can safely use [] instead.
+
+These two different statements both create a new empty array named points:
+const points = new Array();
+const points = [];
+
+These two different statements both create a new array containing 6 numbers:
+const points = new Array(40, 100, 1, 5, 25, 10);
+const points = [40, 100, 1, 5, 25, 10];
+
+The new keyword can produce some unexpected results:
+// Create an array with three elements:
+const points = new Array(40, 100, 1);
+// Create an array with two elements:
+const points = new Array(40, 100);
+// Create an array with one element ???
+const points = new Array(40);
+A Common Error
+const points = [40];
+
+is not the same as:
+const points = new Array(40);
+// Create an array with one element:
+const points = [40];
+// Create an array with 40 undefined elements:
+const points = new Array(40);
+
 ** objects
 
 Build JavaScript Objects
@@ -5274,6 +5191,26 @@ alert();
 
 
 Start the Exercise
+
+Prevent Object Mutation
+
+As seen in the previous challenge, const declaration alone doesn't really protect your data from mutation. To ensure your data doesn't change, JavaScript provides a function Object.freeze to prevent data mutation.
+
+Any attempt at changing the object will be rejected, with an error thrown if the script is running in strict mode.
+
+let obj = {
+  name:"FreeCodeCamp",
+  review:"Awesome"
+};
+Object.freeze(obj);
+obj.review = "bad";
+obj.newProp = "Test";
+console.log(obj);
+
+The obj.review and obj.newProp assignments will result in errors, because our editor runs in strict mode by default, and the console will display the value { name: "FreeCodeCamp", review: "Awesome" }.
+
+In this challenge you are going to use Object.freeze to prevent mathematical constants from changing. You need to freeze the MATH_CONSTANTS object so that no one is able to alter the value of PI, add, or delete properties.
+
 
 *** destructuring and rest thinkful
 
@@ -7197,6 +7134,66 @@ function myFunction() {
 
 Start the Exercise
 
+Set Default Parameters for Your Functions
+In order to help us create more flexible functions, ES6 introduces default parameters for functions.
+Check out this code:
+const greeting = (name = "Anonymous") => "Hello " + name;
+console.log(greeting("John"));
+console.log(greeting());
+The console will display the strings Hello John and Hello Anonymous.
+The default parameter kicks in when the argument is not specified (it is undefined). As you can see in the example above, the parameter name will receive its default value Anonymous when you do not provide a value for the parameter. You can add default values for as many parameters as you want.
+Modify the function increment by adding default parameters so that it will add 1 to number if value is not specified.
+
+Use the Rest Parameter with Function Parameters
+In order to help us create more flexible functions, ES6 introduces the rest parameter for function parameters. With the rest parameter, you can create functions that take a variable number of arguments. These arguments are stored in an array that can be accessed later from inside the function.
+Check out this code:
+function howMany(...args) {
+  return "You have passed " + args.length + " arguments.";
+}
+console.log(howMany(0, 1, 2));
+console.log(howMany("string", null, [1, 2, 3], { }));
+The console would display the strings You have passed 3 arguments. and You have passed 4 arguments..
+The rest parameter eliminates the need to check the args array and allows us to apply map(), filter() and reduce() on the parameters array.
+Modify the function sum using the rest parameter in such a way that the function sum is able to take any number of arguments and return their sum.
+
+Use the Spread Operator to Evaluate Arrays In-Place
+ES6 introduces the spread operator, which allows us to expand arrays and other expressions in places where multiple parameters or elements are expected.
+The ES5 code below uses apply() to compute the maximum value in an array:
+var arr = [6, 89, 3, 45];
+var maximus = Math.max.apply(null, arr);
+maximus would have a value of 89.
+We had to use Math.max.apply(null, arr) because Math.max(arr) returns NaN. Math.max() expects comma-separated arguments, but not an array. The spread operator makes this syntax much better to read and maintain.
+const arr = [6, 89, 3, 45];
+const maximus = Math.max(...arr);
+maximus would have a value of 89.
+...arr returns an unpacked array. In other words, it spreads the array. However, the spread operator only works in-place, like in an argument to a function or in an array literal. The following code will not work:
+const spreaded = ...arr;
+Copy all contents of arr1 into another array arr2 using the spread operator.
+
+Use Destructuring Assignment to Extract Values from Objects
+Destructuring assignment is special syntax introduced in ES6, for neatly assigning values taken directly from an object.
+Consider the following ES5 code:
+const user = { name: 'John Doe', age: 34 };
+const name = user.name;
+const age = user.age;
+name would have a value of the string John Doe, and age would have the number 34.
+Here's an equivalent assignment statement using the ES6 destructuring syntax:
+const { name, age } = user;
+Again, name would have a value of the string John Doe, and age would have the number 34.
+Here, the name and age variables will be created and assigned the values of their respective values from the user object. You can see how much cleaner this is.
+You can extract as many or few values from the object as you want.
+Replace the two assignments with an equivalent destructuring assignment. It should still assign the variables today and tomorrow the values of today and tomorrow from the HIGH_TEMPERATURES object.
+
+Use Destructuring Assignment to Assign Variables from Objects
+Destructuring allows you to assign a new variable name when extracting values. You can do this by putting the new name after a colon when assigning the value.
+Using the same object from the last example:
+const user = { name: 'John Doe', age: 34 };
+Here's how you can give new variable names in the assignment:
+const { name: userName, age: userAge } = user;
+You may read it as "get the value of user.name and assign it to a new variable named userName" and so on. The value of userName would be the string John Doe, and the value of userAge would be the number 34.
+Replace the two assignments with an equivalent destructuring assignment. It should still assign the variables highToday and highTomorrow the values of today and tomorrow from the HIGH_TEMPERATURES object.
+
+
 *** default parameter thinkful
 
 Setting defaults
@@ -7386,6 +7383,7 @@ console.log(mySequence);  // => [1,2,3,4]
 function receives a reference to the item - the local variable assigned to this item is impacting the original item
 
 ** JavaScript Arrow Function
+
 Arrow functions were introduced in ES6.
 
 Arrow functions allow us to write shorter function syntax:
@@ -7471,6 +7469,36 @@ The following table defines the first browser versions with full support for Arr
 
 Chrome 45	Edge 12	Firefox 22	Safari 10	Opera 32
 Sep, 2015	Jul, 2015	May, 2013	Sep, 2016	Sep, 2015
+
+Use Arrow Functions to Write Concise Anonymous Functions
+In JavaScript, we often don't need to name our functions, especially when passing a function as an argument to another function. Instead, we create inline functions. We don't need to name these functions because we do not reuse them anywhere else.
+To achieve this, we often use the following syntax:
+const myFunc = function() {
+  const myVar = "value";
+  return myVar;
+}
+ES6 provides us with the syntactic sugar to not have to write anonymous functions this way. Instead, you can use arrow function syntax:
+const myFunc = () => {
+  const myVar = "value";
+  return myVar;
+}
+When there is no function body, and only a return value, arrow function syntax allows you to omit the keyword return as well as the brackets surrounding the code. This helps simplify smaller functions into one-line statements:
+const myFunc = () => "value";
+This code will still return the string value by default.
+Rewrite the function assigned to the variable magic which returns a new Date() to use arrow function syntax. Also, make sure nothing is defined using the keyword var.
+
+Write Arrow Functions with Parameters
+Just like a regular function, you can pass arguments into an arrow function.
+const doubler = (item) => item * 2;
+doubler(4);
+doubler(4) would return the value 8.
+If an arrow function has a single parameter, the parentheses enclosing the parameter may be omitted.
+const doubler = item => item * 2;
+It is possible to pass more than one argument into an arrow function.
+const multiplier = (item, multi) => item * multi;
+multiplier(4, 2);
+multiplier(4, 2) would return the value 8.
+Rewrite the myConcat function which appends contents of arr2 to arr1 so that the function uses arrow function syntax.
 
 ** advanced functions
 *** overview: advanced functions
@@ -8122,7 +8150,8 @@ For more insight into the default behavior, take a look at the following code.
 This could be what you want, but it is almost always better to provide a function so that you can determine the effect of sort().
 
 *** assessment
-** JavaScript Modules
+** js Modules wip
+
 Modules
 JavaScript modules allow you to break up your code into separate files.
 
@@ -8471,169 +8500,7 @@ if (DISCOUNT_PERCENTAGE > 0) {
 
 In the case above, price is declared twice as a const variable, but the scopes are separate. That means that they can both be declared successfully on their own.
 
-** iterate
-
-Iterate with JavaScript While Loops
-You can run the same code multiple times by using a loop.
-The first type of loop we will learn is called a while loop because it runs while a specified condition is true and stops once that condition is no longer true.
-const ourArray = [];
-let i = 0;
-while (i < 5) {
-  ourArray.push(i);
-  i++;
-}
-In the code example above, the while loop will execute 5 times and append the numbers 0 through 4 to ourArray.
-Let's try getting a while loop to work by pushing values to an array.
-Add the numbers 5 through 0 (inclusive) in descending order to myArray using a while loop.
-
-Iterate with JavaScript For Loops
-You can run the same code multiple times by using a loop.
-The most common type of JavaScript loop is called a for loop because it runs for a specific number of times.
-For loops are declared with three optional expressions separated by semicolons:
-for (a; b; c), where a is the initialization statement, b is the condition statement, and c is the final expression.
-The initialization statement is executed one time only before the loop starts. It is typically used to define and setup your loop variable.
-The condition statement is evaluated at the beginning of every loop iteration and will continue as long as it evaluates to true. When the condition is false at the start of the iteration, the loop will stop executing. This means if the condition starts as false, your loop will never execute.
-The final expression is executed at the end of each loop iteration, prior to the next condition check and is usually used to increment or decrement your loop counter.
-In the following example we initialize with i = 0 and iterate while our condition i < 5 is true. We'll increment i by 1 in each loop iteration with i++ as our final expression.
-const ourArray = [];
-for (let i = 0; i < 5; i++) {
-  ourArray.push(i);
-}
-ourArray will now have the value [0, 1, 2, 3, 4].
-Use a for loop to push the values 1 through 5 onto myArray.
-
-Iterate Odd Numbers With a For Loop
-For loops don't have to iterate one at a time. By changing our final-expression, we can count by even numbers.
-We'll start at i = 0 and loop while i < 10. We'll increment i by 2 each loop with i += 2.
-const ourArray = [];
-for (let i = 0; i < 10; i += 2) {
-  ourArray.push(i);
-}
-ourArray will now contain [0, 2, 4, 6, 8]. Let's change our initialization so we can count by odd numbers.
-Push the odd numbers from 1 through 9 to myArray using a for loop.
-
-Count Backwards With a For Loop
-A for loop can also count backwards, so long as we can define the right conditions.
-In order to decrement by two each iteration, we'll need to change our initialization, condition, and final expression.
-We'll start at i = 10 and loop while i > 0. We'll decrement i by 2 each loop with i -= 2.
-const ourArray = [];
-for (let i = 10; i > 0; i -= 2) {
-  ourArray.push(i);
-}
-ourArray will now contain [10, 8, 6, 4, 2]. Let's change our initialization and final expression so we can count backwards by twos to create an array of descending odd numbers.
-Push the odd numbers from 9 through 1 to myArray using a for loop.
-
-Iterate Through an Array with a For Loop
-A common task in JavaScript is to iterate through the contents of an array. One way to do that is with a for loop. This code will output each element of the array arr to the console:
-const arr = [10, 9, 8, 7, 6];
-for (let i = 0; i < arr.length; i++) {
-   console.log(arr[i]);
-}
-Remember that arrays have zero-based indexing, which means the last index of the array is length - 1. Our condition for this loop is i < arr.length, which stops the loop when i is equal to length. In this case the last iteration is i === 4 i.e. when i becomes equal to arr.length - 1 and outputs 6 to the console. Then i increases to 5, and the loop terminates because i < arr.length is false.
-Declare and initialize a variable total to 0. Use a for loop to add the value of each element of the myArr array to total.
-
-Nesting For Loops
-If you have a multi-dimensional array, you can use the same logic as the prior waypoint to loop through both the array and any sub-arrays. Here is an example:
-const arr = [
-  [1, 2], [3, 4], [5, 6]
-];
-
-for (let i = 0; i < arr.length; i++) {
-  for (let j = 0; j < arr[i].length; j++) {
-    console.log(arr[i][j]);
-  }
-}
-This outputs each sub-element in arr one at a time. Note that for the inner loop, we are checking the .length of arr[i], since arr[i] is itself an array.
-Modify function multiplyAll so that it returns the product of all the numbers in the sub-arrays of arr.
-
-Iterate with JavaScript Do...While Loops
-The next type of loop you will learn is called a do...while loop. It is called a do...while loop because it will first do one pass of the code inside the loop no matter what, and then continue to run the loop while the specified condition evaluates to true.
-const ourArray = [];
-let i = 0;
-
-do {
-  ourArray.push(i);
-  i++;
-} while (i < 5);
-The example above behaves similar to other types of loops, and the resulting array will look like [0, 1, 2, 3, 4]. However, what makes the do...while different from other loops is how it behaves when the condition fails on the first check. Let's see this in action: Here is a regular while loop that will run the code in the loop as long as i < 5:
-const ourArray = [];
-let i = 5;
-
-while (i < 5) {
-  ourArray.push(i);
-  i++;
-}
-In this example, we initialize the value of ourArray to an empty array and the value of i to 5. When we execute the while loop, the condition evaluates to false because i is not less than 5, so we do not execute the code inside the loop. The result is that ourArray will end up with no values added to it, and it will still look like [] when all of the code in the example above has completed running. Now, take a look at a do...while loop:
-const ourArray = [];
-let i = 5;
-
-do {
-  ourArray.push(i);
-  i++;
-} while (i < 5);
-In this case, we initialize the value of i to 5, just like we did with the while loop. When we get to the next line, there is no condition to evaluate, so we go to the code inside the curly braces and execute it. We will add a single element to the array and then increment i before we get to the condition check. When we finally evaluate the condition i < 5 on the last line, we see that i is now 6, which fails the conditional check, so we exit the loop and are done. At the end of the above example, the value of ourArray is [5]. Essentially, a do...while loop ensures that the code inside the loop will run at least once. Let's try getting a do...while loop to work by pushing values to an array.
-Change the while loop in the code to a do...while loop so the loop will push only the number 10 to myArray, and i will be equal to 11 when your code has finished running.
-
-Replace Loops using Recursion
-Recursion is the concept that a function can be expressed in terms of itself. To help understand this, start by thinking about the following task: multiply the first n elements of an array to create the product of those elements. Using a for loop, you could do this:
-  function multiply(arr, n) {
-    let product = 1;
-    for (let i = 0; i < n; i++) {
-      product *= arr[i];
-    }
-    return product;
-  }
-However, notice that multiply(arr, n) == multiply(arr, n - 1) * arr[n - 1]. That means you can rewrite multiply in terms of itself and never need to use a loop.
-  function multiply(arr, n) {
-    if (n <= 0) {
-      return 1;
-    } else {
-      return multiply(arr, n - 1) * arr[n - 1];
-    }
-  }
-The recursive version of multiply breaks down like this. In the base case, where n <= 0, it returns 1. For larger values of n, it calls itself, but with n - 1. That function call is evaluated in the same way, calling multiply again until n <= 0. At this point, all the functions can return and the original multiply returns the answer.
-Note: Recursive functions must have a base case when they return without calling the function again (in this example, when n <= 0), otherwise they can never finish executing.
-Write a recursive function, sum(arr, n), that returns the sum of the first n elements of an array arr.
-
-for loop
-for ( initialExpression; condition; incrementExpression) {
-  loop body
-}
-intitalExpression let i = 1;
-condition i <= 5;
-incrementExpression i++;
-initialExpression
-This expression typically initializes the loop counter. It runs at the start of a loop. A very common example is let i = 0. The i variable is short for index, and it's frequently used for the index counter that you saw above.
-condition
-At the end of each loop, the condition expression is evaluated. In the example above, the condition is "if index is less than or equal to the countTo variable." If the value of the condition is true, the loop statement executes. If the value of the condition is false, the loop statement terminates. In the example above, index would eventually get to 6. At that point, because the value would be greater than 5, the loop would stop.
-incrementExpression
-At the end of each loop, this statement is executed. In the example above, the code is incrementing the variable index by 1 (++) each time through the loop. But it's important to note that you're not limited to incrementing by 1 for the final condition. Depending on what you're building or the problem you're solving, you can decrement (i--) by some amount, or you could increment by another amount, like 2 (index += 2). That said, incrementing by 1 is the most common technique.
-loop body
-If the condition is true, this code will run. In the example above, the loop body that executes uses console.log() to display the value of index during the loop.
-
-i stand for index number
-
-increment and decrement operators
-i++, i--
-i+=2, i-=2
-
-make for loop over an array
-for ( let i = 0; i < arr.length; i++ ) {
-  console.log( arr[i] );
-
-}
-
-for () {
-  var += arr[i]
-}
-
-for () {
-  if () {
-  }
-  if () {
-  }
-}
-
+** iterate wip
 
 Accumulator pattern
 Pseudocoding
@@ -8645,7 +8512,6 @@ let sum = 0; // accumulator
 for () {
   sum += i;
 }
-
 
 Loop
     A construct that allows you to repeat a set of instructions a specific number of times, or until a specific condition is true
@@ -8795,6 +8661,102 @@ let i;
 
 Start the Exercise
 
+Iterate with JavaScript For Loops
+You can run the same code multiple times by using a loop.
+The most common type of JavaScript loop is called a for loop because it runs for a specific number of times.
+For loops are declared with three optional expressions separated by semicolons:
+for (a; b; c), where a is the initialization statement, b is the condition statement, and c is the final expression.
+The initialization statement is executed one time only before the loop starts. It is typically used to define and setup your loop variable.
+The condition statement is evaluated at the beginning of every loop iteration and will continue as long as it evaluates to true. When the condition is false at the start of the iteration, the loop will stop executing. This means if the condition starts as false, your loop will never execute.
+The final expression is executed at the end of each loop iteration, prior to the next condition check and is usually used to increment or decrement your loop counter.
+In the following example we initialize with i = 0 and iterate while our condition i < 5 is true. We'll increment i by 1 in each loop iteration with i++ as our final expression.
+const ourArray = [];
+for (let i = 0; i < 5; i++) {
+  ourArray.push(i);
+}
+ourArray will now have the value [0, 1, 2, 3, 4].
+Use a for loop to push the values 1 through 5 onto myArray.
+Iterate Odd Numbers With a For Loop
+For loops don't have to iterate one at a time. By changing our final-expression, we can count by even numbers.
+We'll start at i = 0 and loop while i < 10. We'll increment i by 2 each loop with i += 2.
+const ourArray = [];
+for (let i = 0; i < 10; i += 2) {
+  ourArray.push(i);
+}
+ourArray will now contain [0, 2, 4, 6, 8]. Let's change our initialization so we can count by odd numbers.
+Push the odd numbers from 1 through 9 to myArray using a for loop.
+Count Backwards With a For Loop
+A for loop can also count backwards, so long as we can define the right conditions.
+In order to decrement by two each iteration, we'll need to change our initialization, condition, and final expression.
+We'll start at i = 10 and loop while i > 0. We'll decrement i by 2 each loop with i -= 2.
+const ourArray = [];
+for (let i = 10; i > 0; i -= 2) {
+  ourArray.push(i);
+}
+ourArray will now contain [10, 8, 6, 4, 2]. Let's change our initialization and final expression so we can count backwards by twos to create an array of descending odd numbers.
+Push the odd numbers from 9 through 1 to myArray using a for loop.
+
+Iterate Through an Array with a For Loop
+A common task in JavaScript is to iterate through the contents of an array. One way to do that is with a for loop. This code will output each element of the array arr to the console:
+const arr = [10, 9, 8, 7, 6];
+for (let i = 0; i < arr.length; i++) {
+   console.log(arr[i]);
+}
+Remember that arrays have zero-based indexing, which means the last index of the array is length - 1. Our condition for this loop is i < arr.length, which stops the loop when i is equal to length. In this case the last iteration is i === 4 i.e. when i becomes equal to arr.length - 1 and outputs 6 to the console. Then i increases to 5, and the loop terminates because i < arr.length is false.
+Declare and initialize a variable total to 0. Use a for loop to add the value of each element of the myArr array to total.
+
+Nesting For Loops
+If you have a multi-dimensional array, you can use the same logic as the prior waypoint to loop through both the array and any sub-arrays. Here is an example:
+const arr = [
+  [1, 2], [3, 4], [5, 6]
+];
+
+for (let i = 0; i < arr.length; i++) {
+  for (let j = 0; j < arr[i].length; j++) {
+    console.log(arr[i][j]);
+  }
+}
+This outputs each sub-element in arr one at a time. Note that for the inner loop, we are checking the .length of arr[i], since arr[i] is itself an array.
+Modify function multiplyAll so that it returns the product of all the numbers in the sub-arrays of arr.
+for loop
+for ( initialExpression; condition; incrementExpression) {
+  loop body
+}
+intitalExpression let i = 1;
+condition i <= 5;
+incrementExpression i++;
+initialExpression
+This expression typically initializes the loop counter. It runs at the start of a loop. A very common example is let i = 0. The i variable is short for index, and it's frequently used for the index counter that you saw above.
+condition
+At the end of each loop, the condition expression is evaluated. In the example above, the condition is "if index is less than or equal to the countTo variable." If the value of the condition is true, the loop statement executes. If the value of the condition is false, the loop statement terminates. In the example above, index would eventually get to 6. At that point, because the value would be greater than 5, the loop would stop.
+incrementExpression
+At the end of each loop, this statement is executed. In the example above, the code is incrementing the variable index by 1 (++) each time through the loop. But it's important to note that you're not limited to incrementing by 1 for the final condition. Depending on what you're building or the problem you're solving, you can decrement (i--) by some amount, or you could increment by another amount, like 2 (index += 2). That said, incrementing by 1 is the most common technique.
+loop body
+If the condition is true, this code will run. In the example above, the loop body that executes uses console.log() to display the value of index during the loop.
+
+i stand for index number
+
+increment and decrement operators
+i++, i--
+i+=2, i-=2
+
+make for loop over an array
+for ( let i = 0; i < arr.length; i++ ) {
+  console.log( arr[i] );
+
+}
+
+for () {
+  var += arr[i]
+}
+
+for () {
+  if () {
+  }
+  if () {
+  }
+}
+
 *** JavaScript For In
 The For In Loop
 
@@ -8911,6 +8873,36 @@ The While Loop
 
 The while loop and the do/while loop are explained in the next chapter.
 
+*** do while loop
+
+Iterate with JavaScript Do...While Loops
+The next type of loop you will learn is called a do...while loop. It is called a do...while loop because it will first do one pass of the code inside the loop no matter what, and then continue to run the loop while the specified condition evaluates to true.
+const ourArray = [];
+let i = 0;
+
+do {
+  ourArray.push(i);
+  i++;
+} while (i < 5);
+The example above behaves similar to other types of loops, and the resulting array will look like [0, 1, 2, 3, 4]. However, what makes the do...while different from other loops is how it behaves when the condition fails on the first check. Let's see this in action: Here is a regular while loop that will run the code in the loop as long as i < 5:
+const ourArray = [];
+let i = 5;
+
+while (i < 5) {
+  ourArray.push(i);
+  i++;
+}
+In this example, we initialize the value of ourArray to an empty array and the value of i to 5. When we execute the while loop, the condition evaluates to false because i is not less than 5, so we do not execute the code inside the loop. The result is that ourArray will end up with no values added to it, and it will still look like [] when all of the code in the example above has completed running. Now, take a look at a do...while loop:
+const ourArray = [];
+let i = 5;
+
+do {
+  ourArray.push(i);
+  i++;
+} while (i < 5);
+In this case, we initialize the value of i to 5, just like we did with the while loop. When we get to the next line, there is no condition to evaluate, so we go to the code inside the curly braces and execute it. We will add a single element to the array and then increment i before we get to the condition check. When we finally evaluate the condition i < 5 on the last line, we see that i is now 6, which fails the conditional check, so we exit the loop and are done. At the end of the above example, the value of ourArray is [5]. Essentially, a do...while loop ensures that the code inside the loop will run at least once. Let's try getting a do...while loop to work by pushing values to an array.
+Change the while loop in the code to a do...while loop so the loop will push only the number 10 to myArray, and i will be equal to 11 when your code has finished running.
+
 *** JavaScript While Loop
 
 Loops can execute a block of code as long as a specified condition is true.
@@ -8986,6 +8978,18 @@ let i = 0;
   i++
   }
 
+Iterate with JavaScript While Loops
+You can run the same code multiple times by using a loop.
+The first type of loop we will learn is called a while loop because it runs while a specified condition is true and stops once that condition is no longer true.
+const ourArray = [];
+let i = 0;
+while (i < 5) {
+  ourArray.push(i);
+  i++;
+}
+In the code example above, the while loop will execute 5 times and append the numbers 0 through 4 to ourArray.
+Let's try getting a while loop to work by pushing values to an array.
+Add the numbers 5 through 0 (inclusive) in descending order to myArray using a while loop.
 *** JavaScript Break and Continue
 
 The break statement "jumps out" of a loop.
@@ -9211,6 +9215,29 @@ for (let key in object) {
   //  Logs "name Alice",  "location Sealand"
   console.log(key, object[key]);
 };
+
+** recursion
+
+Replace Loops using Recursion
+Recursion is the concept that a function can be expressed in terms of itself. To help understand this, start by thinking about the following task: multiply the first n elements of an array to create the product of those elements. Using a for loop, you could do this:
+  function multiply(arr, n) {
+    let product = 1;
+    for (let i = 0; i < n; i++) {
+      product *= arr[i];
+    }
+    return product;
+  }
+However, notice that multiply(arr, n) == multiply(arr, n - 1) * arr[n - 1]. That means you can rewrite multiply in terms of itself and never need to use a loop.
+  function multiply(arr, n) {
+    if (n <= 0) {
+      return 1;
+    } else {
+      return multiply(arr, n - 1) * arr[n - 1];
+    }
+  }
+The recursive version of multiply breaks down like this. In the base case, where n <= 0, it returns 1. For larger values of n, it calls itself, but with n - 1. That function call is evaluated in the same way, calling multiply again until n <= 0. At this point, all the functions can return and the original multiply returns the answer.
+Note: Recursive functions must have a base case when they return without calling the function again (in this example, when n <= 0), otherwise they can never finish executing.
+Write a recursive function, sum(arr, n), that returns the sum of the first n elements of an array arr.
 
 ** Math.
 
