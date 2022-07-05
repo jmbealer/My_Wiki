@@ -521,7 +521,6 @@ console.log(i);
 Here the console will display the value 2, and an error that i is not defined.
 i is not defined because it was not declared in the global scope. It is only declared within the for loop statement. printNumTwo() returned the correct value because three different i variables with unique values (0, 1, and 2) were created by the let keyword within the loop statement.
 
-
 *** var keyword
 
 var keyword isnt used anymore, and you should avoid using them.
@@ -5211,7 +5210,6 @@ The obj.review and obj.newProp assignments will result in errors, because our ed
 
 In this challenge you are going to use Object.freeze to prevent mathematical constants from changing. You need to freeze the MATH_CONSTANTS object so that no one is able to alter the value of PI, add, or delete properties.
 
-
 *** destructuring and rest thinkful
 
 Deep destructuring The process of destructuring multiple levels of an array or other object
@@ -6829,8 +6827,6 @@ Arguments are the values inbetween the parentheses, when you invoke a function
   its the input to function.
   functionIdentifier(arg1, arg2);
 
-
-
 #+begin_src js
 let array = [1 , 2 , 3 , 4];
 // return length of an array
@@ -7192,7 +7188,6 @@ Here's how you can give new variable names in the assignment:
 const { name: userName, age: userAge } = user;
 You may read it as "get the value of user.name and assign it to a new variable named userName" and so on. The value of userName would be the string John Doe, and the value of userAge would be the number 34.
 Replace the two assignments with an equivalent destructuring assignment. It should still assign the variables highToday and highTomorrow the values of today and tomorrow from the HIGH_TEMPERATURES object.
-
 
 *** default parameter thinkful
 
