@@ -3527,6 +3527,11 @@ const fruits = ["Banana", "Orange", "Apple"];
 
 fruits instanceof Array;
 
+Stand in Line
+In Computer Science a queue is an abstract Data Structure where items are kept in order. New items can be added at the back of the queue and old items are taken off from the front of the queue.
+Write a function nextInLine which takes an array (arr) and a number (item) as arguments.
+Add the number to the end of the array, then remove the first element of the array.
+The nextInLine function should then return the element that was removed.
 *** js array create
 
 create/declare array/array literal
@@ -6099,6 +6104,42 @@ Operator 	Description
 + 	Addition
 - 	Subtraction
 
+Use the Spread Operator to Evaluate Arrays In-Place
+ES6 introduces the spread operator, which allows us to expand arrays and other expressions in places where multiple parameters or elements are expected.
+The ES5 code below uses apply() to compute the maximum value in an array:
+var arr = [6, 89, 3, 45];
+var maximus = Math.max.apply(null, arr);
+maximus would have a value of 89.
+We had to use Math.max.apply(null, arr) because Math.max(arr) returns NaN. Math.max() expects comma-separated arguments, but not an array. The spread operator makes this syntax much better to read and maintain.
+const arr = [6, 89, 3, 45];
+const maximus = Math.max(...arr);
+maximus would have a value of 89.
+...arr returns an unpacked array. In other words, it spreads the array. However, the spread operator only works in-place, like in an argument to a function or in an array literal. The following code will not work:
+const spreaded = ...arr;
+Copy all contents of arr1 into another array arr2 using the spread operator.
+
+Use Destructuring Assignment to Extract Values from Objects
+Destructuring assignment is special syntax introduced in ES6, for neatly assigning values taken directly from an object.
+Consider the following ES5 code:
+const user = { name: 'John Doe', age: 34 };
+const name = user.name;
+const age = user.age;
+name would have a value of the string John Doe, and age would have the number 34.
+Here's an equivalent assignment statement using the ES6 destructuring syntax:
+const { name, age } = user;
+Again, name would have a value of the string John Doe, and age would have the number 34.
+Here, the name and age variables will be created and assigned the values of their respective values from the user object. You can see how much cleaner this is.
+You can extract as many or few values from the object as you want.
+Replace the two assignments with an equivalent destructuring assignment. It should still assign the variables today and tomorrow the values of today and tomorrow from the HIGH_TEMPERATURES object.
+
+Use Destructuring Assignment to Assign Variables from Objects
+Destructuring allows you to assign a new variable name when extracting values. You can do this by putting the new name after a colon when assigning the value.
+Using the same object from the last example:
+const user = { name: 'John Doe', age: 34 };
+Here's how you can give new variable names in the assignment:
+const { name: userName, age: userAge } = user;
+You may read it as "get the value of user.name and assign it to a new variable named userName" and so on. The value of userName would be the string John Doe, and the value of userAge would be the number 34.
+Replace the two assignments with an equivalent destructuring assignment. It should still assign the variables highToday and highTomorrow the values of today and tomorrow from the HIGH_TEMPERATURES object.
 ** control flow
 
 Control flow Also called flow of execution,
@@ -6785,7 +6826,7 @@ The two functions discussed above will work in similar ways. Ultimately, it'll b
 
 If you want to learn more, consult MDN's page on the switch statement.
 
-** Function
+** js function wip
 
 A Function is a block of code that describes a repeatable process or behavior
 
@@ -6793,29 +6834,14 @@ function syntax
 
 A function delaration is a statement that creates a new named function.
 A function body is a set of instructions contained within a function.
-A Parameter is a placeholder variable listed in a function declaration.
-An argument is a value or other input thats passed into a called function.
-The return value is the value that a function outputs, as specified by the return keyword.
+
 
 The function keyword defines a function
 The function identifier is the function name
   how you refer to the function later.
 The function body goes inside curly brackets {}
 
-Whenever JavaScript sees return in a function, it does the following:
-+ Stops running the code in that function
-+ Takes the value to the right of return
-+ Swaps in the return value where the function was called
 
-A function returns undefined by default.
-A function without return keyword, returns undefined.
-A function can only return one value.
-returns keyword is use for function's output
-the function's output is what the function sends back.
-functions stop running when the see return.
-function can only return one value.
-
-Parameters are the function's inputs.
   functionDeclaration functionIdentifier(para1, para2){}
 Function body
 
@@ -6823,115 +6849,8 @@ Function call runs the function; run/call/invoke the function
   functionIdentifier();
   functionIdentifier(arg1, arg2);
 
-Arguments are the values inbetween the parentheses, when you invoke a function
-  its the input to function.
-  functionIdentifier(arg1, arg2);
 
-#+begin_src js
-let array = [1 , 2 , 3 , 4];
-// return length of an array
-function arrayLength(array){
-    return array.length;
-}
-console.log(arrayLength(array));
-
-// add numbers in array
-function arraySum(array){
-    sum = 0;
-    for (let i = 0; i < array.length; i++){
-        sum += array[i];
-    }
-    return sum;
-}
-console.log(arraySum(array));
-#+end_src
-
-Write Reusable JavaScript with Functions
-In JavaScript, we can divide up our code into reusable parts called functions.
-Here's an example of a function:
-function functionName() {
-  console.log("Hello World");
-}
-You can call or invoke this function by using its name followed by parentheses, like this: functionName(); Each time the function is called it will print out the message Hello World on the dev console. All of the code between the curly braces will be executed every time the function is called.
-Create a function called reusableFunction which prints the string Hi World to the dev console.
-Call the function.
-
-Passing Values to Functions with Arguments
-Parameters are variables that act as placeholders for the values that are to be input to a function when it is called. When a function is defined, it is typically defined along with one or more parameters. The actual values that are input (or "passed") into a function when it is called are known as arguments.
-Here is a function with two parameters, param1 and param2:
-function testFun(param1, param2) {
-  console.log(param1, param2);
-}
-Then we can call testFun like this: testFun("Hello", "World");. We have passed two string arguments, Hello and World. Inside the function, param1 will equal the string Hello and param2 will equal the string World. Note that you could call testFun again with different arguments and the parameters would take on the value of the new arguments.
-Create a function called functionWithArgs that accepts two arguments and outputs their sum to the dev console.
-Call the function with two numbers as arguments.
-
-Return a Value from a Function with Return
-We can pass values into a function with arguments. You can use a return statement to send a value back out of a function.
-Example
-function plusThree(num) {
-  return num + 3;
-}
-const answer = plusThree(5);
-answer has the value 8.
-plusThree takes an argument for num and returns a value equal to num + 3.
-Create a function timesFive that accepts one argument, multiplies it by 5, and returns the new value.
-
-Understanding Undefined Value returned from a Function
-A function can include the return statement but it does not have to. In the case that the function doesn't have a return statement, when you call it, the function processes the inner code but the returned value is undefined.
-Example
-let sum = 0;
-function addSum(num) {
-  sum = sum + num;
-}
-addSum(3);
-addSum is a function without a return statement. The function will change the global sum variable but the returned value of the function is undefined.
-Create a function addFive without any arguments. This function adds 5 to the sum variable, but its returned value is undefined.
-
-Assignment with a Returned Value
-If you'll recall from our discussion of Storing Values with the Assignment Operator, everything to the right of the equal sign is resolved before the value is assigned. This means we can take the return value of a function and assign it to a variable.
-Assume we have pre-defined a function sum which adds two numbers together, then:
-ourSum = sum(5, 12);
-will call the sum function, which returns a value of 17 and assigns it to the ourSum variable.
-Call the processArg function with an argument of 7 and assign its return value to the variable processed.
-
-Stand in Line
-In Computer Science a queue is an abstract Data Structure where items are kept in order. New items can be added at the back of the queue and old items are taken off from the front of the queue.
-Write a function nextInLine which takes an array (arr) and a number (item) as arguments.
-Add the number to the end of the array, then remove the first element of the array.
-The nextInLine function should then return the element that was removed.
-
-Returning Boolean Values from Functions
-You may recall from Comparison with the Equality Operator that all comparison operators return a boolean true or false value.
-Sometimes people use an if/else statement to do a comparison, like this:
-function isEqual(a, b) {
-  if (a === b) {
-    return true;
-  } else {
-    return false;
-  }
-}
-But there's a better way to do this. Since === returns true or false, we can return the result of the comparison:
-
-function isEqual(a, b) {
-  return a === b;
-}
-Fix the function isLess to remove the if/else statements.
-
-Return Early Pattern for Functions
-When a return statement is reached, the execution of the current function stops and control returns to the calling location.
-Example
-function myFun() {
-  console.log("Hello");
-  return "World";
-  console.log("byebye")
-}
-myFun();
-The above will display the string Hello in the console, and return the string World. The string byebye will never display in the console, because the function exits at the return statement.
-Modify the function abTest so that if a or b are less than 0 the function will immediately exit with a value of undefined.
-Hint
-Remember that undefined is a keyword, not a string.
-
+All of the code between the curly braces will be executed every time the function is called.
 
 javascript function:
   Reuse code
@@ -6947,19 +6866,6 @@ call a function, running or invoking a function
 funcName();
 
 
-function body
-function myFavColors() {
-  let color = ["blue", "black"];
-  let statement = "My favorite colors are";
-  for ( let i = 0; i < colors.length: i++ ) {
-    if ( i ====  colors.length - 1) {
-    statement += "and " + colors[i] + ".";
-    } else {
-      statement += colors[i] + ", ";
-    }
-  }
-  console.log(statement);
-}
 
 Input: Parameters and arguments
 
@@ -7007,17 +6913,15 @@ function findItems(items, matchType){
 different item" : matches
 }
 
+
+
 JavaScript Functions
 
 A JavaScript function is a block of code designed to perform a particular task.
 
 A JavaScript function is executed when "something" invokes it (calls it).
-Example
-function myFunction(p1, p2) {
-  return p1 * p2;   // The function returns the product of p1 and p2
-}
-JavaScript Function Syntax
 
+JavaScript Function Syntax
 A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses ().
 
 Function names can contain letters, digits, underscores, and dollar signs (same rules as variables).
@@ -7037,8 +6941,8 @@ Function arguments are the values received by the function when it is invoked.
 Inside the function, the arguments (the parameters) behave as local variables.
 
 A Function is much the same as a Procedure or a Subroutine, in other programming languages.
-Function Invocation
 
+Function Invocation
 The code inside the function will execute when "something" invokes (calls) the function:
 
     When an event occurs (when a user clicks a button)
@@ -7046,24 +6950,8 @@ The code inside the function will execute when "something" invokes (calls) the f
     Automatically (self invoked)
 
 You will learn a lot more about function invocation later in this tutorial.
-Function Return
 
-When JavaScript reaches a return statement, the function will stop executing.
 
-If the function was invoked from a statement, JavaScript will "return" to execute the code after the invoking statement.
-
-Functions often compute a return value. The return value is "returned" back to the "caller":
-Example
-
-Calculate the product of two numbers, and return the result:
-let x = myFunction(4, 3);   // Function is called, return value will end up in x
-
-function myFunction(a, b) {
-  return a * b;             // Function returns the product of a and b
-}
-
-The result in x will be:
-12
 Why Functions?
 
 You can reuse code: Define the code once, and use it many times.
@@ -7086,6 +6974,7 @@ function toCelsius(fahrenheit) {
   return (5/9) * (fahrenheit-32);
 }
 document.getElementById("demo").innerHTML = toCelsius;
+
 Functions Used as Variable Values
 
 Functions can be used the same way as you use variables, in all types of formulas, assignments, and calculations.
@@ -7127,9 +7016,28 @@ function myFunction() {
 }
 ;
 
+*** js function parameters and arguments
 
-Start the Exercise
+A Parameter is a placeholder variable listed in a function declaration.
+An argument is a value or other input thats passed into a called function.
 
+Parameters are the function's inputs.
+Arguments are the values inbetween the parentheses, when you invoke a function
+  its the input to function.
+  functionIdentifier(arg1, arg2);
+Call the function.
+
+Passing Values to Functions with Arguments
+Parameters are variables that act as placeholders for the values that are to be input to a function when it is called.
+The actual values that are input (or "passed") into a function when it is called are known as arguments.
+
+Here is a function with two parameters, param1 and param2:
+function testFun(param1, param2) {
+  console.log(param1, param2);
+}
+Then we can call testFun like this: testFun("Hello", "World");.
+We have passed two string arguments, Hello and World.
+Inside the function, param1 will equal the string Hello and param2 will equal the string World.
 Set Default Parameters for Your Functions
 In order to help us create more flexible functions, ES6 introduces default parameters for functions.
 Check out this code:
@@ -7151,44 +7059,119 @@ console.log(howMany("string", null, [1, 2, 3], { }));
 The console would display the strings You have passed 3 arguments. and You have passed 4 arguments..
 The rest parameter eliminates the need to check the args array and allows us to apply map(), filter() and reduce() on the parameters array.
 Modify the function sum using the rest parameter in such a way that the function sum is able to take any number of arguments and return their sum.
+*** js function returns
 
-Use the Spread Operator to Evaluate Arrays In-Place
-ES6 introduces the spread operator, which allows us to expand arrays and other expressions in places where multiple parameters or elements are expected.
-The ES5 code below uses apply() to compute the maximum value in an array:
-var arr = [6, 89, 3, 45];
-var maximus = Math.max.apply(null, arr);
-maximus would have a value of 89.
-We had to use Math.max.apply(null, arr) because Math.max(arr) returns NaN. Math.max() expects comma-separated arguments, but not an array. The spread operator makes this syntax much better to read and maintain.
-const arr = [6, 89, 3, 45];
-const maximus = Math.max(...arr);
-maximus would have a value of 89.
-...arr returns an unpacked array. In other words, it spreads the array. However, the spread operator only works in-place, like in an argument to a function or in an array literal. The following code will not work:
-const spreaded = ...arr;
-Copy all contents of arr1 into another array arr2 using the spread operator.
+The return value is the value that a function outputs, as specified by the return keyword.
 
-Use Destructuring Assignment to Extract Values from Objects
-Destructuring assignment is special syntax introduced in ES6, for neatly assigning values taken directly from an object.
-Consider the following ES5 code:
-const user = { name: 'John Doe', age: 34 };
-const name = user.name;
-const age = user.age;
-name would have a value of the string John Doe, and age would have the number 34.
-Here's an equivalent assignment statement using the ES6 destructuring syntax:
-const { name, age } = user;
-Again, name would have a value of the string John Doe, and age would have the number 34.
-Here, the name and age variables will be created and assigned the values of their respective values from the user object. You can see how much cleaner this is.
-You can extract as many or few values from the object as you want.
-Replace the two assignments with an equivalent destructuring assignment. It should still assign the variables today and tomorrow the values of today and tomorrow from the HIGH_TEMPERATURES object.
+Whenever JavaScript sees return in a function, it does the following:
++ Stops running the code in that function
++ Takes the value to the right of return
++ Swaps in the return value where the function was called
 
-Use Destructuring Assignment to Assign Variables from Objects
-Destructuring allows you to assign a new variable name when extracting values. You can do this by putting the new name after a colon when assigning the value.
-Using the same object from the last example:
-const user = { name: 'John Doe', age: 34 };
-Here's how you can give new variable names in the assignment:
-const { name: userName, age: userAge } = user;
-You may read it as "get the value of user.name and assign it to a new variable named userName" and so on. The value of userName would be the string John Doe, and the value of userAge would be the number 34.
-Replace the two assignments with an equivalent destructuring assignment. It should still assign the variables highToday and highTomorrow the values of today and tomorrow from the HIGH_TEMPERATURES object.
+A function returns undefined by default.
+A function without return keyword, returns undefined.
+A function can only return one value.
+returns keyword is use for function's output
+the function's output is what the function sends back.
+functions stop running when the see return.
+function can only return one value.
+Return a Value from a Function with Return
+We can pass values into a function with arguments. You can use a return statement to send a value back out of a function.
+Example
+function plusThree(num) {
+  return num + 3;
+}
+const answer = plusThree(5);
+answer has the value 8.
+plusThree takes an argument for num and returns a value equal to num + 3.
+Create a function timesFive that accepts one argument, multiplies it by 5, and returns the new value.
+Understanding Undefined Value returned from a Function
+A function can include the return statement but it does not have to. In the case that the function doesn't have a return statement, when you call it, the function processes the inner code but the returned value is undefined.
+Example
+let sum = 0;
+function addSum(num) {
+  sum = sum + num;
+}
+addSum(3);
+addSum is a function without a return statement. The function will change the global sum variable but the returned value of the function is undefined.
+Create a function addFive without any arguments. This function adds 5 to the sum variable, but its returned value is undefined.
 
+Assignment with a Returned Value
+If you'll recall from our discussion of Storing Values with the Assignment Operator, everything to the right of the equal sign is resolved before the value is assigned. This means we can take the return value of a function and assign it to a variable.
+Assume we have pre-defined a function sum which adds two numbers together, then:
+ourSum = sum(5, 12);
+will call the sum function, which returns a value of 17 and assigns it to the ourSum variable.
+Call the processArg function with an argument of 7 and assign its return value to the variable processed.
+Returning Boolean Values from Functions
+You may recall from Comparison with the Equality Operator that all comparison operators return a boolean true or false value.
+Sometimes people use an if/else statement to do a comparison, like this:
+function isEqual(a, b) {
+  if (a === b) {
+    return true;
+  } else {
+    return false;
+  }
+}
+But there's a better way to do this. Since === returns true or false, we can return the result of the comparison:
+
+function isEqual(a, b) {
+  return a === b;
+}
+Fix the function isLess to remove the if/else statements.
+
+Return Early Pattern for Functions
+When a return statement is reached, the execution of the current function stops and control returns to the calling location.
+Example
+function myFun() {
+  console.log("Hello");
+  return "World";
+  console.log("byebye")
+}
+myFun();
+The above will display the string Hello in the console, and return the string World. The string byebye will never display in the console, because the function exits at the return statement.
+Modify the function abTest so that if a or b are less than 0 the function will immediately exit with a value of undefined.
+Hint
+Remember that undefined is a keyword, not a string.
+Function Return
+When JavaScript reaches a return statement, the function will stop executing.
+
+If the function was invoked from a statement, JavaScript will "return" to execute the code after the invoking statement.
+
+Functions often compute a return value. The return value is "returned" back to the "caller":
+Example
+
+Calculate the product of two numbers, and return the result:
+let x = myFunction(4, 3);   // Function is called, return value will end up in x
+
+function myFunction(a, b) {
+  return a * b;             // Function returns the product of a and b
+}
+
+The result in x will be:
+12
+*** js function example
+#+begin_src js
+let array = [1 , 2 , 3 , 4];
+// return length of an array
+function arrayLength(array){
+    return array.length;
+}
+console.log(arrayLength(array));
+
+// add numbers in array
+function arraySum(array){
+    sum = 0;
+    for (let i = 0; i < array.length; i++){
+        sum += array[i];
+    }
+    return sum;
+}
+console.log(arraySum(array));
+#+end_src
+
+function functionName() {
+  console.log("Hello World");
+}
 *** default parameter thinkful
 
 Setting defaults
