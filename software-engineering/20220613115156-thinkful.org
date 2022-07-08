@@ -4,9 +4,8 @@
 #+title: thinkful
 #+date: [2022-06-13 Mon 11:51]
 
-* mod 3 JavaScript on your machine
-
-** javascript with node
+*** mod 3 JavaScript on your machine
+**** javascript with node
 
 REPL stands for read, evaluate, print, and loop.
 REPL is a program that will allow you to run code and see the output from it.
@@ -41,7 +40,7 @@ From the command line, you can then run this file with Node by running the follo
 
 node ~/thinkful/my-other-file.js
 
-** automated testing primer
+**** automated testing primer
 
 Writing code is about solving problems without creating new problems (bugs).
 
@@ -86,7 +85,7 @@ The test output will indicate whether or not you're on the right track with the 
 
 Automated testing is an important technique in software development, and knowing how to interpret basic test outputs is a good first step to mastering this skill, which you will continue to develop throughout the program.
 
-** environment variables and script arguments
+**** environment variables and script arguments
 
 Environment variable Also called an env var, a key-value pair held by your current operating system and user
 Command-line script Also called a script or a command-line program, a reusable program that can be run on your command line
@@ -180,7 +179,7 @@ The output of process.argv would be as follows:
 ];
 Notice that it now sees Pretzel Bean as two distinct arguments.
 
-** modules
+**** modules
 
 Learning Objective
 By the end of this lesson, you will be able to create and connect your own modules.
@@ -275,7 +274,7 @@ let plants = [
 
 console.log(plantFunctions.findPlantById(plants, 2));
 
-** the package.json file
+**** the package.json file
 
 Configuration file Any file that's necessary to run an overall project but may not have explicit code inside of it
 
@@ -385,7 +384,7 @@ However, you will still need to use the run part of the command for custom scrip
 npm run dev
 More of the supported scripts can be found in the npm scripts documentation.
 
-** installing packages
+**** installing packages
 
 
 Open-source Code that is available to be viewed, downloaded, and edited by anyone
@@ -501,11 +500,789 @@ Take a look inside the node_modules/ folder inside your installing-packages/ dir
 
 Look around the folder briefly, and try to find the package.json file. As you can see, Moment is just another Node project, like the one that you have!
 
-** Assesment: JavaScript on your machine
+**** Assesment: JavaScript on your machine
+*** module 7 Git and GitHub
+**** Version control and setup
 
-* mod 4 JavaScript foundations
+Snapshot A view of code taken at a specific time
 
-* unsorted
+***** What is version control?
+
+Version control The process of managing changes to code
+Version control refers to the process of managing changes to code, and it's a critical part of modern web development.
+
+Version control systems Systems for managing changes to files, software, websites, and other computer or web-based programs
+
+A version control system (VCS) makes it easy to switch between past and current versions of the same code.
+
+Version control is important for a few reasons:
+If you introduce a bug, you might want to roll back to a previous version of the code that does not include the bug.
+As the size of an application grows, it can be challenging to keep all developers up to date. A good version control system makes it easy to know how far behind or ahead your code is.
+If each version of code is being stored, it becomes simple to compare two snapshots of the code. This makes reviewing changes to code much simpler.
+
+***** Why do you need version control?
+
+Developing complex software, like the website that you are using right now, is impossible without a version control system.
+Version control tracks every change to the source code. It is an essential tool to ensure the integrity of the codebase.
+
+***** What is Git?
+
+Git is a powerful but complex command-line tool that allows you to track changes to a project on your local machine.
+
+Git repository A container for tracking all changes for a specific project
+
+A Git commit is a bundle of changes packaged together.
+A repository will have multiple commits saved on it that make up the entire project history.
+
+Git manages local version control.
+
+***** What is GitHub?
+
+GitHub provides free online hosting of both public and private Git repositories.
+
+
+
+GitHub is important for a few reasons:
+By looking at your public GitHub repositories, prospective employers can get a better sense of how you write code and solve problems than they can from your resume.
+The visual display of your public commits shows your enthusiasm for writing code.
+With GitHub, you can back up your Git repository for free. If anything happens to your local version, you'll be able to pull a copy from GitHub.
+GitHub makes it much easier to collaborate over the internet.
+GitHub provides many tools that benefit developers, such as pull requests, issue tracking, profile creation, and more.
+GitHub makes it easier to contribute to open-source projects hosted on GitHub. Contributing to open-source projects is a great way to impress prospective employers.
+
+
+GitHub hosts Git repositories on the web.
+With that said, using both Git and GitHub allows you to sync local repositories with repositories on GitHub (known as remote repositories).
+Git and GitHub are almost always used together, although they don't have to be.
+
+Remote repository Also called the remote repo, the GitHub project folder that is stored on the GitHub.com website
+
+**** Git basics
+
+
+Main branch The default branch that is always created when a new repository is made
+Staging a file Adding a file by moving it to a staging area
+Staging area A place for changes that are ready to be committed
+Untracked One of the four possible states of a file in a Git repository. An untracked file is not part of the Git repository
+Staged One of the four possible states of a file in a Git repository. A staged file is one that is ready to be committed
+Unmodified One of the four possible states of a file in a Git repository. An unmodified file is one that has not been changed since the last commit
+Modified One of the four possible states of a file in a Git repository. A modified file is one that has been changed since the last commit
+SHA A 40-character checksum hash that identifies the commit
+
+Getting started
+A Git repository is just a folder, but it can track every file in the folder, including every file in every subfolder.
+What makes it special is that it has the .git folder inside of it.
+
+A good rule to remember is that you don't need to put a Git repository inside of another Git repository.
+
+
+git init - initialize, or create, a new repository inside of the current folder.
+
+Delete the .git folder
+Now, go ahead and delete the .git folder in your getting-started-with-git folder. Then, run git init once more.
+
+git status will be a useful command to know. This command will display information about what is currently happening in your Git repository. When you first run git status in an empty repository, you'll get a message like the following:
+
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+The above output tells you the following information:
+
+You are currently on the main branch. (If you haven't changed your default, this may be called the master branch). This is the default branch that is always created when a new repository is created. You'll learn more about branches later on.
+
+There haven't been any commits. You'll do that soon!
+
+There haven't been any changes in the repository since you ran git init. Note that the output also provides a helpful hint about what you might do next.
+
+Tip
+The git status command is always good to run if you're a bit confused about what is happening with Git.
+
+Do this
+Create a file
+In the getting-started-with-git folder, create a new file called teams.txt. Then, run git status. You will see something like the following outputted to your terminal:
+
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	teams.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+Notice that the message has changed.
+
+The Untracked files section of the message tells you which files are in the folder but aren't tracked by Git. The untracked state is one of the four possible states of a file in a Git repository. An untracked file isn't part of the Git repository.
+
+Staging files
+Once you've made changes to a file, or just created a new one, you can then add the file. Adding a file is also sometimes called staging a file, because that file is moved to a staging area. The staging area represents changes that are ready to be committed, as opposed to the untracked files, which aren't yet ready to be committed.
+
+To summarize, there are four possible statuses for a change:
+
+Untracked
+
+Staged
+
+Unmodified
+
+Modified
+
+The following diagram shows how files transition between the possible statuses:
+
+A diagram of how Git commits work
+If you want to move a file from untracked to staged, you can run the add command, which you can see below:
+
+git add teams.txt
+As you might have noticed, this is the syntax that was suggested in the output from git status.
+
+Do this
+Stage files
+Stage your file by running the git add command above. Then, type git status. You will see something like the following code:
+
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   teams.txt
+As you can see above, the output provides instructions on how to unstage the teams.txt file if you choose—which implies that the teams.txt file is now staged. In fact, all files listed in the Changes to be committed section are staged.
+
+Awesome job on making it this far in the lesson! So far, you've learned the how to create new repositories with git init, stage new files or changes to existing files with git add, and check the status of a repo with git status.
+
+Before continuing on, feel free to take a quick break. In the remainder of this lesson, you will learn how to commit changes with git commit.
+
+Making commits
+Each commit bundles together all staged changes and saves them, along with a helpful message and meta information about those changes.
+
+The more commits that you make, the easier it is to get a detailed history of what happened. And, as you'll learn later, having more commits gives you more checkpoints that you can return to if something goes wrong.
+
+Tip
+The best developers commit often. This ensures that their work is recorded, labeled, and backed up.
+
+Do this
+Make a commit
+At this point, your changes are staged and you're ready to make your first commit. To do so, run this command:
+
+git commit -m "Adding the teams.txt file"
+The git commit command saves whatever is staged, packaging the changes into a single commit. The -m flag allows you to add a message and provide context to your commit.
+
+If you run git status again, you will see something like the following:
+
+On branch main
+nothing to commit, working tree clean
+Check your history
+How do you know if your commit worked? One way is to use the git log command, which will show you the history for your entire repository.
+
+Try running the git log command. Your output will look something like this:
+
+commit 8529743e386b193450baab116e5a0e81a0b5ea9f (HEAD -> main)
+Author: Author Name <email@thinkful.com>
+Date:   Thu Jul 2 10:35:33 2020 -0700
+
+    Adding the teams.txt file
+Tip
+Remember that you can type Q or q if you want to get out of the reader.
+
+The output shown is a single commit! In this commit, you can see the following information:
+
+A commit SHA, which represents the commit's unique ID (in this case,
+
+85297...)
+
+Who made the commit and what time it was committed
+
+The commit message
+
+For now, you can ignore the (HEAD -> main) part of the commit message. This will be covered later in the module.
+
+What makes a good commit?
+Git is very flexible and makes it easy to commit to the repository. In fact, there are only two constraints when making a commit:
+
+You need to include at least one staged change.
+
+You need to include a commit message.
+
+Recent versions of Git allow you to commit without a message. But just because you can do this doesn't mean that you should. There are two qualities to keep in mind when making a commit:
+
+The size of your commit
+
+The message of your commit
+
+You'll explore both of these qualities below.
+
+Commit size
+It's better to make many small commits rather than one big commit. With many small commits, you end up with multiple descriptive messages that make it easy for a collaborator (or your future self) to understand what happened.
+
+It also makes it easier to return to a particular point in your project. If you only have two commits, and their commit messages are Initial commit and Project completed, there's no way to return to a version of your project that's between those two points.
+
+Additionally, it's ideal to group files that are related to each other in the same commit. For example, say that you made changes to the following files:
+
+teams.txt
+players.txt
+configuration.txt
+You may want to make two commits:
+
+Your first commit might be to add configuration.txt.
+
+Your second commit might be to add teams.txt and players.txt.
+
+Why should you separate the commits in this way? The configuration.txt file may not actually be related to the teams.txt and players.txt files. So, creating a separate commit can help emphasize that the configuration.txt file is for a different purpose.
+
+It isn't always possible to split content up like this. However, the best developers strive to use their commits to create a coherent narrative for their projects.
+
+Commit message
+Another important component of commits is the actual message itself. Although figuring out the right size of commit takes some practice, writing a good commit message is far easier.
+
+Your commit message should do the following:
+
+Describe why you are making the change
+
+Use proper spelling
+
+Take a look at the following two commit messages:
+
+"Updated files"
+
+"Added new players and team names"
+
+Is it clear to you which one is better? The second message actually gives some information as to what was added, whereas the first one tells you nothing. And you can be even clearer if you give some context as to why the changes occurred. For example, take a look at this commit message:
+
+"New season started: Added new players and teams."
+
+It's possible to get really detailed with your commit messages; you can even make multi-line commits. For now, it's sufficient to just give a short contextual summary of the code changes.
+
+Do this
+Make more changes
+Add the following text to your teams.txt file.
+
+Hopper Hawks
+The Lovelace Lynxs
+Turing's Tigers
+View the changes
+It is often useful to view the changes that you made before you stage them. You can do so with the git diff command.
+
+Try running git diff. You will see something like the output below.
+
+diff --git a/teams.txt b/teams.txt
+index e69de29..eea9eae 100644
+--- a/teams.txt
++++ b/teams.txt
+@@ -0,0 +1,3 @@
++Hopper Hawks
++The Lovelace Lynxs
++Turing's Tigers
+Tip
+Remember that you can type Q or q if you want to get out of the reader.
+
+The above code shows the following information:
+
+The content at the top indicates that this is comparing an older version of the teams.txt file to the current, changed version.
+
+Any line with a plus sign + in front of it shows what is added. Any removed line will be shown with a minus sign - in front of it.
+
+The git diff command is a powerful tool to help you make the most out of your commits and to confirm what is being changed.
+
+Tip
+You can only use git diff to compare changes that haven't been staged.
+
+Add all changes
+Add your changes to the staging area with the following command:
+
+git add -A
+The -A flag will add all changes to the staging area, including new files. Since you just checked the diff between the history and the current changes, you know that adding everything now will make a fine commit.
+
+If you make a number of changes to a project and haven't committed for a while, consider not using the -A flag. Instead, add files individually so that you can make multiple commits.
+
+Get out of vi
+Now, try running the following command. Note that this command is missing the -m flag!
+
+git commit
+Depending on your operating system, it is likely that you may enter into a terminal editor called vi. The vi editor isn't really that scary, but it can seem overwhelming if you haven't seen it before.
+
+A screenshot of the Vi editor
+For now, you should just plan to quit vi if you accidentally get into it. To do so, type :q!. Then, press Enter.
+
+A screenshot of how to exit the Vi editor
+Quitting the vi editor will bring you back to your terminal, but you won't have made a commit. So try again to make your commit. This time, use the -m flag, and make sure to include a commit message.
+
+When changes aren't committed
+At this point, the repository shouldn't have any uncommitted changes, and running git status should display the following:
+
+On branch main
+nothing to commit, working tree clean
+It is possible to have one file that has both some staged changes and some changes that aren't staged. When this happens and you commit, you might be surprised to see that some changes aren't included in the commit.
+
+Tip
+The git commit command only commits staged changes.
+
+Do this
+Try committing with unstaged changes
+Now, give it a try. Add the following text to your teams.txt file:
+
+Torvald's Tornados
+Stage your changes with the following command:
+
+git add -A
+Now, run git diff. The changes are staged, so git diff should show no differences.
+
+Add the following text to your teams.txt file:
+
+Page Panthers
+Now, run git status. You'll see something like the code below:
+
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   teams.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   teams.txt
+Note that modified: teams.txt appears under both Changes to be committed: and Changes not staged for commit:.
+
+What happens if you commit now? Remember, Git only commits changes that are staged. And you staged only one of the changes, so you can conclude that only the addition of Torvald's Tornados will be included in the commit.
+
+Give it a try. Run git commit -m "add new team: Torvald's Tornados".
+
+Now, run git diff again. You'll be able to see that the addition of Page Panthers, which isn't yet staged, wasn't included in the commit.
+
+**** Pushing and pulling
+
+Local repository Also called the local repo, the project folder that is stored on your computer
+Remote repository Also called the remote repo, the GitHub project folder that is stored on the GitHub.com website
+Pulling changes Copying commits from the remote repository that are not yet in your local repository
+Pushing changes To move the commits that you've made from your local machine up to a GitHub repository
+
+***** Pushing
+Pushing changes to GitHub means to move the commits that you've made from your local machine up to a GitHub repository.
+
+Note that only your commits will be pushed. If you have files or changes that haven't been committed, they will not make their way to GitHub.
+
+To push to GitHub, you'll do the following three steps:
+
+Create a repository on GitHub.
+
+Use commands provided by GitHub to link the two.
+
+Use commands provided by GitHub to push your code.
+
+Moving forward, Git repositories on your local computer will be described as local repositories, while GitHub repositories on the web will be described as remote repositories.
+
+A local repository is a repository created on your machine; this is what is created when you run git init. And a remote repository is a repository that is created on the web, with a website like GitHub. These repositories can be synced with each other, but they don't necessarily have to be.
+
+Remote repositories will require authentication. Authentication confirms your credentials and will allow you to securely access your account's resources. You can access repositories from the command line in two ways: SSH and HTTPS. GitHub recommends using the HTTPS method and provides detailed instructions on how to set a personal access token.
+
+Do this
+Create a new remote repository
+Go to GitHub's website and create a new repository. The way that you do this will depend on the interface that you're looking at. Either click the New button, or select the ➕ icon next to your profile picture. Then, in the drop-down menu, click New repository.
+
+You will then be presented with a screen that looks similar to this:
+
+A screenshot of the Create a new repository page in GitHub
+On this page, fill in a repository name. It's a good idea to have your repository name match the folder that you created on your local machine, but it isn't a requirement.
+
+Make sure that the Initialize this repository with a README checkbox is cleared. Then click Create repository.
+
+Next, you'll see something like this page:
+
+A screenshot of the GitHub setup page
+Connect your local and remote repositories
+The page pictured above describes how you can connect your local and remote repositories. Focus on the following section:
+
+A screenshot of a portion of the Getting started page on GitHub
+Normally, you would run both lines of code to push your repository. But for now, you'll run them one by one.
+
+First, run the following line in your local repository:
+
+git remote add origin <your-url>
+The above command adds a new remote repository (git remote add) with the name origin and a URL pointing towards the URL that you just created. You can name your remote repository whatever you like, although origin is standard.
+
+When you run this command on the command line, you won't see any output. But you can check for all your remote repositories by running git remote -v. That will return an output like this:
+
+origin	https://github.com/thinkful/getting-started-with-git.git (fetch)
+origin	https://github.com/thinkful/getting-started-with-git.git (push)
+The output above shows that there is a remote called origin at the given URL. (Don't worry about the duplicate listing.)
+
+Sync through pushing
+The second line of code shown on GitHub is the branch command.
+
+git branch -M main
+Note: You will learn more about branches later in this program. But for now, you just need to know that this command will rename the master branch to main. Since October 2020, GitHub has stopped using the master terminology.
+
+The third line of code shown on GitHub is the push command.
+
+git push -u origin main
+This command uses git push to push your commits to the remote origin on the main branch. The -u flag sets the default upstream reference. This essentially means that for all future times that you want to push, you can just type git push.
+
+After running the above command, you will see an output in your terminal. Try refreshing the page on GitHub, and you will see your newly committed files up on GitHub.
+
+Practice with git push
+Try running git push again. Do you see the following message?
+
+Everything up-to-date
+If you ever see this message, it means that there are no new commits to be pushed.
+
+Now, try making a new file called README.md. Don't add any content to it. Then, try running git push again, as follows:
+
+touch readme.md
+git push
+You will see the "Everything up-to-date" message once again. This is because, while you have new files, you haven't actually made a new commit.
+
+Add and commit the file (with a valid commit message!), and then try pushing once again. You can use the following code:
+
+git add README.md
+git commit -m "add readme file"
+git push
+
+***** Pulling
+When you're collaborating with another person, they might be pushing to the same repository that you are. That means that it's possible for the remote repository to have commits that you do not have on your local repository.
+
+The way to fix this is to pull down changes. Pulling changes means copying commits from the remote repository that are not yet in your local repository.
+
+Do this
+Make changes on GitHub
+Instead of working with another person, you can simulate the experience by editing your files directly on GitHub. From your remote repository's page, click the README.md file. Clicking the filename will bring you to that specific file.
+
+This file should be empty. Click the Edit ✎ icon so that you can edit the file.
+
+The GitHub edit icon
+This will bring you to a text editor on GitHub. Make some changes to the file, and then scroll to the bottom of the page.
+
+The Commit changes screen on GitHub
+Click the Commit changes button. The commit message will be something like "Update README.md."
+
+You've now made a commit on GitHub!
+
+Pull changes
+Your local repository is now out of date with the remote repository. To fix this, you can run the git pull command:
+
+git pull
+Tip
+The full command is git pull origin main, but you only need to type git pull. This is because you included the -u flag when you set up the repository.
+
+After running the command, you will see some output in your terminal that shows your new commits being pulled to your local repository. When you check the README.md file, you will see the content that you added to the file.
+
+**** Forking and cloning
+
+1.5 hoursAverage Reading Time
+
+Learning Objective
+By the end of this lesson, you will be able to fork copies of repositories to your own GitHub account and clone repositories from GitHub to your local machine.
+
+Overview
+Now that you know how to push and pull, you're ready to use Git and GitHub to work on projects on your own and sync those projects to GitHub. For this program, you may also want to occasionally pull down some code that already exists. And once you start your career as a professional developer, you will often need to clone the work that your company has done on an already existing repository. This lesson will provide an overview of how to perform these tasks.
+
+Key Terms
+Forking
+The process of copying a remote repository from a different user to your own account
+Cloning
+The process of copying any remote repository to your computer
+Forking
+Forking is a word that GitHub uses to describe the process of copying another user's remote repository to a new remote repository under your own account. Forking is popular among open-source projects, because it allows you to copy over an entire project and make minor tweaks. You can also use forking as a tool for collaboration, which will be discussed later on.
+
+In this program, you'll use forking to get copies of starter code on your own account. This way, as you work on the starter code, you can push that code up to your own account and maintain it.
+
+Do this
+Fork a repository
+Go to Jenny Thinkful's GitHub profile, and click the pizza repository. You will arrive at a page that looks like the image below:
+
+A screenshot of the pizza repository
+Click the Fork button in the top-right corner. Then, select your user account. You will see an image like the one below:
+
+An image of the GitHub page that occurs when you try to fork something.
+When this is completed, you'll have a copy of the pizza repository on your account. To confirm that you're looking at the repository on your account, take a look at the top-left corner of the page. You will see something like the following (except with your username in place of thinkful):
+
+thinkful / pizza
+forked from jennythinkful/pizza
+If you see that, you have successfully copied the repository to your own account! Notice that you can still see Jenny's last commit and her profile image.
+
+Cloning
+Cloning a repository refers to copying the commits from the remote repository to a local version. Cloning is essentially a way to download the contents of a remote repository through the command line.
+
+When you use git clone to clone a repository, the command will do the following:
+
+Create a new directory with the name of the repository.
+
+Create a link in the new directory to the remote repository.
+
+Download the contents of the repository to your computer, in the new directory.
+
+Because cloning will create a .git folder, it is very important that you don't clone inside an existing repository. You always want to be in a directory that isn't a Git repository.
+
+Do you need to fork before cloning?
+Forking and cloning are two separate processes that can go together but don't have to. Forking is the process of copying a remote repository from a different user to your own account. And cloning is the process of copying any remote repository to your computer.
+
+You can just fork, just clone, or do both.
+
+Do this
+Clone a repository
+Go to the pizza repository that you forked earlier:
+
+A screenshot of the GitHub pizza repo
+Click the Code button in the top-right corner. Then, copy the URL. It will look like this:
+
+https://github.com/jennythinkful/pizza.git
+Notice that it's essentially the URL in the location bar, except with .git at the end.
+
+On your command line, go into a directory that isn't a Git repository. Remember, it's very important that you do not run the following command inside of a Git repository. If you do, you will end up with nested local repositories.
+
+Once you're in a directory that isn't a Git repository, run the following command:
+
+git clone https://github.com/jennythinkful/pizza.git
+You will see that some files are being downloaded. You'll also notice that you have a new folder, called pizza.
+
+Go into that folder and type ls -la. You will see something like the following:
+
+drwxr-xr-x   7 wesreid  staff  224 Jul  2 17:21 .
+drwx------@ 11 wesreid  staff  352 Jul  2 17:21 ..
+drwxr-xr-x  12 wesreid  staff  384 Jul  2 17:21 .git
+-rw-r--r--   1 wesreid  staff    8 Jul  2 17:21 README.md
+drwxr-xr-x   3 wesreid  staff   96 Jul  2 17:21 images
+-rw-r--r--   1 wesreid  staff  646 Jul  2 17:21 index.html
+-rw-r--r--   1 wesreid  staff  921 Jul  2 17:21 style.css
+As you can see, the files were downloaded and a repository was created.
+
+Check the remotes
+Cloning creates a link between the remote repository that you cloned and your local repository. You can see this if you run git remote -v.
+
+You will see that the origin is pointing toward the repository that you cloned.
+
+*** module 8 developer collaboration
+**** GitHub projects and issues
+***** Kanban boards
+
+Kanban board An agile scheduling and workflow system where tasks are separated into individual cards, which are then organized into columns that indicate their status
+
+A Kanban board is a system where tasks are separated into individual cards, which are then organized into columns that indicate their status.
+The most common columns are To do, In progress, and Done.
+
+In Japanese, the word Kanban translates generally as a visual signal.
+Accordingly, it's important to keep each distinct task visible and separate from the others.
+The term Kanban has a rich history from manufacturing.
+
+
+Kanban cards
+
+Card A visual representation of a task to be completed on a Kanban board
+
+Each task to be completed is called a card when it's placed on a Kanban board.
+Ultimately, it is up to you and your team to determine how to write cards.
+Typically, it's best to write small cards that can be completed in full.
+
+For example, cards for households chores might look like this:
+Clean the microwave
+Mop the kitchen floor
+Go grocery shopping
+
+These cards are succinct and specific.
+Contrast this with a card that says "Clean the house."
+Cleaning the house isn't a very specific task, so this task should be broken down further.
+
+With practice, you'll be able to better define the right size for cards.
+In general, don't write cards that are so big that they can't be completed in a day—and don't write cards that are so small that they can be completed in only a few minutes.
+
+
+Kanban columns
+
+Columns on a Kanban board help organize your cards in different states.
+Together, they should represent the progression of a task from incomplete to complete.
+
+Here are a few of the most common columns for Kanban boards:
+Upcoming (or To do): These are the cards that you've prioritized to work on next.
+In progress (or Doing): These are the cards that you're currently working on. If you have to stop working on a particular card, it should be moved back to Upcoming.
+Completed (or Done): These are cards that have been completed in full.
+
+The steps above are usually placed in order, from left to right.
+This represents the progression of a card from To do to In progress to Done.
+
+The columns above are the most common, but there are others that you might see, particularly as part of a development process.
+Here are some other common columns:
+Backlog: This column goes before the To do column. This is for cards that you need to get to eventually, but that are not the top priority at the moment.
+Reviewed (or Ready): This column typically goes right before the Done column. If a card involves something that needs to be deployed or reviewed by someone before the card can be considered done, it might be moved to this column while waiting for that action.
+
+***** GitHub projects
+
+
+Creating GitHub issues
+The Issues tab, shown below, allows you and other developers to propose tasks that need to be completed.
+
+The Issues tab in GitHub
+
+Issues Tasks that need to be completed, which include chores, bugs, and feature requests
+
+GitHub issues generally encompass three different types of activities: chores, bugs, and feature requests.
+
+Chores
+Chores are tasks that need to get done but may not require any real creative or thoughtful work.
+This could be tasks like updating the version of a node package or fixing a misspelling.
+
+Bugs
+Bugs are problems that occurred with an application.
+These could be overt problems, like the application crashing.
+Or they could be quality issues, such as a certain page taking too long to run.
+
+When you add a bug as an issue, it's important to be detailed about where and how the bug occurs.
+
+Feature requests
+Feature requests are issues that request the addition of some new or improved functionality.
+These could be crucial features, or they could be quality-of-life features, like allowing for changing a color scheme.
+
+It's natural for some features to be a higher priority than others.
+
+Issue options
+Each issue has a number of components.
+It's important to be able to understand different aspects of an issue so that you can create new ones and reference them.
+To explore these components, take a look at the labeled image above.
+
+Then read more about each section below:
+The issue heading contains the name of an individual issue as well as a number. You can link back to this issue by referencing that number in your projects or pull requests.
+The description section of the issue allows the creator to describe what the issue is and give as much context as they like. In this section, you can also see a timeline of what has occurred related to the issue.
+The sidebar contains a number of ways to categorize the issue. You can assign an issue to a particular person, or give it a label to help organize it further. You can also associate the issue with a specific project, milestone, or pull request.
+The comments section provides a space to add additional comments. These comments could detail your progress on the issue, or they could be a way to ask questions about an issue that someone else made.
+
+**** writing user stories
+
+User story An application or product feature written from the perspective of a particular user
+
+Introduction to user stories
+Feature requests are different from other types of cards that you might write because they often don't include implementation details.
+That is, whereas a chore or bug might have exact steps, a feature requires a certain amount of creativity on your part as a developer.
+Because of this, feature requests are written a bit differently than other cards.
+One way to write feature requests is to write them as user stories, from the perspective of a user rather than a developer.
+
+What is a user story?
+A user story is an application or product feature written from the perspective of a particular user.
+User stories are the first attempt that a developer makes at trying to determine what the product needs to be in its purest form.
+A complete and full list of user stories should fully describe the application—without describing the implementation.
+
+These constraints are important for a couple of reasons:
+Well-written user stories keep the focus on the user and their needs, as opposed to the developer's limitations.
+With the end goal defined but not the implementation, teams can come up with creative and collaborative solutions as they work.
+
+Take a look at an example. A user story might be written as follows:
+As a new user, I want to be able to view and compare subscription pricing so that I can decide which plan is best for me.
+
+Below is a breakdown of what this user story does:
+It describes the feature from the perspective of a particular type of user, including what they want to be able to do and why they want to be able to do it.
+It uses specific verbs (view and compare) that describe what needs to be accomplished.
+It doesn't describe how the feature needs to be implemented.
+
+To accomplish this user story, you could create a separate page, a dialog, or something else. Typically, the actual implementation details are decided in collaboration with other people on the team.
+
+User story format
+User stories usually follow a consistent pattern.
+As a [type of user], I want [to accomplish or solve something] so that [reason behind the feature].
+Each of the sections between the brackets [] are important, and they're worth defining precisely and concisely.
+
+Types of users
+One of the most significant oversights that can happen at this stage of the design process is to assume that your perspective on a product is the only possible perspective.
+
+In fact, all projects must consider at least the following three types of users:
+New users
+Returning users
+Administrators
+
+The first two are easy to understand, but be aware that there can be multiple variants of each new and returning user type. Meanwhile, administrators tend to represent the company paying you to do the work. Administrators may spend more time interacting with your product each day than all the other users combined.
+
+Feature descriptions
+The "I want" part of a user story typically needs to involve one or two verbs that describe an action that someone wants to take. For example, "As a new user, I want a free account" is not an actionable user story; it only describes a want.
+
+Instead, focus on picking precise actions for your user stories. You can also include a constraint to help describe a feature. For example, "I want to be able to buy a product" is different than "I want to be able to buy a product in as few clicks as possible."
+
+Here are a few examples of feature descriptions:
+I want to be able to sort my contacts by first and last name.
+I want to be able to purchase a product in as few clicks as possible.
+I want to be able to use keyboard shortcuts to navigate around my dashboard.
+
+Purpose-driven features
+When developers create a product, they sometimes neglect to consider why a feature is important; the developers may just focus on the feature itself. However, clearly defining the reason why a feature exists is often the best way to come up with more creative and successful solutions.
+
+Take a look at the following user story:
+As a frequent user, I want to be able to sign up for a newsletter so that I can stay up to date on what new content is being posted to the website.
+This user story is well written and fits the defined format. But do you notice how the first part of the story is in conflict with the last part? If a user is frequently reading the website, why would they want more updates on what content is available?
+Writing the "why" often leads to conversations like this. It doesn't mean that the story is wrong; instead, it means it might need clarification or further research.
+Perhaps the development team completing this feature would decide that frequent users don't need to sign up for content updates, but instead should see a reminder of a paid service. Or, maybe the development team would tweak the message specifically for frequent users.
+
+Compare the story above to the same story without the "why" behind it:
+As a frequent user, I want to be able to sign up for a newsletter.
+
+This user story feels different; here, a task is being given without much context. As a developer, you might just complete the task and move on—without addressing the actual needs of the user.
+
+**** pair programming
+
+Pair programming The practice of working on a single problem with a peer, in one shared workspace
+
+What is pair programming?
+Pair programming, also called pairing, is the practice of working on a single problem with a peer, in one shared workspace.
+Pair programming typically looks like two developers sitting down at one computer.
+One developer will have their hands on the keyboard while the other will be sitting nearby, as the two work together to solve the same problem.
+Some companies use pair programming for 100% of their work, others never use it, and still others use it for specific occasions like onboarding new developers.
+
+Why use pair programming?
+Proponents of pair programming say that there are many benefits.
+Here are some of the most commonly cited benefits:
+Increased code quality because the developers must communicate out loud as they program
+Better transfer of skills from one developer to another
+Improved resiliency to interruption or distraction, because disrupting the process means disrupting two people instead of one
+
+Despite these benefits, pair programming isn't perfect.
+This practice is often difficult, and it can turn into a negative experience for some people.
+Later on in this lesson, you'll learn about ways to create a positive pairing environment.
+
+Driving and navigating
+In pair programming, there are two distinct roles: the driver and the navigator. Both have access to a keyboard, but the driver does most of the typing. Pairs should discuss a problem and agree on a rough solution. Then the driver is responsible for implementing it.
+
+The navigator is responsible for keeping the larger picture in mind and guiding the driver in the right direction. The navigator also watches for syntax errors, thinks about solutions to the problems that the pair is solving, and researches questions in the background. If the navigator wants to type something, the best practice is to ask permission before doing so. Generally, the navigator should not dictate code word by word; instead, they should provide general directions that the driver then implements.
+
+Pairing sessions
+For most of the pairing sessions that you'll participate in during this program, you'll pair either with other students or with a mentor. Although these two scenarios will be different, there are common processes to follow throughout.
+
+Starting a pairing session
+Begin by determining who will be the driver and who will be the navigator. Clearly define a point when you will switch roles. Then discuss the tasks that you need to complete, and pick a place to start.
+
+From the very beginning, it's easy to fall into a few traps. Watch out for the following issues:
+
+The more experienced developer shouldn't take over, no matter if they are driving or navigating. The goal is to work together and share knowledge.
+
+When you're the navigator, you aren't taking a break. The role of the navigator is to catch small issues, help brainstorm solutions, and look up syntax. Regardless of your role, be an active participant.
+
+If either one of you is uncertain about where to begin or what is going on, then you should discuss the problem further. No one should be left behind.
+
+It's important to stay engaged, no matter who you're working with. Ask questions, offer to be the driver, and do your best to stay focused.
+
+During a pairing session
+Aim to switch who is driving and who is navigating about every 30 minutes, or at another reasonable stopping place. Switching roles gives you both a chance to take a step back to consider what you've done and what you'll do next. And it's a way to make sure that both members of a pair understand what you're building.
+
+If you aren't working on the same computer, the driver should push their work to GitHub when you switch, and the navigator should pull down that work. The new driver should start by reviewing what was done and discussing the plan for the next session.
+
+It's also important to be direct with your partner throughout your pairing session. Because you set a baseline at the beginning of the session for what good communication means to you, you can bring it up with your partner if things have strayed from that baseline. Make sure to communicate your thoughts if you feel that the pairing isn't working effectively, or if you're struggling to work together effectively for any significant reason.
+
+Finishing a pairing session
+Remember that one of the most valuable aspects of this program is the steady flow of feedback that you get. Take five minutes at the end of the session to debrief with your partner.
+
+You should both mention one thing that the other person did well during the session and one thing that they can improve on. Make sure to thank each other for the feedback and for working together for the session. And as you get this feedback from your partner, it's important to use this time to reflect on the feedback received and address any changes that you could implement to make future sessions more efficient.
+
+Being a great partner
+Be patient with your partner if one of you is having an easier time understanding the session's work. Don't feel too embarrassed if your partner takes on the role of teacher for the session. And if you have experience with a topic, don't work ahead if your partner doesn't understand what you're doing. At no point should either of you feel as though you aren't contributing to the project or learning something new.
+
+When you're giving feedback, choose your words with care and make sure to say what you actually mean. And when you're receiving feedback, assume the best of your partner. They almost certainly intend to help you be productive and improve your skills, though every suggestion might not come out quite right. If you feel that your partner isn't being sensitive to your needs—for example, by driving for an entire session—speak up! Your partner is learning this new skill, too. Make sure that you bring up your concerns with specific feedback.
+
+As you work, explain what you're implementing and specify why you are making each decision.
+
+Pairing remotely
+Working remotely makes it harder to understand someone, particularly if there's any subtlety to something that they're expressing. Aim to overcommunicate and be incredibly explicit about what you're doing and how you're feeling. When you're sitting next to someone, you might recognize when they're starting to get tired—but that's much harder to intuit remotely. Remember to take some short breaks if you or your partner are feeling burnt out.
+
+Make sure that you have headphones that you're comfortable wearing for long periods. Headphones will reduce audio feedback and make it easier to hear each other.
+
+*** module 9
+
+*** unsorted
 
 1. Understand the problem - aka "reflect the question back into your our words."
     -  Do you understand all the words used in stating the problem?
