@@ -7492,14 +7492,17 @@ Anonymous function A function that doesn't have a name
 Arrow syntax A way to write a compact function expression by using an arrow => to define the function
 Arrow functions are shorter than the functions that you've written so far, and they can make it easier to see what's happening when there are lots of functions. They're also used frequently in higher-order functions, asynchronous code, and React. These are topics that you'll learn about later on.
 
-Different types of functions
-Read through this lesson and complete the practice work required. This will give you a full understanding of these concepts.
+**** Different types of functions
 
-In JavaScript, there are two different ways to create functions: function declarations and function expressions.
+In JavaScript, there are two different ways to create functions:
++ function declarations
++ function expressions
 
-A function declaration (also called a function definition or function statement) is JavaScript code that creates a new function with a name. This is the most common way to create functions, and it's the approach that you've seen so far in this program.
+A function declaration (also called a function definition or function statement) is JavaScript code that creates a new function with a name.
+This is the most common way to create functions, and it's the approach that you've seen so far in this program.
 
-A function expression is a function created in a place where there would otherwise be a value. Functions created this way may or may not have a name.
+A function expression is a function created in a place where there would otherwise be a value.
+Functions created this way may or may not have a name.
 
 Suppose that you wish to create a function that accepts a park object in the form { name: "Biscayne", rating: 4.2 } and returns "Excellent!" if the rating was greater than 4 and "Good" otherwise. Here are three different ways to implement that same function:
 
@@ -7520,13 +7523,22 @@ const ratingAsTextAnonymous = function (park) {
   console.log("This is an anonymous function that does not have a name.");
   return park.rating > 4 ? "Excellent!" : "Good";
 };
-The first function is a function declaration. It is the typical way to define functions. If you wanted to call this function, you would use the name of the function along with the argument list. For example, you could call ratingAsText(park).
 
-The second function consists of two parts: the constant (ratingAsTextNamed ) and the function expression (ratingToWord(park)). Notice that the ratingToWord(park) function expression uses exactly the same syntax as a function declaration. The only difference is that the function is being assigned to a variable. You can call this function with ratingAsTextNamed(park). However, you cannot call the function using ratingToWord(park) unless the function is calling itself (you will learn more about this later).
+The first function is a function declaration.
+It is the typical way to define functions.
+If you wanted to call this function, you would use the name of the function along with the argument list.
+For example, you could call ratingAsText(park).
 
-The last function does not have a name, meaning that it is an anonymous function. It is an expression that is assigned to the variable ratingAsTextAnonymous, and it can be called with ratingAsTextAnonymous(park).
+The second function consists of two parts: the constant (ratingAsTextNamed ) and the function expression (ratingToWord(park)).
+Notice that the ratingToWord(park) function expression uses exactly the same syntax as a function declaration.
+The only difference is that the function is being assigned to a variable.
+You can call this function with ratingAsTextNamed(park).
+However, you cannot call the function using ratingToWord(park) unless the function is calling itself (you will learn more about this later).
 
-Arrow functions
+The last function does not have a name, meaning that it is an anonymous function.
+It is an expression that is assigned to the variable ratingAsTextAnonymous, and it can be called with ratingAsTextAnonymous(park).
+
+**** Arrow functions
 Now, take a look at the following function expression:
 
 const location = {
@@ -7541,25 +7553,31 @@ const location = {
 const getLocationState = function (location) {
   return location.state;
 };
-The above function will return the state value of a given location object. Recall the different parts of the function syntax:
+The above function will return the state value of a given location object.
+Recall the different parts of the function syntax:
 
 Labeled function syntax
 You can rewrite this function using arrow syntax, like this:
 
 Labeled arrow syntax
-Instead of using the function keyword, this syntax uses an arrow => to define the function. Notice that the rest of the syntax is essentially the same.
+Instead of using the function keyword, this syntax uses an arrow => to define the function.
+Notice that the rest of the syntax is essentially the same.
 
 const getLocationState = (location) => {
   return location.state;
 };
 There are a couple of important facts to keep in mind when using an arrow function:
 
-If there is only one parameter, the parentheses () around the parameter are optional. For example, the function above accepts just one parameter, location, so you can leave out the parentheses around the parameter and write it like this:
+If there is only one parameter, the parentheses () around the parameter are optional.
+For example, the function above accepts just one parameter, location, so you can leave out the parentheses around the parameter and write it like this:
 
 const getLocationState = location => {
   return location.state;
 };
-If the function consists of just a single return statement, you can omit the curly brackets {} and just have the arrow point to the value being returned. For example, the body of the above function consists of just the statement return location.state, you can drop the return keyword and the {}. This means that you can write the function in an even more concise way:
+
+If the function consists of just a single return statement, you can omit the curly brackets {} and just have the arrow point to the value being returned.
+For example, the body of the above function consists of just the statement return location.state, you can drop the return keyword and the {}.
+This means that you can write the function in an even more concise way:
 
 const getLocationState = location => location.state;
 Next, take a look at some more examples of arrow functions and their equivalent function declarations.
@@ -7585,12 +7603,6 @@ const getGoogleMapURL = ({ geo: { lat, lon } }, zoom = 10) => (
 function getLocationCoordinates({ geo: { lat, lon } }, zoom = 10) {
   return `https://www.google.com/maps/@${lat},${lon},${zoom}z`;
 }
-Which is better?
-At the moment, there is no "right" answer as to whether you should use a function declaration or a function expression. Arrow functions are a newer feature of JavaScript, and you will see them often in upcoming lessons.
-
-Note: Later on, you'll learn another reason to use arrow functions. This reason will have to do with the this keyword and something called execution context.
-
-const cal = (length) => length ** 3;
 
 *** higher-order functions
 
@@ -7731,7 +7743,7 @@ parks.forEach((park, index, collection) => {
 // (4/4) Indiana Dunes
 In the above example, you can see that you have access to the individual element at each point in the array, the index at that point, and then the entire collection.
 
-*** find, filter
+*** find, filter, map, some, and every
 
 By the end of this lesson, you will be able to use find(), filter(), map(), some(), and every() to solve various problems.
 
