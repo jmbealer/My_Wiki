@@ -4,12 +4,7 @@
 #+title: git
 
 
-*** module 7 Git and GitHub
-**** Version control and setup
-
-Snapshot A view of code taken at a specific time
-
-***** What is version control?
+** What is version control?
 
 Version control The process of managing changes to code
 Version control refers to the process of managing changes to code, and it's a critical part of modern web development.
@@ -23,12 +18,14 @@ If you introduce a bug, you might want to roll back to a previous version of the
 As the size of an application grows, it can be challenging to keep all developers up to date. A good version control system makes it easy to know how far behind or ahead your code is.
 If each version of code is being stored, it becomes simple to compare two snapshots of the code. This makes reviewing changes to code much simpler.
 
-***** Why do you need version control?
+Snapshot A view of code taken at a specific time
+
+** Why do you need version control?
 
 Developing complex software, like the website that you are using right now, is impossible without a version control system.
 Version control tracks every change to the source code. It is an essential tool to ensure the integrity of the codebase.
 
-***** What is Git?
+** What is Git?
 
 Git is a powerful but complex command-line tool that allows you to track changes to a project on your local machine.
 
@@ -39,7 +36,7 @@ A repository will have multiple commits saved on it that make up the entire proj
 
 Git manages local version control.
 
-***** What is GitHub?
+**  What is GitHub?
 
 GitHub provides free online hosting of both public and private Git repositories.
 
@@ -60,7 +57,7 @@ Git and GitHub are almost always used together, although they don't have to be.
 
 Remote repository Also called the remote repo, the GitHub project folder that is stored on the GitHub.com website
 
-**** Git basics
+** Git basics
 
 
 Main branch The default branch that is always created when a new repository is made
@@ -355,7 +352,7 @@ Give it a try. Run git commit -m "add new team: Torvald's Tornados".
 
 Now, run git diff again. You'll be able to see that the addition of Page Panthers, which isn't yet staged, wasn't included in the commit.
 
-**** Pushing and pulling
+** Pushing and pulling
 
 Local repository Also called the local repo, the project folder that is stored on your computer
 Remote repository Also called the remote repo, the GitHub project folder that is stored on the GitHub.com website
@@ -471,7 +468,7 @@ The full command is git pull origin main, but you only need to type git pull. Th
 
 After running the command, you will see some output in your terminal that shows your new commits being pulled to your local repository. When you check the README.md file, you will see the content that you added to the file.
 
-**** Forking and cloning
+** Forking and cloning
 
 1.5 hoursAverage Reading Time
 
@@ -556,8 +553,7 @@ Cloning creates a link between the remote repository that you cloned and your lo
 
 You will see that the origin is pointing toward the repository that you cloned.
 
-
-**** GitHub projects and issues
+** GitHub projects and issues
 ***** Kanban boards
 
 Kanban board An agile scheduling and workflow system where tasks are separated into individual cards, which are then organized into columns that indicate their status
@@ -649,7 +645,7 @@ The description section of the issue allows the creator to describe what the iss
 The sidebar contains a number of ways to categorize the issue. You can assign an issue to a particular person, or give it a label to help organize it further. You can also associate the issue with a specific project, milestone, or pull request.
 The comments section provides a space to add additional comments. These comments could detail your progress on the issue, or they could be a way to ask questions about an issue that someone else made.
 
-**** writing user stories
+**  writing user stories
 
 User story An application or product feature written from the perspective of a particular user
 
@@ -720,7 +716,7 @@ This user story feels different; here, a task is being given without much contex
 
 
 *** module 9
-**** Branches
+** Branches
 ***** What is a branch?
 A branch is a collection of ordered commits.
 Different branches can have the same commit history, or they can diverge.
@@ -791,7 +787,7 @@ Check your adventure.txt file again. You will see the content that you added to 
 
 Use git log to check your history. You will see the commit that you added on the other branch, but that commit is now on the main branch.
 
-**** Feature branch workflow and pull requests
+** Feature branch workflow and pull requests
 1.5 hoursAverage Reading Time
 Learning Objective
 By the end of this lesson, you will be able to create pull requests on GitHub.
@@ -946,7 +942,8 @@ Locally, return to your main branch and run git pull. Then, run git log to see y
 
 What is the additional commit?
 You may have noticed an additional commit that you didn't explicitly create. This commit is created by GitHub when you click Merge pull request. Don't worry; no additional changes have been added. This commit simply marks that a pull request was merged.
-**** Merge conflicts
+
+** Merge conflicts
 1.5 hoursAverage Reading Time
 Learning Objective
 By the end of this lesson, you will be able to solve merge conflicts both in your local Git repository and through the GitHub interface.
