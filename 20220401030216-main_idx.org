@@ -68,8 +68,7 @@ wiki-old
 awkTest.org
 awkTest.txt
 
-
-* Readme
+** Readme
 
 #+begin_src org
 ,#+Title: My Wiki Readme
