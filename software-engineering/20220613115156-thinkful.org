@@ -796,6 +796,1216 @@ Although code coverage tools are useful, it is definitely possible to spend too 
 Complete example
 A completed example from this lesson can be found here:
 
+** Error handling basics
+*** Understanding errors
+1 hourAverage Reading Time
+Learning Objective
+By the end of this lesson, you will learn how to identify and interpret a variety of errors.
+
+Overview
+Earlier in this program, you learned about syntax, reference, and type errors. As you may have seen by now, these aren't the only types of errors that you will encounter when building a Node.js application. Other types of errors include user errors, system errors, and assertion errors. In this lesson, you will focus on identifying and interpreting errors for faster debugging.
+
+Understanding errors
+Knowing how to properly identify and understand errors is an essential skill that every developer must possess. You already covered some standard JavaScript errors in the Error types lesson in the JavaScript foundations module, but now you'll take a deeper look at error messages. In this lesson, you'll go back to basics with error messages so that you can better understand how to work with them.
+
+Suppose you have a notfound.js file with the following code:
+
+// Import file
+const doesNotExist = require('./does-not-exist');
+Running the code above will throw an error similar to this one:
+
+internal/modules/cjs/loader.js:883
+  throw err;
+  ^
+
+Error: Cannot find module './does-not-exist'
+Require stack:
+- /home/user/Dev/Thinkful-Ed/tmp/notfound.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:880:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:725:27)
+    at Module.require (internal/modules/cjs/loader.js:952:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at Object.<anonymous> (/home/gabriel/Dev/Thinkful-Ed/tmp/errors.js:1:22)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/home/user/Dev/Thinkful-Ed/tmp/notfound.js' ]
+}
+What does this error say to you? The error message is very explicit in this case. It says Error: Cannot find module './does-not-exist'. A MODULE_NOT_FOUND error code is also printed in the error message. Error codes are useful when you aren't sure about the error presented. Node's documentation sometimes provides more details of the error in hand:
+
+"MODULE_NOT_FOUND: A module file could not be resolved while attempting a require() or import operation."
+
+Tip
+When you don't understand an error message, search for the error code in Node's Errors documentation. If that still doesn't help, sites like Stack Overflow may give more information on the error code.
+
+Do this
+Create a new file and run the following code:
+
+const fs = require('fs');
+fs.writeFile("/temp/test", "Hello!");
+Then consult Node's Errors documentation to learn more about this error. What does the documentation say about this error?
+
+System errors
+A system error occurs when an application breaks a constraint set by the operating system. An example of this could be opening a file that doesn't exist or the application not having the proper system permissions.
+
+Suppose you want to read a text file called idontexist.txt:
+
+// Import JavaScript's fs library (used to read and write text files)
+const fs = require('fs')
+// Attempt to read the idontexist.txt file
+const content = fs.readFileSync("idontexist.txt")
+If you run the code above, you will get an error like this one:
+
+internal/fs/utils.js:308
+    throw err;
+    ^
+
+Error: ENOENT: no such file or directory, open 'idontexist.txt'
+    at Object.openSync (fs.js:476:3)
+    at Object.readFileSync (fs.js:377:35)
+    at Object.<anonymous> (/home/user/Dev/Thinkful-Ed/tmp/errors2.js:2:20)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+    at internal/main/run_main_module.js:17:47 {
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: 'idontexist.txt'
+}
+Notice how this error has a few properties that the previous error didn't have. System errors may include properties such as syscall, path, and errorno. Also, did you notice which properties are present in both this error and the previous one? The essential properties that all errors need to have are the error code and the error message.
+
+What is ENOENT anyway? ENOENT stands for Error No Entity. Some of these codes come from the operating system, so they may not be as explicit as other error types. If you have a hard time understanding the error, you can always search for the error code in Node's documentation:
+
+"ENOENT (No such file or directory): Commonly raised by fs operations to indicate that a component of the specified pathname does not exist. No entity (file or directory) could be found by the given path."
+
+Tip
+Node's documentation provides a list of common system errors. Review the list and try to remember if you have encountered any of those errors.
+
+Do this
+Create a new file and run the following code:
+
+const fs = require('fs');
+fs.mkdirSync('temp_dir');
+What does Node's Errors documentation say about this error?
+
+Assertion errors
+Assertion errors indicate a failure of an assertion. These types of errors are more commonly used in testing. There are several assertion libraries, such as Chai, that use these types of errors or similar ones.
+
+The code below uses the assert module to assert that 1 === 2.
+
+const assert = require('assert');
+assert.strictEqual(1, 2);
+Obviously, this will throw the following error:
+
+assert.js:104
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+1 !== 2
+
+    at Object.<anonymous> (/home/user/Dev/Thinkful-Ed/tmp/errors2.js:2:8)
+    at Module._compile (internal/modules/cjs/loader.js:1063:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)
+    at internal/main/run_main_module.js:17:47 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 2,
+  operator: 'strictEqual'
+}
+Now, do a quick search for ERR_ASSERTION in Node's documentation:
+
+"A special type of error that can be triggered whenever Node.js detects an exceptional logic violation that should never occur. These are raised typically by the assert module."
+
+Notice how an AssertionError has different properties than other errors. Assertion errors can have actual, expected, and operator properties. The error message and the properties clearly indicate how the actual value differs from the expected value when using the strictEqual operator.
+
+Note: In Testing basics, you reviewed some of the most commonly used assertion methods in testing. Now, check out Chai's documentation to get a broader perspective of the different operators that you may encounter in tests. Becoming familiar with the assert API and the BDD API will help you better understand any assertion errors that you may encounter.
+
+*** Writing errors
+1.5 hoursAverage Reading Time
+Learning Objective
+By the end of this lesson, you will be able to create custom error messages.
+
+Overview
+Errors are a way of life when it comes to programming. However, errors can also be a powerful way to improve your functions and ensure that they are used correctly. In this lesson, you'll learn how to create errors to signal to yourself and other developers when something wrong is happening.
+
+Creating errors
+You encountered a few different error types and descriptions in the first part of the program. Review them briefly:
+
+ReferenceError: [name] is not defined
+
+TypeError: cannot read property '[name]' of undefined
+
+TypeError: [name] is not a function
+
+SyntaxError: Unexpected token
+
+These kinds of error messages can be more informative than a console.log() statement or a silently failing problem. So next, you're going to learn how to use the throw keyword to create your own errors like this.
+
+The throw keyword
+You can make code generate an error by using the throw keyword. Here's an example:
+
+let secret = 42;
+let guess = 55;
+
+if (guess !== secret) {
+  throw new Error("That's not the secret number!");
+}
+When JavaScript sees throw, it stops running the code (similar to return) and "unwinds" the code. Then it then prints out the error.
+
+Backtraces
+To make it easier for developers to understand what's going on, JavaScript also prints out a backtrace. Each line walks backward through the functions that were called before the error, like this:
+
+function one() {
+  two();
+}
+function two() {
+  three();
+}
+function three() {
+  throw new Error("Here's the error");
+}
+one();
+Then, the error will be as follows:
+
+Error: Here's the error
+    at three (test.js:8:9)
+    at two (test.js:5:3)
+    at one (test.js:2:3)
+First, you see the error message itself. Next, each line tells you the name of the function and which line of the program this error came from.
+
+Error values
+The new Error() syntax is a special syntax for creating objects. This syntax will not be covered in this lesson. However, you can throw anything, not just new Error('message'). Here are some examples:
+
+throw "here's what went wrong";
+throw 10;
+throw { message: "This a string in an object" };
+throw ["two", "message strings"];
+When to create errors
+Now you know how to create errors. But when should you create them?
+
+It is most useful to throw errors when a function is being used incorrectly. For example, if an essential parameter is missing, you may consider throwing an error. Here's an example:
+
+function checkSecretPassword(password) {
+  if (!password) throw "No password given!";
+  return password === "SECRET";
+}
+In the above function, if the password parameter is undefined, an error will be thrown. This will stop other members of your team (or your future self) from making the mistake of not including a password.
+
+*** Try and catch
+1.5 hoursAverage Reading Time
+Learning Objective
+By the end of this lesson, you will be able to handle errors by using try and catch statements.
+
+Overview
+Sometimes, you'll want your code to continue running despite an error. This can be useful in cases where you know that it's possible that your code may fail. In this lesson, you'll learn how to handle errors so that your code keeps running. However, this doesn't mean that you should use these methods on all of your code! Error-free code is still the best kind of code.
+
+The try and catch statements
+You can use try...catch statements to stop errors before they stop your whole program. To do so, wrap the code that you want to handle in a try block, and then catch any errors that happen inside the try block. The syntax looks like this:
+
+try {
+  throw new Error("Something went wrong");
+} catch (error) {
+  console.log(`We handled the error: ${error}`);
+}
+Usually, this approach is used to recover from possible errors—not ones that are guaranteed.
+
+For example, take a look at the function below. Here, an error is thrown if the number is too small. Otherwise, the number is printed without an error message. Either way, the function will continue to run and will not stop the execution of the program.
+
+function getRandomNumber() {
+  // Math.floor(Math.random() * 100) generates a random number
+  const randomNumber = Math.floor(Math.random() * 100);
+  const min = 10;
+  try {
+    if (randomNumber < min) {
+      throw `Random number is too small! ${randomNumber} is less than ${min}.`;
+    } else {
+      console.log(`The random number is: ${randomNumber}`);
+    }
+  } catch (error) {
+    console.log(`An error occurred: ${error}`);
+  }
+}
+Also, notice that the catch statement includes access to the error that was thrown. That error is exactly what was thrown.
+
+For example, in the code below, note how error is being operated on as an array, because that is what was thrown.
+
+try {
+  throw ["one", "two", "three"];
+} catch (error) {
+  const errors = error.join(", ");
+  console.log(`Multiple errors: ${errors}`);
+}
+
+** Promises
+*** Sync and async code
+1.5 hoursAverage Reading Time
+Learning Objective
+
+By the end of this lesson, you will be able to differentiate between synchronous and asynchronous code.
+Overview
+
+In this lesson, you'll learn about what exactly asynchronous code is. You'll learn why some code will be asynchronous and what asynchronous code looks like. Although it's a small step in the process, this lesson marks the beginning of your venture into building fully featured applications.
+Key Terms
+
+Event loop
+    A design pattern that a program may use to prioritize certain lines of code for execution
+
+In this next section of this program, you can expect to go a little deeper into JavaScript as you continue honing your skills as a web development expert!
+
+You should be excited and proud of what you're learning in this program. The skills that you're learning are very high in demand right now. In fact, LinkedIn announced that "JavaScript Developer" is one of the top ten most in-demand jobs based on the number of LinkedIn job posts in Q4 2021.
+
+Up to this point, the code that you've run has been synchronous. That is, the lines of code have run one after another in the order that they were provided. But not all code runs like this. In fact, some of the most important code that you run will be asynchronous.
+Terminology
+
+The video below provides an overview of the difference between synchronous and asynchronous code. Start by watching the video, and then read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+
+Synchronous code (also called sync code) executes one code instruction at a time, in the order that the instructions are given. Asynchronous code (also called async code) executes multiple instructions simultaneously, and the order in which the instructions complete isn't known. These differences are visualized below:
+Difference between synchronous and asynchronous execution
+
+It's a lot easier to understand the difference between these two types of code with an example. So take a look at the code snippet below:
+
+function useSetTimeout() {
+
+  console.log("Start!");
+
+
+  setTimeout(() => {
+
+    console.log("Inside setTimeout!");
+
+  }, 1000);
+
+
+  console.log("End!");
+
+}
+
+
+useSetTimeout();
+
+The function above contains three log() statements.
+
+The second log() statement, "Inside setTimeout!", is inside of a function passed to the setTimeout() function. The setTimeout() function takes two arguments: a callback function and a number that represents the number of milliseconds that should elapse before firing the callback function.
+
+This leads to the following text being logged to the console.
+
+Start!
+
+End!
+
+Inside setTimeout!
+
+Despite the fact that the setTimeout() function is invoked immediately, the callback function isn't invoked until later. That means that the setTimeout() function is an asynchronous operation. This is visualized in the diagram below:
+setTimeout() visualization
+Event loop
+
+The video below provides a brief introduction to event loops.
+
+Knowing how setTimeout() works, the above ordering makes sense.
+
+Of course Inside setTimeout! would be printed after "End!" if it was forced to wait for one second before running. But take a look at the code below—this results in exactly the same output.
+
+function useSetTimeout() {
+
+  console.log("Start!");
+
+
+  setTimeout(() => {
+
+    console.log("Inside setTimeout!");
+
+  }, 0);
+
+
+  console.log("End!");
+
+}
+
+
+useSetTimeout();
+
+Notice that the setTimeout() function was told to wait for 0 milliseconds. So how is it possible that "End!" is still printed before "Inside setTimeout!"?
+
+The reason has to do with something called the event loop. The event loop describes a process by which JavaScript prioritizes certain lines of code for execution. Asynchronous code is placed into a queue where it will always run after the synchronous lines of code in the current file. If the current file has two or more asynchronous operations, you cannot determine the order in which the asynchronous operations will complete.
+
+The event loop is a complex and interesting topic that deserves its own lesson. But for now, the way that code is run in JavaScript will be described simply. Essentially, when JavaScript is being interpreted, asynchronous operations are not executed immediately. Instead, they are placed into an event queue and executed later. Those operations will be run as soon as they can (which is always after the synchronous code has been run). Take a look at the below visualization of the process:
+setTimeout() visualization
+
+To further reinforce how this works, take a look at another example. Can you determine the order in which the statements below will run?
+
+console.log("Start!"); // Synchronous code
+
+
+setTimeout(() => {
+
+  console.log("Inside first setTimeout!"); // Asynchronous code
+
+}, 0);
+
+
+setTimeout(() => {
+
+  console.log("Inside second setTimeout!"); // Asynchronous code
+
+}, 0);
+
+
+console.log("End!"); // Synchronous code
+
+It's important to note that each function in the above code is invoked when it is encountered. That is, all of the code is being invoked in the order in which it's written. However, the results of the asynchronous function calls aren't immediate.
+
+In the above code, the log() statements for "Start!" and "End!" are synchronous function calls, so you will see the output from those function calls immediately.
+
+However, when setTimeout() is invoked, it doesn't execute the callback immediately. Instead, a new event is placed on the event queue along with the callback passed to setTimeout(). After the current file is done executing, the events in the queue are executed in order from oldest to newest (or first-in, first-out). As a result, the callback function passed into setTimeout() will always run after the synchronous code in the current file.
+
+So, the above code will result in the following output:
+
+Start!
+
+End!
+
+Inside first setTimeout!
+
+Inside second setTimeout!
+
+Again, this is a simplistic view of the event loop, but it demonstrates the main concept at hand. In short, despite the order in which the code is written, some code will take longer to run.
+Why use asynchronous JavaScript?
+
+Synchronous code will block further execution until it has finished what it's doing. As a result, a long-running JavaScript function will make the web page or server unresponsive until the function has finished. This can result in a terrible user experience.
+
+To solve this problem, JavaScript makes certain operations asynchronous. This way, the web page or server is responsive while waiting for long-running tasks to complete.
+Common scenarios
+
+Now that you understand the basics of how asynchronous code works, consider where it might be useful. In the real world, when might you see asynchronous code used?
+
+Asynchronous code is usually preferred when one of the following conditions applies:
+
+    You want the application to continue to be able to run without waiting for some process.
+
+    You have no choice but to wait because the process depends on something outside of your control.
+
+Now, take a look at some scenarios where asynchronous code is quite common. You'll encounter some of these further on in the program.
+Animations
+
+In web development, many graphical animations are powered by JavaScript using tools like setTimeout(). This can be anything from incredible visual displays to a notification icon blinking red.
+
+Either way, timing is important for animation, as is interactivity. When an animation starts on a web page, you probably don't want the rest of the web page to stop running completely to wait for that animation to finish. Because of this, animations on the web are run asynchronously.
+
+The video below provides an overview of this topic.
+Do this
+Animate part of a web page
+
+Now you will create a web page with a simple animation. However, the first JavaScript that you will write will be synchronous.
+
+Create a new folder on your computer. Then add the following code to animation.html.
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <body>
+
+    <div id="root" style="position: absolute; height: 1000px">Animate me!</div>
+
+
+    <script type="application/javascript">
+
+      const rectangle = document.querySelector("#root");
+
+
+      let leftPosition = 0;
+
+
+      function animateDiv() {
+
+        console.log(`Start animateDiv ${leftPosition}`);
+
+
+        leftPosition += 1;
+
+
+        rectangle.style.left = `${leftPosition}px`;
+
+
+        if (leftPosition < 200) {
+
+          console.log(`Before animateDiv`);
+
+          animateDiv();
+
+          console.log(`After animateDiv`);
+
+        }
+
+
+        console.log(`End animateDiv`);
+
+      }
+
+
+      requestAnimationFrame(animateDiv);
+
+    </script>
+
+  </body>
+
+</html>
+
+Then open the page in your default browser. The "Animate me!" text doesn't move across the page like you might expect. Look at the browser's console and notice the order of the console.log() statements.
+
+Now, change the code to call requestAnimationFrame(animateDiv) rather than animateDiv().
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<body>
+
+
+<div id="root" style="position: absolute; height: 1000px">
+
+    Animate me!
+
+</div>
+
+
+<script type="application/javascript">
+
+  const rectangle = document.querySelector('#root');
+
+
+  let leftPosition = 0;
+
+
+  function animateDiv () {
+
+    console.log(`Start animateDiv ${leftPosition}`)
+
+
+    leftPosition += 1;
+
+
+    rectangle.style.left = `${leftPosition}px`;
+
+
+    if (leftPosition < 200) {
+
+      console.log(`Before animateDiv`)
+
+-     animateDiv();
+
++     requestAnimationFrame(animateDiv);
+
+      console.log(`After animateDiv`)
+
+    }
+
+
+    console.log(`End animateDiv`)
+
+  }
+
+
+  requestAnimationFrame(animateDiv);
+
+</script>
+
+</body>
+
+</html>
+
+Again, open the page in your default browser. The "Animate me!" text now moves smoothly across the page. You can also scroll the page up and down during the animation. Next, look at the browser's console and notice that the order of the console.log() statements has changed. This is because requestAnimationFrame() is an asynchronous function that allows the browser to repaint the screen between calls to animateDiv().
+External web requests
+
+The video below provides an overview of external web requests.
+
+When you're requesting data from an external source, you have little choice but to wait for the requested information. If the external source is down or having a slow day, the request will take longer.
+
+This isn't the same as depending on an external package; when you use libraries, you'll likely download them to your project so that they can be accessed quickly. In contrast, external web requests involve requesting data from some other website.
+Tip
+
+Intensive processes, like processing images or video files, are often put into an asynchronous function so that the long-running process doesn't slow down the main program.
+Do this
+Write an asynchronous function
+
+Now you will write code that downloads a video from a remote server and processes it after the download completes. However, downloading a large video from a remote server takes some time depending on the network speed and the size of the video.
+
+Note: Rather than actually downloading or processing the video, you will use the setTimeout() function to simulate the time that it takes for downloading and processing.
+
+Create a new folder on your computer, then add the following code to download-and-process-video.js:
+
+function download(url) {
+
+  console.log(`Start downloading video from ${url} ...`);
+
+
+  setTimeout(() => {
+
+    const fileName = url.split("/").pop();
+
+    console.log(`Video downloaded from ${url} to ${fileName}.`);
+
+  }, 2000);
+
+}
+
+
+function process(videoFile) {
+
+  console.log(`Start processing ${videoFile} ...`);
+
+
+  setTimeout(() => {
+
+    console.log(`Video processing complete: ${videoFile}.`);
+
+  }, 4000);
+
+}
+
+
+const url = "https://www.thinkful.com/sync-and-async.mov";
+
+
+const fileName = download(url);
+
+
+process(fileName);
+
+In the above code, the download() and process() functions are both synchronous functions. However, they both call setTimeout(), an asynchronous function.
+
+Before running the code, take a moment to write down what you think the output will be when you run the above code. Then run the code, using node download-and-process-video.js. You'll see the following output:
+
+Start downloading video from https://www.thinkful.com/sync-and-async.mov ...
+
+Start processing undefined ...
+
+Video download from https://www.thinkful.com/sync-and-async.mov to sync-and-async.mov.
+
+Video processing complete: undefined.
+
+As you can see from the above output, the process() function started before the download() function completed. The behavior that you want is for the code to wait for the download to complete, then call the process() function.
+
+To fix this problem, pass the process() function to the download() function as a callback, as shown below. When the download() function is complete, it will call the callback() function, passing in the filename.
+
+-function download (url) {
+
++function download (url, callback) {
+
+   console.log(`Start downloading video from ${url} ...`);
+
+
+   setTimeout(() => {
+
+     const fileName = url.split('/').pop()
+
+     console.log(`Video downloaded from ${url} to ${fileName}.`);
+
++    callback(fileName)
+
+   }, 3000);
+
+ }
+
+
+function process (videoFile) {
+
+  console.log(`Start processing ${videoFile} ...`);
+
+
+  setTimeout(() => {
+
+    console.log(`Video processing complete: ${videoFile}.`);
+
+  }, 4000);
+
+}
+
+
+const url = 'https://www.thinkful.com/sync-and-async.mov';
+
+
+-const fileName = download(url);
+
++download(url, process);
+
+
+-process(fileName);
+
+In the above code, the download() function now takes a callback function as a second parameter. The download() function does not know what the callback function does, only that it should be called after the download is complete. You have already used callback functions for the find(), filter(), map(), some(), and every() functions on an array, so this pattern will seem familiar.
+
+Now, run the code again using node download-and-process-video.js. You'll see the following output:
+
+Start downloading video from https://www.thinkful.com/sync-and-async.mov ...
+
+Video downloaded from https://www.thinkful.com/sync-and-async.mov to sync-and-async.mov.
+
+Start processing sync-and-async.mov ...
+
+Video processing complete: sync-and-async.mov.
+
+Now the code works as expected.
+
+Although it may seem like the code is blocked while it is waiting for the download, the code is able to execute other commands while waiting for the download. Add the following code to the end of the file to see that other commands are still processed while waiting for the download.
+
+setInterval(() => console.log("some other work is happening here"), 500);
+
+Now, the output will look like this:
+
+Start downloading video from https://www.thinkful.com/sync-and-async.mov ...
+
+some other work is happening here
+
+some other work is happening here
+
+some other work is happening here
+
+some other work is happening here
+
+some other work is happening here
+
+Video downloaded from https://www.thinkful.com/sync-and-async.mov to sync-and-async.mov.
+
+Start processing sync-and-async.mov ...
+
+some other work is happening here
+
+some other work is happening here
+
+some other work is happening here
+
+some other work is happening here
+
+some other work is happening here
+
+some other work is happening here
+
+some other work is happening here
+
+some other work is happening here
+
+Video processing complete: sync-and-async.mov.
+
+some other work is happening here
+
+...
+
+As you can see, asynchronous code allows the web page and server to remain responsive while waiting for long-running tasks to complete.
+
+*** Creating promises
+1.5 hoursAverage Reading Time
+Learning Objective
+
+By the end of this lesson, you will be able to create promises using the Promise() constructor function.
+Overview
+
+The most popular way to manage asynchronous code in JavaScript is through an object called a promise. A promise can run asynchronous code and provide a set of methods that allows you to extract a single result from that code. In this lesson, you'll learn the basics of creating promises in JavaScript.
+What's the problem?
+
+Start by watching the video below, which provides a brief introduction to this topic. Then, read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+
+Recall that asynchronous code complicates the order in which code is run. In some scenarios, this can be challenging. To understand the problem a little better, you will write some code to read a text file containing quotes, then randomly select one of the quotes and print it out for the user.
+
+To begin, create a new folder named quotes to store the files.
+
+In quotes.txt, add the following:
+
+On a long enough timeline, every line of code is obsolete. - Unknown
+
+Deliver yesterday, code today, think tomorrow. - Unknown
+
+A clever person solves a problem. A wise person avoids it. - Albert Einstein
+
+There's no time to stop for gas, we're already late. - Karin Donke
+
+In main.js, add the following code:
+
+const fs = require("fs");
+
+
+let quote = null;
+
+
+console.log("Finding a quote...");
+
+
+fs.readFile("quotes.txt", (error, buffer) => {
+
+  if (error) {
+
+    throw error;
+
+  }
+
+  const lines = buffer.toString().split("\n");
+
+  quote = lines[Math.floor(Math.random() * lines.length)];
+
+});
+
+
+console.log(`Your quote is: ${quote}`);
+
+The above code reads the contents of quotes.txt using the asynchronous fs.readFile() function. In the readFile() callback function, it splits the file contents into lines and then randomly assigns one of the lines to the quote variable. Finally, it logs Your quote is: ${quote}.
+Tip
+
+The fs module used in the code above enables interacting with the file system. The intricacies of the fs library are outside of the scope of this lesson; if you would like to know more, consult the fs documentation.
+
+However, if you run the code above, you'll see that the output doesn't quite work. Take a look:
+
+node main.js
+
+
+Finding a quote...
+
+Your quote is: null
+
+Why is the quote null?
+
+Remember that any asynchronous code is not executed immediately. Instead, it is added to the event queue and will always run after the code in the current file. This means that the code inside of the fs.readFile() callback will always run after the console.log(`Your quote is: ${quote}`); statement.
+
+One way to fix this code is to move the console.log(`Your quote is: ${quote}`); inside of the fs.readFile() callback.
+
+Another way to fix this code is to use a promise. In JavaScript, promises are a reliable way of knowing when asynchronous code has been completed.
+Promises
+
+For an introduction to promises, review the following video.
+
+A promise is a type of object that wraps around asynchronous code. Promises won't run the callback function until needed, and they provide methods to extract the final result.
+
+Promises are an ingenious solution. They allow you to run asynchronous code inside an object that provides you with some functions that you can use to respond to the success or failure of the asynchronous code.
+
+To manage asynchronous code, promises have three states:
+
+    Pending: When a promise is first created, it has a status of pending. For example, with fs.readFile(), the promise would be in the pending state during the time that the file is being read.
+
+    Fulfilled: When the promise has successfully finished running, it has a status of fulfilled. This means that it is ready to pass back a value. In the fs.readFile() example, this is after the error and buffer are passed to the callback function.
+
+    Rejected: If something goes wrong, the promise changes to a status of rejected. This means that something failed. In the fs.readFile() example, if the first parameter, error, is truthy, that means that there was an error reading the file—so the promise should be rejected. The rejected status is especially likely to come up when you're making external web requests or reading files.
+
+Syntax
+
+Take a look at the code below, which demonstrates the creation of a promise.
+
+const newPromise = new Promise((resolve, reject) => {
+
+  // Your code here...
+
+});
+
+The code above demonstrates the following:
+
+    A new promise can be created using the new keyword with the Promise class. This will create an instance of a promise.
+
+    Promises can be assigned to variables.
+
+    The only argument to pass in to the Promise constructor is a callback function that has two parameters: resolve and reject.
+
+The following diagram shows how the resolve() and reject() methods change the state of the promise.
+A pending promise can either be fulfilled with a value or rejected with a reason
+
+As you can see in the diagram above, a pending promise can either be fulfilled with a value, or rejected with a reason (error). Finally, a fulfilled or rejected promise cannot transition into any other state.
+Do this
+Return a promise
+
+The video below outlines how to return promises from functions.
+
+Next, you will write a function that returns a promise. Inside the returned promise, you will write some code that executes fs.readFile() to read the file contents.
+
+Create a file named read-file.js, and add the following code:
+
+const fs = require("fs");
+
+
+function readFile(fileName) {
+
+  return new Promise((resolve, reject) => {
+
+    fs.readFile(fileName, (error, buffer) => {
+
+      if (error) {
+
+        return reject(error);
+
+      }
+
+      resolve(buffer.toString());
+
+    });
+
+  });
+
+}
+
+
+module.exports = readFile;
+
+In the code above, you can see that readFile() returns a new Promise(). The promise takes a callback function with two parameters, resolve() and reject(), which are both functions.
+
+To fulfill the promise successfully, pass the final value that you want to extract from the promise to the resolve() function. In the example above, the file contents are passed into the resolve() function and the promise becomes fulfilled.
+
+The reject() function works the same way as resolve(), except that it is used when the asynchronous code has failed or gone wrong in some way. In the above example, if error has a truthy value, then error is passed to the reject() function and the promise becomes rejected. You will see more examples using reject() in the future.
+Do this
+See a promise change state
+
+Next, you will write some code that uses the readFile() function that you created earlier. This new code will log the promise returned by readFile() two different times, a few milliseconds apart, so that you can see the promise change state automatically when the asynchronous code inside the promise completes.
+
+Create a new file named quotes.js, and add the following code:
+
+const readFile = require("./read-file");
+
+
+const readFilePromise = readFile("quotes.txt");
+
+
+console.log(readFilePromise);
+
+
+setTimeout(() => {
+
+  console.log(readFilePromise);
+
+}, 500);
+
+Run the code above using node quotes.js. The first console.log(readFilePromise); statement will print something like this:
+
+Promise { <pending> }
+
+Then a few milliseconds later, it will log out the readFilePromise variable again. This time, it will look a bit different:
+
+Promise {
+
+  'On a long enough timeline, every line of code is obsolete. - Unknown\n' +
+
+    'Deliver yesterday, code today, think tomorrow. - Unknown\n' +
+
+    'A clever person solves a problem. A wise person avoids it. - Albert Einstein\n' +
+
+    "There's no time to stop for gas, we're already late - Karin Donke"
+
+}
+
+As you can see above, the readFilePromise variable goes from a pending state to a fulfilled state once the asynchronous code inside the promise callback calls the resolve() function.
+
+More precisely, the promise changes state when the resolve() or reject() function is called.
+
+*** Resolving promises
+1.5 hoursAverage Reading Time
+Learning Objective
+
+By the end of this lesson, you will be able to use the then() method to extract the resolved value of a promise, and the catch() method to extract the rejected reason of a promise.
+Overview
+
+In this lesson, you'll learn how to resolve promises using callback functions.
+
+Now that you know how to create promises, you may have noticed that there is no way to determine the promise's state (such as pending, fulfilled, or rejected). There's also no way to get the resolved value or rejected reason from the promise. Unlike other objects in JavaScript, the state of the promise, and therefore its value, can change from pending to fulfilled or rejected at any time. This means that you need to have a way to be notified when the state of the promise changes. As a result, promises use callback functions to signal the state of the promise. When the promise is resolved, the callback function passed to then() is called, passing in the resolved value. When the promise is rejected, the catch() method is called, passing in the rejected reason (error).
+
+The video below provides an overview of the file setup process. Start by watching the video, and then read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+Starter code
+
+This lesson requires you to fork and clone the following GitHub repository:
+
+    Resolving Promises Starter Code
+
+Once you have the repository on your computer, you can run npm start from the folder to run the code in main.js.
+
+You will see output that looks similar to the following:
+
+node src/main.js
+
+
+Promise { "Provide me a question and I'll give you an answer..." }
+
+Fortune-teller functions
+
+Each of the functions inside of utils/fortune-teller.js returns a promise. You'll be able to use these functions to test out promises for the rest of this module.
+
+Although you are welcome to look at the code inside of the utils folder, you don't need to make any changes.
+Extracting the resolved value
+
+When a promise is created, the asynchronous operation inside will be fulfilled as quickly as possible. However, there are no methods or properties available to directly access the resolved value of a promise.
+
+For example, look at the code below:
+
+const welcomePromise = welcome();
+
+console.log(welcomePromise);
+
+When you run the code above, you will see the following:
+
+Promise { "Provide me a question and I'll give you an answer..." }
+
+Although you can see the final value stored inside of the welcomePromise variable in the above example, you aren't able to access the string inside. In other words, you only have access to the Promise object, not the string, because there are no methods or properties you can use to directly access the resolved value of a promise.
+
+Thankfully, JavaScript's Promise object offers two methods—then() and catch()—that allow you to access the value of a fulfilled promise or the reason for a rejected promise.
+The then() method
+
+The video below provides an overview of the then() method.
+
+The then() method accepts a callback function that is called whenever the promise is fulfilled. Here's an example:
+
+const welcomePromise = welcome();
+
+welcomePromise.then((result) => {
+
+  console.log("The result is:", result);
+
+});
+
+The above code will print the following:
+
+The result is: Provide me a question and I'll give you an answer...
+
+The callback takes a single parameter, which contains the fulfilled (resolved) value of the promise.
+
+The code above can also be written to chain directly from the promise, like so:
+
+welcome().then((result) => {
+
+  console.log("The result is:", result);
+
+});
+
+
+//> The result is: Provide me a question and I'll give you an answer...
+
+Because console.log() is a function, you can also just pass it into then() if you don't need to do anything extra. Here's an example:
+
+welcome().then(console.log);
+
+
+//> Provide me a question and I'll give you an answer...
+
+Remember, it's asynchronous!
+
+Now that you've seen how to access the result of a promise, it can be tempting to do something like this:
+
+let myString = "The result is: ";
+
+
+const promise = welcome();
+
+promise.then((result) => {
+
+  myString += result;
+
+});
+
+
+console.log(myString);
+
+But can you guess what the output of the code above will be? Remember, promises are asynchronous!
+
+The code above will result in the following output:
+
+//> The result is:
+
+When the console.log() function is called, the promise hasn't yet resolved. It's important to remember that all work on the result of the promise must be done inside of the then() callback function.
+Do this
+Use then()
+
+In the repository that you cloned, add the following code at the end of src/main.js:
+
+const question = "Will the weather be nice today?";
+
+const tellPromise = tell(question);
+
+Use a then() function to log out the fortune's result. Try it on your own before looking at the solution below.
+
+const question = "Will the weather be nice today?";
+
+const tellPromise = tell(question);
+
+tellPromise.then(console.log);
+
+Use external variables
+
+Although you can only access the result of a promise inside of a then() function, you can use variables outside of its scope inside of the then() callback function.
+
+To see this in action, try updating your code to this:
+
+const question = "Will the weather be nice today?";
+
+const tellPromise = tell(question);
+
+tellPromise.then((fortune) => {
+
+  console.log(question);
+
+  console.log(fortune);
+
+});
+
+
+//> Will the weather be nice today?
+
+//> Without a doubt.
+
+Did you notice the output?
+The catch() method
+
+The video below provides an overview of the catch() method.
+
+Earlier, the method was described as a way to access the resolved value. That's because if a value inside of a promise is rejected with the reject() function, it will skip the then() method until it finds a catch().
+
+The catch() method is the error handler for a promise. Like try/catch blocks, if the catch() method doesn't throw an error, the calling method doesn't know that an error happened. In other words, the promise returned by the catch() method is rejected only if the catch() throws an error or returns a promise which is itself rejected; otherwise, the promise is resolved.
+
+This can be a bit confusing, so have a look at some code.
+
+For example, if no question is provided to the tell() function below, an error message will be passed into the reject() function.
+
+const tellPromise = tell()
+
+  .then((result) => {
+
+    console.log("Success:", result);
+
+  })
+
+  .catch((error) => {
+
+    console.log("Failure:", error);
+
+  });
+
+
+setTimeout(() => console.log(tellPromise), 500);
+
+In the above code, the tell() function has no question passed into it. Therefore, inside the tell() function, the reject() function is called with an error message.
+
+When you run the above code, the output will be the following:
+
+Failure: A question is required...
+
+
+Promise { undefined }
+
+When a promise's state changes from pending to rejected, it skips over any then() methods to the next catch() method. Notice that the "Success:" message doesn't get called at all!
+
+As you can see in the output above, the promise is in the fulfilled state with a value of undefined (the catch() callback function returned undefined). While this may seem counterintuitive, it is exactly the same behavior as a try/catch block inside a function.
+Do this
+Use catch()
+
+Include a catch() at the end of your code's current then(). Log out the value from the callback and then run your code; you won't see the error message.
+
+Then try removing the question and running the code again.
+
+The complete code is below.
+
+const question = "Will the weather be nice today?";
+
+const tellPromise = tell();
+
+tellPromise
+
+  .then((fortune) => {
+
+    console.log(question);
+
+    console.log(fortune);
+
+  })
+
+  .catch(console.error);
+
+Reorder then() and catch()
+
+If a promise reaches the fulfilled state, the response goes to the next then(). And if a promise reaches the rejected state, the response goes to the next catch(). This is true regardless of the order.
+
+const question = "Will the weather be nice today?";
+
+const tellPromise = tell(question);
+
+tellPromise.catch(console.error).then((fortune) => {
+
+  console.log(question);
+
+  console.log(fortune);
+
+});
+
+The above code will work the same regardless of whether catch() comes before or after then(). It's typical to put catch() statements at the end, but it isn't necessary.
+
+Try switching the order of your then() and catch() code to verify this assertion.
+Chain then() and catch()
+
+You can continue to chain then() and catch() statements, depending on what you want to accomplish with the return result.
+
+When chaining multiple then() calls together, the value returned from a then() callback function is passed to the next then() callback function. If a then() callback function returns a promise, the promise is resolved before the next then() callback function is called. This continues until the last then() callback function is called. Because of this, you don't have to place then() calls inside of another then() call.
+
+welcome()
+
+  .then(console.log) // Logs the result of welcome()
+
+  .then(() => goodbye().then(console.log)) // .then inside of another .then
+
+  .catch(console.error); // Logs error from welcome() or goodbye()
+
+Instead, the above code should be written as follows:
+
+welcome()
+
+  .then(console.log) // Logs the result of welcome()
+
+  .then(goodbye) // Returns promise from goodbye()
+
+  .then(console.log) // Logs the result of goodbye()
+
+  .catch(console.error); // Logs error from welcome() or goodbye()
+
+Try running the code above to see what gets outputted.
+
+However, if you want to combine the results of two or more promises, you will need to nest then() calls to have access to the results of both calls. The following code demonstrates combining the results from multiple promises.
+
+welcome()
+
+  .then((welcomeMessage) =>
+
+    goodbye().then((goodbyeMessage) => `${welcomeMessage}\n${goodbyeMessage}`)
+
+  ) // welcomeMessage and goodbyeMessage combined.
+
+  .then(console.log) // Logs combines messages
+
+  .catch(console.error); // Logs error from welcome() or goodbye()
+
+It's important to note that a then() or catch() will always move to the next then(). Therefore, if you place a then() call after a catch(), the next then() will always be called. For example, try running the following code to see the output:
+
+welcome()
+
+  .then(console.log) // Logs the result of welcome()
+
+  .then(tell) // Calls tell, which returns a rejected promise (no question supplied).
+
+  .then(console.log) // Skipped because tell returned a rejected promise.
+
+  .catch(console.error) // Logs error from tell() or welcome()
+
+  .then(goodbye) // Returns promise from goodbye()
+
+  .then(console.log) // Logs the result from goodbye()
+
+  .catch(console.error); // Logs error only from goodbye()
+
+Note: You'll learn more about this topic later in the program.
+Complete example
+
+A completed example from this lesson can be found here:
+
+    Promises: Resolving Promises
+
 ** unsorted
 
 1. Understand the problem - aka "reflect the question back into your our words."
@@ -826,3 +2036,12 @@ A completed example from this lesson can be found here:
 
 Content delivery network
 Also known as a CDN, a network of servers that helps web page content to load more quickly
+
+different type data type
+loop over objects
+destructing
+rest
+scope
+array method
+arrows function
+git, github
