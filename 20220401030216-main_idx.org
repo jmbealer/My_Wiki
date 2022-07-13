@@ -25,6 +25,8 @@ vim
 - [[id:5c4573b4-c79d-4bcd-9fb8-7f22e64f1675][clang]]
 - [[id:c4ffc59c-65b7-4f0e-b749-bcd46ef75fb0][thinkful]]
 
+[[id:1bfecfad-efe8-4602-be60-168c5d3352a4][doomEmacs]]
+
 education
 information
 languages
