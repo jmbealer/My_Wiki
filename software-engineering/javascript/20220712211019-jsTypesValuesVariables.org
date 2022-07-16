@@ -1,8 +1,27 @@
 :PROPERTIES:
 :ID:       f3061f7f-5181-4011-b516-3100217a9a59
 :END:
-#+title: jsDataTypes
+#+title: jsTypesValuesVariables
 #+date: [2022-07-12 Tue 21:10]
+
+Computer programs work by manipulating values
+Values that can be represented and manipulated in a programming language are known as types
+types are values that can be represented and manipulated by the programming language
+Variables are assign/stored values
+Variables have name and they are, used to refer to values
+
+js types can be divided into two categories: primitive types and object types.
+js primitive types are numbers, strings, and booleans
+js special primitive values are null and undefined, they are not numbers,
+strings, or booleans.
+js special-purpose type is Symbol
+In js Symbol enables the definition of language ext
+
+any js that not a number, a string, a boolean, a symbol, null, or underined is a
+an object.
+
+an object (that is, a member of the type object) is collection of properties
+where each property has a name and a value (either a primitive value or another object)
 
 ** javaScript data types and data structures wip
 
@@ -4587,3 +4606,720 @@ const biggerYacht = {
 biggerYacht.playHorn(); // Fog Horn
 
 ** Undefined
+
+** what are js variables? wip
+
+Variables are containers for storing data (storing data values).
+
+A variable behaves as if it was the value that it contains.
+
+Variables hold reusable data in a program and associate it with a name.
+
+Variables are stored in memory.
+
+
+Variables allow computers to store and manipulate data in a dynamic fashion.
+They do this by using a "label" to point to the data rather than using the data itself.
+
+In computer science, data is anything that is meaningful to the computer.
+
+Two steps:
+  Declaration (var, let, const)
+  Assignment (= assignment operator)
+
+
+
+
+An equal sign is used to assign values to variables.
+
+
+
+Declare JavaScript Variables
+Declaring a JavaScript Variable
+
+Creating a variable in JavaScript is called "declaring" a variable.
+
+JavaScript uses the keywords var, let and const to declare variables.
+
+After the declaration, the variable has no value (technically it is undefined).
+A variable declared without a value will have the value undefined.
+
+It's a good programming practice to declare all variables at the beginning of a script.
+
+
+In computer programs, variables are often declared without a value.
+The value can be something that has to be calculated, or something that will be provided later, like user input.
+
+
+
+JavaScript Dollar Sign $
+Since JavaScript treats a dollar sign as a letter, identifiers containing $ are valid variable names:
+Example
+let $ = "Hello World";
+let $$$ = 2;
+let $myMoney = 5;
+Using the dollar sign is not very common in JavaScript, but professional programmers often use it as an alias for the main function in a JavaScript library.
+In the JavaScript library jQuery, for instance, the main function $ is used to select HTML elements. In jQuery $("p"); means "select all p elements".
+
+JavaScript Underscore (_)
+Since JavaScript treats underscore as a letter, identifiers containing _ are valid variable names:
+Example
+let _lastName = "Johnson";
+let _x = 2;
+let _100 = 5;
+Using the underscore is not very common in JavaScript, but a convention among professional programmers is to use it as an alias for "private (hidden)" variables.
+
+
+ That's where const and let can help. They prevent developers from making unintended mistakes when declaring their variables.
+
+
+What method should you use?
+
+At this point, you might be wondering which method of declaring variables you should use. Here's the process that you should follow when determining whether to use let, const, or var:
+
+    Use const primarily; this will be your go-to. Moving forward, you'll want to declare most of your variables using const.
+    Use let if you need to reassign a value. This is a common requirement during for loops and sometimes with if statements.
+    Don't use var unless necessary, like when working in a codebase that uses it. However, that will likely only happen in the distant future. As mentioned above, there are other reasons to use (and to not use) var, but those will be covered in a different lesson. For now, just avoid it.
+
+    var makes variable global even in functions
+
+Initializing Variables with the Assignment Operator
+It is common to initialize a variable to an initial value in the same line as it is declared.
+var myVar = 0;
+Creates a new variable called myVar and assigns it an initial value of 0.
+Define a variable a with var and initialize it to a value of 9.
+
+
+
+Understanding Uninitialized Variables
+When JavaScript variables are declared, they have an initial value of undefined.
+If you do a mathematical operation on an undefined variable your result will be NaN which means "Not a Number".
+If you concatenate a string with an undefined variable, you will get a string of undefined.
+
+Compare Scopes of the var and let Keywords
+If you are unfamiliar with let, check out this challenge about the difference bewteen let and var.
+When you declare a variable with the var keyword, it is declared globally, or locally if declared inside a function.
+The let keyword behaves similarly, but with some extra features. When you declare a variable with the let keyword inside a block, statement, or expression, its scope is limited to that block, statement, or expression.
+For example:
+var numArray = [];
+for (var i = 0; i < 3; i++) {
+  numArray.push(i);
+}
+console.log(numArray);
+console.log(i);
+Here the console will display the values [0, 1, 2] and 3.
+With the var keyword, i is declared globally. So when i++ is executed, it updates the global variable. This code is similar to the following:
+var numArray = [];
+var i;
+for (i = 0; i < 3; i++) {
+  numArray.push(i);
+}
+console.log(numArray);
+console.log(i);
+Here the console will display the values [0, 1, 2] and 3.
+This behavior will cause problems if you were to create a function and store it for later use inside a for loop that uses the i variable. This is because the stored function will always refer to the value of the updated global i variable.
+var printNumTwo;
+for (var i = 0; i < 3; i++) {
+  if (i === 2) {
+    printNumTwo = function() {
+      return i;
+    };
+  }
+}
+console.log(printNumTwo());
+Here the console will display the value 3.
+As you can see, printNumTwo() prints 3 and not 2. This is because the value assigned to i was updated and the printNumTwo() returns the global i and not the value i had when the function was created in the for loop. The let keyword does not follow this behavior:
+let printNumTwo;
+for (let i = 0; i < 3; i++) {
+  if (i === 2) {
+    printNumTwo = function() {
+      return i;
+    };
+  }
+}
+console.log(printNumTwo());
+console.log(i);
+Here the console will display the value 2, and an error that i is not defined.
+i is not defined because it was not declared in the global scope. It is only declared within the for loop statement. printNumTwo() returned the correct value because three different i variables with unique values (0, 1, and 2) were created by the let keyword within the loop statement.
+
+*** var keyword
+
+var keyword isnt used anymore, and you should avoid using them.
+var variables can be re-declared and updated.
+The var keyword is used in pre-ES6 versions of JS.
+Explore Differences Between the var and let Keywords
+One of the biggest problems with declaring variables with the var keyword is that you can easily overwrite variable declarations:
+var camper = "James";
+var camper = "David";
+console.log(camper);
+In the code above, the camper variable is originally declared as James, and is then overridden to be David.
+The console then displays the string David.
+In a small application, you might not run into this type of problem.
+But as your codebase becomes larger, you might accidentally overwrite a variable that you did not intend to.
+Because this behavior does not throw an error, searching for and fixing bugs becomes more difficult.
+
+
+The var keyword
+In the past, variables were declared with the keyword var.
+Here is what var looks like in action:
+var productName = "Jogger Sweatpants";
+Just like with let, variables created with the var keyword can be reassigned.
+However, var doesn't have the same restrictions as let when it comes to declaring variables with the same name.
+See the example below:
+var productName = "Jogger Sweatpants";
+productName = "Men's Jogger Sweatpants";
+var productName = "Woman's Jogger Sweatpants";
+Because var is an older method of declaring variables, you will often see var referenced in older code.
+However, you shouldn't use var in your code unless you have a very specific reason to do so.
+
+*** let keyword
+
+let variables, however, can be updated.
+let is the preferred way to declare a variable when it can be reassigned
+A keyword called let was introduced in ES6, a major update to JavaScript, to solve this potential issue with the var keyword.
+If you replace var with let in the code above, it results in an error:
+let camper = "James";
+let camper = "David";
+The error can be seen in your browser console.
+So unlike var, when you use let, a variable with the same name can only be declared once.
+
+JavaScript Let
+
+The let keyword was introduced in ES6 (2015).
+
+Variables defined with let cannot be Redeclared.
+
+Variables defined with let must be Declared before use.
+
+Variables defined with let have Block Scope.
+Cannot be Redeclared
+
+Variables defined with let cannot be redeclared.
+
+You cannot accidentally redeclare a variable.
+
+With let you can not do this:
+Example
+let x = "John Doe";
+
+let x = 0;
+
+// SyntaxError: 'x' has already been declared
+
+With var you can:
+Example
+var x = "John Doe";
+
+var x = 0;
+Block Scope
+
+Before ES6 (2015), JavaScript had only Global Scope and Function Scope.
+
+ES6 introduced two important new JavaScript keywords: let and const.
+
+These two keywords provide Block Scope in JavaScript.
+
+Variables declared inside a { } block cannot be accessed from outside the block:
+Example
+{
+  let x = 2;
+}
+// x can NOT be used here
+
+Variables declared with the var keyword can NOT have block scope.
+
+Variables declared inside a { } block can be accessed from outside the block.
+Example
+{
+  var x = 2;
+}
+// x CAN be used here
+Redeclaring Variables
+
+Redeclaring a variable using the var keyword can impose problems.
+
+Redeclaring a variable inside a block will also redeclare the variable outside the block:
+Example
+var x = 10;
+// Here x is 10
+
+{
+var x = 2;
+// Here x is 2
+}
+
+// Here x is 2
+
+Redeclaring a variable using the let keyword can solve this problem.
+
+Redeclaring a variable inside a block will not redeclare the variable outside the block:
+Example
+let x = 10;
+// Here x is 10
+
+{
+let x = 2;
+// Here x is 2
+}
+
+// Here x is 10
+Browser Support
+
+The let keyword is not fully supported in Internet Explorer 11 or earlier.
+
+The following table defines the first browser versions with full support for the let keyword:
+
+Chrome 49 	Edge 12 	Firefox 44 	Safari 11 	Opera 36
+Mar, 2016 	Jul, 2015 	Jan, 2015 	Sep, 2017 	Mar, 2016
+Redeclaring
+
+Redeclaring a JavaScript variable with var is allowed anywhere in a program:
+Example
+var x = 2;
+// Now x is 2
+
+var x = 3;
+// Now x is 3
+
+With let, redeclaring a variable in the same block is NOT allowed:
+Example
+var x = 2;    // Allowed
+let x = 3;    // Not allowed
+
+{
+let x = 2;    // Allowed
+let x = 3     // Not allowed
+}
+
+{
+let x = 2;    // Allowed
+var x = 3     // Not allowed
+}
+
+Redeclaring a variable with let, in another block, IS allowed:
+Example
+let x = 2;    // Allowed
+
+{
+let x = 3;    // Allowed
+}
+
+{
+let x = 4;    // Allowed
+}
+Let Hoisting
+
+Variables defined with var are hoisted to the top and can be initialized at any time.
+
+Meaning: You can use the variable before it is declared:
+Example
+
+This is OK:
+carName = "Volvo";
+var carName;
+
+If you want to learn more about hoisting, study the chapter JavaScript Hoisting.
+
+Variables defined with let are also hoisted to the top of the block, but not initialized.
+
+Meaning: Using a let variable before it is declared will result in a ReferenceError:
+Example
+carName = "Saab";
+let carName = "Volvo";
+
+
+The variable total is declared with the let keyword.
+
+This is a value that can be changed.
+Just Like Algebra
+
+Just like in algebra, variables hold values:
+let x = 5;
+let y = 6;
+
+Just like in algebra, variables are used in expressions:
+let z = x + y;
+
+From the example above, you can guess that the total is calculated to be 11.
+
+The let keyword
+As you've learned, the let keyword is used to declare variables in JavaScript. Here's some refresher code for your review:
+let price = 9.99;
+You can also reassign variables that have already been created using let. Here's an example:
+let price = 9.99;
+price = 8.5;
+However, if you declare a variable with let, you cannot use let to later define that same variable. See the error below:
+let price = 9.99;
+let price = 8.5; //> Uncaught SyntaxError: Identifier 'price' has already been declared
+This SyntaxError is pretty useful. It will stop you from accidentally recreating the same variable later on in your program when you don't intend to do so.
+
+*** const keyword
+
+const keyword stand for constants
+const keyword used to declare variables that can't be changed
+  const pi = 3.14;
+  pi = 3.1415; // This will throw an error because const variables can't be updated
+const is the preferred way to declare a variable with a constant value.
+
+
+Declare a Read-Only Variable with the const Keyword
+const has all the awesome features that let has, with the added bonus that variables declared using const are read-only.
+They are a constant value, which means that once a variable is assigned with const, it cannot be reassigned:
+const FAV_PET = "Cats";
+FAV_PET = "Dogs";
+The console will display an error due to reassigning the value of FAV_PET.
+You should always name variables you don't want to reassign using the const keyword.
+This helps when you accidentally attempt to reassign a variable that is meant to stay constant.
+Note: It is common for developers to use uppercase variable identifiers for immutable values and lowercase or camelCase for mutable values (objects and arrays).
+You will learn more about objects, arrays, and immutable and mutable values in later challenges.
+Also in later challenges, you will see examples of uppercase, lowercase, or camelCase variable identifiers.
+
+JavaScript Const
+
+The const keyword was introduced in ES6 (2015).
+
+Variables defined with const cannot be Redeclared.
+
+Variables defined with const cannot be Reassigned.
+
+Variables defined with const have Block Scope.
+Cannot be Reassigned
+
+A const variable cannot be reassigned:
+Example
+const PI = 3.141592653589793;
+PI = 3.14;      // This will give an error
+PI = PI + 10;   // This will also give an error
+Must be Assigned
+
+JavaScript const variables must be assigned a value when they are declared:
+Correct
+const PI = 3.14159265359;
+Incorrect
+const PI;
+PI = 3.14159265359;
+When to use JavaScript const?
+
+As a general rule, always declare a variable with const unless you know that the value will change.
+
+Use const when you declare:
+
+    A new Array
+    A new Object
+    A new Function
+    A new RegExp
+
+Constant Objects and Arrays
+
+The keyword const is a little misleading.
+
+It does not define a constant value. It defines a constant reference to a value.
+
+Because of this you can NOT:
+
+    Reassign a constant value
+    Reassign a constant array
+    Reassign a constant object
+
+    But you CAN:
+    Change the elements of constant array
+    Change the properties of constant object
+
+Constant Arrays
+
+You can change the elements of a constant array:
+Example
+// You can create a constant array:
+const cars = ["Saab", "Volvo", "BMW"];
+
+// You can change an element:
+cars[0] = "Toyota";
+
+// You can add an element:
+cars.push("Audi");
+
+But you can NOT reassign the array:
+Example
+const cars = ["Saab", "Volvo", "BMW"];
+
+cars = ["Toyota", "Volvo", "Audi"];    // ERROR
+Constant Objects
+
+You can change the properties of a constant object:
+Example
+// You can create a const object:
+const car = {type:"Fiat", model:"500", color:"white"};
+
+// You can change a property:
+car.color = "red";
+
+// You can add a property:
+car.owner = "Johnson";
+
+But you can NOT reassign the object:
+Example
+const car = {type:"Fiat", model:"500", color:"white"};
+
+car = {type:"Volvo", model:"EX60", color:"red"};    // ERROR
+Browser Support
+
+The const keyword is not supported in Internet Explorer 10 or earlier.
+
+The following table defines the first browser versions with full support for the const keyword:
+
+Chrome 49 	IE 11 / Edge 	Firefox 36 	Safari 10 	Opera 36
+Mar, 2016 	Oct, 2013 	Feb, 2015 	Sep, 2016 	Mar, 2016
+Block Scope
+
+Declaring a variable with const is similar to let when it comes to Block Scope.
+
+The x declared in the block, in this example, is not the same as the x declared outside the block:
+Example
+const x = 10;
+// Here x is 10
+
+{
+const x = 2;
+// Here x is 2
+}
+
+// Here x is 10
+
+You can learn more about block scope in the chapter JavaScript Scope.
+Redeclaring
+
+Redeclaring a JavaScript var variable is allowed anywhere in a program:
+Example
+var x = 2;     // Allowed
+var x = 3;     // Allowed
+x = 4;         // Allowed
+
+Redeclaring an existing var or let variable to const, in the same scope, is not allowed:
+Example
+var x = 2;     // Allowed
+const x = 2;   // Not allowed
+
+{
+let x = 2;     // Allowed
+const x = 2;   // Not allowed
+}
+
+{
+const x = 2;   // Allowed
+const x = 2;   // Not allowed
+}
+
+Reassigning an existing const variable, in the same scope, is not allowed:
+Example
+const x = 2;     // Allowed
+x = 2;           // Not allowed
+var x = 2;       // Not allowed
+let x = 2;       // Not allowed
+const x = 2;     // Not allowed
+
+{
+  const x = 2;   // Allowed
+  x = 2;         // Not allowed
+  var x = 2;     // Not allowed
+  let x = 2;     // Not allowed
+  const x = 2;   // Not allowed
+}
+
+Redeclaring a variable with const, in another scope, or in another block, is allowed:
+Example
+const x = 2;       // Allowed
+
+{
+  const x = 3;   // Allowed
+}
+
+{
+  const x = 4;   // Allowed
+}
+Const Hoisting
+
+Variables defined with var are hoisted to the top and can be initialized at any time.
+
+Meaning: You can use the variable before it is declared:
+Example
+
+This is OK:
+carName = "Volvo";
+var carName;
+
+If you want to learn more about hoisting, study the chapter JavaScript Hoisting.
+
+Variables defined with const are also hoisted to the top, but not initialized.
+
+Meaning: Using a const variable before it is declared will result in a ReferenceError:
+Example
+alert (carName);
+const carName = "Volvo";
+
+
+When to Use JavaScript const?
+
+If you want a general rule: always declare variables with const.
+
+If you think the value of the variable can change, use let.
+
+In this example, price1, price2, and total, are variables:
+Example
+const price1 = 5;
+const price2 = 6;
+let total = price1 + price2;
+
+The two variables price1 and price2 are declared with the const keyword.
+
+These are constant values and cannot be changed.
+
+
+The const keyword
+const size = "M";
+const size = "L"; //> Uncaught SyntaxError: Identifier 'size' has already been declared
+However, with const, you also can't reassign the value. See below:
+const size = "M";
+size = "S"; //> Uncaught TypeError: Assignment to constant variable.
+
+
+
+Warning: Using const with arrays and objects
+But const also has some other traits that are worth discussing.
+And when it comes to arrays and objects, using const can be a bit tricky.
+
+Take a look at the following code. It works as you may expect:
+const product = { priceInCents: 2100, name: "Yellow Beanie", size: "M" };
+product = { priceInCents: 2100, name: "Red Beanie", size: "L" };
+//> Uncaught TypeError: Assignment to constant variable.
+In the above case, you aren't able to reassign the value of const, as intended. The following code, on the other hand, does run.
+
+const product = { priceInCents: 2100, name: "Yellow Beanie", size: "M" };
+product.name = "Red Beanie";
+product.size = "L";
+Although you can't reassign the variable completely with const, you can change the values inside of the object. The same goes for arrays. Take a look:
+
+const sizes = [8, 10, 12, 14];
+
+sizes[4] = 16;
+
+Mutate an Array Declared with const
+
+If you are unfamiliar with const, check out this challenge about the const keyword.
+
+The const declaration has many use cases in modern JavaScript.
+
+Some developers prefer to assign all their variables using const by default, unless they know they will need to reassign the value. Only in that case, they use let.
+
+However, it is important to understand that objects (including arrays and functions) assigned to a variable using const are still mutable. Using the const declaration only prevents reassignment of the variable identifier.
+
+const s = [5, 6, 7];
+s = [1, 2, 3];
+s[2] = 45;
+console.log(s);
+
+s = [1, 2, 3] will result in an error. The console.log will display the value [5, 6, 45].
+
+As you can see, you can mutate the object [5, 6, 7] itself and the variable s will still point to the altered array [5, 6, 45]. Like all arrays, the array elements in s are mutable, but because const was used, you cannot use the variable identifier s to point to a different array using the assignment operator.
+
+An array is declared as const s = [5, 7, 2]. Change the array to [2, 5, 7] using various element assignments.
+
+*** js Variables examples
+
+#+begin_src js
+// declare a variable myVar without initial value:
+let myVar; // returns undefined
+// assign myVar with value 11:
+myVar = 11; // returns 11
+
+// declaring and initializing a variable myVar with string foo
+let myVar = "foo"; // returns foo
+
+// declare a constants variables named PI with value 3.14
+const PI = 3.14; // returns 3.14; readonly
+// updating constant variable
+PI = 11 // returns a error
+
+// var keyword is bad practice
+// declare a variable named myVar without initial value:
+var myVar; // returns undefined
+// assign myVar with value 33:
+myVar = 33; // returns 33
+// declaring and initializing a variable myVar with string foo
+var myVar = "foo"; // returns foo
+
+// Assigning the Value of One Variable to Another
+// declare variable named myStr
+let myStr; // returns undefined
+// assign myVar to myStr:
+myStr = myVar; // returns foo
+
+#+end_src
+
+
+In this example, x is defined as a variable. Then, x is assigned (given) the value 6:
+let x;
+x = 6;
+
+
+In this example, x, y, and z, are variables, declared with the var keyword:
+Example
+var x = 5;
+var y = 6;
+var z = x + y;
+
+In this example, x, y, and z, are variables, declared with the let keyword:
+Example
+let x = 5;
+let y = 6;
+let z = x + y;
+
+In this example, x, y, and z, are undeclared variables:
+Example
+x = 5;
+y = 6;
+z = x + y;
+
+From all the examples above, you can guess:
+
+    x stores the value 5
+    y stores the value 6
+    z stores the value 11
+
+You declare a JavaScript variable with the var or the let keyword:
+var carName;
+or:
+let carName;
+
+To assign a value to the variable, use the equal sign:
+carName = "Volvo";
+
+You can also assign a value to the variable when you declare it:
+let carName = "Volvo";
+
+One Statement, Many Variables
+You can declare many variables in one statement.
+
+Start the statement with let and separate the variables by comma:
+Example
+let person = "John Doe", carName = "Volvo", price = 200;
+
+A declaration can span multiple lines:
+Example
+let person = "John Doe",
+carName = "Volvo",
+price = 200;
+Value = undefined
+
+
+Re-Declaring JavaScript Variables
+If you re-declare a JavaScript variable declared with var, it will not lose its value.
+The variable carName will still have the value "Volvo" after the execution of these statements:
+Example
+var carName = "Volvo";
+var carName;
+Note
+You cannot re-declare a variable declared with let or const.
+
+This will not work:
+let carName = "Volvo";
+let carName;
