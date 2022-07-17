@@ -729,30 +729,6 @@ ourStorage.cabinet["top drawer"].folder2;
 ourStorage.desk.drawer;
 ourStorage.cabinet["top drawer"].folder2 would be the string secrets, and ourStorage.desk.drawer would be the string stapler.
 Access the myStorage object and assign the contents of the glove box property to the gloveBoxContents variable. Use dot notation for all properties where possible, otherwise use bracket notation.
-** deleting properties
-
-Delete Properties from a JavaScript Object
-We can also delete properties from objects like this:
-delete ourDog.bark;
-Example:
-const ourDog = {
-  "name": "Camper",
-  "legs": 4,
-  "tails": 1,
-  "friends": ["everything!"],
-  "bark": "bow-wow"
-};
-delete ourDog.bark;
-After the last line shown above, ourDog looks like:
-
-{
-  "name": "Camper",
-  "legs": 4,
-  "tails": 1,
-  "friends": ["everything!"]
-}
-Delete the tails property from myDog. You may use either dot or bracket notation.
-
 ** objects examples
 #+begin_src js
 // create an empty object
@@ -782,6 +758,11 @@ object["key two"]; // return value
 object["newKey"] = "newValue"; // adds newKey with newValue to object.
 // update key to a new value with brackets
 object["oldKey"] = "newValue"; // change key to newValue in object
+// delete key from object with dot
+delete object.key
+// delete key for object with bracket
+delete object[key]
+
 
 // nested key
 const object = {
