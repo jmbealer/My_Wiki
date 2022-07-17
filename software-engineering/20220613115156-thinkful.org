@@ -12,6 +12,7 @@ this is a staging area for my notes need to summarize and move to a better place
 [[id:dea16eb4-d34a-421b-b037-9f3e606ec001][git]]
 [[id:43e93100-42e8-432e-99bb-ecdd6f6b7097][devCollab]]
 [[id:a3333ce5-86aa-4729-af16-cd8dafd42149][Node.js]]
+[[id:c1cbc82c-ad99-4ae6-80a8-a9d83d2e71b8][careerNetworking]]
 
 ** Testing Basics
 *** Test-driven development
@@ -3372,7 +3373,6 @@ async function getConstellationNameById(id) {
 In the above code, regardless of whether or not await is before the axios request, this function will return a promise. In fact, async is also unneeded here.
 
 The async and await keywords are useful when you want to perform additional operations on the values returned from promises. So if you don't care about the return value in a specific function, you don't really need them.
-
 ** unsorted
 
 1. Understand the problem - aka "reflect the question back into your our words."

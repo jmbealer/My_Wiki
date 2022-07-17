@@ -4,7 +4,6 @@
 #+title: JavaScript
 #+date: [2022-06-26 Sun 20:16]
 
-[[id:bd8b25b9-7a35-4fe9-a0a9-854ff153e692][jsFunction]]
 [[id:85bb4b3e-8a1a-4ef7-9482-b867f6309760][jsOperator]]
 [[id:cf20a83e-974e-48fc-9b34-f4dbd92a2bcd][jsControlFlow]]
 
@@ -12,9 +11,9 @@
 [[id:f3061f7f-5181-4011-b516-3100217a9a59][jsTypesValuesVariables]] wip
 expressions and operators wip
 statements wip
-objects wip
-arrays wip
-functions wip
+[[id:75a7ea1f-4030-407b-920a-4b8b11369b93][jsObjects]] wip
+[[id:7335fed5-3602-4879-9b28-77379102499f][jsArrays]] wip
+[[id:bd8b25b9-7a35-4fe9-a0a9-854ff153e692][jsFunctions]] wip
 classes wip
 modules wip
 js standard library
