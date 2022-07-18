@@ -4,7 +4,6 @@
 #+title: jsObjects
 #+date: [2022-07-16 Sat 19:14]
 
-
 JavaScript objects is an unordered collection of properties.
 JavaScript object is a built-in data type for storing key-value pairs.
 
@@ -21,297 +20,15 @@ object = {key: value};
 object.key;
 object["key"];
 
-** destructuring and rest thinkful
+** object destructuring
 
-Deep destructuring The process of destructuring multiple levels of an array or other object
+JavaScript object destructuring extract property values from objects and assign to local variable.
+JavaScript object destructuring commonly used to aid readability.
+
 Destructuring The process of unpacking the properties or values in an array or other object and assigning them into distinct variables
-Rest operator An operator that condenses entries in arrays and other objects
-
-Destructuring objects
-
-
-Now, take a moment to examine the object in the code sample below.
-const product = {
-  title: "The Golden Compass",
-  priceInCents: 799,
-  author: {
-    firstName: "Philip",
-    surname: "Pullman",
-  },
-};
-
-When working with an object, you'll often need to use some, but not all, of the available keys.
-
-Consider this example:
-function printAuthorAndTitle(product) {
-  return `${product.title} by ${product.author.firstName} ${product.author.surname}`;
-}
-
-The above function works just fine.
-However, the return statement ends up being a bit long because you have to repeat the product variable multiple times.
-In this case, you might update the above function to the one below, hoping to make it easier to read:
-
-function printAuthorAndTitle(product) {
-  const author = product.author;
-  const title = product.title;
-  return `${title} by ${author.firstName} ${author.surname}`;
-}
-
-The second function is more legible than the first.
-But it still looks clunky; after all, the product variable continues to be repeated multiple times.
-Fortunately, there's another option: destructuring.
 When you destructure an object or array, you're unpacking the properties or values and assigning them into distinct variables.
 
-Take a look at the following version of the function above, which makes use of destructuring. What do you notice?
-
-function printAuthorAndTitle(product) {
-
-  const { author, title } = product;
-
-  return `${title} by ${author.firstName} ${author.surname}`;
-
-}
-
-In this example, two new const variables are being created: author and title.
-
-Notice how these new variables are wrapped in curly brackets {} before the = sign.
-This is the destructuring syntax.
-Those variables are set to whatever keys can be found inside of the product object.
-If a key isn't found, it will be set to undefined.
-
-Take a look:
-const { yearPublished } = product;
-console.log(yearPublished); //> undefined
-Because product doesn't contain a yearPublished key, undefined would be logged to the console.
-
-And what's more, you can destructure multiple levels into an object. Check it out.
-
-function printAuthorAndTitle(product) {
-  const {
-    author: { firstName, surname },
-    title,
-  } = product;
-  return `${title} by ${firstName} ${surname}`;
-}
-
-In the above function, the author key, which also points to an object, is further destructured to access the firstName and surname keys.
-Note that there is no author variable in this function.
-The only variables that are created are firstName, surname, and title.
-
-Do this
-Destructure an object
-
-Take a look at the following object. Practice destructuring all of the keys from this object.
-
-const author = {
-  name: {
-    firstName: "Philip",
-    surname: "Pullman",
-  },
-  birthday: "1946-10-19",
-};
-
-When you're done, you can compare your work to this solution:
-
-const {name} = author;
-
-const firstName = name.firstName;
-
-const surname = name.surname
-
-console.log(firstName); //> 'Philip'
-
-console.log(surname); //> 'Pullman'
-
-Missing keys
-
-Review the following code. What do you expect will happen? Make a prediction, and then run the code for yourself.
-
-const author = {
-  name: {
-    firstName: "Philip",
-    surname: "Pullman",
-  },
-  birthday: "1946-10-19",
-};
-
-
-const { firstName } = author;
-
-console.log(firstName);
-
-As you can see, firstName ends up being undefined because the author object doesn't have a key called firstName. The firstName key belongs to the nested object that the name key points to.
-
-Deep destructuring
-Examine the code sample below. What do you expect will happen? Make a prediction, and then run the code for yourself.
-
-const author = {
-  name: {
-    firstName: "Philip",
-    surname: "Pullman",
-  },
-  birthday: "1946-10-19",
-};
-
-const {
-  name: { firstName },
-} = author;
-console.log(firstName);
-console.log(name);
-
-In this case, firstName will be printed out as "Philip". But trying to print name will cause a ReferenceError.
-
-When you use the syntax above to do deep destructuring, you're able to dive into and unpack multiple levels of an object. However, you won't have access to every value along the way. Furthermore, deep destructuring can cause some issues if the key is missing.
-
-For example, take a look at the code below.
-
-const author = {
-  birthday: "1946-10-19",
-};
-
-const {
-  name: { firstName },
-} = author;
-
-If you run this code, you will receive the following error:
-
-Uncaught TypeError: Cannot read property 'firstName' of undefined
-
-If you use deep destructuring, you'll need to make sure that the inputted object or array is of the right shape. This will help prevent errors like this one.
-Destructuring arrays
-
-As you know, objects are accessed by their keys. Arrays, on the other hand, are accessed by their index. In the above example, object keys were used to destructure objects and create variables. The process for arrays is similar, except that you'll use those specific positions in the array to create the variables. To begin, check out the array below:
-
-const genres = [
-  "Fantasy",
-  "Fiction",
-  "Nonfiction",
-  "Science Fiction",
-  "Young Adult",
-];
-
-You can destructure this array by doing the following:
-
-const [first, second] = genres;
-console.log(first); //> 'Fantasy'
-console.log(second); //> 'Fiction'
-
-In the above example, two new variables are created: first and second. Those variable names are set to the elements at index 0 and index 1. The rest of the elements are ignored.
-Do this
-Destructure an array
-
-Take a look at the following array. Practice destructuring the first, second, and third values from this array.
-
-const authors = [
-  "Ursula K. Le Guin",
-  "Brandon Sanderson",
-  "Terry Pratchett",
-  "Neil Gaiman",
-  "J. R. R. Tolkien",
-];
-
-const [first, second, third] = authors;
-
-The rest operator
-
-As you've seen, destructuring is an extremely valuable tool. But that being said, destructuring an array on its own is only so useful. It's much more useful when it pairs up with another tool: the rest operator.
-Take a look at the code sample below. What do you notice?
-
-const [first, second, ...otherGenres] = genres;
-console.log(first); //> 'Fantasy'
-console.log(second); //> 'Fiction'
-console.log(otherGenres); //> [ 'Nonfiction', 'Science Fiction', 'Young Adult' ]
-
-In this example, there are two variables: first and second. Those are followed by the syntax that makes up the rest operator: the three periods ... and a variable name, which in this case is otherGenres. The variable that follows ... will contain all of the remaining array elements that weren't destructured. This can be very useful for splitting apart an array.
-Destructuring parameters
-
-You can also use destructuring in functions in order to destructure the parameters. Take a look at this example:
-
-function printAuthorAndTitle({ author, title }) {
-
-  return `${title} by ${author.firstName} ${author.surname}`;
-
-}
-
-
-printAuthorAndTitle(product); //> 'The Golden Compass by Philip Pullman'
-
-The above syntax, once understood, is useful for at least two reasons:
-
-    You know that the expected input into the function is an object.
-
-    The function is concise and easy to read.
-
-However, there is a downside to this approach: if you need to access the entire inputted object, you have no way to do so.
-
-object destructuring
-quickly extract prop values from objects and assign to local variable.
-commonly used to aid readability.
-const car = {
-  make: "Toyota",
-  model: "Corolla",
-  drive() {
-    console.log("The car is driving!");
-  }
-}
-
-// Destructure values from car
-const {make, model, drive, numberOfWheels} = car;
-
-console.log(make); // "Toyota"
-console.log(model); // "Corolla"
-drive(); // The care is driving!
-console.log(numberOfWheels); // undefined
-
-peculiarities of accessing objects
-const littleYacht = {
-  floorColor: "red",
-  maximumLbs: 1000,
-  inOperation: true,
-  christened: false,
-  hornSound: "Ride of the Walkeries",
-  "Dock Name": "oceania",
-  //Dock Name: "oceania",
-
-  playHorn: function() {
-    console.log(littleYacht.hornSound);
-  }
-};
-
-console.log(littleYacht.floorColor);
-console.log(littleYacht["floorColor"]);
-// console.log(littleYacht[floorColor]);
-
-console.log(littleYacht["Dock Name"]);
-// console.log(littleYacht.Dock Name);
-
-the in operator
-check existence of a key in an object:
-const myObj = {
-  color: "red",
-  shape: "circle",
-  size: "4cm"
-}
-
-console.log("shape" in myObj); // => true
-console.log("height" in myObj); // => false
-
-methods are properties of objects which are functions
-const car = {
-  make: "Toyota",
-  model: "Corolla",
-  // this is a method
-  drive() {
-    console.log("The car is driving!");
-  },
-  // it's shorthand for this
-  useHorn: function() {
-    console.log("Beep");
-  }
-}
-
-car.drive(); // Logs out "The car is driving!"
-car.useHorn(); // Logs out "Beep"
+When destructuring objects; Missing keys returns undefined
 
 ** object shorthand and spread thinkful
 
@@ -602,6 +319,22 @@ console.log(obj);
 The obj.review and obj.newProp assignments will result in errors, because our editor runs in strict mode by default, and the console will display the value { name: "FreeCodeCamp", review: "Awesome" }.
 
 In this challenge you are going to use Object.freeze to prevent mathematical constants from changing. You need to freeze the MATH_CONSTANTS object so that no one is able to alter the value of PI, add, or delete properties.
+methods are properties of objects which are functions
+const car = {
+  make: "Toyota",
+  model: "Corolla",
+  // this is a method
+  drive() {
+    console.log("The car is driving!");
+  },
+  // it's shorthand for this
+  useHorn: function() {
+    console.log("Beep");
+  }
+}
+
+car.drive(); // Logs out "The car is driving!"
+car.useHorn(); // Logs out "Beep"
 ** accessing objects
 Accessing Object Properties with Dot Notation
 There are two ways to access the properties of an object: dot notation (.) and bracket notation ([]), similar to an array.
@@ -618,16 +351,8 @@ Read the values of the properties an entree and the drink of testObj using brack
 
 Accessing Object Properties with Variables
 Another use of bracket notation on objects is to access a property which is stored as the value of a variable. This can be very useful for iterating through an object's properties or when accessing a lookup table.
-Here is an example of using a variable to access a property:
-const dogs = {
-  Fido: "Mutt",
-  Hunter: "Doberman",
-  Snoopie: "Beagle"
-};
-const myDog = "Hunter";
-const myBreed = dogs[myDog];
-console.log(myBreed);
-The string Doberman would be displayed in the console.
+
+
 Another way you can use this concept is when the property's name is collected dynamically during the program execution, as follows:
 const someObj = {
   propName: "John"
@@ -642,34 +367,7 @@ someProp would have a value of the string propName, and the string John would be
 Note that we do not use quotes around the variable name when using it to access the property because we are using the value of the variable, not the name.
 Set the playerNumber variable to 16. Then, use the variable to look up the player's name and assign it to player.
 
-Updating Object Properties
-After you've created a JavaScript object, you can update its properties at any time just like you would update any other variable. You can use either dot or bracket notation to update.
-For example, let's look at ourDog:
-const ourDog = {
-  "name": "Camper",
-  "legs": 4,
-  "tails": 1,
-  "friends": ["everything!"]
-};
-Since he's a particularly happy dog, let's change his name to the string Happy Camper. Here's how we update his object's name property: ourDog.name = "Happy Camper"; or ourDog["name"] = "Happy Camper"; Now when we evaluate ourDog.name, instead of getting Camper, we'll get his new name, Happy Camper.
-Update the myDog object's name property. Let's change her name from Coder to Happy Coder. You can use either dot or bracket notation.
 
-Add New Properties to a JavaScript Object
-You can add new properties to existing JavaScript objects the same way you would modify them.
-Here's how we would add a bark property to ourDog:
-ourDog.bark = "bow-wow";
-or
-ourDog["bark"] = "bow-wow";
-Now when we evaluate ourDog.bark, we'll get his bark, bow-wow.
-Example:
-const ourDog = {
-  "name": "Camper",
-  "legs": 4,
-  "tails": 1,
-  "friends": ["everything!"]
-};
-ourDog.bark = "bow-wow";
-Add a bark property to myDog and set it to a dog sound, such as "woof". You may use either dot or bracket notation.
 Using Objects for Lookups
 Objects can be thought of as a key/value storage, like a dictionary. If you have tabular data, you can use an object to lookup values rather than a switch statement or an if/else chain. This is most useful when you know that your input data is limited to a certain range.
 Here is an example of a simple reverse alphabet lookup:
@@ -710,25 +408,6 @@ This is an array which contains one object inside. The object has various pieces
 Note: You will need to place a comma after every object in the array, unless it is the last object in the array.
 Add a new album to the myMusic array. Add artist and title strings, release_year number, and a formats array of strings.
 
-Accessing Nested Objects
-The sub-properties of objects can be accessed by chaining together the dot or bracket notation.
-Here is a nested object:
-const ourStorage = {
-  "desk": {
-    "drawer": "stapler"
-  },
-  "cabinet": {
-    "top drawer": {
-      "folder1": "a file",
-      "folder2": "secrets"
-    },
-    "bottom drawer": "soda"
-  }
-};
-ourStorage.cabinet["top drawer"].folder2;
-ourStorage.desk.drawer;
-ourStorage.cabinet["top drawer"].folder2 would be the string secrets, and ourStorage.desk.drawer would be the string stapler.
-Access the myStorage object and assign the contents of the glove box property to the gloveBoxContents variable. Use dot notation for all properties where possible, otherwise use bracket notation.
 ** objects examples
 #+begin_src js
 // create an empty object
@@ -744,17 +423,18 @@ const object = {
 };
 // create an object with nested values foo and bar
 const object = {key: ["foo", "bar"]};
-// return an object value with dot
+// access object property with dot notation
 object.key; // return value
-// add a key to object with dot
+// add a new property to an object with dot notation
 object.newKey = "newValue"; // adds newKey with newValue to object.
 // update key to a new value with dot
 object.key = "newValue"; // change key to newValue in object
-// return an object value with brackets
+// access object property with bracket notation
 object[key]; // return value
-// access object value when key has spaces
+object["key"]; // return value
+// access object property when key has spaces
 object["key two"]; // return value
-// add a key to object with brackets
+// add a new property to an object with bracket notation
 object["newKey"] = "newValue"; // adds newKey with newValue to object.
 // update key to a new value with brackets
 object["oldKey"] = "newValue"; // change key to newValue in object
@@ -762,26 +442,113 @@ object["oldKey"] = "newValue"; // change key to newValue in object
 delete object.key
 // delete key for object with bracket
 delete object[key]
-
-
-// nested key
+// access object property with variable
+let var = "oldKey";
+let var = "newValue";
+object[var]; // return oldValue
+// add new property using varable
+const newKey = object[var]; // return newValue
+// create nested object with two keys
 const object = {
-    key: {
-        nestedKey: {
-            nKey2: 111
-        }
+    // has one nested key
+    key1: {
+        nestedKey1: "nestedValue"
+    },
+    // has two nested keys
+    key2: {
+        // has two nested keys
+        nestedKey2: {
+            n2Key1: "n2Value1"
+            n2Key2: "n2Value2"
+        },
+        nestedKey3: "nestedValue3"
     }
 };
-object.key.nestedKey.nKey2;
-object["key"]["nestedKey"]["nKey2"];
-object.key.nestedKey.["nKey2"] = 222;
+// access key1 nestedKey1
+object.key1.nestedKey1; // dot notation
+object[key1][nestedKey1]; // bracket notation
+// access key2 nestedKey2 n2Key2
+object.key2.nesteKey2.n2Key2; // dot notation
+object[key2][nestedKey2][n2Key2];
+// access key2 nestedKey3 // bracket notation
+object.key2.nestedKey3; // dot notation
+object[key2][nestedKey3]; // bracket notation
+
+// object destructuring
+// Destructure values from object
+const { key1, key2 } = object;
+// Use destructure values from object into constant var
+const var = object.key2
+// Destructure a value not from object
+const { notThere } = object // set to undefined
+const object = {
+  key1: "value1",
+  key2: {
+    nKey1: "nValue1",
+    nKey2: "nValue2",
+  },
+};
+// multiple level destructure
+const {
+  key1,
+  key2: {nKey1, nKey2}
+} = object;
+console.log(key1, nKey1, nKey2)
+console.log(key2) // returns an error
+// Destructuring parameters
+const funcName = ({key1, key2}) => {
+  ...
+}
+// create object with func key
+const object = {
+  func() {
+    ...
+  }
+}
+// the in operator check existence of a key in an object:
+"key" in object
+console.log("key" in object)
 #+end_src
 
-arr = [
-  { key0: "val0", key1: "val1"}
-]
-arr[0].key1
+#+RESULTS:
 
-bracket variables
-let var = "oldKey";
-obj[var]; // oldValue
+** Deep destructuring
+Examine the code sample below. What do you expect will happen? Make a prediction, and then run the code for yourself.
+
+const author = {
+  name: {
+    firstName: "Philip",
+    surname: "Pullman",
+  },
+  birthday: "1946-10-19",
+};
+
+const {
+  name: { firstName },
+} = author;
+console.log(firstName);
+console.log(name);
+
+In this case, firstName will be printed out as "Philip". But trying to print name will cause a ReferenceError.
+
+When you use the syntax above to do deep destructuring, you're able to dive into and unpack multiple levels of an object.
+However, you won't have access to every value along the way.
+Furthermore, deep destructuring can cause some issues if the key is missing.
+
+For example, take a look at the code below.
+
+const author = {
+  birthday: "1946-10-19",
+};
+
+const {
+  name: { firstName },
+} = author;
+
+If you run this code, you will receive the following error:
+
+Uncaught TypeError: Cannot read property 'firstName' of undefined
+
+If you use deep destructuring, you'll need to make sure that the inputted object or array is of the right shape. This will help prevent errors like this one.
+
+Deep destructuring The process of destructuring multiple levels of an array or other object

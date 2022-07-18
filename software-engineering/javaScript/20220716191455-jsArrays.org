@@ -217,6 +217,10 @@ array[1]; // 60
 
 #+end_src
 
+arr = [
+  { key0: "val0", key1: "val1"}
+]
+arr[0].key1
 *** JavaScript Array Methods
 
 
@@ -1334,3 +1338,56 @@ const points = new Array(40);
 const points = [40];
 // Create an array with 40 undefined elements:
 const points = new Array(40);
+*** js destructuring
+
+Destructuring arrays
+
+As you know, objects are accessed by their keys.
+Arrays, on the other hand, are accessed by their index.
+In the above example, object keys were used to destructure objects and create variables.
+The process for arrays is similar, except that you'll use those specific positions in the array to create the variables.
+To begin, check out the array below:
+
+const genres = [
+  "Fantasy",
+  "Fiction",
+  "Nonfiction",
+  "Science Fiction",
+  "Young Adult",
+];
+
+You can destructure this array by doing the following:
+
+const [first, second] = genres;
+console.log(first); //> 'Fantasy'
+console.log(second); //> 'Fiction'
+
+In the above example, two new variables are created: first and second. Those variable names are set to the elements at index 0 and index 1. The rest of the elements are ignored.
+Do this
+Destructure an array
+
+Take a look at the following array. Practice destructuring the first, second, and third values from this array.
+
+const authors = [
+  "Ursula K. Le Guin",
+  "Brandon Sanderson",
+  "Terry Pratchett",
+  "Neil Gaiman",
+  "J. R. R. Tolkien",
+];
+
+const [first, second, third] = authors;
+*** js rest operator
+The rest operator
+
+As you've seen, destructuring is an extremely valuable tool. But that being said, destructuring an array on its own is only so useful. It's much more useful when it pairs up with another tool: the rest operator.
+Take a look at the code sample below. What do you notice?
+
+const [first, second, ...otherGenres] = genres;
+console.log(first); //> 'Fantasy'
+console.log(second); //> 'Fiction'
+console.log(otherGenres); //> [ 'Nonfiction', 'Science Fiction', 'Young Adult' ]
+
+In this example, there are two variables: first and second. Those are followed by the syntax that makes up the rest operator: the three periods ... and a variable name, which in this case is otherGenres. The variable that follows ... will contain all of the remaining array elements that weren't destructured. This can be very useful for splitting apart an array.
+
+Rest operator An operator that condenses entries in arrays and other objects
