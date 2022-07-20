@@ -1051,350 +1051,181 @@ try {
 
 ** Promises
 *** Sync and async code
-1.5 hoursAverage Reading Time
-Learning Objective
+**** Terminology
+Synchronous code (also called sync code) :: executes one code instruction at a time, in the order that the instructions are given.
+Asynchronous code (also called async code) :: executes multiple instructions simultaneously, and the order in which the instructions complete isn't known.
 
-By the end of this lesson, you will be able to differentiate between synchronous and asynchronous code.
-Overview
 
-In this lesson, you'll learn about what exactly asynchronous code is. You'll learn why some code will be asynchronous and what asynchronous code looks like. Although it's a small step in the process, this lesson marks the beginning of your venture into building fully featured applications.
-Key Terms
-
-Event loop
-    A design pattern that a program may use to prioritize certain lines of code for execution
-
-In this next section of this program, you can expect to go a little deeper into JavaScript as you continue honing your skills as a web development expert!
-
-You should be excited and proud of what you're learning in this program. The skills that you're learning are very high in demand right now. In fact, LinkedIn announced that "JavaScript Developer" is one of the top ten most in-demand jobs based on the number of LinkedIn job posts in Q4 2021.
-
-Up to this point, the code that you've run has been synchronous. That is, the lines of code have run one after another in the order that they were provided. But not all code runs like this. In fact, some of the most important code that you run will be asynchronous.
-Terminology
-
-The video below provides an overview of the difference between synchronous and asynchronous code. Start by watching the video, and then read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
-
-Synchronous code (also called sync code) executes one code instruction at a time, in the order that the instructions are given. Asynchronous code (also called async code) executes multiple instructions simultaneously, and the order in which the instructions complete isn't known. These differences are visualized below:
-Difference between synchronous and asynchronous execution
-
-It's a lot easier to understand the difference between these two types of code with an example. So take a look at the code snippet below:
+It's a lot easier to understand the difference between these two types of code with an example.
+So take a look at the code snippet below:
 
 function useSetTimeout() {
-
   console.log("Start!");
-
-
   setTimeout(() => {
-
     console.log("Inside setTimeout!");
-
   }, 1000);
-
-
   console.log("End!");
-
 }
-
-
 useSetTimeout();
 
 The function above contains three log() statements.
 
-The second log() statement, "Inside setTimeout!", is inside of a function passed to the setTimeout() function. The setTimeout() function takes two arguments: a callback function and a number that represents the number of milliseconds that should elapse before firing the callback function.
+The second log() statement, "Inside setTimeout!", is inside of a function passed to the setTimeout() function.
+The setTimeout() function takes two arguments: a callback function and a number that represents the number of milliseconds that should elapse before firing the callback function.
 
 This leads to the following text being logged to the console.
 
 Start!
-
 End!
-
 Inside setTimeout!
 
-Despite the fact that the setTimeout() function is invoked immediately, the callback function isn't invoked until later. That means that the setTimeout() function is an asynchronous operation. This is visualized in the diagram below:
+Despite the fact that the setTimeout() function is invoked immediately, the callback function isn't invoked until later.
+ That means that the setTimeout() function is an asynchronous operation.
+ This is visualized in the diagram below:
 setTimeout() visualization
-Event loop
 
-The video below provides a brief introduction to event loops.
-
+**** Event loop
 Knowing how setTimeout() works, the above ordering makes sense.
 
-Of course Inside setTimeout! would be printed after "End!" if it was forced to wait for one second before running. But take a look at the code below—this results in exactly the same output.
+Of course Inside setTimeout! would be printed after "End!" if it was forced to wait for one second before running.
+But take a look at the code below—this results in exactly the same output.
 
 function useSetTimeout() {
-
   console.log("Start!");
-
-
   setTimeout(() => {
-
     console.log("Inside setTimeout!");
-
   }, 0);
 
-
   console.log("End!");
-
 }
-
 
 useSetTimeout();
 
-Notice that the setTimeout() function was told to wait for 0 milliseconds. So how is it possible that "End!" is still printed before "Inside setTimeout!"?
+Notice that the setTimeout() function was told to wait for 0 milliseconds.
+So how is it possible that "End!" is still printed before "Inside setTimeout!"?
 
-The reason has to do with something called the event loop. The event loop describes a process by which JavaScript prioritizes certain lines of code for execution. Asynchronous code is placed into a queue where it will always run after the synchronous lines of code in the current file. If the current file has two or more asynchronous operations, you cannot determine the order in which the asynchronous operations will complete.
+Event loop :: A design pattern that a program may use to prioritize certain lines of code for execution
+The reason has to do with something called the event loop.
+The event loop describes a process by which JavaScript prioritizes certain lines of code for execution.
+Asynchronous code is placed into a queue where it will always run after the synchronous lines of code in the current file.
+If the current file has two or more asynchronous operations, you cannot determine the order in which the asynchronous operations will complete.
 
-The event loop is a complex and interesting topic that deserves its own lesson. But for now, the way that code is run in JavaScript will be described simply. Essentially, when JavaScript is being interpreted, asynchronous operations are not executed immediately. Instead, they are placed into an event queue and executed later. Those operations will be run as soon as they can (which is always after the synchronous code has been run). Take a look at the below visualization of the process:
-setTimeout() visualization
+Essentially, when JavaScript is being interpreted, asynchronous operations are not executed immediately.
+Instead, they are placed into an event queue and executed later.
+Those operations will be run as soon as they can (which is always after the synchronous code has been run).
+
 
 To further reinforce how this works, take a look at another example. Can you determine the order in which the statements below will run?
-
 console.log("Start!"); // Synchronous code
 
-
 setTimeout(() => {
-
   console.log("Inside first setTimeout!"); // Asynchronous code
-
 }, 0);
-
 
 setTimeout(() => {
-
   console.log("Inside second setTimeout!"); // Asynchronous code
-
 }, 0);
-
 
 console.log("End!"); // Synchronous code
 
-It's important to note that each function in the above code is invoked when it is encountered. That is, all of the code is being invoked in the order in which it's written. However, the results of the asynchronous function calls aren't immediate.
+It's important to note that each function in the above code is invoked when it is encountered.
+That is, all of the code is being invoked in the order in which it's written.
+However, the results of the asynchronous function calls aren't immediate.
 
 In the above code, the log() statements for "Start!" and "End!" are synchronous function calls, so you will see the output from those function calls immediately.
 
-However, when setTimeout() is invoked, it doesn't execute the callback immediately. Instead, a new event is placed on the event queue along with the callback passed to setTimeout(). After the current file is done executing, the events in the queue are executed in order from oldest to newest (or first-in, first-out). As a result, the callback function passed into setTimeout() will always run after the synchronous code in the current file.
+However, when setTimeout() is invoked, it doesn't execute the callback immediately.
+Instead, a new event is placed on the event queue along with the callback passed to setTimeout().
+After the current file is done executing, the events in the queue are executed in order from oldest to newest (or first-in, first-out).
+As a result, the callback function passed into setTimeout() will always run after the synchronous code in the current file.
 
 So, the above code will result in the following output:
-
 Start!
-
 End!
-
 Inside first setTimeout!
-
 Inside second setTimeout!
 
-Again, this is a simplistic view of the event loop, but it demonstrates the main concept at hand. In short, despite the order in which the code is written, some code will take longer to run.
-Why use asynchronous JavaScript?
+Again, this is a simplistic view of the event loop, but it demonstrates the main concept at hand.
+In short, despite the order in which the code is written, some code will take longer to run.
 
-Synchronous code will block further execution until it has finished what it's doing. As a result, a long-running JavaScript function will make the web page or server unresponsive until the function has finished. This can result in a terrible user experience.
+**** Why use asynchronous JavaScript?
 
-To solve this problem, JavaScript makes certain operations asynchronous. This way, the web page or server is responsive while waiting for long-running tasks to complete.
-Common scenarios
+Synchronous code will block further execution until it has finished what it's doing.
+As a result, a long-running JavaScript function will make the web page or server unresponsive until the function has finished.
+This can result in a terrible user experience.
 
-Now that you understand the basics of how asynchronous code works, consider where it might be useful. In the real world, when might you see asynchronous code used?
+To solve this problem, JavaScript makes certain operations asynchronous.
+This way, the web page or server is responsive while waiting for long-running tasks to complete.
+
+**** Common scenarios
 
 Asynchronous code is usually preferred when one of the following conditions applies:
+    + You want the application to continue to be able to run without waiting for some process.
+    + You have no choice but to wait because the process depends on something outside of your control.
 
-    You want the application to continue to be able to run without waiting for some process.
+***** Animations
 
-    You have no choice but to wait because the process depends on something outside of your control.
+In web development, many graphical animations are powered by JavaScript using tools like setTimeout().
+This can be anything from incredible visual displays to a notification icon blinking red.
 
-Now, take a look at some scenarios where asynchronous code is quite common. You'll encounter some of these further on in the program.
-Animations
+Either way, timing is important for animation, as is interactivity.
+When an animation starts on a web page, you probably don't want the rest of the web page to stop running completely to wait for that animation to finish.
+Because of this, animations on the web are run asynchronously.
 
-In web development, many graphical animations are powered by JavaScript using tools like setTimeout(). This can be anything from incredible visual displays to a notification icon blinking red.
+***** External web requests
 
-Either way, timing is important for animation, as is interactivity. When an animation starts on a web page, you probably don't want the rest of the web page to stop running completely to wait for that animation to finish. Because of this, animations on the web are run asynchronously.
+When you're requesting data from an external source, you have little choice but to wait for the requested information.
+If the external source is down or having a slow day, the request will take longer.
 
-The video below provides an overview of this topic.
-Do this
-Animate part of a web page
+This isn't the same as depending on an external package; when you use libraries, you'll likely download them to your project so that they can be accessed quickly.
+In contrast, external web requests involve requesting data from some other website.
 
-Now you will create a web page with a simple animation. However, the first JavaScript that you will write will be synchronous.
+Tip :: Intensive processes, like processing images or video files, are often put into an asynchronous function so that the long-running process doesn't slow down the main program.
 
-Create a new folder on your computer. Then add the following code to animation.html.
+****** Do this :: Write an asynchronous function
 
-<!DOCTYPE html>
-
-<html lang="en">
-
-  <body>
-
-    <div id="root" style="position: absolute; height: 1000px">Animate me!</div>
-
-
-    <script type="application/javascript">
-
-      const rectangle = document.querySelector("#root");
-
-
-      let leftPosition = 0;
-
-
-      function animateDiv() {
-
-        console.log(`Start animateDiv ${leftPosition}`);
-
-
-        leftPosition += 1;
-
-
-        rectangle.style.left = `${leftPosition}px`;
-
-
-        if (leftPosition < 200) {
-
-          console.log(`Before animateDiv`);
-
-          animateDiv();
-
-          console.log(`After animateDiv`);
-
-        }
-
-
-        console.log(`End animateDiv`);
-
-      }
-
-
-      requestAnimationFrame(animateDiv);
-
-    </script>
-
-  </body>
-
-</html>
-
-Then open the page in your default browser. The "Animate me!" text doesn't move across the page like you might expect. Look at the browser's console and notice the order of the console.log() statements.
-
-Now, change the code to call requestAnimationFrame(animateDiv) rather than animateDiv().
-
-<!DOCTYPE html>
-
-<html lang="en">
-
-<body>
-
-
-<div id="root" style="position: absolute; height: 1000px">
-
-    Animate me!
-
-</div>
-
-
-<script type="application/javascript">
-
-  const rectangle = document.querySelector('#root');
-
-
-  let leftPosition = 0;
-
-
-  function animateDiv () {
-
-    console.log(`Start animateDiv ${leftPosition}`)
-
-
-    leftPosition += 1;
-
-
-    rectangle.style.left = `${leftPosition}px`;
-
-
-    if (leftPosition < 200) {
-
-      console.log(`Before animateDiv`)
-
--     animateDiv();
-
-+     requestAnimationFrame(animateDiv);
-
-      console.log(`After animateDiv`)
-
-    }
-
-
-    console.log(`End animateDiv`)
-
-  }
-
-
-  requestAnimationFrame(animateDiv);
-
-</script>
-
-</body>
-
-</html>
-
-Again, open the page in your default browser. The "Animate me!" text now moves smoothly across the page. You can also scroll the page up and down during the animation. Next, look at the browser's console and notice that the order of the console.log() statements has changed. This is because requestAnimationFrame() is an asynchronous function that allows the browser to repaint the screen between calls to animateDiv().
-External web requests
-
-The video below provides an overview of external web requests.
-
-When you're requesting data from an external source, you have little choice but to wait for the requested information. If the external source is down or having a slow day, the request will take longer.
-
-This isn't the same as depending on an external package; when you use libraries, you'll likely download them to your project so that they can be accessed quickly. In contrast, external web requests involve requesting data from some other website.
-Tip
-
-Intensive processes, like processing images or video files, are often put into an asynchronous function so that the long-running process doesn't slow down the main program.
-Do this
-Write an asynchronous function
-
-Now you will write code that downloads a video from a remote server and processes it after the download completes. However, downloading a large video from a remote server takes some time depending on the network speed and the size of the video.
+Now you will write code that downloads a video from a remote server and processes it after the download completes.
+However, downloading a large video from a remote server takes some time depending on the network speed and the size of the video.
 
 Note: Rather than actually downloading or processing the video, you will use the setTimeout() function to simulate the time that it takes for downloading and processing.
 
 Create a new folder on your computer, then add the following code to download-and-process-video.js:
 
 function download(url) {
-
   console.log(`Start downloading video from ${url} ...`);
 
-
   setTimeout(() => {
-
     const fileName = url.split("/").pop();
-
     console.log(`Video downloaded from ${url} to ${fileName}.`);
-
   }, 2000);
-
 }
 
 
 function process(videoFile) {
-
   console.log(`Start processing ${videoFile} ...`);
 
 
   setTimeout(() => {
-
     console.log(`Video processing complete: ${videoFile}.`);
-
   }, 4000);
-
 }
-
 
 const url = "https://www.thinkful.com/sync-and-async.mov";
 
-
 const fileName = download(url);
-
 
 process(fileName);
 
-In the above code, the download() and process() functions are both synchronous functions. However, they both call setTimeout(), an asynchronous function.
+In the above code, the download() and process() functions are both synchronous functions.
+However, they both call setTimeout(), an asynchronous function.
 
-Before running the code, take a moment to write down what you think the output will be when you run the above code. Then run the code, using node download-and-process-video.js. You'll see the following output:
+Before running the code, take a moment to write down what you think the output will be when you run the above code.
+Then run the code, using node download-and-process-video.js.
+You'll see the following output:
 
 Start downloading video from https://www.thinkful.com/sync-and-async.mov ...
-
 Start processing undefined ...
-
 Video download from https://www.thinkful.com/sync-and-async.mov to sync-and-async.mov.
-
 Video processing complete: undefined.
 
 As you can see from the above output, the process() function started before the download() function completed. The behavior that you want is for the code to wait for the download to complete, then call the process() function.
@@ -1402,105 +1233,69 @@ As you can see from the above output, the process() function started before the 
 To fix this problem, pass the process() function to the download() function as a callback, as shown below. When the download() function is complete, it will call the callback() function, passing in the filename.
 
 -function download (url) {
-
 +function download (url, callback) {
-
    console.log(`Start downloading video from ${url} ...`);
 
-
    setTimeout(() => {
-
      const fileName = url.split('/').pop()
-
      console.log(`Video downloaded from ${url} to ${fileName}.`);
-
-+    callback(fileName)
-
+\+    callback(fileName)
    }, 3000);
-
  }
 
 
 function process (videoFile) {
-
   console.log(`Start processing ${videoFile} ...`);
 
-
   setTimeout(() => {
-
     console.log(`Video processing complete: ${videoFile}.`);
-
   }, 4000);
-
 }
-
 
 const url = 'https://www.thinkful.com/sync-and-async.mov';
 
-
 -const fileName = download(url);
-
 +download(url, process);
-
 
 -process(fileName);
 
-In the above code, the download() function now takes a callback function as a second parameter. The download() function does not know what the callback function does, only that it should be called after the download is complete. You have already used callback functions for the find(), filter(), map(), some(), and every() functions on an array, so this pattern will seem familiar.
+In the above code, the download() function now takes a callback function as a second parameter.
+The download() function does not know what the callback function does, only that it should be called after the download is complete.
+You have already used callback functions for the find(), filter(), map(), some(), and every() functions on an array, so this pattern will seem familiar.
 
-Now, run the code again using node download-and-process-video.js. You'll see the following output:
-
+Now, run the code again using node download-and-process-video.js.
+You'll see the following output:
 Start downloading video from https://www.thinkful.com/sync-and-async.mov ...
-
 Video downloaded from https://www.thinkful.com/sync-and-async.mov to sync-and-async.mov.
-
 Start processing sync-and-async.mov ...
-
 Video processing complete: sync-and-async.mov.
 
 Now the code works as expected.
 
-Although it may seem like the code is blocked while it is waiting for the download, the code is able to execute other commands while waiting for the download. Add the following code to the end of the file to see that other commands are still processed while waiting for the download.
+Although it may seem like the code is blocked while it is waiting for the download, the code is able to execute other commands while waiting for the download.
+Add the following code to the end of the file to see that other commands are still processed while waiting for the download.
 
 setInterval(() => console.log("some other work is happening here"), 500);
 
 Now, the output will look like this:
-
 Start downloading video from https://www.thinkful.com/sync-and-async.mov ...
-
 some other work is happening here
-
 some other work is happening here
-
 some other work is happening here
-
 some other work is happening here
-
 some other work is happening here
-
 Video downloaded from https://www.thinkful.com/sync-and-async.mov to sync-and-async.mov.
-
 Start processing sync-and-async.mov ...
-
 some other work is happening here
-
 some other work is happening here
-
 some other work is happening here
-
 some other work is happening here
-
 some other work is happening here
-
 some other work is happening here
-
 some other work is happening here
-
 some other work is happening here
-
 Video processing complete: sync-and-async.mov.
-
 some other work is happening here
-
 ...
 
 As you can see, asynchronous code allows the web page and server to remain responsive while waiting for long-running tasks to complete.
