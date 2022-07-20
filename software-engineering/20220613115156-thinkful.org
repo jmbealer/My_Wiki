@@ -1052,6 +1052,7 @@ try {
 ** Promises
 *** Sync and async code
 **** Terminology
+
 Synchronous code (also called sync code) :: executes one code instruction at a time, in the order that the instructions are given.
 Asynchronous code (also called async code) :: executes multiple instructions simultaneously, and the order in which the instructions complete isn't known.
 
@@ -1085,6 +1086,7 @@ Despite the fact that the setTimeout() function is invoked immediately, the call
 setTimeout() visualization
 
 **** Event loop
+
 Knowing how setTimeout() works, the above ordering makes sense.
 
 Of course Inside setTimeout! would be printed after "End!" if it was forced to wait for one second before running.
@@ -1301,196 +1303,171 @@ some other work is happening here
 As you can see, asynchronous code allows the web page and server to remain responsive while waiting for long-running tasks to complete.
 
 *** Creating promises
-1.5 hoursAverage Reading Time
-Learning Objective
 
-By the end of this lesson, you will be able to create promises using the Promise() constructor function.
-Overview
+The most popular way to manage asynchronous code in JavaScript is through an object called a promise.
+A promise can run asynchronous code and provide a set of methods that allows you to extract a single result from that code.
 
-The most popular way to manage asynchronous code in JavaScript is through an object called a promise. A promise can run asynchronous code and provide a set of methods that allows you to extract a single result from that code. In this lesson, you'll learn the basics of creating promises in JavaScript.
-What's the problem?
+**** What's the problem?
 
-Start by watching the video below, which provides a brief introduction to this topic. Then, read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+Recall that asynchronous code complicates the order in which code is run.
 
-Recall that asynchronous code complicates the order in which code is run. In some scenarios, this can be challenging. To understand the problem a little better, you will write some code to read a text file containing quotes, then randomly select one of the quotes and print it out for the user.
+To understand the problem a little better, you will write some code to read a text file containing quotes, then randomly select one of the quotes and print it out for the user.
 
 To begin, create a new folder named quotes to store the files.
 
 In quotes.txt, add the following:
 
 On a long enough timeline, every line of code is obsolete. - Unknown
-
 Deliver yesterday, code today, think tomorrow. - Unknown
-
 A clever person solves a problem. A wise person avoids it. - Albert Einstein
-
 There's no time to stop for gas, we're already late. - Karin Donke
 
 In main.js, add the following code:
 
 const fs = require("fs");
 
-
 let quote = null;
-
 
 console.log("Finding a quote...");
 
-
 fs.readFile("quotes.txt", (error, buffer) => {
-
   if (error) {
-
     throw error;
-
   }
-
   const lines = buffer.toString().split("\n");
-
   quote = lines[Math.floor(Math.random() * lines.length)];
-
 });
-
 
 console.log(`Your quote is: ${quote}`);
 
-The above code reads the contents of quotes.txt using the asynchronous fs.readFile() function. In the readFile() callback function, it splits the file contents into lines and then randomly assigns one of the lines to the quote variable. Finally, it logs Your quote is: ${quote}.
-Tip
+The above code reads the contents of quotes.txt using the asynchronous fs.readFile() function.
+In the readFile() callback function, it splits the file contents into lines and then randomly assigns one of the lines to the quote variable.
+Finally, it logs Your quote is: ${quote}.
 
-The fs module used in the code above enables interacting with the file system. The intricacies of the fs library are outside of the scope of this lesson; if you would like to know more, consult the fs documentation.
+Tip :: The fs module used in the code above enables interacting with the file system. The intricacies of the fs library are outside of the scope of this lesson; if you would like to know more, consult the [[https://nodejs.org/api/fs.html][fs documentation]].
 
 However, if you run the code above, you'll see that the output doesn't quite work. Take a look:
 
 node main.js
 
-
 Finding a quote...
-
 Your quote is: null
 
 Why is the quote null?
 
-Remember that any asynchronous code is not executed immediately. Instead, it is added to the event queue and will always run after the code in the current file. This means that the code inside of the fs.readFile() callback will always run after the console.log(`Your quote is: ${quote}`); statement.
+Remember that any asynchronous code is not executed immediately.
+Instead, it is added to the event queue and will always run after the code in the current file.
+This means that the code inside of the fs.readFile() callback will always run after the console.log(`Your quote is: ${quote}`); statement.
 
 One way to fix this code is to move the console.log(`Your quote is: ${quote}`); inside of the fs.readFile() callback.
 
-Another way to fix this code is to use a promise. In JavaScript, promises are a reliable way of knowing when asynchronous code has been completed.
-Promises
+Another way to fix this code is to use a promise.
+In JavaScript, promises are a reliable way of knowing when asynchronous code has been completed.
 
-For an introduction to promises, review the following video.
+**** Promises
 
-A promise is a type of object that wraps around asynchronous code. Promises won't run the callback function until needed, and they provide methods to extract the final result.
+A promise is a type of object that wraps around asynchronous code.
+Promises won't run the callback function until needed, and they provide methods to extract the final result.
 
-Promises are an ingenious solution. They allow you to run asynchronous code inside an object that provides you with some functions that you can use to respond to the success or failure of the asynchronous code.
+Promises are an ingenious solution.
+They allow you to run asynchronous code inside an object that provides you with some functions that you can use to respond to the success or failure of the asynchronous code.
 
 To manage asynchronous code, promises have three states:
 
-    Pending: When a promise is first created, it has a status of pending. For example, with fs.readFile(), the promise would be in the pending state during the time that the file is being read.
++ Pending: When a promise is first created, it has a status of pending.
+  + For example, with fs.readFile(), the promise would be in the pending state during the time that the file is being read.
 
-    Fulfilled: When the promise has successfully finished running, it has a status of fulfilled. This means that it is ready to pass back a value. In the fs.readFile() example, this is after the error and buffer are passed to the callback function.
++ Fulfilled: When the promise has successfully finished running, it has a status of fulfilled. This means that it is ready to pass back a value.
+  + In the fs.readFile() example, this is after the error and buffer are passed to the callback function.
 
-    Rejected: If something goes wrong, the promise changes to a status of rejected. This means that something failed. In the fs.readFile() example, if the first parameter, error, is truthy, that means that there was an error reading the file—so the promise should be rejected. The rejected status is especially likely to come up when you're making external web requests or reading files.
++ Rejected: If something goes wrong, the promise changes to a status of rejected. This means that something failed.
+  + In the fs.readFile() example, if the first parameter, error, is truthy, that means that there was an error reading the file—so the promise should be rejected. The rejected status is especially likely to come up when you're making external web requests or reading files.
 
-Syntax
+**** Syntax
 
 Take a look at the code below, which demonstrates the creation of a promise.
 
 const newPromise = new Promise((resolve, reject) => {
-
   // Your code here...
-
 });
 
 The code above demonstrates the following:
 
-    A new promise can be created using the new keyword with the Promise class. This will create an instance of a promise.
++ A new promise can be created using the new keyword with the Promise class. This will create an instance of a promise.
 
-    Promises can be assigned to variables.
++ Promises can be assigned to variables.
 
-    The only argument to pass in to the Promise constructor is a callback function that has two parameters: resolve and reject.
++ The only argument to pass in to the Promise constructor is a callback function that has two parameters: resolve and reject.
 
 The following diagram shows how the resolve() and reject() methods change the state of the promise.
 A pending promise can either be fulfilled with a value or rejected with a reason
 
-As you can see in the diagram above, a pending promise can either be fulfilled with a value, or rejected with a reason (error). Finally, a fulfilled or rejected promise cannot transition into any other state.
-Do this
-Return a promise
+As you can see in the diagram above, a pending promise can either be fulfilled with a value, or rejected with a reason (error).
+Finally, a fulfilled or rejected promise cannot transition into any other state.
 
-The video below outlines how to return promises from functions.
+**** Do this :: Return a promise
 
-Next, you will write a function that returns a promise. Inside the returned promise, you will write some code that executes fs.readFile() to read the file contents.
+
+Next, you will write a function that returns a promise.
+Inside the returned promise, you will write some code that executes fs.readFile() to read the file contents.
 
 Create a file named read-file.js, and add the following code:
 
 const fs = require("fs");
 
-
 function readFile(fileName) {
-
   return new Promise((resolve, reject) => {
-
     fs.readFile(fileName, (error, buffer) => {
-
       if (error) {
-
         return reject(error);
-
       }
-
       resolve(buffer.toString());
-
     });
-
   });
-
 }
-
 
 module.exports = readFile;
 
-In the code above, you can see that readFile() returns a new Promise(). The promise takes a callback function with two parameters, resolve() and reject(), which are both functions.
+In the code above, you can see that readFile() returns a new Promise().
+The promise takes a callback function with two parameters, resolve() and reject(), which are both functions.
 
-To fulfill the promise successfully, pass the final value that you want to extract from the promise to the resolve() function. In the example above, the file contents are passed into the resolve() function and the promise becomes fulfilled.
+To fulfill the promise successfully, pass the final value that you want to extract from the promise to the resolve() function.
+In the example above, the file contents are passed into the resolve() function and the promise becomes fulfilled.
 
-The reject() function works the same way as resolve(), except that it is used when the asynchronous code has failed or gone wrong in some way. In the above example, if error has a truthy value, then error is passed to the reject() function and the promise becomes rejected. You will see more examples using reject() in the future.
-Do this
-See a promise change state
+The reject() function works the same way as resolve(), except that it is used when the asynchronous code has failed or gone wrong in some way.
+In the above example, if error has a truthy value, then error is passed to the reject() function and the promise becomes rejected.
+You will see more examples using reject() in the future.
 
-Next, you will write some code that uses the readFile() function that you created earlier. This new code will log the promise returned by readFile() two different times, a few milliseconds apart, so that you can see the promise change state automatically when the asynchronous code inside the promise completes.
+**** Do this :: See a promise change state
+
+Next, you will write some code that uses the readFile() function that you created earlier.
+This new code will log the promise returned by readFile() two different times, a few milliseconds apart, so that you can see the promise change state automatically when the asynchronous code inside the promise completes.
 
 Create a new file named quotes.js, and add the following code:
 
 const readFile = require("./read-file");
 
-
 const readFilePromise = readFile("quotes.txt");
-
 
 console.log(readFilePromise);
 
-
 setTimeout(() => {
-
   console.log(readFilePromise);
-
 }, 500);
 
-Run the code above using node quotes.js. The first console.log(readFilePromise); statement will print something like this:
+Run the code above using node quotes.js.
+The first console.log(readFilePromise); statement will print something like this:
 
 Promise { <pending> }
 
-Then a few milliseconds later, it will log out the readFilePromise variable again. This time, it will look a bit different:
+Then a few milliseconds later, it will log out the readFilePromise variable again.
+This time, it will look a bit different:
 
 Promise {
-
   'On a long enough timeline, every line of code is obsolete. - Unknown\n' +
-
     'Deliver yesterday, code today, think tomorrow. - Unknown\n' +
-
     'A clever person solves a problem. A wise person avoids it. - Albert Einstein\n' +
-
     "There's no time to stop for gas, we're already late - Karin Donke"
-
 }
 
 As you can see above, the readFilePromise variable goes from a pending state to a fulfilled state once the asynchronous code inside the promise callback calls the resolve() function.
