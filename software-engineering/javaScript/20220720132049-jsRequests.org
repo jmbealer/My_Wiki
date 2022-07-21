@@ -4,136 +4,111 @@
 #+title: jsRequests
 #+date: [2022-07-20 Wed 13:20]
 
-** Making requests
-*** How the web works
-1.5 hoursAverage Reading Time
-Learning Objective
+** How the web works
+*** The client wip
 
-By the end of this lesson, you will be able to use technical terminology to explain the series of requests that are made when visiting a website.
-Overview
+Client :: A web-accessing device or software that requests information
 
-Right now, you are looking at a web page from Thinkful. How did that happen? In this lesson, you will learn the basics of how web requests and responses work. This lesson is the foundation of your career in web development.
-Key Terms
-
-Uniform resource locator
-    URL, also called a uniform resource identifier, the way that distinct resources are identified on the web
-Domain name system
-    DNS, a service that acts as a lookup, translating a domain into an actual IP address
-Internet service provider
-    ISP, an entity that gives you access to the internet
-
-The client
-Concept of a client requesting information.
-
-Right now, you are accessing this curriculum through a web browser. No matter which browser you are using, your browser is requesting information from Thinkful. More specifically, it's requesting HTML, CSS, and JavaScript from Thinkful in order to present you with this page. In this way, your browser is acting as a client.
-Key Term
-
-Client: A web-accessing device or software that requests information
-
-Although you are accessing this page through a browser, a browser isn't the only kind of client. Any kind of program that requests information from the web could be considered a client.
+Any kind of program that requests information from the web could be considered a client.
 
 For example, all of the following could be clients:
++ A mobile application (such as your mail application)
++ A software program running on your computer (such as Slack)
++ Your computer
 
-    A mobile application (such as your mail application)
+*** The server
 
-    A software program running on your computer (such as Slack)
+Server :: A device or program that receives requests from clients and responds to them, acting as the brain of the backend
 
-    Your computer
 
-Each of the above examples can make requests to the web and do something with that information. Next, you'll explore where these requests go.
-The server
-Concept of a server receiving a request for information.
-
-Each successful request that a client makes must go somewhere, but where does it go? The program that receives the request is called a server.
-Key Term
-
-Server: A device or program that receives requests from clients and responds to them, acting as the brain of the backend
-
-Note: You may also hear the term server used to refer to actual hardware. But in this case, it refers to the program that takes in a request and responds to it.
-
-Servers expose resources to clients. Those resources could be general data, or they could be HTML, CSS, JavaScript, image, video, or audio files. Sometimes those resources are stored on the server itself, while other times, the server may request those resources from another server. In this way, the server can actually act as a client as well.
+Servers expose resources to clients.
+Those resources could be general data, or they could be HTML, CSS, JavaScript, image, video, or audio files.
+Sometimes those resources are stored on the server itself, while other times, the server may request those resources from another server.
+In this way, the server can actually act as a client as well.
 
 Servers make it possible for clients to get the files, data, and other resources that they need in order to do something valuable for an end user.
-Request-response cycle
-The request-response cycle.
 
-In the request-response cycle, the client sends a request to the server, which then processes this request and responds back to the client. Often, the client will then do something with this information, such as render a web page.
-Key Term
+*** Request-response cycle
 
-Request-response cycle: The path that information takes from the client to the server and then back to the client
+In the request-response cycle:
++ the client sends a request to the server.
++ the server then processes this request and responds back to the client.
++ Often, the client will then do something with this information, such as render a web page.
 
-This is how the web works: When you go to a website, your browser (a client) makes a request to a server. That server responds with the requested information, which your browser then transforms into a website.
+Request-response cycle :: The path that information takes from the client to the server and then back to the client
 
-This process can be repeated multiple times for a single view of a web page. For example, on this page, your browser made multiple requests for HTML, CSS, JavaScript, and image files.
-Browser making multiple requests for HTML, CSS, JavaScript, and image files.
-URLs
+This is how the web works:
++ When you go to a website, your browser (a client) makes a request to a server.
++ That server responds with the requested information, which your browser then transforms into a website.
++ This process can be repeated multiple times for a single view of a web page.
 
-The server determines what information to send back. In large part, this determination is based on where the client makes the request. For example, making a request to thinkful.com/about will yield different information than a request to thinkful.com/blog.
+*** URLs
 
-The "location" of a request is represented by a uniform resource locator (URL), which is an address for a request. The server will respond to the client with information based on the requested URL.
+URL stands for uniform resource locator/indentifier
 
-A URL contains many parts, each of which helps the server decide how to respond. For example, go to YouTube's home page. In the search bar on YouTube's home page, type in how the web works. When you press Enter, notice that the URL in the address bar changes. It will now show something like the URL below.
-Anatomy of a URL.
+URL is the way that distinct resources are identified on the web
+url is an address for a request.
 
-As you can see, there are many parts to a URL. You will return to this diagram later on as you begin to build your own servers. For now, know that each part of the URL helps the server determine what kind of information to send back to the client.
-DNS and ISP
+The server determines what information to send back, based on where the client makes the request.
 
-Each device connected to the internet has an address associated with it called an IP address. You have an IP address too.
-Key Term
+The server will respond to the client with information based on the requested URL.
 
-IP address: A unique series of numbers that represent a device connected to the internet and allows other devices to connect to it
+A URL contains many parts, each of which helps the server decide how to respond.
 
-It isn't easy for humans to remember IP addresses, because they feel like random series of numbers. Instead, people rely on remembering domain names such as thinkful.com or khanacademy.org. These domain names are simply text labels that mask an IP address underneath.
+The Anatomy of a URL:
++ URL :: https://www.youtube.com/results?search_query=how+the+web+works
++ Protocol :: https://
++ Subdomain :: www.
++ Domain :: youtube.com
++ Path :: /results
++ Query :: ?
++ Parameters :: search_query=how+the+web+works
 
-For example, thinkful.com is a domain name. When you type thinkful.com into your browser, how does it know what the IP address is for Thinkful? The answer is that it doesn't. Instead, it asks what's called a domain name system (DNS) by going through your internet service provider (ISP). A DNS is a service that acts as a lookup. It translates a domain (such as thinkful.com) into an actual IP address (such as 104.26.13.185). And an ISP is an entity—like Comcast or Verizon—that gives you access to the internet.
+*** DNS and ISP
 
-Your browser will make a request to a DNS with the domain name, which will then translate it into an IP address. It sends that information back to the browser, which will then make all subsequent requests to the server. This diagram illustrates that process:
-DNS request diagram showing four steps: parsing the URL, ISP, DNS, and client.
-The full trip
+IP address: A unique series of numbers that represent a device connected to the internet and allows other devices to connect to it.
 
-This lesson covered several new concepts. Now, review the entire process of making a web request:
+Domain names are simply text labels that mask an IP address underneath.
++ thinful.com
++ khanacademy.org
 
-    Your client (the browser) makes a request to a specific URL.
+DNS stands for Domain Name System
+A DNS is a service that acts as a lookup, it translates a domain into an actual IP address
++ turns thinkful.com into to 104.26.13.185
 
-    The client sends the domain name to the ISP.
+ISP stands for Internet Service Provider
+An ISP is an entity that gives you access to the internet
 
-    The ISP looks up the IP address in the DNS.
 
-    The ISP sends the IP address back to the client.
+Your browser will make a request to a DNS with the domain name, which will then translate it into an IP address.
+It sends that information back to the browser, which will then make all subsequent requests to the server.
 
-    The client opens a connection to the server located at the IP address.
+*** The full trip
 
-    The client sends a request to the server.
+Process of making a web request:
+1. Your client (the browser) makes a request to a specific URL.
+2. The client sends the domain name to the ISP.
+3. The ISP looks up the IP address in the DNS.
+4. The ISP sends the IP address back to the client.
+5. The client opens a connection to the server located at the IP address.
+6. The client sends a request to the server.
+7. The server sends a response.
+8. Steps six and seven repeat until the browser has all of the resources that it needs.
 
-    The server sends a response.
+** Postman
 
-    Steps six and seven repeat until the browser has all of the resources that it needs.
-*** Postman
-1.5 hoursAverage Reading Time
-Learning Objective
+Web developers want to understand what's happening behind the scenes and see what kind of responses are being sent back from a server.
+Fortunately, there are several tools that will allow you to do just that. In this lesson, you'll learn how to use a tool called Postman.
 
-By the end of this lesson, you will be able to use Postman to make web requests.
-Overview
+*** What is Postman?
 
-Although your browser is a client that can make web requests on your behalf, by default, it doesn't allow for the kind of insight that web developers need. Web developers want to understand what's happening behind the scenes and see what kind of responses are being sent back from a server. Fortunately, there are several tools that will allow you to do just that. In this lesson, you'll learn how to use a tool called Postman.
+At its most basic, Postman is a software application that allows you to make web requests without the use of a browser.
+In this program, you will use Postman to make requests and inspect the results.
 
-The following video provides a brief introduction to this topic. Start by watching the video, and then read through the rest of the lesson and complete the practice tasks. This will give you a thorough understanding of these concepts.
-Starter code
+However, Postman can do much more than that.
+The free version of the app allows for saving collections of requests, as well as a variety of testing and logging features.
 
-This lesson requires you to have the Constellations server GitHub repository running on your local machine. If you haven't already, fork and clone the repository. Then, follow the README file's instructions to get the server running.
-What is Postman?
-
-At its most basic, Postman is a software application that allows you to make web requests without the use of a browser. In this program, you will use Postman to make requests and inspect the results.
-
-However, Postman can do much more than that. The free version of the app allows for saving collections of requests, as well as a variety of testing and logging features. Although this program will not make use of those features, feel free to explore some of the features available in Postman on your own time.
-Do this
-Download Postman
-
-Download Postman through the following link. Install the software and then open the program.
-
-    Postman: Downloads
-
-Application overview
+*** Application overview
 
 When you open the application, you will see something like this:
 Graphical user interface of the Postman application.
@@ -141,37 +116,18 @@ Graphical user interface of the Postman application.
 Take note of the following components, which are labeled in the image above.
 
     The navigation bar at the top of Postman allows you to switch workspaces and includes the New button.
-
     The sidebar allows you to filter historical requests that you've made. It also lets you create new collections for your requests.
-
     The main section of the application will be where you see the requests that you make. The app typically starts up on the Launchpad screen. The New tab ➕ icon allows you to start a new request.
 
-As you can see, there are numerous buttons and icons; you'll focus on just a few of them for this program.
-Do this
-Customize your screen
-
-By selecting the various dividers and closing tabs, you can simplify your workflow. Click the New tab button in the main section of the page and then follow the instructions below to create a more streamlined view.
-
-    Close the Launchpad tab.
-
-    Open a new request tab by clicking the New tab button.
-
-    Drag the sidebar divider to the left to collapse the sidebar.
-
-    Drag the Response section of the new request tab up to hide the Params section.
-
-When you're done, your view will look like this:
-Customized Postman view.
-Making a request
+*** Making a request
 
 To make a request with Postman, type a URL like https://thinkful.com into the location bar that's next to the drop-down menu with the word GET in it, as shown below. Then, click Send.
-Making a request with Postman.
 
 The response section will change to include a number of tabs, including the Body tab. In it, you'll see a bunch of text—that's HTML and CSS!
 
 By default, Postman will suggest that you save your requests in case you end up using them often. In this program, you typically won't need to save them.
-Do this
-Make a request with Postman
+
+*** Do this Make a request with Postman
 
 Follow the instructions above to make a request to https://thinkful.com. If you've visited the Thinkful website lately, you may recognize some of the content!
 Use the Preview button
@@ -184,14 +140,12 @@ Make sure that your Constellations server is up and running, and then make a req
 http://localhost:5000/constellations
 
 You will see something that looks like an array with a number of objects inside of it. You just made your first request to a server running on your own machine!
-*** Headers
-1.5 hoursAverage Reading Time
-Learning Objective
+
+** Headers
 
 By the end of this lesson, you will be able to inspect and identify different parts of requests and responses. You'll also be able to make requests that use different HTTP verbs and include data in the request body.
 Overview
 
-In this lesson, you'll discover how to change the requests that you make and how to inspect the responses that are returned.
 Key Terms
 
 HTTP request method
@@ -364,7 +318,7 @@ There are many status codes, and some are used much more than others. You can le
 Other headers
 
 Other values can be stored inside of the response. For example, the response can store the date or even what kind of program is returning the response. In this program, you will be introduced to these response headers as needed.
-*** Requests in JavaScript
+** Requests in JavaScript
 1.5 hoursAverage Reading Time
 Learning Objective
 
@@ -555,7 +509,7 @@ Complete example
 A completed example from this lesson can be found here:
 
     Making Requests: Requests in JavaScript
-*** Testing asynchronous JavaScript
+** Testing asynchronous JavaScript
 1.5 hoursAverage Reading Time
 Learning Objective
 

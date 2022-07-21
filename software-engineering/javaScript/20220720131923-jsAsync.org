@@ -444,16 +444,12 @@ When the promise is rejected, the catch() method is called, passing in the rejec
 
 **** The then() method
 
-The video below provides an overview of the then() method.
-
-The then() method accepts a callback function that is called whenever the promise is fulfilled. Here's an example:
+The then() method accepts a callback function that is called whenever the promise is fulfilled.
+Here's an example:
 
 const welcomePromise = welcome();
-
 welcomePromise.then((result) => {
-
   console.log("The result is:", result);
-
 });
 
 The above code will print the following:
@@ -465,9 +461,7 @@ The callback takes a single parameter, which contains the fulfilled (resolved) v
 The code above can also be written to chain directly from the promise, like so:
 
 welcome().then((result) => {
-
   console.log("The result is:", result);
-
 });
 
 
@@ -477,24 +471,18 @@ Because console.log() is a function, you can also just pass it into then() if yo
 
 welcome().then(console.log);
 
-
 //> Provide me a question and I'll give you an answer...
 
-Remember, it's asynchronous!
+**** Remember, it's asynchronous!
 
 Now that you've seen how to access the result of a promise, it can be tempting to do something like this:
 
 let myString = "The result is: ";
 
-
 const promise = welcome();
-
 promise.then((result) => {
-
   myString += result;
-
 });
-
 
 console.log(myString);
 
@@ -504,74 +492,61 @@ The code above will result in the following output:
 
 //> The result is:
 
-When the console.log() function is called, the promise hasn't yet resolved. It's important to remember that all work on the result of the promise must be done inside of the then() callback function.
-Do this
-Use then()
+When the console.log() function is called, the promise hasn't yet resolved.
+It's important to remember that all work on the result of the promise must be done inside of the then() callback function.
+
+**** Do this Use then()
 
 In the repository that you cloned, add the following code at the end of src/main.js:
 
 const question = "Will the weather be nice today?";
-
 const tellPromise = tell(question);
 
 Use a then() function to log out the fortune's result. Try it on your own before looking at the solution below.
 
 const question = "Will the weather be nice today?";
-
 const tellPromise = tell(question);
-
 tellPromise.then(console.log);
 
-Use external variables
+***** Use external variables
 
 Although you can only access the result of a promise inside of a then() function, you can use variables outside of its scope inside of the then() callback function.
 
 To see this in action, try updating your code to this:
 
 const question = "Will the weather be nice today?";
-
 const tellPromise = tell(question);
-
 tellPromise.then((fortune) => {
-
   console.log(question);
-
   console.log(fortune);
-
 });
 
 
 //> Will the weather be nice today?
-
 //> Without a doubt.
 
 Did you notice the output?
-The catch() method
 
-The video below provides an overview of the catch() method.
+**** The catch() method
 
-Earlier, the method was described as a way to access the resolved value. That's because if a value inside of a promise is rejected with the reject() function, it will skip the then() method until it finds a catch().
+Earlier, the method was described as a way to access the resolved value.
+That's because if a value inside of a promise is rejected with the reject() function, it will skip the then() method until it finds a catch().
 
-The catch() method is the error handler for a promise. Like try/catch blocks, if the catch() method doesn't throw an error, the calling method doesn't know that an error happened. In other words, the promise returned by the catch() method is rejected only if the catch() throws an error or returns a promise which is itself rejected; otherwise, the promise is resolved.
+The catch() method is the error handler for a promise.
+Like try/catch blocks, if the catch() method doesn't throw an error, the calling method doesn't know that an error happened.
+In other words, the promise returned by the catch() method is rejected only if the catch() throws an error or returns a promise which is itself rejected; otherwise, the promise is resolved.
 
 This can be a bit confusing, so have a look at some code.
 
 For example, if no question is provided to the tell() function below, an error message will be passed into the reject() function.
 
 const tellPromise = tell()
-
   .then((result) => {
-
     console.log("Success:", result);
-
   })
-
   .catch((error) => {
-
     console.log("Failure:", error);
-
   });
-
 
 setTimeout(() => console.log(tellPromise), 500);
 
@@ -581,80 +556,70 @@ When you run the above code, the output will be the following:
 
 Failure: A question is required...
 
-
 Promise { undefined }
 
-When a promise's state changes from pending to rejected, it skips over any then() methods to the next catch() method. Notice that the "Success:" message doesn't get called at all!
+When a promise's state changes from pending to rejected, it skips over any then() methods to the next catch() method.
+Notice that the "Success:" message doesn't get called at all!
 
-As you can see in the output above, the promise is in the fulfilled state with a value of undefined (the catch() callback function returned undefined). While this may seem counterintuitive, it is exactly the same behavior as a try/catch block inside a function.
-Do this
-Use catch()
+As you can see in the output above, the promise is in the fulfilled state with a value of undefined (the catch() callback function returned undefined).
+While this may seem counterintuitive, it is exactly the same behavior as a try/catch block inside a function.
 
-Include a catch() at the end of your code's current then(). Log out the value from the callback and then run your code; you won't see the error message.
+**** Do this Use catch()
+
+Include a catch() at the end of your code's current then().
+Log out the value from the callback and then run your code; you won't see the error message.
 
 Then try removing the question and running the code again.
 
 The complete code is below.
 
 const question = "Will the weather be nice today?";
-
 const tellPromise = tell();
-
 tellPromise
-
   .then((fortune) => {
-
     console.log(question);
-
     console.log(fortune);
-
   })
-
   .catch(console.error);
 
 Reorder then() and catch()
 
-If a promise reaches the fulfilled state, the response goes to the next then(). And if a promise reaches the rejected state, the response goes to the next catch(). This is true regardless of the order.
+If a promise reaches the fulfilled state, the response goes to the next then().
+And if a promise reaches the rejected state, the response goes to the next catch().
+This is true regardless of the order.
 
 const question = "Will the weather be nice today?";
-
 const tellPromise = tell(question);
-
 tellPromise.catch(console.error).then((fortune) => {
-
   console.log(question);
-
   console.log(fortune);
-
 });
 
-The above code will work the same regardless of whether catch() comes before or after then(). It's typical to put catch() statements at the end, but it isn't necessary.
+The above code will work the same regardless of whether catch() comes before or after then().
+It's typical to put catch() statements at the end, but it isn't necessary.
 
 Try switching the order of your then() and catch() code to verify this assertion.
-Chain then() and catch()
+
+**** Chain then() and catch()
 
 You can continue to chain then() and catch() statements, depending on what you want to accomplish with the return result.
 
-When chaining multiple then() calls together, the value returned from a then() callback function is passed to the next then() callback function. If a then() callback function returns a promise, the promise is resolved before the next then() callback function is called. This continues until the last then() callback function is called. Because of this, you don't have to place then() calls inside of another then() call.
+When chaining multiple then() calls together, the value returned from a then() callback function is passed to the next then() callback function.
+If a then() callback function returns a promise, the promise is resolved before the next then() callback function is called.
+This continues until the last then() callback function is called.
+Because of this, you don't have to place then() calls inside of another then() call.
 
 welcome()
-
   .then(console.log) // Logs the result of welcome()
-
   .then(() => goodbye().then(console.log)) // .then inside of another .then
-
   .catch(console.error); // Logs error from welcome() or goodbye()
 
 Instead, the above code should be written as follows:
 
 welcome()
-
   .then(console.log) // Logs the result of welcome()
-
   .then(goodbye) // Returns promise from goodbye()
-
   .then(console.log) // Logs the result of goodbye()
-
   .catch(console.error); // Logs error from welcome() or goodbye()
 
 Try running the code above to see what gets outputted.
@@ -662,41 +627,23 @@ Try running the code above to see what gets outputted.
 However, if you want to combine the results of two or more promises, you will need to nest then() calls to have access to the results of both calls. The following code demonstrates combining the results from multiple promises.
 
 welcome()
-
   .then((welcomeMessage) =>
-
-    goodbye().then((goodbyeMessage) => `${welcomeMessage}\n${goodbyeMessage}`)
-
-  ) // welcomeMessage and goodbyeMessage combined.
-
+    goodbye().then((goodbyeMessage) => `${welcomeMessage}\n${goodbyeMessage}`)) // welcomeMessage and goodbyeMessage combined.
   .then(console.log) // Logs combines messages
-
   .catch(console.error); // Logs error from welcome() or goodbye()
 
-It's important to note that a then() or catch() will always move to the next then(). Therefore, if you place a then() call after a catch(), the next then() will always be called. For example, try running the following code to see the output:
+It's important to note that a then() or catch() will always move to the next then().
+Therefore, if you place a then() call after a catch(), the next then() will always be called.
+For example, try running the following code to see the output:
 
 welcome()
-
   .then(console.log) // Logs the result of welcome()
-
   .then(tell) // Calls tell, which returns a rejected promise (no question supplied).
-
   .then(console.log) // Skipped because tell returned a rejected promise.
-
   .catch(console.error) // Logs error from tell() or welcome()
-
   .then(goodbye) // Returns promise from goodbye()
-
   .then(console.log) // Logs the result from goodbye()
-
   .catch(console.error); // Logs error only from goodbye()
-
-Note: You'll learn more about this topic later in the program.
-Complete example
-
-A completed example from this lesson can be found here:
-
-    Promises: Resolving Promises
 
 ** Modern asynchronous programming
 *** Promise chaining
