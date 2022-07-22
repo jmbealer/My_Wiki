@@ -143,8 +143,6 @@ You will see something that looks like an array with a number of objects inside 
 
 ** Headers
 
-By the end of this lesson, you will be able to inspect and identify different parts of requests and responses. You'll also be able to make requests that use different HTTP verbs and include data in the request body.
-Overview
 
 Key Terms
 
@@ -159,13 +157,14 @@ Response body
 Status code
     The part of the response that gives a quick indication as to how the request went
 
-Although you may be used to seeing only the URL, web requests are actually much more complicated than just the URL. Both requests and responses allow for additional data to be sent back and forth, and this process is invisible to most internet users. This metadata is generally referred to as headers.
+Both requests and responses allow for additional data to be sent back and forth, and this process is invisible to most internet users.
+This metadata is generally referred to as headers.
 
-The following video provides a brief introduction to this topic. Start by watching the video, and then read through the rest of the lesson and complete the practice tasks. This will give you a thorough understanding of these concepts.
-Starter code
+
+*** Starter code
 
 This lesson requires you to have the Constellations server GitHub repository running on your local machine. If you haven't already, fork and clone the repository. Then, follow the README file's instructions to get the server running.
-Diagramming a request and response
+*** Diagramming a request and response
 
 As mentioned above, web requests include much more than just a URL. Take a look at the request below, which was made with Postman. Then, continue on to read the description of each section and the definitions that follow.
 A web request in Postman.
@@ -191,10 +190,10 @@ As you may have noticed, web requests have a lot of terminology associated with 
     A status code is the part of the response that gives a quick indication as to how the request went. In the example above, 200 OK indicates that the request was successful.
 
 In the following sections, you'll explore each of the above concepts in depth.
-Requests
+*** Requests
 
 Recall that requests come from a client (such as Postman) and reach some kind of server (such as where Thinkful has stored its server).
-HTTP verbs
+*** HTTP verbs
 
 Each request contains an HTTP verb, also called an HTTP method. Although there are many possible verbs, there are five that are the most common. Each verb ideally describes what kind of request is being made.
 Verb
@@ -211,7 +210,7 @@ DELETE
 	Destroy something
 
 By default, when you type a URL into your browser's location bar, a GET request is always performed. With a browser, there is no easy way for you to simulate the other kinds of verbs. Thankfully, this is much easier with Postman.
-URLs
+*** URLs
 
 In combination, HTTP verbs and URLs are the key ways that servers begin to figure out what it is that the client wants. For example, the following three requests could all perform distinctly different actions.
 
@@ -224,7 +223,9 @@ GET http://localhost:5000/constellations
 The first two URLs in the above example are different, and therefore it may be obvious that they'd return a different kind of response. However, the last two URLs are the same—and yet they might return a different response because they use different HTTP verbs.
 
 This combination of HTTP verb and URL is sometimes called a route. A route is a specific combination of an HTTP verb and a URL (or part of a URL).
-Do this
+
+*** Do this
+
 Use the GET verb
 
 Ensure that your Constellations server is running. Then, in Postman, make a GET request to the following URL:
@@ -254,10 +255,10 @@ Selected constellation is deleted from the running server.
 If you want to check that the operation has taken hold, you can look at the changes in your Constellations server repository or repeat the GET requests from above. You should see that the constellation has been removed.
 
 Even though the URL is the same as before, changing the verb from GET to DELETE caused a completely different operation to happen.
-Body
+*** Body
 
 Optionally, additional data can be sent in the form of a body. A body can contain any kind of data, although the body contains JSON in many APIs.
-Do this
+*** Do this
 Use the POST verb
 
 In Postman, open up the Body tab that is closest to the URL. You'll be presented with a number of radio button options. Select raw, and then paste the following content inside of it. Then, change the drop-down menu at the end of the line from Text to JSON.
@@ -282,18 +283,18 @@ Then make a POST request to the following URL:
 http://localhost:5000/constellations
 
 This will cause the creation of a new constellation on your server. You can see this by the fact that the response now includes an ID.
-Other headers
+*** Other headers
 
 Other headers can sometimes be included in the request. This includes headers like the Authorization header or information about what response format is preferable. In this program, these request headers will be introduced as needed.
-Responses
+*** Responses
 
 Responses come with their own structured information.
-Body
+*** Body
 
 In general, the response body is the most interesting part of the response. If you are expecting to receive data like JSON or HTML, you'll see it in the body.
 
 In all of the previous examples, the response body contained JSON. In future applications, you'll be able to use this data to present information to the user in some way.
-Status codes
+*** Status codes
 
 A status code is like a brief synopsis of how the request-response cycle went. Status codes have a particular numbering system and associated messages.
 Number range
@@ -315,21 +316,11 @@ Number range
 Status codes are useful in programs that make web requests; they enable the program to make a quick decision based on just a number.
 
 There are many status codes, and some are used much more than others. You can learn more about status codes at MDN's HTTP response status codes page.
-Other headers
+*** Other headers
 
 Other values can be stored inside of the response. For example, the response can store the date or even what kind of program is returning the response. In this program, you will be introduced to these response headers as needed.
 ** Requests in JavaScript
-1.5 hoursAverage Reading Time
-Learning Objective
 
-By the end of this lesson, you will be able to make requests to a server with JavaScript.
-Overview
-
-In this lesson, you'll learn how to make requests in JavaScript, just like the ones that you made in the Postman application. To do so, you'll need to synthesize what you've learned about how the web works and how to write asynchronous code.
-
-Postman is a great tool for making requests to servers. However, ultimately, you will want to be able to make these kinds of requests from your code instead of from a separate program.
-
-The following video provides a brief introduction to this topic. Start by watching the video, and then read through the rest of the lesson and complete the practice tasks. This will give you a thorough understanding of these concepts.
 Starter code
 
 This lesson requires you to have the Constellations server GitHub repository running on your local machine. If you haven't already, fork and clone the repository. Then, follow the README file's instructions to get the server running.
@@ -342,36 +333,32 @@ npm init -y
 
 npm i axios
 
-External request helpers
+*** External request helpers
 
-Depending on your environment, there are several different tools that you can use to make external requests in JavaScript. For example, if you're building code that will be used on the frontend, you could use the Fetch API. And if you're building code that will be used on the backend, you could use the built-in Node HTTP package.
+Depending on your environment, there are several different tools that you can use to make external requests in JavaScript.
+For example, if you're building code that will be used on the frontend, you could use the [[https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API][Fetch API]].
+And if you're building code that will be used on the backend, you could use the built-in [[https://nodejs.org/api/http.html#http_http][Node HTTP package]].
 
-For this module, you will use a package called axios. The axios package can be used on both the frontend and the backend, making it a good choice for learning how to make web requests. It's also a promise-based library, which means that you can apply your prior knowledge of working with asynchronous code to making web requests. To learn more about this package, check out the axios documentation.
+For this module, you will use a package called axios.
+The axios package can be used on both the frontend and the backend, making it a good choice for learning how to make web requests.
+It's also a promise-based library, which means that you can apply your prior knowledge of working with asynchronous code to making web requests.
+To learn more about this package, check out the [[https://www.npmjs.com/package/axios][axios documentation.]]
 
-Note: Every tool is slightly different, even if they accomplish the same goal. If you use a different tool at some point, look at that tool's documentation to learn how to use it.
-Simple requests
-
-The axios library provides clear documentation and even clearer methods. To begin, take a look at this request:
-Making a GET request with Postman.
+*** Simple requests
 
 This same request written in JavaScript with the axios library would look like this:
 
 const axios = require("axios");
 
-
 const url = "http://localhost:5000/constellations";
-
 axios.get(url).then((response) => {
-
   console.log(response.status);
-
   console.log(response.statusText);
-
   console.log(response.data);
-
 });
 
-The axios.get(url) command is a promise, which means that the then() method can be called on it. The then() callback function will provide a parameter which is an object that contains details about the response.
+The axios.get(url) command is a promise, which means that the then() method can be called on it.
+The then() callback function will provide a parameter which is an object that contains details about the response.
 
 The keys status, statusText, and data return information about the status code, the status code message, and the response body, respectively.
 
@@ -383,38 +370,26 @@ axios.get("malformed url").catch((error) => {
 
 });
 
-Do this
-Make a request with JavaScript
+*** Do this Make a request with JavaScript
 
 Copy the code below into the requests.js file that you made.
 
 const axios = require("axios");
 
-
 const url = "http://localhost:5000/constellations";
-
 axios
-
   .get(url)
-
   .then((response) => {
-
     console.log(response.status);
-
     console.log(response.statusText);
-
     console.log(response.data);
-
   })
-
   .catch((error) => {
-
     console.log(error.message);
-
   });
 
 Make sure that your Constellations server is running, and then run your requests.js file. Take a look at the output and compare it with the output that you received from Postman. The response body should be the same!
-Manipulate the data
+*** Manipulate the data
 
 Now that you have these responses in JavaScript, you can perform all kinds of operations on them. For example, try writing code that will print out an array of only those constellations where the starsWithPlanets value is less than 10.
 
@@ -447,7 +422,7 @@ axios
 
   });
 
-Complex requests
+*** Complex requests
 
 The axios library provides different methods for common HTTP verbs such as get(), post(), put(), patch(), and delete().
 
@@ -493,7 +468,7 @@ The above request will create new data for the Ara constellation on the server. 
 
 };
 
-Do this
+*** Do this
 Create a new constellation
 
 Copy the code above and run it to create a new constellation on your Constellations server. Take note of the ID that it returns!

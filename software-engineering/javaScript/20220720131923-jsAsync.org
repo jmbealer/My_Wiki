@@ -299,7 +299,7 @@ The above code reads the contents of quotes.txt using the asynchronous fs.readFi
 In the readFile() callback function, it splits the file contents into lines and then randomly assigns one of the lines to the quote variable.
 Finally, it logs Your quote is: ${quote}.
 
-Tip :: The fs module used in the code above enables interacting with the file system. The intricacies of the fs library are outside of the scope of this lesson; if you would like to know more, consult the [[https://nodejs.org/api/fs.html][fs documentation]].
+Tip - The fs module used in the code above enables interacting with the file system. The intricacies of the fs library are outside of the scope of this lesson; if you would like to know more, consult the [[https://nodejs.org/api/fs.html][fs documentation]].
 
 However, if you run the code above, you'll see that the output doesn't quite work. Take a look:
 
