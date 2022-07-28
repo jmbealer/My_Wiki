@@ -6,10 +6,12 @@
 
 ** Promises
 *** Sync and async code
-**** Terminology
+**** Terminology wip
 
-Synchronous code (also called sync code) :: executes one code instruction at a time, in the order that the instructions are given.
-Asynchronous code (also called async code) :: executes multiple instructions simultaneously, and the order in which the instructions complete isn't known.
+Synchronous code also called sync code
+Synchronous code - executes one code instruction at a time, in the order that the instructions are given.
+Asynchronous code also called async code
+Asynchronous code - executes multiple instructions simultaneously, and the order in which the instructions complete isn't known.
 
 
 It's a lot easier to understand the difference between these two types of code with an example.
@@ -61,7 +63,7 @@ useSetTimeout();
 Notice that the setTimeout() function was told to wait for 0 milliseconds.
 So how is it possible that "End!" is still printed before "Inside setTimeout!"?
 
-Event loop :: A design pattern that a program may use to prioritize certain lines of code for execution
+Event loop - A design pattern that a program may use to prioritize certain lines of code for execution
 The reason has to do with something called the event loop.
 The event loop describes a process by which JavaScript prioritizes certain lines of code for execution.
 Asynchronous code is placed into a queue where it will always run after the synchronous lines of code in the current file.
