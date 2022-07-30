@@ -8,11 +8,11 @@
 
 this is the main index...
 
-certifications
 
 computing
 cli
 linux
+certifications
 
 text-editing
 vim
@@ -27,6 +27,7 @@ vim
 [[id:1bfecfad-efe8-4602-be60-168c5d3352a4][doomEmacs]]
 
 education
+fitness
 information
 languages
 mathematics
@@ -74,5 +75,4 @@ awkTest.txt
 
 change linux into my main wiki for my notes.
 
-new
 #+end_src
