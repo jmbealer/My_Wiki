@@ -15,6 +15,2845 @@ this is a staging area for my notes need to summarize and move to a better place
 [[id:c1cbc82c-ad99-4ae6-80a8-a9d83d2e71b8][careerNetworking]]
 [[id:0b027db0-6cea-4c7a-81fa-05115bd10590][problemSolving]]
 
+** module 18 frontend foundations
+*** 18.2 developer tools
+
+Developer tools
+
+In this lesson, you'll focus on the Chrome developer tools (sometimes referred to as DevTools).
+However, many browsers have similar developer tools.
+
+The developer tools offer several useful features, including the following:
++ The Element inspector, which allows you to inspect a particular element on the page
++ The Styles tab, which allows you to see which styles have been applied to a particular element
++ The Device toolbar, which allows you to see what your website will look like on various devices
+
+Learning more
+
+For now, the inspector will be your most valuable tool for working with HTML and CSS.
+If you want to learn more about the developer tools (and especially Chrome's version), you can visit Google's Chrome DevTools page.
+[[https://developers.google.com/web/tools/chrome-devtools][Google's Chrome DevTools]]
+
+*** 18.3 intro to flexbox
+
+Key Terms
+
+Flexible box module
+    Flexbox, a CSS module that provides a robust set of tools for developers to solve common layout problems
+
+Introduction to flexbox
+
+
+The flexible box module (or flexbox) provides a robust set of tools for developers to solve common layout problems, including the problem of building for various screen sizes.
+
+
+
+
+Do this
+Adding flexbox
+
+.group {
+  display: flex;
+  flex-direction: row; /* or column */
+}
+
+Within the .group container, the default setting for displaying this container is block.
+But to apply the flexbox properties to it, you should set the display property to flex.
+This will tell the browser that all the items within this container should display as either a single row or a single column.
+
+When you change the display property to flex, the default value for flex-direction is row.
+If you run your code, you'll see that all three items now display within a single row.
+
+Keeping flex-direction set as row is perfect for larger monitors.
+And setting flex-direction to column is perfect for displaying the content on mobile devices.
+
+
+Do this
+Set the flex property
+To change it so that all three items display with the same width, you can change the flex setting to 1, as shown here:
+
+.item {
+  flex: 1;
+  margin: 10px;
+}
+
+The flex: 1 declaration tells the .group container that each item should be the same width, regardless of its content, and it will fill the container appropriately.
+
+At this point, you should have three items within a group, and the items should display as equal in size.
+
+Do this
+Add margins
+
+Set margin: 10px, as shown below. This margin is useful because it creates a little visual barrier between the .item containers. You can add or decrease this value to see what happens to the .item containers in the web page.
+
+.item {
+  margin: 10px;
+}
+
+Modifying the flex value
+
+The flex: 1 value is currently telling the .item containers to all display at the same width.
+You can change the ratio of these containers by changing the flex value to different values.
+
+For example, you could create an additional .item-double class and set that flex value to 2.
+When this is applied in addition to the .item class, the new container will display at double the size of the others within that group.
+
+Do this
+Create an .item-double class
+
+Add the following .item-double class to your CSS file:
+
+.item {
+  flex: 1;
+  margin: 10px;
+}
+
+.item-double {
+  flex: 2;
+}
+
+Within the HTML, you can also create columns with different widths, as shown below. To do this, keep the original item class for all the same width elements and the margin. Then use item-double as a modifier style to override item with flex: 2 rather than creating a completely separate style.
+
+The containers that have the item-double class will now display at twice the width of their sibling containers.
+
+*** 18.4 intro to media queries
+Overview
+
+Media queries are a CSS feature that allows content to adapt to different screen sizes, such as mobile and desktop screens.
+With a simple media query, you can easily modify a website's appearance on different devices.
+
+Media queries
+
+With a simple media query, you can quickly provide a responsive layout to nearly any standard website.
+
+
+Media queries are essentially an if statement for CSS.
+A condition is set, and if that condition is met, then the CSS rules within it will be applied.
+Typically, media queries are used for changing the CSS of a website based on screen size.
+
+The basic syntax for a media query is as follows:
+@media <media type> (<media features>) {
+  <CSS Rules>
+}
+
+Media types can be set to all, print, screen, or speech.
+The all type, which is the most common type and the default in HTML5, applies the media query to every media type.
+But if you want the styles within the media query to apply only when the web page is printed, you can use print instead.
+
+The complete list of media features is long, but these are the most common ones:
++ width
++ height
++ orientation
+
+Do this
+Use media queries to adjust your paragraph's font size
+
+In the style.css file, add the following rules:
+
+p {
+  font-size: 14px;
+}
+
+@media all and (min-width: 800px) {
+  p {
+    font-size: 24px;
+  }
+}
+
+The code above is saying that the paragraph should generally display at 14 pixels in size.
+The paragraph should only be displayed at 24 pixels when the browser has a width of 800 pixels or greater.
+
+*** 18.5 mobile-first development
+Overview
+As you'll explore in this lesson, a mobile-first approach involves designing the mobile version of a website first, and then adapting the display to larger screens like a desktop.
+When you follow a mobile-first approach, you start by building your website with your mobile users' experience in mind.
+
+Key Terms
+
+Graceful degradation
+    A desktop-first approach that involves designing the web page layout for larger screens, then adding media queries to remove features and rearrange elements to fit a smaller screen
+Progressive enhancement
+    A mobile-first approach that involves designing for the smallest screen first, then progressively adding features and rearranging the layout to take advantage of larger screen sizes
+Viewport
+    The area of a browser's window in which web content can be seen
+
+Mobile-first development
+
+
+There are two approaches to media queries.
+
+The more traditional approach is known as graceful degradation.
+Graceful degradation is a desktop-first approach that involves designing the web page layout for larger screens, then adding media queries to remove features and rearrange elements to fit a smaller screen.
+It's considered the old way of creating responsive websites.
+
+The code below represents this traditional desktop-first approach; this kind of approach is built for desktop screens and then adapted for smaller screens.
+This code assigns the background of a website shown on a desktop to be green.
+However, if a screen's width is smaller—specifically, if the width is between 0 and 600 pixels—the code will assign the background to be red.
+
+body {
+  background-color: green;
+}
+
+/* This applies from 0px to 600px */
+@media all and (max-width: 600px) {
+  body {
+    background-color: red;
+  }
+}
+
+The newer and preferred method is known as progressive enhancement.
+Progressive enhancement involves designing for the smallest screen first, then progressively adding features and rearranging the layout to take advantage of larger screen sizes.
+
+As it turns out, progressive enhancement ensures that there is a good enough user experience on all screens.
+Designing your pages to work on smaller screens first is the generally accepted approach to making web pages today.
+
+The code below is targeting mobile-first design.
+It assigns the background of the website to be red.
+However, if a screen width has 600 or more pixels, like on a desktop computer, the code will assign the background to be green.
+
+body {
+  background-color: red;
+}
+
+/* This applies from 600px and larger */
+@media all and (min-width: 600px) {
+  body {
+    background-color: green;
+  }
+}
+
+Do this
+Implement a mobile-first responsive flexbox
+
+Before you add any media queries to your projects in these lessons, you should first make your project adhere to mobile-first design.
+
+Adjust your screen width to below 800 pixels, to display the smaller screen view.
+Notice that the items are arranged horizontally on the same row.
+Ideally, they'd be stacked vertically on a small screen.
+
+To do this, you just have to alter how .group classes display; change the flex-direction from row to column, as in the code below:
+
+.group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 100px;
+}
+
+Now, you can add a media query after the .group and .item classes, like this:
+
+/* Groups and items (Desktop) */
+
+@media all and (min-width: 800px) {
+  section,
+  h1 {
+    padding: 0 10%;
+  }
+
+  .group {
+    flex-direction: row;
+  }
+}
+
+Here's a breakdown of the syntax above:
+
++ The media query @media all and (min-width: 800px) is saying to only apply these CSS rules when the web browser is 800 pixels or larger.
+
++ When this condition is met, it adds a bit of padding to each <section> and <h1> element.
+
++ Then, it changes the flex-direction of each group; on larger browsers, the flex-direction becomes row instead of column. This displays the columns appropriately, as you can see in the image below of this code displaying on a larger browser.
+
+
+
+Viewport
+
+<meta name="viewport" content="width=device-width">
+
+The viewport is the area of a browser's window in which web content can be seen.
+Mobile devices usually render the page as if it were to be displayed on a larger screen, then shrink it to fit within the visible area.
+However, if your page is already optimized to work with the small screen, this may cause a suboptimal experience.
+The viewport meta tag was introduced to help with this problem; this tag lets you control the way that your pages are scaled when rendered by the browser.
+
+For this meta tag to display the website properly on all devices, you need to add initial-scale=1.
+When the initial scale is set to 1, it keeps the same zoom scale.
+This presents the text much better as web pages change between vertical and horizontal views.
+
+For any responsive web page, this entire tag is required:
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+Responsive images
+
+Working with images inside responsive layouts can get a little complicated; it would be really difficult to track the changing .item container sizes and then update the image sizes appropriately.
+Luckily, there is a very easy solution here: you can set all the image widths to be 100% using CSS, and the images will match whatever container width that they are placed within.
+
+Do this
+Adding images to group items
+
+The files for this part of the lesson are stored in the responsive-images folder. Start by opening the index.html file with VSCode Live Server.
+
+Notice that the images displayed in the browser are very large. So now, make them responsive.
+
+Add the following code to the style.css file. Set the width of images to 100%, as follows:
+
+img {
+  width: 100%;
+}
+
+This code sample targets all the images within the .group container to display at 100%.
+If you don't want to force the 100% resizing of every image, you can be more selective in how you target your images.
+
+This code below, for example, will target only the images within the main container to be 100% in width.
+Try it out in style.css by replacing the previous CSS code snippet with the following:
+
+main img {
+  width: 100%;
+}
+
+Because the img and main img selectors target the same images on the page, you won't actually see a visual difference between using img versus main img in this example.
+
+But the four items that are pictures of the ocean aren't.
+This is an example of why it is important to understand image size ratios.
+When the images aren't the same height and width (in other words, when they have different ratios), they won't display properly.
+To get these images to align properly, you need to crop them so that they all have the same ratio.
+Images of different sizes that aren't aligned properly.
+
+Most designers use graphical programs like Adobe Photoshop to edit images.
+Luckily, there are also alternative apps online that make this process easy.
+Of course, third-party tools available for free could disappear anytime.
+But hopefully the tool shown below, [[https://www.birme.net/][BIRME]], can help if you find that you need to resize images for your own projects.
+
+*** 18.6 deeper with flexbox
+
+Key Terms
+
+Main axis
+    The row or column orientation established by the flex-direction property
+Cross axis
+    The axis perpendicular to the main axis
+
+
+Flexbox properties
+
+Certain properties are applied to the group (or parent), and other properties are applied to the items nested within the group (or children).
+
+The following is a list of parent properties:
+
++ flex-direction
++ flex-wrap
++ justify-content
++ align-items
++ align-content
+
+And here is a list of children properties:
+
++ order
++ flex-grow
++ flex-shrink
++ flex-basis
++ align-self
+
+Group (parent) properties
+The flex-direction property
+
+The flex-direction property establishes the main axis, telling the items to display as either a horizontal row or vertical column.
+There are also two other values, row-reverse and column-reverse, which reverse the display order of the items.
+The following table summarizes the possible values for the flex-direction property.
+
+Value Effect:
++ row :: Left to right (the default)
++ row-reverse :: Right to left
++ column :: Top to bottom
++ column-reverse :: Bottom to top
+
+The flex-wrap property
+
+By default, the items within a flex group container will display on a single line.
+This can be changed to allow items to wrap as needed with the flex-wrap property, as described in the table below.
+
+Value Effect:
++ nowrap :: All flex items will be on one line. This is the default.
++ wrap :: Flex items will wrap onto multiple lines from top to bottom.
++ wrap-reverse :: Flex items will wrap onto multiple lines from bottom to top.
+
+The justify-content property
+
+This is a useful property when there is available space around the items of the group.
+That space can be distributed in various ways, as described in the table below.
+
+Value Effect:
++ flex-start :: Items are packed toward the start of the flex direction. This is the default.
++ flex-end :: Items are packed toward the end of the flex direction.
++ center :: Items are packed centered along the line.
++ space-between :: Items are evenly distributed along the line; the first item is on the start line and the last item is on the end line.
++ space-around :: Items are evenly distributed, but have a half-size space on either end.
++ space-evenly :: Items and spacing are both evenly distributed.
+
+The align-items property
+
+This property is similar to the justify-content property, but it aligns items on the cross axis, which is perpendicular to the main axis that is used in the justify-content property
+The following table summarizes the possible values for the align-items property:
+
+Value Effect:
++ stretch :: Items are stretched along the cross axis to fill the container, but any defined minimum and maximum item widths are still respected. This is the default.
++ flex-start :: Items are placed at the start of the cross axis.
++ flex-end :: Items are placed at the end of the cross axis.
++ center :: Items are centered on the cross axis.
++ baseline :: Items are aligned along their baseline.
+
+The align-content property
+
+This property will apply only when there is more than one line of flex items.
+When there is extra space in the cross axis, it will align the flex group on that axis (similar to how justify-content aligns individual items on the main axis).
+The following table summarizes the possible values for the align-content property:
+
+Value Effect:
+stretch :: Items stretch along the cross axis to take up the remaining space. This is the default.
+flex-start :: Items are packed to the start of the container's cross axis.
+flex-end :: Items are packed to the end of the container's cross axis.
+center :: Items are packed in the center of the container.
+space-between :: Items are evenly distributed with the first line at the start and the last one at the end of the container.
+space-around :: Items are evenly distributed with equal space around each line.
+space-evenly :: Items are evenly distributed with equal space around them.
+
+Item (child) properties
+The order property
+By default, flex items will display in the order they are added to the HTML page.
+But with the order property, the items in the flex container can be adjusted.
+This can be useful if you want the items ordered one way for mobile and another way for desktop.
+
+The flex property
+The flex property for items is actually shorthand for three properties:
+
++ flex-grow
++ flex-shrink
++ flex-basis
+
+These properties are all tied to items, and it is recommended to use this shorthand property instead of setting the individual properties.
+The default is 0 1 auto, which assigns flex-grow to 0, flex-shrink to 1, and flex-basis to auto.
+But if you set the flex property with a single number value, like 1, the shorthand will use the single value to define the flex-grow property and will then set the other values appropriately.
+
+The flex-grow property
+
+The flex-grow property is quite useful.
+By default, the value is set to 0.
+If an item is set to 1, it will size all the items equally, so that they are all the same size.
+If an item is set to 2, it will set the size of that item as twice as large as the other items.
+
+The align-self property
+This property lets the default alignment (or the one specified by align-items) be overridden for individual flex items.
+
+Flexbox layouts
+
+There are many great online resources that demonstrate different layout patterns using flexbox.
+If you'd like to see some example flexbox layouts with CSS, visit [[https://tobiasahlin.com/blog/common-flexbox-patterns/][Common CSS Flexbox Layout Patterns with Example Code]].
+
+Helpful games and resources
+
+For practice using flexbox, you can play around with flexbox properties using the games and apps listed below.
+
+    Flexbox Defense teaches flexbox via a casual strategic defense game.
+http://www.flexboxdefense.com/
+    Flexbox Froggy is a game that lets you practice writing CSS code.
+http://flexboxfroggy.com/
+    Flexy Boxes shows code samples and allows you to change parameters to help visualize how flexbox works.
+https://the-echoplex.net/flexyboxes/
+    Flexbox Patterns features many flexbox examples.
+https://www.flexboxpatterns.com/
+*** 18.7 navigation
+
+Responsive navigation
+
+**** Mobile-first approach
+
+
+Now, you will learn how to build this CSS code piece by piece. You'll look at the CSS selectors that you need to target the various HTML elements, and you'll learn how to write declaration blocks that style each selected element to match the navigation shown in the image above.
+
+For each selector, the HTML element that the CSS selector targets will be marked by a red border (border: 1px solid red;). This will help you visually connect the code with the element and the space that it occupies in each of the images below.
+**** Do this
+
+Make sure to keep the style.css file open in VS Code, as you will be adding CSS code to that file for the remainder of this lesson.
+Style the header
+Navigation with a styled header.
+
+The header selector is the primary container to hold both the name of your page and its navigation.
+
+Add the following CSS to style the header:
+
+header {
+
+  /* Sets background color to black. */
+
+  background-color: #000;
+
+  /* Adds 40 pixels of space under the header
+
+     so that the main content isn't so close
+
+     to the navigation. */
+
+  margin-bottom: 40px;
+
+}
+
+**** Do this
+Style the title of your document
+Navigation with a styled title.
+
+The header h1 selector targets the title of your document. Adding a unique font will give this text more style, too.
+
+Add the following CSS to style the title of your document:
+
+header h1 {
+
+  /* Sets text color to white. */
+
+  color: #fff;
+
+  /* Centers the text. */
+
+  text-align: center;
+
+  /* Removes the default margin and spacing around the `h1` element. */
+
+  margin: 0;
+
+  /* Pushes the text down 20 pixels from the top of the page. */
+
+  padding-top: 20px;
+
+}
+
+**** Do this
+Style the container for the navigation
+Navigation in a styled container.
+
+The header nav selector targets the container for the navigation. Targeting only the nav container that's within the header allows for other navigation containers to be styled differently in the footer or elsewhere on the page.
+
+Add the following CSS to style the container for the navigation:
+
+header nav {
+
+  /* Changes the display property from its default to `flex`. */
+
+  display: flex;
+
+  /* Centers an element defined as `display: flex`. */
+
+  justify-content: center;
+
+}
+
+**** Do this
+Style the unordered list
+Navigation in a styled unordered list.
+
+This header nav ul selector targets the unordered list that is within the header's nav container.
+
+Add the following CSS to style the unordered list:
+
+header nav ul {
+
+  /* Changes the display property from its default to `flex`. */
+
+  display: flex;
+
+  /*
+
+    You want the navigation to display in a single row. This is
+
+    the default value for `display: flex`, so you don't need
+
+    to define its `flex-direction` in this case.
+
+  */
+
+
+  /*
+
+    Removes the default padding to the left of the
+
+    unordered list.
+
+  */
+
+  padding-left: 0;
+
+
+  /*
+
+    Removes the bullet points from the list items within the
+
+    unordered list.
+
+  */
+
+  list-style: none;
+
+}
+
+**** Do this
+Style the anchor tags of the list items
+Styled anchor tags of the list items.
+
+The header nav ul li a selector targets the anchor tag (link) of the list items within the unordered list that is within the header's nav container.
+
+Add the following CSS to style the anchor tags:
+
+header nav ul li a {
+
+  /* The link color is white. */
+
+  color: #fff;
+
+  /* Removes the underline from the link. */
+
+  text-decoration: none;
+
+  /* Applies 20 pixels of margin to the right of each link
+
+     creating a visual gap between the navigation links. */
+
+  margin: 0 20px 0 0;
+
+}
+
+**** Do this
+Style the last list item's anchor
+Last list item of the navigation is styled.
+
+The header nav ul li:last-child a selector targets the last list item's contained anchor (link).
+
+Add the following CSS to style the last list item's anchor tag:
+
+header nav ul li:last-child a {
+
+  /* Removes the margin to the right of the last anchor tag
+
+     so that the nav appears centered. */
+
+  margin-right: 0;
+
+}
+
+Great job on making it this far in the lesson! So far, you've created a navigation bar for the mobile view using flexbox. Next, you will add a media query for the desktop view.
+**** Media query for desktop
+
+As mentioned earlier, the code that you've worked through so far was designed to be viewed on mobile devices. To tell the browser how to change the header, title, and navigation when viewed on a desktop, you need to add a media query for desktop.
+**** Do this
+Add a media query
+
+Add the following media query for desktop:
+
+/* When a web browser is larger than 600 pixels,
+
+   apply these rules. */
+
+@media all and (min-width: 600px) {
+
+  header {
+
+    /* Changes the default setting from `block` to `flex`. */
+
+    display: flex;
+
+    /* Pushes the items (the title and nav) to the far sides of the
+
+       browser with space between them. */
+
+    justify-content: space-between;
+
+    /* Adds 0 pixels padding top and bottom, and 30 pixels padding
+
+       left and right. */
+
+    padding: 0 30px;
+
+  }
+
+
+  header h1 {
+
+    /* Sets 14 pixels of margin above and below the `h1` and sets
+
+        0 pixels of margin to the left and right. */
+
+    margin: 14px 0;
+
+    /* Removes or sets 0 pixels of padding above the `h1`. */
+
+    padding-top: 0;
+
+  }
+
+
+  header nav {
+
+    /*
+
+      Pushes the navigation container down by 8 pixels to make it
+
+      present a little better visually within the space.
+
+    */
+
+    margin-top: 8px;
+
+  }
+
+  /* Users cannot hover on mobile devices, so that is why you
+
+     implement this behavior only for larger screens. */
+
+  header nav ul li a:hover {
+
+    /* Targets the change when a user holds the pointer over the anchor tag
+
+       (link) within the list items within the unordered list that
+
+       is within the navigation that is within the header. */
+
+    color: #bdbdbd;
+
+  }
+
+}
+
+At this point, your navigation bar will be fully responsive. Try it out in the browser.
+**** Linking navigation
+
+There are different navigation rules depending on if you are creating a single-page website or a multipage website.
+**** Single-page navigation
+
+When you create a single-page website, you'll add anchor IDs to the sections or other primary containers in your page. Don't forget to add the hash symbol # in the link; this will tell the link to look for the anchor ID somewhere on the page and jump to it when clicked. The navigation will look like this:
+
+<header>
+
+  <div class="title">Your Name</div>
+
+  <nav>
+
+    <ul id="menu">
+
+      <li><a href="#home">Home</a></li>
+
+      <li><a href="#about">About</a></li>
+
+      <li><a href="#portfolio">Portfolio</a></li>
+
+      <li><a href="#contact">Contact</a></li>
+
+    </ul>
+
+  </nav>
+
+</header>
+
+<main>
+
+  <section id="home">
+
+    <!-- All the Home section can be placed here. -->
+
+  </section>
+
+  <section id="about">
+
+    <!-- All the About section can be placed here. -->
+
+  </section>
+
+  <section id="portfolio">
+
+    <!-- All the Portfolio section can be placed here. -->
+
+  </section>
+
+  <section id="contact">
+
+    <!-- All the Contact section can be placed here. -->
+
+  </section>
+
+</main>
+
+**** Multi-page navigation
+
+When you're linking to other pages that are all within the same directory, the navigation will look like this:
+
+<header>
+
+  <div class="title">Your Name</div>
+
+  <nav>
+
+    <ul id="menu">
+
+      <li><a href="/">Home</a></li>
+
+      <li><a href="about.html">About</a></li>
+
+      <li><a href="portfolio.html">Portfolio</a></li>
+
+      <li><a href="contact.html">Contact</a></li>
+
+    </ul>
+
+  </nav>
+
+</header>
+
+Tip
+
+Websites usually set the home page link to the public root ("/"). This is because index.html is the default file in that directory, so it hides the /index.html filename from displaying in the browser address.
+*** 18.8 html forms
+
+**** Introduction to forms
+HTML forms are very useful for web users. Below are just a few examples of what they can be used for:
+
+Sending an email through a web page
+
+Submitting purchase order information
+
+Completing survey questions
+
+Collecting user registration
+
+Here are three examples of websites that make very good use of HTML forms:
+
+First example of a website that makes good use of HTML forms.
+Image source: HotJar's registration page
+
+HotJar uses the HTML form to collect the user's full name and email address so that they can create a free basic account.
+
+Second example of a website that makes good use of HTML forms.
+Image source: Omada's contact page
+
+Omada uses the HTML form in three different ways: asking if the customer has a Sales Inquiry, needs User Support, or wants Something Else. This way, Omada can tailor the input fields for the HTML form to collect the data that is most useful for their team.
+
+Third example of a website that makes good use of HTML forms.
+Image source: YummyGum's contact page
+
+YummyGum uses HTML forms in a method that's similar to Omada's usage of forms. This page filters the user through four radio buttons, and then delivers tailored input fields for each topic.
+
+**** HTML form basics
+To create an HTML form, you can begin in one of these two ways:
+
+<form action="process-form.js" method="post">
+  <!-- Add the HTML input elements here -->
+</form>
+
+<form action="baseball-stats.js" method="get">
+  <!-- Add the HTML input elements here -->
+</form>
+The <form> element does not have any visual design by default—but of course, you can still apply a background color or a border using CSS.
+
+Within each <form> element are two attributes: an action and a method.
+
+action: This attribute holds the URL to the server-side file where the data will be sent.
+
+method: This attribute specifies the HTTP method—post or get—that will be used with the action.
+
+post: This method can involve anything from storing or updating data, ordering a product, or sending an email.
+
+get: Put simply, this method is used to retrieve data to display in the form.
+
+There are various kinds of form fields that you can add to a form, including, but not limited to:
+
+Text fields
+
+Text areas
+
+Radio buttons
+
+Checkboxes
+
+Drop-down list
+
+Submit and reset
+
+Fieldset and legend
+
+Password field
+
+You'll explore these commonly used form fields next.
+
+**** Text fields
+First name text field.
+<form>
+  <label for="name">First name:</label>
+  <input id="name" type="text" name="name" />
+</form>
+The example above has two HTML elements: a label and an input.
+
+The label tells users what information needs to go in a text field. It's connected to the input element with the for attribute as it links to the input's id.
+
+The label is also important for accessibility. Assistive technologies such as screen readers use the label to tell the user what text should go in the text field. The label also makes it easier for users to interact with the text field by providing a larger hit area to click or touch.
+
+The input has three attributes:
+
+id: The id attribute gives the element a unique name so that the label knows how to connect with it.
+
+type: The type attribute determines what type of control to render (for example, whether the user clicks a radio button, checks a checkbox, or enters text). For a text field, the type is set to text, which creates a single line of input text.
+
+name: The name attribute is used to identify the input field when the entire form is submitted to a server.
+
+**** Text field options
+There are three additional attributes that can be used to style the text field.
+
+autofocus: on: The autofocus attribute will set the first input to autofocus to help draw the user's attention to it. You only want this once on your page.
+
+required: The required attribute will tell the user that this field must be filled in before they submit the form.
+
+maxlength: number: The maxlength value limits the number of characters added to the text field.
+
+Here's an example of these attributes in use:
+
+Attributes for text field styling
+<form>
+  <label for="location">Zipcode:</label>
+  <input
+    id="location"
+    type="text"
+    name="zipcode"
+    autofocus="on"
+    maxlength="5"
+    required
+  />
+</form>
+**** Do this
+Add text fields to your form
+In index.html, add the following code to create text fields to collect the user's name and zipcode:
+
+<form>
+  <div>
+    <label for="name">Full Name:</label>
+    <input id="name" type="text" name="name" />
+  </div>
+  <div>
+    <label for="location">Zipcode:</label>
+    <input
+      id="location"
+      type="text"
+      name="zipcode"
+      autofocus="on"
+      maxlength="5"
+      required
+    />
+  </div>
+</form>
+**** Text areas
+Text area fields present the user with a multi-line input field so that they can enter an unlimited number of characters. These are best used for collecting a longer message. Here's what these fields look like:
+
+Text area field example
+As you can see in the code below, this HTML element has its own label.
+
+<form>
+  <label for="form-message">Your message:</label>
+  <textarea id="form-message" name="message"></textarea>
+</form>
+These are the attributes that can change the way that the text area looks and works:
+
+cols: Sets the visible width of a text area in character spaces. But it's better to use the width attribute in CSS.
+
+rows: Sets the visible number of lines in a text area in character spaces. But it's better to use the height attribute in CSS.
+
+autofocus: on: The autofocus attribute sets the first input to autofocus to help draw the user's attention to it. Remember, you only want this once on your page.
+
+required: The required attribute tells the user that this field must be filled in before they submit the form.
+
+maxlength: number: The maxlength value limits the number of characters that can be added to the text field.
+
+**** Do this
+Add text areas to your form
+In the index.html file, add the following tags to your form:
+
+<form>
+  ...
+  <div>
+    <label for="form-message">Your message:</label>
+    <textarea
+      id="form-message"
+      name="message"
+      autofocus="on"
+      required
+      maxlength="200"
+    ></textarea>
+  </div>
+</form>
+This form states that it is a multi-line text field that will store the data within the name message. The autofocus is set to on, the field is required, and only 200 characters can be entered.
+
+**** Fieldset and legend
+The <fieldset> element is used to group together related inputs and labels. This will help web crawlers and screen readers, even if there is no visual representation here. The <legend> element is like a title for the <fieldset>.
+
+Here's what these elements look like:
+
+Related elements grouped by fieldset.
+**** Do this
+Add a fieldset and legend to your form
+In the index.html file, group your name and location input fields within a set of fieldset tags, as follows:
+
+<form>
+  <fieldset>
+    <legend>Shipping Information</legend>
+    <div>
+      <label for="name">Full Name:</label>
+      <input id="name" type="text" name="name" />
+    </div>
+    <div>
+      <label for="location">Zipcode:</label>
+      <input
+        id="location"
+        type="text"
+        name="zipcode"
+        autofocus="on"
+        maxlength="5"
+        required
+      />
+    </div>
+  </fieldset>
+  ...
+</form>
+Notice how the <fieldset> element is used to group the shipping information (i.e., name and location) together.
+
+**** Placeholder text
+The text field and text area field can both use the placeholder attribute to briefly describe the information that is expected in the field. This should just hint at what should be inputted rather than providing a full explanation; it's best to use a simple word or short phrase that demonstrates the expected type of data. The placeholder text cannot include carriage returns or line feeds.
+
+Keep in mind that for accessibility and usability reasons, labels shouldn't be replaced by placeholders. Placeholder text disappears when the user types in the field, so if the user forgets what the form field is expecting as an input, the user would have to delete what they wrote to reveal the placeholder text again. Moreover, some screen readers may not even read placeholder text aloud.
+
+Also, make sure that the placeholders you use have the appropriate CSS styling so that it is easy to read for your users.
+
+Placeholder text examples.
+**** Do this
+Add placeholder text to the name and message fields
+Add the placeholder attribute to your name and form-message fields, as follows:
+
+<form>
+  <fieldset>
+    <legend>Shipping Information</legend>
+    <div>
+      <label for="name">Full Name:</label>
+      <input
+        id="name"
+        type="text"
+        name="name"
+        placeholder="Enter your full name"
+      />
+    </div>
+    ...
+  </fieldset>
+  <div>
+    <label for="form-message">Your message:</label>
+    <textarea
+      id="form-message"
+      name="message"
+      autofocus="on"
+      required
+      maxlength="200"
+      placeholder="How can I help you?"
+    ></textarea>
+  </div>
+  ...
+</form>
+**** Password field
+As you build more complicated forms, there may be times when you want to mask sensitive input fields by using the password field.
+
+Password field.
+Review the code below to get an idea of how the HTML works.
+
+<div>
+  <label for="password">Password:</label>
+  <input id="password" type="password" name="password" minlength="8" />
+</div>
+The attribute minlength can be used to force the entry to be at least eight characters in length.
+
+**** Do this
+Add a password field to your form
+In the index.html file, add the following password field to your form:
+
+<form>
+  ...
+  <div>
+    <label for="password">Password:</label>
+    <input id="password" type="password" name="password" minlength="8" />
+  </div>
+</form>
+Type into the password field and observe how the characters you type are hidden.
+
+**** Radio buttons
+Radio buttons allow the web user to select only one of the limited number of choices available. They look like this:
+
+Radio buttons for colors.
+To create a radio button, you'd have to set the type attribute of an input tag to "radio", as follows:
+
+<input id="red" name="color" type="radio" value="red" />
+The new attribute here is the value. The value is important because that is the data for the one selected item that will be submitted with the form data.
+
+**** Do this
+Add radio buttons to your form
+In the index.html file, add the following tags to your form:
+
+<form>
+  ...
+  <div>
+    <h2>Favorite Color:</h2>
+    <div>
+      <input id="red" name="color" type="radio" value="red" />
+      <label for="red">Red</label>
+    </div>
+    <div>
+      <input id="blue" name="color" type="radio" value="blue" />
+      <label for="blue">Blue</label>
+    </div>
+    <div>
+      <input id="white" name="color" type="radio" value="white" />
+      <label for="white">White</label>
+    </div>
+  </div>
+</form>
+There is no necessary order for the radio button's parameters, so you can place the input, name, and value in any order that you wish. When you click on the text of the radio button, the color is selected. That's because of the for attribute and how it matches up with the ID of the <input> element.
+
+**** Checkboxes
+Checkboxes allow the user to select one or more options from the number of choices available. They look something like this:
+
+Check boxes for monster features.
+To create a checkbox, you'd have to set the type attribute of an input tag to "checkbox", as follows:
+
+<input name="scales" type="checkbox" id="scales" />
+**** Do this
+Add checkboxes to your form
+In the index.html file, add the following tags to your form:
+
+<form>
+  ...
+  <div>
+    <h2>Choose your monster's features:</h2>
+    <div>
+      <input name="scales" type="checkbox" id="scales" />
+      <label for="scales">Scales</label>
+    </div>
+    <div>
+      <input name="horns" type="checkbox" id="horns" />
+      <label for="horns">Horns</label>
+    </div>
+    <div>
+      <input name="wings" type="checkbox" id="wings" />
+      <label for="wings">Wings</label>
+    </div>
+  </div>
+</form>
+**** Drop-down list
+A drop-down list, also called a select menu list, is a toggleable menu that allows the user to choose one value from a predefined list. It tends to be more user friendly than a list of radio buttons when there is a long list of items. Drop-down lists look something like this:
+
+Drop-down list for fonts.
+To create a drop-down list, you'd have to use the <select> tag in conjunction with <option> tags. The <select> tag accepts the following attributes:
+
+size: This sets the display of the drop-down menu to show a specified number of items. For example, if you wanted to show a list with 4 items out of 10, you'd set the size to 4 (size="4").
+
+multiple: This option allows for the user to choose multiple sections in the drop-down menu.
+
+**** Do this
+Add a drop-down list to your form
+In the index.html file, add the following tags to your form:
+
+<form>
+  ...
+  <div>
+    <label for="fonts">Choose a font:</label>
+    <select name="fonts" id="fonts" size="1">
+      <option value="arial">Arial</option>
+      <option value="times">Times New Roman</option>
+      <option value="comicsans">Comic Sans</option>
+      <option value="papyrus">Papyrus</option>
+    </select>
+  </div>
+</form>
+In the above code, size="1" sets the display of the drop-down menu to show a single item, with the first of the list by default. Unlike all of the other inputs, it isn't recommended to try to update the style of an HTML drop-down menu using CSS. As you learn more about JS, you'll be able to create a clickable drop-down menu without using this input at all.
+
+**** Submit and reset
+Buttons are similar to links, but they are really important to have in forms. Whereas a link is used to navigate the user to a new page or resource, a button toggles something in the interface—which makes buttons perfect for submitting or resetting the data in a form. Buttons look something like this:
+
+Submit and Reset buttons.
+There are three types of buttons:
+
+submit: Submit buttons send the data in the form to the backend program that collects the data.
+
+reset: Reset buttons clear all of the data that has been changed in the existing form elements.
+
+button: Buttons with type="button" have no default behavior. They are often used to trigger client-side functions or scripts that listen to the element's events.
+
+**** Do this
+Add Submit and Reset buttons to your form
+In the index.html file, add the following tags to your form:
+
+<form>
+  ...
+  <button type="submit">Submit</button>
+  <button type="reset">Reset</button>
+</form>
+Notice that the default presentation of a button looks very different compared to a link. A link may display as blue text with an underline, whereas a button is a rounded rectangle around the text.
+
+Buttons have many uses beyond forms once you start working with JavaScript, but when you're only working with HTML and CSS, their use is usually limited to simple form controls.
+
+**** Patterns
+The pattern attribute is used to supply patterns that the user's input must match in order to be valid. A complete list of useful patterns can be found at HTML5Pattern.
+
+For example, the pattern "\d{3}[\-]\d{3}[\-]\d{4}" will warn the user if they are not providing a correct 10-digit phone number in the xxx-xxx-xxxx format. The visual error that appears is a default with the browser.
+
+**** Do this
+Validate the phone number
+Add the following phone input field, right above the Submit and Reset buttons:
+
+<form>
+  ...
+  <div>
+    <label for="phone">Phone #:</label>
+    <input
+      id="phone"
+      type="text"
+      name="phone"
+      pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+      placeholder="xxx-xxx-xxxx"
+    />
+  </div>
+  ...
+</form>
+An error message "Please match the requested format" will display if the phone number format is wrong when you press the Submit button.
+
+**** More input types
+There are many more input types that you can use in a form. You can find additional ones at MDN: Input Types.
+
+** module 19 css frameworks
+*** 19.1 overview: css frameworks
+
+Key Terms
+CSS framework
+A library of various web design components that can be applied to multiple projects
+
+To help with this complexity, some designers have created CSS frameworks.
+A CSS framework provides various components that you can plug in to your website and thoroughly customize.
+CSS frameworks can increase your productivity and help you design a clean-looking website, even if you're not a great designer yourself.
+
+*** 19.2 using a framework
+
+Key Terms
+Content delivery network
+Also known as a CDN, a network of servers that helps web page content to load more quickly
+Spaghetti code
+A pejorative term used for program code written without a coherent structure
+
+**** What is a framework?
+You'll often hear about CSS frameworks, but the concept of a framework actually appears across the technology stack. A framework, when applied to any language, typically refers to reusable code that provides an opinionated solution to common problems. For example, a CSS framework typically provides prestyled elements and requires that you use certain elements or classes to design your website. In short, a CSS framework is CSS that someone else wrote to help you make incredible websites.
+
+In exchange for following a preset pattern, you gain a number of benefits from the imported code. CSS frameworks vary immensely, but almost all of them allow you to achieve some things much more quickly and easily than would be possible if you were to write all of your own CSS.
+
+These are some time-saving functionalities that are common across most CSS frameworks:
+
+Organizing the layout of your page
+
+Building responsive websites
+
+Maintaining consistency across your pages
+
+In exchange for these benefits, you often have to do the following tasks when using CSS frameworks:
+
+Use certain elements or class names
+
+Organize and nest your elements in a particular way
+
+Include external stylesheets and potentially external JavaScript
+
+**** Examples
+The most popular CSS framework by far is Twitter Bootstrap. With robust documentation and plenty of support from one of the largest tech companies, Twitter Bootstrap has come to define CSS frameworks.
+
+In large part, this is because Bootstrap looks both simple and clean.
+
+Screenshot of the Bootstrap home page, reading "Build fast, responsive sites with Bootstrap."
+There are also other popular CSS frameworks, a few of which are listed below. Note that although each of these frameworks can differ, they have more similarities than differences.
+
+Pure.css
+
+Materialize CSS
+
+Bulma
+
+**** Customization
+CSS frameworks typically provide a few CSS files to include as part of your project. But this doesn't mean that you can't write your own CSS to go on top of it!
+
+In fact, many websites start with a CSS framework as a base, and then design on top of it. For example, all of the websites showcased on Bootstrap Expo make use of Bootstrap—and yet each one looks very different. If you're interested, take a moment to scroll through Bootstrap Expo and get an idea of what's possible with Bootstrap.
+
+With that said, just adding CSS on top of existing CSS can lead to confusing code. It's important to be thoughtful when adding to or modifying existing CSS—and this is particularly crucial if you're working on a large project.
+
+**** Problems
+CSS frameworks can be powerful tools, but they don't come without their own problems and detractors. Here are some of the biggest complaints about CSS frameworks:
+
+CSS frameworks can lead to what is known as spaghetti code. This occurs when developers don't understand how the CSS code they are adding to works but continue to add more and more CSS elements, making the code even more difficult to understand.
+
+CSS frameworks often rely on <div> elements and other non-semantic elements, making pages less accessible to certain types of users.
+
+CSS frameworks can lead to websites looking too similar to each other. When you get familiar with Bootstrap, you'll start to notice lots of websites that use Bootstrap.
+
+As with any tool, using a CSS framework should be a conscious and active choice that you're making. You'll make use of CSS frameworks in this module, but keep in mind that a CSS framework won't always be the best decision.
+
+**** How to add a CSS framework
+Installing and getting started with using a CSS framework is quite simple; many frameworks make it as easy as possible to begin using them.
+
+There are a few ways to include a CSS framework, depending on your setup. However, the most common method is to include a link to a file hosted on a content delivery network (CDN). A CDN is a distributed group of servers used to host files for the web. CDNs make it efficient for many people to access the same file at the same time.
+
+To link to a CDN, you essentially add a stylesheet that has an external URL as its href value. You can usually find a framework's CDN link early on in its documentation.
+
+**** Do this
+View your index.html file
+Before you add Bootstrap, use your browser to open your existing index.html file. Take notice of the style and formatting, even though there's only an <h1> element.
+
+**** Use Bootstrap on your page
+Your page will look something like the image shown below:
+
+Your index.html page before adding bootstrap
+To add Bootstrap to your page, visit Bootstrap's website and scroll down to the jsDelivr section shown in the image below.
+
+A screenshot of the jsDelivr section on the installation page
+Copy the <link> element that's referenced in that section, and add it to the <head> of your index.html page. For now, ignore any requirements to include <script> tags.
+
+Tip
+You don't need to run npm install or anything from your command line. Make sure that you look for the CDN instructions.
+
+When you refresh your page, you will notice that the style is slightly different. You're now using Bootstrap on your page!
+
+The index.html page after using Bootstrap
+
+*** 19.3 grids
+
+
+
+Key Terms
+Grid
+A structural system of horizontal and vertical gridlines that helps ensure that your website is well-aligned and quickly scalable
+Responsive
+The property of allowing a layout to change dynamically based on the size of the screen
+Mobile-first
+A layout where the default configuration is for narrow screen and mobile devices
+CSS container
+The most basic conceptual element in most frameworks, used to encapsulate and pad the rest of the page
+
+**** The grid system
+Many websites are organized in very similar ways. The existence of headers, footers, and sidebars showcases that when it comes to the design of many web pages, developers and designers rely on certain elements to convey their sites' messages.
+
+One way that CSS frameworks make this easier is by providing a grid. A grid allows you to easily organize your website so that it is well aligned and quickly scalable. Modern CSS frameworks also include classes that make it easier to build responsive grids, making the transition from mobile to desktop seamless.
+
+A grid in most CSS frameworks is separated into columns and rows. It's standard for most CSS grid frameworks to have 12 columns and any number of rows.
+
+An example of a grid in CSS
+In the above example, you can see 12 columns marked in dark gray. Each colored section generally represents a horizontal row.
+
+In terms of the grid system, the following statements are true of the above image:
+
+The header is the first row on the page. It spans all 12 columns.
+
+The nav spans three columns, in contrast to the container that is wrapping both the content and the footer. The nav also goes across two different rows.
+
+Both the content and the footer are included together in their own container. They span nine columns. The content and footer are each in their own separate row.
+
+Most websites fit into this kind of structure that prioritizes containers, rows, and columns. In the following sections, you'll learn more about these concepts and how they apply to Bootstrap.
+
+**** Do this
+Grid your view
+Take a look at the page on which you're currently reading this lesson. Can you visualize it as a grid? Take a moment to think about how many columns each part of the page might be, as well as how many distinct rows you see on the page.
+
+**** Containers
+A CSS container is the most basic conceptual element in most frameworks. CSS containers are used to encapsulate and pad the rest of your page. CSS containers aren't usually nested inside of each other.
+
+If you use the grid system from Bootstrap, you will need at least one container on your page.
+
+To make an element into a container, you simply need to add a class of .container to it. Any element can be a container, but it's most typical for the .container class to be added to a <main> or <section> element.
+
+<main class="container">
+  <!-- ... -->
+</main>
+**** Do this
+Use a container
+The best way to see what a container does is to use one. Replace your <body> code with the following code:
+
+<body class="container">
+  <h1>Hello, there!</h1>
+</body>
+Refresh your page to see the difference. Do you see how there's now padding to the left of the heading? This padding is provided by the container.
+
+**** Rows and columns
+Rows wrap around any elements that are grouped horizontally on the page. Rows must be inside of a container element.
+
+As you might expect, rows use the .row class, and columns generally use the .col class.
+
+Each row contains a number of columns. Bootstrap allows for a lot of variety in how columns are used, but columns must be inside of a <div> with a .row class element.
+
+Take a look at the Replit below, which shows a single row with a single column in a single container.
+
+
+In general, there isn't much that is remarkable about this code. But you should notice that several wrapping <div> elements are needed to make use of rows and columns.
+
+Now, take a look at the Replit below. It makes use of two columns, and each column is outlined in a different color. If the screen is too small, try opening this Replit in its own tab.
+
+
+As you might have noticed, the above Replit has two columns of equal width taking up the page. You can continue to add more columns next to each other, and each one will take up a similar width. That's because rows and columns make use of flexbox.
+
+**** Do this
+Include rows and columns
+Replace your <body> element with the following code:
+
+<body class="container">
+  <div class="row"></div>
+</body>
+Then, add three columns inside of the .row. Add a paragraph with some text to each, so that you can see the separation.
+
+Below, you can see a potential solution to this challenge.
+
+<body class="container">
+  <div class="row">
+    <div class="col">
+      <p>
+        Bears are mammals that belong to the family Ursidae. They can be as
+        small as four feet long and about 60 pounds (the sun bear) to as big as
+        eight feet long and more than a thousand pounds (the polar bear).
+      </p>
+    </div>
+    <div class="col">
+      <p>
+        They're found throughout North America, South America, Europe, and Asia.
+      </p>
+    </div>
+    <div class="col">
+      <p>
+        They have nonretractable claws, short tails, and excellent sense of
+        smell. They're typically solitary, except for mothers with cubs.
+      </p>
+    </div>
+  </div>
+</body>
+**** Varied column sizes
+In the documentation, you might have noticed .col classes with additional text next to them. When a number follows a column, as in .col-4, it defines the size of the column. Recall that the grid system is typically based on 12 columns. The .col-4 class means that the selected element will take up 4 out of the 12 columns. Any columns with a .col class will equally share the rest of the space.
+
+In the following Replit, the first column is set to .col-9.
+
+
+As you can see, this first column takes up more space than the remaining column.
+
+**** Responsiveness
+Similarly, it's possible to make your columns and rows responsive. Bootstrap is developed to be mobile-first, which means that it's assumed that users will be viewing your site on mobile.
+
+Bootstrap has a feature that you can use to make the column sizes adapt to different screen sizes. There are four different sizing terms that you can add to your columns:
+
+sm: For small devices and landscape phones
+
+md: For tablets and smaller computers
+
+lg: For desktop computers
+
+xl: For large monitors
+
+More information about the exact breakpoints can be found at Bootstrap's documentation on responsive breakpoints.
+
+Here's an example:
+
+<body class="container">
+  <div class="row">
+    <div class="col col-lg-8">
+      <p>col col-lg-8</p>
+    </div>
+    <div class="col col-lg-2">
+      <p>col col-lg-2</p>
+    </div>
+    <div class="col col-lg-2">
+      <p>col col-lg-2</p>
+    </div>
+  </div>
+</body>
+In the example above, on large screens, the left column (.col-lg-8), will take up most of the space. As the screen size decreases, all of the columns will eventually end up being the same size.
+
+**** Do this
+Add responsive classes
+Add responsive classes to your current work. Use a mix of lg and md classes and test out the difference.
+
+**** Using the documentation
+This lesson won't cover every single aspect of the grid system. Instead, you can explore the Bootstrap documentation. The bootstrap documentation is excellent and gives many examples.
+
+For example, Grid: Setting one column width, which is part of Bootstrap's grid documentation, lays out information on varied column widths.
+
+And Grid: Responsive classes describes how rows and columns can be set to be responsive.
+
+You don't need to memorize everything on the Bootstrap website. Instead, rely on it as a tool for learning and solving problems.
+
+*** 19.4 common components and utilities
+
+**** What else can Bootstrap do?
+CSS frameworks gained popularity through the grid system, but many of these frameworks now also include common components and utility classes that you can add to your website. This makes it easy to quickly add common styling. In the following sections, you'll learn about some of the most common components and classes. Wherever possible, links to the appropriate documentation will be included.
+
+**** Common components
+There are too many components to cover here, and many of them have already been described on the Bootstrap website. For demonstrations of available components, visit Bootstrap's page on components.
+
+Below is a list of some of the most common components:
+
+Alerts
+
+Buttons
+
+Card
+
+Forms
+
+Jumbotron
+
+Navs
+
+You can use these components in Bootstrap and other frameworks.
+
+Some components require supporting JavaScript files to use. Although you can use these components, it's suggested that you actually avoid them until you've learned more about using JavaScript with HTML and CSS.
+
+The components described above require the use of certain classes and structures to make them work. Note that the majority of these are intended to be used inside of a container, row, or column.
+
+**** Do this
+Include common components
+Add a styled button to your page. To keep things organized, make sure that it appears inside of a .col class. Try changing the color and size using the various classes described.
+
+Next, add a card to your page. Try placing it inside a column and adding or removing elements.
+
+**** Borders and colors
+There are a few classes in Bootstrap that allow you to add borders and colors to your containing elements. These are easy to use and can be useful for quickly adding a bit of style to your code.
+
+You can explore the documentation using the links below:
+
+Bootstrap: Borders
+Bootstrap: Colors
+**** Do this
+Use borders and colors
+Use the .border border-primary class, the .text-danger class, and the .bg-dark class on your page.
+
+**** Text
+Bootstrap allows utility classes that you can use to modify text in a variety of ways.
+
+You can explore the documentation here:
+
+Bootstrap: Text
+Perhaps the most useful text-modification classes are those that allow you to align your text quickly, like .text-center.
+
+**** Do this
+Align your text
+Use the .text-center class on your index.html page. Notice from the documentation that this class also allows for responsive text!
+
+**** Spacing
+Bootstrap also provides a few utility classes that make it easy to add margins or padding to elements. These rely on a lot of abbreviations, so you'll need to read the documentation carefully.
+
+You can explore the documentation here:
+
+Bootstrap: Spacing
+**** Do this
+Add margin and padding
+Try using the .py-2 class and .mb-4 class. What does each abbreviation represent?
+
+**** Flex
+It's important to know that Bootstrap can't solve every layout problem with rows and columns. Some layout problems require a more nuanced solution.
+
+Bootstrap provides some utility classes that allow you to apply CSS rules to individual elements. For example, there are a few classes that just apply flexbox rules to elements.
+
+You can explore the documentation here:
+
+Bootstrap: Flex
+Note that using these classes can conflict with rows and columns. That doesn't mean that you can't use them together; just be wary of overlapping styles!
+
+** module 20 javascript and the DOM
+*** 20.2
+
+Key Terms
+Document Object Model
+DOM, the data representation of the HTML elements that make up the structure of a web page, serving as a way for JavaScript to understand the structure of an HTML page in order to make it dynamic
+Child element
+An element that's nested inside another element
+Parent element
+An element that has one or more elements nested inside it
+
+**** Why use JavaScript?
+JavaScript was originally designed to work with HTML on a web page. When applied to a web page, JavaScript is used to add some interactivity or to make the page more dynamic. You may have seen websites that use JavaScript to do the following:
+
+Create animations
+
+Respond to actions that the user performs
+
+Validate user input on forms
+
+Load data dynamically
+
+**** The <script> tag
+To include some JavaScript on a page, add an HTML <script> tag to the bottom of the <body> element. The <script> tag takes an attribute named src; this attribute specifies the JavaScript file to be included. Here's an example:
+
+<script src="/path/to/your/script.js"></script>
+If your browser happens across a <script> tag when it's rendering a requested web page, it will request the file and execute it immediately.
+
+**** Do this
+Create two files
+On your machine, create a new folder for a new project. In that folder, create two files named index.html and index.js. The index.html file is a simple HTML page with a <script> tag referencing index.js. Copy the following code into the respective files.
+
+Here's the code for the index.html file:
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript on your page</title>
+  </head>
+  <body>
+    <h1>Welcome to my website</h1>
+    <script src="index.js"></script>
+  </body>
+</html>
+And here's the code for the index.js file:
+
+console.log("Hello!");
+Once you've added the code to both files, open the HTML page in your browser and observe the console in the developer tools. Notice that the JavaScript code is executed as the page loads.
+
+**** Embedding JavaScript
+In addition to linking to an external file, you can include JavaScript directly on the HTML page within the <script> tags. Here's an example:
+
+<script>
+  console.log("This is embedded JavaScript");
+</script>
+But generally, it's best to avoid embedding JavaScript in an HTML page like this; it isn't a very scalable solution.
+
+**** Do this
+Add some <script> tags
+Add a few <script> tags to the HTML page from above, and open it in the browser. Each set of tags may simply log some text. Notice that each <script> tag is executed in turn as the page loads.
+
+Tip
+The <script> tags should be added to the bottom of the <body> element.
+
+**** The <noscript> tag
+What happens if one of your users cannot run your script? You still want that user to have a good experience on your website. Some users deliberately turn off scripts or may be unable to run scripts for a number of reasons. At the very least, you should show these users a message indicating that the website depends on scripts. To do so, use the <noscript> tag, like this:
+
+<noscript>This site requires JavaScript.</noscript>
+To see this in action, you will need to temporarily disable JavaScript in your browser.
+
+**** Do this
+Add <noscript> to page
+Add the <noscript> tags (as shown above) to the HTML page. Then reload the page in the browser.
+
+**** Disable JavaScript
+Open the Chrome DevTools console by pressing Control+Shift+J (or Command+Option+J on a Mac). Then press Control+Shift+P (or Command+Shift+P on a Mac) to open the command palette.
+
+The Chrome DevTools console
+Type javascript to filter the commands to show only those that relate to JavaScript.
+
+Type javascript to filter the commands
+Click the Disable JavaScript option, and JavaScript will be disabled in your browser. Try reloading the page, and observe that the <noscript> tag kicks in now that JavaScript isn't available.
+
+**** Document Object Model
+When your web page is loaded by the browser, it is parsed, and the browser constructs an internal representation of the HTML. This facilitates the browser's interaction with the HTML. You can also use JavaScript to interact with the HTML via this internal representation. This representation, which is called the Document Object Model (DOM), is the data representation of the HTML elements that make up the structure of a web page. The DOM is how the browser sees your HTML.
+
+Consider the following simple HTML file:
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript on your page</title>
+  </head>
+  <body>
+    <header>
+      <h1>List of Parks</h1>
+    </header>
+    <main>
+      <ul>
+        <li>Biscayne</li>
+        <li>Grand Canyon</li>
+        <li>Gateway Arch</li>
+        <li>Indiana Dunes</li>
+      </ul>
+    </main>
+  </body>
+</html>
+Notice that the entire document is enclosed in the <html> element. The <html> element is called the root of the DOM.
+
+Observing carefully, you can see that there are two elements directly inside the <html> element: the <head> and the <body>. These are called the children of the <html> element, and the <html> element is the parent of these two elements. The following diagram illustrates this relationship:
+
+Parent and children elements
+A parent element nests other elements. An element that is nested inside another element is called a child element.
+
+As you examine the HTML document further, you can see that the <body> element itself also nests some elements. That is, <header> and <main> are children of <body>. Additionally, the <h1> inside the <header> is a child of the <header>. And <main> contains a <ul>, which in turn contains four <li> elements. You can also see that the <head> element has three children.
+
+All of these relationships can be added to the diagram. The result, shown below, is a complete diagram of the DOM the way that the browser represents it.
+
+Diagram of the DOM the way that the browser represents it
+You may have noticed that the structure of the DOM resembles a family tree, except that each child has a single parent. The family tree terminology is used when talking about the relationships between the elements of the DOM. You may refer to the parent of an element, the grandparent of an element, the siblings of an element, and so on.
+
+**** Summary
+As you learned in this lesson, adding JavaScript to an HTML page is as simple as adding a <script> tag to the page. Although it is possible to write JavaScript directly on the page, it is preferred to link to external JavaScript files.
+
+The DOM is a treelike structure used by the browser to represent and interact with the HTML document.
+
+*** 20.3
+
+
+Key Terms
+Node
+An element in a tree structure
+NodeList
+A list of elements that match a given selector
+
+**** Exploring the HTML
+Before you start writing code to work with this HTML, examine the HTML a bit and see if you can think of it in terms of the DOM. Look at the index.html file and try to think about what the DOM structure may be.
+
+You can see that in the <body>, there is a <main> containing four <section> tags. Each of these contains the details of one park. Look carefully at the structure of the HTML in those <section> tags.
+
+**** Do this
+Sketch the DOM
+Use a piece of paper (or any online drawing tool) to quickly sketch the DOM structure diagram for one of these sections. Do not spend more than five minutes on this exercise. When you are done, compare your sketch to the illustration below.
+
+The following diagram shows one possible solution; note that it shows only part of the DOM. For convenience, siblings are colored the same, and the class names have been included.
+
+DOM structure diagram
+**** Accessing the DOM
+The browser makes all of the page's HTML accessible via a global variable named document. This variable is available to your JavaScript and contains a reference to the entire HTML document. You can see this by logging the document variable and observing it in the console.
+
+**** Do this
+Log the document variable
+Add the following code to the index.js file and reload the page in the browser.
+
+console.log(document);
+Then open Chrome DevTools and take a look at the console.
+
+Chrome DevTools console with document
+Notice that the entire HTML document is logged to the console. You can use the expander arrows to drill down into the document and verify that all of the elements of the HTML are present.
+
+**** Finding an element with querySelector()
+Now that you have access to the entire HTML document, you can try to select some elements in the DOM. You can use the built-in querySelector() method to search the DOM. The querySelector() method accepts a string representing a CSS selector. Then it returns the first element in the DOM that matches that selector.
+
+For example, to find an <h1> element on the page, you can use the following syntax:
+
+const heading = document.querySelector("h1");
+console.log(heading);
+Place the above code in the index.js file and reload the page in the browser. The querySelector() method will traverse the DOM, starting from the root, and find the first <h1> element. In the case of the example web page, the first <h1> element is <h1>National Parks</h1>.
+
+**** Selectors
+In the querySelector() example above, the string "h1" was used as a selector. What are some of the other ways that you can specify selectors?
+
+Well, there is a very simple rule: a selector is any valid CSS selector.
+
+You have already seen several types of CSS selectors. Here are just a few of them:
+
+Selector
+Description
+Examples
+Type selector
+Targets any HTML element name
+h1, p, section
+Class selector
+Targets elements based on the value of the class attribute
+.location, .stats
+Id selector
+Targets elements based on the value of the id attribute
+#rating, #area
+Note that in the selector string, a period . prefix is used to indicate a class, and a hash symbol # prefix is used to indicate an ID.
+
+All the CSS selectors are fully documented on MDN's CSS selectors page. You may use any of those selectors as an argument for querySelector().
+
+**** Do this
+Select elements
+For each of the elements described below, write a statement in the index.js file to find the element. To check that you found the right element, you may log the element that you find to the console.
+
+Find an element with the class value.
+
+Find a <button> element.
+
+Find an element with the class area.
+
+Find a <div> that is a descendant of an element with the class stat. (Hint: Look up descendant selectors in the documentation).
+
+Find an element with the class hello. Take careful note of what is returned there.
+
+**** Collections of elements with querySelectorAll()
+You may have noticed that querySelector() returns the first matched element in each example above. But what if you wanted to get all the matched elements? For that, you can use querySelectorAll(). The querySelectorAll() method accepts a string representing a CSS selector. It then returns a list of elements that match the selector.
+
+The selector used for querySelectorAll() follows the same format as with querySelector(). The main difference is that querySelectorAll() returns a list of all matched elements.
+
+**** Do this
+Find all <button> elements on the page
+Add the following code to the index.js file and reload the web page in the browser.
+
+// Find all the buttons on the page
+const buttons = document.querySelectorAll("button");
+console.log(buttons);
+Then look at the console to see what was logged. You'll see something like this:
+
+Buttons logged to the DevTools console
+You may use the expander arrows to drill down into the elements if you wish.
+
+**** Working with NodeList
+When you logged the value returned by the querySelectorAll() method, it stated that it was a NodeList. But what exactly is a NodeList?
+
+Node is a term used to describe an element in a tree structure. Sometimes, the elements in the DOM are referred to as nodes, because the DOM is a tree structure. A NodeList, then, is a list of elements that match the selector.
+
+Typically, you'll want to iterate over the list of elements found and process them in some way. The NodeList isn't an array, but it provides several properties and methods that allow it to be processed like an array.
+
+You can iterate over the NodeList using the values() method, as shown below:
+
+// Get a list of all `<h3>` elements
+const heading3List = document.querySelectorAll("h3");
+
+// Iterate over the list and print each one
+for (let element of heading3List.values()) {
+  console.log(element);
+}
+Or you can use a simple for loop to iterate over the NodeList, like this:
+
+for (let i = 0; i < heading3List.length; i++) {
+  const element = heading3List[i];
+  console.log(element);
+}
+Notice that in this second example, the length property of the NodeList and the square bracket [] notation are used to access individual items in the NodeList.
+
+**** Do this
+Use querySelectorAll()
+First, run the two examples above to verify that they behave the way that you expect. Then try the following:
+
+Get a list of all the <div> elements containing ratings on the page. Log them to the console using the values() method.
+
+Get a list of all the <div> elements containing areas on the page. Log them to the console using a simple for loop.
+
+**** Supporting older browsers
+Very old browsers (and Internet Explorer in particular) don't fully support the NodeList interface. As such, the code above may not work as intended. If you need to support Internet Explorer, you can use the Array.prototype.forEach() method, like this:
+
+// Get a list of descriptions
+const list = document.querySelectorAll(".description-display");
+
+// Log them to the console
+Array.prototype.forEach.call(list, function (element) {
+  console.log(element);
+});
+Note: Recall that in JavaScript, arrays are list-like objects. The Array class is used to construct new arrays. The prototype constructor is commonly used to add new properties and methods to the Array object. You can find a list of available instance methods for Array.prototype in Mozilla's JavaScript Reference.
+
+*** 20.4
+
+**** Modifying an element
+Once an element has been selected using querySelector() or querySelectorAll(), you have access to many of its properties and can change some of them. In this section, you'll learn how to implement three common changes that may be made to an element. You'll learn how to change the text contained in an element, change the value of an attribute, and change the CSS style of an element.
+
+**** Changing the content
+When you look at the National Parks example web page, you can see that the descriptions of the various parks are all of different lengths. Suppose that you wanted to limit the length of these descriptions to 250 characters and add an ellipsis ... to those that were truncated.
+
+First, you will have to select all the descriptions on the page. You can use a class selector, because all the descriptions are in <div> elements with the class description. Here's an example:
+
+const descriptions = document.querySelectorAll(".description-display");
+Next, you will iterate through the list of descriptions and get the text for each one. Each item returned by querySelectorAll() is of type HTMLElement. HTMLElement is a built-in interface that exposes properties and methods common to all elements that are found in an HTML document. HTMLElement is fully documented on MDN's HTMLElement page.
+
+**** The innerText property
+One of the properties exposed by the HTMLElement interface is the innerText property. The innerText property contains any text that is contained between the opening and closing tags of the element.
+
+For example, you can iterate through the descriptions and log the innerText value of each description, like this:
+
+for (let desc of descriptions.values()) {
+  let content = desc.innerText;
+  console.log(content);
+}
+**** Do this
+Log each description
+Write the code above in the index.js file and reload the page in the browser. Notice that the description text of each park is logged to the console.
+
+Truncate the text
+You can now use string methods to truncate these strings to 250 characters and add ellipses if they are longer than that. You can use the slice() method.
+
+Now, try updating the text using the slice() method to allow for only 250 characters.
+
+If you get stuck, you can consult this solution:
+
+for (let desc of descriptions.values()) {
+  let content = desc.innerText;
+
+  if (content.length > 250) {
+    content = content.slice(0, 250);
+    content = content + "...";
+  }
+
+  console.log(content);
+}
+Once you've accomplished this, observe that each description is truncated and ellipses are attached to the ends. The only exception is the description for Gateway Arch park; that description was already shorter than 250 characters.
+
+Update the HTMLElement
+You can now update the HTMLElement, using the innerText property and the truncated text.
+
+Update your code to include the following assignment to desc.innerText.
+
+for (let desc of descriptions.values()) {
+  let content = desc.innerText;
+
+  if (content.length > 250) {
+    content = content.slice(0, 250);
+    content = content + "...";
+  }
+
+  desc.innerText = content;
+}
+Now, once the page loads, you'll see that the description of each park is less than or equal to 250 characters, plus the ellipses.
+
+**** The innerHTML property
+What if you wanted the ellipses that you added above to be clickable? You can wrap an ellipsis in <a> tags to make it into a link. Now, update the code above to use a link instead of a plain string, as follows:
+
+for (let desc of descriptions.values()) {
+  let content = desc.innerText;
+
+  if (content.length > 250) {
+    content = content.slice(0, 250);
+    content = content + '<a href="#">...</a>';
+  }
+
+  desc.innerText = content;
+}
+Now, when you look at the resulting page, you can see that the browser didn't interpret the additional content as HTML at all. Rather, it displayed the string that was added literally, exactly as you wrote it. You can also see this in the image below:
+
+Biscayne National Park
+That literal interpretation isn't a good experience for the users. If you want the browser to interpret the string that you provide as HTML, use the innerHTML property. The innerHTML property represents the HTML markup contained inside of an element.
+
+You can modify line 9 in the code above to use the innerHTML property instead of the innerText property, like so:
+
+for (let desc of descriptions.values()) {
+  let content = desc.innerText;
+
+  if (content.length > 250) {
+    content = content.slice(0, 250);
+    content = content + '<a href="#">...</a>';
+  }
+
+  desc.innerHTML = content;
+}
+**** Changing the style
+To change the CSS style of an element, you can use the element's style property. This property is used to get and set the inline styles of an element. This style property is an object representing all of the CSS styles associated with an element. You can use this object to set any style that you wish.
+
+Suppose that you wanted to bold any rating value that is greater than 4.7. You would have to select all rating values, check if they match the condition, and add a style to those that do. You can start by selecting all rating values, as follows:
+
+const ratings = document.querySelectorAll(".rating-display .value");
+Next, iterate through the list and get each actual rating value using the innerText property. This returns a string value, but you want to work with the rating as a number. So, use the parseFloat() method to convert a string into a floating point number, as shown below:
+
+for (let rating of ratings) {
+  let ratingValue = parseFloat(rating.innerText);
+  console.log(ratingValue);
+}
+Next, check the condition. If ratingValue > 4.7, then set the fontWeight style to bold, like this:
+
+for (let rating of ratings) {
+  let ratingValue = parseFloat(rating.innerText);
+
+  if (ratingValue > 4.7) {
+    rating.style.fontWeight = "bold";
+  }
+}
+The name of the JavaScript property relates to the name of the CSS property. In CSS, a hyphen - is used in property names such as font-weight or background-color. But in JavaScript, the hyphen is dropped, and camelCase is used to create the property name. In other words, property names in JavaScript look like fontWeight or backgroundColor.
+
+Here's another example of a modified style property. The following code sets the color of the rating text to a lighter green if the rating is greater than 4.7.
+
+for (let rating of ratings) {
+  let ratingValue = parseFloat(rating.innerText);
+
+  if (ratingValue > 4.7) {
+    rating.style.fontWeight = "bold";
+    rating.style.color = "#3ba17c";
+  }
+}
+A complete list of the CSS style properties and the corresponding JavaScript names for those styles may be found in MDN's CSS Properties Reference.
+
+**** The classList property
+Alternatively, if you want to make many changes to the style of an element, you could create a CSS class for that style. You could then add or remove that class from the element using the classList property.
+
+The classList property is a list of the classes that are applied to an element. It provides methods to add() and remove() classes.
+
+**** Do this
+Dynamically add classes
+Add the following CSS class rule to the style.css file.
+
+.high-rating {
+  color: #3ba17c;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+When the rating is greater than 4.7, you want to replace the value class with the high-rating class. Modify the JavaScript code to do this, as follows:
+
+for (let rating of ratings) {
+  let ratingValue = parseFloat(rating.innerText);
+
+  if (ratingValue > 4.7) {
+    rating.classList.add("high-rating");
+    rating.classList.remove("value");
+  }
+}
+**** Creating DOM elements
+In the examples above, you saw that you can add to the DOM using the innerHTML property of an element. Below is another example of creating new elements, using the createElement() method. The createElement() method creates a new element with the given tag name.
+
+After creating an element, you will want to add the element to the page using the appendChild() method. This method adds a given element to the end of the list of children of a parent element.
+
+**** Do this
+Create a new element with text
+Suppose that you wanted to dynamically add a statement to the page's heading, stating the number of parks on display. To do this, you would start by selecting all the parks on the page and getting the number of parks from that list. Then you would construct an element with this information and insert it on the DOM at the right place. Work through this process step by step below.
+
+First, select the parks on the page using the park class as a selector:
+
+const parks = document.querySelectorAll(".park-display");
+Then, get the number of parks using the length property of the list:
+
+const numberParks = parks.length;
+Next, create a new element. In this case, you should use a <div>:
+
+const newElement = document.createElement("div");
+This creates an empty element. But, you have access to all the properties and methods that were used above to modify an element. You can set the text of this element with the innerText property, like this:
+
+newElement.innerText = `${numberParks} exciting parks to visit`;
+Add style and classes
+You can also style this new element with either the style property or the classList property. Create a new CSS rule for the class header-statement in the style.css file, as shown below. Feel free to add any style that you wish.
+
+.header-statement {
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+Then add this class to the new element, as follows:
+
+newElement.classList.add("header-statement");
+Add the element to the page
+Finally, to add the new element to the DOM, select the <header> element and use the appendChild() method to add the new element to the <header>, as shown below.
+
+const header = document.querySelector("header");
+header.appendChild(newElement);
+**** Removing DOM elements
+You can remove elements from the DOM via the removeChild() method, which removes the provided node from the DOM.
+
+For example, you can select the first park on the page and remove it, as demonstrated here:
+
+// Get the parent element of all parks
+const main = document.querySelector("main");
+
+// Select a single park
+const park = main.querySelector(".park-display");
+
+// Remove that park
+main.removeChild(park);
+
+*** 20.5
+
+**** Event
+When a web page is loaded in your browser, it basically sits there doing nothing, waiting for you to read it. As you start to read, you may attempt to scroll to view more of the page, or you may see links and buttons that invite you to click. As you move your mouse pointer around, the page starts to respond. You may see menus open, or animations start, or annoying ads pop up.
+
+These actions, which are called events, all occur in response to some action that you are taking. An event is an action or occurrence that happens in the browser. The system fires an event when certain actions occur.
+
+Key Term
+Event: An action or occurrence that happens in the browser
+
+There are many different types of events that occur in the browser. Here are some examples:
+
+Mouse movement, clicks, or dragging
+
+Typing on the keyboard
+
+Touching and swiping on a touch screen device
+
+Resizing the browser window
+
+Closing the browser window or tab
+
+Submitting a form
+
+The web page finishing loading
+
+To learn more about the many types of events that occur in the browser, check out MDN's Events page.
+
+You can respond to these events by writing a function that will run when the event fires. These functions are called event handlers.
+
+Key Term
+Event handler: A function that is executed in response to an event occurring
+
+**** Event listeners
+When you create an event handler, you need to associate it with an element in the DOM. For example, the user may click a button. You then register an event handler on the button to run when the button's click event fires. The mechanism that detects the event is called an event listener. An event listener contains an event name and an event handler. When the event fires, the event handler is executed.
+
+Key Term
+Event listener: A mechanism that detects an event and contains an event name and an event handler
+
+To create event listeners, use the addEventListener() method. This method takes two arguments: the name of the event and an event handler.
+
+Using the National Parks repository, you can add some event listeners to the page.
+
+**** Do this
+Add event listener to a button
+First, select a button on the page. Write the following code in the index.js file.
+
+const firstBtn = document.querySelector("button");
+Then call the addEventListener() method on this button. For now, you will write a very simple function for the event handler:
+
+firstBtn.addEventListener("click", (event) => {
+  console.log("You clicked the button", event);
+});
+Reload the page in the browser, and try clicking the first button on the page. The event handler accepts a single parameter representing an event object. This event object encapsulates some details about the event that occurred. Observe the output in the console.
+
+**** Details about the event
+The event object that is passed to the event handler contains some information that you can use while handling the event. The event object is automatically passed to event handlers when they are invoked. They contain information relevant to the event itself.
+
+For example, you can get the specific element that fired the event with the target property of the event object, as shown here:
+
+firstBtn.addEventListener("click", (event) => {
+  console.log(event.target);
+});
+This is especially useful when you attach the same handler to multiple elements. For example, you may want to highlight a park when the button associated with that park is clicked. You could attach the same event handler to each of these buttons. Take a look:
+
+// Select all the buttons for all the parks
+const allBtns = document.querySelectorAll(".rate-button");
+
+// Iterate through the list of buttons and add an event handler to each
+allBtns.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    console.log(event.target);
+  });
+});
+Notice that when you click any of the buttons, you get the same result. So how would you know which park belongs to the button that was clicked?
+
+The <section> element that represents a park is the parent of the button. Because event.target refers to the button that was clicked, then using the parentNode property of that button will get you the <section> element that was clicked. Here's what that looks like:
+
+allBtns.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    console.log(event.target.parentNode);
+  });
+});
+Notice that each time you click the button, the <section> element in which that button resides is logged to the console. You can then manipulate this element in any way that you wish. For example, the following code changes the background color:
+
+allBtns.forEach((btn) => {
+  btn.addEventListener("click", (event) => {
+    const park = event.target.parentNode;
+    park.style.backgroundColor = "#c8e6c9";
+  });
+});
+**** A complete example
+Suppose that you wanted to give the user the ability to sort the list of parks displayed on the page; you want them to be able to sort by either name or rating. You can add two links and allow the user to click whichever one they wish. You would then get the list of parks from the DOM, perform a sort on the list, and insert the parks back into the DOM in the new order.
+
+Start by adding the following HTML to index.html. Insert this between the <header> and the <main>.
+
+<div class="sorter">
+  Sort by:
+  <a href="" class="sort-link" id="name-sorter">Name</a> |
+  <a href="" class="sort-link" id="rating-sorter">Rating</a>
+</div>
+Then, optionally, you could add some CSS to the style.css file.
+
+.sorter {
+  width: 90%;
+  margin: 0 auto;
+  padding: 6px;
+}
+Next, add an event listener to the link. You will build this in steps so that it is clear what each step does. The following code all goes in the index.js file.
+
+// Select the `nameSorter` link
+const nameSorter = document.querySelector("#name-sorter");
+
+// Add an event listener
+nameSorter.addEventListener("click", (event) => {
+  console.log("You clicked the name sorter");
+});
+Notice that you are selecting the link by the ID. However, when you click the link, the log in the console blinks for a moment and then disappears. Why is that?
+
+The default behavior of a link is to follow the link that was clicked. In this case, the browser is simply reloading the page. That clearly isn't what you want. You can stop this from happening using the preventDefault() method of the event object:
+
+nameSorter.addEventListener("click", (event) => {
+  event.preventDefault();
+  console.log("You clicked the name sorter");
+});
+This time, when you click the link, the page doesn't reload. Here is the logic that you will implement in this event handler:
+
+Get the <main> element that contains all the parks.
+
+Get a NodeList of all the parks.
+
+Empty the <main> element.
+
+Convert the NodeList to an array for convenience of sorting.
+
+Sort the array using techniques that you learned previously.
+
+Iterate through the sorted array and append each park to <main>.
+
+Remember, you'll build the event handler step by step. Start by reviewing the code for the first three steps:
+
+nameSorter.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  // 1.  Get the main element
+  const main = document.querySelector("main");
+
+  // 2. Get the list of parks
+  const parksList = main.querySelectorAll(".park-display");
+
+  // 3. Empty the main element
+  main.innerHTML = "";
+});
+If you run the above code, you will notice that the parks disappear from the page when the link is clicked. That is because you removed them from the DOM. However, they still exist and can be referenced from the parksList variable.
+
+To create an array from the NodeList, use the Array.from() method, as shown below. This takes an array-like structure and constructs an array.
+
+// 4. Create an array
+const parksArray = Array.from(parksList);
+You can now use the sort() method of the array to sort this array. However, you need to write the function that defines how to sort the parks. Given two park elements, you need to find the name of each park and then compare the names. The park names are the innerText of the <h2> element.
+
+// 5. Sort the array
+parksArray.sort((parkA, parkB) => {
+  const parkAName = parkA.querySelector("h2").innerText;
+  const parkBName = parkB.querySelector("h2").innerText;
+  if (parkAName < parkBName) {
+    return -1;
+  } else if (parkAName > parkBName) {
+    return 1;
+  } else {
+    return 0;
+  }
+});
+The final step is to iterate over this sorted array and append each park element to the <main> element.
+
+So, the full code may look like this:
+
+// Select the `nameSorter` link
+const nameSorter = document.querySelector("#name-sorter");
+
+// Add an event listener
+nameSorter.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  // 1. Get the main element
+  const main = document.querySelector("main");
+
+  // 2. Get the list of parks
+  const parksList = main.querySelectorAll(".park-display");
+
+  // 3. Empty the main element
+  main.innerHTML = "";
+
+  // 4. Create an array
+  const parksArray = Array.from(parksList);
+
+  // 5. Sort the array
+  parksArray.sort((parkA, parkB) => {
+    const parkAName = parkA.querySelector("h2").innerText;
+    const parkBName = parkB.querySelector("h2").innerText;
+    if (parkAName < parkBName) {
+      return -1;
+    } else if (parkAName > parkBName) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
+  // 6. Insert each park into the DOM
+  parksArray.forEach((park) => {
+    main.appendChild(park);
+  });
+});
+As you can see, the event handler code has gotten quite long. To help make the code more manageable, you can refactor this code by creating an external function for the event handler, and another for the sorting. The following code is equivalent to the above.
+
+// Function for sorting by name
+const sortByName = (parkA, parkB) => {
+  const parkAName = parkA.querySelector("h2").innerText;
+  const parkBName = parkB.querySelector("h2").innerText;
+  if (parkAName < parkBName) {
+    return -1;
+  } else if (parkAName > parkBName) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+
+// Function for handling the `nameSorter` click
+const nameSorterClickHandler = (event) => {
+  event.preventDefault();
+
+  // 1.  Get the main element
+  const main = document.querySelector("main");
+
+  // 2. Get the list of parks
+  const parksList = main.querySelectorAll(".park-display");
+
+  // 3. Empty the main
+  main.innerHTML = "";
+
+  // 4. Create an array
+  const parksArray = Array.from(parksList);
+
+  // 5. Sort the array
+  parksArray.sort(sortByName);
+
+  // 6. Insert each park into the DOM
+  parksArray.forEach((park) => {
+    main.appendChild(park);
+  });
+};
+
+// Select the `nameSorter` link
+const nameSorter = document.querySelector("#name-sorter");
+
+// Add an event listener
+nameSorter.addEventListener("click", nameSorterClickHandler);
+**** Do this
+Sort parks by rating
+Implement an event handler for the ratingSorter link. Use the above example as a template.
+
+**** The DOMContentLoaded event
+So far, you have been writing the JavaScript code to interact with the DOM without regard to whether the DOM has been fully loaded by the browser. In this fairly small web page that you are using as an example, this hardly matters. But what happens when the web page becomes much larger, and the browser has a lot more work to do to render the page? Is it guaranteed that the JavaScript code will run only after the HTML is fully parsed and loaded by the browser? The short answer is no.
+
+Therefore, you need some way of knowing that the DOM is ready for you to interact with it. Luckily, there is a built-in event that you can hook into. Once the HTML is fully parsed and loaded, the browser fires an event called DOMContentLoaded. The DOMContentLoaded event fires when the HTML is fully parsed and loaded, whether or not the stylesheets and images are done loading.
+
+To make sure that your HTML has been loaded into the DOM before your JavaScript code tries to interact with the DOM, you can run your JavaScript code when the DOMContentLoaded event fires. This event is attached to the window object, which you can think of as the browser itself.
+
+**** Do this
+Add a DOMContentLoaded event handler
+Add the following code to the JavaScript file, reload the page in the browser, and observe the console.
+
+console.log("Before!");
+
+window.addEventListener("DOMContentLoaded", (event) => {
+  console.log("Loaded!");
+});
+
+console.log("After!");
+You will see output similar to this:
+
+Before!
+After!
+Loaded!
+The code in the JavaScript file executes immediately as the file is parsed. However, the code inside the DOMContentLoaded event handler doesn't run until the HTML is fully parsed and loaded into the DOM.
+
+**** Refactor the DOM manipulation code
+It is common practice to move code that manipulates the DOM into a single DOMContentLoaded event-handler function. You can name that function anything that you want. For example, you might name it init, ready, or main, as in the example below. Notice how main is declared, then passed to window.addEventListener() as the event handler:
+
+// Declare handler and support functions here
+
+// Function for sorting by name
+const sortByName = ...
+
+// Function for sorting by rating
+const sortByRating = ...
+
+// Function for handling the `nameSorter` click
+const nameSorterClickHandler = ...
+
+// Function to handle the `ratingSorter` click
+const ratingSorterClickHandler = ...
+
+
+// The code that runs once the DOM is loaded
+const main = () => {
+  // Select the `nameSorter` link
+  const nameSorter = document.querySelector("#name-sorter");
+
+  // Add an event listener
+  nameSorter.addEventListener("click", nameSorterClickHandler);
+
+  // Select the `ratingSorter` link
+  const ratingSorter = document.querySelector("#rating-sorter");
+
+  // Add an event listener
+  ratingSorter.addEventListener("click", ratingSorterClickHandler);
+}
+
+// Add event listener for `DOMContentLoaded`
+window.addEventListener("DOMContentLoaded", main);
+
+*** 20.6
+
+Websites often capture data entered by users. The user enters data on the form and then submits it. At this point, some validation is typically performed. So, you need to write some code to handle the event of the form being submitted.
+
+The submit event fires when the user submits a form. This event fires on the <form> element itself, not on any button on the form.
+
+As you did with other events, you can simply provide a handler function for the submit event.
+
+Starter code
+You will use the same code repository that you used in the previous lessons. The starter code for this lesson is in the branch Form_Starter.
+
+If you need to clone the repository, run the following command in the terminal.
+
+git clone https://github.com/Thinkful-Ed/starter-national-parks.git
+Once the repository is cloned to your local machine (or if you had it already), navigate to the project folder and check out the branch.
+
+git checkout Form_Starter
+Examine the index.html file. There is a <form> for adding a new park, with inputs for the various park values.
+
+Handling the submit event
+To handle the form submission, you need an event handler function. You then create the event listener on the form. As you did in the previous lesson, you will perform this when the DOM is fully loaded.
+
+Do this
+Create a submit handler
+In the index.js file, create a function named submitHandler(). This function will be used for handling the form submission.
+
+const submitHandler = (event) => {
+  console.log("The form was submitted");
+};
+Then add a main() function that creates the event listener for the form submission.
+
+const main = () => {
+  // Get the form element
+  const form = document.querySelector("#park-form");
+
+  // Attach the submit handler
+  form.addEventListener("submit", submitHandler);
+};
+And finally, add an event listener for DOMContentLoaded that invokes the main() function.
+
+window.addEventListener("DOMContentLoaded", main);
+You will notice that when you try to submit the form, the page is reloaded immediately. That is the default behavior of forms in a browser. You can stop this default behavior using the preventDefault() method of the event. Modify the submitHandler() function with this statement:
+
+const submitHandler = (event) => {
+  event.preventDefault();
+  console.log("The form was submitted");
+};
+You will notice that upon submitting the form, the page no longer refreshes.
+
+The FormData object
+Now that you have a handler that is invoked on a form submit, you need to get the data that the user entered on the form. There are a number of ways that you could do this.
+
+You could directly select one of the <input> elements and use the value property to get data. To do this, you would add the following to the submitHandler() function:
+
+// Get the name input
+const parkName = document.querySelector("#name-input").value;
+
+console.log(parkName);
+Now, when you enter a name and submit the form, you'll see that value.
+
+However, remember that there's more than one way to get the data. In fact, there is a built-in object that can automatically read the data from the form and present it in an easy-to-use interface. The FormData object can be populated with a form's data as a set of key-value pairs. To use the FormData object, simply instantiate one with the <form> element, as shown below.
+
+const submitHandler = (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+};
+The FormData object has several methods for working with the form. You can use the get() method to get a specific value. The keys in the FormData correspond to the names of the form's <input> elements.
+
+For example, to get the park name value, you could use the following code:
+
+const name = formData.get("name");
+console.log(name);
+Required validation
+Before using the data entered by the user, you can do some validation on it. For now, you'll go through some basic required validation, just so that you can see that it is possible. You will notice that on the HTML form, there are some error messages that are currently hidden by the CSS.
+
+You can validate that the user entered some text for each form input. And if they did not, you can display the corresponding error message. Since you will be using the same code to check each input encapsulating that logic in a function would make that easier.
+
+Do this
+Add validate function for required fields
+Add the following function to the JavaScript file. It accepts a single string value and returns true if the value isn't null and the string contains at least one non-space character.
+
+function validateExists(value) {
+  return value && value.trim();
+}
+The main validation function
+Placing all the code to perform the validation in its own function would be useful and make the code more readable. This function will take each input field, perform required validation on it, and generate a collection of error messages which may then be displayed for the user.
+
+Here's an example of such a function. It performs the required validation on each of the fields on the form.
+
+function validateForm(formData) {
+  const errors = {};
+
+  // Check if name was entered
+  if (!validateExists(formData.get("name"))) {
+    errors.name = "Please enter a name";
+  }
+
+  // Check if rating was entered
+  if (!validateExists(formData.get("rating"))) {
+    errors.rating = "Please enter a rating";
+  }
+
+  // Check if description was entered
+  if (!validateExists(formData.get("description"))) {
+    errors.description = "Please enter short description";
+  }
+
+  // Check if established date was entered
+  if (!validateExists(formData.get("established"))) {
+    errors.established = "Please enter date";
+  }
+
+  // Check if area was entered
+  if (!validateExists(formData.get("area"))) {
+    errors.area = "Please enter the area of the park";
+  }
+
+  // Check if location date was entered
+  if (!validateExists(formData.get("location"))) {
+    errors.location = "Please enter the location of the park";
+  }
+
+  return errors;
+}
+This function accepts a FormData object containing the data from the form and checks each one to ensure that some value was entered. Now, this function must be called from the submitHandler() function.
+
+Do this
+Validate the form
+Add the validateForm() function to the JavaScript file then modify the submitHandler() function as follows.
+
+const submitHandler = (event) => {
+  event.preventDefault();
+
+  const form = event.target;
+  const formData = new FormData(form);
+
+  const errors = validateForm(formData);
+
+  // Clear all previous errors
+  const errorElements = document.querySelectorAll(".error");
+  for (let element of errorElements) {
+    element.style.display = "none";
+  }
+
+  // Display any new errors
+  Object.keys(errors).forEach((key) => {
+    // Find the specific error element
+    const errorElement = document.querySelector(`#${key}-form .error`);
+    errorElement.innerHTML = errors[key];
+    errorElement.style.display = "block";
+  });
+};
+Of course, this is just a basic validation that is used for illustration. This could have been accomplished in a number of other ways.
+
+For example, the ratings field is supposed to be a number in the range 1-5, inclusive. You can create validation functions to validate that a given value is actually a number and another that validates the number in a specific range.
+
+function validateNumber(value) {
+  return !isNaN(value);
+}
+
+function validateRange(value, min, max) {
+  return value >= min && value <= max;
+}
+Then the validateForm() function may be modified to add these validations to the ratings.
+
+  ...
+
+  // Check if rating was entered
+  if (!validateExists(formData.get("rating"))) {
+    errors.rating = "Please enter a rating";
+  } else {
+    // Check if the rating is a number
+    if (!validateNumber(formData.get("rating"))) {
+      errors.rating = "Rating must be a number";
+    } else {
+      // Because it is a number, convert it
+      const rating = Number.parseFloat(formData.get("rating"));
+      // Check that the rating is between 1 and 5, inclusive
+      if (!validateRange(rating, 1, 5)) {
+        errors.rating = "Rating must be between 1 and 5 inclusive";
+      }
+    }
+  }
+
+  ...
+Similarly, other validation for any constraints on the data may be implemented in this function.
+
+Add a park
+Finally, if all the validation passes, you could update the DOM with the new park information. This would involve creating a new element for the form, making sure that it is formatted the same way as all the other parks on the page, and appending it to the parent element of all the parks.
+
+By observing the HTML, you can see that a park is constructed like this:
+
+<section class="park-display">
+  <h2>The park name here</h2>
+  <div class="location-display">the park location here</div>
+  <div class="description-display">The park description here</div>
+  <button class="rate-button" title="Add to Favourites">&#9734;</button>
+  <div class="stats">
+    <div class="established-display stat">
+      <h3>Established</h3>
+      <div class="value">The date of establishment here</div>
+    </div>
+    <div class="area-display stat">
+      <h3>Area</h3>
+      <div class="value">The area of the park here</div>
+    </div>
+    <div class="rating-display stat">
+      <h3>Rating</h3>
+      <div class="value">The rating of the park here</div>
+    </div>
+  </div>
+</section>
+Most of this is just template data—that is, it's mostly parts that don't change, interspersed with some data to be filled in.
+
+You can create a new <section> element and set the rest of the HTML as the innerHTML property of the new element. You can use template literals to construct the correct HTML.
+
+Do this
+Add a park to the DOM
+Add the following code to the end of the submitHandler() function.
+
+// If there are no errors
+if (!Object.keys(errors).length) {
+  // Create a new element
+  const parkSection = document.createElement("section");
+
+  // Add the park class
+  parkSection.classList.add("park-display");
+
+  // Construct the HTML for this element
+  const content = `
+    <h2>${formData.get("name")}</h2>
+    <div class="location-display">${formData.get("location")}</div>
+    <div class="description-display">${formData.get("description")}</div>
+    <button class="rate-button" title="Add to Favourites">&#9734;</button>
+    <div class="stats">
+      <div class="established-display stat">
+        <h3>Established</h3>
+        <div class="value">${moment(formData.get("established")).format(
+          "MMMM D, YYYY"
+        )}</div>
+      </div>
+      <div class="area-display stat">
+        <h3>Area</h3>
+        <div class="value">${formData.get("area")}</div>
+      </div>
+      <div class="rating-display stat">
+        <h3>Rating</h3>
+        <div class="value">${formData.get("rating")}</div>
+      </div>
+    </div>
+    `;
+
+  // Set the innerHTML
+  parkSection.innerHTML = content;
+
+  // Append to the main element
+  document.querySelector("main").appendChild(parkSection);
+}
+The Moment library, which is included in the index.html file, can help you format dates before displaying them in the DOM.
+
+In the content HTML above, calling moment(formData.get("established")).format("MMMM D, YYYY") will format any valid date entered into the established field using the MMMM D, YYYY format (which looks like January 1, 1999).
+
+For example, if you enter a valid date such as 12-06-1987 or 12/06/1987 into the established field and submit the form, the date will show up as December 6, 1987 in the DOM. Using the moment library to format dates in your website can therefore help you display dates in a consistent manner in the DOM, regardless of the user input (as long as it's a valid date).
+
+Check out the Moment.js docs for other arguments that you can pass to the moment().format() method to control how dates are displayed in the DOM. Also check out how you can use the Moment library to verify a date's validity.
+
+The full solution code for this lesson can be found in the Form_Solution branch on the starter repository.
+
+*** 20.7
+
+Key Terms
+Event delegation
+The process of handling events at a higher point in the DOM than where the event originated
+Starter code
+For this lesson, you will be using the same repository as in the previous lessons in this module.
+
+If you haven't already done so, clone the repository to your local machine as follows:
+
+git clone https://github.com/Thinkful-Ed/starter-national-parks.git
+The starter code is in the branch Render_Starter. Check out that branch using the command below, and load the index.html file in the browser.
+
+git checkout Render_Starter
+Data and the DOM
+In the code that you have written so far, the data associated with the parks has all been contained in the HTML file. As a result, the structure of the HTML has become tightly coupled to the processing of the data.
+
+For example, look at the way that the parks are sorted by rating. Here is the sortByRating() function used to perform the sort.
+
+const sortByRating = (parkA, parkB) => {
+  const parkARating = parseFloat(
+    parkA.querySelector(".rating-display > .value").innerText
+  );
+  const parkBRating = parseFloat(
+    parkB.querySelector(".rating-display > .value").innerText
+  );
+  return parkBRating - parkARating;
+};
+In particular, pay attention to the way that you got the rating value from the DOM. You selected an element with the class rating and looked for a direct descendant with the class value. This can be problematic for a number of reasons.
+
+If the HTML structure is updated for any reason—such as to improve the layout or to add further data to the park—the JavaScript sorting code will break.
+
+And if the style is updated and the class names are changed, that will also break the JavaScript code. For that reason, you can say that the HTML structure is tightly coupled to the JavaScript code. This coupling can make it very difficult to maintain code in the long run.
+
+So how can you make the HTML and JavaScript files less dependent on each other? One way is to identify the data that you are concerned with and store that data separately. You can then generate the DOM based on the data.
+
+The data
+In the starter code, there is a file named data.js. This file contains a single array declaration, and the array contains several objects representing parks.
+
+const parks = [
+  {
+    name: "Biscayne National Park",
+    location: "Florida, United States",
+    description:
+      "Biscayne National Park encompasses coral reefs, islands and shoreline mangrove forest in the northern Florida Keys. Its reefs and islands are accessible only by boat. Dolphins, turtles and pelicans live in Biscayne Bay Lagoon. The underwater Maritime Heritage Trail links dive sites, most of them shipwrecks. On Boca Chita Key, Boca Chita Lighthouse has coastal views. A museum at Convoy Point explains local ecosystems.",
+    established: "June 28, 1980",
+    area: "172,971 acres (699.99 km^2)",
+    rating: 4.7,
+  },
+  // ...
+];
+You can now write a function whose job it is to construct a DOM element for each park and insert it into the DOM at an appropriate place. If you update this data at any time, say in response to the user adding a new park, you can simply run the function again to update the DOM.
+
+Similarly, if you want to sort the data, you can perform the sort on this array of data, and then execute the same function again to update the DOM with the sorted data.
+
+When you generate the DOM in response to data in this way, you are rendering the user interface. For that reason, it makes sense to name this function render().
+
+The render() function
+To render the parks on the page, you will have to do the following:
+
+Remove any existing content from the parent element.
+
+Create the HTML for each park in the array.
+
+Set the innerHTML of the parent element.
+
+Do this
+Create a renderOnePark() function
+You can create a function named renderOnePark() that accepts a park and returns the HTML code for that park. To do so, add the following code to the index.js file.
+
+const renderOnePark = (park) => {
+  // Get the individual properties of the park
+  const { name, location, description, established, area, rating } = park;
+
+  const content = `
+      <section class="park-display">
+        <h2>${name}</h2>
+        <div class="location-display">${location}</div>
+        <div class="description-display">${description}</div>
+        <button class="rate-button" title="Add to Favourites">&#9734;</button>
+        <div class="stats">
+          <div class="established-display stat">
+            <h3>Established</h3>
+            <div class="value">${established}</div>
+          </div>
+          <div class="area-display stat">
+            <h3>Area</h3>
+            <div class="value">${area}</div>
+          </div>
+          <div class="rating-display stat">
+            <h3>Rating</h3>
+            <div class="value">${rating}</div>
+          </div>
+        </div>
+      </section>
+  `;
+  return content;
+};
+Create a render() function
+The render() function will make use of the renderOnePark() function. Add the following code to the index.js file.
+
+const render = () => {
+  // Get the parent element
+  const main = document.querySelector("main");
+
+  // Empty the parent element
+  main.innerHTML = "";
+
+  // Get the parks HTML
+  const content = parks.map(renderOnePark).join("");
+
+  // Set the `innerHTML` of parent element
+  main.innerHTML = content;
+};
+Call render() in the main() function
+To call the render() function, add the following statement to the main() function.
+
+const main = () => {
+  // All the existing code
+
+  render();
+};
+Refactor the sort
+The two sort functions are still getting the data from the DOM. You can refactor these to directly sort the parks array itself and simply call render() when it is time to update the DOM.
+
+The sortByName() function may be refactored to accept two park objects rather than two DOM elements.
+
+const sortByName = (parkA, parkB) => {
+  const parkAName = parkA.name;
+  const parkBName = parkB.name;
+  if (parkAName < parkBName) {
+    return -1;
+  } else if (parkAName > parkBName) {
+    return 1;
+  } else {
+    return 0;
+  }
+};
+Notice that you aren't querying the DOM anymore. You have direct access to the data. Correspondingly, the nameSorterClickHandler() function is now simpler. You can remove all the DOM access and manipulation. You just need to do two things:
+
+Sort the array.
+
+Render the page.
+
+You can implement this as follows:
+
+const nameSorterClickHandler = (event) => {
+  event.preventDefault();
+
+  parks.sort(sortByName);
+
+  render();
+};
+Do this
+Refactor the sort-by-rating functions
+Using the above as a guide, refactor the sort-by-rating functions to use the render() function.
+
+Adding new park
+In the previous lesson, you added a new park by constructing the DOM element for the new park and appending it to the DOM. Now that you have separated the data from the DOM, you should instead insert a new park object into the parks array, and then render the page again.
+
+You can modify the submitHandler() function to do this. Change the function as follows:
+
+const submitHandler = (event) => {
+  event.preventDefault();
+
+  const form = document.querySelector("#park-form");
+  const formData = new FormData(form);
+
+  // Keep track of if any errors are found
+  let hasErrors = false;
+
+  // Validation code skipped for brevity
+  // ...
+
+  // If there are no errors
+  if (!hasErrors) {
+    // Create an empty object
+    const park = {
+      name: formData.get("name"),
+      location: formData.get("location"),
+      description: formData.get("description"),
+      established: formData.get("established"),
+      area: formData.get("area"),
+      rating: formData.get("rating"),
+    };
+
+    parks.push(park);
+
+    render();
+  }
+};
+The favorite buttons
+You may have noticed that now that you have refactored the code, the favorite buttons no longer work. This is because you are losing the event listeners associated with the button. Remember that the main function runs as soon as the DOM is loaded for the first time.
+
+In the main function, all the buttons on the page are selected, and an event listener is attached to each one. However, you consequently remove that content from the DOM any time that you call the render() function. When you remove an element from the DOM, all associated event listeners are also removed.
+
+But what if you instead attached the event listener to an element that remains on the page all the time? For example, what if you attached it to the <main> element? Because that element is never removed, if you attach an event listener, then it stays for the lifetime of the page.
+
+Consider the following diagram:
+
+The way a click event propagates up the DOM
+This diagram shows how a button is positioned on top of the section, which is positioned on top of the main, which in turn is positioned on top of the body. Even though the mouse pointer is over the button, it is also over each of these elements in turn.
+
+When you click the button, the click event propagates up the DOM from the button, to the section, to the main, and to the body.
+
+You can modify the main() function by removing the event-handling code for the buttons and replacing it with this:
+
+// Select all the buttons for all the parks
+const main = document.querySelector("main");
+
+// Add event handler to the main
+main.addEventListener("click", favoriteButtonClickHandler);
+Then you need to modify the favoriteButtonClickHandler() function. Because you attached the event listener to the <main> element, it triggers whenever a click happens anywhere on the <main>. You want to restrict the event handling to only the buttons.
+
+You can do a conditional check to ensure that the element that triggered the event was the button.
+
+Modify the favoriteButtonClickHandler() function as follows:
+
+const favoriteButtonClickHandler = (event) => {
+  if (event.target && event.target.nodeName == "BUTTON") {
+    const park = event.target.parentNode;
+    park.style.backgroundColor = "#c8e6c9";
+  }
+};
+Here, you are checking that the target of the event—the actual element that was clicked—is a button. If so, you perform the action.
+
+This way of handling events is called event delegation. Event delegation is the process of handling events at a higher point in the DOM than where the event originated. It's said that the event propagates up the DOM.
+
+If you want, you can continue working on this application to improve it even further. But now, you're familiar with the essentials of interacting with the DOM, handling events, and separating the data processing from the DOM.
+
 ** unsorted
 
 
@@ -29,3 +2868,6 @@ scope
 array method
 arrows function
 git, github
+
+
+html boilerplate
