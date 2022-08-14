@@ -6,6 +6,212 @@
 #+date: [2022-05-24 Tue 23:33]
 #+FILETAGS: :html:
 
+* Testing HTML
+#+begin_src html
+<!-- single line comment -->
+
+<!--
+multiple line comment
+-->
+
+<!-- An HTML file always starts by tell the browser that the page is html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Site</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <a href="http://codepen.io/anon/pen/xwjLbZ">
+      Come look at what this shows
+    </a>
+    <p>This is paragraph.</p>
+    <p>This is another paragraph.</p>
+    <ul>
+      <li>This is an item in a non-enumerated list (bullet list)</li>
+      <li>This is another item</li>
+      <li>And this is the last item on the list</li>
+    </ul>
+  </body>
+</html>
+#+end_src
+* HTML Anki
+:PROPERTIES:
+:ANKI_DECK: 00-software engineering::HTML
+:ANKI_TAGS: HTML
+:END:
+
+*** Single-line Comment
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660416607612
+:END:
+**** Text
+Create a single line comment
+
+#+begin_src html
+{{c1::<!-- single line comment -->}}
+#+end_src
+
+*** Multiple-line Comment
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660416431787
+:END:
+**** Text
+Create a multiple line comment
+
+#+begin_src html
+{{c1::<!--}}
+{{c1::multiple line comment}}
+{{c1::-->}}
+#+end_src
+
+*** DOCTYPE
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660418428137
+:END:
+**** Text
+An HTML file always starts?
+
+#+begin_src html
+{{c1::<!DOCTYPE html>}}
+<html lang="en">
+  <head>
+    ...
+  </head>
+  <body>
+    ...
+  </body>
+</html>
+#+end_src
+
+*** HTML element syntax
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660424132413
+:END:
+**** Text
+What is an HTML element syntax
+
+{{c1::<start tag>content</end tag>}}
+{{c1::<element-name>content</element-name>}}
+
+*** HTML void element syntax
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660424132463
+:END:
+**** Text
+What is an HTML void element syntax
+
+#+begin_src org
+{{c1::<start tag />}}
+{{c1::<element-name />}}
+#+end_src
+
+*** HTML start tag syntax with an attribute
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660424132512
+:END:
+**** Text
+What is an HTML start tag syntax with an  attribute
+#+begin_src org
+{{c1::<element-name attribute="value">}}
+#+end_src
+
+*** HTML an html element
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660424775487
+:END:
+**** Text
+Create the root element of an HTML document and set language to english
+
+#+begin_src html
+<!DOCTYPE>
+{{c1::<html lang="en">...</html>}}
+#+end_src
+
+*** HTML a head element
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660424775537
+:END:
+**** Text
+Create the container for processing information and metadata for an HTML document
+
+#+begin_src html
+<html>
+  {{c1::<head>...</head>}}
+  <body>...</body>
+</html>
+#+end_src
+
+*** HTML a body element
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660424775587
+:END:
+**** Text
+Create the container for the displayable content of an HTML document
+
+#+begin_src html
+<html>
+  <head>...</head>
+  {{c1::<body>...</body>}}
+</html>
+#+end_src
+
+*** HTML a base element
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660425773862
+:END:
+**** Text
+Set the base URL to use for all relative URLs and open link in new tab
+
+#+begin_src html
+<head>
+  {{c1::<base href="https://www.example.com" target="_blank"}}
+  ...
+</head>
+#+end_src
+
+*** HTML Link to CSS
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660427106864
+:END:
+**** Text
+Link to an external stylesheets
+
+#+begin_src html
+<head>
+  <!-- Basic way to link CSS -->
+  {{c1::<link href="style.css" rel="stylesheet" />}}
+</head>
+#+end_src
+
+*** HTML Link to alternative CSS
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660427106939
+:END:
+**** Text
+Link to alternative external stylesheets
+
+#+begin_src html
+<head>
+  <!-- Providing alternative stylesheets -->
+  {{c1::<link href="default.css" rel="stylesheet" title="Defaut Style" />}}
+  {{c1::<link href="fancy.css" rel="stylesheet" title="Fancy" />}}
+  {{c1::<link href="basic.css" rel="stylesheet" title="Basic" />}}
+</head>
+#+end_src
+
 * What is HTML?
 
 HTML stands for HyperText Markup Language
@@ -51,7 +257,128 @@ Containers: Elements that are used to give web pages structure for layout purpos
 
 * html document structure elements
 
-* Doctype
+* what is an html elements?
+
+most html elements have a start tag and an end tag, with the content in between.
+An HTML element is the opening tag, followed by content, followed by the closing tag.
+a tipical element includes a start tag with some attributes, text content, and a end tag.
+
+An HTML tag is composed of the name of the element, surrounded by angle brackets.
+An end tag also has a slash after the opening angle bracket, to distinguish it from the start tag.
+Tags are used to delimit the start and end of elements in the markup. (...) The start and end tags of certain normal elements can be omitted, (...)
+
+
+
+Elements and tags are not the same things. Tags begin or end an element in source code, whereas elements are part of the DOM, the document model for displaying the page in the browser.
+elements are not tags.
+
+html elements structure the webpage and define its content.
+
+
+
+
+
+Anatomy of an HTML element
+start tag + content + end tag
+
+html element :: a unit of content in html; formed with tags and content
+html tag :: the element name, surrounded by angle brackets.
+start tag :: first tag in the html element; can inculde attributes
+content :: the information contained between the tags
+end tag :: last tag in the html element.
+
+HTML elements can be nested inside other elements.
+The enclosed element is the child of the enclosing parent element.
+
+
+    The main parts of our element are as follows:
+
+    The opening tag: This consists of the name of the element (in this case, p), wrapped in opening and closing angle brackets. This states where the element begins or starts to take effect — in this case where the paragraph begins.
+    The closing tag: This is the same as the opening tag, except that it includes a forward slash before the element name. This states where the element ends — in this case where the paragraph ends. Failing to add a closing tag is one of the standard beginner errors and can lead to strange results.
+    The content: This is the content of the element, which in this case, is just text.
+    The element: The opening tag, the closing tag, and the content together comprise the element.
+
+
+
+void elements don't require the end tag
+A typical example is the <br> (hard line-break) element.
+A void element's behavior is predefined, and it cannot contain any content or other elements.
+
+
+
+Types of HTML elements: normal elements, raw text elements, and void elements.
+
+Normal elements usually have both a start tag and an end tag;
+  a start tag (<tag>) marking the beginning of an element, which may incorporate any number of HTML attributes;
+  some amount of content, including text and other elements;
+  an end tag, in which the element name is prefixed with a slash: </tag>.
+
+Raw text elements (also known as text or text-only elements) are constructed with:
+    a start tag (in the form <tag>) marking the beginning of an element, which may incorporate any number of HTML attributes;
+    some amount of text content, but no elements (all tags, apart from the applicable end tag, will be interpreted as content);
+    an end tag, in which the element name is prefixed with a slash: </tag>. In some versions of HTML, the end tag is optional for some elements. The end tag is required in XHTML.
+An example is the <title> element, which must not contain other elements (including markup of text), only plain text.
+
+Void elements (also sometimes called empty elements, single elements or stand-alone elements) only have a start tag (in the form <tag>), which contains any HTML attributes. They may not contain any children, such as text or other elements. For compatibility with XHTML, the HTML specification allows an optional space and slash (<tag /> is permissible). The space and slash are required in XHTML and other XML applications. Two common void elements are <br /> (for a hard line-break, such as in a poem or an address) and <hr /> (for a thematic break). Other such elements are often place-holders which reference external files, such as the image (<img />) element. The attributes included in the element will then point to the external file in question. Another example of a void element is <link />, for which the syntax is:
+This <link /> element points the browser at a style sheet to use when presenting the HTML document to the user. Note that in the HTML syntax attributes don't have to be quoted if they are composed only of certain characters: letters, digits, the hyphen-minus and the period. When using the XML syntax (XHTML), on the other hand, all attributes must be quoted, and a spaced trailing slash is required before the last angle bracket:
+
+
+HTML attributes are specified inside the start tag. For example, the <abbr> element, which represents an abbreviation, expects a title attribute within its opening tag. This would be written as:
+HTML attributes define desired behavior or indicate additional element properties. Most attributes require a value. In HTML, the value can be left unquoted if it does not include spaces (attribute=value), or it can be quoted with single or double quotes (attribute='value' or attribute="value"). In XML, those quotes are required.
+Boolean attributes, on the other hand, do not require a value to be specified. An example is the checked for checkboxes:
+<input type=checkbox checked>
+
+
+
+
+#+begin_src html
+<!-- opening tag for paragraph element -->
+<p class="para">
+  <!-- content for paragraph element -->
+  Hello world!
+  <!-- closing tag for paragraph element -->
+</p>
+#+end_src
+
+Tag
+
+In HTML, a tag is used for creating an element.
+
+The name of an HTML element is the name used in angle brackets such as <p> for paragraph. Note that the end tag's name is preceded by a slash character, </p>, and that in empty elements, the end tag is neither required nor allowed. If attributes are not mentioned, default values are used in each case.
+
+
+
+html is organized as a collection of family tree relationships.
+child element :: is an element nested inside another element.
+the relationship between elements and their ancestor and descendent elements is
+known as hierarchy.
+
+
+attritbutes are content added to the opening tag
+  name=value
+
+
+
+
+    Attributes contain extra information about the element that you don't want to appear in the actual content. Here, class is the attribute name and editor-note is the attribute value. The class attribute allows you to give the element a non-unique identifier that can be used to target it (and any other elements with the same class value) with style information and other things.
+
+An attribute should always have the following:
+    A space between it and the element name (or the previous attribute, if the element already has one or more attributes).
+    The attribute name followed by an equal sign.
+    The attribute value wrapped by opening and closing quotation marks.
+
+Nesting elements
+You can put elements inside other elements too — this is called nesting.
+If we wanted to state that our cat is very grumpy, we could wrap the word "very" in a <strong> element, which means that the word is to be strongly emphasized:
+<p>My cat is <strong>very</strong> grumpy.</p>
+
+
+Empty elements
+Some elements have no content and are called empty elements. Take the <img> element that we already have in our HTML page:
+<img src="images/firefox-icon.png" alt="My test image">
+This contains two attributes, but there is no closing </img> tag and no inner content. This is because an image element doesn't wrap content to affect it. Its purpose is to embed an image in the HTML page in the place it appears.
+
+* What is HTML Doctype?
 
 <!DOCTYPE html> - defines the document type as html.
 <!DOCTYPE> - Defines the document type
@@ -389,129 +716,6 @@ As a foundational component of a website's display, HTML is a great language for
 
     Containers: Elements that are used to give web pages structure for layout purposes
 
-
-* html elements
-
-most elements are written with a start tag and an end tag, with the content in between.
-The contents of the element must be placed between just after the start tag (which might be implied, in certain cases) and just before the end tag (which again, might be implied, in certain cases).
-
-An HTML tag is composed of the name of the element, surrounded by angle brackets.
-An end tag also has a slash after the opening angle bracket, to distinguish it from the start tag.
-Tags are used to delimit the start and end of elements in the markup. (...) The start and end tags of certain normal elements can be omitted, (...)
-
-
-
-Elements and tags are not the same things. Tags begin or end an element in source code, whereas elements are part of the DOM, the document model for displaying the page in the browser.
-elements are not tags.
-
-html elements structure the webpage and define its content.
-
-An HTML element is the opening tag, followed by content, followed by the closing tag.
-
-a tipical element includes a start tag with some attributes, text content, and a
-end tag.
-
-
-
-Anatomy of an HTML element
-start tag + content + end tag
-
-html element :: a unit of content in html; formed with tags and content
-html tag :: the element name, surrounded by angle brackets.
-start tag :: first tag in the html element; can inculde attributes
-content :: the information contained between the tags
-end tag :: last tag in the html element.
-
-HTML elements can be nested inside other elements.
-The enclosed element is the child of the enclosing parent element.
-
-
-    The main parts of our element are as follows:
-
-    The opening tag: This consists of the name of the element (in this case, p), wrapped in opening and closing angle brackets. This states where the element begins or starts to take effect — in this case where the paragraph begins.
-    The closing tag: This is the same as the opening tag, except that it includes a forward slash before the element name. This states where the element ends — in this case where the paragraph ends. Failing to add a closing tag is one of the standard beginner errors and can lead to strange results.
-    The content: This is the content of the element, which in this case, is just text.
-    The element: The opening tag, the closing tag, and the content together comprise the element.
-
-
-
-void elements don't require the end tag
-A typical example is the <br> (hard line-break) element.
-A void element's behavior is predefined, and it cannot contain any content or other elements.
-
-
-
-Types of HTML elements: normal elements, raw text elements, and void elements.
-
-Normal elements usually have both a start tag and an end tag;
-  a start tag (<tag>) marking the beginning of an element, which may incorporate any number of HTML attributes;
-  some amount of content, including text and other elements;
-  an end tag, in which the element name is prefixed with a slash: </tag>.
-
-Raw text elements (also known as text or text-only elements) are constructed with:
-    a start tag (in the form <tag>) marking the beginning of an element, which may incorporate any number of HTML attributes;
-    some amount of text content, but no elements (all tags, apart from the applicable end tag, will be interpreted as content);
-    an end tag, in which the element name is prefixed with a slash: </tag>. In some versions of HTML, the end tag is optional for some elements. The end tag is required in XHTML.
-An example is the <title> element, which must not contain other elements (including markup of text), only plain text.
-
-Void elements (also sometimes called empty elements, single elements or stand-alone elements) only have a start tag (in the form <tag>), which contains any HTML attributes. They may not contain any children, such as text or other elements. For compatibility with XHTML, the HTML specification allows an optional space and slash (<tag /> is permissible). The space and slash are required in XHTML and other XML applications. Two common void elements are <br /> (for a hard line-break, such as in a poem or an address) and <hr /> (for a thematic break). Other such elements are often place-holders which reference external files, such as the image (<img />) element. The attributes included in the element will then point to the external file in question. Another example of a void element is <link />, for which the syntax is:
-This <link /> element points the browser at a style sheet to use when presenting the HTML document to the user. Note that in the HTML syntax attributes don't have to be quoted if they are composed only of certain characters: letters, digits, the hyphen-minus and the period. When using the XML syntax (XHTML), on the other hand, all attributes must be quoted, and a spaced trailing slash is required before the last angle bracket:
-
-
-HTML attributes are specified inside the start tag. For example, the <abbr> element, which represents an abbreviation, expects a title attribute within its opening tag. This would be written as:
-HTML attributes define desired behavior or indicate additional element properties. Most attributes require a value. In HTML, the value can be left unquoted if it does not include spaces (attribute=value), or it can be quoted with single or double quotes (attribute='value' or attribute="value"). In XML, those quotes are required.
-Boolean attributes, on the other hand, do not require a value to be specified. An example is the checked for checkboxes:
-<input type=checkbox checked>
-
-
-
-
-#+begin_src html
-<!-- opening tag for paragraph element -->
-<p class="para">
-  <!-- content for paragraph element -->
-  Hello world!
-  <!-- closing tag for paragraph element -->
-</p>
-#+end_src
-
-Tag
-
-In HTML, a tag is used for creating an element.
-
-The name of an HTML element is the name used in angle brackets such as <p> for paragraph. Note that the end tag's name is preceded by a slash character, </p>, and that in empty elements, the end tag is neither required nor allowed. If attributes are not mentioned, default values are used in each case.
-
-
-
-html is organized as a collection of family tree relationships.
-child element :: is an element nested inside another element.
-the relationship between elements and their ancestor and descendent elements is
-known as hierarchy.
-
-
-attritbutes are content added to the opening tag
-  name=value
-
-
-
-
-    Attributes contain extra information about the element that you don't want to appear in the actual content. Here, class is the attribute name and editor-note is the attribute value. The class attribute allows you to give the element a non-unique identifier that can be used to target it (and any other elements with the same class value) with style information and other things.
-
-An attribute should always have the following:
-    A space between it and the element name (or the previous attribute, if the element already has one or more attributes).
-    The attribute name followed by an equal sign.
-    The attribute value wrapped by opening and closing quotation marks.
-
-Nesting elements
-You can put elements inside other elements too — this is called nesting.
-If we wanted to state that our cat is very grumpy, we could wrap the word "very" in a <strong> element, which means that the word is to be strongly emphasized:
-<p>My cat is <strong>very</strong> grumpy.</p>
-
-
-Empty elements
-Some elements have no content and are called empty elements. Take the <img> element that we already have in our HTML page:
-<img src="images/firefox-icon.png" alt="My test image">
-This contains two attributes, but there is no closing </img> tag and no inner content. This is because an image element doesn't wrap content to affect it. Its purpose is to embed an image in the HTML page in the place it appears.
 
 * HTML comments
 Comments in the HTML code are written with dashes – and an exclamation point !, all enclosed in two angle brackets <>. They're structured like this: <!-- HTML comment -->. Take a look at the example below.
@@ -1251,3 +1455,8 @@ Defines an embedded applet
 <embed> 	Defines a container for an external (non-HTML) application
 <object> 	Defines an embedded object
 <param> 	Defines a parameter for an object
+
+
+* base element
+
+set the base URL to use for all relative URLs

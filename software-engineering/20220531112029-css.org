@@ -4,6 +4,154 @@
 #+title: CSS
 #+date: [2022-05-31 Tue 11:20]
 
+** CSS Anki
+:PROPERTIES:
+:ANKI_DECK: 00-software engineering::CSS
+:ANKI_TAGS: CSS
+:END:
+
+*** Single line Comment
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660435114040
+:END:
+**** Text
+Create a single line comment
+
+#+begin_src css
+{{c1::/* single line comment */}}
+#+end_src
+
+*** Multiple line Comment
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660435114114
+:END:
+**** Text
+Create a multiple line comment
+
+#+begin_src css
+{{c1::/* single line comment}}
+{{c1::single line comment}}
+{{c1::*/}}
+#+end_src
+
+*** CSS Selector Syntax
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660435114189
+:END:
+**** Text
+What is the CSS Selector Syntax
+
+#+begin_src css
+{{c1::selector { property: value; }}}
+#+end_src
+
+*** CSS Universal selector
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660437802089
+:END:
+**** Text
+Target the Universal selector
+
+#+begin_src css
+/* Represents any element */
+{{c1::* {...} }}
+#+end_src
+
+*** CSS Type selector
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660437802164
+:END:
+**** Text
+Target the Type selector
+
+#+begin_src css
+/* An element of type E; E is the elementName */
+{{c1::E {...} }}
+#+end_src
+
+
+*** CSS Class selector
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660437802239
+:END:
+**** Text
+Target the Class selector
+
+#+begin_src css
+/* All elements with the className */
+{{c1::.className {...} }}
+/* All elements with the className and universal selector*/
+{{c1::*.className {...} }}
+#+end_src
+
+*** CSS Class selector with type
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660439374937
+:END:
+**** Text
+Target the Class selector with type
+
+#+begin_src css
+/* Represent element with the className */
+/* {{c1::E.className {...} }} */
+/* Represent element with the className1 and className2 */
+/* {{c1::E.className1.className2 {...} }} */
+#+end_src
+
+*** CSS ID selector
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660437802389
+:END:
+**** Text
+Target the ID selector
+
+#+begin_src css
+/* All elements with the idName */
+{{c1::#idName {...} }}
+/* Represent element with the idName  */
+{{c1::E.#idName {...} }}
+#+end_src
+
+*** CSS Descendant combinator
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660437802464
+:END:
+**** Text
+Use the Descendant combinator
+
+#+begin_src css
+/* target element2 that descendant from element1 */
+{{c1::E1 E2 {...} }}
+/* target element2 that is grandchild or later from element1 */
+{{c1::E1 * E2 {...} }}
+#+end_src
+
+*** CSS Grouping Selectors
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1660437802539
+:END:
+**** Text
+Group the selectors
+
+#+begin_src css
+/* targeting element1, element2, element3, and so on */
+{{c1::E1, E2, E3 {...} }}
+/* targeting class1, class2, class3, and so on */
+{{c1::.className1, .className2, .className3 {...} }}
+#+end_src
+
+** css unsorted
+
 css :: cascading style sheets
 
 use to style the html content.
