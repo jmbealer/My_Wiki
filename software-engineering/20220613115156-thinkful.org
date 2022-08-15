@@ -2854,6 +2854,164 @@ This way of handling events is called event delegation. Event delegation is the 
 
 If you want, you can continue working on this application to improve it even further. But now, you're familiar with the essentials of interacting with the DOM, handling events, and separating the data processing from the DOM.
 
+** module 21 rendering with react
+*** 21.1 Create React App
+
+what is npx
+Use npx to run the create-react-app command.
+
+what is create react app script
+This command takes a folder name as an argument and will create the folder for you.
+
+The full command will look something like this:
+
+Create a React application
+npx create-react-app <folder-name>
+
+
+Running the React application
+npm start
+
+
+
+Standard files
+
+
+Create React App includes a few folders and several files:
+
+The files at the root level of this project typically include JavaScript
+configuration files like a package.json file and a README.md file. Make sure to
+update the README if this is a larger project!
+
+The public folder represents what is available to web browsers. This folder also
+contains the index.html file, which is the entry point to the application.
+During the build process, React inserts a script tag referencing the compiled
+code into the index.html file.
+
+The src folder is where most of your React components will be written. Only the
+files within this folder will be processed by React. This folder will commonly
+be used to also contain subdirectories for the files associated with each
+component, including images and CSS stylesheets.
+
+You won't need all of these files to get started with React. At the start of any
+Create React App project, you can usually delete the following files:
+
+public/logo192.png: Smaller PNG of the React logo
+public/logo512.png: Larger PNG of the React logo
+src/logo.svg: SVG version of the React logo
+src/App.test.js: For tests that you aren't using
+src/reportWebVitals.js: For tests that you aren't using
+src/setupTests.js: For tests that you aren't using
+
+
+How the files connect
+The index.html file
+The entry point to your application is index.html.
+
+Within the <head> element, you can always update the <title>, which will display
+at the browser title. This is the only real change you may need to make to this
+page in getting started.
+
+The <body> element will look similar to the code below:
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.  The build
+      step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.  To create a
+      production bundle, use `npm run build` or `yarn build`.
+  -->
+</body>
+
+For now, just take note that the <div> element in the <body> is given the ID
+#root. As described in that code sample's comment, the build step will
+place the JavaScript that you write into this HTML container.
+
+You don't need to make any additional changes to this HTML page, unless at some
+point you want to add HTML elements that are specific to this page and outside
+the React components that you plan to build.
+
+The index.js file
+The index.js file is your primary JavaScript file. The
+original demo code was the app with the spinning React logo that ran in your
+local server. For now, you'll be able to remove some of the original demo's
+unnecessary code to have a cleaner starting point for your own app.
+
+In the index.js file, both React and
+  ReactDOM are both imported. This use of import instead of require may be a
+  little different than what you are used to. Importing React will make sure
+  that your components are compiled properly, and ReactDOM will make sure that
+  the DOM-related methods to display the components into the browser are also
+  compiled properly.
+
+Then, the CSS stylesheet index.css will be imported. This stylesheet should
+contain any global CSS styles that can be used within the web page and aren't
+specific to any component. The App.js file will then be imported. This file will
+contain your primary component that will be displayed in the web page.
+
+React uses the render() function to display the component in the web page. The
+render() function takes two arguments: the React component to be rendered and
+the DOM container where it should be placed. The Create React App setup uses the
+root element as the DOM container, which is obtained with
+document.getElementById('root'). You can ignore the <React.StrictMode> tags for
+now because they enable more helpful warnings during development.
+
+Note that when you save this file you'll still see errors because you still need
+to update the App.js file.
+
+The App.js file
+The App.js file is for your app component. It's the main
+component in React, and it acts as a container for all other components. You'll
+override the App component with your own code.
+
+All of the code within the App component will be returned, exported, and then
+used within the index.js file as explained above.
+
+
+The first line in App.js will import the CSS stylesheet that
+should specifically be applied to the App component.
+
+Then within your App component, create a simple component that has a heading
+with the following text: "Hello World!".
+
+Notice that this code uses export default instead of module.exports to export
+the function. Although you don't need to use a named function, this can be
+useful for debugging purposes and for readability. These will be some of the
+little differences in the syntax when using React.
+
+When you save this file, you will have fixed all the code that linked to your
+recently deleted files. In the browser that is displaying your local server, you
+will see a simple web page with a large text heading that displays "Hello
+World!".
+
+Web page with a large text heading that displays "Hello World!"
+
+*** 21.2
+*** 21.3
+*** 21.4
+*** 21.5
+*** 21.6
+*** 21.7
+*** 21.8
+*** 21.9
+*** 21.10
+*** 21.11
+** module 22 react state management
+*** 22.1
+*** 22.2
+*** 22.3
+*** 22.4
+*** 22.5
+*** 22.6
+*** 22.7
+*** 22.8
+*** 22.9
 ** unsorted
 
 

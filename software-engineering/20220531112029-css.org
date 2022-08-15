@@ -31,8 +31,8 @@ Create a single line comment
 Create a multiple line comment
 
 #+begin_src css
-{{c1::/* single line comment}}
-{{c1::single line comment}}
+{{c1::/*}}
+{{c1::multiple line comment}}
 {{c1::*/}}
 #+end_src
 
@@ -45,7 +45,7 @@ Create a multiple line comment
 What is the CSS Selector Syntax
 
 #+begin_src css
-{{c1::selector { property: value; }}}
+{{c1::selector { property: value; } }}
 #+end_src
 
 *** CSS Universal selector
@@ -73,7 +73,6 @@ Target the Type selector
 /* An element of type E; E is the elementName */
 {{c1::E {...} }}
 #+end_src
-
 
 *** CSS Class selector
 :PROPERTIES:

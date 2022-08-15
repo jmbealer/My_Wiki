@@ -175,7 +175,7 @@ Set the base URL to use for all relative URLs and open link in new tab
 
 #+begin_src html
 <head>
-  {{c1::<base href="https://www.example.com" target="_blank"}}
+  {{c1::<base href="https://www.example.com" target="_blank" />}}
   ...
 </head>
 #+end_src
