@@ -3,3 +3,18 @@
 :END:
 #+title: Text-Editor-Idx
 #+date: [2022-08-14 Sun 21:31]
+
+[[id:31f5df5e-341a-4a82-851b-bf3166d97066][Vim]]
+
+[awesome neovim plugins](https://github.com/rockerBOO/awesome-neovim)
+
+[nvim](nvim)
+[Vim Help](Vim-Help.md)
+[Vim User Manual](Vim-User-Manual.md)
+[Vim Quick Reference Guide](Vim-Quick-Reference-Guide.md)
+[Nvim Reference Manual](Nvim-Reference-Manual)
+[My Vim Cheat list](My-Vim-Cheat-list.md)
+[Vim2](Vim2.md)
+SC-IM a vim based terminal spreadsheet editor
+[Vimrc](Vimrc.md)
+[tridactyl](tridactyl.md)
