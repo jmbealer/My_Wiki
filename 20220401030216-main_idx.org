@@ -14,7 +14,7 @@ cli
 linux
 certifications
 
-text-editing
+[[id:a186d3b9-2b81-4e50-8438-cf20798fa2e4][Text-Editor-Idx]]
 - [[id:31f5df5e-341a-4a82-851b-bf3166d97066][Vim]]
 
 [[id:9112127d-96f8-47f7-b359-e1ceb5056d94][Software Engineering Index]]

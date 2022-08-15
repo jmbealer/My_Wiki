@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       a186d3b9-2b81-4e50-8438-cf20798fa2e4
+:END:
+#+title: Text-Editor-Idx
+#+date: [2022-08-14 Sun 21:31]
