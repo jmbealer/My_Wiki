@@ -15,7 +15,7 @@ linux
 certifications
 
 text-editing
-vim
+- [[id:31f5df5e-341a-4a82-851b-bf3166d97066][Vim]]
 
 [[id:9112127d-96f8-47f7-b359-e1ceb5056d94][Software Engineering Index]]
 - [[id:1eac6cff-c4c4-4473-a181-984ebefa877c][Go Language]]
