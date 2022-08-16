@@ -6,6 +6,8 @@
 
 [[id:31f5df5e-341a-4a82-851b-bf3166d97066][Vim]]
 
+need finish setting vim keymap in bash
+
 [awesome neovim plugins](https://github.com/rockerBOO/awesome-neovim)
 
 [nvim](nvim)
