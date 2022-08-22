@@ -1,56 +1,58 @@
 :PROPERTIES:
 :ID:       bc9d12ba-1f84-4599-9fe3-bcba0d2f5cb4
 :END:
-#+title: React.Js
+#+title: React.js
 #+date: [2022-08-14 Sun 19:50]
 
-** React.js Anki
+* React.js Anki syntax
 :PROPERTIES:
 :ANKI_DECK: 00-software engineering::React
 :ANKI_TAGS: React
 :END:
-
-*** Create a React App
+** Create a React App
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze (Type Answer)
 :ANKI_NOTE_ID: 1660526133492
 :END:
-**** Text
+*** Text
 Create a React Application
 
 #+begin_src shell
 # {{c1::npx create-react-app directory-name}}
 #+end_src
 
-*** Start a React App
+** Start a React App
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze (Type Answer)
 :ANKI_NOTE_ID: 1660525920093
 :END:
-**** Text
+*** Text
 Start a React Application
 #+begin_src shell
 # {{c1::npm start}}
 #+end_src
 
-*** Simple React index.js
+** Simple React index.js
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze (Type Answer)
 :ANKI_NOTE_ID: 1660528927142
 :END:
-**** Text
+*** Text
 #+begin_src js
 // simple index.js file
-// importing stuff for react
+// Imports
+// going to use react
 {{c1::import React from "react";}}
+// going to manipulate dom with react
 {{c1::import ReactDOM from "react-dom/client";}}
 // importing a global css
 {{c1::import "./index.css";}}
 // importing a react component
 {{c1::import App from "./App";}}
 
-// setting the render to display the components
-{{c2::const root = ReactDOM.createRoo(document.getElementById("root"));}}
+// create the root node
+{{c2::const root = ReactDOM.createRoot(document.getElementById("root"));}}
+// render to root the component in strict mode
 {{c2::root.render(}}
   {{c2::}}<React.StrictMode>}}
     {// calling the component}
@@ -59,12 +61,12 @@ Start a React Application
 {{c2::}});}}
 #+end_src
 
-*** Simple React app.js
+** Simple React app.js
 :PROPERTIES:
 :ANKI_NOTE_TYPE: Cloze (Type Answer)
 :ANKI_NOTE_ID: 1660528927217
 :END:
-**** Text
+*** Text
 #+begin_src js
 // Simple React app.js; Component
 // importing css for this component
@@ -78,7 +80,119 @@ Start a React Application
 // exporting the component
 {{c1::export default App;}}
 #+end_src
-** React test this
+** Simple Jsx expression
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1661026104587
+:END:
+*** Text
+#+begin_src js
+// inside of myElement create paragraph element with expression 5 + 5 inside
+{{c1::const myElement = <p>{5 + 5}</p>;}}
+#+end_src
+** Simple Jsx Large Block of HTML
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1661027200063
+:END:
+*** Text
+#+begin_src js
+// inside of myElement create unorder list element
+{{c1::const myElement = (}}
+    {{c1::<ul>}}
+        {{c1::<li>...</li>}}
+        ...
+    {{c1::</ul>}}
+{{c1::);}}
+#+end_src
+** Simple Jsx One Top Level Element
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1661026922463
+:END:
+*** Text
+#+begin_src js
+// create the top element
+{{c1::const myElement = (}}
+    {{c1::<div>}}
+      <p>...</p>
+      <p>...</p>
+      ...
+    {{c1::</div>}}
+{{c1::);}}
+
+// can also use fragment
+{{c2::const myElement = (}}
+    {{c2::<>}}
+      <p>...</p>
+      <p>...</p>
+      ...
+    {{c2::</>}}
+{{c2::);}}
+#+end_src
+** Simple Jsx className
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1661026104812
+:END:
+*** Text
+#+begin_src js
+// add class name myclass
+{{c1::const myElement = <p className="myclass">...</p>;}}
+#+end_src
+** Jsx if statements
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1661026104887
+:END:
+*** Text
+#+begin_src js
+// set x to 5; readonly
+{{c1::const x = 5;}}
+// set text to Goodbye
+{{c1::let text = "Goodbye";}}
+// if x is less then 10
+{{c1::if (x < 10) {}}
+  // set text to Hello
+  {{c1::text = "Hello";}}
+{{c1::}}}
+// p element with variable text
+{{c1::const myElement = <p>{text}</p>;}}
+
+// ternary; if x is less than 10 return Hello else return Goodbye inside a p element
+{{c2::const myElement = <p>{x < 10 ? "Hello" : "Goodbye"}</p>;}}
+#+end_src
+** React list
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1661135639919
+:END:
+*** Text
+#+begin_src js
+// function Car for list items brand
+function Car(props) {
+  // returns an list item with props brand inside
+  {{c1::return <li>I am a { props.brand }</li>;}}
+}
+// function for whole list
+function Garage() {
+  // the array we going to map over
+  const cars = ["Ford", "BMW", "Audi"];
+  // returns fragment with a h1 and unorder list with map
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <ul>
+        {// map over cars and call Car inside without key}
+        {{c2::{cars.map((car) => <Car brand={car} />)}}}
+        {// map over cars and call Car inside with key from index}
+        {{c3::{cars.map((car, index) => <Car key={index} brand={car} />)}}}
+      </ul>
+    </>
+  );
+}
+#+end_src
+* React test this
 
 #+begin_src js
 // simple index.js file
@@ -112,7 +226,87 @@ function App() {
 // exporting the component
 export default App;
 #+end_src
-** 21.1 Create React App
+* what is react
+react is a javascript library for building user interfaces.
+react is used to build single-page application.
+react allows us to create reusable UI components.
+is a tool for building reusable UL components.
+create by Facebook
+
+how does react work?
+creates a virtual dom in memory
+where your dom manipulation happen before making changes in the browser dom
+only changes what needs to be changed!
+
+ReactDOM.render() - renders HTML to the web page
++ takes two arguments, HTML code and HTML element.
++ displays the HTML code inside the HTML element.
+
+the Root node
+the root node is the HTML element where you want to display the result.
+it is like a container for content managed by React.
+
+* what is jsx
+jsx stands for javascript xml.
+jsx allows us to write html in react.
+jsx makes it easier to write and add html in react
+
+jsx allows us to write html elements in javascript and place them in the dom
+without any createElement() and/or appendChild() methods.
+
+jsx converts html tags into react elements.
+
+expressions in jsx
+with jsx you can write expressions inside curly braces {}
+expressions can be:
++ react variable
++ property
++ valid javascript expressions
+
+jsx will execute the expressions and return the result
+
+use () parentheses when inserting a large html block
+
+there can be only one top element
+  use <div> or <> fragment
+
+empty elements must be close with />
+
+use className instead of class
+
+conditions - if statements
+
+react supports if statements, but not inside jsx
+can use ternary expression inside jsx
+
+* react lists
+
+#+begin_src js
+// function for list items
+function Car(props) {
+  // returns an list item with props brand inside
+  return <li>I am a { props.brand }</li>;
+}
+// function for whole list
+function Garage() {
+  // the array we going to map over
+  const cars = ["Ford", "BMW", "Audi"];
+  // returns fragment with a h1 and unorder list with map
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <ul>
+        {// map over cars and call Car inside without key}
+        {cars.map((car) => <Car brand={car} />)}
+        {// map over cars and call Car inside with key from index}
+        {cars.map((car, index) => <Car key={index} brand={car} />)}
+      </ul>
+    </>
+  );
+}
+#+end_src
+
+* 21.1 Create React App
 
 what is npx
 Use npx to run the create-react-app command.
@@ -249,23 +443,23 @@ World!".
 
 Web page with a large text heading that displays "Hello World!"
 
-** 21.2
-** 21.3
-** 21.4
-** 21.5
-** 21.6
-** 21.7
-** 21.8
-** 21.9
-** 21.10
-** 21.11
-** module 22 react state management
-*** 22.1
-*** 22.2
-*** 22.3
-*** 22.4
-*** 22.5
-*** 22.6
-*** 22.7
-*** 22.8
-*** 22.9
+* 21.2
+* 21.3
+* 21.4
+* 21.5
+* 21.6
+* 21.7
+* 21.8
+* 21.9
+* 21.10
+* 21.11
+* module 22 react state management
+** 22.1
+** 22.2
+** 22.3
+** 22.4
+** 22.5
+** 22.6
+** 22.7
+** 22.8
+** 22.9
