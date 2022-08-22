@@ -8,7 +8,6 @@
 
 this is the main index...
 
-
 computing
 cli
 linux
@@ -69,7 +68,7 @@ wiki-old
 awkTest.org
 awkTest.txt
 
-** Readme
+* Readme
 #+begin_src org
 ,#+Title: My Wiki Readme
 
