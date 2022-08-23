@@ -54,11 +54,11 @@ Start a React Application
 {{c2::const root = ReactDOM.createRoot(document.getElementById("root"));}}
 // render to root the component in strict mode
 {{c2::root.render(}}
-  {{c2::}}<React.StrictMode>}}
+  {{c2::<React.StrictMode>}}
     {// calling the component}
-    {{c2::}}<App />}}
-  {{c2::}}</React.StrictMode>}}
-{{c2::}});}}
+    {{c2::<App />}}
+  {{c2::</React.StrictMode>}}
+{{c2::);}}
 #+end_src
 
 ** Simple React app.js
@@ -192,6 +192,50 @@ function Garage() {
   );
 }
 #+end_src
+** React classes
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1661269749429
+:END:
+*** Text
+#+begin_src js
+// initialize class Car
+{{c1::class Car {}}
+  // assigned a property name for the brand
+  {{c2::constructor(name) {}}
+    {{c2::this.brand = name;}}
+  {{c2::};}}
+  // create method in a class named present;
+  {{c3::present() {}}
+    // returns I have a prop
+    {{c3::return "I have a " + this.brand;}}
+  {{c3::};}}
+{{c1::};}}
+
+// create object mycar using the Car class
+{{c4::const mycar = new Car("Ford");}}
+// use present method on mycar object
+{{c4::mycar.present();}}
+
+// Class Inheritance: create a class Model that inherit the methods for Car
+{{c1::class Model extends Car {}}
+  // assigned properties name, mode
+  {{c2::constructor(name, mod) {}}
+    {{c2::super(name);}}
+    {{c2::this.model = mod;}}
+  {{c2:};}}
+  // create method show using present method
+  {{c3::show() {}}
+    // returns method , it is a prop
+    {{c3::return this.present() + ", it is a " + this.model}}
+  {{c3:};}}
+{{c1::};}}
+
+// create object mycar using the Model class
+{{c4::const mycar = new Model("Ford", "Mustang");}}
+// use show method on object mycar;
+{{c4::mycar.show();}}
+#+end_src
 * React test this
 
 #+begin_src js
@@ -306,6 +350,51 @@ function Garage() {
 }
 #+end_src
 
+* react es6 classes
+a class is a type of function
+it is initialize with the class keyword
+the properties assigned inside a constructor() method
+the class name must be capitalize
+class inheritance: to create use the extends keyword
+a class created with a class inheritance inherits all the methods from another class
+the super() method refers to the parent class
+  we call the parent's constructor method and gets access to the parent's
+properties and methods
+#+begin_src js
+// initialize class Car
+class Car {
+  // assigned a property name for the brand
+  constructor(name) {
+    this.brand = name;
+  };
+  // create method in a class named present;
+  present() {
+    return "I have a " + this.brand;
+  };
+};
+// create object mycar using the Car class
+const mycar = new Car("Ford");
+// use present method on mycar object
+mycar.present();
+
+// Class Inheritance: create a class Model that inherit the methods for Car
+class Model extends Car {
+  // assigned properties name, mode
+  constructor(name, mod) {
+    super(name);
+    this.model = mod;
+  };
+  // create method show using present method
+  show() {
+    return this.present() + ", it is a " + this.model
+  };
+};
+
+// create object mycar using the Model class
+const mycar = new Model("Ford", "Mustang");
+// use show method on object mycar;
+mycar.show();
+#+end_src
 * 21.1 Create React App
 
 what is npx
