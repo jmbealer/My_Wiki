@@ -395,6 +395,51 @@ const mycar = new Model("Ford", "Mustang");
 // use show method on object mycar;
 mycar.show();
 #+end_src
+* what is a react hook
+hooks allow function components to have access to state and other react features.
+
+hooks allow us to "hook" into react feature such as state and life-cycle methods.
+
+You must import Hooks from react.
+
+useState - keep track of the application state.
+state generally refers to application data or properties that need to be tracked.
+
+Hook Rules:
++ Hooks can only be called inside React function components.
++ Hooks can only be called at the top level of a component.
++ Hooks cannot be conditional.
+
+Hooks will not work in React class components.
+
+* what is react useState Hook?
+
+useState - keep track of the application state.
+useState - allows us to track state in a function component.
+
+state generally refers to application data or properties that need to be tracked.
+state generally refers to data or properties that need to be tracked in application
+
+useState accepts a initial state and returns two values:
++ The current state.
++ A function that updates the state.
+
+#+begin_src js
+// how to import useState?
+import { useState } from "react"
+
+// how to initialize useState?
+function FavColor() {
+  // The first value, color, is our current state
+  // The second value, setColor, is the function that is used to update our state.
+  // Set the initial state to an empty string
+  const [ color, setColor ] = useState("");
+
+  // how to read state
+  return <h1>{color}</h1>
+}
+#+end_src
+
 * 21.1 Create React App
 
 what is npx
