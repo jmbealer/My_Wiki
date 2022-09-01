@@ -74,4 +74,6 @@ awkTest.txt
 
 change linux into my main wiki for my notes.
 
+nice
+
 #+end_src
