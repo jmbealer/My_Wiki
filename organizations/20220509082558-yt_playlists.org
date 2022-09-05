@@ -42,6 +42,7 @@
     + 55:SE-Rust
     + 55:SE-Database
     + 55:SE-Workflow
+    + 55:SE-Functional
     + SE-Lisp
     + SE-Books
     + Software
@@ -64,6 +65,8 @@
     11:TE:Vim
     11:TE:Emacs
 
+
+55:Career
 
 0 Information
 
