@@ -16,6 +16,7 @@ this is a staging area for my notes need to summarize and move to a better place
 [[id:0b027db0-6cea-4c7a-81fa-05115bd10590][problemSolving]]
 [[id:bc9d12ba-1f84-4599-9fe3-bcba0d2f5cb4][reactjs]]
 
+* Frontend development - Modules 18-29
 ** module 18 frontend foundations
 *** 18.2 developer tools
 
@@ -2855,7 +2856,20 @@ This way of handling events is called event delegation. Event delegation is the 
 
 If you want, you can continue working on this application to improve it even further. But now, you're familiar with the essentials of interacting with the DOM, handling events, and separating the data processing from the DOM.
 
-** unsorted
+* Backend Development - Modules 30-40
+** Node and Express - Module 30
+** Robust Server Structure - Module 31
+** Project - Module 32
+** Postgres- Module 33
+** Creating Relations - Module 34
+** Node, Express, and Postgres - Module 35
+** Backend Deployment - Module 36
+** Connecting it all - Module 37
+** Mock Interview: Backend - Module 38
+** Node and Express - Module 39
+** Node and Express - Module 40
+* Data Structures and Algorithms - Modules 41-44
+* unsorted
 
 
 Content delivery network
