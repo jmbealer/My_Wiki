@@ -4,6 +4,7 @@
 #+title: ngsl-words
 
 https://www.newgeneralservicelist.org/
+[[id:6492455b-e1d1-486d-be86-6cee455cc816][ngsl-words-anki]]
 
 word
   part of speech

@@ -6,6 +6,7 @@
 
 [[id:31f5df5e-341a-4a82-851b-bf3166d97066][Vim]]
 [[id:1bfecfad-efe8-4602-be60-168c5d3352a4][doomEmacs]]
+[[id:b3646737-953b-47da-8a3a-be049dce1c99][orgMode]]
 
 need finish setting vim keymap in bash
 

@@ -4,6 +4,9 @@
 #+title: Command-line Interface
 #+date: [2022-04-21 Thu 00:00]
 
+[[id:18810b42-f2d3-4e7a-86b1-a61c42a4e735][cli-apps]]
+[[id:6a288090-3352-4b6a-89c8-b6b81b3b8766][cli-commands]]
+
 * bash introduction
 
 linux shell?

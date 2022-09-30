@@ -6,6 +6,10 @@
 
 [[id:85bb4b3e-8a1a-4ef7-9482-b867f6309760][jsOperator]]
 [[id:cf20a83e-974e-48fc-9b34-f4dbd92a2bcd][jsControlFlow]]
+[[id:510d58f4-1bed-4300-904d-01b6c3f29159][jsResources]]
+[[id:074b9c13-5fdb-4378-b855-56bc8c45a903][jsTesting]]
+[[id:13806e7f-c029-483a-a383-428dc8e310ae][jsRequests]]
+[[id:5e1d0783-31f5-4a58-80a9-c1580e9adbf1][jsAsync]]
 
 [[id:a535a967-64fb-45fc-9fc1-3e801e441945][jsLexicalStructure]] wip
 [[id:f3061f7f-5181-4011-b516-3100217a9a59][jsTypesValuesVariables]] wip
