@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       2f6a9063-b79f-408d-903d-57b874750075
+:END:
+#+title: Mathematics
+#+date: [2022-09-30 Fri 06:36]
+#+filetags: :MOC:
+
+topic index
+[[id:11525424-8401-4ff2-9bf5-d336f66b5a21][Modern States College Mathematics]]
+[[id:8c3f7496-e06a-451f-a6b3-6111eb884ffd][mental-math]]
+
+conventions
