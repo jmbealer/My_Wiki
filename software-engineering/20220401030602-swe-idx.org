@@ -8,7 +8,6 @@
 
 [[id:b96af39a-3d47-4c7c-9da5-b3c4cbc673ad][programming]]
 
-- [[id:1eac6cff-c4c4-4473-a181-984ebefa877c][Go Language]]
 - [[id:d8c234ae-93fa-4569-8d7b-d10ae08377a9][html]]
 - [[id:bbad4e71-066d-4231-953a-3b5ed0891141][css]]
 - [[id:5c4573b4-c79d-4bcd-9fb8-7f22e64f1675][clang]]
