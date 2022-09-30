@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       6c5c4054-b96f-41b9-b6b7-d016752cfe29
+:END:
+#+title: Education
+#+date: [2022-09-30 Fri 06:55]
+
+[[id:bf0b716d-2624-4e94-acc3-f8e4453d0a0b][degree-plan]]

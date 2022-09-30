@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       e4cb556a-1a38-428a-b220-f8f536de1513
+:END:
+#+title: Computing
+#+date: [2022-09-30 Fri 06:54]

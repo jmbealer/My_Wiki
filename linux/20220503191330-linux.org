@@ -4,6 +4,10 @@
 #+title: linux
 #+date: [2022-05-03 Tue 19:13]
 
+ [[id:8bb1d8d1-c11d-4a09-8ab4-1a8dc5995c15][LPI Linux Essentials Exam 010]]
+[[id:adb127ea-0c62-4193-bec9-92f90f549fe8][cli]]
+  [[id:380c2018-8c41-49bc-8f98-f17db74a9b8d][cli-shortcuts]]
+
 * unsorted certs
 [[id:8bb1d8d1-c11d-4a09-8ab4-1a8dc5995c15][LPI Linux Essentials Exam 010]]
 * unsorted books notes
