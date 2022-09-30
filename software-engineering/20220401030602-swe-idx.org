@@ -6,6 +6,8 @@
 :END:
 #+title: Software Engineering Index
 
+[[id:ef3640e7-5eb4-4301-af10-2948e073cc9f][progIdioms]]
+
 [[id:b96af39a-3d47-4c7c-9da5-b3c4cbc673ad][programming]]
 
 - [[id:d8c234ae-93fa-4569-8d7b-d10ae08377a9][html]]

@@ -5,6 +5,7 @@
 #+date: [2022-04-21 Thu 00:02]
 
 [[id:aba4c4fe-deb5-4f35-8099-264cb2217536][clang-certs]]
+[[id:4e5f29f4-238d-4dff-891e-1bd7762345e5][cIdioms]]
 
 
 #+begin_src C

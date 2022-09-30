@@ -10,6 +10,8 @@
 [[id:074b9c13-5fdb-4378-b855-56bc8c45a903][jsTesting]]
 [[id:13806e7f-c029-483a-a383-428dc8e310ae][jsRequests]]
 [[id:5e1d0783-31f5-4a58-80a9-c1580e9adbf1][jsAsync]]
+[[id:d4e35bd9-9139-4279-8953-fcf40329f240][jsIdioms]]
+
 
 [[id:a535a967-64fb-45fc-9fc1-3e801e441945][jsLexicalStructure]] wip
 [[id:f3061f7f-5181-4011-b516-3100217a9a59][jsTypesValuesVariables]] wip

@@ -4,19 +4,127 @@
 #+title: jsIdioms
 #+date: [2022-09-30 Fri 09:31]
 
-* anki cards
+* jsIdioms Anki
+:PROPERTIES:
+:ANKI_DECK: 00-software engineering::JavaScript::jsIdioms
+:ANKI_TAGS: JS Idioms
+:END:
+** 1 Print Hello World
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1664551933771
+:END:
+*** Text
+#+begin_src js
+// Print a literal string on standard output
 
+// This prints the output to the rendered browser document.
+{{c1::document.write("Hello World");}}
+// However, this method is "strongly discouraged".
+
+// Alternative implementation:
+// This prints output to the console on any standard browser.
+{{c2::console.log("Hello World");}}
+#+end_src
+** 2 Print Hello 10 times
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1664552720794
+:END:
+*** Text
+#+begin_src js
+// Loop to execute some code a constant number of times
+{{c1::for (let i = 0; i < 10; i++) {}}
+  {{c1::console.log("Hello");}}
+{{c1::};}}
+// let quarantines the scope of i to the loop, in ES6
+
+// Alternative implementation: using while
+{{c2::let count = 0;}}
+{{c2::while (count < 10) {}}
+  {{c2::count++;}}
+  {{c2::console.log("Hello");}}
+{{c2::};}}
+
+// Alternative implementation: using forEach
+{{c3::[...Array(10)].forEach(() => console.log("Hello"));}}
+
+// Alternative implementation: String built in function
+{{c4::console.log( "Hello\n".repeat(10) );}}
+#+end_src
+** 3 Create a procedure
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1664552720869
+:END:
+*** Text
+#+begin_src js
+// Like a function which doesn't return any value,
+// thus has only side effects (e.g. Print to standard output)
+
+{{c1::var bli = function() {}}
+	{{c1::console.log("Hello World");}}
+{{c1::};}}
+
+// Alternative implementation:
+{{c2::function bli() {}}
+	{{c2::console.log("Hello World");}}
+{{c2::};}}
+
+// Alternative implementation:
+{{c3::let dog = "Poodle";}}
+{{c3::const dogAlert = () => alert(dog);}}
+#+end_src
+** 4 Create a function
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1664552720944
+:END:
+*** Text
+#+begin_src js
+// Create a function which returns the square of an integer
+// function/variable identifier is square
+
+{{c1::function square(x) {}}
+	{{c1::return x * x;}}
+{{c1::};}}
+
+// Alternative implementation:
+{{c2::const square = (x) => x * x;}}
+
+// Alternative implementation:
+{{c3::const square = n => n**2;}}
+// The exponentiation operator is the most expressive way to do this.
+
+// Alternative implementation: using Math
+{{c4::const square = (number) => Math.pow(number, 2);}}
+#+end_src
+** 5 Create a 2D Point data structure
+:PROPERTIES:
+:ANKI_NOTE_TYPE: Cloze (Type Answer)
+:ANKI_NOTE_ID: 1664552721018
+:END:
+*** Text
+#+begin_src js
+// Declare a container type for two floating-point numbers x and y
+
+{{c1::var p = { x: 1.122, y: 7.45 };}}
+// Types are implicit. Just initialize a variable.
+
+// Alternative implementation:
+{{c2::const point = { x: 1, y: 2 };}}
+#+end_src
 * 1 Print Hello World
 #+begin_src js
 // Print a literal string on standard output
 
 // This prints the output to the rendered browser document.
-document.write("Hello World!");
+document.write("Hello World");
 // However, this method is "strongly discouraged".
 
 // Alternative implementation:
 // This prints output to the console on any standard browser.
-console.log('Hello World');
+console.log("Hello World");
 #+end_src
 * 2 Print Hello 10 times
 #+begin_src js
@@ -30,14 +138,14 @@ for (let i = 0; i < 10; i++) {
 let count = 0;
 while (count < 10) {
   count++;
-  console.log('Hello');
+  console.log("Hello");
 };
 
 // Alternative implementation: using forEach
-[...Array(10)].forEach(() => console.log('Hello'))
+[...Array(10)].forEach(() => console.log("Hello"))
 
 // Alternative implementation: String built in function
-console.log( 'Hello\n'.repeat(10) )
+console.log( "Hello\n".repeat(10) )
 #+end_src
 * 3 Create a procedure
 #+begin_src js
@@ -45,16 +153,16 @@ console.log( 'Hello\n'.repeat(10) )
 // thus has only side effects (e.g. Print to standard output)
 
 var bli = function() {
-	console.log('Hello World!!!');
+	console.log("Hello World");
 }
 
 // Alternative implementation:
 function bli() {
-	console.log('Hello World!!!');
+	console.log("Hello World");
 }
 
 // Alternative implementation:
-let dog = 'Poodle';
+let dog = "Poodle";
 const dogAlert = () => alert(dog);
 #+end_src
 * 4 Create a function
