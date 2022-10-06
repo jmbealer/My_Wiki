@@ -5047,6 +5047,7 @@ Best case O(n log n) All the elements in the first array are either smaller or l
 Note: Some implementations of merge sort can have a best-case time complexity of O(n).
 
 *** 42.7 Quicksort
+
 Quicksort
 1.5 hoursEstimated completion time
 Learning Objective
@@ -5223,6 +5224,102 @@ Average case O(n log n) The depth of the recursion is O(log n). At each level, t
 Best case O(n log n) The pivot happens to be in the middle.
 Note: Some implementations of quicksort can have a best-case time complexity of O(n).
 *** 42.8 Comparison of sorting algorithms
+Comparison of sorting algorithms
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to compare different sorting algorithms based on runtime, space complexity, and stability.
+
+Overview
+As you've learned in this module, sorting algorithms play an important role in data management. Often, the best course of action is to use the built-in sort function. But for situations when the built-in sort function is insufficient, there are a variety of specialized sorting algorithms to choose from. Each algorithm has its own advantages and disadvantages, and you should choose the sorting algorithm that is best suited for your particular context.
+
+Key Terms
+Runtime complexity
+The algorithmic efficiency as the size of the input grows larger
+Space complexity
+The storage space that the algorithm requires
+Stability
+Whether or not a sort preserves the order of elements with equal values
+Criteria for comparing sorting algorithms
+When you're choosing which sorting algorithm to use, consider three main criteria: runtime complexity, space complexity, and stability.
+
+Runtime complexity refers to the algorithmic efficiency as the size of the input grows larger. This usually depends on the number of elements to sort. You've learned about three common sorting algorithms in this module, and they all have a runtime complexity of either O(n²) or O(n log n).
+
+Note: In this module, you learned about comparison sorts. However, not every sorting algorithm is based on comparing the items being sorted. There are even a few special-case noncomparison sort algorithms that can sort some datasets faster than O(n log n).
+
+Even algorithms that have the same runtime complexity don't necessarily have the same speed for a particular input. It's important to consider the average-case, best-case, and worst-case efficiency for each algorithm. Some algorithms, such as quicksort, perform exceptionally well for some inputs, but are very slow for others. And other algorithms, such as merge sort, have the same runtime regardless of the input data's order.
+
+Space complexity involves the storage space that the algorithm requires. Can the array be sorted in place, without requiring additional memory for more than a few variables, or does it need additional storage space? As you'll see, some algorithms never require extra space, but other algorithms are easier to understand when they're implemented with extra space.
+
+Stability refers to whether or not the sort preserves the order of elements with equal values. Stability isn't an issue if all values are different; to check for stability, focus on elements with equal values. If these elements appear in the same order both in the sorted output and in the input array to be sorted, then the algorithm is stable. Most simple sorts are stable, but some sorts are not.
+
+If you have an unstable sorting algorithm, you can make it stable by changing the comparison operation so that it considers position as a factor for two equal values.
+
+Comparison chart
+The following chart compares several sorting algorithms on the criteria outlined above. You can use this chart as a rough guide to help you pick between sorts of the same efficiency. Note that this chart lists more sorting algorithms than were covered in this module, but it isn't an exhaustive list of all existing sorting algorithms.
+
+Sort
+Average time
+Best time
+Worst time
+Space
+Stability
+Remarks
+Bubble
+O(n²)
+O(n)
+O(n²)
+Constant
+Stable
+Stops after reaching a sorted array.
+Selection
+O(n²)
+O(n²)
+O(n²)
+Constant
+Stable
+Even a perfectly sorted input requires scanning the entire array.
+Insertion
+O(n²)
+O(n)
+O(n²)
+Constant
+Stable
+In the best case (already sorted), every insert requires constant time.
+Heap
+O(n log n)
+O(n log n)
+O(n log n)
+Constant
+Not stable
+By using an input array as storage for the heap, it is possible to achieve constant space.
+Merge
+O(n log n)
+O(n log n)
+O(n log n)
+Depends
+Stable
+On arrays, merge sort requires O(n) space. But on linked lists, merge sort requires constant space.
+Quick
+O(n log n)
+O(n log n)
+O(n²)
+Constant
+Not stable
+To avoid worst-case scenarios, it can help to pick a pivot value at random or shuffle the array before running the quicksort algorithm.
+The ideal sorting algorithm would have the following properties:
+
+Stable, meaning that elements with equal values aren't reordered.
+
+Operates in place, requiring O(1) extra space
+
+O(n log n) comparisons in the worst case
+
+O(n) swaps in the worst case
+
+Adaptive, with speeds up to O(n) when data is nearly sorted or when there are few unique values.
+
+No algorithm has all of the above properties, so the choice of sorting algorithm depends heavily on the details of the application and the algorithm implementation. For example, asymptotic complexity analysis (big O) lets you distinguish between O(n²) and O(n log n) algorithms, but it doesn't help you distinguish between algorithms with the same asymptotic complexity. Asymptotic analysis also doesn't say anything about which algorithm is best for sorting small lists. For answers to these questions, you must test and compare the different algorithms using real application data.
+
 *** 42.9 Assessment: Searching and sorting
 ** Module 43 - Data Structures
 ** Module 44 - Trees
