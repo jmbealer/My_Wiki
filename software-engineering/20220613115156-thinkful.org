@@ -7696,11 +7696,391 @@ A completed example from this lesson can be found here:
 GitHub: Stacks and queues—stacks-and-queues-complete branch
 
 *** 43.9 Solving problems with stacks and queues
+
+Solving problems with stacks and queues
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to create algorithms to solve simple problems using stacks and queues.
+
+Overview
+Now that you have fully implemented stack and queue data structures, it is time to apply these structures to problems. Stacks and queues are used in many areas of computing, and they can be quite useful in solving some fairly common problems.
+
+The following problems can all be solved with stacks or queues. For each problem, a brief description of the approach is given, along with a pseudocode algorithm. Your task is to implement the algorithms and observe their behaviors.
+
+Starter code
+Starter code for this lesson may be found in this repository:
+
+GitHub: Solving problems with stacks and queues starter
+Fork and clone the above repository. Then, follow the instructions on how to get it to run.
+
+Problem 1: Check for a palindrome
+A palindrome is a word, phrase, or number that is spelled the same forward and backward. For example, "dad" is a palindrome; "A man, a plan, a canal: Panama" is a palindrome if you take out the spaces and ignore the punctuation; and "1,001" is a numeric palindrome. You can use a stack to determine whether a given string is a palindrome.
+
+Write an algorithm that uses a stack to determine whether a given input is a palindrome. Use the following template as a starting point.
+
+const isPalindrome(sentence) => {
+  sentence = sentence.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+  // Your code goes here
+}
+Discussion
+There are several ways to check if a given sentence is a palindrome. They all boil down to comparing the first half of the string to the second half.
+
+The first step is to remove all non-letter and non-digit characters.
+
+Removing the punctuation, spaces, and capitals from the string "No lemon, no melon" results in the string "nolemonnomelon".
+Then split the string into two by dividing its length by two.
+
+Dividing the string "nolemonnomelon" in two results in two strings: "nolemon" and "nomelon".
+Lastly, compare the first half with the second half in reverse.
+
+Diagram comparing "nolemon" to "nomelon" in reverse.
+Using a stack makes this comparison fairly straightforward. You can just push all the characters from the first half of the string onto a stack. Then continue iterating the second half of the string and comparing each character with a character popped off the stack. This way, the reversal is automatic.
+
+Pushin "nolemon" onto a stack.
+When iterating through the second half of the string, pop a single character off of the stack and compare it to the current character from the second half of the string. If they don't match, the string isn't a palindrome.
+
+Note: If a string has an odd number of characters, you will essentially ignore the middle character. This is because the middle character doesn't determine whether the string is a palindrome. It's the characters on either side of the middle value that determine whether the sentence is a palindrome.
+
+If you get to the end of the string and the stack is empty, then the string is a palindrome.
+
+Popping the first character off of the stack and comparing it to the first character from the second half of the string.
+Pseudocode
+In pseudocode, the above algorithm may be written as follows:
+
+Remove all spaces and punctuation from the sentence and make all characters lowercase.
+
+Declare a variable middle and initialize it to half the length of the sentence, rounding down to an integer value for odd-length strings. For example, if the sentence is of length 7, then middle is 3.
+
+Initialize a new stack.
+
+Iterate through the sentence, from the first character up to middle. Push each character onto the stack.
+
+Iterate from middle to the end of the sentence. If the sentence is an odd length, then iterate from middle+1 to skip the middle character of the sentence. On each iteration, pop a character from the stack and compare it to the current character. If they don't match, return false.
+
+When the loop is done, return true.
+
+Do this
+Implement the palindrome algorithm
+Use the starter repository to implement the algorithm outlined above. The tests in the repository will help you determine if the algorithm is correct.
+
+Problem 2: Matching parentheses in an expression
+Another problem that can be solved using a stack is making sure that equations have matching parentheses.
+
+Arithmetic expressions may contain parentheses for clarification. For example, the following expression is valid:
+
+(a + b) * c
+But the following expression is not:
+
+((a + b) * c
+Write an algorithm that accepts an expression as a string and returns true if the parentheses in the expression match and false otherwise.
+
+Discussion
+A naive approach to solving this problem is to count the number of opening parentheses and the number of closing parentheses and compare them. If they match, then the expression must be correct, right? Not necessarily! For example, what about a+)b-c(+d? There is exactly one opening parenthesis ( and one closing parenthesis ), but the expression isn't correct.
+
+Each closing parenthesis must be matched to an opening parenthesis for this to work. This is where using a stack is useful.
+
+The basic concept is to iterate through each character in the expression. If the character is (, then push it onto the stack.
+
+Note: Because parentheses are the only characters of import in this problem, you will only put ( onto the stack. When you encounter ) in the string, you will compare the ) to the stack of (.
+
+In the example below, by the time that you iterate to index=2, you have placed two ( characters onto the stack.
+
+Two ( characters in the stack.
+When iterating through a string, when you reach a ) character, you will pop one ( character off of the stack. This is how you match opening and closing parentheses. As illustrated below, index=5 is a closing parenthesis, so you pop one opening parenthesis off of the stack.
+
+Stack with only one ( character after reaching the first ) character in the expression and popping one ( off the stack.
+If the stack is empty and you come across a ) in your string, then you know that the expression is invalid, so return false.
+
+At the end of the expression, an empty stack means that the expression was valid, so return true.
+
+An empty stack at end of expression means valid expression.
+If the stack isn't empty at the end of the expression, it means that there is at least one extra ( in the expression.
+
+Pseudocode
+In pseudocode, this algorithm goes as follows:
+
+Initialize a new empty stack.
+
+Start a loop to iterate through each character in the expression.
+
+If the current character is (:
+
+Push it onto the stack.
+
+Else:
+
+If the current character is ):
+
+If the stack isn't empty:
+
+Pop one item off the stack.
+
+Else:
+
+Return false.
+
+If the stack is empty:
+
+Return true.
+
+Else:
+
+Return false.
+
+Do this
+Implement the parentheses-matching algorithm
+Use the starter repository to implement the algorithm outlined above. The tests in the repository will help you determine if the algorithm is correct.
+
+Problem 3: Infix to postfix
+Stacks can also be used to convert notations from infix to postfix for disambiguating mathematical operations, as explained below.
+
+An arithmetic expression is said to be in infix notation when it takes the following form:
+
+left-operand operator right-operand
+For example, the expressions 1 + 2 and 3 * 5 are infix expressions.
+
+Sometimes, to avoid ambiguities with the order of operations (also called the precedence of operators), parentheses are used. The following are all valid infix expressions:
+
+(2 + 3) * 4
+(2 + (4 - 5) * 3)
+8 / (6 + 2)
+Parsing and evaluating expressions in this form is particularly slow. So typically, your compiler converts arithmetic expressions from infix notation to postfix notation.
+
+An arithmetic expression is said to be in postfix notation when it takes the following form:
+
+left-operand right-operand operator
+For example, the infix expression 2 + 3 may be written as 2 3 + in postfix notation.
+
+The following are all valid postfix forms of the infix expressions above:
+
+2 3 + 4 *
+2 4 5 - 3 * +
+8 6 2 + /
+Write an algorithm that will take an arithmetic expression in infix form as a string and return the expression in postfix form.
+
+Assume the following:
+
+The four operators +, -, /, and * are the only ones used.
+
+ * and / have the highest precedence, followed by + and -.
+
+The operands provided are all single characters.
+
+All expressions provided are valid arithmetic expressions, so there's no need to validate them.
+
+Discussion
+This algorithm is a little more involved than the previous two. You need to consider the precedence of operators as well as the meaning of parentheses in the expression.
+
+There are several paths to consider. A simple example may help. Suppose that you wanted to convert the infix expression (a + b) * c into postfix notation. Start by initializing a stack and an empty result string.
+
+Then iterate through each character in the expression.
+
+If you come across a (, push it onto the stack. If you come across an operand, add it to the result.
+
+Iterating through each character in the expression, pushing ( characters onto the stack and adding operands to the result.
+When you come across an operator, there are a few options to consider. If there is already another operator at the top of the stack, then compare the precedence of the operators. Push the current operator onto the stack if one of the following criteria is met:
+
+It has higher precedence than the one on the stack
+
+The stack is empty
+
+The top of the stack is (
+
+Continuing to iterate through the expression and pushing an operators onto the stack when index=5.
+If the current operator has lower precedence than the one on the stack, then simply pop each character off of the stack and append it to the result until you either find an operator that has lower precedence than the current operator, or you find ). Only then, push the current operator onto the stack.
+
+When you find a ), then pop from the stack and append to the result until you find (.
+
+Continuing to iterate through the expression.
+When you have processed every character in the expression, simply pop any remaining items from the stack and append them to result. At this point, the result contains the postfix form of the expression.
+
+Pseudocode
+Declare a variable named result and initialize it to an empty string.
+
+Iterate through each character in the expression, ignoring spaces.
+
+If the current character is an operand, append it to result.
+
+Otherwise, if it is an operator, do the following:
+
+Look at the operator at the top of the stack.
+
+If the current operator has higher precedence than the operator on the top of the stack, or if the stack is empty or the top of the stack is (, then push the current operator onto the stack.
+
+Otherwise, start popping operators off of the stack. Continue until you either find an operator that isn't of higher or equal precedence to the current operator, or until you find a parenthesis. Append each operator that is popped from the stack to result. Push the current operator onto the stack.
+
+Otherwise, if the current character is (, push it onto the stack.
+
+Otherwise, if the current character is ), then start popping characters off of the stack and append each character to result until you find a (. Do not append the parentheses to result.
+
+Pop any remaining operators from the stack and append them to result.
+
+Return result.
+
+Do this
+Implement the infix-to-postfix algorithm
+Use the starter repository to implement the algorithm outlined above. The tests in the repository will help you determine if the algorithm is correct.
+
+Problem 4: Are two people connected?
+Suppose you work for a massive social network with many millions of users. You need to determine if two given users of the network are connected to each other.
+
+Users of the social network may "follow" each other, but the relationship isn't necessarily mutual. That is, Alice may follow Bob, but Bob may not necessarily follow Alice.
+
+Consider the following diagrammatic representation of a part of the network:
+
+Diagram of social network connections between Alice, Bob, and few other people.
+In this diagram, an arrow indicates who a user follows.
+
+Alice follows Bob and Carl
+
+Bob follows Dave, and Dave follows Bob
+
+Both Bob and Eve follow Dave and Fred
+
+Fred doesn't follow anyone
+
+Alice has no followers
+
+The objective is to search for a path from any given user to any other user. For example, there is a path from Bob to Eve. That path is Bob -> Dave -> Carl -> Eve. But there is no path from Eve to Alice.
+
+Internally, this network of users and their connections may be represented as an object where the keys are the user's identity and the values are an array of the users they follow. The above network may be represented like this:
+
+const graph = {
+  Alice: ["Bob", "Carl"],
+  Bob: ["Dave", "Fred"],
+  Carl: ["Eve"],
+  Dave: ["Carl", "Bob"],
+  Eve: ["Dave", "Fred"],
+  Fred: [],
+};
+Write a function that accepts the above network object and two users. The network object will be named graph, the first user will be named startUser, and the second user will be named endUser. The function will return true if there is a path from startUser to endUser, and false otherwise.
+
+Discussion
+A naive approach would require a nested loop that starts at startUser and considers every possible path from startUser until endUser is found. On a large graph, this will simply take too long. Also, keeping track of which paths have already been considered may occupy too much space.
+
+Instead, you can use a breadth-first search (BFS) strategy to search the network of friends, such that you consider each friend in the network only once. The algorithm uses a queue to track which friends have been discovered, and it uses an enqueued array to track which users have been added to the queue.
+
+To understand how the algorithm proceeds, take a look at the following diagrams.
+
+Initially, each user node in the following diagram is white, indicating that the node hasn't been discovered yet. Once discovered, the user is enqueued, and the node is filled with gray lines. After everyone the user is following has been discovered, the user node is colored solid gray. These colors are simply indicators of the state of the user; they're there to make it easier to see how the algorithm proceeds.
+
+In the following example, you are trying to determine if there is a path from Alice to Fred. To implement this algorithm, you will take the following steps:
+
+First step for determining if there is a path from Alice to Fred.
+The algorithm proceeds by dequeuing a value—Alice, in this case—from the queue. Everyone who is followed by the dequeued user is added to the queue, and they are now considered discovered.
+
+Second step for determining if there is a path from Alice to Fred.
+The iteration continues by dequeuing the next value from the queue and repeating the process. The enqueued array helps ensure that any user is added to the queue only once.
+
+Third step for determining if there is a path from Alice to Fred.
+Once the endUser is found in the list of followers, the algorithm can stop because there is a path from startUser to endUser.
+
+If all the nodes are fully explored and endUser isn't found, then there is no path from startUser to endUser.
+
+Pseudocode
+The pseudocode algorithm is as follows:
+
+If graph is empty (has no keys), return false.
+
+If startUser is equal to endUser, return true.
+
+Initialize a new array, enqueued, that contains startUser.
+
+Initialize a new empty queue named discovered.
+
+Enqueue startUser.
+
+While discovered isn't empty, do the following:
+
+Dequeue a value from discovered and name it user.
+
+For each friend followedUser in graph[user], do the following:
+
+If followedUser is equal to endUser, return true.
+
+If enqueued doesn't include followedUser, do the following:
+
+Add followedUser to enqueued.
+
+Enqueue friend to discovered.
+
+Return false.
+
+In this algorithm, the enqueued array is used to make the algorithm more efficient by making sure that any given user is explored only once. If a similar problem comes up, you can adapt this algorithm to track information other than enqueued. For example, you might track the number of nodes between two users, or track which user is following the most people.
+
+Do this
+Implement the connected-friends algorithm
+Use the starter repository to implement the algorithm outlined above. The tests in the repository will help you determine if the algorithm is correct.
+
+Complete example
+A completed example from this lesson can be found in the Solution branch of this repository:
+
+GitHub: Solving problems with stacks and queues starter—Solution branch
+
 *** 43.10 Assessment: Data structures
 
 ** Module 44 - Trees
 *** 44.1 Overview: Trees
+
+Overview: Trees
+9 minutesEstimated completion time
+Overview
+So far, you have learned about linear data structures such as linked lists, stacks, and queues. In this module, you will learn about trees, which are a type of hierarchical data structure.
+
+Key Terms
+Tree structure
+A type of structure that includes a single root and multiple levels of organization
+Root node
+A special node with no parent, from which all other nodes descend
+Leaf node
+A node without any children
+Binary tree
+A tree with an additional limitation: each node can only have zero, one, or two children (at most)
+Subtree
+A mini tree within a binary tree, whose root can be any node and all of its descendants rooted at that node
+Trees are data structures that consist of nodes that are linked together in a certain way. Nodes in a tree have a parent-child relationship. Each node is linked to zero or more child nodes, and at most one parent. There is a special node called the root node at the top of the tree. The root node has no parent, and it's the node from which all other nodes descend. A nodes without any children is called a leaf node.
+
+Tree data structures are very common. For example, you might have noticed that the file system on your computer and the HTML structure of the websites that you've been building are organized in a treelike structure. Tree data structures can exist in several forms, including a special variant called the binary tree.
+
+A binary tree is a tree with an additional limitation: each node can only have zero, one, or two children (at most). A branch in a tree signifies a decision path, a choice that connects one node to another. A binary tree may have a left branch and a right branch. It may also have subtrees. A subtree is a mini tree within a binary tree, whose root can be any node and all of its descendants rooted at that node.
+
+The following is an example of a binary tree with its different components:
+
+Example of a binary tree with its different components.
+In this module, you will learn how to use a common form of the binary tree, the binary search tree, to solve algorithmic problems.
+
+Do this
+The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll complete coding challenges that require you to use the tree data structure. Ultimately, these practice sections will help you successfully complete graded assessments, such as projects, mock interviews, and capstones.
+
 *** 44.2 Defining binary search trees
+
+Defining binary search trees
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to define what a binary search tree is and describe its key characteristics.
+
+Overview
+Recall that one key challenge in computer science is searching and sorting through large volumes of data. If not done properly, sorting and finding the right data can be time consuming. Binary search trees can help you search through data efficiently.
+
+The video below provides a brief introduction to binary search trees.
+
+
+What are binary search trees?
+Binary search trees (BSTs) are an important data structure in computer science. They are a special kind of binary tree with the following characteristics:
+
+Each node has zero, one, or two children.
+
+All of the nodes in the left-hand branch of a node are guaranteed to have lower values than the node itself.
+
+All of the nodes in the right-hand branch of a node are guaranteed to have a higher value than the node itself.
+
+Both the left and right subtrees are guaranteed to be BSTs themselves.
+
+For example, this would be a valid binary search tree:
+
+Example of a valid binary search tree.
+As you will see in this module, BSTs allow you to perform efficient search operations, such as looking up, inserting into, or removing values from a tree.
+
 *** 44.3 Implementation and runtime
 *** 44.4 Depth-first search
 *** 44.5 Breadth-first search
