@@ -3,5 +3,7 @@
 :END:
 #+title: Education
 #+date: [2022-09-30 Fri 06:55]
+#+filetags: :MOC:
 
-[[id:bf0b716d-2624-4e94-acc3-f8e4453d0a0b][degree-plan]]
+-[[id:8feb359d-2df0-42c1-8136-19d4a02b4384][ Main Index]]
+- [[id:bf0b716d-2624-4e94-acc3-f8e4453d0a0b][degree-plan]]

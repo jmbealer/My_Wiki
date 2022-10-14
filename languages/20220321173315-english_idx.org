@@ -2,6 +2,9 @@
 :ID:       3aebecef-3bde-4417-9ac8-4da3a8e249ca
 :END:
 #+title: english-idx
+#+filetags: :MOC:
+
+-[[id:8feb359d-2df0-42c1-8136-19d4a02b4384][ Main Index]]
 
 english word list
 basic englis

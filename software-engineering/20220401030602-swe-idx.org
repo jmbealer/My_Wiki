@@ -5,6 +5,9 @@
 :TOC: include all :ignore this
 :END:
 #+title: Software Engineering Index
+#+filetags: :MOC:
+
+-[[id:8feb359d-2df0-42c1-8136-19d4a02b4384][ Main Index]]
 
 [[id:ef3640e7-5eb4-4301-af10-2948e073cc9f][progIdioms]]
 

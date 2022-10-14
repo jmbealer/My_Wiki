@@ -3,3 +3,6 @@
 :END:
 #+title: Fitness
 #+date: [2022-09-30 Fri 06:56]
+#+filetags: :MOC:
+
+-[[id:8feb359d-2df0-42c1-8136-19d4a02b4384][ Main Index]]

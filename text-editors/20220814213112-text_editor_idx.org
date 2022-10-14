@@ -3,6 +3,9 @@
 :END:
 #+title: Text-Editor-Idx
 #+date: [2022-08-14 Sun 21:31]
+#+filetags: :MOC:
+
+-[[id:8feb359d-2df0-42c1-8136-19d4a02b4384][ Main Index]]
 
 [[id:31f5df5e-341a-4a82-851b-bf3166d97066][Vim]]
 [[id:1bfecfad-efe8-4602-be60-168c5d3352a4][doomEmacs]]
