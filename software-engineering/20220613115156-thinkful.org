@@ -3181,9 +3181,867 @@ Components can be made up of other components. In this case, the entire applicat
 There is a lot to learn about how to write components with React, but the first step to building any app is determining what components are needed.
 
 *** 21.4 Import and export
+
+Import and export
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to use ES6 import and export statements.
+Overview
+
+When you work with React, you will be using special ES6 syntax for importing and exporting. As you'll see in this lesson, ES6 import and export statements work similarly to require() and module.exports, but they have a new and cleaner syntax.
+Named exports
+
+You will be using the keyword export to export objects from a file. To create and export a constant, you can use this syntax:
+
+const website = "https://www.thinkful.com/";
+
+export website;
+
+You can also do this on one line, like so:
+
+export const website = "https://www.thinkful.com/";
+
+And you can have multiple named exports, as shown here:
+
+export const website = "https://www.thinkful.com/";
+
+export const username = "Bob";
+
+Named imports
+
+If you have a file constants.js, with website and username defined and exported, as they are above, you can use the import statement shown below. Note that you use an object with the variable names that are exported in constants.js.
+
+import {website, username} from "./constants";
+
+After running the import statement shown above, you'll have access to the website and username variables.
+Default exports
+
+When a file has a single export, or when one of the things exported will be used more often than others, you can set a default export instead of a named export.
+
+The syntax for this is very similar to export statements, except that you add the keyword default.
+
+const website = "https://www.thinkful.com/";
+
+export default website;
+
+Or, equivalently, you can write this in one line:
+
+export default "https://www.thinkful.com/";
+
+Now, you can import with the following statement:
+
+import website from "./constants";
+
+When using defaults, you don't need to give the exported variable the same name as the imported variable. You could also run the following import statement:
+
+import url from "./constants";
+
+For more information, check out the full MDN documentation on import and export.
+Combining named and default exports
+
+You can have one default export and any number of named exports. For example, the following file has a default and a named export.
+
+export default const website = "https://www.thinkful.com/";
+
+export const username = "Bob";
+
+You can use the following import statement to import both website (a default export) and username (a named export).
+
+import {website, username} from "./constants";
+
 *** 21.5 Introduction to JSX
+
+Introduction to JSX
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to use React and JSX to make a basic web page.
+Overview
+
+In this lesson, you will learn the basics of JSX. JSX is an HTML-like syntax for defining user interface elements right inside your React code.
+Starter code
+
+Reuse the existing React App or create a new app following the steps in the Create React App lesson earlier in this module. Make sure that you remove the unnecessary files and update the existing files with the appropriate code.
+Introduction to JSX in React
+
+Start by watching the video below, which provides a brief introduction to this topic. Then, read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+
+You've already seen JSX if you've used Create React App to generate a new React project.
+Hello world in React
+
+What you may have thought was HTML in your App.js file was actually JSX. That JSX element was written like this:
+
+<h1>Hello World!</h1>
+
+This JSX is written inside your JavaScript instead of in a separate HTML or template file. The complete code that you should be starting with in your App.js file should be as follows:
+
+import "./App.css";
+
+
+function App() {
+
+  return <h1>Hello World!</h1>;
+
+}
+
+
+export default App;
+
+Embedding JavaScript expressions in JSX
+
+JSX is an expression, so you can save it to a variable and then return the value of that element, as shown here:
+
+const element = <h1>Hello World!</h1>;
+
+return element;
+
+You can also embed JavaScript code into JSX by using curly braces {}, like this:
+
+const name = "Alice";
+
+const element = <h1>Hello {name}!</h1>;
+
+return element;
+
+Now, element will render as Hello Alice!.
+
+You can put any JavaScript expression inside the curly braces. Here is an example using individual variables as well as the expression count * price. Notice that you can use parentheses () to enable all of these elements to take up multiple lines within this element.
+
+const item = "apple";
+
+const price = 2;
+
+const count = 10;
+
+const element = (
+
+  <div>
+
+    <h1>Total Purchased:</h1>
+
+    <p>
+
+      Purchased {count} {item}s for ${price} each. The total is ${count * price}
+
+      .
+
+    </p>
+
+  </div>
+
+);
+
+return element;
+
+Do this
+Update your App.js file
+
+Update your App.js file with the following code:
+
+import "./App.css";
+
+
+function App() {
+
+  const element = <p>Hello, there!</p>;
+
+  return element;
+
+}
+
+
+export default App;
+
+As long as your local server is running, when you save this file, you should see your changes updated in the browser. Remember, when you export your code from App.js, it will be imported by index.js and then compiled within the index.html page. So, using separate files for each component simply makes this easier to keep organized as your code becomes more complex.
+Use variables
+
+Create a new variable called name, and feel free to assign it your own name. Then use it inside of your element variable. The end result of your code will look something like this:
+
+import "./App.css";
+
+
+function App() {
+
+  const name = "Alice";
+
+  const element = <p>Hello, {name}!</p>;
+
+
+  return element;
+
+}
+
+
+export default App;
+
+Save your file, and you'll see your new message within the browser.
+Attributes
+
+You can add attributes to JSX elements much like you can in HTML. For example, here's how you might create a link to the Thinkful home page using the attribute href:
+
+<a href="https://www.thinkful.com/">Thinkful</a>
+
+You can use variables in attributes as well. The code below, for example, stores the URL in one variable, the link text in another, and then creates a link tag.
+
+function App() {
+
+  const url = "https://www.thinkful.com/";
+
+  const linkText = "Visit Thinkful";
+
+  const element = <a href={url}>{linkText}</a>;
+
+
+  return element;
+
+}
+
+Notice that you're using curly brackets {} around the url and linkText variables to insert them into the JSX expression.
+Do this
+Use a link
+
+Now, create your own text links using the JSX element. Here's an example of how that might look:
+
+const name = "Alice";
+
+const url = "https://www.thinkful.com/";
+
+const linkText = "Thinkful";
+
+const element = (
+
+  <p>
+
+    {" "}
+
+    Hey, {name}! Please visit <a href={url}>{linkText}</a>.
+
+  </p>
+
+);
+
+
+return element;
+
+Top-level JSX elements
+
+The videos below provide overviews of parent elements and self-closing elements in React.
+
+Note that a React component won't allow you to return more than one top-level JSX element. In other words, if you tried to return two top-level elements, as in the code below, you'd get an error when the file was saved and compiled.
+
+const element = (
+
+  <h1>Hello World!</h1>
+
+  <h2>Have a good day.</h2>
+
+);
+
+return element;
+
+The error when the code above is run would look similar to this:
+
+Failed to compile.
+
+
+SyntaxError: App.js: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>?
+
+A simple solution is to create a single top-level JSX element that nests a number of elements, just as you would with HTML. Placing the two heading elements within a single <div> container follows the rules of JSX and allows you to add multiple JSX elements.
+
+const element = (
+
+  <div>
+
+    <h1>Hello World!</h1>
+
+    <h2>Have a good day.</h2>
+
+  </div>
+
+);
+
+Or, if you want to avoid adding an unnecessary <div> container to the DOM, you can substitute the simple <div> container or a React fragment.
+
+A React fragment is commonly written with short syntax, like this: <>...</>. It appears as empty tags (you may have noticed the suggestion in the error about using a JSX fragment <>...</>). Its sole purpose is to group elements that are next to each other. Using this is encouraged when you need to return multiple elements but you don't need a parent container, like a generic <div> container, to hold all the elements.
+
+const element = (
+
+  <>
+
+    <h1>Hello World!</h1>
+
+    <h2>Have a good day.</h2>
+
+  </>
+
+);
+
+Do this
+Create a React fragment
+
+Create a JSX element that has multiple JSX elements of your choosing and is wrapped within a React fragment. It can be helpful to see what happens when it works, and it can also help to see the error message that displays when you have an error.
+
 *** 21.6 Components and props
+Components and props
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to define and render a functional component with props.
+Overview
+
+React components allow you to split your application into reusable pieces. You can create your own elements that are specific to your app. This enables you to factor the code into easy-to-understand pieces.
+Key Terms
+
+Functional component
+    A JavaScript function that returns JSX
+Prop
+    An input passed into a React component as an object
+
+Starter code
+
+Reuse the existing React App or create a new app following the steps in the Create React App lesson earlier in this module. Make sure that you remove the unnecessary files and update the existing files with the appropriate code.
+Defining components
+
+The following video provides an overview of how to organize multiple React components. Start by watching the video, and then read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+
+Although React allows you to define components with classes or functions, you have been using functional components in this module. A functional component is a function that returns JSX.
+
+Here is an App component that displays a generic message in a <p> element:
+
+function App() {
+
+  return <p>Welcome back, valued customer!</p>;
+
+}
+
+You can render this component much like you would render any other element, as you already are doing in the index.js file when you are rendering this component:
+
+<App />
+
+As your App component gets more complex, you will find it helpful to break it up into smaller components. Rather than printing the welcome message within the App component, you could remove it and place that message into a new WelcomeBack component. And then within the App component, you can make use of the WelcomeBack component by calling it using <WelcomeBack />. This code provides the same outcome as before—it is just broken up into more than one functional component.
+
+function WelcomeBack() {
+
+  return <p>Welcome back, valued customer!</p>;
+
+}
+
+
+function App() {
+
+  return <WelcomeBack />;
+
+}
+
+By wrapping your returned element in a React fragment and using parentheses () to contain the multiple lines of code, you can make use of the WelcomeBack component as often as you want within the App component.
+
+function WelcomeBack() {
+
+  return <p>Welcome back, valued customer!</p>;
+
+}
+
+
+function App() {
+
+  return (
+
+    <>
+
+      <WelcomeBack />
+
+      <WelcomeBack />
+
+    </>
+
+  );
+
+}
+
+Tip
+
+Unlike vanilla JavaScript functions, React functional components begin with a capital letter (in the format WelcomeBack).
+Do this
+Create a new component
+
+In your App.js file, include a WelcomeBack component with a message. Make use of it within the App component more than once.
+
+import './App.css';
+
+
+function WelcomeBack() {
+
+  return <p>Welcome back, valued customer!</p>;
+
+}
+
+
+function App() {
+
+  return (
+
+    <WelcomeBack />
+
+    <WelcomeBack />
+
+  );
+
+}
+
+
+export default App;
+
+You can return additional components from App as follows:
+
+function WelcomeBack() {
+
+  return <p>Welcome back, valued customer!</p>;
+
+}
+
+
+function EncouragingWords() {
+
+  return <p>Believe you can and you’re halfway there.</p>;
+
+}
+
+
+function DailyTip() {
+
+  return <p>Highlight a whole paragraph by triple-clicking on it.</p>;
+
+}
+
+
+function App() {
+
+  return (
+
+    <>
+
+      <WelcomeBack />
+
+      <WelcomeBack />
+
+      <EncouragingWords />
+
+      <DailyTip />
+
+    </>
+
+  );
+
+}
+
+Then, start the React application. You will see your WelcomeBack, EncouragingWords, and DailyTip components appear on the screen.
+
+For the remainder of this lesson, you won't need the EncouragingWords and DailyTip components, so feel free to remove them from the App component and just keep the WelcomeBack components inside of App.
+
+Then, with the React application running on your local server, you will see your WelcomeBack components appear on the screen. If you don't, make sure that you have your files saved, refresh your browser, and restart the application if necessary.
+
+import React from "react";
+
+import ReactDOM from "react-dom";
+
+import App from "./App";
+
+
+ReactDOM.render(
+
+  <React.StrictMode>
+
+    <App />
+
+  </React.StrictMode>,
+
+  document.getElementById("root")
+
+);
+
+Defining a component with props
+
+The video below provides an introduction to using React components with props.
+
+Generally, calling the same component multiple times doesn't provide much value, unless you make your components customizable. Components can take arguments, called props, which you can use to customize the element. Props are inputs passed into a React component as an object. They allow for data to flow from one component down to its children components.
+
+Below, the WelcomeBack component is redefined so that it makes use of the props parameter. Take a look:
+
+function WelcomeBack(props) {
+
+  return <p>Welcome back, {props.name}!</p>;
+
+}
+
+When rendering the component, you can specify the value of the name prop as follows:
+
+<WelcomeBack name="Joe" />
+
+This will result in the following being rendered to the page:
+
+<p>Welcome back, Joe!</p>
+
+You can also use argument destructuring to further simplify the function, like so:
+
+function WelcomeBack({ name }) {
+
+  return <p>Welcome back, {name}!</p>;
+
+}
+
+Below, the WelcomeBack component is rendered twice, with a different value for name each time:
+
+function App() {
+
+  return (
+
+    <>
+
+      <WelcomeBack name="Joe" />
+
+      <WelcomeBack name="Anna" />
+
+    </>
+
+  );
+
+}
+
+This will result in the following being rendered to the page:
+
+<p>Welcome back, Joe!</p>
+
+<p>Welcome back, Anna!</p>
+
+If no name property is passed in, then the component may look a bit odd, as shown below:
+
+<WelcomeBack />
+
+The above component will result in this:
+
+<p>Welcome back, !</p>
+
+So, in this case, you may want to set a default value for the property, like so:
+
+function WelcomeBack({ name = "valued customer" }) {
+
+  return <p>Welcome back, {name}!</p>;
+
+}
+
+Now, consider if you were to render this App component:
+
+function App() {
+
+  return (
+
+    <>
+
+      <WelcomeBack name="Joe" />
+
+      <WelcomeBack name="Anna" />
+
+      <WelcomeBack />
+
+    </>
+
+  );
+
+}
+
+The above component would display in the browser like this:
+
+Welcome back, Joe! Welcome back, Anna! Welcome back, valued customer!
+
+As your code gets more complex, you can assign multiple props separated by a comma ,. If you wish, you can also assign default values to each of the props, like this:
+
+function WelcomeBack({ name = "valued customer", adjective = "nice" }) {
+
+  return (
+
+    <p>
+
+      Welcome back, {adjective} {name}!
+
+    </p>
+
+  );
+
+}
+
+
+function App() {
+
+  return (
+
+    <>
+
+      <WelcomeBack name="Joe" adjective="funny" />
+
+      <WelcomeBack name="Anna" adjective="clever" />
+
+      <WelcomeBack />
+
+    </>
+
+  );
+
+}
+
+Do this
+Customize the component
+
+Update your WelcomeBack component to use props, as detailed above. Then, add the name property as well as any other properties that you want to add to your WelcomeBack component used in the App component.
+Component composition
+
+Components are often made up of other components. This is called component composition.
+
+Take a look at the following App component, which renders the WelcomeBack component twice:
+
+function App() {
+
+  return (
+
+    <>
+
+      <WelcomeBack name="Joe" />
+
+      <WelcomeBack name="Anna" />
+
+    </>
+
+  );
+
+}
+
+In the code above, the App component returns an element (created within the <> fragments) with two components within it. Just like this App component, many of your components will have other components inside of them, too.
+Component file structure
+
+The video below provides an overview of how and why to separate React components into files.
+
+As your components get more involved, it becomes important to break your code into multiple components. This makes your code more readable and easier to modify. It's standard to put each component in its own file; this makes it easier to navigate the code.
+
+For the above example, where you have an App component that is composed of two WelcomeBack components, you could break the file up into two component files: App.js and WelcomeBack.js. And each JS file could have a corresponding CSS stylesheet that specifically styles the elements of that component. Typically, the CSS file will share the same name of the component to make it clearer which component the CSS file is supposed to be styling. You could even add Header and Footer components to this project.
+
+Here is the full content of the four files:
+
+// Header.js
+
+import "./Header.css";
+
+
+function Header() {
+
+  return <h1>Header to the page.</h1>;
+
+}
+
+
+export default Header;
+
+// WelcomeBack.js
+
+import "./WelcomeBack.css";
+
+
+function WelcomeBack({ name = "valued customer" }) {
+
+  return <p>Welcome back, {name}!</p>;
+
+}
+
+
+export default WelcomeBack;
+
+// Footer.js
+
+import "./Footer.css";
+
+
+function Footer() {
+
+  return <h2>Footer to the page.</h2>;
+
+}
+
+
+export default Footer;
+
+// App.js
+
+import "./App.css";
+
+import Header from "./Header";
+
+import WelcomeBack from "./WelcomeBack";
+
+import Footer from "./Footer";
+
+
+function App() {
+
+  return (
+
+    <>
+
+      <Header />
+
+      <WelcomeBack name="Joe" />
+
+      <WelcomeBack name="Anna" />
+
+      <WelcomeBack />
+
+      <Footer />
+
+    </>
+
+  );
+
+}
+
+
+export default App;
+
+Note: You can also end your files with the .jsx extension instead of .js, and you may see both file extensions in this program. There is no difference between the two file extensions, although you should stick with one or the other in your own work.
+Do this
+Create a new file
+
+Separate the WelcomeBack component into its own file, WelcomeBack.js. Follow the instructions above to connect the multiple files so that your work continues to show up. Feel free to add additional components, like Header and Footer, in their own files if you wish.
+
 *** 21.7 Conditional rendering
+Conditional rendering
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to use if() and switch() statements to control the display of a component.
+Overview
+
+When you are working with direct DOM manipulation, you can set a message to only show if some condition is true. To accomplish that, you would need to check for that condition, and then hide or show elements based on the result. React is very similar. You can set your components to either display or not display, based on a value in JavaScript. In this lesson, you'll learn how to conditionally show certain elements to your users.
+Starter code
+
+Use the Create React App command-line program to create a new React application or reuse an existing React application. Give it a memorable name, like conditional-rendering. Then, follow the instructions in the Create React App lesson to remove unnecessary files.
+The if() and switch() statements
+
+Take a look at the Greeting component below, which takes language as a prop. It will display different text depending on the language.
+
+// Greeting.js
+
+function Greeting({ language }) {
+
+  if (language === "es") {
+
+    return <h1>Hola!</h1>;
+
+  }
+
+  return <h1>Hello!</h1>;
+
+}
+
+To see this difference in the app, you can use a Greeting component with the language as es (Spanish) and another Greeting component with no language specified (which defaults to English). Here's an example:
+
+// App.js
+
+function App() {
+
+  return (
+
+    <div>
+
+      <Greeting language="es" />
+
+      <Greeting />
+
+    </div>
+
+  );
+
+}
+
+You might prefer an inline if() statement in simple cases. Take a look:
+
+// Greeting.js
+
+function Greeting({ language }) {
+
+  return <h1>{language === "es" ? "Hola" : "Hello"}!</h1>;
+
+}
+
+If you have more than two options, you can use a switch() statement, like this:
+
+// Greeting.js
+
+function Greeting({ language }) {
+
+  switch (language) {
+
+    case "es":
+
+      return <h1>Hola!</h1>;
+
+    case "fr":
+
+      return <h1>Bonjour!</h1>;
+
+    case "en":
+
+    default:
+
+      return <h1>Hello!</h1>;
+
+  }
+
+}
+
+Do this
+Create the Greeting component
+
+Create a new Greeting component in its own file, Greeting.js. Include that component in the App.js file, and try setting up some conditionals so that you can see the difference.
+Prevent rendering
+
+Imagine that you are building an application that makes use of a number of notifications. If the user has notifications, you want to notify the user with a message. Otherwise, you want to display nothing.
+
+With React, you can display nothing by returning null from a component, as shown here:
+
+function Notifications({ notifications }) {
+
+  if (notifications.length > 0) {
+
+    return <p>You have {notifications.length} notifications today!</p>;
+
+  }
+
+  return null;
+
+}
+
+
+function App() {
+
+  const notifications = ["You received a package", "The weather is sunny"];
+
+  return <Notifications notifications={notifications} />;
+
+}
+
+Note that when the condition is relatively short, it can be useful to use the && operator instead of an if statement, as shown below. If the first value is true, the && operator will return the second value. If the first value is false, it will return the first value (false). When a component returns false, it renders nothing, just like it does if it returns null.
+
+function Notifications({ notifications }) {
+
+  return (
+
+    notifications.length > 0 && (
+
+      <p>You have {notifications.length} notifications today!</p>
+
+    )
+
+  );
+
+}
 *** 21.8 Lists and tables
 *** 21.9 Styling
 *** 21.10 React testing
