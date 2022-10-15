@@ -5628,7 +5628,693 @@ function Content({ loggedIn, text }) {
 
 This way, in App.js, loggedIn is a part of the potentially changing state for that component. But in Content.js, loggedIn looks like just another property.
 *** 22.6 Arrays and objects as state
+
+Arrays and objects as state
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to use an array or object as a state value and update the state correctly.
+Overview
+
+You can use any kind of data type as the argument in your useState() function. However, mutable data types like objects and arrays may not work exactly the way that you expect. The function returned from useState() expects a new value to be placed inside of the function. As you'll see in this lesson, that means that you'll need to create a new array or object each time.
+Starter code
+
+Use a new or existing project created with the Create React App command-line tool. Then, include the following App component:
+
+function App() {
+
+  return <CoinTossCounter />;
+
+}
+
+Next, create a CoinTossCounter component in a file called CoinTossCounter.js. This file should have the following contents:
+
+function CoinTossCounter() {
+
+  const handleClick = (value) => {
+
+    // TBD
+
+  };
+
+  return (
+
+    <section>
+
+      <div>
+
+        <button onClick={() => handleClick("H")}>Heads</button>
+
+        <button onClick={() => handleClick("T")}>Tails</button>
+
+      </div>
+
+    </section>
+
+  );
+
+}
+
+Include imports and exports as needed.
+Array as state
+
+To keep track of the results for your coin-toss application, it makes sense to use an array. That way, you can end up with something like the following as your state's value.
+
+["H", "T", "H", "H"];
+
+To do this, you can create a state object with a default value of an empty array, like this:
+
+const [results, setResults] = useState([]);
+
+Now, you can fill in the handleClick() function. The results state is an array, which is a mutable object in JavaScript. However, keep in mind that you never want to edit the state directly. Because the state is updated asynchronously, directly editing it may not have the expected results.
+
+Instead, create a new results array that has all the old contents as well as the new value at the end. Then, pass this array to the setResults() function, as follows:
+
+const handleClick = (value) => {
+
+  setResults([...results, value]);
+
+};
+
+The above code uses the spread operator ... to include all of the contents of the existing results variable and add the new value to the very end.
+Do this
+Implement changes
+
+Update your code to include the changes mentioned above in the CoinTossCounter component. Add a console.log() statement so that you can watch the array stored inside of results change.
+Complete the CoinTossCounter component
+
+Update your CoinTossCounter so that it shows each toss as part of a list after the buttons. An example solution is included below.
+
+function CoinTossCounter() {
+
+  const [results, setResults] = useState([]);
+
+  const handleClick = (value) => setResults([...results, value]);
+
+
+  const lis = results.map((result, index) => (
+
+    <li key={`toss-${index}`}>{result === "H" ? "Heads" : "Tails"}</li>
+
+  ));
+
+  return (
+
+    <section>
+
+      <div>
+
+        <button onClick={() => handleClick("H")}>Heads</button>
+
+        <button onClick={() => handleClick("T")}>Tails</button>
+
+      </div>
+
+      <ul>{lis}</ul>
+
+    </section>
+
+  );
+
+}
+
+Deleting elements
+
+You may want to give the user the ability to delete an item from an array. The most common way to delete an item from an array in React is to use the filter() function of the array.
+
+If you know the index of the element, you can delete by index, like this:
+
+const deleteToss = (indexToDelete) => {
+
+  setResults((currentResults) =>
+
+    currentResults.filter((ignored, index) => index !== indexToDelete)
+
+  );
+
+};
+
+You can also delete by the value or any property of the element in the object. For example, if you have a list of users loaded from a database, it is common to delete by ID, like this:
+
+const deleteUser = (idToDelete) => {
+
+  setUsers((currentUsers) =>
+
+    currentUsers.filter((user) => user.id !== idToDelete)
+
+  );
+
+};
+
+Do this
+Add a Delete Last button
+
+Add a Delete Last button to your existing project. Start by adding a new button with the correct label, as shown below:
+
+<button onClick={handleDeleteLast}>Delete Last</button>
+
+This button should only delete the last coin flip in the list. When the button is clicked, a function called handleDeleteLast() should be called. Now, write the handleDeleteLast() function so that it correctly modifies the state. A solution is included below in case you need it.
+
+const handleDeleteLast = () => {
+
+  const filteredList = results.filter(
+
+    (result, index) => index !== results.length - 1
+
+  );
+
+  setResults(filteredList);
+
+};
+
+Object as state
+
+Storing state inside of objects works very similarly. Each time that you make a change to the state, you will need to return a new object with its old contents. Once again, the spread operator is crucial for writing readable code.
+
+Imagine that you also want to keep track of the number of heads and tails. Although you can do this by searching through the array, it can be more efficient to store these numbers as an object.
+
+After getting two heads and one tails, the object should look like this:
+
+{
+
+  H: 2,
+
+  T: 1
+
+}
+
+First, you'll need to create a new state object, like this:
+
+const [counts, setCounts] = useState({ H: 0, T: 0 });
+
+Then, you can update the counts state in the handleClick() function. Take a look:
+
+const handleClick = (value) => {
+
+  setResults([...results, value]);
+
+  setCounts({
+
+    ...counts,
+
+    [value]: counts[value] + 1,
+
+  });
+
+};
+
+The object passed in as an argument in the above setCounts() function works as follows:
+
+    Create a new object.
+
+    Include all the key-value pairs inside of counts, which should include only the H key and the T key.
+
+    Create a new key for the given value. This will overwrite either H or T.
+
+    Set that new key's value to the current value plus 1.
+
+Do this
+Update your code
+
+Update your code according to the instructions above. To see the changes to counts, you can add a log() statement within your CoinTossCounter component.
+Display the results
+
+Include the following in your component, below the buttons.
+
+<ul>
+
+  <li>Heads: {counts["H"]}</li>
+
+  <li>Tails: {counts["T"]}</li>
+
+</ul>
+
+When you click the Heads and Tails buttons, you will now see the visible counts increase.
+Fix the Delete Last button
+
+Unfortunately, the Delete Last button no longer works. Because the handleDeleteLast() only calls the setResults() function, the counts object isn't being changed.
+
+Update the code so that when the Delete Last button is clicked, the counts object is modified correctly as well. A solution has been included below; consult the solution if you get stuck.
+
+const handleDeleteLast = () => {
+
+  const last = results[results.length - 1];
+
+  const list = results.slice(0, -1);
+
+
+  setResults(list);
+
+  if (last) {
+
+    setCounts({
+
+      ...counts,
+
+      [last]: counts[last] - 1,
+
+    });
+
+  }
+
+};
+
+Note: There are a few changes in the code above. The slice() method is used to remove the last element of the array and to create a new array.
+
 *** 22.7 Forms with input fields
+
+Forms with input fields
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to track the state of a form with multiple input fields.
+Overview
+
+Forms and inputs provide their own unique challenges in React. In part, this is because several different events can be fired from forms and inputs. In this lesson, you'll learn how to track a form's state in React by building a component where someone can enter their name and email into input fields.
+Key Terms
+
+Controlled component
+    A form element whose value is managed in React state
+
+Start by watching the video below, which provides a brief introduction to the topics covered in this lesson. Then, read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+Starter code
+
+Use a new or existing project created with the Create React App command-line tool. Then, include the following App component:
+
+function App() {
+
+  return <SubscriberForm />;
+
+}
+
+Create a SubscriberForm component in a file called SubscriberForm.js. This component should have the following contents:
+
+function SubscriberForm() {
+
+  return (
+
+    <form>
+
+      <label htmlFor="name">
+
+        Enter Your Name:
+
+        <input type="text" id="name" name="name" />
+
+      </label>
+
+      <label htmlFor="email">
+
+        Your Email:
+
+        <input id="email" type="email" name="email" />
+
+      </label>
+
+    </form>
+
+  );
+
+}
+
+
+export default SubscriberForm;
+
+Include imports and exports as needed.
+Controlled components
+
+There are several reasons that you may want to access the value inside of an input field. But how can you get access to this value?
+
+Take a look at the following code, which tracks the changes of a single input field.
+
+function SubscriberForm() {
+
+  const [name, setName] = useState("");
+
+  const handleNameChange = (event) => setName(event.target.value);
+
+
+  console.log("Current value of name:", name);
+
+  return (
+
+    <form>
+
+      <label htmlFor="name">
+
+        Enter Your Name:
+
+        <input
+
+          id="name"
+
+          type="text"
+
+          name="name"
+
+          onChange={handleNameChange}
+
+          value={name}
+
+        />
+
+      </label>
+
+      <label htmlFor="email">
+
+        Your Email:
+
+        <input id="email" type="email" name="email" />
+
+      </label>
+
+    </form>
+
+  );
+
+}
+
+The following is true of the code above:
+
+    The handleNameChange() event is called every time that any change is present in the name input field.
+
+    event.target.value references the current contents of the input field.
+
+    The value attribute of the input field is tied to the name state variable.
+
+    The email field isn't being tracked by state.
+
+When this code is run and the name Ada is typed into the form, the logged output will look something like this:
+
+"Current value of name:" ""
+
+"Current value of name:" "A"
+
+"Current value of name:" "Ad"
+
+"Current value of name:" "Ada"
+
+As you can see, the state value is being updated after every keystroke.
+
+The name input in the above example is called a controlled component. That is, it's a form element whose value is managed in React state.
+Do this
+Update the SubscriberForm component
+
+Update your SubscriberForm component to include the code above. Run it and test out the form, noting how the state changes.
+Track changes for the email field
+
+Update your SubscriberForm component so that changes made to the email field are tracked as well. This should look very similar to how the name field is being handled. A potential solution is included below; feel free to consult it as needed.
+
+function SubscriberForm() {
+
+  const [name, setName] = useState("");
+
+  const [email, setEmail] = useState("");
+
+  const handleNameChange = (event) => setName(event.target.value);
+
+  const handleEmailChange = (event) => setEmail(event.target.value);
+
+
+  console.log("Current value of name:", name);
+
+  console.log("Current value of email:", email);
+
+  return (
+
+    <form>
+
+      <label htmlFor="name">
+
+        Enter Your Name:
+
+        <input
+
+          id="name"
+
+          type="text"
+
+          name="name"
+
+          onChange={handleNameChange}
+
+          value={name}
+
+        />
+
+      </label>
+
+      <label htmlFor="email">
+
+        Your Email:
+
+        <input
+
+          id="email"
+
+          type="email"
+
+          name="email"
+
+          onChange={handleEmailChange}
+
+          value={email}
+
+        />
+
+      </label>
+
+    </form>
+
+  );
+
+}
+
+Submitting
+
+When the form is submitted, it's also possible to capture the submission event. This is useful when you want to use all of the form's information for a particular event.
+
+To capture the submission event, use the onSubmit event in the form, as demonstrated below, and give it a function with a name like handleSubmit().
+
+<form onSubmit={handleSubmit}>
+
+Inside the handleSubmit() function, you'll need to prevent the default behavior of form submissions, as shown below. Then, you can do whatever you like with the information that you've collected.
+
+const handleSubmit = (event) => {
+
+  event.preventDefault();
+
+  console.log("Submitted:", name, email);
+
+};
+
+Finally, you'll need to add a Submit button inside the form, like so:
+
+<button type="submit">Submit</button>
+
+Do this
+Update your form
+
+Update your existing form to include the onSubmit attribute, the handleSubmit() function, and the Submit button. Test out your code and look at the logs to confirm that it is working as intended.
+Clear the form after submit
+
+Update your handleSubmit() function to clear the form after submit. You can do this by setting the state of name and email to be empty strings. If needed, consult the solution below.
+
+const handleSubmit = (event) => {
+
+  event.preventDefault();
+
+  console.log("Submitted:", name, email);
+
+
+  setName("");
+
+  setEmail("");
+
+};
+
+Managing a list of subscribers
+
+Imagine that you work at a high-tech magazine and you're building an admin tool that allows the customer support department to add and remove subscribers from the system.
+
+Whenever customer support submits the form, the new subscriber should be displayed on the page. For example, if you submit the form with a name of Jane Doe and an email of jane.doe@gmail.com, you should get the following result:
+New subscriber displayed on page.
+
+And if you then submit the form with a name of John Doe and an email of john.doe@gmail.com, the new subscriber should be added to the top of the subscriber list, like so:
+Newest subscriber displayed at the top.
+
+The customer support department should be able to add as many subscribers as they like, and they should be able to remove a subscriber from the list by pressing Unsubscribe.
+
+Start by thinking about the new components that you'd need to build for this new feature. Remember the single-responsibility principle, which states that each component should only perform a single responsibility or function. With that in mind, it's reasonable to create new components that are responsible only for displaying the list of subscribers.
+
+Below, you will create two new components: SubscriberList and SubscriberView. Each SubscriberView component is responsible for displaying the name, email, and "Unsubscribe" button for each subscriber, whereas the SubscriberList component simply displays a list of SubscriberView components.
+
+You should also think about any state that needs to be stored in the application. Because the app now has a list of subscriber data that gets updated whenever the form is submitted, you'd have to store the subscribers data in state.
+
+Which component should the subscribers state be stored in? Earlier in the module, you learned about the concept of lifting state up; you learned that sibling components cannot easily share state with each other directly, but that parent components can easily pass their state down to their children components.
+
+So because the SubscriberForm and SubscriberList components both need access to the subscribers state, you can store the state in the parent component, which is the App component in this case. The App component will then pass the state down to the SubscriberForm and SubscriberList components via props.
+Do this
+Update the App component
+
+Update the App component with the subscribers state, including handlers to create (createSubscriber()) and delete (deleteSubscriber()) subscribers, as follows:
+
+import { useState } from "react";
+
+import SubscriberForm from "./SubscriberForm";
+
+import SubscriberList from "./SubscriberList";
+
+
+function App() {
+
+  const [subscribers, setSubscribers] = useState([]);
+
+
+  const createSubscriber = (newSubscriber) =>
+
+    setSubscribers((currentSubscribers) => [
+
+      newSubscriber,
+
+      ...currentSubscribers,
+
+    ]);
+
+
+  const deleteSubscriber = (indexToDelete) =>
+
+    setSubscribers((currentSubscribers) =>
+
+      currentSubscribers.filter((post, index) => index !== indexToDelete)
+
+    );
+
+
+  return (
+
+    <>
+
+      <SubscriberForm createSubscriber={createSubscriber} />
+
+      <SubscriberList
+
+        subscribers={subscribers}
+
+        deleteSubscriber={deleteSubscriber}
+
+      />
+
+    </>
+
+  );
+
+}
+
+Here, App is the parent component of the SubscriberForm and SubscriberList components. To allow these components access to the subscribers state and handlers, App passes them down through props.
+Create the SubscriberList component
+
+In the src folder, create a new file called SubscriberList.js. Add the following code:
+
+import SubscriberView from "./SubscriberView";
+
+
+function SubscriberList({ subscribers, deleteSubscriber }) {
+
+  return (
+
+    <>
+
+      <h2>Subscribers</h2>
+
+      <ul>
+
+        {subscribers.map((subscriber, index) => (
+
+          <SubscriberView
+
+            deleteSubscriber={() => deleteSubscriber(index)}
+
+            key={index}
+
+            subscriber={subscriber}
+
+          />
+
+        ))}
+
+      </ul>
+
+    </>
+
+  );
+
+}
+
+
+export default SubscriberList;
+
+The SubscriberList component simply returns some JSX containing a h2 heading and a list of subscribers. Here, you'll map through the list of subscribers (which are available via props) and render each subscriber using the SubscriberView component, which you will create next.
+
+Note that the SubscriberList component also passes down the deleteSubscriber() handler as a prop to the SubscriberView component, because the SubscriberView component will have a delete button that relies on this handler to work properly.
+Create the SubscriberView component
+
+In the src folder, create a new file called SubscriberView.js. Add the following code:
+
+function SubscriberView({ subscriber, deleteSubscriber }) {
+
+  return (
+
+    <li>
+
+      <p>Name: {subscriber.name}</p>
+
+      <p>Email: {subscriber.email}</p>
+
+      <button name="delete" onClick={deleteSubscriber}>
+
+        Unsubscribe
+
+      </button>
+
+    </li>
+
+  );
+
+}
+
+
+export default SubscriberView;
+
+The SubscriberView component returns some JSX containing the subscriber's name and email, and a button that when clicked will invoke the deleteSubscriber() handler that's available via props.
+Update the SubscriberForm component
+
+Because you have now created a handler for creating a new subscriber, you need to call this method once the form is submitted. You will need to update the SubscriberForm component so that it can access the createSubscriber function.
+
+First, change the function declaration, as follows:
+
+function SubscriberForm({ createSubscriber }) {
+
+Then, update the handleSubmit() function:
+
+  const handleSubmit = (event) => {
+
+    event.preventDefault();
+
+    console.log("Submitted:", name, email);
+
+    createSubscriber({name, email});
+
+    setName("");
+
+    setEmail("");
+
+  };
+
+You will see the subscriber list populate once you submit the form.
+
+The frontend of your admin tool feature will now be complete, so try it out in the browser. Note that every time you refresh your browser, the list of subscribers will get reset because the data is only stored temporarily in an array.
+
 *** 22.8 Complex forms
 *** 22.9 Assessment: React state management
 ** module 24 react and apis with hooks
