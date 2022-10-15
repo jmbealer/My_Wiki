@@ -8701,8 +8701,253 @@ function GoHomeButton() {
 Because this button only goes to the home page, it would also work to use a <Link> component. But if this button did something more, like update or delete a resource, and then went to the home page, it couldn't be replaced by a <Link>.
 
 *** 25.6 Nested routes
-*** 25.7 Assessment: React Router
+Nested routes
+1.5 hoursEstimated completion time
+Learning Objective
 
+By the end of this lesson, you will be able to use nested <Route> components to show more than one component at a time.
+Overview
+
+So far in this module, you've had all routes in one place. But this could be hard to manage in the future as the number of routes grows. One way that you can keep things a bit cleaner is by using nested routes, which you'll explore in this lesson.
+Key Terms
+
+Nested route
+    Also called a child route, a route that is displayed inside of another route
+
+Starter code
+
+This lesson requires you to have the following GitHub repository running on your local machine.
+
+    Starter-nested-routes
+
+Fork and clone the above repository. Then, follow the instructions to get the repository to run.
+What's the problem?
+
+The video below provides a brief introduction to nested <Route> components. Start by watching the video, and then read through the rest of the lesson and complete the practice tasks. This will give you a thorough understanding of these concepts.
+
+Sometimes, as the visitor navigates through the site, you want to change only a small part of the screen, not the entire page. You can see in the image below that as the visitor navigates between different paths (users/1, users/1/posts, and users/1/posts/:postId), some parts of the page don't change.
+Some parts of the page don't change.
+
+In the above image, the user's name and the Profile and Posts buttons stay the same visually across three different URLs; only the content below changes. One way to accomplish this routing is to create three different page components for each URL and change out the nested components to get a different view. Although this approach will work, it means that any change to the layout will require changes to multiple page components.
+Nested routes
+
+A better solution is to use nested routes to display more than one component at the same time. Nested routes, or child routes, are routes displayed inside of another route. This means that there can be more routes inside a component that is rendered by another route.
+Do this
+
+Now, add nested routes for /users/:userId/posts and /users/:userId/posts/:postId. To do that, create two new components, PostList and User, to contain the nested routes.
+Create a PostList component
+
+In the /src folder, create a new file called PostList.js containing a component called PostList, as follows:
+
+import React from "react";
+
+import { Route, Switch, useRouteMatch } from "react-router-dom";
+
+
+function PostList() {
+
+  return (
+
+      <Switch>
+
+        <Route exact path={"/users/:userId/posts"}>
+
+          <p>Here are a list of the user’s posts</p>
+
+        </Route>
+
+        <Route path={"/users/:userId/posts/:postId"}>
+
+          <p>Here is a single post</p>
+
+        </Route>
+
+      </Switch>
+
+  );
+
+}
+
+
+export default PostList;
+
+The <PostList> component returns a <Switch> component that wraps two routes, one for /users/:userId/posts and one for /users/:userId/posts/:postId. If the path in the URL matches the path for either route, then a paragraph element will be rendered. Nothing else will happen at this point.
+
+You will learn about what useRouteMatch() does later on in the lesson.
+Create a <User> component
+
+In the /src folder, create a new file called User.js containing a component called User, as follows:
+
+import React from "react";
+
+import { Route, Switch } from "react-router-dom";
+
+import UserProfile from "./UserProfile";
+
+import PostList from "./PostList";
+
+
+function User() {
+
+  return (
+
+    <Switch>
+
+      <Route path={"/users/:userId/posts"}>
+
+        <PostList />
+
+      </Route>
+
+      <Route path={"/users/:userId"}>
+
+        <UserProfile />
+
+      </Route>
+
+    </Switch>
+
+  );
+
+};
+
+
+export default User;
+
+The <User> component returns a <Switch> component, which in turn wraps two nested routes. These nested routes display different components within the <User> component. The first route, which is for the /users/:userId/posts path, displays the <PostList> component. The second route, which is for the /users/:userId path displays the <UserProfile> component.
+Update the /users/:userId route in the App component
+
+Next, connect the nested routes to the top-level App component. Inside App.js, import the <User> and <PostList> components, as follows:
+
+import PostList from "./PostList";
+
+import User from "./User";
+
+Next, update the <Route> component for the /users/:userId path to wrap the <User> component instead of the <UserProfile> component:
+
+<Router>
+
+  <Switch>
+
+    <Route path="/users/:userId">
+
+      <User />
+
+    </Route>
+
+    ...
+
+  </Switch>
+
+</Router>
+
+The <App> component now has a route that displays the <User> component when the URL path matches /users/:userId. Keep in mind that the UserProfile component is now rendered by a nested route within the <User> component. Take a look at some of the code below from the <User> component:
+
+ return (
+
+  ...
+
+
+  <Switch>
+
+    <Route path={'/users/:userId/posts'}>
+
+      <PostList />
+
+    </Route>
+
+    <Route path={'/users/:userId'}>
+
+      <UserProfile />
+
+    </Route>
+
+  </Switch>
+
+);
+
+The <User> component has two nested routes to display different components inside of the <User> component. <Route path={'/users/:userId/posts'}> displays the <PostList> component, and <Route path={'/users/:userId'}> displays the <UserProfile> component.
+
+In this example, when the URL matches /users/:userId, the App displays the <User> component, which in turn displays the <UserProfile> component.
+
+If you navigate to localhost:3000/users/1, the profile for user 1 should be displayed.
+
+Keep in mind that the <PostList> component also contains nested routes. So if you navigate to localhost:3000/users/1/posts, the page should display the "Here are a list of the user's posts" message nested inside the <PostList> component. And if you navigate to the path for a single post, localhost:3000/users/1/posts/1, the page should display the "Here is a single post" message, also nested inside the <PostList> component.
+
+You can nest routes as much as necessary, but keep in mind it may increase the complexity of your app.
+Determining the nested routes
+
+How do you decide what should be a nested route? It's like deciding what should be a component: you can use the single-responsibility principle. That is, each route should have one thing that it does and one component that changes. Take a look:
+Component route diagram
+
+As you can see in the image above, the component with the bold border changed for that route. Of course, it's also okay to change more than one component per route. Following the single-responsibility principle isn't a firm rule; it's just a suggestion.
+
+Exploring the above example a bit, how does the <PostList> component know that the links to its posts need to start with /users/:userId/posts/? You can hardcode the links to start with /users/:userId/posts/, but then many components need to change if the URL changes. So how can you display the component on any URL and have the links include the route that matched to display the component? You can use the useRouteMatch() hook to get the URL from the closest matching <Route> in the tree.
+The useRouteMatch() hook
+
+The video below provides a brief introduction to the useRouteMatch() hook.
+
+The useRouteMatch() hook is useful any time that you need to get information about the closest matching <Route> in the tree. It includes the exact, strict, and sensitive options, as well as URL parameters. For example, the following is the route match information that the <PostList> component would receive when displayed at /users/1/posts.
+
+{
+
+   "path":"/users/:userId/posts",
+
+   "url":"/users/1/posts",
+
+   "isExact":true,
+
+   "params":{
+
+      "userId":"1"
+
+}
+
+Notice that the object above that contains a path property. The path property points to a path pattern which was used to match a URL, and it includes the :userId parameter. You can use the path property to create dynamic paths for your Route components. Next, you will use the path property to clean up a few nested routes in the app.
+Do this
+Use useRouteMatch() to clean up the nested routes
+
+Notice that there's some repetition with the paths in the <PostList> component. All the paths here start with /users/:userId/posts. Although you can hardcode the links to start with /user/:userId/posts/, as you have done, the problem is that many components would need to be updated if the URL changes. If you miss any component, then the routing for that component will break. As you can imagine, this isn't ideal. It's better to write the nested route's path to be dynamic.
+
+To avoid hardcoding the links, you can use the useRouteMatch() hook from the react-router-dom library to get the URL from the closest matching <Route> in the tree. Within the <PostList> component, you can now use the path property to create links that include the current URL for routes nested within <PostList>, like this:
+
+import { Route, Switch, useRouteMatch } from "react-router-dom";
+
+
+function PostList() {
+
+  const { path } = useRouteMatch();
+
+
+  return (
+
+      <Switch>
+
+        <Route exact path={path}>
+
+          <p>Here are a list of the user’s posts</p>
+
+        </Route>
+
+        <Route path={`${path}/:postId`}>
+
+          <p>Here is a single post</p>
+
+        </Route>
+
+      </Switch>
+
+  );
+
+}
+
+Now, the nested routes in the <PostList> component have dynamic paths.
+Complete example
+
+A completed example from this lesson can be found in the complete branch of this GitHub repository:
+
+    Starter-nested-routes - complete
+*** 25.7 Assessment: React Router
 ** module 26 frontend deployment
 *** 26.1 Overview: Frontend deployment
 *** 26.2 What is frontend deployment?
