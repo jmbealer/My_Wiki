@@ -3911,6 +3911,7 @@ Create a new file
 Separate the WelcomeBack component into its own file, WelcomeBack.js. Follow the instructions above to connect the multiple files so that your work continues to show up. Feel free to add additional components, like Header and Footer, in their own files if you wish.
 
 *** 21.7 Conditional rendering
+
 Conditional rendering
 1.5 hoursEstimated completion time
 Learning Objective
@@ -4042,8 +4043,679 @@ function Notifications({ notifications }) {
   );
 
 }
+
 *** 21.8 Lists and tables
+Lists and tables
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will know how to use the map() method to display an array in a list or table.
+Overview
+
+Rendering lists and tables works slightly differently in React if those lists and tables are dependent on data. These differences aren't difficult to manage, but they're important to know about. This lesson will show you how to use lists and tables to create repeated elements in React.
+Starter code
+
+Use the Create React App command-line program to create a new React application or reuse an existing React application. Give it a memorable name, like lists-and-tables. Then, follow the instructions in the Create React App lesson to remove unnecessary files.
+Lists
+
+Imagine that you are creating an application that creates a grocery list for you. You may want to show your items in a list, like this:
+
+<ul>
+
+  <li>Bananas</li>
+
+  <li>Apples</li>
+
+  <li>Oranges</li>
+
+</ul>
+
+You may want to create this list based on an array, as shown below. This array may update or change based on the actions that you take in the application.
+
+const groceryItems = ["Bananas", "Apples", "Oranges"];
+
+You can use the map() method to create a <li> item for each item in groceryItems. Then, wrap it all with a <ul> tag. Take a look:
+
+// GroceryList.js
+
+function GroceryList({ items }) {
+
+  return (
+
+    <ul>
+
+      {items.map((item) => (
+
+        <li>{item}</li>
+
+      ))}
+
+    </ul>
+
+  );
+
+}
+
+You can then use this component by passing groceryItems into it, like this:
+
+<GroceryList items={groceryItems} />
+
+This will lead to the same list that was originally shown—except now, you can easily change the list by updating the groceryItems array.
+Rewriting lists
+
+The code above is a bit complicated to read. Remember that JSX code can be assigned to a variable, like other JavaScript expressions. That means that the code below will work as well.
+
+// GroceryList.js
+
+function GroceryList({ items }) {
+
+  const list = items.map((item) => <li>{item}</li>);
+
+  return <ul>{list}</ul>;
+
+}
+
+There is no performance benefit to writing your code like this, but you may find it a bit easier to read.
+Adding keys
+
+If you look at the console for the above example, you will notice that you get a warning:
+
+Warning: Each child in a list should have a unique 'key' prop.
+
+React uses keys to help it update a list when the groceryList array changes. When you're creating a list, always give each list item a unique key. You can use item as the key if you know that it will be unique, but it is generally safer to use the list index or a unique ID.
+
+So you can modify the code above as follows:
+
+// GroceryList.js
+
+function GroceryList({ items }) {
+
+  const list = items.map((item, index) => <li key={index}>{item}</li>);
+
+  return <ul>{list}</ul>;
+
+}
+
+Now, you can see that the warning message is gone.
+Do this
+Add a list
+
+In your App.js file, create a todo array and include different to-do items inside of it. Then, render those items to a list in your App component.
+
+An example solution is below. Try creating this on your own before looking at the solution!
+
+import React from "react";
+
+
+const todos = [
+
+  "Finish the Lists & Tables checkpoint",
+
+  "Clean my desk",
+
+  "Make lunch",
+
+];
+
+
+function App() {
+
+  const listItems = todos.map((todo, index) => <li key={index}>{todo}</li>);
+
+  return <ul>{listItems}</ul>;
+
+}
+
+
+export default App;
+
+Tables
+
+Tables are useful for more complex information. For example, the grocery list created earlier could be built with more details, like this:
+
+<table>
+
+  <tr>
+
+    <th>Quantity</th>
+
+    <th>Item</th>
+
+  </tr>
+
+  <tr>
+
+    <td>6</td>
+
+    <td>Bananas</td>
+
+  </tr>
+
+  <tr>
+
+    <td>3</td>
+
+    <td>Apples</td>
+
+  </tr>
+
+  <tr>
+
+    <td>10</td>
+
+    <td>Oranges</td>
+
+  </tr>
+
+</table>
+
+Instead of hardcoding the grocery list contents, you could have them stored like the array below:
+
+const groceryList = [
+
+  { quantity: 6, item: "Bananas" },
+
+  { quantity: 3, item: "Apples" },
+
+  { quantity: 10, item: "Oranges" },
+
+];
+
+When creating the table, you first add the header row, because that will be unchanged by the contents of groceryList. Then, you can use the map() method with groceryList to create a <tr> element for each row in the table. Like with lists, each row should have a unique key. Here's an example:
+
+function GroceryList({ items }) {
+
+  const rows = groceryList.map(({ quantity, item }, index) => (
+
+    <tr key={index}>
+
+      <td>{quantity}</td>
+
+      <td>{item}</td>
+
+    </tr>
+
+  ));
+
+
+  return (
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>Quantity</th>
+
+          <th>Item</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>{rows}</tbody>
+
+    </table>
+
+  );
+
+}
+
+Do this
+Update your to-do list
+
+Update your todo array to be an array of objects with a description key and a completed key, like the example below:
+
+const todos = [
+
+  { completed: false, description: "Finish the Lists & Tables checkpoint" },
+
+  { completed: false, description: "Clean my desk" },
+
+  { completed: false, description: "Make lunch" },
+
+];
+
+Then, update your App.js to reflect the new data structure using a table. Try it out on your own at first, and then compare your work to the solution below.
+
+import React from "react";
+
+
+const todos = [
+
+  { completed: false, description: "Finish the Lists & Tables checkpoint" },
+
+  { completed: false, description: "Clean my desk" },
+
+  { completed: false, description: "Make lunch" },
+
+];
+
+
+function App() {
+
+  const rows = todos.map(({ completed, description }, index) => (
+
+    <tr key={index}>
+
+      <td>{description}</td>
+
+      <td>{completed ? "Yes" : "No"}</td>
+
+    </tr>
+
+  ));
+
+
+  return (
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>Description</th>
+
+          <th>Completed?</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>{rows}</tbody>
+
+    </table>
+
+  );
+
+}
+
+
+export default App;
+
 *** 21.9 Styling
+
+Styling
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to style JSX with both external and inline CSS styles. You'll also be able to harness Bootstrap to improve your React presentations.
+Overview
+
+Working with CSS in React is very similar to working with CSS elsewhere. However, there are some particularities that are important to be aware of so that you can make the best use of your styles. So in this lesson, you'll explore the ins and outs of working with CSS in React.
+Starter code
+
+Reuse your existing React App. Or, if you wish, create a new app that follows all the steps listed in the Components and props lesson earlier in this module, following the instructions carefully in order to remove all unnecessary files and update the existing files with the code that you'll build on in this lesson.
+Clearing your default CSS files
+
+The existing CSS stylesheets that were originally created using the Create React App supplied various CSS rules in both the index.css and App.css files. Rather than explaining and updating all the prewritten styles, it's easier to simply delete all of the existing code in those two files.
+Do this
+
+Delete all the existing CSS styles from both the index.css and App.css files.
+CSS Files with React
+
+As explained in the Components and props lesson, as your application grows in size, it can help to break up each component. And when necessary, you may want to assign each component a corresponding CSS stylesheet with the same name to help identify the files that you'll also need to create.
+
+// WelcomeBack.js
+
+import "./WelcomeBack.css";
+
+
+function WelcomeBack({ name = "valued customer" }) {
+
+  return <p>Welcome back, {name}!</p>;
+
+}
+
+
+export default WelcomeBack;
+
+// App.js
+
+import "./App.css";
+
+import WelcomeBack from "./WelcomeBack";
+
+
+function App() {
+
+  return (
+
+    <>
+
+      <WelcomeBack name="Joe" />
+
+    </>
+
+  );
+
+}
+
+
+export default App;
+
+// index.js
+
+import React from "react";
+
+import ReactDOM from "react-dom";
+
+import "./index.css";
+
+import App from "./App";
+
+
+ReactDOM.render(
+
+  <React.StrictMode>
+
+    <App />
+
+  </React.StrictMode>,
+
+  document.getElementById("root")
+
+);
+
+In the above example, there are three JS files: index.js, App.js, and WelcomeBack.js. They each have a corresponding CSS stylesheet: index.css, App.css, and WelcomeBack.css, respectively. When the Create React App script created all of these files, the index.css and App.css were included. Because you manually created the WelcomeBack.js file, you also need to create the WelcomeBack.css file. And for each component file, consider adding the corresponding CSS file, too. This may seem like overkill at the moment because you don't have much content in the files, but this process can help reinforce your understanding of the relationships between all of these files.
+
+Keep in mind that index.css is best used to contain all the global styles that affect the entire application. This includes all styles for general typography, including rules for the headings and paragraphs. The individual CSS files that have matching names to the components are necessary only when unique styles are needed for those particular components. If you aren't using unique styles for specific components, then you don't need to create and then link to empty CSS stylesheets for every component.
+Adding CSS to external stylesheets
+
+CSS works with JSX the same way that it does with HTML. When using CSS to target an element (like a p paragraph) or a class (like .username), you'll write the CSS within an external stylesheet exactly the same way that you would with HTML. Here are some examples:
+
+/* WelcomeBack.css */
+
+p {
+
+  color: black;
+
+  font-family: sans-serif;
+
+}
+
+
+.username {
+
+  color: #fff;
+
+  padding: 2px 4px;
+
+  margin-right: 2px;
+
+  background-color: #000;
+
+  border-radius: 4px;
+
+}
+
+The first big difference in applying this CSS is that you cannot use a class attribute in JSX; you need to refer to that attribute as className. This is because class is a unique keyword in JavaScript. And because JSX is an extension of JS, using a class attribute can cause problems to occur when you compile your React app. Also, keep in mind that JSX always uses camelCase. So in JSX, the attribute is called className.
+
+So, within the WelcomeBack.css file, the p style will be assigned to all paragraphs. When you want to apply the class .username, you can do so by applying it as className. And the <span> used in this example is just a simple JSX element; it's similar to a <div>, but it's an inline element—which means that it doesn't force the content onto a new line like a <div> container. That makes it perfect for styling a word or phrase within a paragraph slightly differently than the rest of the paragraph.
+
+// WelcomeBack.js
+
+import "./WelcomeBack.css";
+
+
+function WelcomeBack({ name = "valued customer" }) {
+
+  return (
+
+    <p>
+
+      Welcome back, <span className="username">{name}</span>!
+
+    </p>
+
+  );
+
+}
+
+
+export default WelcomeBack;
+
+Inline styling
+
+When you want to add specific styles to a particular element within a component and you don't feel that adding it to an external stylesheet is needed to help you keep your code organized, then you can add the CSS styles directly to the element within the component using inline styling.
+
+To demonstrate an inline style added to the internal styles, the paragraph in the example below was wrapped within a <div> container. The <div> was then given specific styles that, in this case, probably wouldn't be applied anywhere else.
+
+Note that there are also several small differences in how inline styles are written in JSX. The style attribute needs to be set to an object that contains the CSS properties that you want to set on the element. Within this object, two-word CSS properties need to be written in camelCase, like textAlign. And the values to the properties need to be passed as strings, so they need to be wrapped in quotation marks. Here's an example:
+
+  return (
+
+     <div style={{ border: "1px solid #000", textAlign: "center", borderRadius: "4px" }}>
+
+       <p>Welcome back, {name}!</p>
+
+     </div>
+
+  )
+
+}
+
+If you have a few CSS rules, like in the WelcomeBack.css stylesheet that was imported into the WelcomeBack.js file earlier in this lesson, those rules can be applied to the JSX by storing the styles within variables and assigning the values of those variables to the inline styles. This is a great way to keep your inline styles more readable and organized.
+
+Here is the WelcomeBack.js file updated with only inline styles:
+
+// WelcomeBack.js
+
+function WelcomeBack({ name = "valued customer" }) {
+
+  const pStyle = {
+
+    color: "black",
+
+    fontFamily: "sans-serif",
+
+  };
+
+  const userName = {
+
+    padding: "2px 4px",
+
+    marginRight: "2px",
+
+    backgroundColor: "#000",
+
+    color: "#fff",
+
+    borderRadius: "4px",
+
+  };
+
+
+  return (
+
+    <p style={pStyle}>
+
+      Welcome back, <span style={userName}>{name}</span>!
+
+    </p>
+
+  );
+
+}
+
+
+export default WelcomeBack;
+
+Because the code in the WelcomeBack.js file isn't linked to the WelcomeBack.css stylesheet, the import link to that CSS stylesheet can be removed.
+
+The variable names pStyle and userName can be any variable name that you want.
+
+Again, when you add this code and save the file, you will see the same styles applied to your content as before. Only now, they'll be applied as inline styles.
+Adding Bootstrap
+
+Previously, if you wanted to include an external stylesheet, you would place a link to it in the <head> element of the HTML. You can do the same thing in React.
+
+For example, if you wanted to add the Bootstrap CDN to your React application, you would go into the public directory and add the Bootstrap stylesheet <link> to the <head> element of the index.html file. Bootstrap would then be included for your entire project.
+
+Remember that you must use className instead of the class attribute. That means that if you copy a component over from Bootstrap, you will need to change all occurrences of class to be className.
+
+For example, you can use the .card and .card-body classes to render the card component like this:
+
+<div className="card">
+
+  <div className="card-body">This is some text within a card body.</div>
+
+</div>
+
+Do this
+
+First, add the Bootstrap stylesheet <link> to the <head> element of the index.html file.
+
+Next, create a new React component that primarily uses Bootstrap for styling. Here, you will use a Bootstrap card. Specifically, you should use the Quote option under the Header and footer section.
+
+In the src folder, create a new file called Quote.js. Add the following code:
+
+function Quote({ quote: { text, author } }) {
+
+  return (
+
+    <div className="card">
+
+      <div className="card-header">Quote of the Day</div>
+
+      <div className="card-body">
+
+        <blockquote className="blockquote">
+
+          <p>{text}</p>
+
+          <footer className="blockquote-footer">{author}</footer>
+
+        </blockquote>
+
+      </div>
+
+    </div>
+
+  );
+
+}
+
+
+export default Quote;
+
+The Quote component accepts a prop called quote, which is an object containing text and author properties. Here, their values are extracted into the text and author variables using destructuring. The component simply returns JSX.
+
+Remember that you must use className instead of the class attribute when adding a class to a React component.
+
+Next, in App.js, import the Quote component and use it within the App component, like this:
+
+import "./App.css";
+
+import WelcomeBack from "./WelcomeBack";
+
+import Quote from "./Quote";
+
+
+const quote = {
+
+  text:
+
+    "I am great believer in luck, and I find the harder I work, the more I have of it.",
+
+  author: "Thomas Jefferson",
+
+};
+
+
+function App() {
+
+  return (
+
+    <>
+
+      <WelcomeBack name="Joe" />
+
+      <Quote quote={quote} />
+
+    </>
+
+  );
+
+}
+
+
+export default App;
+
+The Quote component, which is styled with Bootstrap, is now displayed on the screen as follows:
+Styled quote of the day
+
+Note: If you need a refresher on other interesting features of Bootstrap, you can refer to the CSS frameworks module.
+Adding Google Fonts
+
+Google Fonts is a library of free and interesting font families that you can include in your project. There are several ways to incorporate Google Fonts into your project. One way is to include the <link> tag inside an HTML file, just like how you would include a regular stylesheet.
+Do this
+Add the Zen Dots font
+
+Go ahead and add a font family called Zen Dots to the project. First, go to the Google Fonts website and look up Zen Dots using the search bar at the top-left corner of the page:
+Zen Dots page on the Google Fonts web page
+
+Click the Zen Dots card. Then, on the next page, click the + Select this style button:
+Zen Dots page
+
+A menu will slide out from the right. Under the Use on the web section, copy both of the provided <link> tags:
+Use on the web options
+
+The preconnect link tag speeds up the downloading of the font files, so it's important to include it.
+
+In the index.html file within the public folder, paste the copied lines anywhere inside the <head> section.
+
+Next, use the Zen Dots font family to style the paragraph tag inside the WelcomeBack component, like this:
+
+function WelcomeBack({ name = "valued customer" }) {
+
+  const pStyle = {
+
+    color: "black",
+
+-    fontFamily: "sans-serif",
+
++    fontFamily: "Zen Dots, cursive",
+
+  };
+
+  const userName = {
+
+    padding: "2px 4px",
+
+    marginRight: "2px",
+
+    backgroundColor: "#000",
+
+    color: "#fff",
+
+    borderRadius: "4px",
+
+  };
+
+
+  return (
+
+    <p style={pStyle}>
+
+      Welcome back, <span style={userName}>{name}</span>!
+
+    </p>
+
+  );
+
+}
+
+
+export default WelcomeBack;
+
+Note that you're using cursive as a fallback font typeface here. If, for some reason, the Zen Dots doesn't load properly in your project, then React will use the default cursive typeface that's available on your computer's operating system.
+
+Your WelcomeBack component should now look like this:
+WelcomeBack component
+
 *** 21.10 React testing
 *** 21.11 Assessment: Rendering with React
 ** module 22 react state management
