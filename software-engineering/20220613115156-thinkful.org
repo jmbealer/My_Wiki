@@ -5312,7 +5312,321 @@ Resources
 
 The React testing library documentation is a good starting point, but feel free to consult other resources.
 *** 22.4 Asynchronous state
+Asynchronous state
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to recognize when updating the state may cause race conditions. You'll also be able to refactor the code to avoid issues with race conditions.
+Overview
+
+Updating state is a process that happens asynchronously. And just like with other asynchronous operations in JavaScript, some odd bugs can occur, depending on what you're attempting to do. In this lesson, you'll see that you can get some unexpected behavior if you try to update the same state twice in a row. You'll also learn how to fix those problems.
+Key Terms
+
+Race condition
+    Also called a race hazard, a condition where a program depends on the relative timing of one or more processes to function correctly
+
+Starter code
+
+Use a new or existing project created with the Create React App command-line tool. Then, include the following App component:
+
+function App() {
+
+  const [subscribed, setSubscribed] = useState(false);
+
+  const [subscribedCount, setSubscribedCount] = useState(0);
+
+  const [alerts, setAlerts] = useState(false);
+
+
+  return (
+
+    <section>
+
+      <p>Please click to subscribe to my updates!</p>
+
+      <p>Subscriber Count: {subscribedCount}</p>
+
+      <button
+
+        onClick={() => {
+
+          setSubscribed(!subscribed);
+
+          setSubscribedCount(subscribedCount + 1);
+
+          if (!alerts) setAlerts(true);
+
+        }}
+
+      >
+
+        {subscribed ? "Unsubscribe" : "Subscribe"}
+
+      </button>
+
+      <button onClick={() => setAlerts(!alerts)}>
+
+        {alerts ? "Stop Email Alerts" : "Get Email Alerts"}
+
+      </button>
+
+    </section>
+
+  );
+
+}
+
+The code above will render as follows:
+React App starter code, rendered
+
+When you click the Unsubscribe button (which is also the Subscribe button), the following happens:
+
+    The subscribed state is toggled.
+
+    The subscribedCount is increased by 1.
+
+    If the alerts are false, they are set to true.
+
+Multiple updates
+
+As you can see with the starter code, it is possible to make multiple changes to different states. But a problem arises when you try to make multiple changes to the same state at the same time.
+
+For example, in the code below, setSubscribedCount() is called twice. Can you guess what this will do?
+
+<button
+
+  onClick={() => {
+
+    setSubscribed(!subscribed);
+
+    setSubscribedCount(subscribedCount + 1);
+
+    setSubscribedCount(subscribedCount + 1);
+
+    if (!alerts) setAlerts(true);
+
+  }}
+
+>
+
+  {subscribed ? "Unsubscribe" : "Subscribe"}
+
+</button>
+
+If you try this locally, you'll notice that despite setSubscribedCount() being called twice, the subscribedCount only increases by 1.
+
+This is because the updates to the state are done asynchronously. So when setSubscribedCount() is called twice in a row, both calls use the same initial value for subscribedCount.
+
+For example, imagine that subscribedCount is 0. When you press the button, the first call to setSubscribedCount() sees the subscribedCount as 0 and updates it to 1. Then, the second call to setSubscribedCount() also sees the subscribedCount as 0 and also updates it to 1.
+Passing a function for state updates
+
+There are a few ways to solve this problem. One is to simply rewrite the setSubscribedCount() function to increment by 2 instead of 1.
+
+However, there may be situations where this isn't ideal. So instead, you could pass setSubscribedCount() a function that takes the previous value of the state, as follows:
+
+setSubscribedCount((currentCount) => currentCount + 1);
+
+Using a function means that you will avoid potential race conditions. Instead of taking the value of subscribedCount, which is subject to change, the function will ensure that whatever the most recent value is, it will add 1 to it.
+
+Review the updated code below:
+
+function App() {
+
+  const [subscribed, setSubscribed] = useState(false);
+
+  const [subscribedCount, setSubscribedCount] = useState(0);
+
+  const [alerts, setAlerts] = useState(false);
+
+
+  return (
+
+    <section>
+
+      <p>Please click to subscribe to my updates!</p>
+
+      <p>Subscriber Count: {subscribedCount}</p>
+
+      <button
+
+        onClick={() => {
+
+          setSubscribed(!subscribed);
+
+          setSubscribedCount((currentCount) => currentCount + 1);
+
+          setSubscribedCount((currentCount) => currentCount + 1);
+
+          if (!alerts) setAlerts(true);
+
+        }}
+
+      >
+
+        {subscribed ? "Unsubscribe" : "Subscribe"}
+
+      </button>
+
+      <button onClick={() => setAlerts(!alerts)}>
+
+        {alerts ? "Stop Email Alerts" : "Get Email Alerts"}
+
+      </button>
+
+    </section>
+
+  );
+
+}
 *** 22.5 State over multiple components
+
+State over multiple components
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to manage state over multiple components.
+Overview
+
+Imagine that you want to build a page that has a header at the top with buttons that change the appearance of the whole page. For example, imagine that the header has buttons to log in and log out, change the color theme, and change the font size. These buttons will affect the appearance of several components on the page. In this lesson, you'll learn how to build such a page.
+Key Terms
+
+Lifting up state
+    The process of moving state higher up in a component tree, enabling state to be passed from a parent component to multiple children
+
+The video below provides a brief introduction to this topic. Start by watching the video, then read through the rest of the lesson and complete the practice tasks. This will give you a thorough understanding of these concepts.
+Starter code
+
+Use a new or existing project created with the Create React App command-line tool. Then, include the following App component:
+
+function App() {
+
+  return (
+
+    <div>
+
+      <Header />
+
+      <Content />
+
+    </div>
+
+  );
+
+}
+
+Then, create two new files: Header.js and Content.js. Include the following components in the corresponding files.
+
+// Header.js
+
+function Header() {
+
+  // TODO: define loggedIn
+
+  return (
+
+    <button onClick={/* TODO */}>{loggedIn ? "Log Out" : "Log In"}</button>
+
+  );
+
+}
+
+
+// Content.js
+
+function Content() {
+
+  // TODO: define loggedIn
+
+  return loggedIn && <p>CONTENT</p>;
+
+}
+
+In this example, App is the parent component and Header and Content are child components. Header and Content are considered sibling components to each other. These relationships are visualized in the following diagram:
+Diagram showing Header and Content as children of App, as in a family tree.
+Lifting up state
+
+The program that you are building has three different components: App, Header, and Content.
+
+You might imagine that the Header component contains the loggedIn state. But this wouldn't work well, because the Content component needs access to the loggedIn state to know what to display.
+
+Siblings cannot share state. This is because there is no natural way for a sibling to pass props "sideways" to another sibling. Data only flows in one direction in React. Likewise, a child cannot share state with its parent, because there is no way for a child to pass props to its parent. Yet, parents can share state with their children through props.
+
+So, for both the Header and the Content components to have access to the loggedIn state, you need to hold that state in the App component and pass it to the children through props. Also, the Header component needs to be able to update the loggedIn state when the user presses the button. The toggleLoggedIn() function below can be passed down as a prop to the Header component.
+
+You could write this as follows:
+
+function App() {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const toggleLoggedIn = () => setLoggedIn(!loggedIn);
+
+  return (
+
+    <div>
+
+      <Header loggedIn={loggedIn} handleLoggedInClick={toggleLoggedIn} />
+
+      <Content loggedIn={loggedIn} />
+
+    </div>
+
+  );
+
+}
+
+Then you can complete the Content and Header components to use the props that are passed to them from the App component.
+
+// Header.js
+
+function Header({ loggedIn, handleLoggedInClick }) {
+
+  return (
+
+    <button onClick={handleLoggedInClick}>
+
+      {loggedIn ? "Log Out" : "Log In"}
+
+    </button>
+
+  );
+
+}
+
+
+// Content.js
+
+function Content({ loggedIn }) {
+
+  return loggedIn && <p>CONTENT</p>;
+
+}
+
+This concept is generally referred to as lifting up state. State moves from a child component "higher" up the component tree. With state higher up in the tree, the data can flow downward more easily.
+Do this
+Update your application
+
+Update your code as described above. Then try out the changes and see how state can be shared as a prop over multiple components.
+State as props
+
+When you pass down state to children components, your state becomes part of the props for the child component. In this way, children components don't necessarily distinguish between state and props.
+
+For example, you could update your Content component to include a text prop that could be passed in, as shown below:
+
+// In App.js
+
+<Content loggedIn={loggedIn} text="My content." />;
+
+
+// Content.js
+
+function Content({ loggedIn, text }) {
+
+  return loggedIn && <p>{text}</p>;
+
+}
+
+This way, in App.js, loggedIn is a part of the potentially changing state for that component. But in Content.js, loggedIn looks like just another property.
 *** 22.6 Arrays and objects as state
 *** 22.7 Forms with input fields
 *** 22.8 Complex forms
