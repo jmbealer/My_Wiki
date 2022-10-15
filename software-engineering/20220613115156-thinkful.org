@@ -1412,13 +1412,2169 @@ A completed example from this lesson can be found here:
 
     Starter code: Robust server structure—01-static-data branch
 *** 31.3 RESTful APIs
+RESTful APIs
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to build an API following RESTful design principles.
+Overview
+
+In this lesson, you'll learn how to use RESTful design principles to build robust APIs.
+Key Terms
+
+Representational state transfer
+    REST, a set of constraints for building web APIs
+RESTful API
+    A web API that adheres to the constraints of REST
+HTTP request method
+    Also called an HTTP verb, a method that indicates the desired action (such as deleting a resource) to be taken on a given resource
+API endpoint
+    A location where a client can send a request to retrieve a resource that exists on the server
+HTTP response status code
+    A code sent along with every HTTP response from the server, indicating the server's response to the client
+
+A robust API should give clear direction for API developers and consumers. It should be easy for the people who are using it to make sense of it. Accordingly, the API's design should be simple, predictable, and consistent. One way to ensure a robust API design is by following RESTful design principles when creating your API.
+
+REST, which stands for representational state transfer, is a software architecture style. REST is a set of constraints for building web APIs. If a web API adheres to the constraints of REST, you can call the API a RESTful API.
+
+To get a better idea of how REST works, consider the following recipe for sandwiches:
+
+    A sandwich must contain at least one filling.
+
+    A sandwich must contain at least two slices of bread.
+
+    A sandwich must have one slice of bread on the top and one on the bottom.
+
+This is a very flexible recipe; there's a lot of potential for different sandwiches here! You can have one filling or hundreds of fillings, and two slices of bread or hundreds of slices of bread! You could say that it isn't a recipe, but more like a set of constraints for sandwiches.
+
+REST is like the above recipe in that it establishes a set of patterns and constraints, but for web APIs.
+Starter code
+
+For this lesson, it is assumed that you already have the Starter robust server structure repository running on your local machine.
+
+This lesson builds upon the work of the earlier lessons. If you haven't successfully completed the work from the earlier lessons, go back and do that now. If you are having trouble, reach out for assistance.
+Representational state transfer (REST)
+
+When thinking about an API, it's pretty common to think about its URLs. With REST, if you have a URL, then you have a resource. Resource refers to the data returned by a request; that data can be a text file, HTML page, image, video, JSON, or something else. Every URL provides access to a resource on your server.
+
+A RESTful API server provides access to resources. A client, like the browser or another server, can then access and change the resources.
+
+Following RESTful design principles, each resource is identified by its URL. For example, the URL /programmers provides access to a collection of programmer resources, while the URL /programmers/dhh provides access to a single programmer resource. So, a collection of resources is also considered one resource. You have already built URLs that work like this, so this may sound familiar.
+
+REST uses various representations of a resource. For example, plain text, JSON, and XML are all valid representations. The most popular representations of resources are JSON and XML.
+
+The HTTP protocol represents a resource as text in the body of a request or response. All data, even binary files, is represented in HTTP as text. The text may look like JSON, or even JavaScript, but it is always text.
+
+Suppose the client makes a GET request to /programmers/dhh and gets the following response from the server:
+
+{
+
+  "data": {
+
+    "id": "dhh",
+
+    "name": "David Heinemeier Hansson",
+
+    "uses": ["Ruby on Rails", "Basecamp"]
+
+  }
+
+}
+
+The JSON response is a representation of the current state of the resource, not the actual resource itself. The server could represent the resource in other ways, like XML, HTML, or any other format.
+
+The same representation concept applies when a client sends data to the server. The client doesn't send the actual resource; it just sends a representation of the resource. The server's job is to interpret this representation and respond accordingly.
+HTTP request methods
+
+How does the client tell the server what it wants? A combination of an HTTP request method and URL in the request tells the server what action it should take to fulfill the request. An HTTP request method is a method that indicates the desired action (such as deleting a resource) to be taken on a given resource. Common examples include GET, POST, PUT, PATCH, and DELETE.
+
+One of the aims of a RESTful API is to map HTTP request methods and CRUDL actions (create, read, update, delete, and list) together in a conventional pattern. This makes it easier for other developers to understand and navigate the API.
+Tip
+
+HTTP request methods are sometimes referred to as HTTP verbs. These terms are interchangeable.
+
+Essentially, a RESTful API asserts that URLs have names and paths that accurately reflect what they're doing with each resource. What does this look like? The following table outlines standard RESTful naming conventions for a user profile API:
+Route name
+	URL path
+	HTTP method
+	Description
+Index (list)
+	/profiles
+	GET
+	Return a list of profiles.
+Create
+	/profiles
+	POST
+	Create a new profile, assign an id, and return at least the id.
+Read
+	/profiles/:id
+	GET
+	Return the profile with the specified id, or return 404 if it doesn't exist.
+Update
+	/profiles/:id
+	PUT
+	Update an existing profile with the data in the request.
+Delete
+	/profiles/:id
+	DELETE
+	Delete the profile with the specified id. Don't return 404 if it doesn't exist.
+
+Note: In the above URLs, the word profiles represents the resource name. It is also recommended to write URLs that are plural, lowercase, and use hyphens - to separate words. Here are some examples: /cars, /states, and /showing-requests.
+Temporary state
+
+The starter-robust-server-structure application stores all of its data in memory; the data isn't saved to a database or a file. As a result, any changes to the data will be lost when the application restarts. This is fine for now, and it's exactly what you should expect when storing data in memory. You will learn how to store the data in a database in a future module.
+Express and HTTP methods
+
+So far, every route handler that you have written has used app.use(), which matches only on the optional path parameter. But now that you know about HTTP methods, you will create API endpoints that also match on HTTP methods. An API endpoint is a location where a client can send a request to retrieve a resource that exists on the server. It includes both the URL path and the HTTP method for the given URL path.
+
+You can use methods on the app Express application that match on both the path and the HTTP method.
+Do this
+Create a new paste record
+
+Update the application to create a new paste record when the user adds the data by sending a POST request to /pastes.
+
+To accomplish this, you need to do three things:
+
+    Add middleware to parse incoming requests that contain JSON payloads.
+
+    Modify the existing handler for /pastes to handle only GET requests.
+
+    Create a new handler for POST requests to /pastes.
+
+First, add app.use(express.json()) near the top of app.js. The express.json() function is a built-in middleware that adds a body property to the request (req.body). The req.body request will contain the parsed data—or it will return an empty object ({}) if there was no body to parse, the Content-Type wasn't matched, or an error occurred.
+Tip
+
+This middleware must come before any handlers that will make use of the JSON in the body of the request.
+
+Now locate the existing handler for /pastes in your code:
+
+app.use("/pastes", (req, res) => {
+
+  res.json({ data: pastes });
+
+});
+
+Change it as follows:
+
+- app.use("/pastes", (req, res) => {
+
++ app.get("/pastes", (req, res) => {
+
+  res.json({ data: pastes });
+
+});
+
+By changing the code from app.use(...) to app.get(...), you're making it so that the handler will be called only if the HTTP method of the incoming request is GET.
+
+Next, add the following POST handler after the GET handler:
+
+// Variable to hold the next ID
+
+// Because some IDs may already be used, find the largest assigned ID
+
+let lastPasteId = pastes.reduce((maxId, paste) => Math.max(maxId, paste.id), 0);
+
+
+app.post("/pastes", (req, res, next) => {
+
+  const { data: { name, syntax, exposure, expiration, text, user_id } = {} } = req.body;
+
+  const newPaste = {
+
+    id: ++lastPasteId, // Increment last ID, then assign as the current ID
+
+    name,
+
+    syntax,
+
+    exposure,
+
+    expiration,
+
+    text,
+
+    user_id,
+
+  };
+
+  pastes.push(newPaste);
+
+  res.json({ data: newPaste });
+
+});
+
+The line const { data: { name, syntax, exposure, expiration, text, user_id } = {} } = req.body; may look a bit strange, but it is still standard destructuring. This way, if the body doesn't contain a data property, the destructuring will still succeed because you have supplied a default value of {} for the data property.
+
+Start the server using npm run dev, open Postman, and send a POST request to add a new paste result to /pastes.
+Sending a POST request to add a new paste result to /pastes in Postman.
+
+In Postman, under the Headers tab, don't forget to set the value of Content-Type to application/json. Otherwise, the server won't be able to properly interpret your request's JSON payload.
+
+Now, send a GET request to /pastes to see the list of paste results.
+List of paste results in Postman.
+
+Awesome! You now have the same URL responding with two different representations depending on the HTTP method used.
+HTTP response status codes
+
+Now that you know the URL and HTTP method to use when interacting with the API, how do you know if the server fulfilled the request successfully? What happens if the developer using this API makes a mistake and misspells a property, or sets an incorrect value to a property? How do you signal to the client that the information is incorrect?
+
+The status code of the response can help with this. An HTTP response status code is a code that's sent along with every HTTP response from the server. You can use status codes to alert the client about the success or failure of the operation.
+
+Every HTTP response from the server contains a status code. HTTP response status codes are divided into five classes that have similar or related meanings. Understanding the classes can help you determine the appropriate status code to return with a response. The table below explains these classes.
+Status code class
+	Meaning
+100-199
+	Indicates an informational response; it is unlikely that you will need to return a response in this range.
+200-299
+	Indicates success; the request was received, understood, and successfully processed.
+300-399
+	Indicates redirection; a resource at a different URL has been substituted for the requested resource.
+400-499
+	Indicates a client error; there is a problem with the way that the client submitted the request.
+500-599
+	Indicates a server error; the request was accepted, but an error on the server prevented the request's fulfillment.
+
+Within each of these classes, there are a variety of status codes that the server may return. Each individual status code has a specific and unique meaning.
+
+As a developer, you don't need to memorize every status code—there are lots of them! But you should know the most common status codes and how they are used. The following table lists the most common status codes and their meanings.
+Status code
+	Status text
+	Meaning
+200
+	OK
+	The request is successful.
+201
+	CREATED
+	The request resulted in a resource being successfully created.
+204
+	NO CONTENT
+	The request is successful, and nothing is being returned in the response body. DELETE operations often return 204.
+400
+	BAD REQUEST
+	The server cannot process the request because of bad syntax, invalid data, excessive size, or another client error.
+403
+	FORBIDDEN
+	The client doesn't have permission to access this resource.
+404
+	NOT FOUND
+	The resource couldn't be found at this time. It may have been deleted or doesn't exist yet.
+405
+	METHOD NOT ALLOWED
+	The HTTP method isn't supported by the target resource.
+500
+	INTERNAL SERVER ERROR
+	The generic answer for an unexpected failure if there is no more specific information available.
+Do this
+Create-paste status code
+
+Now, update the create-paste handler to return 201 when the paste is successfully created.
+
+app.post("/pastes", (req, res, next) => {
+
+  const { data: { name, syntax, exposure, expiration, text } = {} } = req.body;
+
+  const newPaste = {
+
+    id: ++lastPasteId, // Increment last ID, then assign as the current ID
+
+    name,
+
+    syntax,
+
+    exposure,
+
+    expiration,
+
+    text,
+
+  };
+
+  pastes.push(newPaste);
+
+-  res.json({ data: newPaste });
+
++  res.status(201).json({ data: newPaste });
+
+});
+
+The code above added a chained method call to .status(201) to change the status code from 200 (the default for success) to 201.
+201 status code in Postman.
+
+Now, update the code to return 400 if the text property is missing or empty. In a future lesson, you will implement a robust error handler—but for now, you can simply return 400 with no response data.
+
+app.post("/pastes", (req, res, next) => {
+
+  const { data: { name, syntax, exposure, expiration, text } = {} } = req.body;
+
++ if (text) {
+
+    const newPaste = {
+
+      id: ++lastPasteId, // Increment last ID, then assign as the current ID
+
+      name,
+
+      syntax,
+
+      exposure,
+
+      expiration,
+
+      text,
+
+    };
+
+    pastes.push(newPaste);
+
+    res.status(201).json({ data: newPaste });
+
++  } else {
+
++    res.sendStatus(400);
+
++  }
+
+});
+
+In this case, there is no new paste record created, so there is no data to return. When this happens, you call sendStatus() on the response to quickly set the response HTTP status code and send its string representation as the response body.
+
+With this code in place, posting an object with a missing or empty text property will return 400.
+Returning 400 in Postman.
+
+You will be using the same starter code for the next lesson, so make sure to keep the work that you completed in this lesson.
+Completed example
+
+A completed example from this lesson can be found here:
+
+    Starter code: Robust server structure—02-restful-apis branch
 *** 31.4 API testing with SuperTest
+API testing with SuperTest
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to test an Express API with Jest and SuperTest.
+Overview
+
+In the previous lesson, you learned how to create a basic Express API. APIs are a vital part of many applications, and it's important to ensure that future updates to an API don't accidentally change the behavior of the API. But how do you ensure that your API continues to work as expected as the codebase grows? To do so, you can write automated tests for your Express API. You can build automated tests for an Express API using the Jest testing framework and an HTTP assertion library called SuperTest.
+Starter code
+
+For this lesson, it is assumed that you already have the following repository running on your local machine.
+
+    GitHub: Starter robust server structure paste
+
+This lesson builds upon the work of the earlier lessons. If you haven't successfully completed the work from the earlier lesson, go back and do that now. If you are having trouble, reach out for assistance.
+Jest and SuperTest
+
+Jest is a JavaScript testing framework that includes both an assertion library and a test runner. SuperTest allows you to programmatically make HTTP requests (such as GET, PUT, POST, and DELETE) to your Express API. You will use Jest to run the backend test suite and to check that the API returns correct results.
+Testing the /pastes API endpoints
+
+Previously, you created several Express API endpoints to interact with the pastes data, which is stored in a JavaScript file. You will now add automated tests for a subset of these endpoints, as follows:
+Route name
+	URL path
+	HTTP method
+	Description
+Index (list)
+	/pastes
+	GET
+	Return a 200 status code and a list of pastes.
+Create
+	/pastes
+	POST
+	Create a new paste, assign an id, and return a 201 status code and the newly created paste.
+Do this
+Install Jest and SuperTest
+
+First, install Jest and SuperTest as development dependencies, as follows:
+
+npm install --save-dev jest supertest
+
+Create a test file
+
+Now, create a folder called tests/ and create a file called app.test.js inside of it. Test files should have the suffix .test.js. By default, Jest will be checking filenames for that suffix when looking for test files to execute.
+
+Then, set up app.test.js with the following code:
+
+const request = require("supertest");
+
+const pastes = require("../src/data/pastes-data");
+
+const app = require("../src/app");
+
+
+describe("path /pastes", () => {
+
+  // Add tests here
+
+});
+
+The first three lines load the SuperTest library, pastes data, and the Express server, respectively, into the file. The describe() block groups together all the tests related to the /pastes path. You will add these tests later on in the lesson.
+Update package.json
+
+Add the following test script to your package.json so that it executes the jest command whenever you run npm test:
+
+{
+
+  "scripts": {
+
+    "test": "jest"
+
+  }
+
+}
+
+Run npm test
+
+If you run the npm test command now, the test output would show that the test suite has failed to run, because you haven't written any tests.
+
+ FAIL  tests/app.test.js
+
+  ● Test suite failed to run
+
+
+    Your test suite must contain at least one test.
+
+Jest refresher
+
+Keep in mind that Jest includes the following functions to help you write tests:
+
+    describe(), which groups together a set of related tests
+
+    test() (or it()), which describes an individual test case and is typically nested inside of the describe() function
+
+    The expect object, which provides access to matchers (like toBe() and toEqual()) that allow you to check whether some part of your code has produced an expected outcome
+
+Setup and teardown
+
+Often tests involve some setup and teardown work that needs to be performed before and after tests run, respectively. For example, setup might involve initializing variables and opening file or database connections. Teardown might involve resetting variables, closing file or database connections, or even resetting the test database.
+
+Suppose you have several tests that interact with a database of students, a method initializeStudentsDatabase() that must be called before each of these tests, and a method clearStudentsDatabase() that must be called after each of these tests. You can do this with the beforeEach() and afterEach() helper methods, as follows:
+
+beforeEach(() => {
+
+  initializeStudentsDatabase();
+
+});
+
+
+afterEach(() => {
+
+  clearStudentsDatabase();
+
+});
+
+
+it("students database has John", () => {
+
+  expect(isStudent("John")).toBeTruthy();
+
+});
+
+
+it("students database has Jane", () => {
+
+  expect(isStudent("Jane")).toBeTruthy();
+
+});
+
+Keep in mind that the starter-robust-server-structure-paste application stores all of its data in memory; the data isn't saved to a database or a file. The pastes data is stored in an array defined in a JavaScript file. Before running each test, you will want to remove any existing entries in the pastes array.
+
+Resetting the pastes array to an empty array before running each test helps ensure the integrity of the test. For example, if you're writing a test to check whether the API is allowing the creation of a paste record in the database, then you'd want to be sure that there was no paste record in the database before the test was run. That way, you can be sure that any record stored in the array was created as a result of your API call.
+Do this
+Add a beforeEach() method
+
+Add a beforeEach() method in the describe block to reset the pastes data prior to running each test in the describe block, as follows:
+
+describe("path /pastes", () => {
+
+  beforeEach(() => {
+
+    pastes.splice(0, pastes.length); // Clears out the pastes data
+
+  });
+
+});
+
+Note that because the beforeEach() method is created in the describe block, it will only affect any tests written inside the describe block.
+Testing GET /pastes
+
+Keep in mind that the GET /pastes endpoint should return a 200 status code and a list of pastes. Now, you will write a test for the following list-paste handler from src/app.js:
+
+app.get("/pastes", (req, res) => {
+
+  res.json({ data: pastes });
+
+});
+
+Do this
+Create a test for GET /pastes
+
+In tests/app.test.js, add a describe block for the GET method that contains an individual test as follows:
+
+describe("path /pastes", () => {
+
+  beforeEach(() => {
+
+    pastes.splice(0, pastes.length);
+
+  });
+
+
+  describe("GET method", () => {
+
+    it("returns an array of pastes", async () => {
+
+      const expected = [
+
+        {
+
+          id: 1,
+
+          user_id: 1,
+
+          name: "Hello",
+
+          syntax: "None",
+
+          expiration: 10,
+
+          exposure: "private",
+
+          text: "Hello World!"
+
+        },
+
+        {
+
+          id: 2,
+
+          user_id: 1,
+
+          name: "Hello World in Python",
+
+          syntax: "Python",
+
+          expiration: 24,
+
+          exposure: "public",
+
+          text: "print(Hello World!)"
+
+        },
+
+        {
+
+          id: 3,
+
+          user_id: 2,
+
+          name: "String Reverse in JavaScript",
+
+          syntax: "Javascript",
+
+          expiration: 24,
+
+          exposure: "public",
+
+          text: "const stringReverse = str => str.split('').reverse().join('');"
+
+        }
+
+      ];
+
+
+      pastes.push(...expected);
+
+
+      const response = await request(app).get("/pastes");
+
+
+      expect(response.status).toBe(200);
+
+      expect(response.body.data).toEqual(expected);
+
+    });
+
+  });
+
+});
+
+Keep in mind that the callback function passed as a second argument to the test() method describes the steps for testing the API endpoint. First, an expected array is defined which contains a list of paste objects. Then, copies of the expected paste objects are added to the pastes array. Next, the test runs await request(app).get("/pastes") to send an API request to the GET /pastes endpoint, and the response of the asynchronous call is stored in a response variable. Finally, the test uses the expect() method in conjunction with the toBe() and toEqual() matchers to ensure that the response status code and response body, respectively, contain the expected results.
+Run the test
+
+If you run npm test, you will see the test passing, as follows:
+
+PASS  tests/app.test.js
+
+path /pastes
+
+  GET method
+
+    ✓ returns an array of pastes (20 ms)
+
+If you change one of the assertions in the test (for example, changing the expected response status code from 200 to 201), you should see a failing test instead because the assertion won't be passing anymore. This step will give you confidence that your test is working properly. Make sure to revert any changes that you made so that your test is passing again before you proceed to the next step.
+Run tests in watch mode
+
+It's quite a hassle to have to manually restart the test every time that you make a change to your test code. So, run the tests in watch mode instead.
+
+In your package.json, add the following script:
+
+"scripts": {
+
+    "start": "node src/server.js",
+
+    "dev": "nodemon src/server.js",
+
+    "test": "jest",
+
++    "test:watch": "jest --watch"
+
+  },
+
+Then run npm run test:watch. You'll be presented with the following options to refresh your tests automatically:
+
+Watch Usage
+
+ › Press a to run all tests.
+
+ › Press f to run only failed tests.
+
+ › Press p to filter by a filename regex pattern.
+
+ › Press t to filter by a test name regex pattern.
+
+ › Press q to quit watch mode.
+
+ › Press Enter to trigger a test run.
+
+You will need to keep this terminal open to run the tests in watch mode. If you need to run other terminal commands in development, simply open a new terminal window.
+Test POST /pastes
+
+Keep in mind that the POST /pastes endpoint should create a new paste, assign an id, and return a 201 status code and the newly created paste. Now, you will write a test for the following create-paste handler from src/app.js:
+
+app.post("/pastes", (req, res, next) => {
+
+  const { data: { name, syntax, exposure, expiration, text } = {} } = req.body;
+
+  if (text) {
+
+    const newPaste = {
+
+      id: ++lastPasteId, // Increment last ID, then assign as the current ID
+
+      name,
+
+      syntax,
+
+      exposure,
+
+      expiration,
+
+      text,
+
+    };
+
+    pastes.push(newPaste);
+
+    res.status(201).json({ data: newPaste });
+
+  } else {
+
+    res.sendStatus(400);
+
+  }
+
+});
+
+Do this
+Create tests for POST /pastes
+
+Under the GET method block that you just created, add a sibling describe block to group together the tests for the create-paste handler, as follows:
+
+describe("POST method", () => {
+
+  it("creates a new paste and assigns id", async () => {
+
+    const newPaste = {
+
+      name: "String Reverse in JavaScript",
+
+      syntax: "Javascript",
+
+      expiration: 24,
+
+      exposure: "public",
+
+      text: "const stringReverse = str => str.split('').reverse().join('');"
+
+    };
+
+    const response = await request(app)
+
+      .post("/pastes")
+
+      .set("Accept", "application/json")
+
+      .send({ data: newPaste });
+
+
+    expect(response.status).toBe(201);
+
+    expect(response.body.data).toEqual({
+
+      id: 5,
+
+      ...newPaste,
+
+    });
+
+  });
+
+
+  it("returns 400 if result is missing", async () => {
+
+    const response = await request(app)
+
+      .post("/pastes")
+
+      .set("Accept", "application/json")
+
+      .send({ data: { message: "returns 400 if result is missing" } });
+
+
+    expect(response.status).toBe(400);
+
+  });
+
+
+  it("returns 400 if result is empty", async () => {
+
+    const response = await request(app)
+
+      .post("/pastes")
+
+      .set("Accept", "application/json")
+
+      .send({ data: { result: "" } });
+
+
+    expect(response.status).toBe(400);
+
+  });
+
+});
+
+Instead of a single test, you're now testing three different aspects of the create-paste handler:
+
+    The first test ensures that the API endpoint can successfully create a new paste record. The post() method is used to make a POST request to the server. Because the request payload includes JSON data, you'd have to call set() to set the Accept header of the request to "application/json". Finally, the send() method accepts an object as an argument that contains the data that you'd like to send to the server.
+
+    The second and third tests ensure that the API endpoint returns a 400 status code if the request contains incorrectly formatted data.
+
+Run the test
+
+If you run npm test, you should see the test passing, as follows:
+
+PASS  tests/app.test.js
+
+path /pastes
+
+  GET method
+
+    ✓ returns an array of pastes (7 ms)
+
+  POST method
+
+    ✓ creates a new paste and assigns id (11 ms)
+
+    ✓ returns 400 if result is missing (4 ms)
+
+    ✓ returns 400 if result is empty (3 ms)
+
+Now you know how to test an Express API using Jest and SuperTest. Take a moment to think about any additional tests that you might add to test the API. For example, you could add a test to ensure that the GET /pastes/:pasteId endpoint returns the correct paste record or an appropriate error message if the pasteId doesn't exist in the records. You could also write a test to check that the API returns the correct error message for a nonexistent URL path (such as /asdfghjkl).
+Complete example
+
+A completed example from this lesson can be found here:
+
+    GitHub: Starter robust server structure—api-testing-with-supertest-complete branch
 *** 31.5 Major error types and handling
+Major error types and handling
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to implement a central error handler that returns status codes and error information to the client.
+Overview
+
+In this lesson, you'll learn how to implement a centralized error-handling approach; this is especially important when you begin to build bigger and more complex APIs.
+
+In the previous lesson, you followed RESTful design principles to create your API. Another key feature of a robust API is its error-handling approach. When building RESTful APIs using Express, or any other framework or library, validation checks are always necessary as a best practice. And it's always important to return an error response to the client, so that the client can stay informed on why their request isn't working.
+
+However, as the API grows in size and complexity, handling every possible error and returning a response for every validation check can quickly become tedious; it can make it difficult to quickly grasp what the code is doing. Having a centralized error-handling approach can simplify the code.
+Starter code
+
+For this lesson, it is assumed that you already have the Starter robust server structure repository running on your local machine.
+
+This lesson builds upon the work of the earlier lessons. If you haven't successfully completed the work from the earlier lessons, go back and do that now. If you are having trouble, reach out for assistance.
+Validation
+
+Consider the example below:
+
+let lastPasteId = pastes.reduce((maxId, paste) => Math.max(maxId, paste.id), 0);
+
+
+app.post("/pastes", (req, res, next) => {
+
+  const { data: { name, syntax, exposure, expiration, text, user_id } = {} } = req.body;
+
+  if(text){
+
+      const newPaste = {
+
+        id: ++lastPasteId, // Increment last ID, then assign as the current ID
+
+        name,
+
+        syntax,
+
+        exposure,
+
+        expiration,
+
+        text,
+
+        user_id
+
+      };
+
+      pastes.push(newPaste);
+
+      res.status(201).json({ data: newPaste });
+
+  } else {
+
+      res.sendStatus(400);
+
+  }
+
+});
+
+Looking at the code snippet above, you can see that the route handler is starting to look a little complicated. It's responsible for returning a response to the client, and it's also doing some validation checks (returning a 400 status code if the result variable is falsy). That means that it violates the single-responsibility principle.
+
+To ensure that each route handler has a single responsibility, you can move all validation code into middleware functions. By doing all of the validation in the middleware layer, the route handler will never have to directly make any check related to the request. All these checks will be done in the middleware.
+
+Take a look at the existing error handler:
+
+app.use((error, req, res, next) => {
+
+  console.error(error);
+
+  res.send(error);
+
+});
+
+This error handler will catch every error, but it doesn't respond with JSON data like the route handlers. That makes error handling more difficult for developers using the API. So to demonstrate the existing issues with the error handler, add a validation middleware function to the create-paste route.
+Do this
+Return validation error
+
+Update the POST handler for /pastes to move the validation code into a middleware function that returns information about the validation failures, as follows:
+
+// New middleware function to validate the request body
+
+function bodyHasTextProperty(req, res, next) {
+
+  const { data: { text } = {} } = req.body;
+
+  if (text) {
+
+    return next(); // Call `next()` without an error message if the result exists
+
+  }
+
+  next("A 'text' property is required.");
+
+}
+
+
+let lastPasteId = pastes.reduce((maxId, paste) => Math.max(maxId, paste.id), 0);
+
+
+app.post(
+
+  "/pastes",
+
+  bodyHasTextProperty, // Add validation middleware function
+
+  (req, res) => {
+
+    // Route handler no longer has validation code.
+
+    const { data: { name, syntax, exposure, expiration, text, user_id } = {} } = req.body;
+
+    const newPaste = {
+
+      id: ++lastPasteId, // Increment last id then assign as the current ID
+
+      name,
+
+      syntax,
+
+      exposure,
+
+      expiration,
+
+      text,
+
+      user_id,
+
+    };
+
+    pastes.push(newPaste);
+
+    res.status(201).json({ data: newPaste });
+
+  }
+
+);
+
+Now, if validation fails within the validation middleware (bodyHasTextProperty()), then next() is called with an error message. This will cause the error handler to be called. The value passed into next() will be passed to the error handler as the first argument. Here, you are only doing validation for the text property. In the next lesson, you will complete validation for all the properties.
+
+Now send a POST request to add an empty object to /pastes.
+Adding an empty object to /pastes and getting the status code 200 in Postman.
+
+The error message is returned, but the status code is 200. This is because the status code is 200 by default. You need to tell the error handler the specific status code to return. Here, because the request is malformed, it is appropriate to return a 400 status code.
+
+To do this, you need to change the validation middleware and the error handler.
+
+function bodyHasTextProperty(req, res, next) {
+
+  const { data: { text } = {} } = req.body;
+
+  if (text) {
+
+    return next();
+
+  }
+
+  next({
+
+    status: 400,
+
+    message: "A 'text' property is required.",
+
+  });
+
+}
+
+Now, the validation middleware is calling next() with an object that has two properties: status and message.
+
+Note: The message property matches the JavaScript Error object for consistency. You are using the status property here because the default error handler for Express will set res.statusCode to the value stored in error.status.
+
+When any of the route handlers or middlewares call next() with an error object, that error object is passed along to the centralized error handler that exists at the bottom of the file. Moreover, the error object can be accessed via the first argument of the error handler. Update the error handler as follows:
+
+app.use((error, req, res, next) => {
+
+  console.error(error);
+
+  const { status = 500, message = "Something went wrong!" } = error;
+
+  res.status(status).json({ error: message });
+
+});
+
+Now the error handler will return a 500 Internal Server Error by default, but middleware functions (such as bodyHasTextProperty()) can set the status code and error messages if necessary.
+
+With these changes, the handler can correctly report both custom validation error and any JavaScript Error.
+
+Then, to make sure that this route is working properly with these changes, make another POST request to the /pastes endpoint:
+Making another POST request to the /pastes endpoint.
+
+Developers can now determine if their request to the API was successful by assessing the status code. Alternatively, developers can use the JSON returned from the API; if a request is successful, the JSON will have a data property. Otherwise, the JSON will have an error property.
+
+Now that this pattern of error handling is working properly, update the existing next() calls.
+Do this
+Update existing calls to next()
+
+Now, go through your code and change next(`Paste id not found: ${pasteId}`); to next({ status: 404, message: `Paste id not found: ${pasteId}` });. Here, you're updating the next() call to pass an object with status and message as arguments.
+
+Now, test out your code in Postman by making POST calls to /pastes/:pasteId with nonexistent :pasteId values.
+
+You will be using the same starter code for the next lesson, so make sure to keep the work that you completed in this lesson.
+Completed example
+
+A completed example from this lesson can be found here:
+
+    Starter robust server structure—03-error-types branch
 *** 31.6 Organizing Express code
+Organizing Express code
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to organize code into small files grouped by resource. You'll also be able to use the express.Router class to create modular, mountable route handlers.
+Overview
+
+In this lesson, you will reorganize your code to make it easier to understand, maintain, and modify.
+Key Terms
+
+Group-by-resource structure
+    A file organization structure in which any code that handles requests to a resource is stored in a folder with the same name as the resource, regardless of the URL to that resource
+Controller file
+    A file that defines and exports the route handler functions and is responsible for managing the state of a single resource in an API
+Express router
+    A modular middleware and routing system that can be attached to an Express app
+
+Besides following RESTful design principles and having centralized error handling, a robust API is built on top of well-organized and well-structured code. Like all software projects, Express APIs tend to get larger and more complex over time. The more files that you have in the project, the more important that the file organization becomes. The files need to be organized in a way that makes it easy to find and modify existing code, and to add new code in a location consistent with the existing code.
+Starter code
+
+For this lesson, it is assumed that you already have the Starter robust server structure GitHub repository running on your local machine.
+
+This lesson builds upon the work of the earlier lessons. If you haven't successfully completed the work from the earlier lessons, go back and do that now. If you are having trouble, reach out for assistance.
+What's the problem?
+
+The application that you have been modifying for this module has a file named app.js where you have defined all of the routes and handlers. Defining all of the route handers as anonymous functions inside of app.js will get overwhelming, even for small applications. For example, your app.js file likely has more than 70 lines of code.
+Group by resource
+
+For this and the remaining lessons in this module, you will organize your Express code using the group-by-resource structure. Grouping by resource, as you learned earlier in this program, means that any code that handles requests to a resource (such as /pastes) is stored in a folder with the same name as the resource, regardless of the URL to that resource. This is a very common project structure for Express.
+
+Here's an example of what your directory structure will look like after you organize the code by resource.
+
+src
+
+    ├── app.js
+
+    ├── data
+
+    │   ├── pastes-data.js
+
+    ├── pastes
+
+    │   ├── pastes.controller.js
+
+    │   └── pastes.router.js
+
+    └── server.js
+
+You will learn about the controller.js and router.js files soon.
+
+You may also be wondering why the data file (pastes-data.js) isn't in the resource folder. Although there is nothing wrong with storing the data files in their corresponding resource folders, the convention is that only the router.js file can be required from a resource folder. The data files are stored in a data folder so the /pastes controller files can require the data without violating the convention. That said, data is normally stored in a database or other external repository, so this isn't an issue that you will encounter frequently.
+
+If a function can be called from any file, the project may quickly look like spaghetti code. Grouping by resource allows you to clarify your architecture; any file in the folder can import functions from any other file in the same folder, but may not import functions from files in other folders. There are, of course, exceptions for folders that are understood to only contain shared code (such as a utilities folder).
+Controller
+
+You will be creating several controller files. A controller file defines and exports the route-handler functions. This file's single responsibility in an API is to manage the state of a single resource (for example, to create, read, update, delete, or list the requested data).
+
+So far, your route-handler functions have been written as anonymous functions defined inline with calls to app.use(), app.get(), or app.post(). Now you will move these functions to named functions exported from the controller file.
+Tip
+
+Don't export validation middleware functions from the controller. No other code is responsible for managing the state of this controller's resource, so there's no need to export the middleware functions.
+
+You will reorganize your code by making many small changes and making sure the code still works after each change, rather than making all of the changes at once and then checking to make sure that your API still works. If you make all the changes at once without checking your code incrementally, you won't know if you made a mistake on the first change or the fiftieth change.
+
+You will reorganize the code starting with the list of pastes returned by a GET request to /pastes.
+Do this
+Create a controller for the /pastes resource
+
+You should move the anonymous route-handler functions for the /pastes route into a new controller file. First, create the controller file at src/pastes/pastes.controller.js.
+
+In that file, add the following code:
+
+const pastes = require("../data/pastes-data");
+
+
+function list(req, res) {
+
+  res.json({ data: pastes });
+
+}
+
+
+module.exports = {
+
+  list,
+
+};
+
+Now that you have the list route handler defined in the controller, you can create a router to connect the GET /pastes endpoint to the router-handler function (which is list()).
+Router
+
+The Express router is a modular middleware and routing system that can be attached to an Express app, which is why it is often referred to as a mini-app.
+
+You only need to specify the starting path, and the router will handle the rest for you.
+
+For example, after creating the pastes router, you can attach it to the app just like a route handler (like app.use('/pastes' or pastesRouter)), except it's only attached once and it will handle any path defined in the router.
+
+The router file defines and exports an instance of Express router. The router file is only responsible for connecting a path (/) with the route handler for that path (pastesController.list()).
+
+You might expect to define the routes starting with /pastes, as you did in app.js. However, recall how Express router was defined above: it's a modular middleware and routing system that can be attached to an Express app. The modularity of the router means that it can be "attached" to the Express app using any starting point. As a result, the paths in the router are always defined independently of the starting point.
+
+A starting point is any part of the path defined when the router is attached to the app. For example, if the router is attached as app.use('/pastes', pastesRouter), then the starting point is /pastes. The full URL to any handler in a router will be the starting point followed by the path defined in the router.
+
+Being able to "attach" the router to the app using any starting point, or move it to a different starting point without changing the router, is a key benefit of using the Express router.
+
+So far, you have been using app to specify the handler for each path. But you have also had app parse the body of the request (app.use(express.json());), handle routes that aren't found, and also handle errors. The app has multiple responsibilities, so you will extract the router functionality out of app and into router files.
+
+The router file is the only file that should be used outside of its folder. Consider the controller file, and any other files you create in the /pastes folder, to be private and not for use outside of the folder.
+Do this
+Create a router for the /pastes resource
+
+Now create the router file at src/pastes/pastes.router.js.
+
+In that file, add the following code:
+
+const router = require("express").Router();
+
+const controller = require("./pastes.controller");
+
+
+router.route("/").get(controller.list);
+
+
+module.exports = router;
+
+The above code does the following:
+
+    const router = require("express").Router(); creates a new instance of Express router.
+
+    const controller = require("./pastes.controller"); imports the /pastes controller that you created earlier.
+
+    router.route("/") using route() allows you to write the path once, and then chain multiple route handlers to that path. Right now you have only get(), but later on, you will add post() and all() to the method chain.
+
+    get(controller.list) uses the list() route handler defined in the controller for GET requests to /.
+
+    module.exports = router; exports the router for use in app.js.
+
+Now that you have a router defined, attach it to the app.
+
+First, import the router into app.js:
+
+const pastesRouter = require("./pastes/pastes.router");
+
+Then find the following code in app.js:
+
+app.get("/pastes", (req, res) => {
+
+  res.json({ data: pastes });
+
+});
+
+Replace it with the following:
+
+app.use("/pastes", pastesRouter); // Note: app.use
+
+Now, make sure that it's working properly.
+Pastes list in Postman.
+
+If you're up for a challenge, take a break here and try, on your own, to reorganize the /pastes route handlers into controller and router files. When you are ready, read on for the detailed instructions.
+Reorganize the create-pastes handler
+
+Now, you will reorganize the create-paste handler (POST /pastes). You will move the POST /pastes route handler and validation middleware out of app.js and put it into pastes.controller.js.
+
+First, find and remove the following code from app.js:
+
+function bodyHasTextProperty(req, res, next) {
+
+  const { data: { text } = {} } = req.body;
+
+  if (text) {
+
+    return next();
+
+  }
+
+  next({
+
+    status: 400,
+
+    message: "A 'text' property is required.",
+
+  });
+
+}
+
+
+let lastPasteId = pastes.reduce((maxId, paste) => Math.max(maxId, paste), 0)
+
+
+app.post("/pastes", bodyHasTextProperty, (req, res, next) => {
+
+  const { data: { name, syntax, exposure, expiration, text, user_id } = {} } = req.body;
+
+  const newPaste = {
+
+    id: ++lastPasteId, // Increment last ID, then assign as the current ID
+
+    name,
+
+    syntax,
+
+    exposure,
+
+    expiration,
+
+    text,
+
+    user_id,
+
+  };
+
+  pastes.push(newPaste);
+
+  res.status(201).json({ data: newPaste });
+
+});
+
+Then, add the following code to pastes.controller.js:
+
+let lastPasteId = pastes.reduce((maxId, paste) => Math.max(maxId, paste.id), 0)
+
+
+function bodyHasTextProperty(req, res, next) {
+
+  const { data: { text } = {} } = req.body;
+
+  if (text) {
+
+    return next();
+
+  }
+
+  next({
+
+    status: 400,
+
+    message: "A 'text' property is required.",
+
+  });
+
+}
+
+
+function create(req, res) {
+
+  const { data: { name, syntax, exposure, expiration, text, user_id } = {} } = req.body;
+
+  const newPaste = {
+
+    id: ++lastPasteId, // Increment last id then assign as the current ID
+
+    name,
+
+    syntax,
+
+    exposure,
+
+    expiration,
+
+    text,
+
+    user_id,
+
+  };
+
+  pastes.push(newPaste);
+
+  res.status(201).json({ data: newPaste });
+
+}
+
+
+module.exports = {
+
+  create: [bodyHasTextProperty, create],
+
+  list,
+
+};
+
+Note that the create export includes an array of the middleware function bodyHasTextProperty() and the create route handler. The router doesn't need to know about the middleware. Using the array syntax allows you to export the middleware and route handlers together, and the router code will look the same as if only the route-handler function is exported.
+
+Next, modify your router code in pastes.router.js as follows:
+
+- router.route("/").get(controller.list);
+
++ router.route("/").get(controller.list).post(controller.create);
+
+Then, make sure that you are still able to create paste records:
+Confirming that paste records can still be created in Postman.
+
+Finally, make sure that the middleware function still reports an error if the text property is missing.
+Confirming that the middleware function reports an error in Postman.
+Enhance create-paste validation
+
+Now that you know that the create-paste handler is working in the reorganized code, you will enhance the create-paste validation to make sure that the other properties are also in the request.
+
+Remove the following code to pastes.controller.js:
+
+function bodyHasTextProperty(req, res, next) {
+
+  const { data: { text } = {} } = req.body;
+
+  if (text) {
+
+    return next();
+
+  }
+
+  next({
+
+    status: 400,
+
+    message: "A 'text' property is required.",
+
+  });
+
+}
+
+Then add the following code:
+
+function bodyDataHas(propertyName) {
+
+  return function (req, res, next) {
+
+    const { data = {} } = req.body;
+
+    if (data[propertyName]) {
+
+      return next();
+
+    }
+
+    next({ status: 400, message: `Must include a ${propertyName}` });
+
+  };
+
+}
+
+As an alternative to writing a function for validating each property, the bodyDataHas() function allows you to validate any given parameter. Now, update module.exports to include the new validation middleware:
+
+module.exports = {
+
+  create: [
+
+      bodyDataHas("name"),
+
+      bodyDataHas("syntax"),
+
+      bodyDataHas("exposure"),
+
+      bodyDataHas("expiration"),
+
+      bodyDataHas("text"),
+
+      bodyDataHas("user_id"),
+
+      create
+
+  ],
+
+  list,
+
+};
+
+You can add additional validation to test that the properties have valid values. Add the following code to pastes.controller.js:
+
+function exposurePropertyIsValid(req, res, next) {
+
+  const { data: { exposure } = {} } = req.body;
+
+  const validExposure = ["private", "public"];
+
+  if (validExposure.includes(exposure)) {
+
+    return next();
+
+  }
+
+  next({
+
+    status: 400,
+
+    message: `Value of the 'exposure' property must be one of ${validExposure}. Received: ${exposure}`,
+
+  });
+
+}
+
+
+function syntaxPropertyIsValid(req, res, next) {
+
+  const { data: { syntax } = {} } = req.body;
+
+  const validSyntax = ["None", "Javascript", "Python", "Ruby", "Perl", "C", "Scheme"];
+
+  if (validSyntax.includes(syntax)) {
+
+    return next();
+
+  }
+
+  next({
+
+    status: 400,
+
+    message: `Value of the 'syntax' property must be one of ${validSyntax}. Received: ${syntax}`,
+
+  });
+
+}
+
+
+function expirationIsValidNumber(req, res, next){
+
+  const { data: { expiration }  = {} } = req.body;
+
+  if (expiration <= 0 || !Number.isInteger(expiration)){
+
+      return next({
+
+          status: 400,
+
+          message: `Expiration requires a valid number`
+
+      });
+
+  }
+
+  next();
+
+}
+
+Then change the export to include these new middleware functions:
+
+module.exports = {
+
+  create: [
+
+      bodyDataHas("name"),
+
+      bodyDataHas("syntax"),
+
+      bodyDataHas("exposure"),
+
+      bodyDataHas("expiration"),
+
+      bodyDataHas("text"),
+
+      bodyDataHas("user_id"),
+
+      exposurePropertyIsValid,
+
+      syntaxPropertyIsValid,
+
+      expirationIsValidNumber,
+
+      create
+
+  ],
+
+  list,
+
+};
+
+Then test that the validation works:
+Testing validation in Postman.
+
+As you can see, to add this validation for the create-pastes route, you only needed to update the controller. The router file and app.js didn't have to be updated.
+Do this
+Reorganize the read-paste handler
+
+Now you will reorganize the read-paste handler (GET /pastes/:pasteId). First, move the anonymous function and validation middleware out of app.js into paste.controller.js.
+
+Find and remove the following code from app.js:
+
+app.get("/pastes/:pasteId", (req, res, next) => {
+
+  const { pasteId } = req.params;
+
+  const foundPaste = pastes.find((paste) => paste.id === Number(pasteId));
+
+
+  if (foundPaste) {
+
+    res.json({ data: foundPaste });
+
+  } else {
+
+    return next({
+
+      status: 404,
+
+      message: `Paste id not found: ${pasteId}`,
+
+    });
+
+  }
+
+});
+
+Then add the following code to pastes.controller.js:
+
+function pasteExists(req, res, next) {
+
+  const { pasteId } = req.params;
+
+  const foundPaste = pastes.find((paste) => paste.id === Number(pasteId));
+
+  if (foundPaste) {
+
+    return next();
+
+  }
+
+  next({
+
+    status: 404,
+
+    message: `Paste id not found: ${pasteId}`,
+
+  });
+
+}
+
+
+function read(req, res) {
+
+  const { pasteId } = req.params;
+
+  const foundPaste = pastes.find((paste) => paste.id === Number(pasteId));
+
+  res.json({ data: foundPaste });
+
+}
+
+Next, update the export statement in pastes.controller.js:
+
+module.exports = {
+
+  create: [
+
+      bodyDataHas("name"),
+
+      bodyDataHas("syntax"),
+
+      bodyDataHas("exposure"),
+
+      bodyDataHas("expiration"),
+
+      bodyDataHas("text"),
+
+      bodyDataHas("user_id"),
+
+      exposurePropertyIsValid,
+
+      syntaxPropertyIsValid,
+
+      expirationIsValidNumber,
+
+      create
+
+  ],
+
+  list,
+
++  read: [pasteExists, read],
+
+};
+
+Then, update pastes.router.js by adding a new route:
+
+router.route("/:pasteId").get(controller.read);
+
+Then, make sure that you are still able to read paste records:
+Confirming the GET request works properly on Postman.
+
+Finally, make sure that an error is reported if there is no paste record with the specified ID.
+Error report showing up on Postman when the paste ID isn't found.
+
+Now that you can create new paste records and read the new paste once it is created, you will add the ability to update an existing paste.
+Do this
+Implement update-paste handler
+
+In this section, you will add the update-paste handler. This handler will return a 200 status code when the paste is successfully updated, a 404 status code if a paste with the specified id doesn't exist, and a 400 status code if a property has an invalid value.
+
+First, add the following update-handler code to pastes.controller.js:
+
+function update(req, res) {
+
+  const { pasteId } = req.params;
+
+  const foundPaste = pastes.find((paste) => paste.id === Number(pasteId));
+
+  const { data: { name, syntax, expiration, exposure, text } = {} } = req.body;
+
+
+  // Update the paste
+
+  foundPaste.name = name;
+
+  foundPaste.syntax = syntax;
+
+  foundPaste.expiration = expiration;
+
+  foundPaste.exposure = exposure;
+
+  foundPaste.text = text;
+
+
+  res.json({ data: foundPaste });
+
+}
+
+Next, update the export statement in pastes.controller.js:
+
+module.exports = {
+
+  create: [
+
+      bodyDataHas("name"),
+
+      bodyDataHas("syntax"),
+
+      bodyDataHas("exposure"),
+
+      bodyDataHas("expiration"),
+
+      bodyDataHas("text"),
+
+      bodyDataHas("user_id"),
+
+      exposurePropertyIsValid,
+
+      syntaxPropertyIsValid,
+
+      expirationIsValidNumber,
+
+      create
+
+  ],
+
+  list,
+
+  read: [pasteExists, read],
+
++  update: [
+
++      pasteExists,
+
++      bodyDataHas("name"),
+
++      bodyDataHas("syntax"),
+
++      bodyDataHas("exposure"),
+
++      bodyDataHas("expiration"),
+
++      bodyDataHas("text"),
+
++      exposurePropertyIsValid,
+
++      syntaxPropertyIsValid,
+
++      expirationIsValidNumber,
+
++      update
+
++  ],
+
+};
+
+Notice that you are reusing previously defined middleware functions to do the necessary validation before the update handler is called.
+
+Then, update the /:pasteId route in pastes.router.js to include the put() method:
+
+- router.route("/:pasteId").get(controller.read);
+
++ router.route("/:pasteId").get(controller.read).put(controller.update);
+
+Then, make sure that you are able to update paste records:
+Updating paste record with PUT request in Postman.
+
+Finally, make sure that an error is reported if there is no paste record with the specified ID.
+
+Next, you will add the ability to delete an existing paste record.
+Do this
+Implement delete-paste handler
+
+Now, you will add the delete-paste handler. Generally, a successful response to an HTTP DELETE method can be one of the following:
+
+    200 OK if the response includes a body describing the status.
+
+    202 Accepted if the action hasn't been completed yet.
+
+    204 No Content if the action has been completed but the response doesn't include a body.
+
+The most common implementation of DELETE returns 204 with no response body, so that is what you will do.
+
+First, add the following to pastes.controller.js:
+
+function destroy(req, res) {
+
+  const { pasteId } = req.params;
+
+  const index = pastes.findIndex((paste) => paste.id === Number(pasteId));
+
+  // `splice()` returns an array of the deleted elements, even if it is one element
+
+  const deletedPastes = pastes.splice(index, 1);
+
+  res.sendStatus(204);
+
+}
+
+Note that the delete-paste handler cannot be named delete because delete is a reserved word in JavaScript.
+
+Next, update the export statement in pastes.controller.js:
+
+module.exports = {
+
+  create: [
+
+      bodyDataHas("name"),
+
+      bodyDataHas("syntax"),
+
+      bodyDataHas("exposure"),
+
+      bodyDataHas("expiration"),
+
+      bodyDataHas("text"),
+
+      bodyDataHas("user_id"),
+
+      exposurePropertyIsValid,
+
+      syntaxPropertyIsValid,
+
+      expirationIsValidNumber,
+
+      create
+
+  ],
+
+  list,
+
+  read: [pasteExists, read],
+
+  update: [
+
+      pasteExists,
+
+      bodyDataHas("name"),
+
+      bodyDataHas("syntax"),
+
+      bodyDataHas("exposure"),
+
+      bodyDataHas("expiration"),
+
+      bodyDataHas("text"),
+
+      exposurePropertyIsValid,
+
+      syntaxPropertyIsValid,
+
+      expirationIsValidNumber,
+
+      update
+
+  ],
+
++  delete: [pasteExists, destroy],
+
+};
+
+Then, update pastes.router.js by adding a new route handler:
+
+router
+
+  .route("/:pasteId")
+
+  .get(controller.read)
+
+  .put(controller.update)
+
++  .delete(controller.delete);
+
+Then, make sure that you are able to delete paste records:
+DELETE request on Postman.
+
+Finally, make sure that 404 is returned if there is no paste record with the specified ID.
+404 error returned after GET request when there's no paste record with the requested ID.
+
+Congratulations! You have reorganized all of the /pastes routes: create, read, update, delete, and list.
+
+You will be using the same starter code for the next lesson, so make sure to keep the work that you completed in this lesson.
+Completed example
+
+A completed example from this lesson can be found here:
+
+    Starter code: Robust server structure—04-organizing-express-code branch
 *** 31.7 Advanced tips
+Advanced tips
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to pass data on the response. You'll also be able to use the all() method of the router.
+Overview
+
+As an Express API gets larger and more complex, you may notice some code that violates the single-responsibility principle. You may also notice code that is duplicated in several places. In this lesson, you will learn some advanced techniques to improve your Express APIs.
+Starter code
+
+For this lesson, it is assumed that you already have the Starter robust server structure GitHub repository running on your local machine.
+
+This lesson builds upon the work of the earlier lessons. If you haven't successfully completed the work from the earlier lessons, go back and do that now. If you are having trouble, reach out for assistance.
+Passing data on the response
+
+As you look at the read(), update(), and pasteExists() controller functions, you will notice there is some duplicated code: each function looks up the paste record by ID. How can you reorganize this code so the lookup is done once in a middleware function and, if found, the paste record is passed to the route handler?
+
+There is a special locals property on the response that can be used to share variables scoped to the request. The locals property is an object where you can add properties that will be available only during that request-response cycle. Once the request-response cycle ends (meaning that the response has been sent to the client), the locals object is deleted.
+
+Now, you will change the pasteExists() function to store the paste record as res.locals.paste, if found, or call next() with a 404 error if it isn't found.
+
+Note: There is also a convention of setting a new property on the request object to share data between middleware functions (that is, req.paste = foundPaste rather than res.locals.paste = foundPaste). Both approaches work well, and both approaches can be found in the official Express documentation.
+Do this
+Store found paste on response
+
+Now you will update pasteExists() to store the paste as res.locals.paste, if found.
+
+First, in paste.controller.js, update pasteExists() to use res.locals.paste:
+
+function pasteExists(req, res, next) {
+
+  const { pasteId } = req.params;
+
+  const foundPaste = pastes.find(paste => paste.id === Number(pasteId));
+
+  if (foundPaste) {
+
+    res.locals.paste = foundPaste;
+
+    return next();
+
+  }
+
+  next({
+
+    status: 404,
+
+    message: `Paste id not found: ${pasteId}`,
+
+  });
+
+};
+
+Then, change the read() and update() methods to also use res.locals.paste:
+
+function update(req, res) {
+
+  const paste = res.locals.paste;
+
+  const { data: { name, syntax, expiration, exposure, text } = {} } = req.body;
+
+
+  // Update the paste
+
+  paste.name = name;
+
+  paste.syntax = syntax;
+
+  paste.expiration = expiration;
+
+  paste.exposure = exposure;
+
+  paste.text = text;
+
+
+  res.json({ data: paste });
+
+
+}
+
+
+function read(req, res, next) {
+
+  res.json({ data: res.locals.paste });
+
+};
+
+Finally, make sure that you are still able to read and update paste records.
+The /users controller and router
+
+Now you will add a /users route which will return a list of users associated with the pastes.
+Do this
+
+Create a users-data.js file in the data folder and paste the following code:
+
+module.exports = [
+
+  {
+
+    id: 1,
+
+    username: "shakira",
+
+  },
+
+  {
+
+    id: 2,
+
+    username: "coltrane",
+
+  },
+
+  {
+
+    id: 3,
+
+    username: "beethoven",
+
+  },
+
+  {
+
+    id: 4,
+
+    username: "baesuzy",
+
+  }
+
+];
+
+Create the /users controller
+
+Create the controller file in src/users/users.controller.js.
+
+In the controller file, add the following code:
+
+const users = require("../data/users-data");
+
+
+function list(req, res) {
+
+  res.json({ data: users });
+
+}
+
+
+function userExists(req, res, next) {
+
+  const { userId } = req.params;
+
+  const foundUser = users.find(user => user.id === Number(userId));
+
+  if (foundUser) {
+
+    res.locals.user = foundUser;
+
+    return next();
+
+  }
+
+  next({
+
+    status: 404,
+
+    message: `User id not found: ${userId}`,
+
+  });
+
+};
+
+
+function read(req, res, next) {
+
+  res.json({ data: res.locals.user });
+
+};
+
+
+module.exports = {
+
+  list,
+
+  read: [userExists, read]
+
+};
+
+Now that you have all of the route handlers defined, it's time to create the router.
+Create /users router
+
+Now you will create the /users router. The routes will start with /, not /users, just like the routes in the /pastes router. Later, you will attach this router to the app using /users as the starting point.
+
+This is the complete code for the /users router at src/users/users.router.js:
+
+const router = require("express").Router();
+
+
+const controller = require("./users.controller");
+
+
+router.route("/:userId").get(controller.read);
+
+
+router.route("/").get(controller.list);
+
+
+module.exports = router;
+
+Now, in app.js, attach the /users router to the app using /users as the starting point.
+
+const usersRouter = require("./users/users.router");
+
+const pastesRouter = require("./pastes/pastes.router");
+
+
+app.use("/users", usersRouter);
+
+app.use("/pastes", pastesRouter);
+
+Finally, test it out and make sure that the /users routes are working correctly.
+405 Method Not Allowed
+
+You can help developers better understand the API by using status codes and the errors property on the response object to report errors. This is how you let them know what went wrong. And more importantly, it's where you indicate what to change to correct the error, if possible.
+
+For example, explore what happens if you send a PUT request to /pastes without an ID.
+A PUT request generating an error in Postman.
+
+The reason that the API returns an error is because there is no route handler for the PUT method on the /pastes route. Ideally, this response would have a 405 status code and a message explaining that PUT isn't allowed. Rather than having to add a handler for each method, you can add a handler for all methods.
+
+The all() method on the route lets you define a handler for all HTTP methods. If you place all() at the beginning of the route, the handler can do some work, like making sure that the user is logged in, and then call next() to pass the request to the next handler. But if you place all() at the end of the route, the handler will be called only if no earlier handler completes the request, or the earlier handler calls next().
+
+With this new information, you will implement an all() handler that returns a 405 status code. Because this isn't a resource-specific handler, you will create an errors folder inside src. Then, in the src/errors folder, create a file named methodNotAllowed.js.
+Do this
+Implement method-not-allowed handler
+
+In src/errors/methodNotAllowed.js, add the following code:
+
+function methodNotAllowed(req, res, next) {
+
+  next({
+
+    status: 405,
+
+    message: `${req.method} not allowed for ${req.originalUrl}`,
+
+  });
+
+};
+
+
+module.exports = methodNotAllowed;
+
+Then, update pastes.router.js to add the methodNotAllowed() handler at the end of each route:
+
+const router = require("express").Router();
+
+const controller = require("./pastes.controller");
+
+const methodNotAllowed = require("../errors/methodNotAllowed");
+
+
+router.route("/:pasteId").get(controller.read).put(controller.update).delete(controller.delete).all(methodNotAllowed);
+
+router.route("/").get(controller.list).post(controller.create).all(methodNotAllowed);
+
+
+module.exports = router;
+
+Next, send another PUT request to /pastes:
+Descriptive error message from PUT request in Postman.
+
+Much better! The /pastes router returns a status code of 405 for any method that is not otherwise handled.
+
+Next, update users.router.js to add the methodNotAllowed handler at the end of each route:
+
+const router = require("express").Router();
+
+const controller = require("./users.controller");
+
+const methodNotAllowed = require("../errors/methodNotAllowed");
+
+
+
+router.route("/:userId").get(controller.read).all(methodNotAllowed);
+
+router.route("/").get(controller.list).all(methodNotAllowed);
+
+
+module.exports = router;
+
+Great! Now the /users router returns a status code of 405 for any method that isn't otherwise handled.
+Nested routers
+
+What happens if you attach a router to another route, instead of attaching it to the app? Give it a try!
+Do this
+Attach the /pastes router to the /users router
+
+In users.router.js, add the following code before any other routes:
+
+const pastesRouter = require("../pastes/pastes.router");
+
+
+router.use("/:userId/pastes", pastesRouter);
+
+Now, send a GET request to /users/1/pastes:
+GET request returning all the data in Postman.
+
+Wow! It just worked! Of course, it isn't returning the expected data. How can you get it to return only records related to the :userId? By default, the route parameters from the parent router are not available on nested routes. Fortunately, Express has a way to merge the router parameters from parent routes if necessary.
+
+In pastes.router.js, find the following code:
+
+const router = require("express").Router();
+
+Change it to this:
+
+const router = require("express").Router({ mergeParams: true });
+
+Then, in pastes.controller.js, change the list() function to be the following:
+
+function list(req, res) {
+
+  const { userId } = req.params;
+
+  res.json({ data: pastes.filter(userId ? paste => paste.user_id == userId : () => true) });
+
+}
+
+Now the list() function will filter the pastes by userId if the userId is a route parameter.
+
+Verify that it works. Send a GET request to /users/1/pastes:
+GET request returning pastes with user_id 1 in Postman.
+
+Now only those pastes that have 1 as the user id are included.
+
+However, if the userId doesn't exist, you will get an empty array rather than the expected 404 error.
+Do this
+Add a middleware function before the /pastes router
+
+You can also attach middleware functions in front of the nested router, if necessary, to make sure that the error messages accurately reflect the problem. For example, you could export the userExists() middleware function from the controller and use it to verify that the userId exists before calling the nested pastes router.
+
+For example, in users.controller.js, export the userExists() middleware function:
+
+module.exports = {
+
+  list,
+
+  read: [userExists, read],
+
+  userExists,
+
+};
+
+Then in users.router.js, add the userExists() middleware function in front of the pastesRouter.
+
+router.use("/:userId/pastes", controller.userExists, pastesRouter);
+
+Now you get the expected 404 error if the user doesn't exist. This is one of the few cases where it is necessary to export middleware functions from the controller.
+
+This demonstrates the power and flexibility of the Express router.
+
+Note: You wouldn't want to leave the pastes router attached to the /users router in a real app. That's because as it is written, it will behave in some unexpected and non‑RESTful ways. Now you know how to organize your code, create controller files, router files, pass data on the response, and nest routers!
+Completed example
+
+A completed example from this lesson can be found here:
+
+    Starter code: Robust server structure—05-advanced-tips branch
 *** 31.8 Assessment: Robust server structure
 
-** Project - Module 32
 ** Postgres- Module 33
 *** 33.1 Overview: Postgres
 *** 33.2 Creating and deleting databases
@@ -1432,6 +3588,22 @@ A completed example from this lesson can be found here:
 
 ** Creating Relations - Module 34
 *** 34.1 Overview: Creating relations
+Overview: Postgres
+9 minutesEstimated completion time
+Overview
+
+Databases are everywhere, and they're invaluable for storing persistent information. So in this module, you'll learn the basics of working with databases.
+
+Databases are incredibly prevalent. They underlie the technology that you use every day—or even every hour!
+
+Databases reside behind a huge percentage of websites. They're a crucial component of e-commerce systems, telecommunications systems, banking systems, video games, and just about any other software system or electronic device that maintains some amount of persistent information. They're also reliable, efficient, and scalable, and these properties make them exceptionally useful and convenient.
+
+Databases are so ubiquitous and important that every company has at least one database to store company information such as employee records, credit and payment records, salary details, and more.
+Do this
+
+The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll perform various tasks, like setting up a development environment or executing a command. Ultimately, these practice sections will help you successfully complete graded assessments, such as projects, mock interviews, and capstones.
+
+At the end of the module, you'll need to take a quiz, so spend some time studying up. Alternatively, you'll join on as an apprentice, but you'll still need to ace this quiz first.
 *** 34.2 Database relationships
 *** 34.3 Relating tables through keys
 *** 34.4 Joining tables
