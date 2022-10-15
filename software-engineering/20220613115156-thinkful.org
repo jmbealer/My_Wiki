@@ -8950,10 +8950,560 @@ A completed example from this lesson can be found in the complete branch of this
 *** 25.7 Assessment: React Router
 ** module 26 frontend deployment
 *** 26.1 Overview: Frontend deployment
+Overview: Frontend deployment
+9 minutesEstimated completion time
+Overview
+
+You've learned how to build React applications. Now, it's time for you to learn how to put these React applications on the web. There are many different ways to do this, and some are easier than others. This module will begin by briefly discussing what it means to deploy an application. Then, you'll learn concrete steps that you can take to put your React application on the web.
+
+In general, this module will focus on how to accomplish these tasks. Although there are many ways to deploy applications, you won't necessarily learn about the variety of deployment techniques here.
+Do this
+
+The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll perform various tasks. For example, you may practice setting up a development environment or executing a command. Ultimately, these practice sections will help you successfully complete graded assessments, such as projects, mock interviews, and capstones.
 *** 26.2 What is frontend deployment?
+What is frontend deployment?
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to describe what deployment means.
+Overview
+
+Deployment is one of those technical terms that often gets thrown around without much explanation. In this lesson, you'll learn what deploying an application generally involves. You'll also learn about what kinds of services that process may include.
+Sharing your work
+
+Right now, your frontend applications can only be hosted locally. That is, if someone wants to view your website or test out your application, they'll either need to do it on your computer or download your code and run it themselves.
+
+To make your application accessible on the web, you'll need to deploy your application. Deploying a web application typically means making it accessible on the web through a URL. Deployment is a way of sharing your work with the world by putting it on the web.
+Development, staging, and production
+
+When you deploy, you deploy to a certain environment. There are typically three environments:
+
+    The development environment references work done on your computer.
+
+    The staging environment references a deployed version of the application that is used to test the changes being made.
+
+    The production environment references a deployed version of the application that is your "completed" version of the application. This version is ready for users.
+
+The deployment process
+
+To deploy a website, you'll need to recreate your development environment's essential components on another machine. That machine will need to be configured to run your website and will need to be connected to the internet.
+
+Manually deploying a website and setting up an environment is an entire topic in itself, often referred to as developer operations or DevOps. Thankfully, there are a number of modern tools and services that make deployment much easier.
+
+Keep in mind that all of these services are often configuration heavy. That means that you need to follow a certain set of steps in a particular order. It's a good idea to take your own notes on the deployment process; this can be extremely useful for later on.
+Common services
+
+There are a number of common tools and services that you may hear about when it comes to deployment. Some of the most popular options are described below.
+Static website services
+
+There are a number of services that will host a static website (with HTML, CSS, and JS) for free or for a reduced cost. GitHub allows for deploying static websites as well as domain services like GoDaddy and Name.com.
+
+Often, services like these will be relatively simple; they won't provide many fancy tools for hosting your website.
+Amazon Web Services
+
+As one of the most popular solutions out there, Amazon Web Services (AWS) runs the web. Working with AWS can be complicated and costly for new developers, but it's an industry standard for most large websites.
+
+AWS allows you to host applications in all kinds of languages. They provide a number of tools to facilitate this process, including their popular Elastic Beanstalk tool. They also provide a variety of other services, like file and database hosting.
+Microsoft Azure
+
+Microsoft Azure is similar to AWS in that it provides a number of different services for hosting applications of all kinds. Azure is built for large websites and projects, and it can host applications in a variety of languages.
+Heroku and Vercel
+
+Heroku is one of the more popular options, particularly among those who are just starting to code. Thanks to their easy-to-use command-line interface and excellent UI, Heroku can perform many of the same tasks that AWS and Azure can, with a bit less fuss.
+
+Vercel, previously known as Zeit's now.sh, has become more popular as JavaScript has become more popular as both a frontend and backend language. Like Heroku, Vercel can quickly deploy React projects from the command line and offers a great UI.
+
+Both Heroku and Vercel provide free options for users to try out the service.
 *** 26.3 Building for production
+Building for production
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to use the build step to prepare your React application for production. You'll also be able to include environment variables specific to your React application.
+Overview
+
+Frontend applications that use the Create React App package include developer-friendly features such as helpful error messages and hot reloading. These features aren't appropriate for your users, and they come with a cost. So you'll want to remove these features when you prepare your application for production. In this lesson, you'll learn how to run the build step for your React applications. You'll also learn how to make additional changes to make your applications ready for production.
+
+The video below provides an overview on how to prepare your app for production.
+Starter code
+
+This lesson requires you to have the following two repositories running on your local machine.
+
+    Constellations server
+
+    Constellations client
+
+Fork and clone the repositories. Then, follow the instructions to get them both running.
+The build process
+
+The process of preparing your application for production is called building. When you build your application, the build process will perform several tasks, including the following:
+
+    Creating compressed and minified versions of your assets
+
+    Creating a single CSS file instead of adding inline <style> blocks
+
+    Disabling any hot reloading feature or developer-friendly error messages that aren't needed for production
+
+Before running the build step, you must first stop running the client by pressing Control+C, because you will be running the application with a special command later on after the build step. To run the build step, navigate to your starter-constellations-client folder and run the following command:
+
+npm run build
+
+You'll then see an output like this:
+react-scripts-build output
+
+You can see that the build step has created optimized files for the production environment and saved them inside a build folder that was also generated in the current directory.
+
+There's a line in the output that tells you that you can deploy your build folder to production:
+
+The build folder is ready to be deployed.
+
+To test out this build, you can use a combination of npx and a tool called serve that will run your built React application. From the starter-constellations-client folder, run the following command:
+
+npx serve -s build --listen 3000
+
+The above command will run your application on port 3000. After running the command, visit the website provided to see your built application!
+
+Now you will no longer see a list of constellations displayed on the page. Keep in mind that the build folder is created for the production environment, but you haven't set up any environment variables for production yet, so the fetch() call in the App won't work properly. This is something that you will do when you are ready to deploy the application in a future step.
+
+Remember, you can press Control+C in the command line to close this server.
+Do this
+Run the build step
+
+In the Constellations client, stop the client if it's running. Then run npm run build to create your production build, and run the npx serve -s build --listen 3000 command to get the project up and running.
+Environment variables
+
+Your application might include environment variables that are critical for the application to work in multiple environments. For frontend applications, this might include API keys or API URLs.
+
+As you learned earlier, environment variables are key-value pairs stored in the application's environment. Your local environment will be different than the environment that you're deploying to. For crucial environment variables, you can create .env files. Create React App will look for .env files and use them to inject environment variables into the appropriate environment. For this to work, all environment variables will need to be prefixed with REACT_APP_.
+
+A .env file's contents might look like this:
+
+REACT_APP_API_BASE_URL=http://localhost:5000
+
+To access this in the application, run the following:
+
+const url = `${process.env.REACT_APP_API_BASE_URL}/constellations`;
+
+In the above example, you may want to change REACT_APP_API_BASE_URL to a different value once the project has been deployed.
+Environment files
+
+The Create React App package provides several different file options for adding environment variables, such as .env, .env.local, .env.development, .env.production, and many more.
+
+More information about these environment variable files can be found at Create React App's Adding Custom Environment Variables page.
+
+In general, you can plan to work with the following:
+
+    The .env.development file: Environment variables in this file will be used in your development environment.
+
+    The .env.production file: Environment variables in this file will be used in your deployed production environment.
+
+The same environment variables should appear in both of the above files. However, their values will be different.
+Do this
+Discover environment variables
+
+In the Constellations client, you'll see a .env.development file with a single environment variable:
+
+REACT_APP_API_BASE_URL=http://localhost:5000
+
+So in the development environment, the REACT_APP_API_BASE_URL variable will be set to http://localhost:5000.
+
+The process.env file is where the environment variables defined in the .env files for an application are stored and are made available at runtime. If you go to src/App.js, you can see that the REACT_APP_API_BASE_URL variable is being accessed via process.env and is being used to construct a URL like this:
+
+const url = `${process.env.REACT_APP_API_BASE_URL}/constellations`;
+
+So when you render the App component in the development environment, the url variable will be set to http://localhost:5000/constellations, because REACT_APP_API_BASE_URL is set to http://localhost:5000 in the env.development file.
 *** 26.4 Vercel
+Vercel
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to deploy React applications using Vercel.
+Overview
+
+In this lesson,you'll learn how to use a hosting platform called Vercel (formerly known as now.sh). With Vercel, you can deploy web applications to the cloud for free using a single command. You'll use the Vercel platform throughout this module.
+Key Terms
+
+Rolling back
+    The process of going back to a previous working deploy
+
+The video below provides a brief introduction to the process of deploying React apps using Vercel.
+Starter code
+
+This lesson requires you to have the following two repositories running on your local machine:
+
+    Constellations server
+
+    Constellations client
+
+Fork and clone the repositories. Then, follow the instructions to get them both running.
+Setup
+
+Go to Vercel's website and click the Sign Up button. You can register however you like, but it's recommended to use the Continue with GitHub option. You will receive an email when your account is created and authorized.
+
+Next, install the vercel CLI tool. To install the correct npm package, run the command given on the download page, using the npm package manager option.
+
+If you run into any issues, contact support at the Having trouble installing? link on the page.
+
+Now run vercel --version. It should output a version number to verify that the CLI tool has been installed.
+Do this
+Get set up with Vercel
+
+Follow the instructions above to create an account with Vercel. Then, install the vercel CLI tool as described.
+
+You won't want to use npx with the vercel command. As you'll see below, it will be configured for your machine.
+Command-line configuration
+
+For Vercel to work as intended, you need to log in via the command line. You can log in by running this command:
+
+vercel login
+
+It will prompt you for the email address that you used, and it will send an email to that address. You may not receive the email right away, so be patient. Also make sure to check your spam folder to see if the email might be there. Once you follow the email's instructions, the CLI will automatically exit with the following success message:
+
+✔ Email confirmed
+
+Congratulations! You are now logged in. In order to deploy something, run `vercel`.
+
+Do this
+Log in to Vercel
+
+Follow the instructions above to log in to Vercel. If you encounter any problems, reach out for help.
+Your first deployment
+
+To deploy with the CLI, the command is simply vercel:
+
+vercel
+
+The first time that you deploy, you'll be prompted to answer a series of questions about your new project. The default values for the install will work just fine, so you can just continue to press Enter.
+Tip
+
+The first deployment for a project is always both a preview (staging) and production deployment. To redeploy to production, you will need to run vercel --prod.
+
+This command can take a few minutes when run for the first time, so be patient. Eventually, it will say something like the following:
+
+🔍  Inspect: https://vercel.com/<username>/starter-constellations-client/bdv6rbm90 [1s]
+
+✅  Production: https://starter-constellations-client.vercel.app [copied to clipboard] [25s]
+
+📝  Deployed to production. Run `vercel --prod` to overwrite later (https://vercel.link/2F).
+
+💡  To change the domain or build command, go to https://vercel.com/<username>/starter-constellations-client/settings
+
+The URL labeled "Inspect" in the output above is called the deployment URL. This URL is made up of several parts:
+
+    https://: The protocol for the deployment URL
+
+    starter-constellations-client: The deployment name, which was set using a default value when you initialized the project
+
+    bdv6rbm90: A random unique ID that's different for each deploy. This is useful because if you ever accidentally deploy a broken application, you can roll back to a specific deploy. The random unique ID is generated for every deploy that has different code. This can get a bit cumbersome, because you could end up with multiple URLs for the same project, each with a different unique ID!
+
+Next, the URL labeled "Production" is the production URL. After a deployment is complete, Vercel automatically aliases the latest deployment URL to the production URL. Whereas a new deployment URL is generated every time you deploy, the production URL will remain the same each time that you deploy to production.
+
+The [copied to clipboard] note is telling you that the URL has been automatically copied; you can simply paste into your browser address bar to open your deployed app!
+
+If you want to see more information on your deployments, you can go to your Vercel dashboard.
+Do this
+Deploy your application
+
+Go into the starter-constellations-client folder and follow the instructions above to deploy your application. Beforehand, make sure that you've run npm run build.
+
+Once completed, your deployed application should look like this:
+Completed deployed application.
+
+Right now, the deployed client won't be able to retrieve data from the server yet, as you haven't set the proper environment variables. That means that you won't see the list of constellations just yet on your deployed client. You will fix that soon.
+The vercel.json file
+
+The vercel command optionally looks for a file called vercel.json for custom configuration. This file should live in the root directory of the project.
+
+A basic ./vercel.json file looks like the following:
+
+{
+
+  "version": 2,
+
+  "routes": [
+
+    { "handle": "filesystem" },
+
+    { "src": "/.*", "dest": "/index.html" }
+
+  ]
+
+}
+
+This code first tells Vercel that you want to use version 2 of its platform.
+
+The routes setting is telling Vercel that any URL path that a user navigates to should be handled by the /index.html file, unless they're looking for an actual file which exists in the directory structure. So, if a request is made for /constellations, it will go to index.html.
+
+But if a request is made for a specific file like /static/main.js or /favicon.ico, which are file paths to specific files, it will look for those files inside the build folder. So if you visit the URL <YOUR_VERCEL_PRODUCTION_URL>/favicon.ico, you will get back the favicon in the browser.
+
+This is because your JavaScript and CSS files, as well as other static resources such as the favicon, live inside the ./build directory. React Router will handle all the other pages in ./build/index.html.
+Do this
+Create the configuration file
+
+For practice, create the vercel.json file described above in your own project directory.
+Redeploying
+
+The video below provides an overview of the redeployment process.
+
+You can redeploy your application by using the --prod flag to indicate that the app should be made available under the aliased name.
+
+# Perform a new deploy
+
+vercel --prod
+
+Running the code above will update the fixed alias URL to use the latest deploy. You can create additional aliases in the Vercel dashboard, but you won't need to do that right now, because you only need one URL right now.
+
+The Vercel CLI has many options; you can explore them in the Vercel CLI documentation.
+Do this
+Redeploy the client
+
+Now, you're ready to try out making a change to your app and redeploying it. To get started, go to the src/common/Header.js file and update the h1 heading to say I love constellations instead of Explore Constellations.
+
+After making the change, redeploy the application by running the command vercel --prod from the starter-constellations-client folder. You will have to wait for a bit for the deployment to complete, so be patient.
+
+After the deployment process is complete, visit the deployed client again. You'll see that the text has changed.
+Text is changed in deployed client.
+Deploy the server to Vercel
+
+The Constellations server has been set up so that it can be deployed to Vercel. The deployed version is simpler than the standard version and will respond with all of the constellation information, no matter the request.
+
+Go into the starter-constellations-server folder and follow the instructions to deploy with Vercel once again. This time, you will end up with a URL that looks something like this:
+
+https://starter-constellations-server.vercel.app
+
+Add a new environment file
+
+Next, connect your deployed Constellations client to your deployed Constellations server. In the client, notice that there is an .env.development file that points to http://localhost:5000. You now want to point the deployed client to the URL of the live server that you deployed in the last step.
+
+To do so, first create a new file called .env.production in the constellations client. Include the following line inside of it, which will update the REACT_APP_API_BASE_URL to point to a live server. Replace <URL> with the URL of your deployed server.
+
+Note: Make sure that there is no trailing slash / at the end of what you paste below.
+
+REACT_APP_API_BASE_URL=<URL>
+
+Also add the environment file to .gitignore.
+Deploy your changes
+
+From the Constellations client folder, run the vercel --prod command to redeploy your application. Your application will now show some constellation information.
+Rolling back changes
+
+You can check all of your deployments in the Vercel dashboard on the deployments page. If you ever accidentally deploy a broken application, you may want to quickly go back to your previous deploy.
+
+This process of going to a previous working deploy is called rolling back. Vercel makes a rollback available in one command; you can update your alias to use the previous unique deployment URL.
+
+To roll back, run the following code:
+
+vercel alias [previous-deploy-url] [alias]
+
+# Here's an example:
+
+vercel alias https://starter-constellations-client-hjqczyxcu.vercel.app starter-constellations-client-[prod]
+
+You can also manage your aliases on the Vercel dashboard, and you can look at a deploy's source code. For any of your deployed applications, click the deployment URL and then click the Source button in the top right of the dashboard.
+
 *** 26.5 Automate with npm
+Automate with npm
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to use npm pre and post scripts to run multiple commands in sequence.
+Overview
+
+As you've seen, Vercel makes the deployment process pretty manageable. However, it's easy to forget certain steps of the process when you're deploying often, or if you haven't deployed in a while. In this lesson, you'll leverage npm to combine multiple parts of the deployment process into a single command. This will help you minimize mistakes while deploying.
+Key Terms
+
+Pre hook
+    A script that runs before other scripts
+Post hook
+    A script that runs after other scripts
+
+Starter code
+
+This lesson requires you to have the Constellations client running on your local machine.
+
+Fork and clone the GitHub repository linked above. Then, follow the instructions to get it running.
+Pre and post scripts
+
+Begin by opening your package.json file.
+
+When you run npm scripts—for example, when you run npm start, npm test, or npm run build—npm offers many features. You can create your own custom scripts, and you can also create scripts that run before or after other scripts automatically. The scripts that run before or after other scripts are called pre hooks and post hooks, respectively.
+
+For example, take a look below at the custom script, which echoes the word hello:
+
+  "scripts": {
+
+    "start": "react-scripts start",
+
+    "build": "react-scripts build",
+
+    "test": "react-scripts test",
+
+-   "eject": "react-scripts eject"
+
++   "eject": "react-scripts eject",
+
++   "hello": "echo 'hello!'"
+
+  },
+
+You could run this script with npm run hello, and it will echo hello. Take a look:
+
+$ npm run hello
+
+
+> bookmarks@0.1.0 hello /path/to/bookmarks-app
+
+> echo 'hello!'
+
+
+hello!
+
+Suppose that you want to always run another script before the "hello" script, and another script after hello is printed. You can use pre hooks to run before the script, and post hooks to run after, as follows:
+
+  "scripts": {
+
+    "start": "react-scripts start",
+
+    "build": "react-scripts build",
+
+    "test": "react-scripts test",
+
+    "eject": "react-scripts eject",
+
++   "prehello": "echo 'before hello!'",
+
++   "posthello": "echo 'after hello!'",
+
+    "hello": "echo 'hello!'"
+
+  },
+
+Now, were you to run npm run hello, you'd see that the "prehello" script is automatically triggered before, and the "posthello" is automatically triggered after.
+
+$ npm run hello
+
+
+> bookmarks@0.1.0 prehello /path/to/bookmarks-app
+
+> echo 'before hello!'
+
+
+before hello!
+
+
+> bookmarks@0.1.0 hello /path/to/bookmarks-app
+
+> echo 'hello!'
+
+
+hello!
+
+
+> bookmarks@0.1.0 posthello /path/to/bookmarks-app
+
+> echo 'after hello!'
+
+
+after hello!
+
+You can use custom scripts with pre and post hooks to automate a number of steps for your deployment.
+Do this
+Run tests before building
+
+It helps to understand why it is useful to use custom scripts with pre and post hooks. You can use this pattern to automate a number of steps during the deployment process. It's good to get in the habit of always running tests right before you create a production. So you can add a pre hook for the "build" script to trigger the tests, like this:
+
+  "scripts": {
+
+    "start": "react-scripts start",
+
++   "prebuild": "react-scripts test",
+
+    "build": "react-scripts build",
+
+    "test": "react-scripts test",
+
+    "eject": "react-scripts eject"
+
+  },
+
+If you run a build, the tests start. However, there are two problems: First, the tests start in watch mode and wait for you to manually close them. Second, if the tests fail, you don't really want the build to happen. But currently, the build is set to happen regardless of whether or not the tests fail.
+
+To solve these problems, you can use a Create React App feature that looks for an environment variable called CI, which stands for continuous integration. When the CI environment variable is present, Create React App does the following:
+
+    Disables watch mode in tests.
+
+    Makes the tests output an error exit code when the tests fail. This will prevent the next scripts from running.
+
+    Disables colors in the test output. But, colors are helpful! So you can add colors back with the --colors flag.
+
+Update the "prebuild" script with the CI environment variable and --colors flag:
+
+  "scripts": {
+
+    "start": "react-scripts start",
+
+-   "prebuild": "react-scripts test",
+
++   "prebuild": "CI=true react-scripts test --colors",
+
+    "build": "react-scripts build",
+
+    "test": "react-scripts test",
+
+    "eject": "react-scripts eject"
+
+  },
+
+Tip
+
+If you are a Windows user and you are getting an error, you may need to add env to the prebuild: "prebuild": "env CI=true react-scripts test --colors",.
+
+Run a build now, and you'll see the tests run first. And if you break a test, the broken test will prevent the build from happening—just what you want!
+
+Because you made some changes to your Header component earlier on, your snapshot tests are probably failing. To accept the changes made to the Header component and make the tests pass again, you’d have to update the snapshots by running this command:
+
+npm run test -- -u
+
+The command above will run your tests in watch mode. Make sure to press a to run all tests.
+
+After updating the snapshots, press q to stop the tests and regain control of the terminal.
+
+Now, if you run npm run build, the build process should run smoothly.
+Create a deploy script
+
+You can also make a custom script for deploying, and you can trigger a build before every deploy.
+
+  "scripts": {
+
+    "start": "react-scripts start",
+
+    "prebuild": "CI=true react-scripts test --colors",
+
+    "build": "react-scripts build",
+
+    "test": "react-scripts test",
+
+    "eject": "react-scripts eject",
+
++   "predeploy": "npm run build",
+
++   "deploy": "vercel --prod"
+
+  },
+
+With the "prebuild", "predeploy", and "deploy" scripts in place, you have automated multiple steps for each deploy. Every time that you want to deploy your application, it will do the following:
+
+    Run the tests.
+
+    If the tests succeed, run the build.
+
+    Deploy to production with vercel --prod.
+
+Make the changes described above. Then run this command:
+
+npm run deploy
+
+This will run your tests. Then, when they pass, it will generate a new build. And finally, it will deploy your new build.
 *** 26.6 Heroku
 *** 26.7 Assessment: Frontend deployment
 
