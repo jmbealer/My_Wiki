@@ -10223,7 +10223,441 @@ The API will return an observation as JSON similar to the following:
 }
 
 *** 37.6 Tracing errors
+Tracing errors
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to identify how logging can help you trace problems in your code.
+
+Overview
+As you have been building three-tier applications, you have learned that there are many places where something can go wrong and cause the application to not work as expected. Errors happen in every application, and this lesson will explore some of the most common errors. Ideally, error information tells you exactly where things went wrong and how to fix it, if necessary.
+
+Key Terms
+Log levels
+A way to indicate the severity of various log messages
+Logging
+When you first start programming, it is common to only think about the happy path and write code that assumes that everything works all of the time. But as you have learned, there are many places in the code where things can go wrong.
+
+The most common thing to do when handling an error is to log some information about the error so that you can use the information to prevent the error from happening in the future. As a result, logging can be one of the most important features of your application. Effective logging can help you discover a problem quickly. On the other hand, missing or ineffective logging can leave you searching for a problem for hours, days, or even weeks. Therefore, it's helpful to think about the logging needs for every feature that you add to your application.
+
+So what is effective logging? Well, with logging, you never really know what information you will need in the future, so you should do your future self a favor and log everything! However, if you log everything using console.log(), the logs will be huge, and it will be very hard to find the specific information that you need. On a day-to-day basis, you don't want to know every little thing that the application did—you just want the major events. But if it starts malfunctioning, you may want to increase the granularity of the logs and zoom in on the problem with as much focused detail as possible.
+
+Perhaps an analogy will be helpful. Imagine that you have an android and you ask it about what it did today.
+
+"Well, I woke up, opened both eyes, turned my head fifty degrees to the right—"
+
+"Whoa, that's too much information. Reduce the granularity from 10 to 4."
+
+"I woke up, ate breakfast, got in my car ... "
+
+Logging needs to work like this android. Usually, you'll only want to know if there is a problem or warning condition. But sometimes, you'll want to increase the information granularity for troubleshooting purposes.
+
+Unfortunately, console.log() doesn't give you the ability to adjust the level of detail; it always prints everything. To adjust the granularity of the information in the logs, you need to make use of something called log levels.
+
+Log levels
+Log levels indicate the importance, or severity, of a log message. Some messages are informative, while others are critical to report for application processing.
+
+Most logging frameworks use a standard set of log levels in order to separate log messages by their severity. These log levels include the following:
+
+FATAL: This represents a truly catastrophic situation for your application. A fatal entry means that your application is about to abort in an attempt to prevent some kind of corruption or other serious problem.
+
+ERROR: An error is a serious issue. It means that something important in your application has failed. Unlike FATAL, the application isn't going to abort; it can recover from the error and keep running.
+
+WARN: A warning represents a problem and flags that you've detected an unusual situation. It's unexpected and uncommon, but it doesn't cause any real harm. It also isn't known whether the issue will persist or recur.
+
+INFO: An information entry represents normal application behavior and milestones. During normal operations, you probably won't pay much attention to information entries. These entries provide a high-level overview of what happened; for example, they'll log if a service started or stopped, or if you added a new user to the database.
+
+DEBUG: A debug entry represents more granular, diagnostic information. Here, you're probably furnishing more information than you'd want in normal production situations. You're providing detailed diagnostic information for developers, sysadmins, and so forth.
+
+TRACE: A trace entry represents extremely fine-grained information—finer even than a debug entry. When you're at this level, you're capturing as many details as you can about the application's behavior. This is used for diagnostics, and it will generally swamp your resources in production.
+
+SILENT: This is just what it sounds like: it won't log anything at all.
+
+At this point, you may be wondering how log levels are used. Well, there are two parties participating in logging:
+
+The logging framework, which has a configured log level at runtime
+
+The application code that calls the logging framework
+
+If the framework has a given log level enabled, then all requests at that level of severity or higher are written to the log. Everything else is ignored.
+
+Consider the following function:
+
+function sum(left, right) {
+  logger.debug({ left, right });
+
+  const result = left + right;
+
+  logger.trace({ result });
+
+  return result;
+}
+If you have the application log level set to TRACE, you would see two entries in the log: one for logger.debug({ left, right }) and one for logger.trace({ result }). However, if you change the log level to DEBUG, then you would only see the call for logger.debug({ left, right }) in the log. Finally, if you turned the log level all the way down to FATAL, you would see nothing in the log because there are no calls to logger.fatal().
+
+Now imagine that you have lots of log statements, at different levels, peppered throughout your application. Things are looking good! Then someone calls and says that they are getting a 404 error when they call your API. There are lots of calls to your API, so how do you find the request that is returning 404?
+
+In fact, there might be multiple requests returning 404. How do you follow the path through the code and multiple application tiers for one specific request? You need a way to correlate each request across each application tier and track its progress through your code. One way to track each request is to assign a unique ID to each request.
+
+Request IDs
+To make tracing requests easier, almost all deployment platforms automatically generate a unique request ID and set the X-Request-ID header to that value. Then you can use the X-Request-ID HTTP header to trace an HTTP request all the way through your API and back again by including the request ID in the logs.
+
+Tip
+Some deployment platforms might use a different header name for the same concept. Vercel uses X-VERCEL-ID, Netlify uses X-NF-REQUEST-ID, and others use X-CORRELATION-ID.
+
+Of course, there are times when you are running locally or in some other context where there is no hosting platform setting the X-Request-ID header on each request. In this case, you can have your Express server set the header if it isn't already set.
+
+Now you know the basic concepts of logging. In a future module, you will learn how to add detailed logging to a backend project so that you can trace errors when they happen.
+
 *** 37.7 Practice tracing errors
+Practice tracing errors
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to implement logging in an Express application.
+
+Overview
+Effective logging can help you discover a problem quickly. But what does effective logging look like in the code? You might be surprised to learn that effective logging adds a lot of log messages to the code.
+
+Key Terms
+Pretty printing
+Reformatting text into a structure that is easier for people to read than the original format
+Trace-level logging
+A logging level that aims to capture as much information as possible
+Debug-level logging
+A logging level that aims to capture just enough information to debug a problem
+Info-level logging
+A logging level that aims to capture the significant events in your application, such as the status code of a request or new database record created
+Starter code
+This lesson requires you to have the following repository running on your local machine.
+
+GitHub: Starter tracing backend
+
+Fork and clone the above repository. Then, follow the instructions to get the repository to run.
+
+Implementing effective logging
+Do your future self a favor and consider the logging requirements every time that you add or change the code. In short, you will want to log as much information as possible, because you never know what you will need in the future.
+
+Trace-level logging is the most granular, so think about this level of logging first. You can't really have too much trace-level logging. Trace messages will log the return value of every function call.
+
+Debug-level logging is about capturing just enough information to debug a problem. Debug messages will log the entry into most function calls, along with any parameters passed to the function.
+
+Info-level logging is about capturing the significant events in your application, such as the status code of a request or new database record created.
+
+Do this
+Set a request ID
+You will start in the backend project by configuring pino-http, an Express middleware package, to assign a unique ID to each request.
+
+First, install pino-http:
+
+npm install pino-http
+Then make the following changes to src/app.js:
+
++const pinoHttp = require('pino-http')
+
+ const app = express();
+
++app.use(pinoHttp());
+ app.use(cors());
+ app.use(express.json());
+
+ // Some code omitted for brevity
+Now start the server and send a request to http://localhost:5000. You will see some JSON logged to the console.
+
+Your output will be unformatted and hard to read. If you use an online JSON formatter to format the output, it will look something like the following. (But note that almost all of the details will be different in your log message.)
+
+{
+  "level": 30,
+  "time": 1607828947331,
+  "pid": 72593,
+  "hostname": "<your-computer-name>",
+  "req": {
+    "id": 1,
+    "method": "GET",
+    "url": "/",
+    "headers": {
+      "host": "localhost:5000",
+      "user-agent": "HTTPie/2.3.0",
+      "accept-encoding": "gzip, deflate",
+      "accept": "*/*",
+      "connection": "keep-alive"
+    },
+    "remoteAddress": "::1",
+    "remotePort": 59521
+  },
+  "res": {
+    "statusCode": 404,
+    "headers": {
+      "x-powered-by": "Express",
+      "access-control-allow-origin": "*",
+      "content-type": "application/json; charset=utf-8",
+      "content-length": "29",
+      "etag": "W/\"1d-edkcVHA/drGEA7P6WQOdtTaE3WY\""
+    }
+  },
+  "responseTime": 4,
+  "msg": "request completed"
+}
+What a nice surprise—there is now a logging framework, named pino, which is automatically logging information about each request. By default, the log level of pino is set to INFO, so any log messages with a lower severity than INFO are ignored.
+
+Take a moment to review the log message above. There is a lot of useful information there, and once you understand it, you can use it to monitor the performance of your application.
+
+The table below explains the meaning of some of the more interesting properties of the log message:
+
+Property
+Description
+level
+The log level of this message
+time
+The time that the log message was created
+req.id
+The unique request ID assigned by pino-http
+res.statusCode
+The status code returned to the client
+responseTime
+The total amount of time it took, in milliseconds, to process the request from start to finish
+The following excerpt from the pino source code shows the relationship between the log level name and its numeric value.
+
+const levels = {
+  trace: 10,
+  debug: 20,
+  info: 30,
+  warn: 40,
+  error: 50,
+  fatal: 60
+}
+Notice that the request ID is an integer. This is okay for development, but once you go to a production deployment, an integer value like 1 for the request ID will be difficult to find when searching the logs. Rather than using the default generator, you will configure pino-http to use the nanoid package to generate long and unique string values for the request ID.
+
+First, install nanoid:
+
+npm install nanoid
+Rather than configuring the Express logger in src/app.js, you will create a new file to configure the logger and then require it in src/app.js.
+
+Next, add the following to src/config/logger.js:
+
+const pinoHttp = require("pino-http");
+const { nanoid } = require("nanoid");
+
+const level = process.env.LOG_LEVEL || "info"
+
+const logger = pinoHttp({
+  genReqId: (request) => request.headers['x-request-id'] || nanoid(),
+  level
+});
+
+module.exports = logger;
+In the above code, if the request has an X-Request-ID header, the value of that header will be used as the request ID. Otherwise, nanoid() is called to generate a new ID.
+
+Tip
+Node converts all header keys to lowercase, so it doesn't matter what case is used in the original request. You will access the header using all lowercase characters in the key.
+
+Also note that the above code is using the LOG_LEVEL environment variable to set the log level for the logger. For pino, the log level can be one of the following values: fatal, error, warn, info, debug, trace, or silent. If the LOG_LEVEL isn't set, the default will be info.
+
+Next, make the following changes to src/app.js:
+
+-const pinoHttp = require('pino-http')
++const logger = require("./config/logger");
+
+ const app = express();
+
+-app.use(pinoHttp());
++app.use(logger);
+ app.use(cors());
+ app.use(express.json());
+
+ // Some code omitted for brevity
+Then send another request to http://localhost:5000. You will see that the req.id is a long string value, such as qMryt28YVXSMugzAdbnyH.
+
+Finally, use Postman to send another request to http://localhost:5000, but this time, set the X-REQUEST-ID to something like edroSf2GZu8ieWcMu5rKQ. Now when you look in the logs, the request will have the ID value from the X-REQUEST-ID header.
+
+JSON is a great format for log files because it is easy for other software programs to parse and search the logs. However, writing the logs in JSON makes it harder for people to read.
+
+Ideally, the logs would be in JSON format in production, but in a human-readable format in development. So, the next thing that you will do is use the NODE_ENV environment variable to enable pretty printing in development. Pretty printing is a general term used to describe reformatting text into a structure that is easier for people to read than the original format.
+
+For example, consider the following standard pino log line:
+
+{"level":30,"time":1522431328992,"msg":"hello world","pid":42,"hostname":"foo","v":1}
+When you pretty-print it, the line above will look like this:
+
+[1522431328992] INFO (42 on foo): hello world
+Do this
+Pretty print logs in development
+First, install pino-pretty:
+
+npm install pino-pretty
+Next, make the following changes to src/config/logger.js:
+
+ const pinoHttp = require("pino-http");
+ const { nanoid } = require("nanoid");
+
+ const level = process.env.LOG_LEVEL
+
++const nodeEnv = process.env.NODE_ENV || 'development'
++const prettyPrint = nodeEnv === "development"
+
+ const logger = pinoHttp({
+   genReqId: (request) => request.headers['x-request-id'] || nanoid(),
+-  level
++  level,
++  prettyPrint
+ });
+
+module.exports = logger;
+In the above code, if the NODE_ENV environment variable isn't set, or if it's set to development, the logger will automatically load pino-pretty and output the logs in a human-readable format.
+
+Finally, send a request to http://localhost:5000. You will see a log message that looks something like the following:
+
+[1607881392556] INFO     (81902 on <your-computer-name>): request completed
+    res: {
+      "statusCode": 404,
+      "headers": {
+        "x-powered-by": "Express",
+        "access-control-allow-origin": "*",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "29",
+        "etag": "W/\"1d-edkcVHA/drGEA7P6WQOdtTaE3WY\""
+      }
+    }
+    responseTime: 1
+    req: {
+      "id": "AHh6bOL7lINVNoI6Vc3gg",
+      "method": "GET",
+      "url": "/",
+      "headers": {
+        "host": "localhost:5000",
+        "user-agent": "HTTPie/2.3.0",
+        "accept-encoding": "gzip, deflate",
+        "accept": "*/*",
+        "connection": "keep-alive"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 64921
+    }
+The output still contains some JSON, but it's certainly easier to read than the original format.
+
+Now that you have readable log information in development, it is time to add some log messages to your code.
+
+Do this
+Add log statements
+In this section, you will be making calls to the /articles route, which requires a database. So take a moment and make sure that you have followed the setup instructions in the project.
+
+Next, make the following changes to src/articles/articles.controller.js:
+
+ async function list(req, res) {
++  const methodName = "list";
++  req.log.debug({ __filename, methodName });
+   const data = await service.list();
+   res.json({
+     data,
+   });
++  req.log.trace({ __filename, methodName, return: true, data });
+ }
+In the above code, you added two log statements. The first calls debug(), and the second calls trace(). This means that nothing new will be logged with the standard log level of info.
+
+So, change the LOG_LEVEL in your .env file to debug:
+
+LOG_LEVEL=debug
+Now, restart the server and send a request to http://localhost:5000/articles. You will see two log statements like the following:
+
+[1607889735008] DEBUG    (86980 on <computer-name>):
+    __filename: "<path-to>/src/articles/articles.controller.js"
+    methodName: "list"
+    req: {
+      "id": "4_Yd2Nj4NCCr8MHcnmD_N",
+      "method": "GET",
+      "url": "/articles",
+      "headers": {
+        "host": "localhost:5000",
+        "user-agent": "HTTPie/2.3.0",
+        "accept-encoding": "gzip, deflate",
+        "accept": "*/*",
+        "connection": "keep-alive"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 49619
+    }
+[1607889735322] INFO     (86980 on <computer-name>): request completed
+    res: {
+      "statusCode": 200,
+      "headers": {
+        "x-powered-by": "Express",
+        "access-control-allow-origin": "*",
+        "content-type": "application/json; charset=utf-8",
+        "content-length": "1491",
+        "etag": "W/\"5d3-+mkO3ENcZKn0QW8953BTSxq56UQ\""
+      }
+    }
+    responseTime: 315
+    req: {
+      "id": "4_Yd2Nj4NCCr8MHcnmD_N",
+      "method": "GET",
+      "url": "/articles",
+      "headers": {
+        "host": "localhost:5000",
+        "user-agent": "HTTPie/2.3.0",
+        "accept-encoding": "gzip, deflate",
+        "accept": "*/*",
+        "connection": "keep-alive"
+      },
+      "remoteAddress": "::1",
+      "remotePort": 49619
+    }
+Note that the DEBUG message appeared, but the TRACE message didn't.
+
+Next, change the LOG_LEVEL in your .env file to trace:
+
+LOG_LEVEL=trace
+Then restart the server and send a request to http://localhost:5000/articles. Now you will see the trace message.
+
+As you can see, you can now adjust the granularity of the log messages without having to change your code. For the most part, the disabled log statements have no (or very little) impact on the performance of your application. However, enabled log messages do have an impact on performance.
+
+Next, you will update the http://localhost:5000/articles controller to have detailed debug and trace logging when it receives a POST request to /articles.
+
+First, make the following changes to src/articles/articles.controller.js:
+
+ function hasData(req, res, next) {
++  const methodName = "hasData";
++  req.log.debug({ __filename, methodName, body: req.body });
+   if (req.body.data) {
++    req.log.trace({ __filename, methodName, valid: true });
+     return next();
+   }
+-  next({ status: 400, message: "body must have data property" });
++  const message = "body must have data property";
++  next({ status: 400, message: message });
++  req.log.trace({ __filename, methodName, valid: false }, message);
+ }
+
+ function dataHas(propertyName) {
+-  return (request, response, next) => {
+-    const { data = {} } = request.body;
++  const methodName = `dataHas('${propertyName}')`;
++  return (req, res, next) => {
++    req.log.debug({ __filename, methodName, body: req.body });
++    const { data = {} } = req.body;
+     const value = data[propertyName];
+     if (value) {
++      req.log.trace({ __filename, methodName, valid: true });
+       return next();
+     }
+-    next({ status: 400, message: `Article must include a ${propertyName}` });
++    const message = `Article must include a ${propertyName}`;
++    next({ status: 400, message: message });
++    req.log.trace({ __filename, methodName, valid: false }, message);
+   };
+ }
+Finally, send the following body in a POST request to http://localhost:5000/articles.
+
+{
+  "data": {
+    "title": "Google News",
+    "url": "news.google.com",
+    "summary": "All the news from Google"
+  }
+}
+Now you will see all of the trace messages. If an error ever happens in one of these methods, you can use the trace logs to determine exactly what happened.
+
+Complete example
+A completed example from this lesson can be found here:
+
+GitHub: Starter tracing backend—practice-complete branch
 *** 37.8 Assessment: Connecting it all
 
 ** Mock Interview: Backend - Module 38
@@ -10231,8 +10665,386 @@ The API will return an observation as JSON similar to the following:
 ** Node and Express - Module 39
 ** Careers: Job searching - Module 40
 *** 40.1 Understanding job searching
+Understanding job searching
+10 minutesEstimated completion time
+Learning Objective
+By the end of this lesson, you should be able to explain the purpose of job searching.
+
+Overview
+The lessons in this module cover the best strategies for finding job listings, understanding which job listings you should apply to, and navigating internal and external recruiters. You'll also learn about bypassing online applications through cold outreach, as well as writing effective cover letters.
+
+Stylized picture of a laptop and coffee cup
+As you probably know from past experience, applying to jobs involves both strategy and luck. Even when you apply to jobs that you're perfectly qualified for—even when your resume is flawless—only a small percentage of your applications turn into interviews. And transitioning careers comes with its own unique set of obstacles.
+
+Fortunately, your Thinkful careers team is here to guide you through this process.
 *** 40.2 Applying for jobs
+Applying for jobs
+2.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you should be able to apply to jobs effectively.
+
+Overview
+The goal of this lesson is to give you the information that you need to conduct an effective and efficient job search that leads you to interviews and, ultimately, to a job that you love.
+
+Key Terms
+Internship
+A temporary position for a company that is designed for the worker to get relevant experience in that industry and tends to be filled by students or recent graduates
+Contract work
+A job that is meant to last for a limited amount of time, often for a specific project
+Freelance work
+Work performed for one or multiple companies at different times, allowing the worker flexibility
+Full-time work
+Working for one company, usually for 40 hours a week, for an indefinite period of time, with benefits
+Job board
+A website where companies post open positions
+Cold outreach
+To email or message someone who you have no prior contact or relationship with, usually for the purpose of job searching
+Internal recruiters
+Employees of a specific company who find and screen candidates for jobs at the company that they work for. Also known as in-house recruiters
+External recruiters
+Also known as third-party recruiters, these are employees of staffing companies who find candidates for job openings at companies or open positions for job seekers
+Comparing job opportunities
+Unless you're Mark Zuckerberg, you probably need to apply to a job in order to get a job. In fact, you probably need to apply to many jobs to get a job.
+
+And although there are lots of jobs available, there's also a lot of competition—so you want to be as strategic as possible. Before you start applying, it's helpful to take stock of the job opportunities that are available to you.
+
+When you're changing careers, your first job is often the most difficult job to get. This is because employers are usually overwhelmed with applications for any given job opening.
+
+So, in an effort to hire quickly, they tend to interview only a few candidates—the ones who have the most impressive and relevant backgrounds. Unfortunately, career changers tend to look less qualified on paper and may get cut before they're able to prove their skills.
+
+With this in mind, your goal should be to get direct relevant experience as soon as possible, so that you do look good on paper. A good way to do this is to be open to all of the job opportunities available to you—internships, contracts, freelance work, and full-time work. Below is some information on each type of opportunity.
+
+Internships
+An internship is when you work for a company specifically to get relevant experience. These positions tend to be filled by students and recent graduates, and they last a couple of weeks or months.
+
+Because internships are viewed as a learning opportunity that benefits you more than the company, most are low paid or unpaid with no benefits. But they're often worth it. The experience can help you get jobs that you're otherwise unqualified for, provide you with referrals, and may even turn into a full-time job.
+
+Here are a couple of resources for finding internships:
+
+Apprenticeships
+
+Idealist
+
+Chegg Internships
+
+And here are some companies that often have internship or apprenticeship opportunities:
+
+8th Light
+
+Amazon
+
+Lyft
+
+Microsoft
+
+Nerd Crossing
+
+Spotify
+
+Apprenticeships.me
+
+Thoughtbot
+
+Sparkbox
+
+Linkedin REACH
+
+Alternatively, it's perfectly okay to email a company and ask if they're willing to consider you for a short-term internship. This is common practice, even if there isn't an opportunity listed on the company's website. If you choose to do this, here are some tips.
+
+Contract work
+Contract work is when a company hires you for a temporary amount of time—a couple of months to a couple of years. Usually, contract workers are hired to help with a specific project. It's a good way to practice your new skills in multiple job settings in a short period of time.
+
+The company pays you an hourly or salaried rate, and it may offer benefits. And because contractors don't always get the same benefits and perks as full-time employees, they tend to be paid more than full-time employees in similar jobs. Like internships, contract positions can sometimes turn into full-time jobs.
+
+To find contract work, you can look on job boards or work with external recruiters. (More on both of those below.)
+
+Freelance work
+Freelance work is when you're self-employed. You can choose to do work for one or multiple companies at different times. It provides ultimate flexibility. You get to set your prices and schedule, can usually choose to work from home, and can accept or reject projects as you like.
+
+Generally, it's up to you to invoice your clients and secure your benefits. If you choose to do freelance work, here's a template that you can use to create a contract or invoice.
+
+Here are a few resources for finding paid freelance work, virtual volunteer projects, and other remote opportunities:
+
+Catchafire
+
+Fiverr
+
+Upwork
+
+Tip
+If you're eligible for the Tuition Refund Guarantee and want to maintain your eligibility, working as a freelancer or starting your own business would make you ineligible for tuition reimbursement. That said, if you're not eligible or don't want to keep your eligibility, then freelancing is a good route to take.
+
+Full-time work
+The term full-time work describes when you work for one company, usually for 40 hours a week, for an indefinite period of time, with benefits. Although more and more companies are getting comfortable with remote work environments, these jobs tend to be in person, at a company location, during set hours.
+
+You can find full-time employment through job boards, cold outreach, newsletters, Slack groups, and recruiters. Next, you'll learn more about each of these methods.
+
+Finding job openings
+There are lots of ways to find job openings, and some are more effective than others. This section covers the various ways that you can find job openings, and the benefits and disadvantages of each.
+
+Job boards
+A job board, also called an employment website, probably seems like the most obvious way to learn about and apply to jobs. Companies publish job openings on sites like LinkedIn and Monster. Then you can search online for these listings and apply to them.
+
+These sites are beneficial to any job searcher, because they publish thousands of job listings from thousands of companies in one spot. And they allow you to easily and quickly search for listings using terms that matter to you, like project manager San Francisco.
+
+There are lots of job boards to choose from, from general to niche. Although there's no need to use all of them, it's a good idea to incorporate a couple of job boards into your weekly job search activities. This way, you'll be aware of which companies are hiring in your area, and you'll know when there's a new listing that's a good fit for you. Many job boards have features that allow you to get email alerts when a new job is posted in your field.
+
+Given the perks of job boards, it's important to remember the following:
+
+Because of job boards' popularity, on average, you're competing against 100 other applicants for every job that you apply to online.
+
+Applicants with a referral are 20 times more likely to be hired than applicants without a referral.
+
+Between 70% and 85% of jobs are obtained through networking.
+
+This means that, even when you're applying to jobs that you're perfectly qualified for, it can take hundreds of applications to get a job or even an interview. It also means that networking should remain an essential part of your job search.
+
+Cold outreach
+Cold outreach is when you email or message someone who you have no prior contact or relationship with. It's one of the most effective job search strategies.
+
+As you just read, most job opportunities are never posted on job boards. Here's why:
+
+Posting on job boards is expensive.
+
+Companies' hiring needs can outpace their ability to maintain job listings online.
+
+It's easier and less risky for employers to hire people they know, and employees are often incentivized to refer people within their network.
+
+So how can you learn about the jobs that aren't posted online? Through cold outreach.
+
+Email or message someone at every company that interests you—even when the company has no suitable job listings posted online—and ask them about their hiring needs. That way, you can learn about job opportunities that aren't posted, be the first person on the employer's mind when it is time to expand their team, and potentially get a referral. This also helps minimize your competition, because the entire internet won't be applying for the same job.
+
+Of course, cold outreach should be done with tact and professionalism. Some best practices are described below.
+
+Cold outreach best practices
+For every company that interests you, find an employee who you can connect with. For smaller companies, any employee is fine. For larger companies, it helps to pinpoint someone who works in the department that you're interested in. You can find the right person on a company's website or in a LinkedIn search. If you're using LinkedIn, look for employees with complete and active profiles, because they're more likely to see and respond to your message.
+
+Then, either email that person or send them a LinkedIn message. Let them know that you're interested in working at their company, and ask if they're going to hire anyone in your field in the near future. Make it personal and ask a question so that they're more likely to respond. Here's an example:
+
+Hi, Ahmaud. My name is Ariana. I know that you don't know me, but I'm reaching out because I've been a long-time fan of Textio. I'm curious; do you know if you'll be growing your digital marketing team in the next year? (If so, I'd like to put my hat in the ring!)
+
+That's it. Keeping it short and sweet with a simple ask makes it easy for the person to respond.
+
+If you already know that the company is currently hiring someone in your field, you can say that you learned that there's a job opening that you're interested in, and you'd like to be considered. Here's an example:
+
+Hi, Darcy. My name is Michael. I saw that your team is looking for a frontend software developer, and I think that I'd be a perfect fit. Is it all right if I send you my resume? Or, if you like, I'd be glad to take you out for coffee and introduce myself.
+
+Make sure to connect before you apply, so that you have the possibility of getting a referral. And be persistent and follow up if the person doesn't respond within a week. If they still don't respond, you can try connecting with another employee at the company. Just don't be a nuisance—you want them to like you.
+
+Slack groups
+Another good job search tool is Slack. Slack has a lot of public groups, which sometimes include job-related channels. For example, the NYC Tech Slack group has a #jobs channel where people post job listings. Try to find similar groups in your area.
+
+Recruiters
+As you start applying, you'll quickly become familiar with recruiters. You may even receive messages from them on LinkedIn. It's helpful to know that there are two major types of recruiters, and each type has a different function.
+
+Internal recruiters
+Internal recruiters, also known as in-house recruiters, are employees of a specific company. Their job is to find and screen candidates for jobs at the company that they work for.
+
+Most often, internal recruiters are trying to fill permanent, full-time jobs.
+
+External recruiters
+External recruiters, also known as third-party recruiters, are employees of staffing companies, like Robert Half. Either on behalf of a company or themselves, their job is to find job openings at companies and then find candidates who would be a good fit for those openings.
+
+They serve as a mediator between the company and the candidate. If a candidate who they recommend is selected, they earn a commission.
+
+Most often, external recruiters are trying to fill contract and part-time jobs. You can find them by Googling recruiters in your location and niche; for example, you could try creative recruiter Atlanta.
+
+When you work with an external recruiter, here's the typical process: First, you give them a copy of your resume and tell them about your career goals. When they learn about a job opening, they email you—and everyone in their network who might be qualified—to see if you're interested in the job. They then review the resumes of everyone who's interested and send the employer the most impressive ones—which may or may not include yours.
+
+Remember, the recruiter's primary motivation is to earn a commission by getting someone hired, not necessarily you. For this reason, external recruiters can be a good way to boost your job search, but they should never replace your other efforts, like applying to job listings and cold outreach.
+
+Newsletters
+Finally, there are a lot of good job-related newsletters available online that provide tips about what companies you should apply to. Here are some examples:
+
+Glassdoor
+
+Strictly VC
+
+TechCrunch's CrunchBase
+
+You can find relevant newsletters on job boards or by doing a simple Google search. Here are a few popular career newsletters.
+
+Now that you know how to find job openings, the next thing to do is learn how to interpret job listings so that you don't miss out on any opportunities that you're qualified for.
+
+Understanding job listings
+Did you know that most job listings are wish lists? Job listings often go through several stakeholders at a company—or are copied from a similar job listing—before they're posted online. This means that not every skill or experience that's listed as "required" is actually necessary to get the job.
+
+And it's not always clear from a job listing if you should apply or not. This section helps you navigate job listings, so that you know what to look for when you're deciding if you should apply.
+
+Job titles
+First things first; job titles can be deceiving. Different companies use different nomenclature when it comes to job titles. A "business development manager" at one company might be a "tech evangelist" at another company, even if it's the exact same job.
+
+Keep this in mind in your own job search, and don't limit yourself to the obvious or most literal job titles. Do a little research to find the variations that are applicable to your field.
+
+Education
+On job listings, the required education is usually a wish-list item. It's okay to ignore it. Most employers are fine with candidates who have equivalent experience or education, which includes your Thinkful education.
+
+Years of experience
+Job listings generally say that applicants should have a certain number of years of experience. These numbers make more sense when you think of them as levels of seniority. For example, zero to four years is an entry-level job, five to seven years is a mid-level job, and seven-plus years is a senior-level job.
+
+Most Thinkful graduates are eligible to apply for jobs that ask for zero to four years of experience.
+
+And remember, you probably have more experience than you want to give yourself credit for! Your projects, self-study, and past transferable experience count toward your experience.
+
+Technical skills
+Job listings tend to include a smorgasbord of "required" technical skills. This is because employers want to capture a lot of applicants. And frankly, it's also because they can write whatever they want on the job listing—so they include everything that they can think of, even if it's a nice-to-have instead of a need-to-have.
+
+When looking at a job listing's required skills, ask yourself these questions:
+
+Do I have at least three of the skills that are listed?
+
+For the skills that I don't have, do I know anything that's comparable?
+
+Do I feel confident that I can quickly learn the new skills and technologies?
+
+If you answer yes to at least two of those questions, you should apply.
+
+Preparing for your job search
+Before you start applying for jobs, there are a few ways to make yourself more marketable and appear more professional.
+
+Set up an email signature
+You can create an email signature in MS Outlook, Gmail, or any other email client you use. Here's what to include:
+
+Full name
+
+Phone number
+
+Profession, title, or tagline: Depending on your employment situation, you will use whatever combination of professional identifiers here makes the most sense. If you are changing careers, don't list your current job. Instead, use a tagline or branding statement that underscores what you can bring to a future employer.
+
+LinkedIn profile: You might add a simple link to your profile, text with a hyperlink, or even a linked image that looks like a LinkedIn icon.
+
+Personal website: Make sure that your website is cleaned up and displays your best work before including it in your signature.
+
+Clean up your social media
+You want your social media accounts to be professional, as many companies will seek them out when researching potential hires. One way to do this is to make sure the settings are set to Friends Only, which makes them private to people not on your friends list. If you want your profiles to remain public, take a look at the following tips:
+
+Clean up your posts and active accounts: Be sure to hide or delete any inappropriate posts that you wouldn't want an employer to see. Run a quick Google search on yourself to see what pops up. You might be surprised what you forgot you signed up for.
+
+Upload professional profile pics: Profile photos are the first thing your prospective employer will see when they find your profiles online. There is no need to get a professional headshot, but make sure that your profile and cover images are professional and easily visible.
+
+Write a professional bio: Think of this as your written elevator pitch; it's the best way to explain to employers who you are, what sets you apart from other candidates, and why you are a perfect fit for their role. Go-to content for your professional bio includes your LinkedIn summary, any job seeker profiles you create on job boards, your personal website information, or your professional Twitter bio.
+
+Edit your handles and URLs: Creating a custom URL takes a few seconds to edit and helps make your digital presence more polished and professional. You also want to make sure that any handles you use on public profiles are professional.
+
+Post and share industry-related news, articles, or insights: Start with sharing content related to the industry you're in or want to be a part of. Work your way up to creating your own posts and sharing original content. This is a great way to show a hiring manager that their company mission aligns with your own brand.
+
+Follow inspiring people and companies: As you build your new career, follow people who are already in that industry to inspire you. This also includes blogs, news sources, podcasts, and other websites that can give you insight into your new job.
+
+Job search strategy
+You now have a good idea of how to find jobs and which jobs you're qualified to apply to. Here are some final best practices to keep in mind during your job search.
+
+Applying often: Treat your job search as if it's your full-time job. Make it a goal to apply to at least 10 jobs per week (that's only two jobs per day) through cold outreach and applying to online job listings. Aim to conduct at least two networking activities each week. Create a rhythm for yourself that's easy to maintain, so that you don't burn out.
+
+Tailoring your application: Getting a job is a mix of strategy and luck. Although you won't get an interview for every job that you apply to, you can increase your odds of success by tailoring your resume to each job listing. Make sure that your resume includes some of the keywords in the job listing, so that it's accepted by the company's applicant tracking system (ATS). And remember, you can use tools like Jobscan and SkillSyncer to see how an ATS treats your resume.
+
+Staying organized: To stay organized, record the details of your applications—where you applied, when, a link to the job posting, who you connected with, and so on. This helps you keep track of all of the companies that you apply to and the people who you reach out to.
+
+Following up: Another reason to stay organized is so that you know who you need to follow up with and when. Following up helps ensure that your application isn't forgotten and makes you more memorable to employers. It also shows employers that you take initiative and are truly interested in getting the job.
+
+Apply all of the skills in this lesson, and it's only a matter of time before you'll move to the next stage of your job search: interviewing.
+
+Supplementary resources
+LinkedIn-Friendly Cold Outreach Templates
+
+Slack Groups and Communities
+
+Slack Directory: Listed by Cities and Interests
+
+Job Search Resources
+
+Targeting Your Resume Worksheet
+
 *** 40.3 Writing cover letters
+Writing cover letters
+3.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you should be able to create effective cover letters.
+
+Overview
+For most jobs, you'll have to write a cover letter briefly outlining your experience and explaining why you are applying for the job. But a strong cover letter is less about the job seeker and more about the employer. This lesson will teach you how to write a compelling cover letter that focuses on the employer. You'll also learn what specifically to include when you're writing and styling your cover letters.
+
+Why are cover letters necessary?
+Cover letters are often the most dreaded part of applying to jobs. Yet, it remains common practice to submit a cover letter alongside your resume each time that you apply. Why is this? There are a few good reasons, especially for career changers.
+
+Your cover letter adds personality to your application. It gives employers a glimpse of the person behind the accomplishments listed on your resume. They gain insight into your interests, values, and expertise, which makes you a more memorable candidate.
+
+Your cover letter shows off your communication skills. The ability to clearly articulate your thoughts is beneficial for every job and, therefore, matters to every employer.
+
+Your cover letter can highlight anything in your background that's not obvious on your resume but does add value for the employer. Resumes often lack context, but your cover letter can compensate for this.
+
+One thing to note, though: cover letters aren't really about you. They’re about the employer. So, the focus should always be about what you can offer the employer—not how the job can benefit you.
+
+Cover letter components
+Like resumes, your cover letters should be tailored to the job listings that you're applying to. It won't work to use a generic cover letter for every application.
+
+But don't worry—if you're applying for the same types of jobs, you can repurpose the majority of the content in your cover letter to suit different job listings. This makes writing a cover letter a fast and painless process.
+
+This section identifies the components that all of your cover letters should include.
+
+1. Salutation
+Start with a salutation that, if possible, is personalized to the employer—the actual person who's reviewing your cover letter. For example, you could write, "Dear Walter Stevenson." This requires researching the company first, which shows your willingness to make an effort and seek out answers on your own.
+
+If you're unable to learn who the exact person reviewing your application is, it's okay to say something like "Dear Hiring Manager" or "Team Google." (But avoid "To Whom It May Concern," which feels extra impersonal.)
+
+2. First paragraph: Stating your intent and skills
+In the first paragraph of your cover letter, your goal is to identify the job that you're applying to, show enthusiasm for the job or company, and highlight two or three of your top skills related to the job listing.
+
+When it comes to showing enthusiasm, get specific. Find something about the company or job that excites you, whether it's a connection to a personal interest, a friend who works at the company and said something positive about the work environment, or a company value or product that resonates with you.
+
+For example, "I have been playing Nintendo games my entire life, from Super Mario Bros. to Fortnite and beyond, so it would be a dream to join your team as a software engineer," is a lot more compelling than "It would be so cool to work at Nintendo."
+
+3. Middle paragraphs: Proving your qualifications
+Next, in one or two short paragraphs, show how your background qualifies you for the job that you're applying to. For each of the top skills that you listed in your introduction, provide a concrete example of you learning or using that skill.
+
+For example, you could mention that you just graduated from your Thinkful program or describe one of your recent projects. This shows the employer that you're not just saying that you have a skill or exaggerating; you're proving it with your experience.
+
+This is also the place for you to mention any of your valuable experience that isn't obvious on your resume. For example, if you're applying at a startup and you've worked at a startup in the past, this is information that employers would like to know, but might not understand just from looking at your resume.
+
+4. Last paragraph: Wrapping up
+In your last paragraph, thank the employer for taking time out of their day to review your application, and tell them how they can contact you if they have questions or want to connect. Remember to show a little enthusiasm for the job, too. (It's your last chance!)
+
+For example, you could write, "I appreciate you taking the time to review my application. Please reach out at 206-123-4567 or becca@gmail.com if you have any questions. I hope to speak with you soon!"
+
+5. Closing
+Finally, include a sign-off with your name. "Sincerely" is standard, but it's okay to use something a little more creative. Here are a few options:
+
+Sincerely
+
+Best
+
+Thank you
+
+Thanks
+
+Gratefully
+
+Cover letter style
+After you write your cover letter, styling it is easy.
+
+Length: Keep your cover letters short—about 300 words or less.
+
+Typeface: Use the same typeface for your resume and cover letter. This makes your complete application uniform, polished, and professional. Similarly, if you use a header for your resume, use the same header for your cover letters too.
+
+Tone: When writing cover letters, you want your tone to strike a balance between professional and personable. Employers are real people; they'll feel more connected to you if you sound like a friendly person instead of an emotionless robot. Consider the company that you're applying to and adjust your formality accordingly. For example, a conversational tone may be appreciated at a casual startup, whereas a government office probably prefers formality. When in doubt, err on the side of formality.
+
+When to include a cover letter
+You might be asking yourself these questions:
+
+Are cover letters really necessary?
+
+Should I submit a cover letter if it's optional?
+
+Here's the thing. Yes, cover letters are necessary as long as employers continue to ask for them.
+
+When it's an option, choosing to submit a thoughtful cover letter can make you positively stand out from the candidates who don't bother. It shows employers that you're willing to put in extra effort and that you care about the job.
+
+The only time that you shouldn't submit a cover letter is when the job listing expressly says not to. In that case, it could annoy an employer if you ignore their almost certainly intentional note.
+
+Supplementary resources
+Cover letter template
+Writing the Cover Letter in 2021: Tone and Voice
+Expert Cover Letter Tips for 2021
+
 *** 40.4 Job searching project
 
 * Module 46 - Careers: Interviewing
