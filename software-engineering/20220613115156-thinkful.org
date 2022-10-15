@@ -7710,9 +7710,996 @@ Do this
 
 The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll perform various tasks, like setting up a development environment or executing a command. Ultimately, these practice sections will help you successfully complete graded assessments, such as projects, mock interviews, and capstones.
 *** 25.2 Using Router, Switch, Route, and Link
+Using Router, Switch, Route, and Link
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to use <Router>, <Switch>, and <Route> to create frontend routes. You will also be able to use <Link> to support navigation around your application.
+Overview
+
+As you'll learn in this lesson, React Router is the de facto library for keeping React UI in sync with the URL. It has a simple API with powerful features. When you're building your app in React, React Router can help you make the URL your first thought, rather than an afterthought.
+Frontend routing
+
+The video below provides a brief introduction to frontend routing. Start by watching the video, and then read through the rest of the lesson and complete the practice tasks. This will give you a thorough understanding of these topics.
+
+As the visitor navigates around the site, they expect the URL to change along with the content on the page. For example, the following image shows what happens when the visitor is on the home page and clicks the About link on the menu.
+What happens when user clicks the About link.
+
+Both pages shown above use the same index.html file and the same App.js component. Yet, when the visitor clicked the About link, both the URL and the page component changed.
+
+Frontend navigation offers many benefits:
+
+    It allows visitors to bookmark pages (for example, they could bookmark https://xkcd.com/722/).
+
+    It allows visitors to share links to specific content and pages.
+
+    It allows visitors to move forward and backward in their browsing history.
+
+    Routing between views is generally faster than backend routing.
+
+    Smooth transitions and animations between views are easier to implement.
+
+    Breaking up your code by page helps promote modularity.
+
+But it isn't all sunshine and happiness with frontend routing. You still need backend routes for resources such as images, JavaScript, CSS, API calls, and the index.html file that is your SPA.
+
+You'll also need to make sure that page refreshes and direct access via URL both work. For example, you need to make sure that it works when the visitor types the URL in the browser bar instead of using in-app navigation.
+
+In a simple application like the one shown above, you can use an if statement, like this:
+
+import React from "react";
+
+
+// All components in one file for simplicity only
+
+
+function Home() {
+
+  return <p>Home</p>;
+
+}
+
+
+function About() {
+
+  return <p>About</p>;
+
+}
+
+
+function App() {
+
+  return (
+
+    <div className="App">
+
+      {window.location.pathname === "/about" ? <About /> : <Home />}
+
+    </div>
+
+  );
+
+}
+
+
+export default App;
+
+Now, take a look at this in action:
+Routing for /about.
+
+This style of routing works for / and /about, but it doesn't work for other routes. Routes like /about/foo and /profile display <Home>, even though they aren't valid routes.
+
+As the complexity of your application grows, it becomes increasingly difficult to use this simple technique to keep the browser URL in sync with what's displayed on the page. Even with only two routes, there are several problems with routing in this application. Just imagine how difficult it would be to handle 10 pages with URLs like /users/42/posts/7/comments!
+
+That's where React Router comes in. The React Router library was created specifically to solve the problem of routing in React applications. It wraps around the browser history API and provides declarative syntax to keep your React application UI in sync with the browser's URL.
+
+To enable routing in your application, you can use the <Router> component from React Router.
+Starter code
+
+The video below provides a brief introduction to React Router.
+
+To follow along with the code in this lesson, create a new React application using Create React App, as follows:
+
+npx create-react-app router-exercise-app
+
+Because this application will be using React Router, you should install that library. So when the create-react-app command is complete, cd into the new folder and install react-router-dom, like this:
+
+cd router-exercise-app
+
+npm i react-router-dom@"^5"
+
+The <Router> component
+
+All React apps use the same low-level interface—<Router>—for the router component. This is true regardless of whether you're building a React application that runs in the browser (react-dom), or one that runs on Android and iOS (react-native). However, each environment has its own high-level router implementation specific to the environment.
+
+In the browser, you use <BrowserRouter> but alias it as <Router> for readability, as follows:
+
+import { BrowserRouter as Router } from "react-router-dom";
+
+Now, add <BrowserRouter> to App.js, like this:
+
+import React from "react";
+
+import { BrowserRouter as Router } from "react-router-dom";
+
+
+function App() {
+
+  return (
+
+    <Router>
+
+      <div className="App"></div>
+
+    </Router>
+
+  );
+
+}
+
+<Router> defines the scope of routing within the app. In this case, it wraps everything within the app.
+
+Once you have a <Router> in place, you can use <Route> components to render or hide components based on the URL path.
+The <Route> component
+
+The <Route> component may be the most important component in React Router. Its responsibility is to render some UI when its path matches the current URL. Wrapping a component with <Route> is similar to wrapping it in an if statement. If the URL matches the path property of the route, the component will be rendered.
+
+The path property of the route can be a URL path (like / or /users) or an array of URL paths (like ['/about','/contact',...]).
+Tip
+
+A <Route> without a path always matches the URL.
+
+Now, add routes to the component, like this:
+
+import React from "react";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+
+function Home() {
+
+  return <p>Home</p>;
+
+}
+
+
+function About() {
+
+  return <p>About</p>;
+
+}
+
+
+function App() {
+
+  return (
+
+    <Router>
+
+      <div className="App">
+
+        <Route path="/">
+
+          <Home />
+
+        </Route>
+
+        <Route path="/about">
+
+          <About />
+
+        </Route>
+
+      </div>
+
+    </Router>
+
+  );
+
+}
+
+Note: If you search for information about React Router, you might see <Route> used like this: <Route path="/about" component={About}/>. This is the old way of using <Route>. As of React Router 5.1, <Route> should be written as shown above.
+
+Check out how it behaves now:
+Now /about shows both </Home> and <About>.
+
+It seems to have gotten worse! Now /about renders both </Home> and <About>. Why is this happening? It is because <Route>, by default, doesn't use an exact match on the path property.
+
+By default, if the URL matches the beginning of the path, it is considered a match. So in this case, a URL of /about matches the path / and the path /about.
+
+The <Route> component has an exact property that, when set to true, means that the URL path must exactly match the route path. You could make use of the exact property to fix these issues, like this: <Route exact={true} path="/"> .... But there's also another way that you could fix this.
+
+The routes in this app are mutually exclusive; you only want to render the first <Route> that matches the location. So you can use the <Switch> component to render only one <Route>.
+The <Switch> component
+
+The video below provides a brief introduction to the <Switch> component.
+
+The <Switch> component will render one of its child <Route> components. It will render only the first <Route> component that has a match. It checks the path of its child <Route> components in order.
+
+import React from "react";
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+
+function Home() {
+
+  return <p>Home</p>;
+
+}
+
+
+function About() {
+
+  return <p>About</p>;
+
+}
+
+
+function App() {
+
+  return (
+
+    <Router>
+
+      <div className="App">
+
+        <Switch>
+
+          // by convention `/` is listed first with exact={true}
+
+          <Route exact={true} path="/">
+
+            <Home />
+
+          </Route>
+
+          <Route path="/about">
+
+            <About />
+
+          </Route>
+
+        </Switch>
+
+      </div>
+
+    </Router>
+
+  );
+
+}
+
+Now, take a look at how adding <Switch> changes the routing:
+Adding <Switch> changes the routing.
+
+That's better!
+
+Now, add some <Link> components to the page so that the user can navigate between the Home and About pages without having to type in the address bar.
+The <Link> component
+
+The video below provides an introduction to the <Link> component.
+
+The <Link> component provides declarative, accessible navigation around your application.
+
+You may be tempted to use regular anchor tags (such as <a href="/">Home</a>) instead of <Link> components. Although regular anchor tags will work, they will cause your app to reload the entire page when the user clicks the link.
+
+Once you add <Link> components, your App.js will look like this:
+
+import React from "react";
+
+import {
+
+  BrowserRouter as Router,
+
+  Link,
+
+  Route,
+
+  Switch,
+
+  useLocation,
+
+} from "react-router-dom";
+
+
+function Home() {
+
+  return <p>Home</p>;
+
+}
+
+
+function About() {
+
+  return <p>About</p>;
+
+}
+
+
+function App() {
+
+  return (
+
+    <Router>
+
+      <div className="App">
+
+        <Link to="/">Home</Link>
+
+        <Link to="/about">About</Link>
+
+        <Switch>
+
+          <Route exact={true} path="/">
+
+            <Home />
+
+          </Route>
+
+          <Route path="/about">
+
+            <About />
+
+          </Route>
+
+        </Switch>
+
+      </div>
+
+    </Router>
+
+  );
+
+}
+
+
+export default App;
+
+Do this
+Display the <NoMatch> component for unknown routes
+
+Add the <App>, <Home>, and <About> components from above to a React application.
+
+Afterward, modify the code to display the following <NoMatch> component only when no other route is matched. In other words, /profile should display the <NoMatch> component, but /  and /about shouldn't.
+Tip
+
+The useLocation hook returns the location object that represents the current URL. You can think about it like a useState that returns a new location whenever the URL changes.
+
+import { useLocation } from "react-router-dom";
+
+
+function NoMatch() {
+
+  const location = useLocation();
+
+
+  return (
+
+    <h3>
+
+      No match for <code>{location.pathname}</code>
+
+    </h3>
+
+  );
+
+}
+
+Complete example
+
+A completed example from this lesson can be found in the using-router-switch-and-link branch of this GitHub repository:
+
+    React Router: Using Router, Switch and Link
 *** 25.3 Organizing React code
+Organizing React code
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to describe the two most common ways of organizing React code.
+Overview
+
+Like all software projects, React projects tend to get larger and more complex over time. The more files that you have in the project, the more important it becomes to organize those files in a way that makes it easy to find and modify existing code as well as add new code in a location consistent with the existing code. So in this lesson, you'll learn some approaches for organizing your code.
+What's the problem?
+
+This is the file structure created by Create React App, as of version 3.4.1:
+
+my-app
+
+├── README.md
+
+├── package-lock.json
+
+├── package.json
+
+├── build  <-- created during build
+
+├── node_modules
+
+├── public
+
+│   ├── favicon.ico
+
+│   ├── index.html
+
+│   ├── logo192.png
+
+│   ├── logo512.png
+
+│   ├── manifest.json
+
+│   └── robots.txt
+
+└── src
+
+    ├── App.css
+
+    ├── App.js
+
+    ├── App.test.js
+
+    ├── index.css
+
+    ├── index.js
+
+    ├── logo.svg
+
+    ├── serviceWorker.js
+
+    └── setupTests.js
+
+This is where you start. From here, you have complete freedom to organize your code however you like.
+
+Bear in mind that keeping all of your components in the src folder will get overwhelming, even for small applications. For example, a single-page React Resume application may have more than 20 JavaScript files to organize.
+
+There are no rules about how to organize your code. Simply do what makes sense for you. Try both of the approaches described in this lesson, and decide which you prefer. You can always change your mind later.
+
+However, when you're organizing your code, it's usually a good idea to avoid deep nesting.
+Avoid deep nesting
+
+Deep directory nesting in JavaScript projects can present several challenges. It is harder to write relative imports between directories, and it's harder to update those imports when moving files.
+
+Unless you have a compelling reason to use a deep folder structure, limit yourself to three nested folders within src. This is only a recommendation, though. Seek some expert advice if you believe that deeper nesting is necessary for your project.
+Grouping by file type
+
+One common way to structure projects is to group similar files together. Here's an example:
+
+# Common files like App.js omitted for brevity
+
+src
+
+├── api
+
+│   ├── APIUtils.js
+
+│   ├── APIUtils.test.js
+
+│   ├── ProfileAPI.js
+
+│   └── UserAPI.js
+
+└── components
+
+    ├── Avatar.css
+
+    ├── Avatar.js
+
+    ├── Feed.css
+
+    ├── Feed.js
+
+    ├── FeedStory.js
+
+    ├── FeedStory.test.js
+
+    ├── Profile.js
+
+    ├── ProfileHeader.css
+
+    └── ProfileHeader.js
+
+As the project grows in size, the number of files in the components folder can get overwhelming. As a result, the components folder will often have nested folders that group the components in some way. Usually, the components are grouped by route, feature, or role in the application.
+
+Some developers have even abandoned the components folder entirely; they only group the components by route, feature, or role.
+Grouping by route
+
+Another common project structure is to locate CSS, JavaScript, images, and tests together inside folders grouped by route. Grouping by route means that anything displayed on the page for a given route is in a folder with the same name as the route.
+
+Here's an example of grouping code by route or feature:
+
+# Common files like App.js omitted for brevity
+
+├── about
+
+│   ├── About.css
+
+│   ├── About.js
+
+│   ├── About.tests.js
+
+│   └── headquarters.jpeg
+
+├── header
+
+│   ├── Header.css
+
+│   ├── Header.js
+
+│   ├── Header.tests.js
+
+│   ├── NavBar.css
+
+│   ├── NavBar.js
+
+│   ├── NavBar.tests.js
+
+│   └── header-background.jpeg
+
+├── home
+
+│   ├── Home.css
+
+│   ├── Home.js
+
+│   └── Home.tests.js
+
+├── login
+
+│   ├── Login.css
+
+│   ├── Login.js
+
+│   └── Login.tests.js
+
+└── profile
+
+    ├── Profile.js
+
+    ├── ProfileAPI.js
+
+    ├── ProfileHeader.css
+
+    ├── ProfileHeader.js
+
+    └── index.js
+
+From this folder structure, you can see that there are routes for /about, / (home), /login, and /profile. Everything displayed on the page for each of those routes is included in the corresponding folder.
+
+What about the header folder? That isn't a route; rather, it's a component that is displayed on multiple pages. Because its role is the header for all routes, it's in its own folder. In this case, the files are grouped by role.
+
+If your application has nested routes (such as /user/1/post/), you may organize those components into nested folders like this:
+
+user
+
+├── User.js
+
+├── User.tests.js
+
+├── Users.css
+
+├── Users.js
+
+├── Users.tests.js
+
+└── post
+
+    ├── Post.js
+
+    ├── Post.tests.js
+
+    ├── Posts.css
+
+    ├── Posts.js
+
+    └── Posts.test.js
+
+Or you can flatten the folders, like this:
+
+src
+
+├── user
+
+│   ├── User.js
+
+│   ├── User.tests.js
+
+│   ├── Users.css
+
+│   ├── Users.js
+
+│   └── Users.tests.js
+
+└── user-post
+
+    ├── UserPost.js
+
+    ├── UserPost.tests.js
+
+    ├── UserPosts.css
+
+    ├── UserPosts.js
+
+    └── UserPosts.test.js
+
+You can also group components by feature. Unfortunately, the definition of a feature isn't universal, and it is up to you to determine what a feature is.
+
+For the remaining lessons in this module, the code will be organized using the group-by-route method.
 *** 25.4 Route parameters
+Route parameters
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to use the useParams() hook to implement routes with parameters.
+Overview
+
+Nearly every web application needs to extract some information from the browser's URL. The parts of the URL that are variable and need to be extracted are called URL parameters. In this lesson, you'll learn how to work with these parameters.
+Key Terms
+
+URL parameter
+    Also called a param, the part of a URL that is variable and that web applications need to extract
+
+The video below provides an overview of this topic. Start by watching the video, and then read through the rest of the lesson and complete the practice tasks. This will give you a thorough understanding of this concept.
+What's the problem?
+
+Sometimes, you'll want to build a component that displays different data for different URLs. For example, you may build a component to display a user's profile. Given the URL http://localhost:3000/user/42, how do you extract the number 42 (representing a user's ID) to fetch the correct user profile?
+
+For this, you can use a URL parameter.
+URL parameters
+
+A URL parameter is a placeholder in the URL that begins with a colon :. To indicate that part of a route is a parameter, you define the path with a parameter token; in other words, precede it with a colon and give it a meaningful name.
+
+For example, the following route path will match the above URL:
+
+<Route path="/user/:id">
+
+  <UserProfile />
+
+</Route>
+
+If there are multiple parameters in the URL, each must have a unique name. For example, http://localhost:3000/user/42/post/17 has two parameters, the user ID and the post ID, so the route path is written as path="/user/:userId/post/:postId".
+
+This allows a route to render the same component while passing the dynamic portion of the URL to that component. That way, the component can change what it renders based on the parameter.
+
+To get access to the route params, you can use the useParams() hook.
+The useParams() hook
+
+The useParams() hook returns an object of key-value pairs of route parameters. You can use it to access the params of the current <Route>.
+
+Continuing with the two-parameter example above, consider the following route:
+
+<Route path="/user/:userId/post/:postId">
+
+  <UserProfile />
+
+</Route>
+
+Given the route above, the <UserProfile> component can access the parameters using the useParams() hook, like this:
+
+import React from "react";
+
+import { useParams } from "react-router-dom";
+
+
+function UserProfile() {
+
+  const params = useParams();
+
+  return <p>{JSON.stringify(params)}</p>;
+
+}
+
+The following table shows some examples of how various URLs are rendered by the <UserProfile> component:
+URL
+	Renders
+/user/42/post/17
+	{"userId":"42","postId":"17"}
+/user/fred/post/params-can-be-anything
+	{"userId":"fred","postId":"params-can-be-anything"}
+/user/params-can-be-anything/post/%7Beven-things-that-look-like-JSON:%22value:%7D
+	{"userId":"params-can-be-anything","postId":"{even-things-that-look-like-JSON:\"value:}"}
+
+As you can see, route parameters can be anything; they can be whatever your application needs.
+
+Now, you can combine useEffect() and useParams() to have the <UserProfile> component load different user profiles using the same <Route>.
+Do this
+Complete the <UserProfile> component
+
+Add the <App>, <Home>, and <UserProfile> components shown below to a React application.
+
+Afterward, modify the <App> and <UserProfile> components to use the useParams() and useEffect() hooks to display user profiles from https://jsonplaceholder.typicode.com/users/${userId}.
+
+Note: The JSONPlaceholder website is a fake online REST API for testing and prototyping.
+
+// App.js
+
+
+import React from "react";
+
+import "../src/App.css";
+
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+
+import UserProfile from "./UserProfile";
+
+
+function Home() {
+
+  return <p>Home</p>;
+
+}
+
+
+function App() {
+
+  return (
+
+    <Router>
+
+      <div className="App">
+
+        <div>
+
+          <Link to="/">Home</Link>
+
+        </div>
+
+        {Array(10)
+
+          .fill()
+
+          .map((ignoredValue, index) => index + 1)
+
+          .map((id) => (
+
+            <div key={id}>
+
+              <Link to={`/user/${id}`}>User {id}</Link>
+
+            </div>
+
+          ))}
+
+        <Switch>
+
+          <Route exact={true} path="/">
+
+            <Home />
+
+          </Route>
+
+        </Switch>
+
+      </div>
+
+    </Router>
+
+  );
+
+}
+
+
+export default App;
+
+// UserProfile.js
+
+
+import React, { useEffect, useState } from "react";
+
+import { useParams } from "react-router-dom";
+
+
+function UserProfile() {
+
+  const [user, setUser] = useState({});
+
+
+  // Use `useParams()` and `useEffect()`
+
+  // Load profile data from https://jsonplaceholder.typicode.com/users/${userId}
+
+
+  // No need to change anything below here
+
+  if (user.id) {
+
+    return Object.entries(user).map(([key, value]) => (
+
+      <div key={key}>
+
+        <label>{key}</label>: {JSON.stringify(value)}
+
+        <hr />
+
+      </div>
+
+    ));
+
+  }
+
+  return "Loading...";
+
+}
+
+
+export default UserProfile;
+
+Complete example
+
+A completed example from this lesson can be found in the route-parameters branch of this GitHub repository:
+
+    React Router: Route Parameters
+
 *** 25.5 Modifying the history
+Modifying the history
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to use the useHistory() hook to provide programmatic navigation.
+Overview
+
+In this lesson, you'll learn how to write code that lets an application create, update, or delete data before navigating to another page.
+Key Terms
+
+Programmatic navigation
+    Navigation that causes a user to be redirected as a result of an event—such as logging in or saving—that occurs on a route
+
+It is common for a web application to automatically go to a different page in response to the visitor's actions. Most often, navigation is triggered by the user clicking a link. Yet, in some situations, the application needs to create, update, or delete some data before navigating to the new page.
+
+For example, the onClick() handler of the Save button must first save the data to the backend. Then, after the save is successful, it must return to the application dashboard. This requires programmatic navigation—some way to write code that causes the browser to go to the new page after the save is complete.
+What's the problem?
+
+The video below provides a brief introduction to this topic.
+
+Imagine that you have been working on a React application to keep track of users. It's been going well. Visitors can see a list of users and can view user details. Visitors love it!
+
+Now, the visitors are asking for a Delete button on the user detail page. When clicked, this button should delete the user. Then, when the delete is complete, it should display the list of users again.
+
+You add the Delete button. But now what?
+Delete button added to user detail page.
+
+Visitors won't be happy if the browser stays on the user detail page after the delete completes. You know that a link won't work, because the visitors want to stay on the user detail page until the delete is complete.
+
+Luckily, you can use the useHistory() hook to navigate programmatically.
+The history API and the history object
+
+The browser's history API lets you write code to interact with the browser history, trigger the browser navigation methods, and change the address bar content.
+
+The history object is a wrapper around the browser's history API. It gives you the ability to write code that controls the navigation of the browser.
+The useHistory() hook
+
+The useHistory() hook gives you access to the history object. This hook is provided by the React Router DOM package, which you can install and use as follows:
+
+import React from 'react'
+
+import { useHistory } from "react-router-dom";
+
+
+function MyComponent() {
+
+  const history = useHistory();
+
+  ...
+
+}
+
+Using the useHistory() hook and the history object, you can return to the /user page after the user is deleted.
+
+You'll start with the simplest thing that you can do with the history API: going back to the previous page.
+The goBack() method
+
+A common requirement is to go back to the previous page. This should have the same effect as the user clicking the Back button on the browser. The goBack() method of the history object performs this task. Using history.goBack() navigates to the previous entry in the browser history.
+Do this
+Create a <BackButton> component
+
+Create a <BackButton> component that, when clicked, will navigate the browser back to the previous page. This should behave exactly the same as clicking the Back button on the browser.
+
+The component should look like this:
+
+import React from "react";
+
+import { useHistory } from "react-router-dom";
+
+
+function BackButton() {
+
+  const history = useHistory();
+
+  return (
+
+    <button type="button" onClick={() => history.goBack()}>
+
+      Go Back
+
+    </button>
+
+  );
+
+}
+
+What happens if there is no previous page? Nothing—the browser just won't go back.
+
+If you can goBack(), you should also be able to goForward().
+The goForward() method
+
+Another useful way to navigate is to go forward to the next page. You can go forward to the next page using history.goForward(), as long as there is a next page in the history.
+
+import React from "react";
+
+import { useHistory } from "react-router-dom";
+
+
+function ForwardButton() {
+
+  const history = useHistory();
+
+  return (
+
+    <button type="button" onClick={() => history.goForward()}>
+
+      Go Forward
+
+    </button>
+
+  );
+
+}
+
+Again, nothing will happen if there is no next page in the history.
+The go() method
+
+The video below provides a brief introduction to the go() method.
+
+The go() method allows navigation, forward or backward, multiple pages at a time. You can use positive numbers to go forward and negative numbers to go backward.
+
+history.go(0); // Equivalent to refreshing the page
+
+history.go(-1); // Equivalent to `history.goBack()`
+
+history.go(-2); // Equivalent to calling `history.goBack()` twice
+
+history.go(1); // Equivalent to `history.goForward()`
+
+history.go(3); // Equivalent to calling `history.goForward()` three times
+
+If you call go() with a number, and the history isn't able to move that number of pages, nothing will happen. For example, if there is one previous page in the history and you call history.go(-2), nothing will happen.
+
+Now you know how to navigate the history that already exists. So now, you're ready to create new history—in other words, to navigate forward to a new URL—using push().
+The push() method
+
+The video below provides a brief introduction to this topic.
+
+The push() method pushes a new entry onto the history stack and changes the current URL to the value that you specify. Take a look:
+
+history.push("/users"); // Navigate to /users
+
+history.push("/home?q=query"); // Navigate to /home?q=query
+
+When you use push(), you're always navigating forward from the current page.
+
+Given this API, you can create a <GoHomeButton> that will go to the home page when clicked. Here's an example:
+
+import React from "react";
+
+import { useHistory } from "react-router-dom";
+
+
+function GoHomeButton() {
+
+  const history = useHistory();
+
+  return (
+
+    <button type="button" onClick={() => history.push("/")}>
+
+      Go Home
+
+    </button>
+
+  );
+
+}
+
+Because this button only goes to the home page, it would also work to use a <Link> component. But if this button did something more, like update or delete a resource, and then went to the home page, it couldn't be replaced by a <Link>.
+
 *** 25.6 Nested routes
 *** 25.7 Assessment: React Router
 
