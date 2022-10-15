@@ -3577,17 +3577,6 @@ A completed example from this lesson can be found here:
 
 ** Postgres- Module 33
 *** 33.1 Overview: Postgres
-*** 33.2 Creating and deleting databases
-*** 33.3 Installing DBeaver
-*** 33.4 Database architecture
-*** 33.5 Creating and viewing tables
-*** 33.6 Inserting data
-*** 33.7 Querying data
-*** 33.8 Updating and deleting data
-*** 33.9 Assessment: Postgres
-
-** Creating Relations - Module 34
-*** 34.1 Overview: Creating relations
 Overview: Postgres
 9 minutesEstimated completion time
 Overview
@@ -3604,6 +3593,1488 @@ Do this
 The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll perform various tasks, like setting up a development environment or executing a command. Ultimately, these practice sections will help you successfully complete graded assessments, such as projects, mock interviews, and capstones.
 
 At the end of the module, you'll need to take a quiz, so spend some time studying up. Alternatively, you'll join on as an apprentice, but you'll still need to ace this quiz first.
+*** 33.2 Creating and deleting databases
+Creating and deleting databases
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to create and delete a remote PostgreSQL database.
+Overview
+
+Installing and configuring PostgreSQL can be tricky on some operating systems. So rather than install a database server on your computer, during this program, you will use a free database hosted on the internet. Using a hosted database will let you quickly get set up with a PostgreSQL database, regardless of your operating system and your computer's performance characteristics. You'll set up your database in this lesson.
+Key Terms
+
+Hosted database
+    Also called a managed database, a cloud-computing service in which the end user pays a cloud service provider for access to a database
+
+Hosted databases
+
+A hosted database, sometimes called a managed database, is a cloud-computing service in which the end user pays a cloud service provider for access to a database. Unlike a local database, you don't have to set up or maintain a hosted database on your own; rather, it's the provider's responsibility to oversee the database's infrastructure. This allows you to focus on building your application instead of spending time installing, configuring, and updating your database.
+ElephantSQL
+
+The video below provides a brief introduction to ElephantSQL.
+
+In this program, you'll work with ElephantSQL, which will install and manage PostgreSQL databases for you. ElephantSQL offers databases ranging from small projects up to enterprise-grade multiserver setups. For this module, you will only create Tiny Turtle instances, which are free.
+
+To get started, you need to sign up for a customer plan.
+
+As with all websites, ElephantSQL will be updated over time, so some of the screenshots in this lesson may not exactly match what you see on your screen. Focus on completing the Do this objectives, such as creating a new account or creating a new database. The page titles and inputs will be substantially the same.
+Do this
+Create an ElephantSQL account
+
+First, go to the ElephantSQL sign-up page, enter your email address (or use your existing GitHub or Google account), and click the Sign up button.
+
+Note: ElephantSQL may change the following screens and sign-up workflow at any time. The screens that you see may be different, but that's okay—do your best to create an account regardless. If you need help, view the documentation on their website.
+Signing up for an ElephantSQL account.
+
+Once you click Sign up, you'll see a message telling you to check your email.
+Email verification for ElephantSQL account.
+
+An email will be sent to you with email address confirmation information. You need to confirm your email before you can create a free database.
+
+Note: Some email providers, such as Yahoo, can take 15 minutes or more to deliver the confirmation email to your inbox. If you have a Gmail account, the email confirmation is usually delivered very quickly.
+Confirming email for ElephantSQL account.
+
+After clicking the Confirm Email button, you will see a screen like the following:
+Continue creating ElephantSQL account.
+
+Enter a strong password and click Submit. Next, you'll see something like the following screen:
+ElephantSQL account created.
+
+Next, you will create a new Tiny Turtle database. Don't let the name fool you; it isn't slow.
+Creating a database
+
+The video below provides a brief introduction to creating a database on ElephantSQL.
+
+Now that you have an account, it's time to create a new database. ElephantSQL lets you create multiple free databases. You will create two databases in this lesson, and then you'll delete one of them.
+Do this
+Create a new database
+
+To create a new instance, click the Create New Instance button.
+Creating a new instance.
+
+Then you will see a screen where you can enter the name, plan, and tags for your new instance.
+Defining new instance.
+
+In the Name field, enter development. The name of the instance isn't the same as the name of the database (more on this later). The name of the database will be a unique name assigned by ElephantSQL. The instance name that you enter in the Name field is for your reference only, and you should give each instance a unique name.
+
+The Plan field determines the available size and performance of the database instance. For this module, you will always select a free plan. In this case, select Tiny Turtle.
+
+Tags help you group related instances. Now, add a tag of Thinkful to your instance to indicate that you created it as part of this program.
+
+Once you have filled in all of the information, click the Select Region button. You will see the following screen:
+Selecting closer data center for faster database.
+
+Typically, it's helpful if the location of the database is physically close to where you are located; this reduces network latency and the database will seem faster as a result. For the purposes of this lesson, leave the region that is already selected.
+
+Then click the Review button. You will see the following screen:
+Configuration entered for database displayed.
+
+The above screen shows the configuration that you entered for the database.
+
+If everything looks good to you, click Create instance. You will see the following screen:
+All the instances you've created using ElephantSQL.
+
+The Instances screen above shows all of the instances that you have created with ElephantSQL.
+
+Now, click the name of the instance. That will bring you to the following screen, which shows more information about the instance.
+Details about an instance.
+
+On the Details screen above, you can see the server, region, username, password, and much more.
+
+In a future lesson, you will use the server, user and default database, and password information from this screen to connect to this database.
+Deleting a database
+
+The video below provides a brief introduction to the process of deleting a database on ElephantSQL.
+
+The free databases hosted on ElephantSQL cost the company a little bit of money for every second that each database exists. To ensure that the free database service continues to be free, you should promptly delete your database as soon as you are done with it. Even if you are only going to stop using the database for a short amount of time, it is best to extract the data, delete the database, and then create a new database later when you need it.
+Do this
+Delete a new database
+
+First, create a new database instance named delete-me. If you need help with this, use the instructions above.
+
+Now, click the Edit button next to the newly created instance.
+Editing an instance.
+
+You will see the Edit instance screen, which will look something like the following:
+Edit instance screen.
+
+At the bottom of the screen, you will see a Delete instance section. Enter the name of the instance and click the Delete button. Then you will see a confirmation dialog like the one below.
+Confirmation dialog for deleting instance.
+
+If you wish to continue, click the Delete button. Then you will return to the Instances screen, and a confirmation message will be displayed. It will look something like the following:
+Message confirming instance deletion.
+
+Now you have created and deleted a database hosted on ElephantSQL.
+*** 33.3 Installing DBeaver
+Installing DBeaver
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to install DBeaver and connect to a remote PostgreSQL database.
+Overview
+
+The easiest way to manage, view, and update a database hosted on the internet is to install a graphical user interface client. Once you install a GUI client in this lesson, you'll learn how to use it to manage almost every aspect of the hosted database.
+Key Terms
+
+Structured Query Language
+    SQL, a programming language used to manipulate and query data in relational databases
+
+DBeaver
+
+DBeaver is a free multiplatform database tool for developers, SQL programmers, database administrators, and analysts. It essentially supports any database.
+Do this
+Install DBeaver
+
+The videos below will give you a overview of the process for installing and configuring DBeaver.
+
+Visit the DBeaver Download page and download the Community Edition installer for your operating system. When the download is complete, double-click the installer to begin the installation process. You will then see a screen similar to the following:
+DBeaver setup.
+
+The instructions shown here are for installing version 7.2.1. As the versions change over time, the order of the screens and options that you see will likely change. That's okay; when in doubt, select the default options and you should be fine.
+
+You should install the latest version of DBeaver, and accept the default values for all of the installation options.
+
+Once the installation is complete, start the application. On Windows, you will likely see a Windows Security Alert appear during the first startup. Allow DBeaver to communicate on public, private, or both networks; choose whichever is appropriate for your situation.
+Allowing DBeaver to communicate on your network.
+
+During the first startup, DBeaver will ask if you want to create a sample database. Select Yes. You can explore the sample database on your own later.
+Confirm sample database creation.
+
+Next, you will create a new database connection to the development database that you created in the previous lesson. If DBeaver automatically opens the Create a New Database Connection screen, you are all set. If not, click the New Database Connection button as shown on the screen below:
+Click to create a new database connection.
+
+When creating a new database connection, the first thing that DBeaver asks for is your database system:
+Select a database system.
+
+As you can see, DBeaver can connect to many different databases. Select PostgreSQL from the list and click Next. The first time that you select a database (PostgreSQL in this case), you will be prompted to download the database drivers. Click Download to download the drivers for your database.
+Downloading drivers for your database.
+
+DBeaver will download the latest versions of the drivers, so the versions may not be exactly the same versions shown in the screenshot above.
+
+Once the drivers are downloaded, you will see the Connection Settings dialog. This is where you fill in the connection information from the database that you created in the previous lesson.
+Filling in the connection information from your existing database.
+
+On the DBeaver New connection screen, you must enter the connection information from the ElephantSQL database that you created earlier.
+Source ElephantSQL field
+	Destination DBeaver field
+Server: (Note: Don't include anything in parentheses (...), as marked by the red X in the image above.)
+	Host:
+User & Default database:
+	Database:
+User & Default database:
+	Username:
+Password: (Note: Click the Reveal 👁 icon to see the entire password.)
+	Password:
+
+Now click the Test Connection button. If everything is correct, you'll see a message like the following:
+Message if everything is correct in your connection.
+
+Click OK to dismiss the Connection Test dialog. Then click Finish to save the connection information.
+
+You will now see your database in the list on the left.
+
+However, it currently doesn't have the same name that you gave it in ElephantSQL—it has the randomly generated database name assigned when the instance was created. Next, you are going to rename this connection so that you know that the connection and instance are related.
+Do this
+Rename database connection
+
+In DBeaver, right-click the database connection, and you will see the following menu displayed:
+Menu of options for database connection.
+
+Select Rename on the menu, or click the database connection and press F2 to show the rename dialog.
+Renaming database connection.
+
+Rename the database connection to development so that it has the same name as the database instance on ElephantSQL. This does not change the name of the database, only the connection.
+
+Now you have installed DBeaver and connected to a remote PostgreSQL database!
+Database Navigator
+
+The video below provides a brief introduction to executing SQL scripts in DBeaver.
+
+Once the connection is created and named the same as your ElephantSQL instance, you can start to explore the development database. Select the development database by clicking the expander arrow ▶ next to its name. Under development, you will see the name of your database. Click the expander arrow again to see the contents of the database. Then, under Schemas, expand Public.
+
+A schema is a container, similar to a folder on your hard drive, that holds named objects. One database can contain multiple schemas. PostgreSQL automatically creates a schema called public for every new database. Unless you specify the schema name, PostgreSQL will place all new objects into this public schema. In this lesson, you will only use the public schema.
+
+For example, the screenshot below shows the public schema of a new database:
+Public schema of a new database.
+
+As you can see in the above screenshot, there are many different aspects of a database. There are Tables, Views, Materialized Views, Indexes, and so on. Databases are quite complex and have evolved over the years to satisfy the requirements of very large organizations. That is why there are specialized database administrators working at organizations that implement large databases. Thankfully, as a developer, you don't need to get too far into the weeds in order to build applications that use these databases. You're mainly going to focus on tables in this module, and mostly ignore the other objects.
+Executing SQL scripts
+
+Structured Query Language (SQL) is the language used to perform operations on a database. Later in this module, you will learn about SQL. For now, you will be given some scripts to execute, even though you don't yet know what all of the scripts do. That's okay; the goal of this lesson is to get you comfortable with running SQL scripts in DBeaver.
+
+DBeaver comes with an SQL editor that provides syntax highlighting and intelligent statement completion. To open the editor, first select the development connection in the database navigator, then select the SQL Editor icon in the toolbar. Or, from the menu, click SQL Editor > SQL Editor.
+Accessing SQL Editor.
+
+This will open the SQL Editor window, which will look similar to the following screenshot:
+SQL Editor window.
+Tip
+
+Sometimes, the active connection is displayed as <none> or <N/A>. This happens when DBeaver cannot determine which connection should be active. If you see <none> or <N/A>, you can set the active connection by selecting a connection at the top of the screen.
+
+You can use the SQL editor to execute any valid SQL statement against your databases. For example, to create a new table with SQL, type the following SQL statement in the editor. The SQL statement below creates a table named users, which contains three columns: user_id, user_name, and role.
+
+As you type in the following SQL, DBeaver will try to help you by autocompleting the text for you. Ignore this and keep typing. Don't worry about capitalization except for the names of things and default values, which should be lowercase here: users, user_id, user_name, role, and 'user'. Indentation is there for readability only, and won't impact the functionality of the script.
+
+CREATE TABLE users (
+
+  user_id INTEGER PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY,
+
+  user_name varchar(50) NOT NULL UNIQUE,
+
+  role varchar DEFAULT 'user'
+
+);
+
+Then click the Execute script button to see the results.
+Results of executed script.
+
+The new table won't immediately show up under the tables in the database connection. You need to select Tables, then press F5 to refresh the Tables list.
+Refreshing tables list.
+
+This shows you the table that you just created. This process of executing a SQL script is something that you will do a lot throughout this module, so practice this task until you are comfortable with it.
+
+As you learn more about SQL, you are free to use DBeaver or your own favorite database client to write the SQL statements.
+
+It is possible to use the DBeaver user interface to create the users table, but this module will use SQL exclusively. Using SQL not only means that you can commit the SQL to Git and have the normal advantages of source code control; it also means that you can automate database-management tasks using SQL rather than having to run them manually through a UI.
+*** 33.4 Database architecture
+Database architecture
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to describe a PostgreSQL database and the components that make up the database.
+Overview
+
+In this lesson, you will learn about PostgreSQL, a relational database management system, which means that it is a system for managing data stored in rows and columns, similar to that of a spreadsheet.
+Key Terms
+
+Relational database management system
+    Also known as RDBMS, a class of programs that can be used to create, update, and administer a relational database
+Primary key
+    A field that uniquely identifies the records in a table
+
+What is a database?
+
+The video below provides a brief introduction to databases. Start by watching the video, and then read through the rest of the lesson and complete the practice tasks. This will give you a thorough understanding of this topic.
+
+A database is defined as an organized collection of data, generally stored and accessed electronically from a computer system.
+
+Companies rely heavily on databases to store the data that powers their applications. Databases store a variety of data, such as usernames, email addresses, and nearly every other type of information that you can imagine.
+Storing data
+
+The video below provides a brief introduction to storing data in databases.
+
+Imagine that you are opening an online store to sell handmade treats to pet owners. You would want to keep track of all sorts of information about your sales. Most people would open a spreadsheet and start inputting information as the orders come in.
+
+Suppose that you have a customer, Mary, who buys a box of Bacon Bark Sticks. You capture all of that order information. Then, as you receive more orders, you record the same information for each customer. The spreadsheet might look something like this:
+Name
+	Product
+	Qty
+	Address
+	Date
+Mary Brown
+	Bacon Bark Sticks
+	1
+	13352 Green Pass
+	4/5/2020
+Margarita Bullimore
+	Puppy Pancakes
+	4
+	571 La Follette Point
+	4/21/2020
+Ashby Weagener
+	Peanut Butter Pupcakes
+	6
+	679 Barnett Circle
+	2/10/2021
+Harmonia Kniveton
+	Gingerbread Dog Biscuits
+	12
+	9 Johnson Trail
+	6/6/2021
+
+Later, Mary buys something else: a dozen Cheesy Dog Biscuits. But now, she's moved to a bigger home to have more room for all of her pets, so her address is different.
+Name
+	Product
+	Qty
+	Address
+	Date
+Mary Brown
+	Bacon Bark Sticks
+	1
+	13352 Green Pass
+	4/5/2020
+...
+	...
+	...
+	...
+	...
+Mary Brown
+	Cheesy Dog Biscuits
+	12
+	7509 Bowman Trail
+	6/6/2020
+
+Now you have Mary's name duplicated, and you have contradicting values for her address. If your handmade treats store becomes enormously popular, these issues will escalate.
+
+A few months later, Mary calls to ask about one of her orders. When you pull up the orders with her name, you see three different addresses:
+Name
+	Product
+	Qty
+	Address
+	Date
+Mary Brown
+	Bacon Bark Sticks
+	1
+	13352 Green Pass
+	4/5/2020
+Mary Brown
+	Cheesy Dog Biscuits
+	12
+	7509 Bowman Trail
+	6/6/2020
+Mary Brown
+	Paw-print Pretzels
+	36
+	29 Lerdahl Parkway
+	9/6/2020
+
+You can't be sure whether each of these orders belongs to the person calling, because there is nothing uniquely identifying the three different Marys. As you can see, this might lead to a messy situation. Customers might get mixed up, or the wrong products could be sent to a customer.
+
+How would you resolve this? Instead of having one massive spreadsheet, you can use a database and separate the information into separate bite-size "spreadsheets" called tables.
+Tables
+
+A table is a collection of related data held in a table format within a database. Like a spreadsheet, a table consists of columns and rows.
+
+Like a spreadsheet, a table has a fixed number of columns and can have any number of rows. Each row, which represents a complete record of the specific data, is typically identified by one or more values called the primary key.
+
+A primary key is a special table column, or combination of columns, that uniquely identifies each table record. No two rows in a table can have the same primary key. Sometimes, the data itself has some unique property that may be used as a primary key. In such instances, you can let the client that inserts data into the database be responsible for ensuring that the key is unique. For example, a driver's license number could be a primary key: it uniquely identifies each driver.
+
+So, with your pet treat store, you might start with a table named customers, to store all of the customers. The primary key is the customer_id column. In the table below, for example, you know that there are two different customers with the same name (Mary Brown) because they have different customer_id values. This illustrates how to use the primary key to differentiate data such as customers.
+customer_id
+	customer_name
+	address
+1
+	Mary Brown
+	13352 Green Pass
+28
+	Mary Brown
+	7509 Bowman Trail
+
+You then create a separate table, products, to store all of your products. The primary key is the product_id column.
+product_id
+	description
+	quantity_in_stock
+5
+	Paw-print Pretzels
+	100
+...
+	...
+	...
+42
+	Bacon Bark Sticks
+	200
+
+You then create another table, orders, to store all of your orders. The primary key is the order_id column.
+order_id
+	customer_id
+	date
+67
+	1
+	9/6/2021
+
+And finally, you create a table named order_items, to store all of the items in an order. This time, the primary key is a combination of the order_id and product_id columns, which ensures that a given product can only appear once in an order.
+order_id
+	product_id
+	quantity
+67
+	5
+	36
+67
+	42
+	4
+
+Given the records above, you see that Mary Brown living at 13352 Green Pass ordered 36 Paw-print Pretzels and 4 Bacon Bark Sticks on 9/6/2021, which was order number 67.
+
+Relationships between tables are defined by putting the primary key of one table into a column in the related table. For example, you know that order_id 67 is for Mary Brown at 13352 Green Pass, and not Mary Brown at 7509 Bowman Trail, because the orders table has a customer_id field that contains 1, the primary key for Mary Brown at 13352 Green Pass.
+
+A field is the container that stores data in a table. Each table has a fixed set of fields, or containers, to hold data. The data that can be stored in a field is determined by the data type of the field. The number of columns and rows in a table determines the number of fields. For example, if you have a table with two rows and two columns, your table will have four fields.
+
+Now, you know that a database is a collection of tables. Each table is a named object that contains a collection of rows. Each row of a table has the same fixed set of fields, and each field is of a specific data type. Like a spreadsheet, the fields in the table have a fixed order in each row. However, unlike a spreadsheet, there is no fixed order for the rows.
+Fields
+
+Every table is made up of a fixed set of fields. A field's data type is the most important property because it determines what kind of data the field can store.
+
+Data types can seem confusing. For example, if a field's data type is text, it can store data that is either text or numerical characters. But a field whose data type is numeric can store only numerical data. So, you have to know what can be stored with each data type.
+
+A field's data type also determines other important field qualities, such as the following:
+
+    Which formats can be used with the field
+
+    The maximum size of a field value
+
+When to use which data type
+
+Think of the field's data type as a set of rules that apply to all the values that are contained in the field. For example, values that are stored in a varchar field can contain only a limited number of characters, and a text field can contain an unlimited number of characters.
+Tip
+
+Sometimes, a field might look like it is made up of one data type when it is actually a different type. For example, a field might seem to be composed of numeric values but actually contain text values.
+
+You don't need to know every data type available, but you should know the most common ones and how they are used. The following table lists the most common data types available in PostgreSQL.
+Data type
+	Use to store
+bool
+	Only logical boolean values: True or False
+char
+	Fixed-length character data where the number of characters is always the same. This could be used to store information such as state code, zip code, or phone number.
+varchar
+	Variable-length character data, up to around 1 GB max. This could be used to store information such as name, address, or city.
+date
+	Calendar date (year, month, day) without time (for example, 2020-09-09)
+int
+	Integers from -2,147,483,648 to +2,147,483,647
+numeric
+	Exact numeric values
+smallint
+	Integer from -32,768 to +32,767
+smallserial
+	Auto-incrementing integer from 1 to 32,767. This could be used to store information such as a primary key for a table that will never have more than 32,766 rows—like a table to store application settings.
+serial
+	Auto-incrementing integer from 1 to 2,147,483,647. This could be used to store information such as a primary key for a table.
+text
+	Variable-length characters of any length
+time
+	Time of day (no date)
+timestamp
+	Date and time (no time zone)
+uuid
+	Universally unique identifier (for example, 28e3d683-e619-46c8-b444-a0f45817db2d)
+
+PostgreSQL offers a large number of data types in addition to the types listed above. More information about the data types in PostgreSQL can be found in the documentation.
+*** 33.5 Creating and viewing tables
+Creating and viewing tables
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to create, read, update, delete, and list tables in a PostgreSQL database.
+Overview
+
+A PostgreSQL database is made up of several components, of which the table is most significant. The database table is where all of the data in a database is stored. And without tables, there wouldn't be much use for a database. At a minimum, a PostgreSQL database consists of one or more tables. In this lesson, you'll learn how to define a table, the columns in the table, and each column's data type; this is a fundamental skill that you will need when working with databases.
+Key Terms
+
+Data definition language
+    DDL, a subset of SQL commands used to define the tables in the database
+
+Starter code
+
+This lesson builds upon the work of the earlier lessons. If you haven't successfully completed the work from the earlier lessons, go back and do that now.
+
+If you are having trouble, reach out for assistance.
+Structured Query Language (SQL)
+
+As you learned earlier in this module, Structured Query Language (SQL) is the database language used to perform operations on a database. You can also use SQL to create a database. SQL uses certain commands, such as CREATE, DROP, and INSERT, to carry out various tasks.
+
+SQL operations can be performed on any object in the database, not just tables. But to simplify things, this lesson will focus on SQL commands operating on tables only.
+
+SQL commands fall into four categories:
+
+    Data definition language (DDL)
+
+    Data query language (DQL)
+
+    Data manipulation language (DML)
+
+    Data control language (DCL)
+
+This lesson will focus on DDL. DQL and DML will be covered in future lessons. DCL, which is used by database administrators to configure security access to the database, is out of scope for this module.
+Data definition language
+
+Data definition language (DDL) is a subset of SQL commands that is used to define the tables in the database. It is used to create and modify any object in the database, but you will focus on using it to create and modify the tables.
+
+The following list contains the most common DDL commands:
+
+    CREATE is used to add new tables to the database.
+
+    ALTER is used to alter the structure of the database.
+
+    TRUNCATE is used to remove all records from a table, including removing all storage space allocated for the records.
+
+    DROP is used to delete tables from the database.
+
+CREATE TABLE statement
+
+The SQL CREATE TABLE command is used to create a new table. The basic syntax of a CREATE TABLE is as follows:
+
+CREATE TABLE table_name (
+
+   column_name data_type  column_constraint [ , ]
+
+);
+
+Tip
+
+Table names in PostgreSQL are lowercase; words are separated by an underscore _ and are plural by default (such as users, products, orders, and order_items).
+
+The line column_name data_type column_constraint [ , ] is called a column definition, and there must be at least one column definition in the table. A column definition describes a column in a table. There are a number of decisions that must be made for each column. In particular, the following decisions must be made:
+
+    What is the name of the column?
+
+    What is the data type of the data in the column?
+
+    What is the size or max length of the column?
+
+    Are null values allowed in the column?
+
+    Is there a default value?
+
+    Is this column the primary key or part of the primary key?
+
+For example, suppose that you want to create a table to store some information about your users, so you create a table named users. It is made up of these three columns:
+Column name
+	Data type
+	Max length
+	Allow null?
+	Default value
+	Primary key
+	Unique?
+user_id
+	integer
+
+	N/A
+
+	Yes
+
+user_name
+	varchar
+	50
+	No
+
+
+	Yes
+role
+	varchar
+
+	No
+	user
+
+
+Tip
+
+Although you could use name and value for the column names, both NAME and VALUE are keywords in SQL. Generally, it is best to avoid using any keywords as column names.
+
+In the users table, there are two columns that must store character data of varying lengths. That is, you don't know in advance the length of characters that will be stored in the user_name and role columns. PostgreSQL allows you to specify a fixed-size column with the data type character(n) or variable-length column with the varchar(n) data type. The (n) part of varchar(n) is optional and should be omitted by default. If what you really need is a text field with a length limit, then varchar(n) is great. But if you pick an arbitrary length and choose varchar(20) for a surname field, you're risking production errors in the future when Hubert Wolfeschlegelsteinhausenbergerdorff signs up for your service.
+
+A NOT NULL column constraint means that the column isn't allowed to have null values. Sometimes null values are necessary because the value may be optional, and representing a missing value is the exact purpose of NULL. Say, for example, that you want to include a mobile_phone column in the users table, but not every user has a mobile phone. In that case, you would allow the mobile_phone column to contain NULL.
+
+When designing a table and defining constraints for the fields, you need to carefully consider how the data will be used.
+Tip
+
+It's best to declare a NOT NULL constraint on each column for which a null would be nonsensical. Rather than rely on application code, allow the database to enforce constraints uniformly.
+
+Fields are filled in with the DEFAULT value when a new row is created and no value is specified for that field. If no default value is declared explicitly, then NULL is the default value. Sometimes it makes sense to set a default value for a column so that, when data is inserted into the table, that column's value need not be specified. Looking at the table above, you can see that the role column has a default value of user, which means that the role will be user unless another value is specified when the row is created. However, it isn't considered good practice to define a DEFAULT for every column. For example, the user_name field shouldn't be null and has no default. What default, if any, should you declare for this column? It's valid and common for a column to need a NOT NULL constraint yet have no logical default value.
+
+The primary key must have a unique value for each row in the table. Sometimes, the data itself has some unique property that may be used as a primary key. In such instances, you can let the client be responsible for ensuring the key is unique.
+
+More often than not, however, you need to introduce a column specifically to be a primary key, as in the user_id column for the users table. In such instances, you need to consider how you would make that ID unique for each new row inserted into the table. There are several options available. You can use a library such as uuid to generate a random value. Or you can simply create a serial value that increments the primary key by 1 each time that a new row is inserted. Because an automatically incremented serial value is fairly common and quite easy to do, you will use that option here.
+
+Finally, if a column must have a unique value in the table, you can add UNIQUE to constrain the table to only allow unique values in the column. For example, it would be very confusing for two users to have the same user_name value, so you should add the UNIQUE constraint to that column. This means every row in the entire table must have a unique value in the user_name column.
+
+The basic syntax of a column definition is as follows:
+
+column_name data_type column_constraint
+
+For example, the following column definition creates a primary key column that automatically increments for each new row:
+
+user_id INTEGER PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY
+
+So, the following DDL will create the users table:
+
+CREATE TABLE users (
+
+  user_id INTEGER PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY,
+
+  user_name varchar(50) NOT NULL UNIQUE,
+
+  role varchar DEFAULT 'user'
+
+);
+
+Do this
+Execute the create-users-table script
+
+Over time, you will add more and more tables to your database. Ideally, you will have one script that can fully create all database tables in an empty database. Later, when you add a new table, you will add the necessary SQL to your database script. Wouldn't it be nice to run the entire script, creating all new tables, and skipping the existing tables? Most of the time, you only want to create the table if it doesn't already exist.
+
+PostgeSQL, and several other databases, have special syntax to create the table only if it doesn't exist; you do this by adding IF NOT EXISTS.
+
+Now, execute the following create-users-table script multiple times. Notice that no matter how many times you execute the script, it is successful.
+
+CREATE TABLE IF NOT EXISTS users (
+
+  user_id INTEGER PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY,
+
+  user_name varchar(50) NOT NULL UNIQUE,
+
+  role varchar DEFAULT 'user'
+
+);
+
+As you observed, this script can be executed multiple times without error and without changing the database beyond the first successful execution. Writing your DDL scripts this way makes it possible to have a single script to automate the creation of the database from any starting point, without encountering the errors that would occur when trying to create tables that already exist.
+Listing tables
+
+At times you will want to get information about existing PostgreSQL tables. PostgreSQL provides an information_schema schema that can return information about all of the objects in the database, including tables.
+Do this
+Query list of tables
+
+Execute the following script to see a list of tables in your database:
+
+SELECT
+
+	table_name
+
+FROM
+
+	information_schema.tables
+
+WHERE
+
+	table_schema = 'public'
+
+	AND table_type = 'BASE TABLE'
+
+ORDER BY
+
+	table_name;
+
+After running the above SQL, you will see something like the following:
+	table_name
+1
+	users
+
+The above SQL is asking the following question: which tables exist in the public schema? Any time that a script starts with SELECT, it is asking a question (which is also called querying). SELECT is part of data query language (DQL), a subset of SQL. You will learn more about querying in future lessons. For now, you will learn two queries:
+
+    List all tables—the query that you just learned about
+
+    Describe a table's structure—the query that you will learn next
+
+Describing a table
+
+At times, you will want to get information about the existing columns in a table. For example, what are the column names? For each column, what is the data type? Is it nullable? Does it have a default value? And so on. This type of query is commonly called a table description.
+
+Execute the following script to see a description of the users table:
+
+SELECT
+
+   table_name,
+
+   column_name,
+
+   data_type,
+
+   is_nullable,
+
+   column_default,
+
+   is_identity
+
+FROM
+
+   information_schema.columns
+
+WHERE
+
+	table_schema = 'public'
+
+    and table_name = 'users';
+
+Note the part of the script that reads and table_name = 'users';. You can change 'users' to the name of any table in the public schema.
+
+After running the above SQL, you will see something like the following:
+table_name
+	column_name
+	data_type
+	is_nullable
+	column_default
+	is_identity
+users
+	user_id
+	integer
+	NO
+
+	YES
+users
+	user_name
+	character varying
+	NO
+
+	NO
+users
+	role
+	character varying
+	YES
+	'user'::character varying
+	NO
+
+If you are using DBeaver, you can click the users table in the Database Navigator pane, and press F4 to see all of the properties of the table.
+
+Suppose you later decide to keep track of each user's birthday so that you can send them a birthday card. What can you do to add a row to the table after it's created? You can alter it.
+ALTER TABLE statement
+
+Sometimes, it's necessary to make changes to a table after it has been created. Especially when the database already contains data, deleting and recreating the table may not be possible.
+
+Use the DDL ALTER TABLE statement to change the structure of a table. There are many ways that a table can be altered, and the full documentation for the ALTER TABLE statement lists all the possibilities. For now, you will only add and drop columns.
+
+The syntax to add a column with the ALTER TABLE statement is as follows:
+
+ALTER TABLE <table name> ADD COLUMN IF NOT EXISTS <column definition>;
+
+And to remove a column, the syntax is like this:
+
+ALTER TABLE <table name> DROP IF EXISTS <column name>;
+
+Do this
+Add a birthday column
+
+You now need to add a birthday column to the users table. This will be the date part only, and no time value is needed. Next, there is no default value for birthday that makes sense, so the column won't have a default value. Then, it cannot be null, because every user has a birthday. Finally, the script should only add the birthday column if the column doesn't already exist.
+
+Run the script below:
+
+ALTER TABLE users ADD COLUMN IF NOT EXISTS birthday date NOT NULL;
+
+After running the above SQL, run the describe query again. You will see something like the following:
+table_name
+	column_name
+	data_type
+	is_nullable
+	column_default
+	is_identity
+users
+	user_id
+	integer
+	NO
+
+	YES
+users
+	user_name
+	character varying
+	NO
+
+	NO
+users
+	role
+	character varying
+	YES
+	'user'::character varying
+	NO
+users
+	birthday
+	date
+	NO
+
+	NO
+
+Note the last row has birthday in the column_name field.
+Do this
+Make role non-nullable
+
+Note that the role column will allow null values. Suppose that you don't want the user role to be null because the role will be used to determine which menu options the user will see on the website using this database. As a result, the role column should always have a value.
+
+You will use the ALTER TABLE statement to set NOT NULL on the role column.
+
+Run the following script to alter the role column in the users table:
+
+ALTER TABLE users ALTER COLUMN ROLE SET NOT NULL;
+
+After running the above SQL, run the describe query again, and you will see something like the following:
+table_name
+	column_name
+	data_type
+	is_nullable
+	column_default
+	is_identity
+users
+	user_id
+	integer
+	NO
+
+	YES
+users
+	user_name
+	character varying
+	NO
+
+	NO
+users
+	role
+	character varying
+	NO
+	'user'::character varying
+	NO
+users
+	birthday
+	date
+	NO
+
+	NO
+
+As you can see, the role column no longer allows null values.
+
+Also, note that you can run this script multiple times and it will be successful each time.
+
+Suppose that as time goes on, some of your users stop using the application. Rather than delete the user, you would like to set a TRUE-FALSE value indicating whether or not the user is an active user. Next, you will add a boolean column named is_active, which will be TRUE by default.
+Do this
+Add is_active column
+
+You now need to add an is_active column to indicate whether the user is active or not. This will be a boolean type. The boolean type can have three states: TRUE, FALSE, and a third state, UNKNOWN, which is represented by NULL. You will learn more about boolean types and nulls in a future lesson. For now, don't allow NULL in the is_active column.
+
+Run the following script to add an is_active column to the users table:
+
+ALTER TABLE users
+
+ADD COLUMN IF NOT EXISTS
+
+	is_active boolean NOT NULL default true;
+
+After running the above SQL, run the describe query again, and you will see something like the following:
+table_name
+	column_name
+	data_type
+	is_nullable
+	column_default
+	is_identity
+users
+	user_id
+	integer
+	NO
+
+	YES
+users
+	user_name
+	character varying
+	NO
+
+	NO
+users
+	role
+	character varying
+	YES
+	'user'::character varying
+	NO
+users
+	birthday
+	date
+	NO
+
+	NO
+users
+	is_active
+	boolean
+	NO
+	true
+	NO
+DROP TABLE statement
+
+Sometimes, as the structure of a database changes over time, you may find that you no longer need a table. Maybe the data that was stored in the table was distributed to other tables, or perhaps you are retiring certain functionality in the application and no longer need the data. Maybe you just made a mistake creating the table. Whatever the reason, there are times when you will want to delete a table.
+Do this
+Drop the users table
+
+Run the following script to drop the users table:
+
+DROP TABLE IF EXISTS users;
+
+Then run the list tables query from earlier, and you will see that the users table no longer exists.
+*** 33.6 Inserting data
+Inserting data
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to insert one or more new records into a table.
+
+Overview
+So far, you have been focused on creating tables using data definition language. Eventually, you will have to learn SQL statements to read information out of a table. But that begs the question: how did the data get there in the first place? In this lesson, you will focus on the INSERT statement, which is part of data manipulation language. If you want to create data, you need to use the SQL keyword INSERT.
+
+Key Terms
+Data manipulation language
+DML, a subset of SQL commands used to manipulate data in the database
+Starter code
+This lesson builds upon the work of the earlier lessons. If you haven't successfully completed the work from the earlier lessons, go back and do that now.
+
+If you are having trouble, reach out for assistance.
+
+Create a new table
+At this point, your database does not have any tables, so you will need to add one.
+
+Do this
+Create the articles table
+Execute the following script to create the articles table:
+
+CREATE TABLE IF NOT EXISTS articles (
+  article_id INTEGER PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY,
+  title varchar(255) NOT NULL UNIQUE,
+  abstract TEXT NOT NULL,
+  body varchar,
+  author TEXT NOT NULL,
+  created_date DATE NOT NULL DEFAULT CURRENT_DATE
+);
+The INSERT INTO statement
+The video below provides a brief introduction to inserting data into a table. Start by watching the video, and then read through the rest of the lesson and complete the practice tasks.
+
+
+Now that a table exists in the database, you can insert rows of data into the table. As described in the video above, you can use SQL's INSERT INTO statement to insert new rows into a table. The basic syntax is as follows:
+
+INSERT INTO <table name>
+  (<column list>)
+  VALUES (<value list>);
+The column list is a comma-separated list of the column names for which you are providing a value. The columns may be listed in any order, but the order of the values in the value list must match the order of the column names.
+
+Do this
+Create first article
+Imagine that you want to add an article with the following title: "Five uses for paper that you never imagined." The abstract is as follows: "List five surprising uses for paper that you would not think of on your own." It's authored by "Dwight Schrute." To add this article, you can run the following INSERT INTO statement:
+
+INSERT INTO articles
+  (title, abstract, author)
+  VALUES (
+    'Five uses for paper that you never imagined',
+    'List five surprising uses for paper that you would not think of on your own',
+    'Dwight Schrute'
+  );
+Tip
+As demonstrated above, character data in SQL is enclosed in single quotes '.
+
+You will learn about the SQL SELECT statement in detail later, but to simply see the data in a table, use the following script:
+
+SELECT * FROM articles;
+Notice in this response that there is one row of data in the table. The article_id was generated and should be 1 because this is the first row inserted. The title, abstract, and author have the values that you specified. The created_date is set to the default CURRENT_DATE. And the body is empty because there is no default and you did not provide a value.
+
+Do this
+Create a second article
+Try another example. Execute the following script:
+
+INSERT INTO articles
+  (title, abstract, author, created_date)
+  VALUES (
+    'Pulp Fiction',
+    'Myths about paper making',
+    'Dwight Schrute',
+    '2021-01-01'
+  );
+This time, a created_date is provided. Use the SELECT statement from above to view the data. Notice that the created_date is set to the value that you provided rather than the default.
+
+Table constraints
+The video below provides a brief introduction to testing table constraints.
+
+
+Do this
+Try to insert a duplicate title
+Try to insert another article with the title "Pulp Fiction."
+
+INSERT INTO articles
+  (title, abstract, author)
+  VALUES (
+    'Pulp Fiction',
+    'A Movie Review of the greatest S. Jackson movie ever made.',
+    'Pam Beesly'
+  );
+This time, you get an error message.
+
+ERROR:  duplicate key value violates unique constraint "articles_title_key"
+DETAIL:  Key (title)=(Pulp Fiction) already exists.
+That is, the UNIQUE constraint that you placed on the title column was violated.
+
+Note: Unlike DDL statements (such as CREATE TABLE), it is difficult to write INSERT INTO statements that can be run multiple times and only insert the new record if the data doesn't already exist.
+
+To illustrate that the order of columns does not matter, try one more example:
+
+INSERT INTO articles
+  (author, abstract, title)
+  VALUES (
+    'Pam Beesly',
+    'A thesis on why the rectangle is the only shape we need',
+    'Ode to Rectangle'
+  );
+Do this
+Try to insert a null title
+Now, try out one final example to test the NOT NULL constraint. Try leaving out the title.
+
+INSERT INTO articles
+  (author, abstract)
+  VALUES (
+    'Pam Beesly',
+    'Why A4 is way better than letter size'
+  );
+As expected, the error message indicates that the NOT NULL constraint was violated.
+
+ERROR:  null value in column "title" violates not-null constraint
+DETAIL:  Failing row contains (8, Why A4 is way better than letter size, Paper, null, Pam Beesly, null).
+Inserting multiple records
+You can also insert multiple records at one time by providing multiple VALUES separated by a comma. The video below demonstrates this process.
+
+
+Do this
+Insert multiple articles
+Execute the following script:
+
+INSERT
+	INTO
+	articles (title, abstract, author)
+VALUES
+	(
+	  'The year of PostgreSQL is every year',
+	  'PostgreSQL development began during the Reagan administration — in 1986!',
+	  'Gerik Haslegrave'
+	),
+	(
+	  'A Getting Started PostgreSQL Tutorial',
+	  'PostgreSQL is a free open source database system that uses and extends the SQL language',
+	  'Calv Baudrey'
+	),
+	(
+	  'Experimenting with PostgreSQL in a Container',
+	  'When I heard I needed a PostgreSQL database, I immediately thought container.',
+	  'Gracie Brann'
+	);
+Practice writing INSERT statements by inserting a few more rows into the articles table.
+
+Script files
+The video below provides a brief introduction to creating SQL script files.
+
+
+It's common to write a number of SQL statements in a file and then execute them using a client to perform some task. For example, you can save your SQL scripts in a plain text file using Visual Studio Code, NotePad, TextPad, DBeaver, or any other plain text editor. Then you can save the file as a SQL file.
+
+Tip
+You can also use word-processing programs such as Microsoft Word or Pages, but you must save the files as plain text and not the default format of the editor.
+
+Whenever you need to create a table or insert data for testing purposes, consider saving the script to a file. That way, you can rerun the script whenever you need it.
+
+Do this
+Execute a script stored in a file
+Note: If you are using VSCode, you may see a warning to install a missing extension for mssql. You can safely ignore this warning.
+
+Use your preferred editor to create a new file named customers.sql and add the following SQL script:
+
+-- First, remove the table if it exists
+DROP TABLE IF EXISTS customers;
+
+-- Create the table anew
+CREATE TABLE customers (
+  customer_id INTEGER primary key generated by default as identity,
+  customer_name varchar NOT NULL,
+  phone VARCHAR(30)
+);
+
+-- Insert some test data
+-- using a multi-row insert statement here
+INSERT INTO customers (customer_name, phone)
+VALUES
+  ('Sam', '555-1234'),
+  ('Ham', '555-4321'),
+  ('Ram', '555-5678');
+Tip
+As demonstrated above, comments in SQL start with --.
+
+To run this script in DBeaver, first make sure that you are connected to a database. Then, select File from the menu bar, select Open file, and open the SQL script that you just created. Make sure that the active data source is development and the active schema is public, then click Execute script.
+
+*** 33.7 Querying data
+Querying data
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to use the SELECT statement to extract useful information from a database.
+
+Overview
+One of the most important aspects of using a database is the practice of retrieving data, whether it's on an ad hoc basis or part of a process that's been coded into an application. There are several ways to retrieve information from a database, but one of the most commonly used methods is submitting queries. A query is any command used to retrieve data from a table. In SQL, queries are almost always made using the SELECT statement.
+
+Starter code
+This lesson builds upon the work of the earlier lessons. If you haven't successfully completed the work from the earlier lessons, go back and do that now.
+
+If you are having trouble, reach out for assistance.
+
+Querying data
+Now that some data exists in the database, you need a way to retrieve that data. You can use the SQL SELECT statement to retrieve rows from a table. This command has a lot of options, but the basic syntax of the SELECT statement is as follows:
+
+SELECT <column list>
+FROM <table name>;
+In the previous lessons, you used this statement with an asterisk * as the column list. The * is simply a shortcut for all columns. However, it is advisable to explicitly list the columns that you want to retrieve and never select more than you need.
+
+For the small databases that you have created so far, using * makes no difference, but when scaled to millions of rows in a real production database, it starts to make a big difference. The more specific that you can be about the columns and rows that you want to retrieve, the more efficiently the query will run.
+
+You can select the titles and abstracts of all articles using the following script:
+
+SELECT title, abstract
+FROM articles;
+Or you can select just the titles, like this:
+
+SELECT title
+FROM articles;
+The WHERE clause
+Sometimes, you do not want all of the data in the table. To restrict the rows that are returned by a SELECT statement, use the WHERE clause. The basic syntax is as follows:
+
+SELECT <column list>
+FROM <table name>
+WHERE <conditions>;
+The conditions are boolean expressions—statements that evaluate to either TRUE or FALSE for each row in the results.
+
+Do this
+Find articles written by Dwight Schrute
+For example, suppose that you want to see the titles of all articles written by Dwight Schrute. Execute the following SQL to select the title column from the articles table, but only where the author column has the value Dwight Schrute:
+
+SELECT title
+FROM articles
+WHERE author='Dwight Schrute';
+Searching for null
+The key concept for understanding how null values behave in boolean expressions is that NULL is neither TRUE nor FALSE.
+
+Suppose Stan is thirty years old, while Oliver's age is unknown. If you are asked whether Stan is older than Oliver, your only possible answer is "I don't know." If you are asked whether Stan is the same age as Oliver, your answer is also "I don't know." If you are asked for the sum of Stan's age and Oliver's age, your answer is the same.
+
+Suppose Charlie's age is also unknown. If you are asked whether Oliver's age is equal to Charlie's age, your answer is still "I don't know." This shows why the result of comparisons like NULL = NULL and NULL <> NULL are NULL instead of TRUE.
+
+Tip
+<> is a comparison operator that means "not equal to."
+
+A null value certainly isn't TRUE, but it isn't FALSE either. If it were, then applying NOT to a null value would result in TRUE. But that isn't the way it works; NOT (NULL) results in another NULL. This confuses some people who try to use boolean expressions with NULL.
+
+Because neither equality nor inequality returns TRUE when comparing one value to a null value, you need some other operation if you are searching for a null. SQL has IS NULL, which returns TRUE when compared to a null value. The opposite, IS NOT NULL, returns FALSE when compared to a null value.
+
+Do this
+Find articles with a null body
+Execute the following SQL to find all articles where the body field is NULL:
+
+SELECT title
+FROM articles
+WHERE body IS NULL;
+In addition, you can use IS DISTINCT FROM. This works like an ordinary inequality operator <>, except that it always returns TRUE or FALSE, even when using NULL.
+
+Execute the following SQL to find all articles with a null body value:
+
+SELECT *
+FROM articles
+WHERE body IS NOT DISTINCT FROM NULL;
+Execute the following SQL to find all articles with a non-null body value:
+
+SELECT *
+FROM articles
+WHERE body IS DISTINCT FROM NULL;
+Execute the following SQL to find all articles with a null body value or a body value that is not equal to some-value:
+
+SELECT *
+FROM articles
+WHERE body IS DISTINCT FROM 'some-value';
+The above SQL will find any article where the body value is DISTINCT FROM 'some-value'. Because NULL is distinct from some-value, null values are included in the results.
+
+Products
+To fully exercise the range of options available in the SELECT statement, you will use an existing dataset of products. This dataset contains thousands of products.
+
+Next, you will create a new table named products and import all of the data into the table by running one script.
+
+Do this
+Execute the products.sql script
+Download the SQL file named products.sql and save it in some location on your computer (you can right-click on the link and choose Save As). This SQL file contains a script to create a products table and add data to it.
+
+Open the SQL file in your client and execute the script. (Revisit the previous lesson if you don't recall how to run a script file.)
+
+The results of the script should show "Updated rows: 49688." This means that there are 49,688 rows of data in the products table after executing the script.
+
+Once you have successfully executed the script, try answering the following questions about this data. Be sure to run each of the following SQL scripts and confirm that the results are as expected.
+
+Do this
+List all items in the coffee aisle
+Run the following script to list all items in the coffee aisle:
+
+SELECT product_name, aisle, department, price
+FROM products
+WHERE aisle = 'coffee';
+As you can see, it's a long list. In all the rows, you don't need aisle and the department columns, so you can eliminate those columns from the query, like so:
+
+SELECT product_name, price
+FROM products
+WHERE aisle = 'coffee';
+List all desserts in the bakery department
+First, look at all of the products in the bakery department:
+
+SELECT product_name, aisle
+FROM products
+WHERE department = 'bakery';
+Here you see products across many aisles. There is one aisle named bakery desserts, so if you restrict the results to only the bakery desserts aisle, that might satisfy the question. However, to do so, you need a WHERE clause with two conditions: department = 'bakery' and aisle = 'bakery desserts'.
+
+In the WHERE clause, you can combine multiple conditions using AND and OR operators. If you want both conditions to be TRUE, use the AND operator.
+
+SELECT product_name, aisle, department
+FROM products
+WHERE department = 'bakery'
+AND aisle = 'bakery desserts';
+You can remove the aisle and department columns because they are not needed to answer the question. Those columns are in the query just to show that the query only returned rows that satisfy both conditions.
+
+What are the names of the aisles?
+Suppose that you need to see a list of all aisles. You might start with the following query:
+
+SELECT aisle
+FROM products;
+This returns a list of all the aisles. Unfortunately, there are lots of duplicates in the results. In fact, it lists the aisle value for all 49,688 rows. You can be sure that the store does not have 49,688 aisles. Add the DISTINCT operator to the query to remove duplicates from the results.
+
+SELECT DISTINCT aisle
+FROM products;
+This time, the list is much shorter and there are no duplicates.
+
+How many aisles are there?
+Even though the list is much shorter, there are still a large number of results. So how many are there? You can use the count() aggregate function to return only the count of the number of rows.
+
+SELECT count(DISTINCT aisle)
+FROM products;
+And you see that there are 134 distinct aisles in the table.
+
+Now, count the number of aisles again, this time without using the DISTINCT operator:
+
+SELECT count(aisle)
+FROM products;
+You'll see that 49,688 rows of data are returned.
+
+Which aisles have beverages?
+Here again, you have to use multiple features of the SELECT statement. Try to find the data that you need.
+
+First, how do you know that an item is a beverage? Start with a list of departments, as follows:
+
+SELECT DISTINCT department
+FROM products;
+So there are 21 departments, and beverages is one of them.
+
+Now, look at a list of aisles in the beverages department. You can use the condition department = 'beverages' to get only those rows that belong to the beverages department. But you are only interested in the aisles, not the actual products or prices, so you can select just the aisle column. And because you only want a list of aisles, you can make it DISTINCT.
+
+Run the following query:
+
+SELECT DISTINCT aisle
+FROM products
+WHERE department = 'beverages';
+And you see that there are beverages in eight different aisles.
+
+Find a decent tea
+Suppose you want to find a tea drink. There is an aisle named tea in the beverages department. Select all products in that aisle and include their prices with the following script:
+
+SELECT product_name, price
+FROM products
+WHERE department = 'beverages'
+AND aisle = 'tea';
+Hmmm, that is a lot of products—and some of them are quite expensive. Now, look for teas that cost less than $15. But not too cheap either; you still want some quality, so only include teas that cost more than $10.
+
+SELECT product_name, price
+FROM products
+WHERE department = 'beverages'
+AND aisle = 'tea'
+AND price < 15
+AND price > 10;
+That's still quite a lot. You can use count() to see how many products match those criteria.
+
+SELECT count(*)
+FROM products
+WHERE department = 'beverages'
+AND aisle = 'tea'
+AND price < 15
+AND price > 10;
+So there are 85 tea drinks between $10 and $15. Raspberry is nice, so look for a raspberry-flavored tea. Unfortunately, although there are several raspberry-flavored teas, there is no column of data that gives you this information cleanly. That is, you may find products with such names as Raspberry Royale Black Tea or Rio Raspberry Tea. But if you just search for Raspberry, using the following script, you will get no results. Take a look:
+
+SELECT count(*)
+FROM products
+WHERE department = 'beverages'
+AND aisle = 'tea'
+AND price < 15
+AND price > 10
+AND product_name = 'Raspberry';
+What you need is some way to ask if the product_name contains the word Raspberry. In SQL, you can use the LIKE operator and the % wildcard character to perform such a search. The LIKE operator is a comparison similar to =, but it allows you to use the % symbol to match zero or more characters. So searching for product_name LIKE '%Raspberry%' will match any product that contains the word Raspberry anywhere in the name, followed by zero or more characters.
+
+SELECT product_name, price
+FROM products
+WHERE department = 'beverages'
+AND aisle = 'tea'
+AND price < 15
+AND price > 10
+AND product_name LIKE '%Raspberry%';
+And there are five products that match those criteria.
+
+List all pet products, from most expensive to least expensive
+First, get a list of products in the pet department:
+
+SELECT product_name, price
+FROM products
+WHERE department = 'pets';
+But you want this list sorted by price. In SQL, you use the ORDER BY clause to sort the results by certain columns. To sort by the price column, run the following query:
+
+SELECT product_name, price
+FROM products
+WHERE department = 'pets'
+ORDER BY price;
+You are making progress: the cheapest pet product is first in the list. As you scroll down the list, the products get more expensive. However, you want to sort the list in the reverse order. By default, ORDER BY sorts in ascending order; that is, it sorts from the lowest numerical value to the highest. Or, if it's a text column, it sorts alphabetically from A to Z. To sort in descending order, use the DESC option.
+
+SELECT product_name, price
+FROM products
+WHERE department = 'pets'
+ORDER BY price DESC;
+How many products are there per department?
+Previously, you used the count() function to get a count of rows. If you want a count of products in the pets department, for example, you could first select only products from the pets department, then do a count.
+
+SELECT count(*)
+FROM products
+WHERE department = 'pets';
+But what if you wanted the count for each department? Manually running the same statement once for each department would be difficult and clumsy. Instead, you can first group the products by department and then perform a count in each group. To group rows, use the GROUP BY clause, like this:
+
+SELECT department, count(*)
+FROM products
+GROUP BY department;
+What is the total price of all products per department?
+Previously, you used the GROUP BY clause and the count() function to get a count of the number of products per department.
+
+But what if you wanted the total price of all products in each department? Manually adding up the prices of the products in each department would be difficult and error prone. Instead, you can use the sum() function to add up the prices, like so:
+
+SELECT department, sum(price)
+FROM products
+GROUP BY department;
+What are the minimum, maximum, and average prices per department?
+Data query language offers many built-in aggregate functions that you can use to calculate information about the data in your database.
+
+For example, expanding on the earlier query, you can add min(price), max(price), and avg(price) to the query and calculate all of these values simultaneously.
+
+Run the following query:
+
+SELECT department, count(*), sum(price), min(price), max(price), avg(price)
+FROM products
+GROUP BY department
+ORDER BY department;
+*** 33.8 Updating and deleting data
+Updating and deleting data
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to use the UPDATE statement to update existing data in a table. You'll also be able to use the DELETE statement to delete existing data in a table.
+
+Overview
+Eventually, you will learn that the only constant in software is change. You can be sure that, over time, the data in the database will have to be changed or removed. In this lesson, you will focus on data manipulation language statements to change or remove data. If you want to change or remove data in the database, you need to use the SQL keywords UPDATE and DELETE.
+
+Starter code
+This lesson builds upon the work of earlier lessons. If you haven't successfully completed the work from the earlier lessons, go back and do that now.
+
+If you are having trouble, reach out for assistance.
+
+Employees
+To fully exercise the range of options available in the UPDATE statement, you will use an existing dataset of employees. This dataset contains hundreds of rows.
+
+You can create the new table named employees and import all of the data into the table by running one script.
+
+Do this
+Execute the employees.sql script
+Download the SQL file named employees.sql and save it in some location on your computer. To do so, you can right-click the link and choose Save As. The script, when executed, will create an employees table and add data to it.
+
+Once the script is done, continue with this lesson.
+
+Updating data
+Once data has been inserted into rows within the database, those rows can have one or more of their column values modified through use of the UPDATE statement. Column values may be updated either with constants, identifiers to other datasets, or expressions. They may apply to an entire column or a subset of a column's values through specified conditions. The UPDATE statement uses the following syntax:
+
+UPDATE table_name
+SET column_name_1 = <value_1>,
+    column_name_n = <value_n>;
+Do this
+Set country to USA
+All existing employee records have the country as United States, and you have decided that you would rather use the three-character country code USA.
+
+Run the following SQL to update the country:
+
+UPDATE employees
+SET country = 'USA';
+The above SQL sets the value of country to USA for every row in the table. Verify that the change was successful by running the following SQL:
+
+SELECT country
+FROM employees;
+The results from the above query should show that the country is USA for every record.
+
+DEFAULT
+Using the keyword DEFAULT in place of a specific value will set the value to the default value for that particular column in the table. If no default value has been set for the column, the column will be set to NULL.
+
+Do this
+Set fax to DEFAULT
+Now run the following SQL to set the fax column to DEFAULT. Note that the fax column does not have a specific default value, so this will result in the fax value being set to NULL. This is an acceptable update because it is no longer 1995, and nobody uses fax machines anymore.
+
+UPDATE employees
+SET fax = DEFAULT;
+UPDATE with the WHERE clause
+Sometimes you won't want to update every row in the table. To restrict the rows that are updated by a UPDATE statement, add the WHERE clause. The syntax for the WHERE clause is the same no matter where it is used.
+
+The syntax for an UPDATE query with a WHERE clause is as follows:
+
+UPDATE table_name
+SET column_name_1 = <value_1>,
+    column_name_n = <value_n>
+WHERE <conditions>;
+Do this
+Update reports_to
+At your company, Willie Lyons decided to quit and become a full-time PostgreSQL instructor. As a result, all of the employees that reported to Willie Lyons will now report to a newly hired manager named Fibber McGee.
+
+Run the following SQL to update only the employee records where reports_to = 'Willie Lyons'.
+
+UPDATE employees
+SET reports_to = 'Fibber McGee'
+WHERE reports_to = 'Willie Lyons';
+Do this
+Set multiple column values
+Someone made a data-entry error; they entered two employees with the job title of Chemical Engineer living in Trenton. These employees actually should have been entered as Chemical Engineer II living in Lawrenceville.
+
+Run the following SQL to correct the data-entry error:
+
+UPDATE employees
+SET job_title = 'Chemical Engineer II', city = 'Lawrenceville'
+WHERE job_title = 'Chemical Engineer' AND city = 'Trenton';
+You will see that two rows were updated.
+
+Deleting data
+When managing data in a database, it may be necessary to delete some rows from a table. In this case, the DELETE statement can be used to remove some of the existing records from the table without deleting the table itself.
+
+DELETE statement
+The DELETE statement doesn't require a WHERE clause. However, you almost never want to delete every row in the table, so it's best to get into the habit of always including a WHERE clause in a DELETE statement to restrict the rows that are deleted. Without a WHERE clause, the DELETE statement will delete every row in the table.
+
+The syntax for an DELETE query with a WHERE clause is as follows:
+
+DELETE FROM <table_name>
+WHERE <conditions>
+Do this
+Delete the VPs of sales
+It turns out that there was another data-entry error: several candidates who interviewed for the VP of Sales job were entered as employees, but only the VP of Sales reporting to Adele Gonzalez was actually hired.
+
+Note: Treat every DELETE statement with caution. Always test the WHERE clause by first running it as a SELECT * statement to make sure that the correct records will be deleted.
+
+To test the WHERE clause, run the following query:
+
+SELECT * FROM employees
+WHERE job_title = 'VP Sales' AND reports_to <> 'Adele Gonzalez';
+After running the above SQL, you will see four rows returned.
+
+Finally, once you are sure that the WHERE clause is correct, change SELECT * to DELETE and run the following query:
+
+DELETE FROM employees
+WHERE job_title = 'VP Sales' AND reports_to <> 'Adele Gonzalez';
+You will see that four rows were deleted.
+
+TRUNCATE statement
+The DELETE statement is most useful when you want to clear only some of the data from a table.
+
+TRUNCATE, on the other hand, is useful for clearing all the data at once.
+
+Using a TRUNCATE statement is faster than using DELETE. This is because TRUNCATE removes all rows in the table without scanning every row, unlike the DELETE statement. In addition, the TRUNCATE statement reclaims the storage space right away after removing all of the data.
+
+If you are removing all rows from a table, use the TRUNCATE statement.
+
+The TRUNCATE TABLE statement uses the following syntax:
+
+TRUNCATE TABLE <table_name>;
+Do this
+Truncate the products table
+Run the following SQL to delete all rows in the products table:
+
+TRUNCATE TABLE products;
+Truncate multiple tables
+The TRUNCATE statement can be used to remove all the data from multiple tables using the following syntax:
+
+TRUNCATE TABLE <table_name_1>, <table_name_2>, …;
+Do this
+Truncate the articles and employees tables
+Run the following SQL to delete all rows in the articles and employees tables:
+
+TRUNCATE TABLE articles, employees;
+*** 33.9 Assessment: Postgres
+
+** Creating Relations - Module 34
+*** 34.1 Overview: Creating relations
 *** 34.2 Database relationships
 *** 34.3 Relating tables through keys
 *** 34.4 Joining tables
