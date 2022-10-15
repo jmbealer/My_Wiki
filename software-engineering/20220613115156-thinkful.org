@@ -5223,6 +5223,94 @@ function App() {
 
 }
 *** 22.3 Testing interactive components
+Testing interactive components
+2 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you'll be able to interpret tests related to testing interactive components.
+Overview
+
+In the previous module, you learned how to write basic automated tests for your components using the React Testing Library and Jest. You wrote smoke tests to verify that your components can render without throwing errors. You also learned to write tests to ensure that components are rendering the correct content when given different kinds of props. As your React components become more complex, you can also write tests to cover other common use cases. For example, your tests can simulate user interactions with the component (such as clicking a button in a React component) and mock asynchronous operations (such as making an API call) that occur within a component.
+Learning how to learn
+
+Keep in mind that the purpose of the Learning how to learn lessons in this module is to give you the opportunity to acquire new knowledge and skills through independent research and learning. This is one of the most important skills that you need to develop and practice as a software developer over your career: learning new things and relearning things that you already "know." No program can teach you everything. This program aims to teach you the fundamentals, as well as the ability to teach yourself so you continue to grow over time.
+
+In these sections, you will learn new concepts by perusing the official documentation for a particular technology. You'll also consult professional developer forums such as Stack Overflow. You will be provided with several key research questions and resources as a starting point, but feel free to also study alternative resources (such as videos and tutorials) that could help you understand the topic better.
+
+When a particular concept or syntax keeps coming up in your research of a particular technology, it's often a good sign that that concept or syntax is key to understanding the bigger picture—so you may want to dive deeper into that concept or syntax.
+
+For example, if a third-party library method keeps coming up in your research, you could focus on learning more about that method. You could learn about its use cases—when you would or wouldn't apply that particular method in code. You could also study what you need to know to use the method correctly, such as the proper arguments to pass the method.
+
+The practice questions at the end of this lesson will assess your understanding of the concepts required for this lesson.
+Tip
+
+To further reinforce what you've learned on your own, it's a good idea to explain and discuss your new knowledge with a classmate.
+Thinking like a developer
+
+Developer documentation is one of the most important tools for software developers. Developer documentation helps developers interface with a given software service or library. As a software developer, you'll often refer to documentation to understand how to use a language or library.
+
+Not all documentation is created equally. Some documentation is well written, but some isn't. Most documentation is written by developers, and although developers may be good at writing instructions for computers to execute, they aren't necessarily quite as good at writing instructions that people can easily understand.
+
+The first step to navigating through developer documentation is to understand how it is organized. For example, on the React Testing Library website, you can see that that part of the documentation includes several sections:
+The React Testing Library website.
+
+The interactive outline on the left pane helps you navigate through the documentation, and it also provides an overview of the key sections available in the documentation for React Testing Library. The React Testing Library documentation includes the following sections:
+
+    Introduction, which provides an overview of the React Testing Library
+
+    Example, which provides a step-by-step example of how to set up a test suite with React Testing Library
+
+    Setup, which describes in detail how to set up a test with React Testing Library
+
+    API, which provides a list of methods that developers can use to interface with the React Testing Library
+
+    Migrate from Enzyme, which includes instructions on how to migrate to React Testing Library from a legacy technology
+
+    FAQ, which is the frequently asked questions page
+
+    Cheatsheet, which is a short guide to using React Testing Library
+
+Good documentation typically contains the basic elements described above.
+Key questions
+
+One of the most important responsibilities for a React developer is writing automated tests to ensure that any React components continue to work as expected as the codebase grows in size and complexity. To do this effectively, automated tests will often have to simulate user interactions with the components as well as mock or fake asynchronous operations such as API calls that occur within the components.
+
+Although there are many testing libraries and frameworks for React, you will focus your independent research on React Testing Library and Jest for this lesson. Here are some broad research questions to consider:
+
+    What are integration tests? How do they differ from unit tests?
+
+    Why use React Testing Library? What are its guiding principles?
+
+    What are the steps involved in setting up a test with the React Testing Library to test a user interaction (such as a click)?
+
+    What are mocks, and why would mocks be used in testing?
+
+    What are some ways you could mock, for example, an API request in your test code (are there libraries that make this easier)?
+
+Key concepts and syntax
+
+While you're researching the broad questions outlined above in the context of React Testing Library and Jest, you may notice that the following concepts and syntax come up frequently in your research. So make sure to pay particular attention to them!
+
+    fireEvent.change()
+
+    fireEvent.click()
+
+    fireEvent.submit()
+
+    jest.clearAllMocks()
+
+    jest.fn()
+
+    jest.mock()
+
+    jest.spyOn()
+
+The official React testing library documentation has a section about the fireEvent() methods.
+
+The Jest methods are documented here, so you can look up the specific methods that you're interested in learning more about.
+Resources
+
+The React testing library documentation is a good starting point, but feel free to consult other resources.
 *** 22.4 Asynchronous state
 *** 22.5 State over multiple components
 *** 22.6 Arrays and objects as state
