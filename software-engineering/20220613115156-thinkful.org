@@ -4717,8 +4717,518 @@ Your WelcomeBack component should now look like this:
 WelcomeBack component
 
 *** 21.10 React testing
-*** 21.11 Assessment: Rendering with React
+Program overview
+
+ React testing
+Lesson 10
+React testing
+1.5 hoursEstimated completion time
+Learning Objective
+
+In React, unit tests are typically written to check that a given component behaves in a particular way. By the end of this lesson, you will be able to write basic automated tests for React components.
+Overview
+
+As your React codebase grows in size and complexity, having automated tests is important to ensure that nothing is broken every time a developer adds new code to the codebase. Otherwise, manually testing every aspect of the app is time consuming and error prone.
+Starter code
+
+This lesson requires you to have the following repository running on your local machine.
+
+    GitHub: Starter React testing
+
+Follow the instructions in the README to get it to run.
+React Testing Library and Jest
+
+You will use two testing tools, namely React Testing Library and Jest, to create automated tests for your React components.
+
+React Testing Library provides a set of helper methods that allow you to build tests that use your React components the way that a user would. Tests written with the utilities from React Testing Library query the DOM in the same way that the user would; for example, they find links and buttons by their text.
+
+Jest is a testing framework that includes a test runner as well as an assertion library that exposes helper methods that can be used to make assertions about the component being tested.
+Setup
+
+The starter-react-testing repo contains several components created in the previous lesson. You will now write automated tests for each of these components.
+
+This is what you will see if you start the project:
+localhost:3000 page.
+
+The starter-react-testing repo was bootstrapped with Create React App. Conveniently, projects created with Create React App already come preinstalled and preconfigured with React Testing Library and Jest. That means that you won't have to manually install these testing packages.
+
+Jest will look for test files stored inside of folders titled __tests__. In the starter-react-testing repo, all the test files are stored in the src/__tests__ folder. Because there are four components in this project and one test file per component (which is a standard practice), there are four test files in total. For clarity, each test file's name corresponds to the name of the component that is being tested. For example, the Footer.test.js file contains tests for the Footer component.
+
+The src/setupTests.js is a special Create React App file that allows you to perform a global setup before running your tests. It will be automatically executed before running your tests. Inside this file, the single import statement (import "@testing-library/jest-dom";) loads the jest-dom library into every test file. The jest-dom library adds custom matchers for performing assertions on DOM nodes (such as toHaveTextContent() or toBeInTheDocument()), which you will learn about later on in this lesson.
+
+Note: Although there are more scaleable ways of organizing your React code, especially for bigger projects, this file organization system works well for a relatively small project like this one.
+The npm test command
+
+In Create React App, the npm test command by default runs the tests in watch mode, meaning that the tests will automatically rerun every time that a change is made to a test file. It also provides options to run all your tests or just a subset of them. Under the hood, npm test runs the tests using a special package called react-scripts. The react-scripts package contains special configurations that help optimize your Create React App project.
+Do this
+Run the npm test command
+
+In a new terminal, run the npm test command. Initially, you will see a failure message that says that there are four failing test suites and zero tests in total:
+
+Test Suites: 4 failed, 4 total
+
+Tests:       0 total
+
+Press a to run all tests while in watch mode.
+
+Keep in mind that you'll have to keep the terminal open to run the tests in watch mode. If you need to run any other CLI commands, start a new terminal.
+Smoke tests
+
+Different projects may choose different testing techniques based on how often components are updated and how much logic they contain. Although there are many ways to test a component, the simplest way is to use a smoke test that verifies that a component can render without throwing an error. Smoke tests provide tremendous value with minimal code, so they are a great starting point.
+
+To render a component in a test environment, you will need to use the render() method from the React Testing Library, like this:
+
+render(<SomeComponent />);
+
+The render() method accepts a component as an argument, and it simply renders the component into a container which is then appended to document.body.
+Do this
+Create a smoke test for App
+
+In src/__tests__/App.test.js, add the following code:
+
+import { render } from "@testing-library/react";
+
+import App from "../App";
+
+
+describe("App", () => {
+
+  test("renders without crashing", () => {
+
+    render(<App />);
+
+  });
+
+});
+
+The render() method and the App component are imported into the file. The describe block groups together all the tests related to the App component. Within the describe block, there is a single test that mounts the App component and verifies that it didn't throw during rendering. At this point, you will see one passing test in the terminal, as follows:
+
+ PASS  src/__tests__/App.test.js
+
+
+Test Suites: 3 failed, 1 passed, 4 total
+
+Tests:       1 passed, 1 total
+
+Snapshots:   0 total
+
+Time:        3.458 s
+
+To trigger a test failure, try removing the JSX fragment <>...</> from src/App.js. The smoke test will now fail with an error message like the following:
+
+SyntaxError: /Users/houchia/chegg/starter-react-testing/src/App.js: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>?
+
+Before moving forward, make sure to fix the syntax error so that your test is passing again. Now you know how to create a smoke test for a React component.
+Render tests
+
+Even if a component can render without throwing an error, it is also important to ensure that it is displaying the correct content to the user. For example, the App component is expected to render three Welcome back messages, each containing a different customer name. You can also write tests to verify that the component is rendering the proper content on the screen.
+
+The screen object, which is imported from the React Testing Library, gives you access to a variety of helper methods that allow you to query the DOM where your component has been rendered. An example of a query method is getByText(), which returns the matching element for a query and throws an error if no elements match or if more than one match is found.
+
+For example, you can use getByText() to write a test that checks for the presence of a specific text after a component has rendered:
+
+render(<SomeComponent />);
+
+const text = screen.getByText("Some important text.");
+
+You can then perform assertions on text to determine, for example, if it is present in the DOM, using the toBeInTheDocument() assertion method from the jest-dom library.
+Do this
+Create a test for Header
+
+In src/__tests__/Header.test.js, add a test to verify that the Header component displays the correct heading:
+
+import { render, screen } from "@testing-library/react";
+
+import Header from "../Header";
+
+
+describe("Header", () => {
+
+  test("renders the heading", () => {
+
+    render(<Header />);
+
+    const heading = screen.getByText("Header to the page.");
+
+    expect(heading).toBeInTheDocument();
+
+  });
+
+});
+
+Here's the breakdown of the syntax within that test:
+
+    render(<Header />); renders the Header component into a container which is attached to the test DOM.
+
+    const heading = screen.getByText("Header to the page."); queries the DOM for the Header to the page. text, which is the desired heading for the component.
+
+    expect(heading).toBeInTheDocument(); asserts that the desired heading is present in the DOM.
+
+Now, you should see two passing tests in the terminal. Go ahead and change the text in the Header component to trigger a test failure for the component, but make sure to revert the error before moving on.
+Using regex in the query
+
+If you're only interested in a partial substring match while querying the DOM, you can also pass a regex, instead of a string, as an argument to getByText(). That will look like this:
+
+render(<SomeComponent />);
+
+const text = screen.getByText(/some important text/i);
+
+Specifying i at the end of the regex allows casing to be ignored when querying the DOM. So, for example, "SOME important TeXt" would be considered a match for this regex.
+Do this
+Create a test for Footer
+
+Suppose that you would like to make sure that the word footer is part of the Footer component text. In src/__tests__/Footer.test.js, add the following code:
+
+import { render, screen } from "@testing-library/react";
+
+import Footer from "../Footer";
+
+
+describe("Footer", () => {
+
+  test("renders the footer text", () => {
+
+    render(<Footer />);
+
+    const footerText = screen.getByText(/footer/i);
+
+    expect(footerText).toBeInTheDocument();
+
+  });
+
+});
+
+This time, instead of passing a string to getByText(), you are passing a regex /footer/i as a matching query.
+
+Now, you should see three passing tests in your terminal. Go ahead and remove the footer text from the Footer component to trigger a test failure for the component, but make sure to revert the error before moving on.
+Do this
+Create tests for WelcomeBack
+
+The WelcomeBack component is interesting because it contains props. You can write tests to ensure that this component is rendering the props properly.
+
+In src/__tests__/WelcomeBack.test.js, add the following code:
+
+import { render, screen } from "@testing-library/react";
+
+import WelcomeBack from "../WelcomeBack";
+
+
+describe("WelcomeBack", () => {
+
+  test("renders the default value without a name prop", () => {
+
+    render(<WelcomeBack />);
+
+    const text = screen.getByText("Welcome back, valued customer!");
+
+    expect(text).toBeInTheDocument();
+
+  });
+
+
+  test("renders the customer name passed as a prop", () => {
+
+    render(<WelcomeBack name="John" />);
+
+    const text = screen.getByText("Welcome back, John!");
+
+    expect(text).toBeInTheDocument();
+
+  });
+
+});
+
+Here, you're testing two of the component's desired behaviors. The first test verifies that the component renders a message containing a default customer name if no name prop is specified. And the second test verifies that the component renders a message containing the name prop.
+
+Now, you will see five passing tests in your terminal. Go ahead and change the texts and prop names in the WelcomeBack component to trigger test failures for the component, but make sure to revert any errors before moving on.
+Query more than a single element
+
+Up until now, you have been using the getByText() method, which returns a single element if there's a match. However, it is common for a test to query a list of matching elements. If this is the case, you can use the getAllByText() method, which returns an array of all matching elements for a query, and throws an error if no elements match.
+Do this
+Create a test for App
+
+Suppose that you need to ensure that the App component renders three welcome messages. In src/__tests__/App.test.js, you can add another test within the describe block, like this:
+
+test("renders three Welcome back messages", () => {
+
+  render(<App />);
+
+  const messages = screen.getAllByText(/welcome back/i);
+
+  expect(messages).toHaveLength(3);
+
+});
+
+const messages = screen.getAllByText(/welcome back/i); stores the array of matched elements in messages. expect(messages).toHaveLength(3); asserts that the messages array should contain three matched elements, which is what you'd expect given that App wraps three WelcomeBack components.
+
+At this point, you should see all the tests passing.
+
+Now you understand how to create basic tests for your React components. You can easily run these tests to ensure that your components still render properly whenever you make a code change, without having to manually check each component in the browser. So by using these tests, you'll save both time and effort.
+
+As your React components become more complex, you can also write tests to cover other common use cases. For example, you can simulate user interactions with the component (such as clicking a button in a React component). You can also mock asynchronous operations (such as making an API call) that occur within a component.
+Complete example
+
+A completed example from this lesson can be found in this GitHub repository:
+
+    Starter React testing—complete-example branch
+
 ** module 22 react state management
+*** 22.1 Overview: React state management
+Overview: React state management
+9 minutesEstimated completion time
+Overview
+
+When you were learning about DOM manipulation, one of the most powerful tools that was covered was how to update your page's view through event listeners. In React, changing the view is handled primarily by changing something called state. In this module, you'll learn how to recreate the event listeners that you created earlier, and you'll see the real power behind React.
+
+React's component structure makes it so that managing the state of your application is much more organized and predictable. By the end of this module, you'll be able to update the page's view based on button clicks and form submissions. This will allow you to create a fully featured React application.
+Do this
+
+The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll perform various tasks, like setting up a development environment or executing a command. Ultimately, these practice sections will help you successfully complete graded assessments, such as projects, mock interviews, and capstones.
+Learning how to learn
+
+While training to become a developer, one of the most important skills that you can learn is the ability to acquire new skills through self-research (that is, a lot of Googling!) and reading developer documentation. Although employers may not expect each developer they hire to have mastered every technology or process used within the company, they are more likely to expect their hires to be flexible and be able to learn and adapt to them.
+
+The purpose of the Learning how to learn lessons in this module is to give you the opportunity to acquire new knowledge and skills through independent research and learning.
+
+In these sections, you will learn new concepts by perusing the official documentation for a particular technology as well as consulting professional developer forums such as Stack Overflow. You will be provided with several key research questions and resources as a starting point, but feel free to consult any videos, tutorials, and other alternative resources that could help you understand the topic better.
+*** 22.2 Interactive components
+Interactive components
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to handle events by writing a function that's called when the user clicks an element. You'll also be able to store and update the component's state using the useState() hook.
+Overview
+
+In this lesson, you'll learn how to build interactive components that allow the user of the website to modify the overall state of the page. For example, when the user clicks a button, you may want some part of your page to either show up or hide. This is similar to the way that event handlers work—but hopefully, you'll find this a bit easier.
+Key Terms
+
+Hook
+    A special React function that gives you access to some React process
+One-way data flow
+    Also called one-way binding, the idea that changes in the props or state will cascade downward to cause changes further on
+
+Starter code
+
+In this lesson, you will want to have a project running that was created using the Create React App command-line tool. You may be asked to create a component and include it in your App.js file.
+What is state?
+
+The term state and how it relates to React has its origins with the state machine. The concept of the state machine can feel quite abstract for new programmers. However, there is an easier way to think about state.
+
+Generally, when a user presses a button or enters data in a form, you will want to store some information. React components use state to store information that is updated by the component. State refers to data that affects how an application behaves and is rendered. For example, if you're logged into an application, the state of that application is different than when you are not logged in. Based on the state of the application, certain functionalities may be available to you.
+
+Every React component can have its own state.
+Handling events
+
+The video below provides a brief introduction to this topic. Start by watching the video, and then read through the rest of the lesson. This will give you a thorough understanding of these concepts.
+
+You will start with the simplest interactive component: a button. You'll get familiar with the JSX code for a button and see how to cause an action when the button is clicked.
+
+First, take a look at the following anonymous function for the onClick event. This function just logs to the console when the button is clicked.
+
+<button onClick={() => console.log("Subscribing!")}>Subscribe</button>
+
+If you have more that you want to do, you can write a named function instead of an anonymous function. Here's an example:
+
+const handleClick = () => {
+
+  console.log("Subscribing!");
+
+  alert("You subscribed!");
+
+};
+
+
+<button onClick={handleClick}>Subscribe</button>;
+
+Do this
+Add an event handler
+
+In the App.js of the React application that you created, add a button to the page. Give it the following function as the value to its onClick attribute.
+
+const handleClick = (e) => console.log(e.target);
+
+Save your file and then go to your rendered page. Click the button and take a look at the console. You will see that the button's DOM element is logged out.
+
+As you can see, you've added an event listener to the button.
+Props versus state
+
+When the user presses a button, you will usually want to store some information in the application state. For example, when you submit a post on a social media site, that post might be saved in the application state itself.
+
+You might think that you can store this information in the props. However, recall that components are pure functions—they should never edit the props. If the props need to change, they are edited by the parent component.
+
+State, on the other hand, is where the component stores information that it can modify. Parent components do not have access to the state of their child components.
+The useState() hook
+
+The video below provides an overview of the useState() hook.
+
+Take a look at the following App component:
+
+import React from "react";
+
+
+function App() {
+
+  const handleSubscribe = (e) => console.log("User has been subscribed...");
+
+
+  return (
+
+    <section>
+
+      <p>Please click to subscribe to my updates!</p>
+
+      <button onClick={handleSubscribe}>Subscribe</button>
+
+    </section>
+
+  );
+
+}
+
+
+export default App;
+
+When the user clicks the button, a message will be logged, but no feedback will be given to the user.
+
+In order to create and edit the state—which can allow you to change the interface—you need to use the useState() hook. A hook is a special React function that gives you access to (or hooks into) some React process. So useState() hooks into the component's state.
+
+To use the useState() hook, you will first need to add it to your import statement, like this:
+
+import React, { useState } from "react";
+
+Now, inside of your component, you can call useState(), as follows:
+
+const [subscribed, setSubscribed] = useState(false);
+
+The code above creates a new state variable called subscribed. The useState() function takes the initial value of the state variable (in this case, false). It returns the variable, subscribed. It also returns a function, setSubscribed(), that is used to update the state variable.
+
+The convention for creating a state variable with useState() is to name the function set[VariableName]. So if the variable is userId, the function will be setUserId().
+Do this
+Update your code to use the state
+
+Update your current App code to this:
+
+import React, { useState } from "react";
+
+
+function App() {
+
+  const [subscribed, setSubscribed] = useState(false);
+
+
+  return (
+
+    <section>
+
+      <p>Please click to subscribe to my updates!</p>
+
+      <button onClick={() => setSubscribed(true)}>Subscribe</button>
+
+    </section>
+
+  );
+
+}
+
+
+export default App;
+
+Right now, when you click the Subscribe button, the state will change, but nothing on the page will change.
+Make use of the state
+
+Update the text of your button with the information below:
+
+<button onClick={() => setSubscribed(true)}>
+
+  {subscribed ? "Unsubscribe" : "Subscribe"}
+
+</button>
+
+Now, when you click the button, you will see the text in the button change.
+
+Take a moment to try to make it so that whenever the button is clicked, the text changes back and forth between Unsubscribe and Subscribe. If you get stuck, consult the solution below.
+
+<button onClick={() => setSubscribed(!subscribed)}>
+
+  {subscribed ? "Unsubscribe" : "Subscribe"}
+
+</button>
+
+Re-rendering
+
+In the example above, you modified the state by using the setSubscribed() function. As you can see, when the state changes, the text on the button changes.
+
+Whenever the state is updated, the component re-renders using the new information. This means the entire component gets called again—including all of the code inside of the component function.
+
+This is an important concept in React. When the props or state change for a component, that component and its children are re-rendered with the new information. This allows changes to flow downward.
+
+Put another way, data flows from parent components down to the child components, making changes as needed. This is generally known as one-way data flow. One-way data flow, or one-way binding, refers to the idea that changes in the props or state will cascade downward to effect changes further on. In other words, the parent component's data is the single source of truth for how that component and its children should render.
+Do this
+Watch the re-render
+
+Try adding the following log() statement right above the return statement in your component.
+
+console.log("Subscribed status:", subscribed);
+
+Then, on your application's page, open up the web console and click the button. You will see the log() statement show up each time that you click.
+Log statements on web console
+
+Note: You'll notice that the logs actually appear twice. This is because of the React.Strict component wrapper. The details behind this wrapper are beyond the scope of this lesson, but it's safe to ignore this double-logging.
+Never edit the state directly!
+
+To update the state and cause the component to re-render, you will always need to use the function provided by useState(). Setting the state directly will not do this.
+
+For example, the following code won't perform correctly:
+
+<button onClick={() => (subscribed = !subscribed))}>
+
+  {subscribed ? "Unsubscribe" : "Subscribe"}
+
+</button>
+
+Multiple states
+
+You can call the useState() function multiple times. This is common for complex components.
+
+For example, take a look at the following component, which includes two different calls of useState(). Each state value can be changed independently of the other.
+
+function App() {
+
+  const [subscribed, setSubscribed] = useState(false);
+
+  const [alerts, setAlerts] = useState(false);
+
+
+  return (
+
+    <section>
+
+      <p>Please click to subscribe to my updates!</p>
+
+      <button onClick={() => setSubscribed(!subscribed)}>
+
+        {subscribed ? "Unsubscribe" : "Subscribe"}
+
+      </button>
+
+      <button onClick={() => setAlerts(!alerts)}>
+
+        {alerts ? "Stop Email Alerts" : "Get Email Alerts"}
+
+      </button>
+
+    </section>
+
+  );
+
+}
+*** 22.3 Testing interactive components
+*** 22.4 Asynchronous state
+*** 22.5 State over multiple components
+*** 22.6 Arrays and objects as state
+*** 22.7 Forms with input fields
+*** 22.8 Complex forms
+*** 22.9 Assessment: React state management
 ** module 24 react and apis with hooks
 ** module 25 react router
 ** module 26 frontend deployment
