@@ -6316,11 +6316,1423 @@ You will see the subscriber list populate once you submit the form.
 The frontend of your admin tool feature will now be complete, so try it out in the browser. Note that every time you refresh your browser, the list of subscribers will get reset because the data is only stored temporarily in an array.
 
 *** 22.8 Complex forms
+
+Complex forms
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to use checkboxes, radio buttons, and select inputs in React forms.
+Overview
+
+With what you've already learned about forms, you can build more complex forms that make use of checkboxes, radio buttons, and other input types. Additionally, you can easily update your forms to incorporate multiple new types of values. In this lesson, you'll see how different input types can be used to build a complex form.
+Starter code
+
+Use a new or existing project created with the Create React App command-line tool. Then, include the following App component:
+
+function App() {
+
+  return <SubscriberForm />;
+
+}
+
+Next, create or update the SubscriberForm component in a file called SubscriberForm.js. This component should have the following contents:
+
+function SubscriberForm() {
+
+  const initialFormState = {
+
+    name: "",
+
+    email: "",
+
+  };
+
+  const [formData, setFormData] = useState({ ...initialFormState });
+
+  const handleChange = ({ target }) => {
+
+    setFormData({
+
+      ...formData,
+
+      [target.name]: target.value,
+
+    });
+
+  };
+
+
+  const handleSubmit = (event) => {
+
+    event.preventDefault();
+
+    console.log("Submitted:", formData);
+
+    setFormData({ ...initialFormState });
+
+  };
+
+
+  return (
+
+    <form onSubmit={handleSubmit}>
+
+      <label htmlFor="name">
+
+        Enter Your Name:
+
+        <input
+
+          id="name"
+
+          type="text"
+
+          name="name"
+
+          onChange={handleChange}
+
+          value={formData.name}
+
+        />
+
+      </label>
+
+      <br />
+
+      <label htmlFor="email">
+
+        Your Email:
+
+        <input
+
+          id="email"
+
+          type="email"
+
+          name="email"
+
+          onChange={handleChange}
+
+          value={formData.email}
+
+        />
+
+      </label>
+
+      <br />
+
+      <button type="submit">Submit</button>
+
+    </form>
+
+  );
+
+}
+
+Include imports and exports as needed.
+Initial form state
+
+In the above example, a variable initialFormState is declared at the top of the form, like so:
+
+const initialFormState = {
+
+  name: "",
+
+  email: "",
+
+};
+
+This object is then used in a few places:
+
+    The initial state stored in formData is created from this object.
+
+    When the form is reset, a new object is created from this object.
+
+Including an initial form state can be quite useful in your forms, for several reasons:
+
+    The information that your form stores is recorded at the top of the component. This makes it easy to know what your form is recording.
+
+    Instead of calling useState() multiple times in your component, you only need to call it once.
+
+    Instead of ending up with multiple state functions (such as setName() and setEmail()), you only have one.
+
+    Resetting the form to its initial state becomes trivial.
+
+However, if you add new inputs to your form, this object will not be updated automatically. If you decide to use an initialFormState variable, you will need to add keys whenever you add a new input field.
+
+In this lesson, you'll use initialFormState and keep it updated throughout.
+Do this
+Set a default name
+
+In the initialFormState variable, change the empty string to a string with your name in it. On the rendered form, you'll see that your name shows up in the input field.
+
+This ability to set default values can also be useful when creating forms.
+Additional input types
+
+Text inputs all work very similarly when it comes to including them in a React form. Other types of inputs are also similar, but there are a few important differences. These differences are detailed below.
+The select elements
+
+The select elements work very similarly to inputs, except that they make use of the option element, as shown below:
+
+<label htmlFor="referral">
+
+  How did you hear about us?
+
+  <select
+
+    id="referral"
+
+    name="referral"
+
+    onChange={handleChange}
+
+    value={formData.referral}
+
+  >
+
+    <option value="">-- Select an Option --</option>
+
+    <option value="twitter">Twitter</option>
+
+    <option value="wom">Word of Mouth</option>
+
+    <option value="youtube">YouTube</option>
+
+  </select>
+
+</label>
+
+In the example above, you can see that the onChange and value attributes for the select element are similar to other elements. Note that each option element must have a value associated with it, which will be recorded under the select element's name.
+Do this
+Update your form
+
+Add the code above to your form. Then update your initialFormState to include a referral key with a value of an empty string, like this:
+
+const initialFormState = {
+
+  name: "",
+
+  email: "",
+
+  referral: "",
+
+};
+
+Then, try selecting one of the items from the drop-down and submitting the form. Take a look at the console and confirm that your form works as intended.
+Set a value
+
+Try setting the referral key to a specific value so that it is chosen as the first option. For example, you could set the value inside of initialFormState to twitter.
+Radio buttons
+
+Radio buttons are a bit different from select elements, in that there is no grouping for radio buttons in the same way there is for select elements. Instead, radio buttons are grouped by being given the same name. Here's an example:
+
+<fieldset>
+
+  <legend>How old are you?</legend>
+
+  <label htmlFor="low">
+
+    Under 18
+
+    <input
+
+      id="low"
+
+      type="radio"
+
+      name="age"
+
+      onChange={handleChange}
+
+      value="low"
+
+      checked={formData.age === "low"}
+
+    />
+
+  </label>
+
+  <label htmlFor="middle">
+
+    18 - 60
+
+    <input
+
+      id="middle"
+
+      type="radio"
+
+      name="age"
+
+      onChange={handleChange}
+
+      value="middle"
+
+      checked={formData.age === "middle"}
+
+    />
+
+  </label>
+
+</fieldset>
+
+Note: A fieldset element isn't actually required for radio buttons. This is just to help group the elements on your page.
+
+In the example above, the first label and input have an id and value of low. However, the name attribute is set to age. This name attribute is shared with the second input.
+
+The radio button can be set to the appropriate value using the checked attribute. If the value stored inside of the formData matches the name of the input, it will be selected. Otherwise, it won't be selected.
+Do this
+Update your form
+
+Add the code above to your form. Then update your initialFormState to include an age key with a value of an empty string, like this:
+
+const initialFormState = {
+
+  name: "",
+
+  email: "",
+
+  referral: "",
+
+  age: "",
+
+};
+
+Then, try selecting one of the radio buttons and submitting the form. Take a look at the console and confirm that your form works as intended.
+Add a new radio button
+
+Add a new radio button with a name of high for people over the age of 60. Make sure to change the value of checked so that it can be selected by default if needed.
+Checkboxes
+
+Checkboxes are strange in that they don't typically operate based on the value. Instead, they operate based on whether or not they are checked.
+
+<label htmlFor="subscription">
+
+  Receive email notifications?
+
+  <input
+
+    id="subscription"
+
+    type="checkbox"
+
+    name="subscription"
+
+    onChange={handleChange}
+
+    checked={formData.subscription}
+
+    value="subscription"
+
+  />
+
+</label>
+
+This looks similar to how radio buttons work. But if you try clicking the actual checkbox, it will not change and an error will be displayed in the console about an uncontrolled input. This is because the value, no matter what the state of the checkbox is, will always be subscription.
+
+This means that you'll need to update your handleChange() function as follows:
+
+const handleChange = ({ target }) => {
+
+  const value = target.type === "checkbox" ? target.checked : target.value;
+
+  setFormData({
+
+    ...formData,
+
+    [target.name]: value,
+
+  });
+
+};
+
+The code above checks to see whether or not the changed input is a checkbox. If it is, it takes the value from the checked property instead of value. Otherwise, it will take the value of the input.
+
+With the code above, the checkbox will update properly.
+Do this
+Update your form
+
+Add the code above to your form. Update your initialFormState to include a subscription key with a value of true.
+
+const initialFormState = {
+
+  name: "",
+
+  email: "",
+
+  referral: "",
+
+  age: "",
+
+  subscription: true,
+
+};
+
+Then, try selecting and then clearing the checkbox, submitting each time. Take a look at the console and make sure that your form works as intended.
+
 *** 22.9 Assessment: React state management
 ** module 24 react and apis with hooks
+*** 24.1 Overview: React and APIs with hooks
+Overview: React and APIs with hooks
+9 minutesEstimated completion time
+Learning Objective
+
+By the end of this module, you will be able to use the React effect hook. You'll be able to manually change the DOM, fetch data, and update React components.
+Do this
+
+The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll perform various tasks, like setting up a development environment or executing a command. Ultimately, these practice sections will help you successfully complete graded assessments, such as projects, mock interviews, and capstones.
+*** 24.2 The effect hook
+The effect hook
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to fetch and update data from an API and set the document title. To do this, you'll use the effect hook.
+Overview
+
+This lesson introduces the effect hook, useEffect(), which will enable you to perform side effects from React function components.
+Key Terms
+
+Side effect
+    Anything in a function or expression that affects something outside the scope of the function or expression
+
+Imagine that you want to write a component that allows a user to update their profile. There are a few steps that you need to take to accomplish this, and it all starts with an API call. Here are the basic steps:
+
+    When the user clicks Update profile, make an API call to an existing server to return the user's current profile.
+
+    Allow the user to change their profile via an editable form.
+
+    When the user clicks Submit, make another API call to save the updated user profile.
+
+The effect hook, useEffect(), adds the ability to perform side effects from a React function component. A side effect is anything in a React component that affects something outside the scope of the function.
+Understanding side effects
+
+Start by watching the videos below, which provide a brief introduction to this topic. Then, read through the rest of the lesson and complete the practice work required. This will give you a full understanding of these concepts.
+
+Note: Side effect (often simply called effect) isn't a term that's specific to React. It's a general concept about the behavior of a function. For example, a function that modifies a DOM element is introducing a side effect; the DOM element doesn't belong to the scope of the current function. If you aren't using React to update the state or render HTML, that's a side effect. Basically, it's any non-React thing.
+
+Here are some examples of side effects in React function components:
+
+    Making asynchronous API calls for data
+
+    Updating a DOM element
+
+    Updating a variable that isn't a local variable
+
+    Using setInterval() or setTimeout()
+
+Side effects are sometimes unavoidable. Imagine, for example, that you need a component to fetch data for the current user. When you make an API call to get the data for the specified user, you're introducing a side effect to the function.
+Using the effect hook
+
+You can use useEffect() to perform side effects after the state is updated and the component has rendered. You can also specify when it is necessary to rerun the effect.
+
+The useEffect() hook accepts two arguments:
+
+    A function to run the effect
+
+    An optional array of dependencies for the effect function. These values determine when to rerun the effect.
+
+After each rendering—and after updating the DOM—React invokes the function passed to useEffect().
+When is the effect rerun?
+
+The optional second parameter to useEffect()—the array of dependencies for the effect function—controls when the effect reruns. React has three different options for when the effect is rerun, and you'll learn about all three of these options next.
+Run the effect after every render
+
+By default, useEffect() runs after the first render and after every change to props or state.
+
+The following effect sets the document title after every render.
+
+useEffect(() => {
+
+  document.title = `The time is now ${Date.now()}`;
+
+});
+
+So if you omit the optional second parameter to useEffect(), as shown above, React will run the effect after the first render and after every change to props or state.
+Run the effect once
+
+The following effect sets the document title to a value that doesn't use any state variables or props. This effect will run exactly once.
+
+useEffect(() => {
+
+  document.title = `Welcome to Thinkful!`;
+
+}, []); // Pass [] to only apply the effect once
+
+Passing an empty array as the second parameter, as shown above, tells React that the effect doesn't use any value that participates in the React data flow. This way, React knows that it's safe to run only once.
+Run the effect when a value changes
+
+You can also use state values or prop values to determine when to rerun the effect. After rendering finishes, useEffect() will look over the list of dependency values and call your effect function if any one of them has changed.
+
+The following effect sets the document title to a custom message including the number of clicks. This effect will rerun only when the value of count changes. This is one way to increase performance and avoid unnecessary calls.
+
+const [count, setCount] = useState(0);
+
+
+useEffect(() => {
+
+  document.title = `You clicked ${count} times`;
+
+}, [count]); // Only rerun the effect if `count` changes
+
+Tip
+
+If there are multiple items in the array, React will rerun the effect if any one of them changes.
+Fetching data from an API
+
+The video below breaks down the process of fetching data with the effect hook.
+
+In this section, you will create a component to edit a user profile. To do this, you will make an API call to fetch a user profile once, when the component is first rendered.
+
+You will need an existing server to make the API calls. For this, you will use JSONPlaceholder, which is a free online REST API that you can use whenever you need some fake data. Here, you'll use JSONPlaceholder to fetch and save the user profile data. Note that JSONPlaceholder doesn't really save any of your data, so none of the changes that you make will be saved.
+Tip
+
+Use the global fetch() function to make API calls.
+
+function ProfileEdit() {
+
+  const [user, setUser] = useState({});
+
+
+  useEffect(() => {
+
+    async function loadUsers() {
+
+      const response = await fetch(
+
+        "https://jsonplaceholder.typicode.com/users/1"
+
+      );
+
+      const userFromAPI = await response.json();
+
+      setUser(userFromAPI);
+
+    }
+
+    loadUsers();
+
+  }, []); // Passing [] so that it only runs the effect once
+
+
+  if (user.id) {
+
+    // `user.id` is truthy after the API call returns
+
+    return (
+
+      <form name="profileEdit">
+
+        <div>
+
+          <label htmlFor="username">User Name:</label>
+
+          <input
+
+            id="username"
+
+            name="username"
+
+            type="text"
+
+            value={user.username}
+
+          />
+
+        </div>
+
+        <div>
+
+          <label htmlFor="email">Email:</label>
+
+          <input id="email" name="email" type="email" value={user.email} />
+
+        </div>
+
+      </form>
+
+    );
+
+  }
+
+  return "Loading...";
+
+}
+
+When this component first renders, user is an empty object, so user.id is falsy and the component displays Loading.... Eventually, the fetch() call returns and calls setUser() with the user that's returned by the API. The call to setUser() causes the component to re-render—and this time, user.id is truthy, so the user information is displayed.
+The async callback
+
+The useEffect() callback cannot be an async function. Therefore, if you want to use async and await, you need to define and call an async function within the useEffect() callback.
+
+Alternatively, here's a more concise syntax using the Promise interface:
+
+useEffect(() => {
+
+  fetch("https://jsonplaceholder.typicode.com/users/1")
+
+    .then((response) => response.json())
+
+    .then(setUser);
+
+}, []);
+
+You are welcome to use either syntax. But for consistency, all remaining examples will use async and await.
+Do this
+Create the <ProfileEdit> component
+
+The video below provides an overview of using useEffect() with fetch().
+
+Add the above <ProfileEdit> component to a React application and render it on the page. Afterward, add log() statements to determine when the various bits of code run.
+
+Consider adding log() statements in the following locations:
+
+    Before useEffect(): console.log('render', user)
+
+    The first line inside of useEffect(): console.log('useEffect')
+
+    Before setUser(userFromAPI);: console.log('setUser', userFromAPI)
+
+You will see at least four log() statements for render() and only one log() statement for useEffect(). Remember, passing an empty dependency array ([]) to useEffect() tells React that it is safe to run the effect only once.
+Why is useEffect() needed for API calls?
+
+You might be wondering why you can't call fetch() directly rather than wrapping it in useEffect().
+
+Consider what would happen if you didn't use useEffect(). The component would be rendered, triggering a call to fetch(), which would eventually call setUser() and update the state. Every call to update the state would trigger a re-render. The re-render would trigger another call to fetch(), and so on. The code would then be stuck in an infinite re-rendering loop. The same thing will happen if you omit the empty array as the second parameter.
+Saving data to an API
+
+The video below provides an overview of saving data with the effect hook.
+
+Now, you will add the change and submit handlers to allow the user to make changes and submit the updated profile.
+
+First, add the change handler to the input elements. In this case, you will use a naming convention to allow you to use the same change handler for each input. For this to work, the name of the input must be exactly the same as the property on the user object.
+
+const changeHandler = event => {
+
+  setUser({ ...user, [event.target.name]: event.target.value })
+
+}
+
+
+<input
+
+  id="username"
+
+  name="username"
+
+  type="text"
+
+  required={true}
+
+  value={user.username}
+
+  onChange={changeHandler}
+
+/>
+
+
+...
+
+
+<input
+
+  id="email"
+
+  name="email"
+
+  type="email"
+
+  required={true}
+
+  value={user.email}
+
+  onChange={changeHandler}
+
+/>
+
+By making sure that the name of the input is exactly the same as the corresponding property on the user object, you can use the same change handler on each input.
+Tip
+
+In other scenarios, you might need to use more than one change handler. For example, if you want to set a value with a number input, you might need to cast the value to a number in your changeHandler() function.
+Do this
+Debug changeHandler
+
+Add the above code to your <ProfileEdit> component. Make sure that you are able to type new values into both of the input boxes.
+
+Afterward, change name="username" to name="wrongusername". Now, you can no longer type in the username input box.
+
+Why does this happen? The changes are applied to the wrongusername property of the user, and not the username property. So when you type, the value of the input does not change.
+
+Next, add the submit handler, which gets called when the form is submitted. The form will submit the modified user information back to the server. Use the following code:
+
+const submitHandler = async (event) => {
+
+  event.preventDefault();
+
+  const response = await fetch(
+
+    `https://jsonplaceholder.typicode.com/users/${user.id}`,
+
+    {
+
+      method: "PUT",
+
+      body: JSON.stringify(user),
+
+    }
+
+  );
+
+  const savedData = await response.json();
+
+  console.log("Saved user!", savedData);
+
+};
+
+To save data using fetch(), add a second parameter to tell fetch() to use the PUT method and send the current user data as a string in the body of the request.
+Multiple useEffect() calls to separate concerns
+
+The video below provides an overview on using useEffect() with multiple side effects.
+
+React allows multiple useEffect() calls inside a component. This allows the effect code to be broken down into multiple functions containing logically related code.
+
+Now, you will extend the <ProfileEdit> component to set the document title to include the user's name whenever the user changes. With this new functionality, there are multiple side effects that need to run after the component is rendered. In one, you get the current user. In the other, you set the document title. Both of these tasks are logically independent, so they should be separated into multiple useEffect() functions so that they follow the single responsibility principle.
+
+Here's the code to set the document title:
+
+useEffect(() => {
+
+  if (user.username) {
+
+    document.title = `${user.username} : Edit Profile`;
+
+  } else {
+
+    document.title = "Edit Profile";
+
+  }
+
+}, [user]); // Rerun this effect when the user changes
+
+When the component first renders, the fetch() call hasn't returned yet, so you don't yet know the user's name. After fetch() returns, React notices that the user reference has changed. It reruns the effect, which will then include the username in the title.
+
+Tip: Don't call hooks inside loops, conditions, or nested functions. Instead, always use hooks at the top level of your React function. By following this rule, you can ensure that hooks are called in the same order each time that a component renders. That's what allows React to correctly preserve the state of hooks between multiple useState() and useEffect() calls.
+
+The following is the complete <ProfileEdit> component at this point.
+
+function ProfileEdit() {
+
+  const [user, setUser] = useState({});
+
+
+  console.log("render", user);
+
+  useEffect(() => {
+
+    console.log("useEffect");
+
+    async function loadUsers() {
+
+      const response = await fetch(
+
+        "https://jsonplaceholder.typicode.com/users/1"
+
+      );
+
+      const userFromAPI = await response.json();
+
+      console.log("setUser", userFromAPI);
+
+      setUser(userFromAPI);
+
+    }
+
+    loadUsers();
+
+  }, []); // Passing [] so that it only runs the effect once
+
+
+  useEffect(() => {
+
+    if (user.username) {
+
+      document.title = `${user.username} : Edit Profile`;
+
+    } else {
+
+      document.title = "Edit Profile";
+
+    }
+
+  }, [user]); // Rerun this effect when the user changes
+
+
+  const changeHandler = (event) => {
+
+    setUser({ ...user, [event.target.name]: event.target.value });
+
+  };
+
+
+  const submitHandler = async (event) => {
+
+    event.preventDefault();
+
+    const response = await fetch(
+
+      `https://jsonplaceholder.typicode.com/users/${user.id}`,
+
+      {
+
+        method: "PUT",
+
+        body: JSON.stringify(user),
+
+      }
+
+    );
+
+    const savedData = await response.json();
+
+    console.log("Saved user!", savedData);
+
+  };
+
+
+  if (user.id) {
+
+    return (
+
+      <form name="profileEdit" onSubmit={submitHandler}>
+
+        <div>
+
+          <label htmlFor="username">User Name:</label>
+
+          <input
+
+            id="username"
+
+            name="username"
+
+            type="text"
+
+            required={true}
+
+            value={user.username}
+
+            onChange={changeHandler}
+
+          />
+
+        </div>
+
+        <div>
+
+          <label htmlFor="email">Email:</label>
+
+          <input
+
+            id="email"
+
+            name="email"
+
+            type="email"
+
+            required={true}
+
+            value={user.email}
+
+            onChange={changeHandler}
+
+          />
+
+        </div>
+
+        <button type="submit">Save</button>
+
+      </form>
+
+    );
+
+  }
+
+  return "Loading...";
+
+}
+*** 24.3 Effect hook with cleanup
+Effect hook with cleanup
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to return a cleanup function from the useEffect() hook to cancel pending API calls.
+Overview
+
+In this lesson, you'll continue building on your skills with useEffect(). You'll learn how to return a cleanup function from the effect hook, which will enable you to undo previously applied effects.
+
+Imagine that you want to write a component that allows an admin user to update the user profile of any user on the system. To do so, you will need to pass the user's ID to the component, so that the component can do the following:
+
+    Make an API call to get that user's profile.
+
+    Allow the admin user to edit the profile.
+
+    Upon form submission, make another API call to save the updated profile.
+
+However, take a look at the image below. Did you notice that the user ID in the parent component isn't the same as the API user ID? In this lesson, you'll explore what makes this happen and how you can fix it.
+User ID in the parent component is not the same as the API user ID
+Avoiding race conditions
+
+The fetch() call is asynchronous, so anything can happen between when the API call starts and ends. This can introduce race conditions; for example, you could get new props. If the code in the effect is calling an API and depends on props, you have a race condition.
+
+To understand how this happens, look at the App.js and ProfileEdit.js files below:
+
+In App.js:
+
+import React, { useState } from "react";
+
+import "../src/App.css";
+
+import ProfileEdit from "./ProfileEdit";
+
+
+function App() {
+
+  const [userId, setUserID] = useState(1);
+
+
+  const userIds = [1, 2, 3, 4];
+
+
+  return (
+
+    <div className="App">
+
+      {userIds.map((id) => (
+
+        <button key={id} onClick={() => setUserID(id)}>
+
+          User ID {id}
+
+        </button>
+
+      ))}
+
+      <h2>User ID {userId}</h2>
+
+      <ProfileEdit userID={userId} />
+
+    </div>
+
+  );
+
+}
+
+
+export default App;
+
+In ProfileEdit.js:
+
+import React, { useEffect, useState } from "react";
+
+
+function ProfileEdit({ userID }) {  // Added `userID` as a prop
+
+  const [user, setUser] = useState({});
+
+
+  useEffect(() => {
+
+    async function loadUser() {
+
+      const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userID}`);
+
+      const userFromAPI = await response.json();
+
+      setUser(userFromAPI);
+
+    }
+
+
+    loadUser();
+
+  }, [userID]);  // <-- Added dependency on `userID`
+
+
+  ... // Omitted for brevity
+
+}
+
+
+
+export default ProfileEdit;
+
+Note that the userID is passed in as a prop to ProfileEdit, and ProfileEdit.useEffect() has a dependency on userID because it is used in the API URL.
+
+To make the effect more noticeable, you can simulate a slower network connection in your browser. Chrome Developer Tools makes it easy to throttle your internet bandwidth. To do so, first open up DevTools, then navigate to the Network tab, and select the Slow 3G option from the menu, as follows:
+Slow 3G option
+
+Note: If you aren't using the Chrome browser, then you will have to research how to throttle the internet bandwidth for the browser of your choice.
+
+How can you fix this so that the selected user and the user displayed for edit are always in sync?
+
+You might consider calling setUser({ }) at the beginning of useEffect(). When you do that, "Loading..." will be displayed until the new user is returned from the API. Then, add setUser({ }); at the beginning of useEffect(). Your code will look like this:
+
+useEffect(() => {
+
+  setUser({});
+
+  async function loadUser() {
+
+    const response = await fetch(
+
+      `https://jsonplaceholder.typicode.com/users/${userID}`
+
+    );
+
+    const userFromAPI = await response.json();
+
+    setUser(userFromAPI);
+
+  }
+
+
+  loadUser();
+
+}, [userID]); // <-- Added dependency on userID
+
+This is better, but it doesn't completely solve the problem. Take a look at the animation below—there are still times when the user ID and the API user ID are out of sync.
+User IDs out of sync
+
+This is because an earlier call to fetch() completed after a new user ID was passed to the component. Wouldn't it be nice if you could signal to fetch() that it should cancel the current API call when the user ID changes?
+
+You can do that by returning a cleanup function from useEffect(). The cleanup function can do anything necessary to clean up after previously applied effects. Essentially, its purpose is to undo an effect for cases like subscriptions or pending API responses.
+
+Now, walk through what happens when the user ID prop changes from 1 to 2.
+
+React only runs the effects after letting the browser paint. This makes your app faster, because most effects don't need to block screen updates. Effect cleanup is also delayed. The previous effect is cleaned up after the re-render with new props. The following is the sequence of events in React when the user ID prop changes from 1 to 2:
+
+    React renders a new UI for {userId: 2}.
+
+    The browser paints, and you see the UI for {userId: 2} on the screen.
+
+    React cleans up the effect for {userId: 1}.
+
+    React runs the effect for {userId: 2}.
+
+You might be wondering what happens if you need the props or state from the first render to do the cleanup. How can the cleanup of the previous effect still "see" the old {userId: 1} props if it runs after the props change to {userId: 2}? Well, you can use a JavaScript closure to capture the props and state of the render call that defined it. Specifically, define the cleanup function as an arrow function and use the necessary props or state in the cleanup function.
+
+Now, look at what useEffect() looks like when it returns a cleanup function that cancels the pending API call:
+
+useEffect(() => {
+
+  setUser({});
+
+  const abortController = new AbortController(); // Create a new `AbortController`
+
+
+  async function loadUser() {
+
+    try {
+
+      const response = await fetch(
+
+        `https://jsonplaceholder.typicode.com/users/${userID}`,
+
+        { signal: abortController.signal } // Pass the `AbortController` signal to `fetch()`
+
+      );
+
+      const userFromAPI = await response.json();
+
+      setUser(userFromAPI);
+
+    } catch (error) {
+
+      if (error.name === "AbortError") {
+
+        // Ignore `AbortError`
+
+        console.log("Aborted", userID);
+
+      } else {
+
+        throw error;
+
+      }
+
+    }
+
+  }
+
+
+  loadUser();
+
+
+  return () => {
+
+    console.log("cleanup", userID);
+
+    abortController.abort(); // Cancels any pending request or response
+
+  };
+
+}, [userID]);
+
+First, you need a new instance of AbortController, which is a special built-in object. The AbortController object can be used to abort not only fetch(), but other asynchronous tasks as well.
+
+Using AbortController with fetch() and useEffect() requires four steps:
+
+    Create a new instance of AbortController:
+
+const abortController = new AbortController();
+
+Pass the signal property to fetch():
+
+fetch(url, { signal: abortController.signal });
+
+catch() the AbortError that is thrown when fetch() is aborted:
+
+ try {
+
+ ....
+
+ } catch (error) {
+
+   if (error.name === "AbortError") {
+
+     // Ignore `AbortError`
+
+     console.log("Aborted", userID);
+
+   } else {
+
+     throw error;
+
+   }
+
+ }
+
+})
+
+Return a cleanup function from useEffect():
+
+    return () => abortController.abort();
+
+Once these changes are made, the ProfileEdit component displays only the current user. Note that additional logging was added here to show the order of effect and cleanup.
+API cleanup
+Do this
+Create the profile editor application
+
+Add the following starter code to a React application and render it on the page.
+
+In App.js:
+
+import React, { useState } from "react";
+
+import "../src/App.css";
+
+import ProfileEdit from "./ProfileEdit";
+
+
+function App() {
+
+  const [userId, setUserID] = useState(1);
+
+
+  const userIds = [1, 2, 3, 4];
+
+
+  return (
+
+    <div className="App">
+
+      {userIds.map((id) => (
+
+        <button key={id} onClick={() => setUserID(id)}>
+
+          User ID {id}
+
+        </button>
+
+      ))}
+
+      <h2>User ID {userId}</h2>
+
+      <ProfileEdit userID={userId} />
+
+    </div>
+
+  );
+
+}
+
+
+export default App;
+
+In ProfileEdit.js:
+
+import React, { useEffect, useState } from "react";
+
+
+function ProfileEdit({ userID }) {
+
+  const [user, setUser] = useState({});
+
+
+  useEffect(() => {
+
+    async function loadUser() {
+
+      const response = await fetch(
+
+        `https://jsonplaceholder.typicode.com/users/${userID}`
+
+      );
+
+      const userFromAPI = await response.json();
+
+      setUser(userFromAPI);
+
+    }
+
+
+    loadUser();
+
+  }, [userID]); // <-- Added dependency on `userID`
+
+
+  useEffect(() => {
+
+    if (user.username) {
+
+      document.title = `${user.username} : Edit Profile`;
+
+    } else {
+
+      document.title = "Edit Profile";
+
+    }
+
+  }, [user]); // Rerun this effect when the user changes
+
+
+  const changeHandler = (event) => {
+
+    setUser({ ...user, [event.target.name]: event.target.value });
+
+  };
+
+
+  const submitHandler = async (event) => {
+
+    event.preventDefault();
+
+    const response = await fetch(
+
+      `https://jsonplaceholder.typicode.com/users/${userID}`,
+
+      {
+
+        method: "PUT",
+
+        body: JSON.stringify(user),
+
+      }
+
+    );
+
+    const savedData = await response.json();
+
+    console.log("Saved user!", savedData);
+
+  };
+
+
+  if (user.id) {
+
+    return (
+
+      <form name="profileEdit" onSubmit={submitHandler}>
+
+        <fieldset>
+
+          <legend>API User ID: {user.id}</legend>
+
+          <div>
+
+            <label htmlFor="username">User Name:</label>
+
+            <input
+
+              id="username"
+
+              name="username"
+
+              type="text"
+
+              required={true}
+
+              value={user.username}
+
+              onChange={changeHandler}
+
+            />
+
+          </div>
+
+          <div>
+
+            <label htmlFor="email">Email:</label>
+
+            <input
+
+              id="email"
+
+              name="email"
+
+              type="email"
+
+              required={true}
+
+              value={user.email}
+
+              onChange={changeHandler}
+
+            />
+
+          </div>
+
+          <button type="submit">Save</button>
+
+        </fieldset>
+
+      </form>
+
+    );
+
+  }
+
+  return "Loading...";
+
+}
+
+
+export default ProfileEdit;
+
+Afterward, modify the ProfileEdit.useEffect() function to return a cleanup function that cancels the fetch() call as you quickly click various user ID buttons.
+
+Notice that the ProfileEdit component first renders with {userId: 1}. As you quickly click through the user ID buttons, the ProfileEdit component doesn't re-render—it continues to display {userId: 1}. Once you stop clicking the user ID buttons, it will re-render only when the fetch() call returns. Why does this happen? It's because the user state of the ProfileEdit component doesn't change until the fetch() call returns. Every time that you click a user ID button, the pending fetch() call is canceled.
+
+Finally, add setUser( {} ); as the first line of ProfileEdit.useEffect().
+
+When done, ProfileEdit.useEffect() will look something like the following:
+
+useEffect(() => {
+
+  setUser({});
+
+  const abortController = new AbortController();
+
+
+  async function loadUser() {
+
+    try {
+
+      const response = await fetch(
+
+        `https://jsonplaceholder.typicode.com/users/${userID}`,
+
+        { signal: abortController.signal }
+
+      );
+
+      const userFromAPI = await response.json();
+
+      setUser(userFromAPI);
+
+    } catch (error) {
+
+      if (error.name === "AbortError") {
+
+        // Ignore `AbortError`
+
+        console.log("Aborted", userID);
+
+      } else {
+
+        throw error;
+
+      }
+
+    }
+
+  }
+
+
+  loadUser();
+
+
+  return () => abortController.abort();
+
+}, [userID]);
+
+Now, the user ID and API user ID are always in sync, and "Loading..." is displayed during any pending fetch() calls.
+*** 24.4 Assessment: React and APIs with hooks
 ** module 25 react router
+*** 25.1 Overview: React Router
+Overview: React Router
+9 minutesEstimated completion time
+Overview
+
+In this module, you'll learn how to use React Router, which is the de facto library for linking a URL and React application together. You'll also learn the difference between backend (traditional) routing and frontend (React) routing.
+Key Terms
+
+Backend routing
+    Routing in which every page sends a request to the server for an HTML file, and every page requires the browser to download, parse, and render a new HTML file
+Frontend routing
+    Routing that is handled from the browser, and the browser only sends a request to the server when necessary
+Routing
+    The process of keeping the browser URL in sync with what's displayed on the page
+
+So far, you haven't had to think about updating the URL in the browser when different components are displayed on the screen. Everything has been displayed on the same URL. And as a result, there hasn't been a way to use the browser's built-in Back button to go back to previous views, or the Forward button to go forward again after having gone back.
+
+But with modern React applications, visitors expect to be able to use the browser's Back and Forward buttons. They also expect to be able to bookmark a page so that they can come back to it later. And they expect to be able to copy the URL to share the same page content with a friend. If the URL in the browser doesn't change when the content changes, none of these things will work.
+
+In this module, you'll learn how to use the React Router library to link URLs and React applications together. You'll also learn how traditional backend routing and React frontend routing differ. You will likely learn some new things about how the URL is used to display content, retrieve information from APIs, and even display multiple components on the page simultaneously. From the visitor's perspective, all of this is done seamlessly, but there's a lot that you need to take care of behind the scenes to make this possible. Learning new things can be challenging, so reach out for help if you're feeling stuck or frustrated.
+What's routing?
+
+Routing is the process of keeping the browser URL in sync with what's displayed on the page. Routing is key to all websites, and it comes into play whenever you use a URL in your application. URL links using the <a> tag are the standard way of navigating the web.
+
+A traditional website uses backend routing, where every page—or route—sends a request to the server for an HTML file. Every page requires the browser to download a new HTML file from the server, parse it, download any new scripts or images, and then render it on the screen. Generally speaking, traditional websites need more computing power and internet bandwidth because more data is being downloaded. With backend routing, the server handles almost everything that the visitor does.
+
+In contrast, frontend routing happens in the browser. In a single-page application (SPA), like those built with React, there is no request to the server for every page that you visit. The frontend router tells the application to redraw part of the page, without telling the server. This results in a page that is faster and that feels more like a native application. Generally speaking, frontend routing is a better user experience. With frontend routing, the browser only sends a request to the server when necessary.
+
+Despite these differences, you might not be able to distinguish them at first.
+Do this
+
+The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll perform various tasks, like setting up a development environment or executing a command. Ultimately, these practice sections will help you successfully complete graded assessments, such as projects, mock interviews, and capstones.
+*** 25.2 Using Router, Switch, Route, and Link
+*** 25.3 Organizing React code
+*** 25.4 Route parameters
+*** 25.5 Modifying the history
+*** 25.6 Nested routes
+*** 25.7 Assessment: React Router
+
 ** module 26 frontend deployment
+*** 26.1 Overview: Frontend deployment
+*** 26.2 What is frontend deployment?
+*** 26.3 Building for production
+*** 26.4 Vercel
+*** 26.5 Automate with npm
+*** 26.6 Heroku
+*** 26.7 Assessment: Frontend deployment
+
 ** module 29 careers: personal branding
+*** 29.1 Understanding personal branding
+*** 29.2 Building a resume
+*** 29.3 Resume project
+*** 29.4 Building a LinkedIn profile
+*** 29.5 LinkedIn project
+*** 29.6 Building your GitHub profile
+
 * Backend Development - Modules 30-40
 ** Node and Express - Module 30
 ** Robust Server Structure - Module 31
