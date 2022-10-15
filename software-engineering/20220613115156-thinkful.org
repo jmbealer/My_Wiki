@@ -5075,12 +5075,1528 @@ TRUNCATE TABLE articles, employees;
 
 ** Creating Relations - Module 34
 *** 34.1 Overview: Creating relations
-*** 34.2 Database relationships
-*** 34.3 Relating tables through keys
-*** 34.4 Joining tables
-*** 34.5 Other joins
-*** 34.6 Assessment: Creating relations
+Overview: Creating relations
+9 minutesEstimated completion time
+Overview
+In this module, you will learn about common data relationships that you are likely to encounter in your daily work as a developer, including one-to-one, one-to-many, and many-to-many relationships. You'll learn how to create tables based on these types of relationships, and you will learn how to visually represent these relationships using special database diagrams called Entity Relationship Diagrams.
 
+When you're working as a developer, you will often need to write code that is designed to create, read, update, or delete (CRUD) data. For example, if a user registers on a website, the information that they enter will need to be stored in one or more databases. As data storage increases, more and more databases will need to be created and linked. This module is titled Creating relations because it is all about how to find and use relationships between two or more databases so that data can be manipulated and displayed in the ways that customers and businesses need.
+
+In this module, you will write cross-table queries to find answers to several key administrative and operational questions for your imaginary bookstore business, Thinkful Books.
+
+Do this
+The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll perform various tasks, like setting up a development environment or executing a command. Ultimately, these practice sections will help you successfully complete graded assessments, such as projects, mock interviews, and capstones.
+
+*** 34.2 Database relationships
+Database relationships
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to describe one-to-one, one-to-many, and many-to-many relationships. You'll also be able to use Entity Relationship Diagrams to visualize how tables relate to each other.
+
+Overview
+In this lesson, you'll explore data relationships. You'll learn about one-to-one, one-to-many, and many-to-many relationships, and you'll brainstorm the data relationships that are needed for your Thinkful Books database design.
+
+Key Terms
+One-to-one relationship
+A relationship where a single record in one table is related to a single record in another table, and neither column has duplicate records
+One-to-many relationship
+A relationship where a single record in one table is related to multiple records in another table
+Many-to-many relationship
+A relationship where multiple records in one table are related to multiple records in another table
+Entity Relationship Diagram
+ERD, a diagram that lets database designers visualize the tables and the relationships between the tables in a database
+In previous lessons, you wrote queries that queried data within a single table. However, one of the key advantages of a relational database is its ability to execute complex queries that link or relate data located in more than one table.
+
+Linking your data allows you to derive rich insights from your data. An e-commerce store owner, for example, can inform a sales campaign by leveraging database relationships to retrieve all of the products sold to customers over a certain time period. They could then use this information to recommend related products to the customers.
+
+Determining the appropriate relationships for your data requires an understanding of their business rules and applications. That said, you are likely to encounter three types of data relationships: one-to-one, one-to-many, and many-to-many.
+
+Currently, all of the business records at Thinkful Books are recorded in a physical notebook. As the business has grown, however, this manual approach has become less feasible. So in this module, you'll migrate your data to PostgreSQL. In this lesson, you will brainstorm the data relationships that are needed for your database design.
+
+One-to-one relationships
+A one-to-one relationship is a relationship where each row in a table is connected to a single record in another table, and vice versa. Either table can be the primary table.
+
+Examples of one-to-one relationships include the following:
+
+A driver generally owns one license, and that license belongs to that driver only.
+
+A student has only one student ID, and that ID is assigned to that student only.
+
+Each person has only one social security number, and each social security number is linked to one person only.
+
+A person generally has one name, and that name belongs to one person only.
+
+At Thinkful Books, it is important to know who is managing what department. You currently maintain separate records for your employees and departments. Each manager manages exactly one department, and each department is only managed by one employee at any one time. That makes the "manages" relationship between employee and department a one-to-one relationship.
+
+Because you were already maintaining separate records for your employees and departments, you decide to set up separate employees and departments tables for your database.
+
+Because each department should have a manager, and each employee is not necessarily a manager, it makes sense to have a column in the departments table that contains the manager of that department. This column should include a foreign key that references the primary key (employee_id) of the employees table. Additionally, this employee_id foreign key needs to be unique for a given department, because each department can only be managed by a single employee.
+
+In the tables below, an employee's record in the employees table relates only to a single record in the departments table, and vice versa, via a foreign key.
+
+The employees table design
+The employees table will have the following columns:
+
+Column name
+Description
+Data type
+Max length?
+Allow null?
+Primary key
+Unique?
+employee_id
+Primary key for the table
+integer
+N/A
+Yes
+Yes
+first_name
+Employee's first name
+varchar
+100
+No
+last_name
+Employee's last name
+varchar
+100
+No
+phone
+Employee's phone number
+varchar
+100
+Yes
+title
+Employee's job title
+varchar
+100
+Yes
+salary
+Employee's salary
+numeric
+Yes
+hire_date
+Employee's date of hire
+date
+Yes
+Sample employees table
+employee_id
+first_name
+last_name
+phone
+title
+salary
+hire_date
+1
+Jane
+Doe
+5551234
+CEO
+80000
+1999-12-07
+2
+Wright
+Palmer
+5554321
+Manager
+60000
+2001-01-06
+3
+Jim
+Doe
+5555678
+Accountant
+50000
+2015-11-06
+The departments table design
+The departments table will have the following columns:
+
+Column
+Description
+Data type
+Max length?
+Allow null?
+Primary key
+Unique?
+department_id
+Primary key for the table
+integer
+N/A
+Yes
+Yes
+department_name
+Name of the department
+varchar
+100
+No
+manager
+Foreign key from the employees table
+integer
+Yes
+Yes
+Sample departments table
+department_id
+department_name
+manager
+1
+Administration
+2
+2
+Merchandising
+7
+3
+Customer Service
+8
+4
+Marketing
+9
+One-to-many relationships
+A one-to-many relationship is a relationship where each record in a table can relate to zero, one, or many records in another table. The table on the "one" side of the relationship is the primary table, whereas the table on the "many" side is the related table.
+
+Examples of one-to-many relationships include the following:
+
+A state can have many cities, and many cities can belong to the same state.
+
+A city can have many zip codes, and many zip codes can belong to the same city.
+
+An artist can have many songs, and many songs belong to the same artist.
+
+How many orders can a customer have at Thinkful Books? And how many customers can belong to an order? If the answer is that an order may only belong to one customer and that a customer may have many orders, then you are talking about a one-to-many relationship. You decide to keep track of your customers' orders in two separate tables in your database: customers and orders.
+
+For a given customer, the customer could potentially have no related records in orders. Or, there might be one record or many records. Additionally, those records can only be linked to a single customer. Your customers table is the primary table in this case, because it is on the "one" side of the relationship.
+
+To implement a one-to-many relationship, create a foreign key column on the "many" side of the relationship to the primary key column on the "one" side of the relationship. So you create a foreign key column in the orders table that references the primary key of the customers table.
+
+The customers table design
+The customers table will have the following columns:
+
+Column
+Description
+Data type
+Max length?
+Allow null?
+Primary key
+customer_id
+Primary key for the table
+integer
+N/A
+Yes
+first_name
+Customer's first name
+varchar
+100
+No
+last_name
+Customer's last name
+varchar
+100
+No
+phone
+Customer's phone number
+varchar
+100
+Yes
+email
+Customer's email
+varchar
+100
+Yes
+street
+Customer's street address
+varchar
+255
+Yes
+city
+Customer's current city
+varchar
+100
+Yes
+zip_code
+Customer's zip code
+varchar
+5
+Yes
+Sample customers table
+customer_id
+first_name
+last_name
+phone
+email
+1
+Kacie
+Mckee
+5555234
+kacie.mckee@gmail.com
+2
+Moses
+Mcghee
+5554651
+moses.mcghee@gmail.com
+3
+Jerome
+Aguilar
+5555699
+jerome.aguilar@yahoo.com
+The orders table design
+The orders table will have the following columns:
+
+Column
+Description
+Data type
+Max length?
+Allow null?
+Primary key
+order_id
+Primary key for the table
+integer
+N/A
+Yes
+order_status
+1 = Pending; 2 = Processing; 3 = Rejected; 4 = Completed
+integer
+Yes
+order_date
+The date the order was placed
+date
+No
+shipped_date
+The date the order was shipped
+date
+Yes
+customer_id
+Foreign key from the customers table
+integer
+Yes
+Sample orders table
+order_id
+order_status
+order_date
+shipped_date
+customer_id
+1
+1
+2020-03-04
+1
+2
+2
+2020-03-14
+2
+3
+4
+2020-04-02
+2020-04-05
+1
+4
+4
+2020-04-05
+2020-04-14
+3
+Many-to-many relationships
+A many-to-many relationship is a relationship where multiple records in a table are related to multiple records in another table.
+
+Examples of many-to-many relationships include the following:
+
+A doctor can have many patients, and a patient can see many doctors.
+
+A customer can purchase many products, and each product can be purchased by many customers.
+
+A book may have one or more authors, and an author may have written multiple books.
+
+Employees at Thinkful Books may simultaneously be assigned to different projects at the bookstore. Each project can involve more than one employee, and each employee can be working on more than one project. This scenario constitutes a many-to-many relationship. You decide to keep track of your projects in a projects table with the following columns:
+
+Column
+Description
+Data type
+Max length?
+Allow null?
+Primary key
+project_id
+Primary key for the table
+integer
+N/A
+Yes
+project_name
+The project's name
+varchar
+255
+No
+budget
+The project's budget
+numeric
+Yes
+start_date
+The project's start date
+date
+Yes
+end_date
+The project's actual end date, if applicable
+date
+Yes
+To create a many-to-many relationship, you need to create an intermediate table, called a join table. A join table contains two foreign key columns to store the relationships between the two tables.
+
+Specifically, you need to create a join table to track the many-to-many relationships in the employees and projects tables. The join table will also track any columns that describe the relationship of the employee to the project, such as the project assignment start and end dates.
+
+The employees_projects table design
+The join table, employees_projects, will have the following columns:
+
+Column
+Description
+Data type
+Allow null?
+employee_id
+Foreign key from the employees table
+integer
+Yes
+project_id
+Foreign key from the projects table
+integer
+Yes
+start_date
+Project assignment start date
+date
+Yes
+end_date
+Project assignment end date
+date
+Yes
+Sample employees_projects table
+employee_id
+project_id
+start_date
+end_date
+7
+1
+2020-03-04
+2020-06-01
+6
+2
+2020-11-20
+2020-12-25
+7
+3
+2020-04-06
+2020-04-12
+4
+4
+2020-02-11
+2020-02-15
+Entity Relationship Diagrams
+Database designers typically use a diagram called an Entity Relationship Diagram (ERD) when they are creating a new database. An ERD is a diagram that allows database designers to visualize the tables and the relationships between the tables in a database. ERDs are fairly common because they provide an easy way to communicate to others about a database model that's being built.
+
+An ERD for the tables described above may look like this:
+
+An example ERD that allows database designers to visualize the tables and their relationships in a database.
+The ERD above consists of the following components:
+
+Each rectangle represents a table in the database.
+
+The columns (or attributes) of the tables are listed, and a note may be made of any primary keys and foreign keys in the table.
+
+Relationships are depicted by the lines joining the tables. There are two kinds of arrows, which are used to depict different kinds of relationships.
+
+The following arrow represents the "one" side of the relationship:
+
+Arrow representing the "one" side of the relationship.
+The following arrow represents the "many" side of the relationship:
+
+Arrow representing the "many" side of the relationship.
+Bolded keys represent the primary keys in a table
+
+Italicized keys represent the foreign keys in a table
+
+Here are a few tools that you can use to create ERDs:
+
+Lucidchart
+
+Gliffy
+
+Creately
+
+This lesson illustrates the most common decisions that you may face when designing databases. Of course, many more complicated scenarios can arise, leading to fairly complex designs, but they would most likely be similar to the decision-making processes illustrated in this lesson.
+
+In the next lesson, you will write queries to create the tables and data relationships described in this lesson.
+*** 34.3 Relating tables through keys
+Relating tables through keys
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to create complex associations between tables using primary and foreign keys.
+
+Overview
+In the previous lesson, you learned about the different kinds of relationships that can exist in your data, including one-to-one, one-to-many, and many-to-many relationships. You also learned how to choose the appropriate relationships for your data. You might be wondering about the syntax involved in creating these data relationships and how you could translate an ERD into actual SQL tables.
+
+Key Terms
+Composite key
+A primary key created from combining multiple columns to guarantee the uniqueness of a record
+Create relationships with SQL
+Here is the ERD that you saw in the previous lesson:
+
+An example ERD that allows database designers to visualize the tables and their relationships in a database.
+You will translate the model depicted in the ERD above into SQL.
+
+Before creating each table, it's best to delete it first, just in case the table already exists in your database.
+
+Do this
+Set up a database for Thinkful Books using ElephantSQL
+Refer to the instructions in the previous module to set up a new instance called thinkful_books on ElephantSQL. Connect to your instance from DBeaver, and rename your database connection to thinkful_books for easy reference.
+
+Execute the scripts in this lesson with DBeaver.
+
+One-to-one relationship between the employees and departments tables
+Recall that one employee can manage one department at most. Here, you will create a one-to-one relationship between the employee and the department records.
+
+Do this
+Create the employees table
+Execute the following script to create the employees table:
+
+DROP TABLE if exists employees;
+
+CREATE TABLE employees
+(
+  employee_id INTEGER PRIMARY KEY generated by default AS identity,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  phone VARCHAR(100),
+  title VARCHAR(100),
+  salary NUMERIC,
+  hire_date DATE
+);
+Do this
+Create the departments table
+Next, you can create the departments table. You will need to add a foreign key column in the departments table that references the employees table. The basic syntax is as follows:
+
+<column name> <data type> REFERENCES <foreign table name>(<foreign column>)
+Execute the following script to create the departments table:
+
+DROP TABLE if exists departments;
+
+CREATE TABLE departments
+(
+  department_id INTEGER PRIMARY KEY generated by default AS identity,
+  department_name VARCHAR(100) NOT NULL,
+  manager INTEGER REFERENCES employees(employee_id) unique -- Foreign key
+);
+The manager column stores the foreign keys from the employees table. Setting it to unique ensures that each department is linked to only one manager, thereby enforcing a one-to-one relationship.
+
+One-to-many relationship between the customers and orders tables
+Recall that a customer can have multiple orders, and the orders can only belong to a single customer. Here, you will create a one-to-many relationship between the customer (the "one" side of the relationship) and the order records (the "many" side of the relationship).
+
+Do this
+Create the customers table
+Execute the following script to create the customers table:
+
+DROP TABLE if exists customers;
+
+CREATE TABLE customers
+(
+  customer_id INTEGER PRIMARY KEY generated by default AS identity,
+  first_name VARCHAR(100) NOT NULL,
+  last_name VARCHAR(100) NOT NULL,
+  phone VARCHAR(100),
+  email VARCHAR(100),
+  street VARCHAR(255),
+  city VARCHAR(100),
+  zip_code VARCHAR(5)
+);
+Do this
+Create the orders table
+To create a one-to-many relationship between the customers and orders tables, you would have to create a foreign key reference in the orders table to the customers table. Execute the following script to create the orders table:
+
+DROP TABLE if exists orders;
+
+CREATE TABLE orders
+(
+  order_id INTEGER PRIMARY KEY generated by default AS identity,
+	order_status INTEGER NOT NULL,
+  order_date DATE NOT NULL,
+	shipped_date DATE,
+  customer_id INTEGER REFERENCES customers(customer_id) NOT NULL -- Foreign key
+);
+In the query above, you call the foreign key column customer_id and have it reference the primary key column of the customers table (which is customer_id).
+
+Many-to-many relationship between the employees and projects tables
+Thinkful Books employees can work on multiple projects at the same time, and each project may involve several employees. Here, you will create many-to-many relationships between the employee and project records.
+
+Do this
+Create the projects table
+Execute the following script to create the projects table:
+
+DROP TABLE if exists projects;
+
+CREATE TABLE projects
+(
+  project_id INTEGER PRIMARY KEY generated by default AS identity,
+  project_name VARCHAR(255) NOT NULL,
+  budget NUMERIC DEFAULT 0,
+  start_date DATE,
+  end_date DATE
+);
+Do this
+Create the employees_projects join table
+Next, create a join table to store the relationships between the employee and project records. Execute the following script to create the employees_projects join table:
+
+DROP TABLE if exists employees_projects;
+
+CREATE TABLE employees_projects
+(
+  employee_id INTEGER REFERENCES employees(employee_id),
+  project_id INTEGER REFERENCES projects(project_id),
+  start_date DATE,
+  end_date DATE,
+  PRIMARY KEY (employee_id, project_id) -- Composite key
+);
+Each row in the employees_projects table links an employee to a project through two foreign key columns that reference primary keys from the employees and projects tables.
+
+Additionally, combining the employee_id and project_id columns makes it possible to create a composite key. A composite key is a primary key created from combining multiple columns to guarantee the uniqueness of a record. Composite keys are useful when records in your dataset cannot be uniquely identified by a single column value but a combination of column values can.
+
+Testing the database
+Now, you're ready to seed the database with some data so that you can test it. Then, you will test the one-to-one, one-to-many, and many-to-many associations that you set up in the earlier steps.
+
+Truncate a table
+Before you add any data to your database, you should remove any existing data to ensure that the database remains in a consistent state. You can use the TRUNCATE command to do this. As you learned in the previous module, the TRUNCATE command lets you remove all the records stored in a table, without deleting the table itself.
+
+For example, if you want to clear the records from tables tableA, tableB, and tableC, you can run the following:
+
+TRUNCATE
+  tableA,
+  tableB,
+  tableC
+RESTART IDENTITY;
+The RESTART IDENTITY clause is helpful if you have primary key fields in the tables that you want to restart at 1 when you start adding new records to the tables again.
+
+Do this
+Seeding the database
+Take some time to understand what the script below does, then execute the script to seed your database with data:
+
+TRUNCATE
+  employees,
+  departments,
+  projects,
+  employees_projects,
+  customers,
+  orders
+RESTART IDENTITY;
+
+-- Insert some data into the employees table
+INSERT INTO employees
+  (first_name, last_name, phone, title, salary, hire_date)
+  VALUES
+    ('Jane', 'Doe','5551234', 'CEO', 80000, '12/07/1999'),
+    ('Wright', 'Palmer', '5554321', 'Manager', 60000, '01/06/2001'),
+    ('Jim', 'Doe', '5555678', 'Accountant', 50000, '11/06/2015'),
+    ('Toby', 'Bestley', '5558765', 'Associate', 35000, '09/07/2008') ,
+    ('Meredith', 'Hartford', '5559876', 'Associate', 30000, '02/17/2014'),
+    ('Tom', 'Flenderson', '5558769', 'Associate', 32000, '11/23/2013'),
+    ('Bently', 'Singh', '5554326', 'Manager', 60000, '06/06/2005'),
+    ('Winnie', 'Lim', '5554527', 'Manager', 62000, '10/24/2003'),
+    ('Ruda', 'Bross', '5554428', 'Manager', 66000, '11/06/2004');
+
+-- Insert four projects into the projects table
+INSERT INTO projects
+  (project_name, budget, start_date)
+  VALUES
+    ('Build Database', 20000, '3/4/2020'),
+    ('Plan christmas party', 500, '11/20/2020'),
+    ('Remove old stock', 1000, '4/6/2020'),
+    ('Watch paint dry', 3000, '2/11/2020');
+
+-- Insert some customers into the customers table
+INSERT INTO customers
+  (first_name, last_name, phone, email, street, city, zip_code)
+  VALUES
+    ('Kacie', 'Mckee','5555234', 'kacie.mckee@gmail.com', '61 Shadow Brook Court', 'Melrose, MA', '02176'),
+    ('Moses', 'Mcghee', '5554651', 'moses.mcghee@gmail.com', '570 Old York St.', 'Upland, CA', '91784'),
+    ('Jerome', 'Aguilar', '5555699', 'jerome.aguilar@yahoo.com', '68 Victoria Road', 'Hoboken, NJ', '07030'),
+    ('Ainsley', 'Bonner', '5558564', 'ainsley.bonner@hotmail.com', '60 Winchester Road', 'Dundalk, MD', '21222') ,
+    ('Delilah', 'Bateman', '5523124', 'delilah.bateman@gmail.com', '482 E. Oxford St.', 'Thibodaux, LA', '70301');
+If all goes well, you will see the following data in your employees, projects, and customers tables when you select all records from each table:
+
+The employees table
+employee_id
+first_name
+last_name
+phone
+title
+salary
+1
+Jane
+Doe
+5551234
+CEO
+80000
+2
+Wright
+Palmer
+5554321
+Manager
+60000
+3
+Jim
+Doe
+5555678
+Accountant
+50000
+4
+Toby
+Bestley
+5558765
+Associate
+35000
+5
+Meredith
+Hartford
+5559876
+Associate
+30000
+6
+Tom
+Flenderson
+5558769
+Associate
+32000
+7
+Bently
+Singh
+5554326
+Manager
+60000
+8
+Winnie
+Lim
+5554527
+Manager
+62000
+9
+Ruda
+Bross
+5554428
+Manager
+66000
+The customers table
+customer_id
+first_name
+last_name
+phone
+email
+street
+city
+zip_code
+1
+Kacie
+Mckee
+5555234
+kacie.mckee@gmail.com
+61 Shadow Brook Court
+Melrose, MA
+02176
+2
+Moses
+Mcghee
+5554651
+moses.mcghee@gmail.com
+570 Old York St.
+Upland, CA
+91784
+3
+Jerome
+Aguilar
+5555699
+jerome.aguilar@yahoo.com
+68 Victoria Road
+Hoboken, NJ
+07030
+4
+Ainsley
+Bonner
+5558564
+ainsley.bonner@hotmail.com
+60 Winchester Road
+Dundalk, MD
+21222
+5
+Delilah
+Bateman
+5523124
+delilah.bateman@gmail.com
+482 E. Oxford St.
+Thibodaux, LA
+70301
+The projects table
+project_id
+project_name
+budget
+start_date
+end_date
+1
+Build Database
+20000
+2020-03-04
+2
+Plan christmas party
+500
+2020-11-20
+3
+Remove old stock
+1000
+2020-04-06
+4
+Watch paint dry
+3000
+2020-02-11
+Do this
+Testing the one-to-one relationship between the employees and departments tables
+First, execute the script below to insert four departments into the departments table:
+
+INSERT INTO departments
+  (department_name, manager)
+  VALUES
+    ('Administration', 2),
+    ('Merchandising', 7),
+    ('Customer Service', 8),
+    ('Marketing', 9);
+Then, execute the script below to insert another record for a department. Here, you are using the employee with employee_id of 2. This employee is already managing the Administration department:
+
+INSERT INTO departments (department_name, manager) VALUES ('New Department', 2);
+If you are using DBeaver, you will see an error telling you that a unique key constraint on the manager foreign key has been violated:
+
+An error in DBeaver telling you that a unique key constraint on the manager foreign key is violated.
+An employee cannot manage more than one department!
+
+Do this
+Testing the one-to-many relationship between the customers and orders tables
+First, execute the script below to insert multiple records into the orders table for the same customers:
+
+INSERT INTO orders
+  (order_status, order_date, shipped_date, customer_id)
+  VALUES
+    (1, '3/4/2020', NULL, 1),
+    (2, '3/14/2020', NULL, 2),
+    (4, '4/2/2020', '4/5/2020', 1),
+    (4, '4/5/2020', '4/14/2020', 3),
+    (3, '4/5/2020', NULL, 3),
+    (4, '4/17/2020', '4/20/2020', 4),
+    (3, '5/1/2020', NULL, 1),
+    (4, '5/2/2020', '5/14/2020', 5),
+    (3, '5/15/2020', NULL, 2);
+You won't encounter any errors when you execute the script above.
+
+Next, execute SELECT * FROM orders;, and you will see the following table:
+
+The orders table
+order_id
+order_status
+order_date
+shipped_date
+customer_id
+1
+1
+2020-03-04
+1
+2
+2
+2020-03-14
+2
+3
+4
+2020-04-02
+2020-04-05
+1
+4
+4
+2020-04-05
+2020-04-14
+3
+5
+3
+2020-04-05
+3
+6
+4
+2020-04-17
+2020-04-20
+4
+7
+3
+2020-05-01
+1
+8
+4
+2020-05-02
+2020-05-14
+5
+9
+3
+2020-05-15
+2
+Notice there are several orders linked to the customer with a customer_id of 1, because a customer can have multiple orders in the database. Great!
+
+Do this
+Testing the many-to-many relationship between the employees and projects tables
+First, execute the script below to insert multiple records into the employees_projects table:
+
+-- Assign employees to projects
+INSERT INTO employees_projects
+  (employee_id, project_id, start_date, end_date)
+  VALUES
+    (7, 1, '3/4/2020', '6/1/2020'),
+    (6, 2, '11/20/2020', '12/25/2020'),
+    (7, 3, '4/6/2020', '4/12/2020'),
+    (4, 4, '2/11/2020', '2/15/2020'),
+    (7, 4, '2/25/2020', '3/15/2020'),
+    (2, 4, '2/11/2020', '2/25/2020'),
+    (1, 4, '2/15/2020', '4/12/2020');
+You won't encounter any errors when you execute the script above.
+
+Next, execute SELECT * FROM employees_projects;, and you will see the following table:
+
+The employees_projects table
+employee_id
+project_id
+start_date
+end_date
+7
+1
+2020-03-04
+2020-06-01
+6
+2
+2020-11-20
+2020-12-25
+7
+3
+2020-04-06
+2020-04-12
+4
+4
+2020-02-11
+2020-02-15
+7
+4
+2020-02-25
+2020-03-15
+2
+4
+2020-02-11
+2020-02-25
+1
+4
+2020-02-15
+2020-04-12
+Notice that the employee with employee_id of 7 is assigned to projects with project_id values of 1, 3, and 4.
+
+Notice also that the project with project_id of 4 involves employees with employee_id values of 1, 2, 4, and 7.
+
+Multiple employees can be linked to multiple projects, and vice versa. Great!
+
+Do this
+Checking the ERD in DBeaver
+Now that you have created a few tables with relationships, you can use DBeaver to generate an ERD for you. Under the public folder, right-click Tables and select View Diagram from the context menu. Use DBeaver to examine the tables that have been created. Does the ERD in DBeaver look similar to the ERD from the previous lesson?
+
+The ERD in DBeaver.
+*** 34.4 Joining tables
+Joining tables
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to perform a JOIN query to retrieve data from multiple tables.
+
+Overview
+In this lesson, you'll learn how to query data from multiple tables.
+
+In the previous lesson, you broke up your Thinkful Books data over several tables. Until now, you've been used to querying single tables for data. For example, to view a department list, you could use this SQL query:
+
+SELECT * FROM departments;
+Then, you would get the following results:
+
+department_id
+department_name
+manager
+1
+Administration
+2
+2
+Merchandising
+7
+3
+Customer Service
+8
+4
+Marketing
+9
+Although this is fine, it would be more useful to have the manager's name rather than just the manager's ID. However, the name is stored in another table. Also, given your current database, how would you answer a question like the following: who are all the employees and their salaries who work on project X?
+
+To accomplish more complex tasks like these, you need to query data from multiple tables.
+
+Starter code
+This lesson builds on the work of the earlier lessons. If you haven't successfully completed the work from the earlier lessons, go back and do that now.
+
+JOIN queries
+Do this
+List the departments at Thinkful Books and their managers, including all columns
+To query data from multiple tables, you need to join the tables. Tables that are related by a foreign key can be joined using the basic syntax below:
+
+SELECT <columns>
+FROM <table1>
+  JOIN <table2>
+  ON <related columns>;
+To say the above in plain English—this query is first asking for data from a column (or columns) from table1 (SELECT...FROM). It then asks for data from a different table (table2) to be connected to these columns from the first table. The ON clause states that the data from table2 should only be pulled in where it has a relationship to the data from table1. Now, look at an actual example.
+
+Suppose you are interested in viewing a list of departments and their managers. In that case, you can join the departments table with the employees table as follows:
+
+SELECT *
+FROM departments
+  JOIN employees
+  ON departments.manager = employees.employee_id;
+In this query, you specify that you want all rows of data where the manager ID in the departments table matches the employee_id in the employees table. Because you specified SELECT *, all columns from both tables will be returned.
+
+Executing the query above yields the following result:
+
+department_id
+department_name
+manager
+employee_id
+first_name
+last_name
+phone
+title
+salary
+hire_date
+1
+Administration
+2
+2
+Wright
+Palmer
+5554321
+Manager
+60000
+2001-01-06
+2
+Merchandising
+7
+7
+Bently
+Singh
+5554326
+Manager
+60000
+2005-06-06
+3
+Customer Service
+8
+8
+Winnie
+Lim
+5554527
+Manager
+62000
+2003-10-24
+4
+Marketing
+9
+9
+Ruda
+Bross
+5554428
+Manager
+66000
+2004-11-06
+Do this
+List the departments at Thinkful Books and their managers, including only selected columns
+Instead of returning all columns from both tables, it is best practice to explicitly list the column names in a SELECT statement and return only those columns from the query. Doing so reduces the number of columns that need to be processed by the system to satisfy the query.
+
+Suppose you are conducting an annual salary review for your departmental managers, and you only need data from the following columns:
+
+department_id and department_name from the departments table
+
+first_name, last_name, and salary from the employees table
+
+-- It is also recommended to qualify all column names with the table name;
+-- that is, `employees.salary` rather than just `salary`.
+SELECT
+  departments.department_id,
+  departments.department_name,
+  employees.first_name,
+  employees.last_name,
+  employees.salary
+FROM
+  departments
+  JOIN employees
+  ON departments.manager = employees.employee_id;
+Executing the query above yields the following result:
+
+department_id
+department_name
+first_name
+last_name
+salary
+1
+Administration
+Wright
+Palmer
+60000
+2
+Merchandising
+Bently
+Singh
+60000
+3
+Customer Service
+Winnie
+Lim
+62000
+4
+Marketing
+Ruda
+Bross
+66000
+Do this
+Create table aliases
+Notice the previous query was quite verbose. You can make use of table aliases to help reduce the number of keystrokes needed to type such queries. The table alias only exists within the query itself. To create an alias, simply specify the new alias in the FROM clause.
+
+SELECT
+  d.department_id,
+  d.department_name,
+  e.first_name,
+  e.last_name,
+  e.salary
+FROM
+  departments d -- Create alias `d` for the departments table
+  JOIN employees e -- Create alias `e` for the employees table
+  ON d.manager = e.employee_id;
+This is the same query as before, but you created the alias d for the departments table and e for the employees table. This is done in the FROM clause but used throughout, even in the SELECT clause.
+
+Try running the query above and see if it still yields the same result!
+
+INNER JOIN queries
+The default type of JOIN query is the INNER JOIN. This query returns all rows where the two columns in the join condition match.
+
+Do this
+In the previous queries, the four departments in the departments table were matched to the corresponding managers in the employees table. But what happens if there is a department with no manager? You can check what happens by creating a new department without a manager:
+
+INSERT INTO departments
+  (department_name)
+VALUES
+  ('Sales');
+Now there are four departments with managers and a fifth department without a manager. To list all departments, execute the following script:
+
+SELECT * FROM departments;
+And the results show that the Sales department has a NULL for the manager column. That means that there is no corresponding row in the employees table.
+
+department_id
+department_name
+manager
+1
+Administration
+2
+2
+Merchandising
+7
+3
+Customer Service
+8
+4
+Marketing
+9
+5
+Sales
+You can try to list all departments and the names of their managers:
+
+SELECT
+  d.department_id,
+  d.department_name,
+  e.first_name,
+  e.last_name
+FROM
+  departments d
+  JOIN
+  employees e
+  ON
+    d.manager = e.employee_id;
+That's essentially the same query from above, except you want only the names of the managers. But the results are as follows:
+
+department_id
+department_name
+first_name
+last_name
+1
+Administration
+Wright
+Palmer
+2
+Merchandising
+Bently
+Singh
+3
+Customer Service
+Winnie
+Lim
+4
+Marketing
+Ruda
+Bross
+Where is the Sales department? Because the Sales department isn't associated with a manager, the record for that department won't be included in the result of the inner join query.
+
+As mentioned before, the default type of a join query is an INNER JOIN. You can replace the JOIN clause in the previous query with INNER JOIN:
+
+SELECT
+  d.department_id,
+  d.department_name,
+  e.first_name,
+  e.last_name
+FROM
+  departments d
+  INNER JOIN
+  employees e
+  ON d.manager = e.employee_id;
+You should get the same result as before!
+
+INNER JOIN queries are the default because they are fairly common and satisfy the requirements for most queries.
+
+You will try out a few more JOIN queries next.
+
+Do this
+List the order statuses, order dates, first names, and emails of all Thinkful Books customers
+Suppose you would like to write an email to give each of your customers an update on their orders. To write the email, you need their order statuses, order dates, first names, and email addresses.
+
+To get this information, you need to join the customers table to the orders table using the query below:
+
+SELECT
+  c.first_name as customer_name, -- Alias `first_name` as `customer_name`
+  c.email,
+  o.order_status,
+  o.order_date
+FROM
+  customers c
+  INNER JOIN
+  orders o
+  ON c.customer_id = o.customer_id;
+The INNER JOIN matches all rows in the customers table to the rows in the orders table on the customer_id foreign key, yielding the following result:
+
+customer_name
+email
+order_status
+order_date
+Kacie
+kacie.mckee@gmail.com
+1
+2020-03-04
+Moses
+moses.mcghee@gmail.com
+2
+2020-03-14
+Kacie
+kacie.mckee@gmail.com
+4
+2020-04-02
+Jerome
+jerome.aguilar@yahoo.com
+4
+2020-04-05
+Jerome
+jerome.aguilar@yahoo.com
+3
+2020-04-05
+Ainsley
+ainsley.bonner@hotmail.com
+4
+2020-04-17
+Kacie
+kacie.mckee@gmail.com
+3
+2020-05-01
+Delilah
+delilah.bateman@gmail.com
+4
+2020-05-02
+Moses
+moses.mcghee@gmail.com
+3
+2020-05-15
+Do this
+List the order dates, first and last names, and phone numbers of Thinkful Books customers with rejected orders
+Suppose you would like to call your customers whose orders were rejected (the orders with order_status of 3) to try to encourage them to submit a new order. To write this email, you will need your customers' order dates, their first and last names, and their phone numbers.
+
+Again, to get this information, you need to join the customers table to the orders table, while using the WHERE clause to filter the rows to those whose order_status is 3.
+
+SELECT
+  c.first_name,
+  c.last_name,
+  c.phone,
+  o.order_date
+FROM
+  customers c
+  INNER JOIN
+  orders o
+  ON c.customer_id = o.customer_id
+WHERE
+  o.order_status = 3;
+Only customers with rejected orders are returned from the query. Notice that the order_status column isn't displayed. This is because even though it was used in the WHERE clause, it wasn't included in the SELECT clause, and therefore it isn't returned in the query.
+
+first_name
+last_name
+phone
+order_date
+Jerome
+Aguilar
+5555699
+2020-04-05
+Kacie
+Mckee
+5555234
+2020-05-01
+Moses
+Mcghee
+5554651
+2020-05-15
+Do this
+List the employee's first and last names and the employees' project names
+The employees' first and last names are stored in the employees table, while the project name is stored in the projects table. However, these two tables aren't directly related via a foreign key. They are related by a third table, employees_projects. That means we have to join three tables!
+
+Here is the query for joining all three tables:
+
+SELECT
+  e.first_name,
+  e.last_name,
+  p.project_name as project -- Alias the column name as `project` for brevity
+FROM
+  employees e
+  INNER JOIN
+  employees_projects ep
+  ON e.employee_id = ep.employee_id
+  INNER JOIN
+  projects p
+  ON p.project_id = ep.project_id;
+First, the employee_id columns from the employees and employees_projects tables are compared and all matching rows are returned. You can imagine that a temporary table was created with the results stored internally by the system.
+
+This temporary table is then joined to the projects table by the second join. The results are as follows:
+
+first_name
+last_name
+project
+Bently
+Singh
+Build Database
+Tom
+Flenderson
+Plan christmas party
+Bently
+Singh
+Remove old stock
+Toby
+Bestley
+Watch paint dry
+Bently
+Singh
+Watch paint dry
+Wright
+Palmer
+Watch paint dry
+Jane
+Doe
+Watch paint dry
+Note that it is possible to join an arbitrary number of tables by having multiple JOIN clauses in your query!
+*** 34.5 Other joins
+Other joins
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to perform LEFT JOIN, RIGHT JOIN, and FULL JOIN operations to connect two tables.
+
+Overview
+Most of the time, you need a result set that is formed from combining data from several tables in your database. In the previous lesson, you learned how to perform an inner join that returns the rows with matching values in both tables. In this lesson, you will learn about outer joins. You'll get familiar with the different types of outer joins—LEFT JOIN, RIGHT JOIN, and FULL JOIN—that you can perform in PostgreSQL to query data for a variety of scenarios.
+
+Starter code
+This lesson builds upon the work of the earlier lessons. If you haven't successfully completed the work from the earlier lessons, go back and do that now.
+
+If you are having trouble, reach out for assistance.
+
+LEFT JOIN
+Think about the case of the department with the missing manager from the previous lesson (the Sales department).
+
+Suppose that you need a list of all departments and their corresponding manager names. Suppose also that there is a new requirement this time around: if a department doesn't have a manager, then return the record for that department anyway but put a NULL value in the corresponding manager column.
+
+From the previous lesson, you know that the INNER JOIN below doesn't satisfy this query, because it excludes department records without managers.
+
+SELECT
+  d.department_id AS id,
+  d.department_name AS department,
+  e.first_name,
+  e.last_name
+FROM
+  departments d
+  JOIN -- Recall that the default `JOIN` type is an `INNER JOIN`
+  employees e
+  ON d.manager = e.employee_id;
+Consider the query above diagrammatically. Because the departments table is listed first in the FROM clause, it is considered to be on the left of the join, whereas the employees table is on the right.
+
+To include the departments with no managers, you would need to perform a LEFT JOIN. A LEFT JOIN brings back all rows on the left side of a join, even if it doesn't match any rows on the right. If no matches are found, the right-side columns are returned with NULL values.
+
+Do this
+List all department names at Thinkful Books and their corresponding managers
+To perform a LEFT JOIN between the departments and employees tables, the query looks very similar to an INNER JOIN except that you would have to change the JOIN clause to LEFT JOIN:
+
+SELECT
+  d.department_id AS id,
+  d.department_name AS department,
+  e.first_name AS manager_first_name,
+  e.last_name AS manager_last_name
+FROM
+  departments d
+  LEFT JOIN -- Specify `LEFT JOIN` here
+  employees e
+  ON d.manager = e.employee_id;
+This time, all departments are returned:
+
+id
+department
+manager_first_name
+manager_last_name
+1
+Administration
+Wright
+Palmer
+2
+Merchandising
+Bently
+Singh
+3
+Customer Service
+Winnie
+Lim
+4
+Marketing
+Ruda
+Bross
+6
+Sales
+RIGHT JOIN
+Suppose you are interested in viewing a list of all employee names and the name of the department that they manage. However, an INNER JOIN will return only employees who actually manage departments.
+
+In this case, you can use a RIGHT JOIN. A RIGHT JOIN will include all rows on the right of a join, regardless of whether it matches a row on the left or not. In cases where it does not match, left columns are returned with NULL values.
+
+Do this
+List all Thinkful Books employee names and the name of the department that they manage
+Execute the script below to perform a RIGHT JOIN:
+
+SELECT
+  e.first_name AS manager_first_name,
+  e.last_name AS manager_last_name,
+  d.department_id AS id,
+  d.department_name AS department
+FROM
+  departments d
+  RIGHT JOIN -- Specify `RIGHT JOIN` as the clause
+  employees e
+  ON d.manager = e.employee_id;
+The query above results in the nine rows, one row for each employee:
+
+manager_first_name
+manager_last_name
+id
+department
+Wright
+Palmer
+1
+Administration
+Bently
+Singh
+2
+Merchandising
+Wright
+Lim
+3
+Customer Service
+Ruda
+Bross
+4
+Marketing
+Meredith
+Hartford
+Tom
+Flenderson
+Toby
+Bestley
+Jane
+Doe
+Jim
+Doe
+As an interesting note, a RIGHT JOIN is the same as changing the order of the tables listed in a LEFT JOIN. This means that the following two queries will return the same results:
+
+SELECT
+  e.first_name AS manager_first_name,
+  e.last_name AS manager_last_name,
+  d.department_id AS id,
+  d.department_name as department
+FROM
+  employees e
+  LEFT JOIN -- Specify `LEFT JOIN` here
+  departments d
+  ON e.employee_id = d.manager;
+SELECT
+  e.first_name AS manager_first_name,
+  e.last_name AS manager_last_name,
+  d.department_id AS id,
+  d.department_name AS department
+FROM
+  departments d
+  RIGHT JOIN -- Specify `RIGHT JOIN` as the clause
+  employees e
+  ON d.manager = e.employee_id;
+FULL JOIN
+Suppose you are planning to promote an employee to become a manager, and to support your decision-making process, you need to view a list of all departments and all employees at Thinkful Books. You can leverage a FULL JOIN in this instance. A FULL JOIN collates the results of both LEFT JOIN and RIGHT JOIN operations. The FULL JOIN keyword returns all rows when there is a match in the left table (the departments table in this case) or right table (the employees table in this case) records.
+
+Tip
+Be careful when using OUTER JOIN operations, because they can potentially return enormous datasets.
+
+The joined table will contain all records from both the tables, filling in NULL values for missing matches on either side.
+
+Do this
+List all departments and all employees at Thinkful Books
+Execute the script below to list all departments and all employees:
+
+SELECT
+  d.department_id AS id,
+  d.department_name AS department,
+  e.first_name,
+  e.last_name
+FROM
+  departments d
+  FULL JOIN -- Specify `FULL JOIN` here
+  employees e
+  on d.manager = e.employee_id;
+The query above returns the following result:
+
+id
+department
+first_name
+last_name
+1
+Administration
+Wright
+Palmer
+2
+Merchandising
+Bently
+Singh
+3
+Customer Service
+Winnie
+Lim
+4
+Marketing
+Ruda
+Bross
+6
+Sales
+Meredith
+Hartford
+Tom
+Flenderson
+Toby
+Bestley
+Jane
+Doe
+Jim
+Doe
+There are several other types of JOIN queries, but these are most common and should satisfy most queries that a typical application needs. The SELECT documentation lists the different types of JOIN queries that are possible in PostgreSQL.
+*** 34.6 Assessment: Creating relations
 ** Node, Express, and Postgres - Module 35
 *** 35.1 Overview: Node, Express, and Postgres
 *** 35.2 Knex configuration
