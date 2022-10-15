@@ -9327,7 +9327,901 @@ As with all CORS permissions that you've learned about, the server is in charge 
 
 Enabling additional CORS permissions is out of scope for this lesson. You can read more about these permissions on the MDN cross-origin resource sharing page.
 *** 37.4 Full-stack application workflow
+Full-stack application workflow
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to describe common full-stack workflows.
+
+Overview
+When you are adding a feature or fixing a bug in a full-stack three-tier application, you are faced with a decision: where do you start making changes? Do you change the backend repository first, or do you start with the frontend repository? Like everything in software development, each approach has its advantages and disadvantages.
+
+Key Terms
+Inside-out development flow
+A full-stack workflow that involves making changes starting with the backend, and fully implementing the feature for the current layer before making any changes to the layer above it
+Outside-in development flow
+A full-stack workflow that involves making changes starting with the frontend, fully implementing a small part of the feature through each layer of the architecture
+Full-stack application workflow
+As mentioned above, anytime that you have a new feature to add to your application, or a defect to fix in the application, you need to choose where to start making changes. Do you start with the backend, in a workflow known as inside-out development? Or do you start with the frontend, in a workflow known as outside-in development?
+
+Inside-out and outside-in are two common full-stack workflows. You will learn about both workflows in this lesson.
+
+Inside-out development
+Following an inside-out development workflow, you start by making the necessary changes to the data tier. Then you make the changes to the application tier. And finally, you make changes to the presentation tier so that the user can access the new feature.
+
+When following an inside-out development flow, work is done in horizontal slices, as depicted in the diagram below.
+
+Inside-out development workflow.
+Each horizontal slice of work fully implements the feature for the current layer before making any changes to the layer above it. Then the changes to each architectural layer are combined before the feature is available to the user.
+
+Inside-out development offers the following advantages:
+
+Changes to the data tier are made early. Some developers believe that the data tier is the most valuable tier in the application.
+
+Business requirements are clarified early. Some questions about the business requirements only emerge when working on the application tier.
+
+The user interface is left to the end. The UI is notorious for frequent changes, so delaying the frontend work may result in less rework on the frontend.
+
+But this workflow also has the following disadvantages:
+
+It's easy to create accidental features. You may start thinking about all of the possibilities of the backend code and try to make the API as robust and generic as possible. As a result, you may create functionality that has no clear concrete need from the UI or the user.
+
+It's easy to miss some UI needs. When you try to connect the UI, you may find that the backend doesn't exactly satisfy all of the needs of the frontend. This can result in usability compromises that make the customer unhappy.
+
+Feedback is delayed. Users care about the UI. If the frontend is done after the backend, you will only get feedback when the whole feature is done, and that is too late.
+
+Frontend development may be rushed. When the frontend is delayed, you may run out of time. Rushing the frontend implementation causes two main problems:
+
+A bad user experience
+
+Lower quality frontend, leading to difficult-to-maintain software
+
+Outside-in development
+Following an outside-in development workflow, you first implement the necessary changes to the presentation tier, then the application tier, and finally the data tier. That may sound counterintuitive, and it generally makes backend developers shake their heads.
+
+But is it the wrong choice? Well, building the UI will give you quick feedback from users. If they don't like how the UI is working, you can change it easily without any backend impact, because there is no backend yet. Once everyone agrees on the UI, you will know the exact data that the backend will need to provide.
+
+When following an outside-in development flow, work is done in small vertical slices, as depicted in the following diagram.
+
+Outside-in development workflow.
+Each vertical slice of work fully implements a small part of the feature through each layer of the architecture. It only implements exactly what is required by the layer above, and nothing more. Once the small feature is implemented, it can be made available to the user immediately.
+
+Outside-in development offers the following advantages:
+
+Feedback is provided early. The user only cares about the presentation layer, so getting feedback on the UI early gives you confidence while working on the application and data tiers.
+
+It's unlikely that accidental features will be created. All changes are driven from the UI, so you are focused on minimal changes.
+
+The focus is on user needs. Code is only written to satisfy a user need, so you build what really needs to be built and nothing more.
+
+But this workflow also has the following disadvantages:
+
+Backend development may be rushed. When the backend is delayed, you may run out of time. Fortunately, it is much easier to improve the backend implementation after release without impacting the user.
+
+There's delayed clarification of some business requirements. Some questions about the business requirements only emerge when working on the application tier.
+
+Working outside-in using small vertical slices means that you will do the following:
+
+Write just enough code to implement the UI
+
+Get value sooner
+
+Tend to avoid accidentally building low-value changes
+
+Get earlier, higher-quality feedback
+
+Become more predictable in delivering features (because small working features become the measure of progress)
+
+For the above reasons, you will follow the outside-in development workflow in the next lesson.
+
 *** 37.5 Practice full-stack application workflow
+Practice full-stack application workflow
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to make changes to a full-stack application that has a frontend repository and backend repository.
+
+Overview
+Your knowledge about outside-in development workflow helped get you hired as a full-stack developer at WeatherZen, an exciting new startup that is crowdsourcing local weather observations from their users. In this lesson, you'll practice implementing several user stories for WeatherZen.
+
+Starter code
+This lesson requires you to have the following repositories running on your local machine.
+
+GitHub: Starter WeatherZen backend
+GitHub: Starter WeatherZen frontend
+Fork and clone the above repositories. Then, follow the instructions to get each to run.
+
+Scenario
+It's your first day as a full-stack developer at WeatherZen, and the product owner has several user stories queued up for you to implement. The first one is to allow a user to create a new weather observation.
+
+New weather observation
+User story
+As a user, I would like to create a new weather observation, so that other people have accurate information about my local weather.
+
+Acceptance criteria
+Given that I am on the New Weather Observation page, when I submit a weather observation using the form, then I am redirected to the Weather Observations page and see the weather observation that I posted at the top of the list.
+
+A weather observation has the following inputs:
+
+Latitude
+
+Must be between -90 and 90, inclusive
+
+Longitude
+
+Must be between -180 and 180, inclusive
+
+Sky condition: User selects one of the following:
+
+Cloudless (value = 100)
+
+Some clouds (value = 101)
+
+Cloud covered (value = 102)
+
+Foggy (value = 103)
+
+Raining (value = 104)
+
+Snowing (value = 106)
+
+Hailing (value = 108)
+
+Thunderstorms (value = 109)
+
+The API will return an observation as JSON similar to the following:
+
+{
+  "observation_id": 2,
+  "latitude": 0,
+  "longitude": 0,
+  "sky_condition": 100,
+  "created_at": "2020-12-10T08:30:32.326Z",
+  "updated_at": "2020-12-10T08:30:32.326Z"
+}
+This user story provides a minimal weather observation. Additionally, this story is small enough to be implemented as a small vertical slice.
+
+Note: Because this is the first feature involving weather observations, it might take a bit longer as you add new pages, API routes, and database tables to the application. However, each subsequent user story related to weather observations will be a bit easier.
+
+Do this
+Implement new weather observation
+You will start in the frontend project by creating a new route and minimal UI.
+
+First, make the following changes to src/layout/Layout.js:
+
+ import Menu from "./Menu";
+ import { Route, Switch } from "react-router-dom";
+ import Home from "../home/Home";
++import ObservationCreate from "../observations/ObservationCreate";
+
+ function Layout() {
+   return (
+       <Menu />
+       <div className="container">
+         <Switch>
++          <Route path="/observations/new">
++            <ObservationCreate />
++          </Route>
+           <Route exact={true} path="/">
+            <Home />
+           </Route>
+           <Route>
+             <NotFound />
+           </Route>
+         </Switch>
+       </div>
+     </>
+   );
+ }
+
+ export default Layout;
+Create src/observations/ObservationCreate.js. Then add the following:
+
+import React from "react";
+import { useHistory } from "react-router-dom";
+
+function ObservationCreate() {
+  const history = useHistory();
+
+  function cancelHandler() {
+    history.push("/");
+  }
+
+  function submitHandler(event) {
+    event.preventDefault();
+    history.push("/");
+  }
+
+  return (
+    <main>
+      <h1>Create Observation</h1>
+      <form onSubmit={submitHandler}>
+        <p>Later, input fields will be added here.</p>
+        <div>
+          <button
+            type="button"
+            className="btn btn-secondary mr-2"
+            onClick={cancelHandler}
+          >
+            Cancel
+          </button>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </div>
+      </form>
+    </main>
+  );
+}
+
+export default ObservationCreate;
+Now you have a small implementation that will allow you to verify that the routing and the Cancel and Submit buttons are working.
+
+Start the application and click the New Observation link on the right side of the menu bar. You will see something similar to the following screenshot.
+
+Example view after clicking New Observation.
+Next, click the Submit and Cancel buttons to make sure that you return to the home page.
+
+Implement ObservationCreate component
+Now, update src/observations/ObservationCreate.js to include the latitude, longitude, and sky_condition fields, and call createObservation() (which doesn't yet exist) when the form is submitted.
+
+Edit src/observations/ObservationCreate.js as follows:
+
+-import React from "react";
++import React, { useState } from "react";
+ import { useHistory } from "react-router-dom";
++import { createObservation } from "../utils/api";
+
+ function ObservationCreate() {
+   const history = useHistory();
+
++  const [observation, setObservation] = useState({
++    latitude: "",
++    longitude: "",
++    sky_condition: "",
++  });
++
+   function cancelHandler() {
+     history.push("/");
+   }
+
+   function submitHandler(event) {
+     event.preventDefault();
+-    history.push("/");
++    createObservation(observation).then(() => {
++      history.push("/");
++    });
+   }
++
++  function changeHandler({ target: { name, value } }) {
++    setObservation((previousObservation) => ({
++      ...previousObservation,
++      [name]: value,
++    }));
++   }
+
+   return (
+     <main>
+-      <h1>Create Observation</h1>
+-      <form onSubmit={submitHandler}>
+-        <p>Later, input fields will be added here.</p>
++      <h1 className="mb-3">Create Observation</h1>
++      <form onSubmit={submitHandler} className="mb-4">
++        <div className="row mb-3">
++          <div className="col-6 form-group">
++            <label className="form-label" htmlFor="latitude">
++              Latitude
++            </label>
++            <input
++              className="form-control"
++              id="latitude"
++              name="latitude"
++              type="number"
++              max="90"
++              min="-90"
++              value={observation.latitude}
++              onChange={changeHandler}
++              required={true}
++            />
++            <small className="form-text text-muted">Enter a value between -90 and 90.</small>
++          </div>
++          <div className="col-6">
++            <label className="form-label" htmlFor="longitude">
++              Longitude
++            </label>
++            <input
++              className="form-control"
++              id="longitude"
++              name="longitude"
++              type="number"
++              max="180"
++              min="-180"
++              value={observation.longitude}
++              onChange={changeHandler}
++              required={true}
++            />
++            <small className="form-text text-muted">Enter a value between -180 and 180.</small>
++          </div>
++        </div>
++        <div className="mb-3">
++          <label className="form-label" htmlFor="cloudCover">
++            Sky conditions
++          </label>
++          <select
++            className="form-control"
++            id="sky_condition"
++            name="sky_condition"
++            value={observation.sky_condition}
++            onChange={changeHandler}
++            required={true}
++          >
++            <option value="">Select a sky condition option</option>
++            <option value="100">Cloudless</option>
++            <option value="101">Some clouds</option>
++            <option value="102">Cloud covered</option>
++            <option value="103">Foggy</option>
++            <option value="104">Raining</option>
++            <option value="106">Snowing</option>
++            <option value="108">Hailing</option>
++            <option value="109">Thunderstorms</option>
++          </select>
++        </div>
+         <div>
+           <button
+             type="button"
+   ...
+   // Remaining code omitted for brevity
+Now, the New Observation page will look something like the following:
+
+Create Observation page.
+Next, you will add a createObservation() function to src/utils/api.js. This function will eventually send a POST request to add the data to the backend API route /observations, but that route doesn't exist yet in the backend. For now, you will simulate that API call using a local array to store the observations.
+
+Edit src/utils/api.js as follows:
+
+// Existing code omitted for brevity
+
++const observations = [];
++
++function nextId() {
++  const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0];
++  return uint32.toString(16);
++}
++
++export async function createObservation(observation, signal) {
++  const now = new Date().toISOString();
++  const newObservation = {
++    ...observation,
++    observation_id: nextId(),
++    created_at: now,
++    updated_at: now,
++  };
++  observations.push(newObservation);
++  return newObservation;
++}
+Now, when the user fills in the form and clicks the Submit button, the new observation will be saved. Note that any time that the page is reloaded, the observations will be lost. Additionally, there is no way for the user to see the saved observations, if there are any.
+
+The next step is to update the home page to display a list of the saved observations.
+
+Edit src/home/Home.js as follows:
+
++import { useEffect, useState } from "react";
++import { listObservations } from "../utils/api";
++import ErrorAlert from "../layout/ErrorAlert";
++
+ function Home() {
++  const [observations, setObservations] = useState([]);
++  const [error, setError] = useState(null);
++
++  useEffect(() => {
++    const abortController = new AbortController();
++    listObservations(abortController.signal)
++      .then(setObservations)
++      .catch(setError);
++    return () => abortController.abort();
++  }, []);
++
++  const tableRows = observations.map((observation) => (
++    <tr key={observation.observation_id}>
++      <th scope="row">{observation.observation_id}</th>
++      <td>{observation.latitude}</td>
++      <td>{observation.longitude}</td>
++      <td>{observation.sky_condition}</td>
++      <td>{observation.created_at}</td>
++    </tr>
++  ));
++
+   return (
+     <main>
+       <h1>Home</h1>
++      <ErrorAlert error={error} />
++      <table className="table">
++        <thead>
++        <tr>
++          <th scope="col">#</th>
++          <th scope="col">Latitude</th>
++          <th scope="col">Longitude</th>
++          <th scope="col">Sky Condition</th>
++          <th scope="col">Created</th>
++        </tr>
++        </thead>
++        <tbody>
++        {tableRows}
++        </tbody>
++      </table>
+     </main>
+   );
+ }
+
+export default Home;
+Edit src/utils/api.js as follows:
+
+// Existing code omitted for brevity
+
++export async function listObservations(signal) {
++  return observations;
++}
+Now is a great time to demo the UI to the product owner, so go ahead and create a new observation.
+
+Note: To get the coordinates of a place, start by opening Google Maps. (Make sure not to use Lite mode, indicated with a lightning bolt icon, because you won't be able to get the coordinates of a place in Lite mode.) Then right-click the place or area on the map. Select What's here? and you'll see a card with the coordinates.
+
+When redirected to the home page, it should look something like the following:
+
+WeatherZen Home page.
+Once the product owner approves the UI, it's time to start calling the real API.
+
+Implement POST /observations
+Now that most of the work in the presentation layer is complete, you need to change the API project by creating a new route.
+
+The first step is to start the GitHub: Starter WeatherZen frontend project. The next step is to update the createObservation() method to call the API.
+
+Edit src/utils/api.js as follows:
+
+-const observations = [];
+-
+-function nextId() {
+-  const uint32 = window.crypto.getRandomValues(new Uint32Array(1))[0];
+-  return uint32.toString(16);
+-}
+-
+ export async function createObservation(observation, signal) {
+-  const now = new Date().toISOString();
+-  const newObservation = {
+-    ...observation,
+-    observation_id: nextId(),
+-    created_at: now,
+-    updated_at: now,
++  const url = `${API_BASE_URL}/observations`;
++  const options = {
++    method: "POST",
++    headers,
++    body: JSON.stringify({ data: observation }),
++    signal,
+   };
+-  observations.push(newObservation);
+-  return newObservation;
++  return await fetchJson(url, options);
+ }
+
+ export async function listObservations(signal) {
+-  return observations;
++  return [];
+ }
+Now go to the New Observation page and try to create a new observation. Because the API route doesn't exist yet, you expect to see an error displayed, but there is no error. If you look in the console, you will see the 404 error.
+
+Now that you know that the error isn't handled, you will update the ObservationCreate component to handle the error.
+
+In src/observations/ObservationCreate.js:
+
+ import React, { useState } from "react";
+ import { useHistory } from "react-router-dom";
+ import { createObservation } from "../utils/api";
++import ErrorAlert from "../layout/ErrorAlert";
+
+ function ObservationCreate() {
+
+   // Code omitted for brevity
+
++  const [error, setError] = useState(null);
+
+   // Code omitted for brevity
+
+   function submitHandler(event) {
+     event.preventDefault();
+-    createObservation(observation).then(() => {
+-      history.push("/");
+-    });
++    createObservation(observation)
++      .then(() => {
++        history.push("/");
++      })
++      .catch(setError);
+   }
+
+   // Code omitted for brevity
+
+   return (
+     <main>
+       <h1 className="mb-3">Create Observation</h1>
++      <ErrorAlert error={error} />
+       <form onSubmit={submitHandler} className="mb-4">
+         <div className="row mb-3">
+           <div className="col-6 form-group">
+
+   // Code omitted for brevity
+Now the error displays as expected:
+
+Error on Create Observation page.
+The previous error is an example of the type of problem that is easy to catch when working outside-in, but very difficult to detect when working inside-out. If you build the API route first, then there is nothing to help ensure that you properly handle errors in the UI.
+
+It is now time to open the backend project and add the POST /observations route.
+
+Edit src/app.js as follows:
+
+ const app = express();
+
+ app.use(cors())
+ app.use(express.json());
+
++let nextId = 1;
++app.post('/observations', ((req, res) => {
++  const newObservation = req.body.data;
+
++  newObservation.observation_id = nextId++
++
++  res.status(201).json({
++    data: newObservation,
++  });
++}))
+
+ // Remaining code omitted for brevity
+You may have been tempted to create the controller and router for observations. But by creating a simple inline handler for the POST request, you can get the API working in minutes and test the integration between the frontend and backend.
+
+Switch back to the UI and create a new observation. If the new route is working, the POST request works, but the new observation doesn't show up on the home page.
+
+Now is a good time to create the observations router and controller.
+
+Edit src/app.js as follows:
+
+ // Code omitted for brevity
+
++const observationsRouter = require('./observations/observations.router')
++
+ const app = express();
+
+ app.use(cors())
+ app.use(express.json());
+
+-let nextId = 1;
+-app.post('/observations', ((req, res) => {
+-  const newObservation = req.body.data;
+-
+-  newObservation.observation_id = nextId++
+-
+-  res.status(201).json({
+-    data: newObservation,
+-  });
+-}))
++app.use("/observations", observationsRouter);
+
+ app.use(notFound);
+ app.use(errorHandler);
+ // Code omitted for brevity
+Edit src/observations/observations.router.js as follows:
+
+const router = require("express").Router({ mergeParams: true });
+const controller = require("./observations.controller");
+const methodNotAllowed = require("../errors/methodNotAllowed");
+
+router.route("/").post(controller.create).all(methodNotAllowed);
+
+module.exports = router;
+Edit src/observations/observations.controller.js as follows:
+
+let nextId = 1;
+
+async function create(req, res) {
+  const newObservation = req.body.data;
+
+  const now = new Date().toISOString();
+  newObservation.observation_id = nextId++;
+  newObservation.created_at = now;
+  newObservation.updated_at = now;
+
+  res.status(201).json({
+    data: newObservation,
+  });
+}
+
+module.exports = {
+  create,
+};
+Again, switch back to the UI and create a new observation. It should work the same as it did before you created the controller and router.
+
+Update the UI project to call the API to GET /observations.
+
+Edit src/utils/api.js as follows:
+
+ // Code omitted for brevity
+
+ export async function listObservations(signal) {
+-  return [];
++  const url = `${API_BASE_URL}/observations`;
++  const options = {
++    headers,
++    signal,
++  };
++  return await fetchJson(url, options);
+ }
+Again, switch back to the UI. You will now see an error displayed on the home page.
+
+Error on home page.
+Create validation
+The UI requires a value for every field and makes sure that the values are valid. The API has to have exactly the same validation. As you know, there is nothing that prevents someone from using Postman or other tools to call your API, so it is necessary to implement the same validation in the API.
+
+The validation for an observation is as follows:
+
+Latitude is a number between -90 and 90.
+
+Longitude is a number between -180 and 180.
+
+Sky condition must be one of these values: 100, 101, 102, 103, 104, 106, 108, 109.
+
+Edit src/observations/observations.controller.js as follows:
+
+ let nextId = 1;
++
++const validSkyConditions = [100, 101, 102, 103, 104, 106, 108, 109]
++
++function hasData(req, res, next) {
++  if (req.body.data) {
++    return next()
++  }
++  next({status: 400, message: "body must have data property"})
++}
++
++function hasLatitude(req, res, next) {
++  const latitude = Number(req.body.data.latitude)
++  if (latitude >= -90 && latitude <= 90 ) {
++    return next()
++  }
++  next({status: 400, message: "latitude must be between -90 and 90"})
++}
++
++function hasLongitude(req, res, next) {
++  const longitude = Number(req.body.data.longitude)
++  if (longitude >= -180 && longitude <= 180 ) {
++    return next()
++  }
++  next({status: 400, message: "longitude must be between -180 and 180"})
++}
++
++function hasSkyCondition(req, res, next) {
++  const skyCondition = Number(req.body.data.sky_condition)
++
++  if (validSkyConditions.includes(skyCondition)) {
++    return next()
++  }
++  next({status: 400, message: `sky_condition must be one of: ${validSkyConditions}`})
++}
++
+
+// Code omitted for brevity
+
+ module.exports = {
+-  create,
++  create: [hasData, hasLatitude, hasLongitude, hasSkyCondition, create],
+ };
+Then use Postman or another tool to verify that the validation is working as expected.
+
+Next, you will implement GET /observations in the backend project.
+
+Implement GET /observations
+Edit src/observations/observations.router.js as follows:
+
+ router.route("/")
+   .post(controller.create)
++  .get(controller.list)
+   .all(methodNotAllowed);
+
+ module.exports = router;
+Edit src/observations/observations.controller.js as follows:
+
+ let nextId = 1;
++const observations = []
++
+ async function create(req, res) {
+   const newObservation = req.body.data;
+
+   const now = new Date().toISOString();
+   newObservation.observation_id = nextId++;
+   newObservation.created_at = now;
+   newObservation.updated_at = now;
+
++  observations.push(newObservation)
++
+   res.status(201).json({
+     data: newObservation,
+   });
+ }
+
++async function list(req, res) {
++  res.json({
++    data: observations,
++  });
++}
++
+ module.exports = {
+   create: [hasData, hasLatitude, hasLongitude, hasSkyCondition, create],
++  list
+ };
+Next, switch back to the UI. You will no longer see an error displayed on the home page.
+
+Connect to the database
+Now that the UI and API are properly connected, it is time to connect to the database.
+
+Edit src/observations/observations.controller.js as follows:
+
+-let nextId = 1;
+-
++const service = require("./observations.service");
+ const validSkyConditions = [100, 101, 102, 103, 104, 106, 108, 109];
+
+ // Code omitted for brevity
+
+ async function create(req, res) {
+-  const newObservation = req.body.data;
+-
+-  const now = new Date().toISOString();
+-  newObservation.observation_id = nextId++;
+-  newObservation.created_at = now;
+-  newObservation.updated_at = now;
+-
+-  observations.push(newObservation);
+-
++  const newObservation = await service.create(req.body.data);
++
+   res.status(201).json({
+     data: newObservation,
+   });
+ }
+   // Code omitted for brevity
+Edit src/observations/observations.service.js as follows:
+
+const knex = require("../db/connection");
+
+function create(newObservation) {
+  return knex("observations").insert(newObservation).returning("*");
+}
+
+module.exports = {
+  create,
+};
+Now go back to the UI and create a new observation.
+
+It didn't work, and no error is displayed. What is happening? If you look at the console output of the API server, you will see an error message like the following:
+
+UnhandledPromiseRejectionWarning: error: insert into "observations" ("latitude", "longitude", "sky_condition") values ($1, $2, $3) returning \* - relation "observations" does not exist
+This means that the error handling of the async code isn't working correctly. Luckily, you have the asyncErrorBoundary() function for this.
+
+Edit src/observations/observations.controller.js as follows:
+
+ const service = require("./observations.service");
++const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+
+ // Code omitted for brevity
+
+ module.exports = {
+-  create: [hasData, hasLatitude, hasLongitude, hasSkyCondition, create],
++  create: [hasData, hasLatitude, hasLongitude, hasSkyCondition, asyncErrorBoundary(create)],
+   list,
+ };
+Try to create another new observation, and you will now see the error displayed on the UI, like this:
+
+Error on Create Observation page.
+Now that the error handling is working, you can fix the error by creating the observations table.
+
+npx knex migrate:make createObservationsTable
+Edit src/db/migrations/##############_createObservationsTable.js as follows:
+
+exports.up = function (knex) {
+  return knex.schema.createTable("observations", (table) => {
+    table.increments("observation_id").primary();
+    table.decimal("latitude", null);
+    table.decimal("longitude", null);
+    table.integer("sky_condition");
+    table.timestamps(true, true);
+  });
+};
+
+exports.down = function (knex) {
+  return knex.schema.dropTable("observations");
+};
+Then run the latest migration:
+
+npx knex migrate:latest
+Again, create a new observation—it works this time! Use DBeaver to check that the record was added to the database.
+
+Now, return the observations in the database for GET /observations.
+
+Edit src/observations/observations.controller.js as follows:
+
+
+-const observations = [];
+
+ // Code omitted for brevity
+
+ async function list(req, res) {
++  const data = await service.list();
+   res.json({
+-    data: observations,
++    data,
+   });
+ }
+
+ module.exports = {
+  create: [hasData, hasLatitude, hasLongitude, hasSkyCondition, asyncErrorBoundary(create)],
+-  list,
++  list: asyncErrorBoundary(list),
+ };
+Edit src/observations/observations.service.js as follows:
+
+ // Code omitted for brevity
+
++async function list() {
++  return knex("observations").select("*");
++}
++
+ module.exports = {
+   create,
++  list,
+ };
+Return to the UI and refresh the home page to see a list of weather observations from the database.
+
+List of weather observations from database.
+You have successfully changed to a full-stack application that has a frontend repository and backend repository! You can skip to the end of this lesson if you like, or you can continue on your own and implement another user story or two.
+
+Additional user stories
+Edit an existing observation
+User story
+As a user, I would like to edit an existing observation, so that I can correct any data entry errors I may make.
+
+Acceptance criteria
+Given that I am on the Edit Weather Observation page, and I see the existing weather observation information filled in the form, when I make changes and submit the form, then I am redirected to the Weather Observations page and see the updated weather observation in the list.
+
+All create validation applies to update as well.
+
+Add air temperature and unit
+User story
+As a world-traveling user, I would like to create a new weather observation that includes air temperature and the temperature unit, so that other people have accurate temperature information about places where I travel.
+
+Acceptance criteria
+Given that I am on the New Weather Observation page, when I submit a weather observation using the form, then I am redirected to the Weather Observations page and see the weather observation that I posted at the top of the list.
+
+A weather observation has the following inputs:
+
+Air temperature
+
+Celsius must be between -50 and 107 degrees.
+
+Fahrenheit must be between -60 and 224 degrees.
+
+Air temperature unit
+
+Celsius (value = "C")
+
+Fahrenheit (value = "F")
+
+The API will return an observation as JSON similar to the following:
+
+{
+  "observation_id": 2,
+  "latitude": 0,
+  "longitude": 0,
+  "air_temperature": 100,
+  "air_temperature_unit": "C",
+  "sky_condition": 100,
+  "created_at": "2020-12-10T08:30:32.326Z",
+  "updated_at": "2020-12-10T08:30:32.326Z"
+}
+
 *** 37.6 Tracing errors
 *** 37.7 Practice tracing errors
 *** 37.8 Assessment: Connecting it all
