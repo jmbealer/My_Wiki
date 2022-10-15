@@ -8853,11 +8853,479 @@ It's possible that you may have run your migrations locally but not on your prod
 
 Note: This isn't true for seeds. Seeds will delete everything in your database before inserting rows.
 *** 36.7 Assessment: Backend deployment
-
 ** Connecting it all - Module 37
 *** 37.1 Overview: Connecting it all
+Overview: Connecting it all
+9 minutesEstimated completion time
+Overview
+This module will begin by reviewing how the web works and how what you have learned so far fits into a larger internet ecosystem. Then, you'll learn how to add features, organize your workflow, and further optimize your applications.
+
+It's time for you to take what you have learned and put it together into an effective full-stack workflow. You'll learn to take some concrete steps to add new features and capture information about what is happening in your applications that are running in production. There are many different ways to organize your workflow, and some are easier than others.
+
+Do this
+The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll perform various tasks, like setting up a logging framework. Ultimately, these practice sections will help you successfully complete graded assessments, such as projects, mock interviews, and capstones.
+
 *** 37.2 Review of how the web works
+Review of how the web works
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to describe the request-response cycle and identify the purpose behind each part of a full-stack application.
+
+Overview
+So far, you have built multiple frontend applications, created simple and complex APIs, and used database servers to store data for APIs. No doubt your understanding of how the web works has become more complex. In this lesson, you will review the basics of how web requests and responses work.
+
+Key Terms
+Request-response cycle
+The path that information takes from the client to the server and then back to the client
+Three-tier architecture
+A way of building a web application in three separate pieces: the frontend, the backend, and the database
+Presentation tier
+The frontend tier in a three-tier architecture, which consists of the user interface
+Application tier
+The backend tier in a three-tier architecture, which contains the functional business logic that drives an application's core capabilities
+Data tier
+The database tier in a three-tier architecture, which consists of a database
+The request-response cycle
+As you know, the web is a cycle of requests and responses that flow between clients and servers. The client sends a request to the server, which then processes this request and responds to the client. Often, the client will then do something with this information, such as render a web page. This process is called the request-response cycle. The request-response cycle refers to the path that information takes from the client to the server and then back to the client.
+
+When you first learned about the request-response cycle, you probably thought of it as something like the following diagram:
+
+Client sending a request (method and URL) and server sending a response (status code and body).
+This process is repeated multiple times for a single view of a web page. For example, on this page, your browser made multiple requests for HTML, CSS, JavaScript, and image files.
+
+As you have progressed through the modules and lessons, you have used this simple request-response cycle to build increasingly complex web applications. You have learned that a web application has several parts; specifically, you have learned about the frontend, the backend, and the database. Now, you know that the request-response cycle really looks more like the following diagram:
+
+Client (browser), React app (frontend), Express API (backend), and PostgreSQL (database) sending a series of requests and responses to each other.
+Notice that the application above consists of three separate pieces: the frontend, the backend, and the database. This specific way of building a web application is called a three-tier architecture.
+
+What is a three-tier architecture?
+A three-tier architecture is a type of software architecture that is composed of three tiers or layers. This type of architecture provides many benefits for production and development environments by modularizing the user-interface, business-logic, and data-storage layers. This modularization allows developers to update and deploy one layer of an application independently of the other layers.
+
+This added flexibility can improve overall time to market. It can also decrease development cycle times by making it possible for developers to replace or upgrade one tier without affecting the other parts of the system. For example, a web application's user interface could be redesigned to change the color layout, without touching the underlying functional business and data-access logic underneath. A three-tier architecture is often used in software-as-a-service (SaaS) applications.
+
+The presentation tier
+The presentation tier, which is the frontend layer in a three-tier architecture, consists of the user interface. This tier is often built on web technologies, such as HTML5, JavaScript, CSS, or other popular web development frameworks. This layer generally communicates with other layers through API calls. When requests or data are processed in a three-tiered application, this process usually starts and ends in the presentation layer.
+
+As you've learned, requests are usually in the form of objects; these objects represent data that your application is trying to retrieve or save. For example, you may want to set up an account for a new customer, or you may want to retrieve transaction history for an existing customer.
+
+Validation also takes place in this layer. The validation helps ensure that all the data elements that are needed to process a given request are present. If any required data elements are missing, the request processing stops, and the user is notified about the missing data.
+
+The application tier
+The application tier contains the functional business logic that drives an application's core capabilities. This logic tier is also the only one that writes and reads data into the data tier.
+
+This tier handles requests sent from the presentation tier and contains business logic to determine how to process the request. Examples of this include the following:
+
+When creating a new user account, make sure that the email address entered isn't already associated with an existing user account.
+
+When ordering something from an e-commerce site, make sure that there is sufficient inventory to fulfill the order.
+
+When creating a new item for sale on an e-commerce site, make sure that the sale price is greater than the cost of the product.
+
+Implement security features to prevent hackers from getting unauthorized access to the data.
+
+The data tier
+The data tier consists of a database, which can be hosted onsite or in the cloud. This tier manages read and write access to the database. Some popular database systems for managing read-write access include MySQL, PostgreSQL, Microsoft SQL Server, and MongoDB.
+
+Advantages and disadvantages of a three-tier architecture
+Advantages
+A three-tier architecture reduces dependencies between tiers. As long as each tier follows the interface standards, this architecture allows different developers to work on each layer. As a result, the system can be developed much faster.
+
+Each tier can be changed, redeveloped, or modernized without affecting other tiers in a three-tier architecture. This shortens time to market and reduces the cost of adding new features.
+
+Only the application tier is allowed to access the data tier. This improves data security.
+
+Disadvantages
+It can reduce system performance. Most requests from the presentation tier access both the application tier and the data tier; this adds the overhead of multiple network requests and delays for each request.
+
+It can result in cascading changes from the top down. If you need to add a feature in the presentation tier, you may need to add code in both the business-logic tier and the data-access tier in order to implement the feature fully.
+
 *** 37.3 CORS
+CORS
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to describe the same-origin policy and why it is important. You'll also be able to enable cross-origin resource sharing for a REST API.
+
+Overview
+This lesson covers some important concepts in web application security. In this lesson, you'll learn how to enable cross-origin resource sharing (CORS). CORS allows servers to specify not only which websites can access the API, but also which HTTP methods can be used, and which headers of the response can be accessed by the JavaScript running in the browser.
+
+Key Terms
+Same-origin policy
+A policy in which a web browser allows scripts contained in one web page to access data at a different URL, but only if the web page and URL have the same origin
+Cross-site request forgery
+CSRF, an attack that tricks the victim into submitting a malicious request
+Cross-origin resource sharing
+CORS, a mechanism that allows a web page from one origin to access a resource at a different origin
+Cookie
+A small piece of data stored on the user's computer by the web browser, providing a way for websites to remember stateful information
+Starter code
+This lesson requires you to have the following repositories running on your local machine.
+
+GitHub: Starter CORS backend
+
+GitHub: Starter CORS frontend
+
+Fork and clone the above repositories. Then, follow the instructions to get each to run.
+
+The same-origin policy
+The same-origin policy is an important concept in web application security. Under this policy, a web browser allows scripts contained in one web page to access data at a different URL, but only if the web page and URL have the same origin.
+
+Key Term
+Origin: The combination of the protocol, the domain, and the port of the URL used to access web content
+
+As an example, if the origin is https://mybank.com, the code running on that page can access https://mybank.com/api and comply with the same-origin policy. The same-origin policy was added to browsers to close some cross-domain vulnerabilities, as explained below.
+
+Note: The origin is the combination of protocol, domain, and port. This means that https://api.mydomain.com and https://mydomain.com are actually different origins. And http://localhost:3000 and http://localhost:5000 are also different origins. The path or query parameters are ignored when considering the origin.
+
+The cross-domain vulnerability
+Imagine that, after logging on to https://mybank.com, you later browse to https://fluffykittens.com, a malicious website, without first logging out of https://mybank.com. Without the same-origin policy, the JavaScript embedded in the https://fluffykittens.com website could transfer money out of your savings account by sending a POST request to https://mybank.com/savings. This request would succeed, because the cookie from https://mybank.com would prove that you are logged in, even though the money transfer request didn't come from https://mybank.com.
+
+Before browsers had a same-origin policy, the browser would automatically attach any cookies tied to https://mybank.com to all HTTP requests to that domain, including embedded JavaScript requests from sites like https://fluffykittens.com, to https://mybank.com.
+
+By restricting HTTP calls to the same origin (the same domain as the browser tab's domain), this closes some hacker backdoors such as cross-site request forgery (CSRF). Note that it doesn't close all backdoors; additional mechanisms like CSRF tokens are still necessary.
+
+Cross-site request forgery is an attack that tricks the victim into submitting a malicious request. It inherits the identity and privileges of the victim to perform an undesired function on the victim's behalf. If the user is currently authenticated to the site, the site will have no way to distinguish between the forged request sent on behalf of the victim and a legitimate request sent by the victim.
+
+As you can see, the same-origin policy improves the overall security of websites. However, it creates some additional challenges when you are building a three-tier application, because you typically deploy each tier to a different domain. For example, the presentation tier could be deployed to https://www.mybank.com, the application tier could be deployed to https://api.mybank.com, and the data tier could be deployed to https://data.mybank.com. In this case, you need a way to tell the browser that it is okay for pages at https://www.mybank.com to request resources from https://api.mybank.com. This is done by enabling cross-origin resource sharing, as explained below.
+
+What is cross-origin resource sharing?
+Cross-origin resource sharing (CORS) is a mechanism that allows a web page from one origin to access a resource at a different origin. In other words, it makes cross-domain requests possible. CORS provides a way for a website to relax the same-origin policy and share resources with specified origins only, thereby preserving the intended security provided by the same-origin policy.
+
+How does CORS work?
+If a request is cross-origin, the browser always adds an Origin header to the request. For example, if the page at https://mybank.com/accounts/savings makes a request to https://api.mybank.com/savings, the Origin header will be Origin: https://mybank.com. As you can see, the Origin header contains the exact origin (protocol, domain, and port), without a path, query parameters, or document fragment.
+
+The server can inspect the Origin header. If it agrees to accept such a request, it will add a Access-Control-Allow-Origin header to the response. For example, to allow access from any origin, you could set the header as follows:
+
+Access-Control-Allow-Origin: *
+Allowing any origin is what you would want for a public API that anyone can access. For example, the random dog API at https://random.dog/woof.json includes an Access-Control-Allow-Origin: * header in every request, even if you visit that URL directly.
+
+More frequently, the allowed origin is narrowed down to one specific origin, like this:
+
+Access-Control-Allow-Origin: https://mybank.com
+Note: The Access-Control-Allow-Origin header specification is very strict. It can only include an asterisk * or exactly one origin. It cannot include more than one origin, and it cannot include * in the origin. You will learn how to allow multiple origins later in this module.
+
+When making cross-origin requests, the browser plays the role of a trusted mediator by doing the following:
+
+Ensuring that the Origin header is sent with a cross-origin request.
+
+Checking the Access-Control-Allow-Origin header in the response. If the request is allowed, the browser will then allow JavaScript to access the response. Otherwise, the request will fail with an error.
+
+CORS is a bit complicated. Fortunately, the Express cors package handles most of the complexity for you. Next, you will enable CORS for a GET request.
+
+Do this
+Enable CORS for a GET request
+Now, start the following starter projects:
+
+GitHub: Starter CORS backend
+
+GitHub: Starter CORS frontend
+
+Start the backend project using npm run start:dev so that it will automatically restart the server when you make changes.
+
+Then visit http://localhost:3000. Open Dev Tools by pressing Control+Shift+C (or Command+Option+C on a Mac). You will see something like the following:
+
+CORS test in Dev Tools.
+Next, click the Submit button. You will see an error in the console:
+
+Access to fetch at 'http://localhost:5000/cors-enabled' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+Error in Dev Tools.
+Now, update the /cors-enabled GET endpoint in src/cors-enabled/cors-enabled.router.js of the backend project.
+
+Change the code as follows:
+
+const router = require("express").Router();
+const controller = require("./cors-enabled.controller");
+const methodNotAllowed = require("../errors/methodNotAllowed");
++const cors = require("cors");
+
+router
+  .route("/:corsId")
+  .get(controller.read)
+  .put(controller.update)
+  .delete(controller.delete)
+  .all(methodNotAllowed);
+
+router
+  .route("/")
+- .get(controller.list)
++ .get(cors(), controller.list)
+  .post(controller.create)
+  .all(methodNotAllowed);
+
+module.exports = router;
+Tip
+The default configuration for cors() middleware enables CORS for every origin. You should be more restrictive in a production application by allowing only origins that require access to the API.
+
+Finally, submit the request again, and it will be successful:
+
+Successful Get request submitted in Dev Tools.
+What you just did enabled CORS for a simple request. There is also another type of request called a preflight request.
+
+Understanding CORS request types
+There are two types of CORS requests: simple requests and preflight requests. It's the browser that determines which is used. As the developer, you won't normally need to pay attention to this when you are constructing requests to be sent to a server. However, you may see the different types of requests appear in your network log. And because it may have a performance impact on your application, you will want to know why and when these requests are sent.
+
+Simple requests and preflight requests
+The browser deems a request to be a simple request when, among other things, the request is a GET or POST, and the Content-Type header is application/x-www-form-urlencoded, multipart/form-data, or text/plain.
+
+Any other request is considered a preflight request. For example, a request with a PUT method is considered a preflight request. This also means that every request to an API server with a Content-Type of application/json is a preflight request.
+
+A preflight request can use any HTTP method—not just GET and POST, but also PUT, PATCH, DELETE, and others.
+
+Before CORS, no web page could submit a DELETE or other such request. So, there were many servers that would consider a nonstandard method (not GET or POST) to mean, "That isn't a browser." To avoid misunderstandings with any non-simple request (any request that couldn't be done in the early days of browsers), the browser doesn't make non-simple requests right away. First, it sends a preliminary, preflight request, asking for permission.
+
+A preflight request uses the OPTIONS method, no body, and the following headers:
+
+Access-Control-Request-Method header, which is set to the method of the non-simple request, such as DELETE
+
+Access-Control-Request-Headers header, which is set to a comma-separated list of the header names that will be part of the non-simple request, such as Authorization,Content-Type
+
+If the server agrees to serve the requests, then it will respond with a status 200, an empty body, and the following headers:
+
+Access-Control-Allow-Origin, which must be set to either * or to the requesting origin, such as https://mybank.com, to allow it.
+
+Access-Control-Allow-Methods, which must specify the desired request method.
+
+Access-Control-Allow-Headers, which must have a list of allowed headers.
+
+Access-Control-Max-Age header (optional), which must be set to a number of seconds to cache the permissions. This way, the browser won't have to send a preflight request for subsequent requests that satisfy given permissions.
+
+Preflight requests enable the browser to ask for the server's permission before making requests with certain HTTP methods and headers. This permissions model puts the server in charge of how cross-origin requests behave.
+
+Do this
+Enable CORS for a preflight request
+Start by visiting http://localhost:3000. Then follow these steps:
+
+Open Dev Tools.
+
+Change the remote URL to http://localhost:5000/cors-enabled/07e05d3fa75f44c0b3ee06530c01629e.
+
+Change the method to DELETE.
+
+Click Submit.
+
+Now you will see something like the following:
+
+New remote URL and Method changed to Delete.
+Now update the /cors-enabled/:corsId DELETE endpoint in src/cors-enabled/cors-enabled.router.js of the backend project.
+
+const router = require("express").Router();
+const controller = require("./cors-enabled.controller");
+const methodNotAllowed = require("../errors/methodNotAllowed");
+const cors = require("cors");
+
+router
+  .route("/:corsId")
+  .get(controller.read)
+  .put(controller.update)
+- .delete(controller.delete)
++ .delete(cors(), controller.delete)
+  .all(methodNotAllowed);
+
+router
+  .route("/")
+  .get(cors(), controller.list)
+  .post(controller.create)
+  .all(methodNotAllowed);
+
+module.exports = router;
+Back in the frontend, click Submit again, and you will see the same error. This is because the preflight request using OPTIONS failed.
+
+Switch to the Network tab, and you will see the following. (Note that you may need to clear the network data and click Submit again.)
+
+Delete error on Network tab in Dev Tools.
+The order of these network requests may seem out of order, but they are in the correct order. You initiated the DELETE request by clicking the Submit button. The DELETE request then triggered the OPTIONS request.
+
+The OPTIONS request failed because CORS isn't enabled for the OPTIONS method of that route. Click the OPTIONS request and look at the response headers. There is no Access-Control-Allow-Origin header, so the browser blocked access to the response.
+
+Access to response blocked due to no Access-Control-Allow-Origin header.
+For a preflight request, you must enable CORS for both the OPTIONS method and any methods that may be a preflight request.
+
+Next, you will update the code to enable CORS for the OPTIONS method of the /cors-enabled/:corsId route.
+
+const router = require("express").Router();
+const controller = require("./cors-enabled.controller");
+const methodNotAllowed = require("../errors/methodNotAllowed");
+const cors = require("cors");
+
++ const corsDelete = cors({methods: "DELETE"});
+
+router
+  .route("/:corsId")
+  .get(controller.read)
+  .put(controller.update)
+-  .delete(cors(), controller.delete)
++  .delete(corsDelete, controller.delete)
++ .options(corsDelete)
+  .all(methodNotAllowed);
+
+router
+  .route("/")
+  .get(cors(), controller.list)
+  .post(controller.create)
+  .all(methodNotAllowed);
+
+module.exports = router;
+Now submit the DELETE request again, and it will succeed.
+
+Successful resubmit of Delete request.
+Note: The OPTIONS method must also allow CORS requests for a CORS preflight request to work.
+
+Notice that this time, you passed some configuration information to the cors() method. Specifically, you passed cors({methods: "DELETE"}), which enables CORS only for the DELETE method. Any CORS request using a method other than OPTIONS or DELETE will fail for this router.
+
+Try a GET request to http://localhost:5000/cors-enabled/55b5a6f60ddc4b3cba36e2a1ec5c6990, and it will fail.
+
+Get request failed in Dev Tools.
+You will fix this error next, but rather than enabling CORS on each method, you will enable CORS for the entire route.
+
+Enable CORS for a single route
+Sometimes, you want to enable CORS for every method on a route. Rather than adding cors() as middleware to each method handler, you can add cors() to the entire route.
+
+Do this
+Enable CORS for the /:corsId route
+Now, update the /cors-enabled/:corsId endpoint in src/cors-enabled/cors-enabled.router.js of the backend project.
+
+const router = require("express").Router();
+const controller = require("./cors-enabled.controller");
+const methodNotAllowed = require("../errors/methodNotAllowed");
+const cors = require("cors");
+
+- const corsDelete = cors({methods: "DELETE"});
+
+router
+  .route("/:corsId")
++ .all(cors())
+  .get(controller.read)
+  .put(controller.update)
+- .delete(corsDelete, controller.delete)
+- .options(corsDelete)
++ .delete(controller.delete)
+  .all(methodNotAllowed);
+
+router
+  .route("/")
+  .get(cors(), controller.list)
+  .post(controller.create)
+  .all(methodNotAllowed);
+
+module.exports = router;
+Try the GET request to http://localhost:5000/cors-enabled/55b5a6f60ddc4b3cba36e2a1ec5c6990 again, and it will succeed.
+
+Successful Get request in Dev Tools.
+Next, make sure that the server still responds with 405 when you use a method that isn't handled. For example, a POST request to http://localhost:5000/cors-enabled/55b5a6f60ddc4b3cba36e2a1ec5c6990 should return 405.
+
+Post request returning 405 error.
+Now that you have CORS enabled for the entire /:corsId route, you will change the configuration again to enable CORS for the entire router.
+
+Enable CORS for a router
+Next, you will enable CORS for the entire router. Rather than adding all(cors()) to both routes, you can add cors() to the router.
+
+First, make sure that CORS isn't enabled for a POST request to /cors-enabled. In the frontend, change the method to POST, and the body text area will appear.
+
+Post the following to http://localhost:5000/cors-enabled:
+
+{
+  "data": {
+    "message": "NEW CORS enabled data"
+  }
+}
+Then you will see the following error:
+
+Post errors in Dev Tools.
+Do this
+Enable CORS for the router
+Now, make the following changes to the code in src/cors-enabled/cors-enabled.router.js of the backend project.
+
+const router = require("express").Router();
+const controller = require("./cors-enabled.controller");
+const methodNotAllowed = require("../errors/methodNotAllowed");
+const cors = require("cors");
+
++router.use(cors())
+
+router
+  .route("/:corsId")
+- .all(cors())
+  .get(controller.read)
+  .put(controller.update)
+  .delete(controller.delete)
+  .all(methodNotAllowed);
+
+router
+  .route("/")
+  .get(cors(), controller.list)
+  .post(controller.create)
+  .all(methodNotAllowed);
+
+module.exports = router;
+Try the POST request again, and it will succeed.
+
+Successful Post request in Dev Tools.
+Next, you will enable CORS for the entire server.
+
+Enable all CORS requests
+If you are building an API that is intended to be used from any website, you may want to enable CORS for the entire API.
+
+Do this
+Enable CORS for everything
+Now make the following changes to the code in src/cors-enabled/cors-enabled.router.js of the backend project.
+
+const router = require("express").Router();
+const controller = require("./cors-enabled.controller");
+const methodNotAllowed = require("../errors/methodNotAllowed");
+const cors = require("cors");
+
+-router.use(cors())
+
+router
+  .route("/:corsId")
+  .get(controller.read)
+  .put(controller.update)
+  .delete(controller.delete)
+  .all(methodNotAllowed);
+
+router
+  .route("/")
+  .get(cors(), controller.list)
+  .post(controller.create)
+  .all(methodNotAllowed);
+
+module.exports = router;
+Then make the following changes to the code in src/app.js of the backend project.
+
+const express = require("express");
++const cors = require("cors");
+const app = express();
+
+const corsEnabledRouter = require("./cors-enabled/cors-enabled.router");
+const corsNotEnabledRouter = require("./cors-not-enabled/cors-not-enabled.router");
+const notFound = require("./errors/notFound");
+const errorHandler = require("./errors/errorHandler");
+
++app.use(cors());
+app.use(express.json());
+
+app.use("/cors-enabled", corsEnabledRouter);
+app.use("/cors-not-enabled", corsNotEnabledRouter);
+
+app.use(notFound);
+
+app.use(errorHandler);
+
+module.exports = app;
+Now, CORS is enabled for the entire API.
+
+Submit a GET request to http://localhost:5000/cors-not-enabled, and you will see the following:
+
+Get request submitted to //localhost:5000/cors-not-enabled.
+Unless otherwise required, you can enable CORS for the entire server for the APIs that you create in this program. However, if you are building a publicly available API, you should be more restrictive with the CORS configuration.
+
+Additional CORS permissions
+There are additional CORS features that also require special permissions. A common one is user credential support. By default, CORS doesn't attach user credentials, such as cookies, on requests.
+
+Another is response headers support. The browser doesn't reveal all response headers to the JavaScript client code. If your server responds with an X-Powered-By response header, the JavaScript client code won't be able to read its value without permission.
+
+As with all CORS permissions that you've learned about, the server is in charge of enabling them, and it does so by using HTTP headers.
+
+Enabling additional CORS permissions is out of scope for this lesson. You can read more about these permissions on the MDN cross-origin resource sharing page.
 *** 37.4 Full-stack application workflow
 *** 37.5 Practice full-stack application workflow
 *** 37.6 Tracing errors
