@@ -8401,14 +8401,457 @@ A completed example from this lesson can be found here:
 
 GitHub: Node, Express, and Postgres—joins-with-knex branch
 *** 35.10 Assessment: Node, Express, and Postgres
-
 ** Backend Deployment - Module 36
 *** 36.1 Overview: Backend deployment
+Overview: Backend deployment
+9 minutesEstimated completion time
+Overview
+It's time for you to learn how to put the servers that you've built onto the web. There are many different ways to do this, and some are easier than others. This module will begin by briefly discussing what it means to deploy a backend application that includes a database. Then, you'll learn concrete steps that you can take to put your servers onto the web.
+
+In general, this module is focused on how to accomplish these tasks. Although there are many ways to accomplish them, you won't necessarily learn about the variety of deployment techniques here. Keep in mind that as you grow as a developer and work in different contexts during your career, you will learn additional ways to deploy to the web.
+
+Do this
+The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll perform various tasks, like setting up a development environment or executing a command. Ultimately, these practice sections will help you successfully complete graded assessments, such as projects, mock interviews, and capstones.
 *** 36.2 What is backend deployment?
+What is backend deployment?
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to describe what deployment means.
+
+Overview
+Deployment is one of those technical terms that gets thrown around often without much explanation. In this lesson, you'll learn what deploying an application generally involves. You'll also learn about what kinds of services that process may include.
+
+Sharing your work
+Right now, your servers can only be hosted locally. That is, if someone wants to access the routes accessible on your server and the data available through it, they'll either need to do it on your computer or download your code and run it themselves.
+
+To make your application accessible on the web, you'll need to deploy your application. Deploying a web application typically means making it accessible on the web through a URL.
+
+Deployment is a way of sharing your work with the world by putting it on the web.
+
+Development, staging, and production
+When you deploy, you deploy to a certain environment. There are typically three environments:
+
+The development environment references work done on your computer.
+
+The staging environment references a deployed version of the application that is used to test the changes being made.
+
+The production environment references a deployed version of the application that is your "completed" version of the application. This version is ready for users.
+
+In this program, you'll have just two environments: development and production.
+
+The deployment process
+To deploy a server, you'll need to recreate your development environment's essential components on another machine. That machine will need to be configured to run your server and will be accessible to the internet.
+
+You will also need to build a secure connection to your database. Typically, deploying the backend of an application involves both the server and the database. But because you have been working with a cloud database throughout this program, you will have little extra to do in order to "deploy" your database.
+
+Manually deploying a server and setting up an environment is an entire topic in itself, often referred to as developer operations or DevOps. Thankfully, there are a number of modern tools and services that make deployment much easier.
+
+Keep in mind that all of these services are often configuration heavy. That means that you need to follow a certain set of steps in a particular order. It's a good idea to take your own notes on the deployment process; this can be extremely useful for later on.
+
+Common services
+There are a number of common tools and services that you may hear about when it comes to deployment. Some of the most popular options are described below.
+
+Amazon Web Services
+As one of the most popular solutions out there, Amazon Web Services (AWS) runs the web. Working with AWS can be complicated and costly for new developers, but it's an industry standard for most large websites.
+
+AWS allows you to host applications in all kinds of languages. They provide a number of tools to facilitate this process, including the popular Elastic Beanstalk tool. They also provide a variety of other services, like file and database hosting.
+
+Microsoft Azure
+Microsoft Azure is similar to AWS in that it provides a number of different services for hosting applications of all kinds. Azure is built for large websites and projects, and it can host applications in a variety of languages.
+
+Heroku
+Heroku is one of the more popular options, particularly among those who are just starting to code. Thanks to its easy-to-use command-line interface and excellent UI, Heroku can perform many of the same tasks that AWS and Azure can, with a bit less fuss.
+
+CI/CD
+The acronym CI/CD stands for continuous integration and continuous delivery (or continuous deployment). Continuous integration is a set of practices and the automated process of building, testing, and merging an application in a shared repository. CI allows for better software quality and collaboration. Tools such as Heroku CI and Travis CI are often used by developers to implement continuous integration in a project. After the changes made to an application are tested with a CI tool, the application must be deployed. And with continuous delivery, the new version of the application is automatically deployed into a testing or production environment. Some services, such as Heroku, will automatically deploy your application when changes are pushed into the project repository's main branch. In the following lesson, you will learn how to follow a continuous delivery process with Heroku.
+
 *** 36.3 Deploying the server
+Deploying the server
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to deploy an Express.js app on Heroku.
+
+Overview
+In this lesson, you are going to deploy an app using Heroku. As you learned in the Frontend deployment module, Heroku allows you to deploy web applications to the cloud for free using a couple of commands. In this lesson, you will use Heroku to deploy an Express.js app from scratch.
+
+Setup
+Go to Heroku's website and click the Sign Up button. You will receive an email when your account is created and authorized.
+
+Next, install the heroku CLI tool. To install the correct npm package, run the command given on the download page, using the npm package manager option:
+
+npm install -g heroku
+Now, run heroku --version. It will output a version number to verify that the CLI tool has been installed.
+
+Do this
+Get set up with Heroku
+If you already have an account with Heroku, you may ignore this step. If not, follow the instructions above to create an account with Heroku. Then, install the heroku CLI tool as described.
+
+Command-line configuration
+For Heroku to work as intended, you need to log in via the command line. You can log in by running this command:
+
+heroku login
+After entering the command, you will get something like this:
+
+heroku: Press any key to open up the browser to login or q to exit:
+Press any key (except q) to log in.
+
+Do this
+Log in to Heroku
+Follow the instructions above to log in to Heroku. If you encounter any problems, reach out for help.
+
+Deploying to Heroku
+To deploy with the CLI, the command is heroku create. Note that Node.js is a supported framework on Heroku, so you can simply use heroku create to create the project for the backend.
+
+heroku create
+Heroku's build system will automatically detect the required buildpack, but if you are using an unsupported language or framework, you will be required to use a custom buildpack. Heroku provides a list of official and unofficial buildpacks.
+
+Do this
+Deploy an Express.js app to Heroku
+Create a folder and create a server.js file inside the folder that you just created. Then copy the following snippet into your new server.js file:
+
+const express = require('express')
+const cors = require('cors')
+
+const app = express()
+const router = express.Router()
+const PORT = process.env.PORT || 5000
+
+router.get('/', cors(), (req, res) => {
+  res.json({ message: 'Hello Heroku!' });
+})
+
+app.use('/', router);
+
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT} `);
+})
+
+module.exports = app
+Create a package.json file and copy the following snippet into it.
+
+{
+  "name": "name-generator",
+  "version": "1.0.0",
+  "engines": {
+    "node": "12.13.0"
+  },
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client"
+  },
+  "keywords": [],
+  "dependencies": {
+    "express": "^4.17.1",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
+Next, install and run your app to make sure that everything works as expected.
+
+npm install
+npm start
+Then initialize a Git repository.
+
+git init
+Next, add a .gitignore file in the root folder of your repository to specify files that Git should ignore.
+
+# Dependency directories
+node_modules/
+Run heroku create to create your project in Heroku.
+
+heroku create
+You will get something like this:
+
+Creating app... done, ⬢ secure-beyond-60922
+https://secure-beyond-60922.herokuapp.com/ | https://git.heroku.com/secure-beyond-60922.git
+Now, add and commit your code.
+
+git add .
+git commit -m "first commit"
+Then simply push your code to the Heroku repository.
+
+git push heroku main
+To see your deployed app, use heroku open.
+
+heroku open
+Redeploying
+To redeploy your app, add, commit, and push your new changes to Heroku.
+
+git add .
+git commit -m "updated project"
+git push heroku main
+
 *** 36.4 Deploying a monorepo
+Deploying a monorepo
+1 hourEstimated completion time
+Overview
+In this lesson, you will use starter code to deploy a monorepo.
+
+Key Terms
+Monorepo
+A repository that contains both the client and the backend projects
+Starter code
+This lesson requires you to have the following monorepo running on your local machine:
+
+Starter Name Generator
+
+Fork and clone the repository. Then, follow the instructions to get the app running.
+
+Monorepo
+A monorepo is a repository that contains both the client and the backend projects. Having both projects in a single repository means that you can open both projects in the same editor.
+
+The table below describes the folders in the starter repository:
+
+Folder/file path
+Description
+./backend
+The backend project, which runs on localhost:5000 by default.
+./client
+The frontend project, which runs on localhost:3000 by default.
+You will deploy both apps on Heroku.
+
+Do this
+Deploy a monorepo to Heroku
+First, cd into the name-generator app (starter code).
+
+cd starter-name-generator
+Use heroku create to create the Heroku project for the server.
+
+heroku create name-generator-backend
+You will see something similar to this:
+
+Creating ⬢ name-generator-backend... done
+https://name-generator-backend.herokuapp.com/ | https://git.heroku.com/name-generator-backend.git
+Tip
+Heroku app names must be unique, so you will have to change the name of your app name-generator-backend. Rename it to whatever you like!
+
+Now, use heroku create for the client application:
+
+heroku create name-generator-client
+You will see something similar to this:
+
+Creating ⬢ name-generator-client... done
+https://name-generator-client.herokuapp.com/ | https://git.heroku.com/name-generator-client.git
+Great! You just used the heroku create command to create the URLs and repositories for your backend and client.
+
+Now, use git remote add to add the Heroku Git repositories that you just created.
+
+For example, if the previous commands generated https://git.heroku.com/name-generator-backend and https://git.heroku.com/name-generator-client, you would run the following commands:
+
+git remote add heroku-backend https://git.heroku.com/name-generator-backend.git
+git remote add heroku-client https://git.heroku.com/name-generator-client.git
+Now, add and commit your code.
+
+git add .
+git commit -m "first commit"
+Because you are using two different repositories in your project, you need to push your changes using the subtree command. The subtree command allows you to nest one or more repositories inside another as a subdirectory. In short, this command allows you to manage multiple repositories in one; it's commonly used in monorepo projects.
+
+Use git subtree to push your code to the Heroku backend and client repos.
+
+git subtree push --prefix backend heroku-backend main
+git subtree push --prefix client heroku-client main
+To see your deployed app, use heroku open with the -a flag to indicate the app that you want to open.
+
+heroku open -a name-generator-client
+Redeploying
+To redeploy your app, add, commit, and push your new changes to Heroku.
+
+As an example, go to client/App.js and change the fetch URL to the one that you just deployed.
+
+useEffect(() => {
+  fetch('https://name-generator-backend.herokuapp.com/generate')
+    .then((res) => res.json())
+    .then((nme) => setName([nme]))
+}, [])
+Then add, commit, and push your changes.
+
+git add .
+git commit -m "Fix fetch URL"
+git subtree push --prefix backend heroku-backend main
+git subtree push --prefix client heroku-client main
+You can see your application's metrics, logs, deployment history, and settings in the application's dashboard.
+
 *** 36.5 Database setup
+Database setup
+1 hourEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to run your migrations on a production server.
+
+Overview
+Because you are already working with a cloud database, connecting your database with your backend application will be relatively simple. It is important to connect them in order for your server to work properly.
+
+Starter code
+This lesson requires you to have the following repository running on your local machine.
+
+GitHub: Backend deployment starter
+Fork and clone the repository. Then, follow the instructions to get it to run.
+
+Next, make sure that you have two different database URLs for this lesson. You will need a development database and a production database.
+
+Database environments
+Recall that you may have different types of environments—such as development, staging, and production—for your application. It is typical for all of these environments to have different databases to keep their data separate from one another.
+
+Having separate databases is especially important for your development process. You want to be able to add new migrations and rerun your seed files without worrying about how that will affect your production database.
+
+To make working with different databases manageable, it's typical to define a DATABASE_URL environment variable. Then, wherever you would make use of the URL to your database, you can use DATABASE_URL instead. Although you can set the DATABASE_URL from the command line, it's typical to use a tool like dotenv.
+
+Do this
+Find DATABASE_URL
+In the starter-backend-deployment project, take a moment to find where DATABASE_URL is getting used. You should find it in the following files:
+
+.env.sample
+
+knexfile.js
+
+Create a .env file
+In the filename, .sample refers to the fact that this is an example of what the real file (which should be called .env) should look like. Run the following command from the command line to make a copy of it. Make sure that you are in the correct directory before running the command.
+
+cp .env.sample .env
+Inside that file, you'll notice that two new environment variables are being set:
+
+DEVELOPMENT_DATABASE_URL=""
+PRODUCTION_DATABASE_URL=""
+One of these environment variables, DEVELOPMENT_DATABASE_URL, will be for your development database. The other, PRODUCTION_DATABASE_URL, will be for your production database.
+
+Tip
+You will be using two databases for this project. If you are using ElephantSQL, make sure that you create two databases: one for development and the other one for production.
+
+Inside the quotations for DEVELOPMENT_DATABASE_URL, add a link to a database that you can use as a development database. Inside the quotations for PRODUCTION_DATABASE_URL, add a link to a database that you can use as a production database.
+
+Next, take a look at the .gitignore file for this project. Notice that .env is included as a file to be ignored. This is important so that you do not push the URL to your database up to GitHub.
+
+Inspect the knexfile.js
+Now that you have your .env file set up, take a look at the knexfile.js file. At the top of the file, dotenv is being used to load the .env file:
+
+require("dotenv").config();
+This line is required if you want to make use of the .env file.
+
+Below that, you'll see that a URL variable is set so that if the NODE_ENV environment variable is equal to the string "production", PRODUCTION_DATABASE_URL will be used. Otherwise, DEVELOPMENT_DATABASE_URL will be used.
+
+const {
+  NODE_ENV = "development",
+  DEVELOPMENT_DATABASE_URL,
+  PRODUCTION_DATABASE_URL,
+} = process.env;
+const URL =
+  NODE_ENV === "production"
+    ? PRODUCTION_DATABASE_URL
+    : DEVELOPMENT_DATABASE_URL;
+Run the migrations
+To check that your database is now connected to your applications, you can run the migrations. From the command line, run the following:
+
+npm run knex -- migrate:latest
+Note that you're running migrations on your development database because NODE_ENV isn't set explicitly to "production".
+
+If you encounter an issue, it could be one of the following problems:
+
+You may encounter a problem that says that there are missing migrations if you're reusing an existing database. Make sure to use a new database or delete all of the tables in the existing database.
+
+You may encounter a connection problem if your database URL is incorrect or if you haven't saved your .env file.
+
+If the migrations run correctly, your local application can now be connected to your database.
+
+Migrations on production
+At this point, you now have a working local setup. To run migrations on your production database, you should run the migration command, but this time with NODE_ENV being equal to the "production" string, like this:
+
+NODE_ENV=production npm run knex -- migrate:latest
+Do this
+Run your production migrations
+Run the command above to run the migrations on your production database. You will see an output that's similar to what you saw when you ran the command locally—except this time, you will see that knex is using the production environment.
+
+Using environment: production
+Batch 1 run: 1 migrations
+Deploy your application
+Before deploying your application to Heroku, you need to create a Procfile. A Procfile is a file that tells Heroku what to do after installing an application. You can use the Procfile to specify any commands that are to be executed by the app on startup.
+
+Create a file named Procfile, and copy the following line:
+
+web: node ./api/index.js
+The above code will tell Heroku to run index.js, which contains the server code. To read more about the Procfile, consult Heroku's Procfile documentation.
+
+Now that you have created the Procfile, log in to Heroku.
+
+heroku login
+Then run the heroku create command.
+
+heroku create
+After running heroku create, you will get something like this.
+
+Creating app... done, ⬢ cryptic-everglades-55740
+https://cryptic-everglades-55740.herokuapp.com/ | https://git.heroku.com/cryptic-everglades-55740.git
+Copy the Git URL from the previous command and add it as a remote.
+
+git remote add heroku-backend https://git.heroku.com/cryptic-everglades-55740.git
+Then, add, commit, and push your files to Heroku.
+
+git add .
+git commit -m "add files to heroku"
+git push heroku-backend main
+An additional step is needed for the app to work. You need to set the environment variables in Heroku with the heroku config:set command. Copy the PRODUCTION_DATABASE_URL that you set in your .env file and paste it after the command.
+
+heroku config:set PRODUCTION_DATABASE_URL=postgres://phrawv:QTHOwQKmpVDvEwwG-Vpx9jZsG98EOS@batyr.db.elephantsql.com/phrawv --app cryptic-everglades-55740
+You will get something like this:
+
+Setting PRODUCTION_DATABASE_URL and restarting ⬢ cryptic-everglades-55740... done, v9
+PRODUCTION_DATABASE_URL: postgres://phrawv:QTHOwQKmpVDvEwwG-Vpx9jZsG98EOS@batyr.db.elephantsql.com/phrawv
+Once you have set the database URL, try visiting your deployed application at the /api/products route. You will see an empty response because you haven't seeded the production database.
+
+This is fine; production databases aren't usually seeded with fake data. This is because they are meant to interact with real users. But if you do want to seed the production database with fake data, you can run the knex -- seed:run command on your production database. Then, if you try the /api/products route again, you'll get the following response.
+
+{
+  "data": [
+    {
+      "product_id": 2,
+      "product_name": "Chocolate Sandwich Cookies",
+      "aisle": "cookies cakes",
+      "department": "snacks",
+      "price": 31.06
+    }
+    // ...
+  ]
+}
+Once you've completed all of the steps above, you may mark this lesson as complete.
+
 *** 36.6 Troubleshooting
+Troubleshooting
+1 hourEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to debug some common problems that arise when deploying a backend server and database.
+
+Overview
+Unlike coding, debugging deployment can be tricky if you aren't sure what you're looking for. In this lesson, you'll be reminded of some of the most common problems that come up when deploying.
+
+Tip
+Make sure to reach out for assistance early if you encounter any problems with deployment. Often, big problems are caused by small mistakes.
+
+Read your application's logs on Heroku
+Click the View logs button in your application's dashboard and look for any errors.
+
+View logs button in application dashboard in Heroku.
+Troubleshoot the heroku command
+If running the heroku command leads to a failure, carefully read through the error that is presented to understand what has gone wrong.
+
+If you've forgotten to log in to your account, or have gotten logged out, you may need to log back in through the command line (by running heroku login) before you can deploy.
+
+Check your database URL
+A single wrong character in your database URL can lead to a failed connection to your database. You won't actually encounter this error until your server attempts to make a request.
+
+For example, locally, you may see an UnhandledPromiseRejectionWarning with more information in the terminal tab where you're running your server. This is likely a sign that something is wrong with your connection. Also, check your application's error handling and investigate if any of your functions is missing a catch handler.
+
+Try copying and pasting your database URL once again, assigning it to the appropriate environment variable.
+
+Confirm environment variables
+If you continue to have connection troubles, ensure that you have a .env file and that the environment variables set in that file are spelled correctly and used correctly throughout the application. Remember that you can always set environment variables via the command line to test out different environments.
+
+Ensure that your migrations have run
+It's possible that you may have run your migrations locally but not on your production database. You can always attempt to rerun your migrations with your NODE_ENV set to "production"—if they've already been run, nothing additional will happen.
+
+Note: This isn't true for seeds. Seeds will delete everything in your database before inserting rows.
 *** 36.7 Assessment: Backend deployment
 
 ** Connecting it all - Module 37
