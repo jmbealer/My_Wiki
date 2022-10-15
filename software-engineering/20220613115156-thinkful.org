@@ -6599,14 +6599,1807 @@ There are several other types of JOIN queries, but these are most common and sho
 *** 34.6 Assessment: Creating relations
 ** Node, Express, and Postgres - Module 35
 *** 35.1 Overview: Node, Express, and Postgres
+Overview: Node, Express, and Postgres
+9 minutesEstimated completion time
+Overview
+In this module, you'll learn how to use a SQL query builder to connect your Express server to a PostgreSQL database. This will allow you to store data for your application, so that you can retrieve the data stored in the database even after your server restarts.
+
+So far, you have learned how to use Express to create a server that follows RESTful API design principles. However, at this point, your server has been either reading data from JSON files or storing items in memory. For example, the client would issue a POST request, and the server would save the new posted entity to an array in memory. If you were to restart the Express server, the posted item would be lost.
+
+In the previous lessons, you also learned how to set up, connect to, and write complex SQL queries to perform CRUD operations on a PostgreSQL database hosted on ElephantSQL.
+
+To persist (or store) data for your application, you can connect your Express server to a database, such as PostgreSQL. Then, when a client issues a request like GET, POST, or DELETE to the Express server, the server can connect to the database to manipulate the persisted data. On server restarts, you can still retrieve the data stored in the database.
+
+In this module, you have been hired as a backend developer by Thinkful Gifts, an e-commerce store where "you can pick thoughtful gifts for thankful recipients." You have been tasked with setting up a database and building out an inventory API that provides the inventory management department with access to inventory data to help them make informed decisions for the business.
+
+After some discussion with your manager and your team, you've decided to use Express, PostgreSQL, and a SQL query builder called Knex for the project. After determining the appropriate data relationships within your database, you are now ready to implement the API.
+
+Do this
+The purpose of the Do this sections in this module is to give you important hands-on experience. In these sections, you'll perform various tasks, like setting up a development environment or executing a command.
 *** 35.2 Knex configuration
+Knex configuration
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to create and customize a knexfile.js.
+
+Overview
+You are now ready to begin building out the inventory API. To connect your Express server with a PostgreSQL database, you will use a tool called Knex, which you will install, set up, and configure in this lesson. Knex is a SQL query builder library that you can use with different types of databases (not only PostgreSQL) with Node.js. It allows you to build complex SQL queries using JavaScript.
+
+To understand how the query building process works, consider the following analogy: Imagine that a company's finance manager is using a complex GUI with multiple forms. The forms allow the finance manager to perform multiple actions on an account, such as the following:
+
+Transfer money in
+
+Transfer money out
+
+Select the amount of money
+
+Select the target and destination accounts
+
+Select the currencies involved
+
+Maybe even select multiple target accounts
+
+Select dates the transactions take place
+
+As the finance manager is filling out the forms, nothing actually happens until they click Submit. They're building a transaction by using the controls on the page, and once they've built the transaction, they can submit it.
+
+The complex GUI is similar to a query builder that can configure a database query before performing it. Here's how this analogy maps out:
+
+The finance manager is you, the developer.
+
+The GUI is a Knex instance.
+
+The financial transaction is the SQL query.
+
+The options on GUI forms for building transactions are the Knex instance methods.
+
+The Submit button on the GUI is like using then() off the query builder.
+
+Starter code
+This lesson requires you to have the following repository running on your local machine.
+
+GitHub: Node, Express, and Postgres Starter
+Follow the instructions in the README to get it to run.
+
+Project dependencies: The knex and pg libraries
+You will need to install the Knex library (knex). You'll also need to install the Node-Postgres database library (pg), which contains a collection of Node.js modules for interacting with your PostgreSQL database.
+
+Do this
+Install the knex and pg libraries
+To install the dependencies, run the following command:
+
+npm install knex pg
+Database configuration with knexfile.js
+Next, you will need to create a knexfile.js, which contains database configurations across different environments. As you learned in a previous module, when you deploy your application, you deploy to a certain environment. There are typically four environments:
+
+The development environment references work done on your computer.
+
+The test environment is used when the application is under test. Tests often create, update, and delete records in the database so the database used for tests should be considered highly volatile and disposable.
+
+The staging environment references a deployed version of the application that is used to test the changes being made.
+
+The production environment references a deployed version of the application that is your "completed" version of the application. This version is ready for users.
+
+For example, developers often use separate databases for the staging and production environments. Additionally, for security purposes, each environment should have a unique username and password to connect to the database. By using a separate database for testing purposes, developers can reduce the risk of inadvertently affecting the data of real users in production. You will learn more about deployment in the next module.
+
+In the knexfile.js, you can specify the database that your server should connect to across different environments.
+
+Do this
+Create a knexfile.js
+To create a knexfile.js, run the following command:
+
+npx knex init
+This will create a sample knexfile.js:
+
+// Update with your config settings
+
+module.exports = {
+  development: {
+    client: "sqlite3",
+    connection: {
+      filename: "./dev.sqlite3",
+    },
+  },
+
+  test: {
+    client: "postgresql",
+    pool: { min: 1, max: 5 },
+    connection: {
+      database: "db_test",
+      user: "username_test",
+      password: "password_test",
+    },
+  },
+
+  staging: {
+    client: "postgresql",
+    connection: {
+      database: "db_staging",
+      user: "username_staging",
+      password: "password_staging",
+    },
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      tableName: "knex_migrations",
+    },
+  },
+
+  production: {
+    client: "postgresql",
+    connection: {
+      database: "db_production",
+      user: "username_production",
+      password: "password_production",
+    },
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      tableName: "knex_migrations",
+    },
+  },
+};
+The sample knexfile.js exports an object with various key-value pairs for different environments. The table below describes each part of the knexfile.js in greater detail:
+
+Keys
+Description
+development, test, staging, production
+Each key is set to an object that contains the database configuration for that environment. For example, the development key is set to the object containing database configuration variables for the development environment.
+client
+Required and set to a string (such as "postgresql") describing the database library for Knex to connect to. Knex uses the appropriate client adapter.
+connection
+Set to an object, connection string, or a function returning an object containing the credentials and connection URL for the database instance.
+pool
+Set to an object containing the min (minimum) and max (maximum) number of pooled server connections allowed on your database instance. This program won't explore the details behind these values, but know that it is generally fine to use the default values.
+migrations
+Set to an object containing the location of the migration files; you will learn more about migrations in a future lesson.
+Because you won't be setting up testing, staging, or production environments in this module, you can go ahead and remove the keys and the objects associated with test, staging, and production.
+
+Then, modify the object for the development key so that the client key is set to "postgresql" (because you are using the PostgreSQL database for your API). For now, set the connection key to an empty string "". In the next lesson, you will set connection to point to your ElephantSQL database URL.
+
+Your final knexfile.js should look like this:
+
+module.exports = {
+  development: {
+    client: "postgresql",
+    connection: "",
+  },
+};
+You will be using the same repository in the next lesson, so make sure to save the work that you complete in this lesson.
+
+Complete example
+A completed example from this lesson can be found here:
+
+GitHub: Node, Express, and Postgres—knex-configuration-complete branch
+
 *** 35.3 Connecting to the database with Knex
+Connecting to the database with Knex
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to create a connection to your database using Knex.
+
+Overview
+In the previous lesson, you created a simple database configuration for your development environment using a knexfile.js. Now, you are ready to connect to your ElephantSQL database with Knex.
+
+Key Terms
+Environment variable
+Also called an env var, a key-value pair held by your current operating system and user
+Starter code
+This lesson continues using the project that you created in the previous lesson. If you need to, you can download that code here:
+
+GitHub: Node, Express, and PostgreSQL Starter
+
+Environmental variables management with dotenv
+How do you configure the server so that it knows which database it should connect to in different environments? You can make use of environment variables, which are key-value pairs stored in the application's environment. Your development environment will be different than the environment that you're deploying to.
+
+You can use the popular dotenv library to manage your environment variables. You can store your environment variables in a .env file, and dotenv will then inject environment variables into the appropriate environment.
+
+You will learn more about environment variables in the next module. For now, you just need to install and require dotenv in your application.
+
+Do this
+Install the dotenv library
+To install dotenv, run the following command:
+
+npm install dotenv
+Update the database connection in knexfile.js
+Next, modify your knexfile.js as follows:
+
++ require("dotenv").config();
++ const { DATABASE_URL } = process.env;
+
+module.exports = {
+  development: {
+    client: "postgresql",
+-    connection: "",
++    connection: DATABASE_URL,
+  },
+};
+Here's a breakdown of the syntax shown above:
+
+require("dotenv").config(); requires and loads dotenv into the application code. Dotenv loads the environment variables that you defined in .env (which currently only contains DATABASE_URL) into process.env.
+
+const { DATABASE_URL } = process.env; stores the value of process.env.DATABASE_URL in a variable called DATABASE_URL.
+
+connection: DATABASE_URL, sets the location of the database for the development environment to DATABASE_URL (which is currently the URL for your ElephantSQL database instance).
+
+Initializing Knex
+The knex module is a function that accepts a configuration object for Knex, as follows:
+
+// Define the database configuration object
+const config = {
+  client: "postgresql",
+  connection:
+    "postgres://myfakedatabase:8t6FiWqSDF8GsR--7mrun245I9TofnWd@fakepostgres.db.elephantsql.com:5432/myfakedatabase",
+};
+
+// Initialize a Knex instance by passing `config` as an argument to the Knex module
+const knex = require("knex")(config);
+In the previous lesson, you defined the configuration object for Knex in your knexfile.js. Next, you will require and use that configuration object to initialize a Knex instance.
+
+Do this
+Create src/db/connection.js
+In the src/db folder, create a new file called connection.js. Then add the following code to it:
+
+const env = process.env.NODE_ENV || "development";
+const config = require("../../knexfile")[env];
+const knex = require("knex")(config);
+
+module.exports = knex;
+Here's a breakdown of the syntax shown above:
+
+const env = process.env.NODE_ENV || "development"; determines the current environment where the application code is running and stores the value in the env variable. If process.env.NODE_ENV isn't defined, then set the value to "development".
+
+const config = require("../../knexfile")[env]; requires the database configuration object from the knexfile.js for the current environment and stores it in the config variable. For example, if env is set to "development", then config will be set to the development configuration object from knexfile.js.
+
+const knex = require("knex")(config); initializes a Knex instance by calling the knex module, passing in config as an argument.
+
+module.exports = knex; exports the Knex instance so that other files can require it.
+
+You won't be able to test the connection between the server and the database just yet.
+
+You will be using the same repository in the next lesson, so make sure to save the work that you complete in this lesson.
+
+Complete example
+A completed example from this lesson can be found here:
+
+GitHub: Node, Express, and Postgres—connecting-to-the-database-with-knex branch
+
 *** 35.4 Migrations with Knex
+Migrations with Knex
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to write database migrations using Knex's migration tools. You'll also be able to run and roll back migrations using command-line tools.
+
+Overview
+Now that you have your Knex set up and ready to connect to your PostgreSQL database, you are ready to create the tables needed for your Thinkful Gifts database. So in this module, you'll go through the steps to create and define your migration files and then execute the migration.
+
+After discussing with representatives from the inventory management department and other engineers on your team, you came up with the following ERD for your database. As you can see, this ERD includes tables for the products, suppliers, and categories resources:
+
+An ERD that includes tables for the products, suppliers, and categories resources.
+The products and suppliers tables have a one-to-many relationship, because a product can only be supplied by a specified supplier.
+
+The products and categories tables have a many-to-many relationship, because a product can belong to more than one category. For example, a fragrance diffuser might belong to both the home and electronics categories. Likewise, a category can have many products.
+
+Starter code
+This lesson continues using the project you created in the previous lesson. If you need to, you can download that code here:
+
+GitHub: Node, Express, and Postgres Starter
+Migrations
+Throughout the lifetime of a web application, you often need to make changes to the database schema. There are some common hurdles:
+
+You might need to make copies of the database (for example, for testing, development, production, or other developers on your team setting up their local environment).
+
+When you add new features to your application, your database needs can grow more complex with the new features added. As a result, you might have to add new columns to existing tables or new tables to your database.
+
+You might make a mistake and need to revert changes to the tables after deploying to production.
+
+You might need to rename parts of the database.
+
+When you need to update your database schema, you will have to create a migration. Migrations serve as a version-control file for your database, allowing you to easily modify and share the application's database schema with your coworkers. If you update your database only to realize that there were mistakes in the update, you can easily run and roll back migrations using command-line tools. Database migrations define each change made to your database in a migration file that is tracked by version control.
+
+To create migration files for your project, you will first have to specify where the migration files will be stored.
+
+Do this
+Specify a storage location for your migration files
+In your knexfile.js, specify a migrations key with a path to your migration files, as follows:
+
++ const path = require("path");
+require("dotenv").config();
+const { DATABASE_URL } = process.env;
+
+module.exports = {
+  development: {
+    client: "postgresql",
+    connection: DATABASE_URL,
++    migrations: {
++      directory: path.join(__dirname, "src", "db", "migrations"),
++    },
+  },
+};
+Setting directory: path.join(__dirname, "src", "db", "migrations") within the migrations object will tell Knex to store migration files in the migrations folder at src/db/migrations.
+
+Create a migration file
+You can use the Knex CLI to create a new migration. The syntax is as follows:
+
+npx knex migrate:make [migration_name]
+Try to pick a descriptive migration name. For example, if you are creating a new table called suppliers, you might want to name the migration file createSuppliers. The migration names should inform other developers as to the intent of that migration.
+
+Running the command above creates a new file within the migrations folder, with a filename that includes a timestamp and the name of the migration (for example, 20201129203428_createSuppliers.js). The file contains the following code:
+
+exports.up = function (knex) {};
+exports.down = function (knex) {};
+Here's a breakdown of the syntax:
+
+exports.up = function (knex) {};: Within the exports.up function, you can specify the Knex methods for making the desired database changes, such as creating tables, adding or removing a column from a table, changing indexes, and so on.
+
+exports.down = function (knex) {};: All migration steps include two things: the SQL statements to execute the schema change and the SQL statements to undo the changes. These statements also serve as a form of documentation for new developers entering the project to reason about the changes made to the database in the past. The exports.down function allows you to quickly undo a migration, if needed. It does the opposite of exports.up. For example, if exports.up created a table, then exports.down will remove that table. If exports.up added a column, then exports.down will remove that column.
+
+Do this
+Create a migration file for the suppliers table
+First, create a new migration file by running the following Knex CLI command:
+
+npx knex migrate:make createSuppliersTable
+This will create a file like /src/db/migrations/20201129203428_createSuppliersTable.js. Note that your timestamp will be different because you ran the command above at a different time.
+
+Define a table with Knex schema methods
+You can use various Knex methods to create a table and define its columns. For example, you can use knex.schema.createTable() to create a new database table. To create a column, you can specify a column type by calling special Knex methods on the table (such as increments(), string(), text(), decimal(), and enum()). You can also specify whether or not a column is nullable and its default values. You can find the full list of schema methods in the Knex documentation.
+
+Do this
+Define the suppliers table
+Inside of the exports.up function of the newly created migration file, add the following code:
+
+exports.up = function (knex) {
+  return knex.schema.createTable("suppliers", (table) => {
+    table.increments("supplier_id").primary(); // Sets supplier_id as the primary key
+    table.string("supplier_name");
+    table.string("supplier_address_line_1");
+    table.string("supplier_address_line_2");
+    table.string("supplier_city");
+    table.string("supplier_state");
+    table.string("supplier_zip");
+    table.string("supplier_phone");
+    table.string("supplier_email");
+    table.text("supplier_notes");
+    table.string("supplier_type_of_goods");
+    table.timestamps(true, true); // Adds created_at and updated_at columns
+  });
+};
+When calling knex.schema.createTable(), you passed in the name of the table ("suppliers") and a callback function that takes an argument table, which gives you a reference to the table. Then, inside of the callback function, you specified the columns that the table should have. For example, calling table.string("supplier_name") creates a column on the suppliers table called supplier_name that accepts string values.
+
+Notice that the columns that are declared above are for string, text, and timestamp values. You've likely noticed that the columns above identify suppliers, but you may be wondering about the timestamps() method. The table.timestamps(true, true) method will add created_at and updated_at columns. These columns are important because they help keep track of the table's records. Timestamps aren't used only for logging purposes—they may also add functionality to an application. For example, a user may want to query records that were created or updated on a specific day. It's a best practice to use timestamps in all or most of your tables.
+
+The timestamps() method has two optional arguments: Passing true as the first argument sets the columns to be a timestamp type. Passing true as the second argument sets those columns to be non-nullable and to use the current timestamp by default. You can find more information about the timestamps() method in the Knex.js documentation. Now, inside of the exports.down function of the newly created migration file, add the following code:
+
+exports.down = function (knex) {
+  return knex.schema.dropTable("suppliers");
+};
+
+When you undo the migration, exports.down will get invoked, which will call the knex.schema.dropTable() method to drop the suppliers table.
+
+The exports.up and exports.down functions should always return a promise.
+
+Create a migration file and define the products table
+You will need to implement the same steps that you followed to create the suppliers table. Create a new migration file by running the following Knex CLI command:
+
+npx knex migrate:make createProductsTable
+Inside of the exports.up function of the newly created migration file, add the following code:
+
+exports.up = function (knex) {
+  return knex.schema.createTable("products", (table) => {
+    table.increments("product_id").primary(); // Sets `product_id` as the primary key
+    table.string("product_sku");
+    table.string("product_name");
+    table.text("product_description");
+    table.integer("product_quantity_in_stock");
+    table.decimal("product_weight_in_lbs");
+    table.integer("supplier_id").unsigned().notNullable();
+    table
+      .foreign("supplier_id")
+      .references("supplier_id")
+      .inTable("suppliers")
+      .onDelete("cascade");
+    table.timestamps(true, true);
+  });
+};
+Notice that you can chain unsigned() to table.integer("supplier_id") to prevent negative values from being inserted into the supplier_id column. Chaining notNullable() ensures that supplier_id cannot be null.
+
+The line table.foreign("supplier_id").references("supplier_id").inTable("suppliers"); creates a foreign key constraint called supplier_id, which references the primary key of the suppliers table. Chaining onDelete("cascade") means that if a supplier is deleted, then all the products related to the supplier will be deleted from the database as well.
+
+Inside of the exports.down function of the newly created migration file, add the following code:
+
+exports.down = function (knex) {
+  return knex.schema.dropTable("products");
+};
+Create a migration file and define the categories table
+Create a new migration file by running the following Knex CLI command:
+
+npx knex migrate:make createCategoriesTable
+Inside of the exports.up function of the newly created migration file, add the following code:
+
+exports.up = function (knex) {
+  return knex.schema.createTable("categories", (table) => {
+    table.increments("category_id").primary();
+    table.string("category_name");
+    table.text("category_description");
+    table.timestamps(true, true);
+  });
+};
+Inside of the exports.down function of the newly created migration file, add the following code:
+
+exports.down = function (knex) {
+  return knex.schema.dropTable("categories");
+};
+Create a migration file and define the products_categories table
+Because products and categories have a many-to-many relationship, linking these two tables require a join table, which you will call products_categories. Create a new migration file by running the following Knex CLI command:
+
+npx knex migrate:make createProductsCategoriesTable
+Inside of the exports.up function of the newly created migration file, add the following code:
+
+exports.up = function (knex) {
+  return knex.schema.createTable("products_categories", (table) => {
+    table.integer("product_id").unsigned().notNullable();
+    table
+      .foreign("product_id")
+      .references("product_id")
+      .inTable("products")
+      .onDelete("CASCADE");
+    table.integer("category_id").unsigned().notNullable();
+    table
+      .foreign("category_id")
+      .references("category_id")
+      .inTable("categories")
+      .onDelete("CASCADE");
+
+    table.timestamps(true, true);
+  });
+};
+Inside of the exports.down function of the newly created migration file, add the following code:
+
+exports.down = function (knex) {
+  return knex.schema.dropTable("products_categories");
+};
+Run the migration
+Now that the migration files have been created and defined, you will execute the migration on your development database. Remember how each migration file starts with a timestamp of when the migration was created?
+
+Knex runs the migrations in chronological order and uses the timestamps to preserve that order. Knex also keeps track of which migrations have been run so that it doesn't try to run the same migration twice.
+
+Do this
+Run the latest migration manually
+Run the following command:
+
+npx knex migrate:latest
+Now, take a look at these tables in DBeaver. In the Database Navigator, expand the Schemas section, then expand the public schema and the Tables for the public schema. You'll see the four tables that you created, along with two additional tables called knex_migrations and knex_migrations_lock, as follows:
+
+The four tables you created, along with two additional tables, in the public schema section.
+Migration rollback
+Sometimes, a developer might make a mistake and need to revert changes to the tables after deploying to production.
+
+Do this
+Roll back the latest migration
+To undo the latest batch of migration, run the following command:
+
+npx knex migrate:rollback
+Now check your DBeaver database navigator again—the tables should be gone except for the knex_migrations and knex_migrations_lock files.
+
+Before proceeding to the next section, rerun npx knex migrate:latest to recreate the tables.
+
+Take a look at the documentation for the full list of Knex migration CLI commands.
+
+Modify a table
+Sometimes, a developer might also have to make updates to a table, such as altering the name of a column or adding a new column to a table. For example, after running migration, you might realize that the product_name column in the products table should be called product_title instead.
+
+The process of renaming a column is similar to creating a table.
+
+Instead of modifying the existing migration, you will create a new migration to specifically rename the column.
+
+Do this
+Add product_price and rename the product_name column to product_title
+First, create a new migration file by running the following:
+
+npx knex migrate:make productsAddPriceAndChangeProductNameToProductTitle
+Again, pick a descriptive name for your migration for documentation purposes.
+
+Next, update the exports.up and exports.down functions:
+
+exports.up = function (knex) {
+  return knex.schema.table("products", (table) => {
+    table.renameColumn("product_name", "product_title");
+    table.decimal("product_price");  // Add a new column
+  });
+};
+exports.down = function (knex) {
+  return knex.schema.table("products", (table) => {
+    table.renameColumn("product_title", "product_name");
+    table.dropColumn("product_price");
+  });
+};
+As you run more and more migrations on your project, you might want to keep track of which migrations are completed and which are pending. Run the following command:
+
+npx knex migrate:list
+This will return a list of completed and pending migrations.
+
+Finally, run npx knex migrate:latest to apply the migration.
+
+Undo a specific migration
+You now have five migration files in your migrations folder. What if you only wanted to roll back a specific migration? For example, what if you wanted to roll back the productsAddPriceAndChangeProductNameToProductTitle migration that you just ran?
+
+You can run the following command, replacing migration_file_name with the full filename of your migration (for example, 20201203091021_productsAddPriceAndChangeProductNameToProductTitle.js):
+
+npx knex migrate:down migration_file_name
+In the DBeaver database navigator, check the products table again: the product_price column should be gone and the product_title column should be reverted to product_name.
+
+Before proceeding to the next section, run npx knex migrate:up migration_file_name to apply the productsAddPriceAndChangeProductNameToProductTitle migration again to add the the product_price column and change the product_name column to product_title.
+
+You are now ready to seed your database with dummy data in the next lesson. You will be using the same repository in the next lesson, so make sure to save the work that you complete in this lesson.
+
+Complete example
+A completed example from this lesson can be found here:
+
+GitHub: Node, Express, and Postgres—migrations-with-knex-complete branch
+
 *** 35.5 Seeding data with Knex
+Seeding data with Knex
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to write a seed data file to set up initial data.
+
+Overview
+Now that you have the required tables in your database, it's time to add some test data. Typically, when building an application, it is useful to run the application with sample data to make sure that the application logic is correct. Similar to migrations, Knex allows you to create scripts to insert data into your tables. Using scripts to insert test data into a database is called seeding the database.
+
+Starter code
+This lesson continues using the project that you created in the previous lesson. If you need to, you can download that code here:
+
+GitHub: Node, Express, and Postgres Starter
+Seed the database
+Seed files allow you to populate your database with test or seed data, independent of your migration files. To create seed data, you will have to follow a few steps:
+
+Define a location for storing your seed scripts
+
+Create the seed scripts
+
+Update the seed scripts
+
+Run the seed scripts
+
+Where to store your seed scripts
+Knex creates seed scripts in the directory specified in the knexfile.js for the current environment. For example, the following sample seed configuration stores the seed scripts at ./seeds/dev for the development environment:
+
+development: {
+  client: ...,
+  connection: { ... },
+  seeds: {
+    directory: './seeds/dev'
+  }
+}
+If seeds.directory isn't defined in the knexfile.js, scripts are created in ./seeds by default.
+
+Do this
+Store seed scripts at ./src/db/seeds
+Update the knexfile.js as follows:
+
+const path = require("path");
+require("dotenv").config();
+const { DATABASE_URL } = process.env;
+
+module.exports = {
+  development: {
+    client: "postgresql",
+    connection: DATABASE_URL,
+    migrations: {
+      directory: path.join(__dirname, "src", "db", "migrations"),
+    },
++    seeds: {
++      directory: path.join(__dirname, "src", "db", "seeds"),
++    },
+  },
+};
+Now, Knex will create and store the seed files at ./src/db/seeds.
+
+Create the seed scripts and seed data
+The CLI syntax for creating a seed file is as follows:
+
+npx knex seed:make seed_name
+In the previous lesson, you learned that Knex automatically prepends a timestamp to the migration files to keep them in the proper order. Because seed files may rely on previous seeds, you should also keep seed files in order. However, Knex won't do the same to seed files, so you will have to design a way to maintain the proper order for your seed files.
+
+Create the seed scripts for the products, suppliers, categories, and products_categories tables
+Because you have four tables that you want to seed, you need to create four seed files. Run the following commands, one after the other:
+
+npx knex seed:make 00-suppliers
+npx knex seed:make 01-products
+npx knex seed:make 02-categories
+npx knex seed:make 03-products_categories
+Because the products table depends on the supplier_id column from the suppliers table, the products table will have to be created after the suppliers table. A straightforward way to maintain this order is to add an incremental number at the beginning of the seed files.
+
+So, the first seed file will start with 01, the next seed file will start with 02, and so on and so forth. Seed files are executed in order. Unlike migrations, every seed file will be executed when you run the command.
+
+After running the commands above, you'll see four scripts created at ./src/db/seeds:
+
+Four scripts are created at ./src/db/seeds.
+Update the seed scripts
+Notice that upon running the command, Knex created a file containing some boilerplate code:
+
+exports.seed = function (knex) {
+  // Deletes ALL existing entries
+  return knex("table_name")
+    .del()
+    .then(function () {
+      // Inserts seed entries
+      return knex("table_name").insert([
+        { id: 1, colName: "rowValue1" },
+        { id: 2, colName: "rowValue2" },
+        { id: 3, colName: "rowValue3" },
+      ]);
+    });
+};
+You will have to customize the boilerplate code in each seed file to suit your needs. You will also have to require the seed data stored in the ./src/db/fixtures folder into the appropriate seed file. Spend some time looking at the data in the ./src/db/fixtures folder. You should design your seed files to reset tables as needed before inserting data.
+
+Do this
+Customize /seeds/00-suppliers.js
+Modify /seeds/00-suppliers.js so that the complete file looks like the following:
+
+const suppliers = require("../fixtures/suppliers");
+
+exports.seed = function (knex) {
+  return knex
+    .raw("TRUNCATE TABLE suppliers RESTART IDENTITY CASCADE")
+    .then(function () {
+      return knex("suppliers").insert(suppliers);
+    });
+};
+Here's a breakdown of the syntax:
+
+const suppliers = require("../fixtures/suppliers"); requires the suppliers seed data and stores it in the suppliers variable.
+
+knex.raw("TRUNCATE TABLE suppliers RESTART IDENTITY CASCADE")
+
+The knex.raw() method uses the SQL statement RESTART IDENTITY to reset the primary key values.
+
+Adding CASCADE ensures that any references to the entries in the suppliers table are deleted as well when the entries are deleted.
+
+As a note, the Knex truncate() method is preferable to writing a raw SQL statement to truncate the data, but it does not provide a way to reset the values in the primary key column after entries are deleted from the table.
+
+Putting knex("suppliers").insert(suppliers) inside then() ensures that this line will only get executed after the preceding knex.raw() function is complete.
+
+Customize /seeds/01-products.js
+Similarly, modify /seeds/01-products.js so that the complete file looks like the following:
+
+const products = require("../fixtures/products");
+
+exports.seed = function (knex) {
+  return knex
+    .raw("TRUNCATE TABLE products RESTART IDENTITY CASCADE")
+    .then(function () {
+      return knex("products").insert(products);
+    });
+};
+Customize /seeds/02-categories.js
+Similarly, modify /seeds/02-categories.js so that the complete file looks like the following:
+
+const categories = require("../fixtures/categories");
+
+exports.seed = function (knex) {
+  return knex
+    .raw("TRUNCATE TABLE categories RESTART IDENTITY CASCADE")
+    .then(function () {
+      return knex("categories").insert(categories);
+    });
+};
+Customize /seeds/03-products_categories.js
+Similarly, modify /seeds/03-products_categories.js so that the complete file looks like the following:
+
+const productsCategories = require("../fixtures/productsCategories");
+
+exports.seed = function (knex) {
+  return knex
+    .raw("TRUNCATE TABLE products_categories RESTART IDENTITY CASCADE")
+    .then(function () {
+      return knex("products_categories").insert(productsCategories);
+    });
+};
+Run the seed scripts
+To run seed files, execute the following:
+
+npx knex seed:run
+If all goes well, you will see a Ran 4 seed files message in your command line.
+
+Now, check your database in DBeaver and see if the tables have been populated with the seed data!
+
+If you ever need to run a specific seed file only, you can execute the following:
+
+npx knex seed:run --specific=seed-filename.js
+You will be using the same repository in the next lesson, so make sure to save the work that you complete in this lesson.
+
+Complete example
+A completed example from this lesson can be found here:
+
+GitHub: Node, Express, and Postgres—seeding-data-with-knex branch
 *** 35.6 CRUD with Knex
+CRUD with Knex
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to write database queries to complete CRUD routes in an Express server.
+
+Overview
+When a user makes a request to the server, the server typically responds with some data. To do so, the server must first query data from a database. The server must execute the appropriate database queries to get or manipulate the requested data. Now that your database contains seed data, you are ready to perform CRUD operations (create, read, update, and delete) on your PostgreSQL database. In this lesson, you'll use Knex to do just that.
+
+In your preliminary discussions with the inventory management department, you determined that your API should provide access to the following endpoints:
+
+HTTP verb
+Path
+Description
+GET
+/categories
+Retrieve a list of all categories
+GET
+/products
+Retrieve a list of all products
+GET
+/products/:productId
+Retrieve a product by ID
+POST
+/suppliers
+Create a new supplier
+PUT
+/suppliers/:supplierId
+Update a specific supplier
+DELETE
+/suppliers/:supplierId
+Delete a specific supplier
+Trying to access any other API endpoints should return a 405 error to the API consumer.
+
+You will be using Knex to build SQL commands. In the real world, complex SQL queries can quickly make your codebase difficult to read. Instead of writing raw—and often verbose—SQL queries from scratch, you can use Knex. Knex allows you to write JavaScript to build SQL commands for various CRUD operations using a relatively clean syntax.
+
+Starter code
+This lesson continues using the project that you created in the previous lesson. If you need to, you can download that code here:
+
+GitHub: Node, Express, and Postgres Starter
+Services
+As mentioned before, to perform the data manipulations requested by the API consumer, the server needs to connect to the database and execute the necessary queries against the database. That means that you need to write code in your server to generate those database queries.
+
+But where should you store the code for generating the database queries? The most straightforward option is probably to include all the database query logic in your *.controller.js files. However, as your API and codebase continue to grow in size and complexity over time, putting all your queries there would quickly clutter up your application logic and make your code difficult to test and reuse. This relates to other potential problems when building express API applications:
+
+Long files containing endpoint code and database query code are hard to navigate.
+
+If multiple parts of the codebase need to perform similar database queries, it is better to reuse them.
+
+If you want to change something like the name of the table, column name, or type of database, it is better to have to update fewer parts of the code with this new change.
+
+To alleviate these problems, you can use some of the following best practices:
+
+Don't repeat yourself (DRY) for using functions
+
+Separation of concerns (SOC) for organizing functions
+
+Modularization and layering to structure files
+
+Encapsulation for bundling methods together that operate on the same data
+
+More concretely, you can introduce a service into your Express application. A service, which is just regular old JavaScript, aims to group together related functions as a service to the rest of your application. Services are typically self contained, so they could be remotely called or imported as a local module and not depend on data already being available.
+
+The services that you will create for the API will include functions that make all the CRUD transactions for one table.
+
+A service aligns with these best practices:
+
+A service makes the code DRY because you can use the service methods in multiple places if needed.
+
+A service helps with SOC because it is responsible for only one set of concerns. For example, it may manage database transactions and the details of how they occur. The middleware is concerned with the shape and properties of requests and responses.
+
+You can move some code out of your middleware or controllers and into a service, which increases modularization.
+
+Note: Using a service isn't required; services are a technique for organizing code. You can use services for grouping methods in other situations, not just database transactions. For example, you can use them to group multiple related API requests, file system commands, and so forth.
+
+A good analogy is the post office. You can say that the post office is a service for interacting with parcels. When you want to send a parcel, you go to the post office. At the post office, you can send parcels of different sizes to different locations. You could also collect parcels there if you had the correct information. It would be frustrating if you had to go to a different post office for each parcel with a different destination or size! You want a single post office that can send parcels anywhere. Also, you don't want to know the full process for sending or receiving a parcel, but instead expect the post service to manage these steps for you behind the scenes.
+
+Now that you understand the potential advantages that using a service offers, you will create services for performing CRUD operations on the categories, products, suppliers, and products_categories tables next. Again, the services that you will create for the API will include functions that make all CRUD transactions for one table.
+
+Knex syntax
+Knex allows you to write JavaScript to create SQL queries. For example, consider how you might build the following SQL query with Knex:
+
+SELECT * FROM categories;
+First, you must first tell the Knex instance which table to query. To tell Knex to query the categories table, you can use either of the following commands:
+
+knexInstance.from("categories");
+knexInstance("categories");
+You can then chain a select() method to choose which columns to select, as follows:
+
+knexInstance("categories").select("*");
+There are many other Knex instance methods, such as where() and join(), which you can chain to create even more complex queries. For example, consider the following SQL query:
+
+SELECT * FROM categories
+WHERE category_id = 2;
+The above query will look like this in Knex:
+
+knexInstance("categories").select("*").where({ category_id: 2 });
+The Knex instance methods only build the query, not execute it. To execute the query, you will need to chain the then() promise method to end of the Knex query, like this:
+
+knexInstance
+  .from("categories")
+  .select("*")
+  .then((result) => {
+    console.log(result);
+  });
+GET /categories endpoint
+The API should support the GET /categories endpoint, which retrieves a list of all categories.
+
+Do this
+Create the categories service object in categories.service.js
+Inside /src/categories, create a new file called categories.service.js. Add the following code:
+
+const knex = require("../db/connection");
+
+function list() {
+  return knex("categories").select("*");
+}
+
+module.exports = {
+  list,
+};
+Here's a breakdown of the syntax:
+
+const knex = require("../db/connection"); requires the Knex instance initialized in ./db/connection.js.
+
+function list() {return knex("categories").select("*"); } declares a function called list(), which builds a query that selects all columns from the categories table.
+
+module.exports = { list } exports the list() function so that it can be required in other files. You can add any other functions that you'd like to export inside the module.exports object, separated by commas.
+
+Require the categories service object in categories.controller.js
+Next, update categories.controller.js so that the complete file looks like the following:
+
+const categoriesService = require("./categories.service");
+
+function list(req, res, next) {
+  categoriesService
+    .list()
+    .then((data) => res.json({ data }))
+    .catch(next);
+}
+
+module.exports = {
+  list,
+};
+const categoriesService = require("./categories.service"); requires the service object that you created in the previous step and assigns it to categoriesService.
+
+You can then access the methods on the service object to perform CRUD operations on a table (for example, categoriesService.list()). Chaining then() to categoriesService.list() executes the Knex query. Chaining catch(next) onto the promise will call next() passing in the error. If the Knex promise doesn't have a catch(next) at the end, it will not correctly handle errors that occur during when running the query.
+
+Now, make sure that your server is running and visit localhost:5000/categories in the browser. You will get back a list of all the categories data. The list will look like the following:
+
+{
+  data: [
+    {
+      category_id: 1,
+      category_name: "electronics",
+      category_description: "A category for electronic gadgets of any kind, appealing to all genders.",
+      created_at: "2020-12-01T20:37:09.550Z",
+      updated_at: "2020-12-01T20:37:09.550Z"
+    },
+	...
+  ]
+}
+GET /products endpoint
+The API should support the GET /products endpoint, which retrieves a list of all products.
+
+Do this
+Create the products service object in products.service.js
+Inside /src/products, create a new file called products.service.js. Add the following code:
+
+const knex = require("../db/connection");
+
+function list() {
+  return knex("products").select("*");
+}
+
+module.exports = {
+  list,
+};
+The code above looks and functions very similarly to categories.service.js.
+
+Require the products service object in products.controller.js
+Next, require the products service object at the top of products.controller.js, as follows:
+
+const productsService = require("./products.service");
+Update the list() function to call the productsService.list() method and return a JSON response to the client on successful promise resolution, as follows:
+
+function list(req, res, next) {
+  productsService
+    .list()
+    .then((data) => res.json({ data }))
+    .catch(next);
+}
+Now, either use Postman to send a GET request, or navigate to localhost:5000/products in the browser. You will get back a list of products.
+
+GET /products/:productId endpoint
+The API should support the GET /products/:productId endpoint, which retrieves a specific product by its ID.
+
+Do this
+Add read() to products.service.js
+In products.service.js, add a new function called read(), as follows:
+
+function read(productId) {
+  return knex("products").select("*").where({ product_id: productId }).first();
+}
+This read() function creates a Knex query that selects all columns from the products table where the product_id column matches the argument passed to the read() function. The first() method returns the first row in the table as an object.
+
+Remember to export read() by including it in the module.exports object at the bottom of the file.
+
+Add productExists() validation middleware to products.controller.js
+Then, as you have done in previous modules, create a validation middleware called productExists() that checks whether or not a given product exists based on ID:
+
+function productExists(req, res, next) {
+  productsService
+    .read(req.params.productId)
+    .then((product) => {
+      if (product) {
+        res.locals.product = product;
+        return next();
+      }
+      next({ status: 404, message: `Product cannot be found.` });
+    })
+    .catch(next);
+}
+Chaining then() to productsService.read(productId) will execute the Knex query that you defined previously to retrieve a product given an id. The query returns a promise, which is handled in the then() function.
+
+If the product exists, it is stored in res.locals.product so that it can be readily accessed in the rest of the middleware pipeline. Otherwise, next() is called with an error.
+
+Update the read() function, as follows:
+
+function read(req, res) {
+  const { product: data } = res.locals;
+  res.json({ data });
+}
+Add the productExists() function as a validation middleware in module.exports:
+
+module.exports = {
+-  read: [read],
++  read: [productExists, read],
+   list,
+};
+Now, either use Postman to send a GET request or navigate to localhost:5000/products/1 in the browser. You will get back a product with product_id of 1.
+
+Route params validation with regex
+You can validate a route param using regex. For example, to ensure that a route param :movieId in the path movies/:movieId consists of just one or more digits, you can prepend the regex expression ([0-9]+) to the end of the path, as follows:
+
+app.get("/movies/:movieId([0-9]+)", moviesController);
+Do this
+Validate :productId with regex
+In src/products/products.router.js, modify the /products/:productId route, as follows:
+
+- router.route("/:productId").get(controller.read).all(methodNotAllowed);
++ router.route("/:productId([0-9]+)").get(controller.read).all(methodNotAllowed);
+Now, either use Postman to send a GET request or navigate to localhost:5000/products/1asdf in the browser. You will get back a Not found error telling you that the path isn't found.
+
+POST /suppliers endpoint
+The API should support the ability to create a new supplier in the database. You can use the Knex insert() method to insert a new row into the table. The insert() method accepts as its argument an object containing data for the new supplier.
+
+You can then chain a returning() method to insert() to specify which columns should be returned by the insert(). The passed column parameter may be a string or an array of strings. The returning() method also works for the update() and delete() methods.
+
+Do this
+Create the suppliers service object in suppliers.service.js
+Inside /src/suppliers, create a new file called suppliers.service.js. Add the following code:
+
+const knex = require("../db/connection");
+
+function create(supplier) {
+  return knex("suppliers")
+    .insert(supplier)
+    .returning("*")
+    .then((createdRecords) => createdRecords[0]);
+}
+
+module.exports = {
+  create,
+};
+The code above looks and functions very similarly to categories.service.js and products.service.js. The create() function creates a Knex query that inserts a new supplier into the suppliers table while returning all columns from the newly inserted row (because of returning(*)). The .insert() method of Knex can be used to insert more than one record, so it returns an array of the records inserted. For this API, only one supplier will ever be inserted at a time so you chain .then((createdRecords) => createdRecords[0]); } onto the query to return only the one inserted record.
+
+Require the suppliers service object in suppliers.controller.js
+Next, require the suppliers service object at the top of suppliers.controller.js:
+
+const suppliersService = require("./suppliers.service.js");
+Then, similar to what you have done in previous modules, create a validation middleware called hasOnlyValidProperties() to check whether the request body contains a specified set of allowed fields:
+
+const VALID_PROPERTIES = [
+  "supplier_name",
+  "supplier_address_line_1",
+  "supplier_address_line_2",
+  "supplier_city",
+  "supplier_state",
+  "supplier_zip",
+  "supplier_phone",
+  "supplier_email",
+  "supplier_notes",
+  "supplier_type_of_goods",
+];
+
+function hasOnlyValidProperties(req, res, next) {
+  const { data = {} } = req.body;
+
+  const invalidFields = Object.keys(data).filter(
+    (field) => !VALID_PROPERTIES.includes(field)
+  );
+
+  if (invalidFields.length) {
+    return next({
+      status: 400,
+      message: `Invalid field(s): ${invalidFields.join(", ")}`,
+    });
+  }
+  next();
+}
+Tip
+Never trust what the client is sending to your server without verifying it using validation middleware.
+
+Add another validation middleware, hasProperties(), which checks whether or not the request body includes two required fields: supplier_name and supplier_email.
+
+Because hasProperties() will be able to be used by any controller as validation middleware, you will create a new file to define the function.
+
+In src/errors/hasProperties.js, add the following code:
+
+function hasProperties(...properties) {
+  return function (req, res, next) {
+    const { data = {} } = req.body;
+
+    try {
+      properties.forEach((property) => {
+        if (!data[property]) {
+          const error = new Error(`A '${property}' property is required.`);
+          error.status = 400;
+          throw error;
+        }
+      });
+      next();
+    } catch (error) {
+      next(error);
+    }
+  };
+}
+
+module.exports = hasProperties;
+Then, use hasProperties() to define a hasRequiredProperties() middleware function in src/suppliers/suppliers.controller.js:
+
+const hasProperties = require("../errors/hasProperties");
+const hasRequiredProperties = hasProperties("supplier_name", "supplier_email");
+Then add the create() function:
+
+function create(req, res, next) {
+  suppliersService
+    .create(req.body.data)
+    .then((data) => res.status(201).json({ data }))
+    .catch(next);
+}
+The function above calls the suppliersService.create() method, passing in req.body.data as the argument. The req.body.data argument references the object containing the supplier information. Chaining then() to suppliersService.create() executes the Knex query. If the promise resolves successfully, the server responds with a 201 status code along with the newly created supplier.
+
+Finally, add the create() function and the validation middleware to the module.exports object:
+
+module.exports = {
+  ...
++ create: [hasOnlyValidProperties, hasRequiredProperties, create],
+};
+Now, use Postman to send a POST request to localhost:5000/suppliers. If the supplier is successfully created in the database, you should get back a JSON response that includes the newly created supplier.
+
+PUT /suppliers/:supplierId endpoint
+The API should support the ability to update an existing supplier in the database. You can use the Knex update() method to update a row in the table. The update() method accepts as its argument an object that contains the data for updating the existing supplier.
+
+If a returning array is passed (for example, ["supplier_id", "supplier_name"] as the second argument, it resolves the promise with an array of all the updated rows with specified columns. That's like a shortcut for the returning() method. You can also pass "*" as the second argument to return all of the columns of the updated rows.
+
+Do this
+Add read() and update() to suppliers.service.js
+In suppliers.service.js, add the following functions:
+
+function read(supplier_id) {
+  return knex("suppliers").select("*").where({ supplier_id }).first();
+}
+
+function update(updatedSupplier) {
+  return knex("suppliers")
+    .select("*")
+    .where({ supplier_id: updatedSupplier.supplier_id })
+    .update(updatedSupplier, "*");
+}
+Although the API doesn't have to support a GET /suppliers/:supplierId endpoint, you are creating read() so that you can use this function for validation in the route handlers later on.
+
+The .update() method of Knex can be used to update more than one record, so it returns an array of the records updated. For this API, only one supplier will ever be updated at a time so you chain .then((updatedRecords) => updatedRecords[0]); } onto the query to return only the one record.
+
+Remember to export read() and update() by including these functions in the module.exports object at the bottom of the file.
+
+In suppliers.controller.js, add the following code:
+
+module.exports = {
+  create: [hasOnlyValidProperties, hasRequiredProperties, create],
++ update: [hasOnlyValidProperties, hasRequiredProperties, update],
+};
+In suppliers.service.js, add the following code:
+
+module.exports = {
+  create,
++ read,
++ update,
+};
+Add the supplierExists() validation middleware to suppliers.controllers.js
+Then, as you have done in previous modules, create a validation middleware called supplierExists() that checks whether or not a given supplier exists based on ID:
+
+function supplierExists(req, res, next) {
+  suppliersService
+    .read(req.params.supplierId)
+    .then((supplier) => {
+      if (supplier) {
+        res.locals.supplier = supplier;
+        return next();
+      }
+      next({ status: 404, message: `Supplier cannot be found.` });
+    })
+    .catch(next);
+}
+Chaining then() to suppliersService.read() will execute the Knex query that you defined previously to retrieve a supplier given based on ID. The query returns a promise, which is handled in the then() function.
+
+If the supplier exists, it is stored in res.locals.supplier so that it can be readily accessed in the rest of the middleware pipeline. Otherwise, next() is called with an error object.
+
+Modify the update() function, as follows:
+
+function update(req, res, next) {
+  const updatedSupplier = {
+    ...req.body.data,
+    supplier_id: res.locals.supplier.supplier_id,
+  };
+  suppliersService
+    .update(updatedSupplier)
+    .then((data) => res.json({ data }))
+    .catch(next);
+}
+The function above calls the SuppliersService.update() method, passing in the updatedSupplier object. Note that the supplier_id of updatedSupplier is always set to the existing supplier_id (res.locals.supplier.supplier_id) to prevent the update from accidentally, or intentionally, changing the supplier_id during an update. If the promise resolves successfully, then the server responds with the updated supplier.
+
+Add the supplierExists() function as a validation middleware in module.exports:
+
+module.exports = {
+  create: [hasOnlyValidProperties, hasRequiredProperties, create],
++ update: [supplierExists, hasOnlyValidProperties, hasRequiredProperties, update],
+};
+Now, use Postman to send a PUT request to localhost:5000/suppliers/1 with some updated information. If the supplier is successfully updated in your database, you will get back a JSON response that includes the updated supplier.
+
+DELETE /suppliers/:supplierId endpoint
+The API should support the ability to delete a supplier. You can use the Knex del() method to delete a row in the table based on the conditions specified in the query. Unlike update() and insert(), del() does not accept any arguments.
+
+Do this
+Add delete() to supplier.service.js
+In suppliers.service.js, add the following function to delete a supplier based on ID:
+
+function destroy(supplier_id) {
+  return knex("suppliers").where({ supplier_id }).del();
+}
+Remember to export destroy() by including it in the module.exports object at the bottom of the file.
+
+module.exports = {
+   ...
++  delete: destroy,
+};
+In src/suppliers/suppliers.controller.js, modify the destroy() function, as follows:
+
+function destroy(req, res, next) {
+  suppliersService
+    .delete(res.locals.supplier.supplier_id)
+    .then(() => res.sendStatus(204))
+    .catch(next);
+}
+The function above calls the suppliersService.delete() method, passing in the supplier_id of the supplier to be deleted as an argument. If the promise resolves successfully, the server responds with a 204 status code.
+
+In src/suppliers/suppliers.controller.js, add the supplierExists() function as validation middleware in module.exports:
+
+module.exports = {
+   create: [hasOnlyValidProperties, hasRequiredProperties, create],
+   update: [supplierExists, hasOnlyValidProperties, hasRequiredProperties, update],
++  delete: [supplierExists, destroy],
+};
+Now, use Postman to send a DELETE request to localhost:5000/suppliers/1. If the supplier is successfully deleted from your database, you will get back a 204 status code.
+
+The basic CRUD functionality is now complete.
+
+You will be using the same repository in the next lesson, so make sure to save the work that you complete in this lesson.
+
+Complete example
+A completed example from this lesson can be found here:
+
+GitHub: Node, Express, and Postgres—crud-with-knex branch
+
 *** 35.7 Async and await in Express
+Async and await in Express
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to convert route handlers to use the async and await pattern.
+
+Overview
+A senior member of the engineering team has done a code review on your work for the previous lesson and noticed the prevalent use of then() methods in the pull request. As a result, the engineer has tasked you with refactoring your route handlers to make use of async and await, where appropriate.
+
+In a previous module, you learned that promises manage asynchronous code, and you learned how to use then() and catch() to handle values from promises. You also learned about one of the most powerful tools that involves promises: the async and await keywords.
+
+As you've seen, relying on then() to handle asynchronous logic may quickly lead to messy and unreadable code. Using the async and await keywords instead simplifies the syntax for making asynchronous calls by allowing your asynchronous code to look more synchronous.
+
+Starter code
+This lesson continues using the project that you created in the previous lesson. If you need to, you can download that code here:
+
+GitHub: Node, Express, and Postgres Starter
+The async and await keywords in Express
+Do this
+Update the list() function in categories.controller.js
+In categories.controller.js, modify your list() function as follows:
+
+async function list(req, res) {
+  const data = await categoriesService.list();
+  res.json({ data });
+}
+Here's a breakdown of the syntax:
+
+The categoriesService.list() function executes a Knex query, which is an asynchronous operation. Using the await keyword before categoriesService.list() forces the execution of the code to pause on that line until that asynchronous operation is finished. Once it is, the resolved response is stored in categories.
+
+Because the list() function contains a function that uses await, you must add the async keyword in front of the list() function. Otherwise, your code won't work properly.
+
+Go ahead and follow the rest of this guide to update your route handlers to use async and await, where appropriate.
+
+Update the productExists() function products.controller.js
+In products.controller.js, modify the productExists() function as follows:
+
+async function productExists(req, res, next) {
+  const product = await productsService.read(req.params.productId);
+  if (product) {
+    res.locals.product = product;
+    return next();
+  }
+  next({ status: 404, message: `Product cannot be found.` });
+}
+Update the list() function in products.controller.js
+In products.controller.js, modify the list() function as follows:
+
+async function list(req, res, next) {
+  const data = await productsService.list();
+  res.json({ data });
+}
+Update suppliers.controller.js
+In suppliers.controller.js, modify the supplierExists() function as follows:
+
+async function supplierExists(req, res, next) {
+  const supplier = await suppliersService.read(req.params.supplierId);
+  if (supplier) {
+    res.locals.supplier = supplier;
+    return next();
+  }
+  next({ status: 404, message: `Supplier cannot be found.` });
+}
+Modify the create() function as follows:
+
+async function create(req, res) {
+  const data = await suppliersService.create(req.body.data);
+  res.status(201).json({ data });
+}
+Modify the update() function as follows:
+
+async function update(req, res) {
+  const updatedSupplier = {
+    ...req.body.data,
+    supplier_id: res.locals.supplier.supplier_id,
+  };
+  const data = await suppliersService.update(updatedSupplier);
+  res.json({ data });
+}
+Modify the destroy() function, as follows:
+
+async function destroy(req, res) {
+  const { supplier } = res.locals;
+  await suppliersService.delete(supplier.supplier_id);
+  res.sendStatus(204);
+}
+Use Postman to test your routes and make sure that your CRUD functionality is still working.
+
+Error handling
+If a promise is rejected inside async/await code, an error is thrown and needs to be handled.
+
+Express was written before JavaScript contained promises. As a result, errors thrown by async handlers and middleware require a little work to make sure that you catch the error and pass it on to next(). There are three options when it comes handling errors in asynchronous code:
+
+Use the then and catch methods of the promise (which is what you have done so far).
+
+Use async and await and wrap the asynchronous code with try/catch.
+
+Use async and await and pass the function to a higher-order function that handles errors for you.
+
+All of these approaches are valid.
+
+For example, you can add error handling to the list() function in categories.controller.js by using try...catch like the following code:
+
+async function list(req, res, next) {
+  try {
+    const data = await categoriesService.list();
+    res.json({ data });
+  } catch (error) {
+    next(error);
+  }
+}
+The above code will catch any error and pass it to next() so that the request will fail.
+
+One alternative to try/catch is to use a higher-order function to handle the async error for you. Rather than adding try/catch to the function, wrap the function in an error boundary when it is exported from the controller. The following code defines the asyncErrorBoundary() function.
+
+Now, create src/errors/asyncErrorBoundary.js and add the following code:
+
+function asyncErrorBoundary(delegate, defaultStatus) {
+  return (request, response, next) => {
+    Promise.resolve()
+      .then(() => delegate(request, response, next))
+      .catch((error = {}) => {
+        const { status = defaultStatus, message = error } = error;
+        next({
+          status,
+          message,
+        });
+      });
+  };
+}
+
+module.exports = asyncErrorBoundary;
+The asyncErrorBoundary() function takes two parameters:
+
+delegate, which is an async/await handler or middleware function. This function will be called by the asyncErrorBoundary.
+
+defaultStatus is an optional parameter that allows you to override the status code returned when delegate throws an error.
+
+asyncErrorBoundary returns an Express handler or middleware function, which is eventually called by Express in place of the delegate function.
+
+Here's a breakdown of the syntax:
+
+Promise.resolve().then(() => delegate(request, response, next)) makes sure that the delegate function is called in a promise chain. Using Promise.resolve() to call delegate means that the value returned is guaranteed to have a catch() method, even if delegate isn't an async function.
+
+The catch() method will default error to {} in the unlikely event that error is undefined (which will make sure that the destructuring in the next line doesn't fail).
+
+Next, the error object is destructured to status and message variables. By defaulting message to error, error can be a String or Error object.
+
+Finally, next() is called, passing in status and message.
+
+Now, make use of the asyncErrorBoundary by wrapping the async functions when exported by the *.controller.js files:
+
+In categories.controller.js, change the export to the following:
+
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+
+// ...
+
+module.exports = {
+  list: asyncErrorBoundary(list),
+};
+In products.controller.js, change the export to the following:
+
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+
+// ...
+
+module.exports = {
+  read: [asyncErrorBoundary(productExists), read],
+  list: asyncErrorBoundary(list),
+};
+In suppliers.controller.js, change the export to the following:
+
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
+
+// ...
+
+module.exports = {
+  create: [
+    hasOnlyValidProperties,
+    hasRequiredProperties,
+    asyncErrorBoundary(create),
+  ],
+  update: [
+    asyncErrorBoundary(supplierExists),
+    hasOnlyValidProperties,
+    hasRequiredProperties,
+    asyncErrorBoundary(update),
+  ],
+  delete: [asyncErrorBoundary(supplierExists), asyncErrorBoundary(destroy)],
+};
+In the remaining lessons, you will be using only the async and await syntax to write asynchronous code. You will also wrap the async functions with asyncErrorBoundary to handle any possible errors thrown from the async functions.
+
+You will be using the same repository in the next lesson, so make sure to save the work that you complete in this lesson.
+
+Complete example
+A completed example from this lesson can be found here:
+
+GitHub: Node, Express, and Postgres—async-and-await-in-express-complete branch
+
 *** 35.8 Aggregates with Knex and JavaScript
+Aggregates with Knex and JavaScript
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to return aggregate data using standard Knex queries and JavaScript. You'll also be able to return aggregate data using Knex queries that make use of aggregate clauses.
+
+Overview
+When you're working with tables in the real world, you'll typically need to retrieve aggregate data from your tables. For example, you may need to retrieve counts, averages, and sums of the values of a given column or array of columns. In this lesson, you'll modify your routes to do just that.
+
+At Thinkful Gifts, the inventory management department has stated that they will need to be able to access the following sets of inventory statistics via the API:
+
+HTTP verb
+Path
+Description
+GET
+/products/out-of-stock-count
+Returns a count of all out-of-stock products
+GET
+/products/price-summary
+Returns the average, minimum, and maximum prices of products sourced from a supplier
+GET
+/products/total-weight-by-product
+Returns the total weight (in lbs ) of each product type being held in the inventory. The total weight is calculated by taking the quantity of each product multiplied by the weight of each product.
+In this lesson, your challenge is to modify your routes to meet the criteria above. The start project doesn't contain any code for above routes. You will need to make changes to multiple files, including the router, controller, and service files, in order to fully implement the the criteria above.
+
+Starter code
+This lesson continues using the project you created in the previous lesson. If you need to, you can download that code here:
+
+GitHub: Node, Express, and Postgres Starter
+Knex count() method
+The Knex count() method performs a count on the specified column or array of columns. In PostgreSQL, count() returns a bigint type, which will be a string.
+
+knex("products").count("product_id");
+This translates to the following:
+
+SELECT COUNT("product_id") FROM "products";
+GET /products/out-of-stock-count endpoint
+The API should return a count of all out-of-stock products. You will need to make use of the Knex count() method.
+
+Do this
+Add a new query builder function to products.service.js
+In products.service.js, add the following listOutOfStockCount() method:
+
+function listOutOfStockCount() {
+  return knex("products")
+    .select("product_quantity_in_stock as out_of_stock")
+    .count("product_id")
+    .where({ product_quantity_in_stock: 0 })
+    .groupBy("out_of_stock");
+}
+The query above selects the product_quantity_in_stock column (aliased as out_of_stock) from the products table. It also selects a count all of the products where product_quantity_in_stock is set to 0. Finally, it groups the result by the out_of_stock column.
+
+To export your method from the file, make sure to include the function in the module.exports object, as follows:
+
+module.exports = {
+  list,
+  read,
++ listOutOfStockCount,
+};
+Add the listOutOfStockCount() handler to products.controller.js
+In products.controller.js, add a listOutOfStockCount() handler, which calls the getOutOfStockCount() query builder method that you added to ProductsService in the previous step:
+
+async function listOutOfStockCount(req, res, next) {
+  res.json({ data: await productsService.listOutOfStockCount() });
+}
+Export your handler via module.exports:
+
+module.exports = {
+  read: [asyncErrorBoundary(productExists), read],
+  list: asyncErrorBoundary(list),
++  listOutOfStockCount: asyncErrorBoundary(listOutOfStockCount),
+};
+Add the /products/out-of-stock-count route to products.router.js
+On your own, make the necessary changes to products.router.js to handle GET requests to /products/out-of-stock-count.
+
+Verify GET localhost:5000/products/out-of-stock-count
+Now, either use Postman to send a GET request, or navigate to localhost:5000/products/out-of-stock-count in the browser. You will get back a result that looks like the following, showing that there are four products that are out of stock:
+
+{
+  data: [
+    {
+      out_of_stock: 0,
+      count: "4",
+    },
+  ];
+}
+Knex min(), max(), and avg() methods
+The min() method
+The Knex min() method retrieves the minimum value for the specified column. It accepts the column name as a parameter. For example, consider this code:
+
+knex("products").min("product_price");
+This translates to the following:
+
+SELECT MIN("product_price") FROM "products";
+The max() method
+The Knex max() method retrieves the maximum value for the specified column. It accepts the column name as a parameter. For example, look at the following code:
+
+knex("products").max("product_price");
+This translates to the following:
+
+SELECT MAX("product_price") FROM "products";
+The avg() method
+The Knex avg() method retrieves the average value for the specified column. It accepts the column name as a parameter. For example, look at the following code:
+
+knex("products").avg("product_price");
+This translates to the following:
+
+SELECT AVG("product_price") FROM "products";
+GET /products/price-summary endpoint
+The API should return the average, minimum, and maximum prices of products sourced from a supplier. You will need to make use of the Knex min(), max(), and avg() methods.
+
+Do this
+Add a new query builder function to products.service.js
+In products.service.js, add the following listPriceSummary() method:
+
+function listPriceSummary() {
+  return knex("products")
+    .select("supplier_id")
+    .min("product_price")
+    .max("product_price")
+    .avg("product_price")
+    .groupBy("supplier_id");
+}
+The query above selects the supplier_id column from the products table and returns the minimum, maximum, and average values of the product_price column, grouped by the supplier_id column.
+
+To export your method from the file, make sure to include the function in the module.exports object.
+
+Add the listPriceSummary() handler to products.controller.js
+In products.controller.js, add a listPriceSummary() handler, which calls the getPriceSummary() query builder method that you added to ProductsService in the previous step:
+
+async function listPriceSummary(req, res, next) {
+  res.json({ data: await productsService.listPriceSummary() });
+}
+Export the handler function via module.exports:
+
+module.exports = {
+  read: [asyncErrorBoundary(productExists), read],
+  list: asyncErrorBoundary(list),
+  listOutOfStockCount: asyncErrorBoundary(listOutOfStockCount),
++ listPriceSummary: asyncErrorBoundary(listPriceSummary),
+};
+Add the /products/price-summary route to products.router.js
+On your own, make the necessary changes to products.router.js to handle GET requests to /products/price-summary.
+
+Verify GET localhost:5000/products/price-summary
+Now, either use Postman to send a GET request, or navigate to localhost:5000/products/price-summary in the browser. You will get back a result that looks like the following:
+
+{
+  "data": [
+      {
+          "supplier_id": 4,
+          "min": "3.99",
+          "max": "699.99",
+          "avg": "230.5940000000000000"
+      },
+...
+The Knex raw() method
+When a Knex method isn't available to perform a given query, you may need to use a raw SQL expression in a query. You can inject a raw query object pretty much anywhere you want using the raw() method, which accepts a raw query as a parameter. For example, if you want to find the sum of the result of multiplying two columns together, and then store the result in a new column called total, the syntax is as follows:
+
+knex("products").select(raw("sum(column_1_value * column_2_value) as total"));
+This translates to the following:
+
+SELECT SUM(column_1_value * column_2_value) as total
+FROM "products"
+GET /products/total-weight-by-product endpoint
+The API should return the total weight (in lbs) of each product being held in the inventory. The total weight is calculated by taking the quantity of each product multiplied by the weight of each product. You will need to use the knex.raw() to write a plain SQL query to perform the calculation.
+
+Do this
+Add a new query builder function to products.service.js
+In products.service.js, add the following listTotalWeightByProduct() method:
+
+function listTotalWeightByProduct() {
+  return knex("products")
+    .select(
+      "product_sku",
+      "product_title",
+      knex.raw(
+        "sum(product_weight_in_lbs * product_quantity_in_stock) as total_weight_in_lbs"
+      )
+    )
+    .groupBy("product_title", "product_sku");
+}
+The query above selects the product_sku, product_title, and a third special column. This third column consists of the sum of multiplying the values from two columns (product_weight_in_lbs and product_quantity_in_stock) from the products table. The result is then grouped by product_title and product_sku.
+
+To export your method from the file, make sure to include the function in the module.exports object.
+
+Add the listTotalWeightByProduct() handler to products.controller.js
+In products.controller.js, add a listTotalWeightByProduct() handler, which calls the listTotalWeightByProduct() query builder method that you added to productsService in the previous step:
+
+async function listTotalWeightByProduct(req, res) {
+  res.json({ data: await productsService.listTotalWeightByProduct() });
+}
+Export the handler via module.exports:
+
+module.exports = {
+  read: [asyncErrorBoundary(productExists), read],
+  list: asyncErrorBoundary(list),
+  listOutOfStockCount: asyncErrorBoundary(listOutOfStockCount),
+  listPriceSummary: asyncErrorBoundary(listPriceSummary),
++ listTotalWeightByProduct: asyncErrorBoundary(listTotalWeightByProduct),
+};
+Add the /products/total-weight-by-product route to products.router.js
+On your own, make the necessary changes to products.router.js to handle GET requests to /products/total-weight-by-product.
+
+Verify GET localhost:5000/products/total-weight-by-product
+Now, either use Postman to send a GET request, or navigate to localhost:5000/products/total-weight-by-product in the browser. You will get back a result that looks like the following:
+
+{
+  "data": [
+      {
+          "product_sku": "giUGNvnn8Q",
+          "product_title": "Reserved for the Dog Cushion",
+          "total_weight_in_lbs": "1100.00"
+      },
+      {
+          "product_sku": "ay6srUUaht",
+          "product_title": "Laudable Accomplishments of the Warrior: A Fate Forfeit",
+          "total_weight_in_lbs": "898.01"
+      },
+...
+You will be using the same repository in the next lesson, so make sure to save the work that you complete in this lesson.
+
+Complete example
+A completed example from this lesson can be found here:
+
+GitHub: Node, Express, and Postgres—aggregates-with-knex-and-javascript branch
 *** 35.9 Joins with Knex
+Joins with Knex
+1.5 hoursEstimated completion time
+Learning Objective
+By the end of this lesson, you will be able to return joined data with Knex.
+
+Overview
+In this lesson, you'll learn how to create queries in Knex to pull data from more than one table.
+
+In the previous lesson, you wrote Knex queries to get aggregate data such as counts, minimums, maximums, averages, and sums from your tables. For example, in the previous lesson, you wrote a Knex query to return the minimum, maximum, and average prices of products sourced from each supplier from the products table. However, only the supplier_id is included in your result, because that's the foreign key reference in the products table.
+
+What if you also wanted to include the supplier_name and supplier_email columns in your result? Because these columns are stored in the suppliers table, you'd have to join the products and suppliers tables.
+
+If you need to retrieve data from multiple tables in your query, you can create queries in Knex that pull data from more than one table. The inventory management department has stated that they will need to be able to access the following sets of data via the API as well:
+
+HTTP verb
+Path
+Description
+GET
+/products/:productId
+Return a specific product, including all of its related category information
+You will now get to work modifying the existing API endpoint above to return joined data.
+
+Starter code
+This lesson continues using the project you created in the previous lesson. If you need to, you can download that code here:
+
+GitHub: Node, Express, and Postgres Starter
+You will be using the same repository in the next lesson, so make sure to save the work that you complete in this lesson.
+
+Knex joins
+In the previous module, you learned how to write SQL queries to link or relate the data located in different tables. For example, to retrieve all columns from two tables (products and suppliers) with plain SQL, the join syntax looks like the following:
+
+SELECT p.*, s.*
+FROM products as p
+JOIN suppliers as s
+ON p.supplier_id = s.supplier_id;
+A corresponding query in Knex would look like this:
+
+knex("products as p")
+  .join("suppliers as s", "p.supplier_id", "s.supplier_id")
+  .select("p.*", "s.*");
+The join() method above accepts the name of the join table as the first parameter. The next two parameters are the names of the columns that contain the values on which the join is based (products.supplier_id and suppliers.supplier_id in the example above). Similar to the SELECT statement in SQL, you also chain a select() method to determine the columns to include in the query result.
+
+To link multiple tables, you can chain multiple join() methods. For example, to link the products, categories, and products_categories tables, you can chain join("products_categories as pc", "p.product_id", "pc.product_id") and join("categories as c", "pc.category_id", "c.category_id") to knex("products as p"), like this:
+
+knex("products as p")
+  .join("products_categories as pc", "p.product_id", "pc.product_id")
+  .join("categories as c", "pc.category_id", "c.category_id");
+Modify the GET /products/:productId endpoint
+Your API should return a specific product, including all of its related category information. To get this information, you will need to use the productsCategoriesJoin base query, which relates the products, products_categories, and categories tables.
+
+Do this
+Add a new query builder function to products.service.js
+In products.service.js, modify the existing read() query builder function as follows:
+
+function read(product_id) {
+  return knex("products as p")
+    .join("products_categories as pc", "p.product_id", "pc.product_id")
+    .join("categories as c", "pc.category_id", "c.category_id")
+    .select("p.*", "c.*")
+    .where({ "p.product_id": product_id })
+    .first();
+}
+Now, either use Postman to send a GET request, or navigate to localhost:5000/products/1 in the browser. You will get back a result that looks like the following:
+
+{
+  "data": {
+    "product_id": 1,
+    "product_sku": "XLH4P7t3er",
+    "product_title": "Vanilla Scented Candle",
+    "product_description": "Vanilla-scented candle, perfect for your living room.",
+    "product_price": "48.25",
+    "product_quantity_in_stock": 0,
+    "product_weight_in_lbs": "2.30",
+    "supplier_id": 1,
+    "created_at": "2020-12-01T20:37:09.550Z",
+    "updated_at": "2020-12-01T20:37:09.550Z",
+    "category_id": 2,
+    "category_name": "candles",
+    "category_description": "A category for gift candles, including both scented and non-scented candles, for the home."
+  }
+}
+Notice that the JSON you are getting back from the server is represented in a "flat" way. However, a REST API would typically provide related objects, like category, as an object nested within the JSON.
+
+Add category object
+The nested data output for the /products/:productId endpoint should look like the following:
+
+{
+  "data": {
+    "id": 1,
+    "sku": "XLH4P7t3er",
+    "title": "Vanilla Scented Candle",
+    "description": "Vanilla-scented candle, perfect for your living room.",
+    "price": "48.25",
+    "quantity_in_stock": 0,
+    "weight_in_lbs": "2.30",
+    "supplier": {
+      "id": 1
+    },
+    "created_at": "2020-12-01T20:37:09.550Z",
+    "updated_at": "2020-12-01T20:37:09.550Z",
+    "category": {
+      "category_id": 2,
+      "category_name": "candles",
+      "category_description": "A category for gift candles, including both scented and non-scented candles, for the home."
+    }
+  }
+}
+Note the category property is a nested object that groups all of the related category properties.
+
+Next you will write a function to group the category_id, category_name, and category_description columns into a single nested object:
+
+Do this
+Group category properties into a nested object
+First, run npm install lodash to install lodash.
+
+Then, create a new utils folder. Within it, create a file called map-properties.js.
+
+Add the following code to map-properties.js:
+
+const lodash = require("lodash");
+
+function mapProperties(configuration) {
+  return (data) => {
+    if (data) {
+      return Object.entries(data).reduce((accumulator, [key, value]) => {
+        return lodash.set(accumulator, configuration[key] || key, value);
+      }, {});
+    }
+    return data;
+  };
+}
+
+module.exports = mapProperties;
+The above code accepts a configuration parameter which is an object where the key specifies the original property name and the value specifies the new property name. The mapProperties() function returns a new function that can be used over and over to modify multiple data objects.
+
+The following is the configuration to convert the category properties to a nested category object:
+
+{
+  category_id: "category.category_id",
+  category_name: "category.category_name",
+  category_description: "category.category_description",
+}
+In the above configuration, the values specify the "path" of the property, where . is the delimiter. . is used like / or \ for a path folder delimiter. If a portion of the path doesn't exist, it's created. Arrays are created for missing index properties while objects are created for all other missing properties. Any property that isn't in the configuration is left unchanged.
+
+Then, in src/products/products.service.js, make the following changes:
+
+// At the top of the file:
++ const mapProperties = require("../utils/map-properties");
+
++ const addCategory = mapProperties({
++   category_id: "category.category_id",
++   category_name: "category.category_name",
++   category_description: "category.category_description",
++ });
+
+// Then modify the `read()` function
+function read(product_id) {
+   return knex("products as p")
+     .join("products_categories as pc", "p.product_id", "pc.product_id")
+     .join("categories as c", "pc.category_id", "c.category_id")
+     .select("p.*", "c.*")
+     .where({ "p.product_id": product_id })
+     .first()
++    .then(addCategory);
+}
+Now, either use Postman to send a GET request, or navigate to localhost:5000/products/1 in the browser. You should get back a data object with a nested category object!
+
+Complete example
+A completed example from this lesson can be found here:
+
+GitHub: Node, Express, and Postgres—joins-with-knex branch
 *** 35.10 Assessment: Node, Express, and Postgres
 
 ** Backend Deployment - Module 36
