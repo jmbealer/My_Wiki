@@ -837,11 +837,580 @@ A completed example from this lesson can be found here:
 
     Node and Express: Error handling
 *** 30.7 Router-level middleware
+Router-level middleware
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to filter incoming requests to routes with router-level middleware.
+Overview
+
+Many of the routes that you create will have similar constraints. Although you can build the same kind of constraints into multiple routes, it's helpful to abstract common functionality into router-level middleware.
+
+The video below provides a brief introduction to router-level middleware. Start by watching the video, and then read through the rest of the lesson and complete the practice tasks. This will give you a thorough understanding of this topic.
+Starter code
+
+This lesson continues using the project that you created in the previous lesson. If you need to, you can download that code here:
+
+    Node and Express: Error handling
+
+Duplicate constraints
+
+When a request travels to one of your routes, you will often want to verify that request in some way. For example, take a look at the following route:
+
+app.get("/states/:abbreviation", (req, res, next) => {
+
+  const abbreviation = req.params.abbreviation;
+
+  if (abbreviation.length !== 2) {
+
+    next("State abbreviation is invalid.");
+
+  } else {
+
+    res.send(`${abbreviation} is a nice state, I'd like to visit.`);
+
+  }
+
+});
+
+
+app.get("/travel/:abbreviation", (req, res, next) => {
+
+  const abbreviation = req.params.abbreviation;
+
+  if (abbreviation.length !== 2) {
+
+    next("State abbreviation is invalid.");
+
+  } else {
+
+    res.send(`Enjoy your trip to ${abbreviation}!`);
+
+  }
+
+});
+
+These routes are very similar in many ways. For example, they both check for whether or not the inputted abbreviation route parameter is exactly two characters. Although the above code will work, your code will be cleaner and easier to maintain if you abstract away the duplicated code.
+Do this
+Include the routes
+
+Copy the above routes into your server, making sure that you have both. Ensure that you also have an error handler for missing routes and an error handler for when the next() function is called.
+Creating router-level middleware
+
+This duplicate code problem can be solved by building router-level middleware. Router-level middleware involves using a middleware function for specific routes. The function looks like all other middleware functions.
+
+Take a look at the function below, which abstracts out the check for the abbreviation length:
+
+const checkForAbbreviationLength = (req, res, next) => {
+
+  const abbreviation = req.params.abbreviation;
+
+  if (abbreviation.length !== 2) {
+
+    next("State abbreviation is invalid.");
+
+  } else {
+
+    next();
+
+  }
+
+};
+
+This function looks pretty similar to the code that you saw earlier. In fact, it is exactly like the above code—except that instead of responding, you call next() once again.
+
+You can place the checkForAbbreviationLength() function between the route name and the responding function, like this:
+
+app.get(
+
+  "/states/:abbreviation",
+
+  checkForAbbreviationLength,
+
+  (req, res, next) => {
+
+    res.send(`${req.params.abbreviation} is a nice state, I'd like to visit.`);
+
+  }
+
+);
+
+
+app.get(
+
+  "/travel/:abbreviation",
+
+  checkForAbbreviationLength,
+
+  (req, res, next) => {
+
+    res.send(`Enjoy your trip to ${req.params.abbreviation}!`);
+
+  }
+
+);
+
+As you can see, the code for the routes has been reduced thanks to the router-level middleware.
+
+Now, imagine that you are making a request to the following URL:
+
+http://localhost:5000/travel/OR
+
+The process that Express will follow will look somewhat like this:
+
+    Express receives the request and begins to check the middleware pipeline.
+
+    Express takes the request through an application-level middleware (such as morgan) at the top of your file.
+
+    Express looks at the /states/:abbreviation route and, seeing that it does not match the request URL, skips over it.
+
+    Express looks at the /travel/:abbrevation route and, seeing that it does match the request URL, calls the next middleware function.
+
+    The next middleware function is checkForAbbreviationLength(). The function runs and determines that the abbreviation route parameter is valid, calling the next() function with no arguments.
+
+    The route function is now called, and the server responds with "Enjoy your trip to OR!".
+
+Do this
+Include router-level middleware
+
+Copy the checkForAbbreviationLength() function into your code and update your routes as described above. Try making requests to both routes to ensure that they work as intended.
+Get specific
+
+Update your checkForAbbreviationLength() function so that instead of responding with a generic message, it responds with a message that includes the inputted abbreviation. For example, the response might look like this:
+
+State abbreviation "NYC" is invalid.
+
+Do you see how you only had to make this update in one place as opposed to two?
+Why use router-level middleware?
+
+The current example that you've been working with could be solved by creating application-level middleware instead of router-level middleware. Why not just include a line like the following in the server code?
+
+app.use(checkForAbbreviationLength);
+
+The above will work for the current example, but it will fail later if you were to add a route that doesn't use the abbreviation route parameter.
+Do this
+Perils of application-level middleware
+
+To see this in action, try including the above line in your code, above your existing routes. Then, try going to the following URL:
+
+http://localhost:5000/unknown
+
+In your terminal, you will likely see an error that says something like this:
+
+TypeError: Cannot read property 'length' of undefined
+
+What is this error referring to? What is undefined that the server is attempting to call length on? Hint: Take a closer look at the abbreviation declaration in the checkForAbbreviationLength() function.
+
+Make sure to remove the application-level middleware that you just added before moving on.
+Complete example
+
+A completed example from this lesson can be found here:
+
+    Node and Express: Router-level middleware
+
 *** 30.8 Assessment: Node and Express
 
 ** Robust Server Structure - Module 31
 *** 31.1 Overview: Robust server structure
+Overview: Robust server structure
+9 minutesEstimated completion time
+Overview
+
+Although you can design your APIs however you want, keeping the design uniform and consistent with industry standards can be helpful. This is especially true when other developers also use the API. In this module, you will learn how to build APIs using a set of constraints on how to route and return information from your API. You'll also learn to implement robust validation and error-handling techniques and organize your Express code in a modular manner.
+
+In the previous module, you learned how to create a basic Express server with a simple file structure. Your server also handled a limited number of routes and errors. As an application grows in size and complexity, however, it becomes increasingly important to set guidelines that make it easier for developers to work with the codebase.
+
+In the real world, you will be building and maintaining APIs that will be used by other developers. For example, you could be working as a backend engineer at an e-commerce company. One of your responsibilities could be to build and maintain an API that returns a list of the company's products, to be displayed on a React application. External advertisers might even want to call your API so that they can display your company's products on their website. As you are creating the API, some of the key questions that you might ask include the following:
+
+    How should you structure your API routes so that they're easy for other developers to understand and use?
+
+    How can you best structure your code to manage the complexity of the server architecture?
+
+    How can you properly validate requests to your API and return useful error messages for a variety of API issues?
+
+    How can you ensure that if a new developer joins the React team, they will be more or less familiar with the way that your API works?
+
+Starter code
+
+This module depends on an external repository. Fork and clone the following GitHub repository. Then, follow the instructions on how to get it to run.
+
+    Starter code: Robust server structure
 *** 31.2 Static data
+Static data
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to describe what state is as it pertains to a database. You'll also be able to use a static array or object to store state.
+Overview
+
+In this lesson, you will build a basic text storage API for sharing code snippets or plain text. Many APIs use a database to store data or state. However, you can also use an array or object to store data.
+Key Terms
+
+Application state
+    All of the data that an application must keep track of in order to work
+
+Starter code
+
+This lesson requires you to have the following repository running on your local machine.
+
+    Starter code: Robust server structure
+
+Fork and clone the above GitHub repository. Then, follow the instructions on how to get it to run.
+Static data
+
+You will now build a basic text-storage API (also known as a pastebin API) that allows users to store code snippets and plain text to share with others. For example, making a request to /pastes should return something like this:
+
+[
+
+    {
+
+      "id": 1,
+
+      "user_id": 1,
+
+      "name": "Hello",
+
+      "syntax": "None",
+
+      "expiration": 10,
+
+      "exposure": "private",
+
+      "text": "Hello World!"
+
+    },
+
+    {
+
+      "id": 2,
+
+      "user_id": 1,
+
+      "name": "Hello World in Python",
+
+      "syntax": "Python",
+
+      "expiration": 24,
+
+      "exposure": "public",
+
+      "text": "print(Hello World!)"
+
+    },
+
+    ...
+
+]
+
+Above, each object in the returned array represents the result of a paste. The object contains an exposure property that is either public or private. The object also contains a unique integer id, a name, the type of syntax, and the text itself.
+
+All of the data above can be accessed via a GET request to /pastes, as follows:
+
+GET http://localhost:5000/pastes
+
+If you need data for just a single paste, you can use the paste's id to get more specific details, like this
+
+GET http://localhost:5000/pastes/:pasteId
+
+Later on, you will build a route that will allow you to add new pastes to the array above.
+State
+
+You've learned about state in the context of React. But state isn't exclusive to React—it's a general programming term that describes the status of something as big as an entire application or as small as an individual object. The state of an application—also called application state—is all the data that the application must keep track of in order to work.
+Array as state
+
+At this point, the starter code doesn't have anywhere to store the information on each paste. To store this information, you will use an array that needs to be created in a new file.
+
+Now, create a file to store the initial array state.
+Do this
+Create a pastes-data.js file
+
+You will need to create a folder to store the data files. Inside the project folder, create a new folder called src/data. Inside that folder, create a file called pastes-data.js. Now your project files should look like the following:
+
+.
+
+├── package-lock.json
+
+├── package.json
+
+└── src
+
+    ├── app.js
+
+    ├── data
+
+    │   └── pastes-data.js
+
+    └── server.js
+
+Inside src/data/pastes-data.js, add the following code:
+
+module.exports = [
+
+  {
+
+    id: 1,
+
+    user_id: 1,
+
+    name: "Hello",
+
+    syntax: "None",
+
+    expiration: 10,
+
+    exposure: "private",
+
+    text: "Hello World!"
+
+  },
+
+  {
+
+    id: 2,
+
+    user_id: 1,
+
+    name: "Hello World in Python",
+
+    syntax: "Python",
+
+    expiration: 24,
+
+    exposure: "public",
+
+    text: "print(Hello World!)"
+
+  },
+
+  {
+
+    id: 3,
+
+    user_id: 2,
+
+    name: "String Reverse in JavaScript",
+
+    syntax: "Javascript",
+
+    expiration: 24,
+
+    exposure: "public",
+
+    text: "const stringReverse = str => str.split('').reverse().join('');"
+
+  },
+
+  {
+
+    id: 4,
+
+    user_id: 3,
+
+    name: "Print file sizes in Perl",
+
+    syntax: "Perl",
+
+    expiration: 24,
+
+    exposure: "public",
+
+    text: "ls -lAF | perl -e ’while (<>) { next if /^[dt]/; print +(split)[4], '\n' } ’"
+
+  }
+
+];
+
+The above code defines an array of paste records and exports it for use in the app.js file.
+
+Next, you will create an API endpoint that can access all of the paste data stored in src/data/pastes-data.js and return it to the user.
+Do this
+Return all pastes
+
+Add the following to app.js, before the not-found and error handlers:
+
+const pastes = require("./data/pastes-data");
+
+
+app.use("/pastes", (req, res) => {
+
+  res.json({ data: pastes });
+
+});
+
+Below is a description of what each new line of code above accomplishes.
+Code
+	Description
+const pastes = require("./data/pastes-data");
+	Reads, executes, and returns the exports object from the ./data/pastes-data file, assigning it to a variable
+app.use("/pastes", (req, res)...
+	Defines a handler for the /pastes path
+res.json({ data: pastes });
+	The json() method of the response object, which tells Express to respond to the client with data in JSON format
+
+Ensure that your server is still running. Then visit http://localhost:5000/pastes to see the data from the API. It will look like this:
+
+{
+
+  "data": [
+
+    {
+
+      "id": 1,
+
+      "user_id": 1,
+
+      "name": "Hello",
+
+      "syntax": "None",
+
+      "expiration": 10,
+
+      "exposure": "private",
+
+      "text": "Hello World!"
+
+    },
+
+    {
+
+      "id": 2,
+
+      "user_id": 1,
+
+      "name": "Hello World in Python",
+
+      "syntax": "Python",
+
+      "expiration": 24,
+
+      "exposure": "public",
+
+      "text": "print(Hello World!)"
+
+    },
+
+    {
+
+      "id": 3,
+
+      "user_id": 2,
+
+      "name": "String Reverse in JavaScript",
+
+      "syntax": "Javascript",
+
+      "expiration": 24,
+
+      "exposure": "public",
+
+      "text": "const stringReverse = str => str.split('').reverse().join('');"
+
+    },
+
+    {
+
+      "id": 4,
+
+      "user_id": 3,
+
+      "name": "Print file sizes in Perl",
+
+      "syntax": "Perl",
+
+      "expiration": 24,
+
+      "exposure": "public",
+
+      "text": "ls -lAF | perl -e ’while (<>) { next if /^[dt]/; print +(split)[4], '\n' } ’"
+
+    }
+
+  ]
+
+}
+
+Tip
+
+You might find that you need to restart your server after making changes to your routes.
+Why use a data property?
+
+You might be wondering why you returned an object with a data property from your API rather than simply returning the array itself.
+
+This is because you are following a simplified version of the JSON:API specification, a common pattern for APIs returning JSON. You don't need to read or understand this specification right now—just know that it exists. The full specification adds some complexity that you won't find useful right now, so this lesson has simplified it for you.
+
+In short, the APIs that you build will always return an object with either a data property or an errors property. Any information sent to the API will also be an object with a data property. You will learn about errors and sending information to the API in a future lesson.
+Do this
+Return one paste from /:pasteId
+
+Now, use the paste state to return one paste record by id or return an error if the id doesn't exist.
+
+Add the following to app.js before the app.use("/pastes", ...) handler:
+
+app.use("/pastes/:pasteId", (req, res, next) => {
+
+  const { pasteId } = req.params;
+
+  const foundPaste = pastes.find((paste) => paste.id === Number(pasteId));
+
+
+  if (foundPaste) {
+
+    res.json({ data: foundPaste });
+
+  } else {
+
+    next(`Paste id not found: ${pasteId}`);
+
+  }
+
+});
+
+The table below summarizes the syntax above:
+Code
+	Description
+app.use("/pastes/:pasteId", (req, res)...
+	Defines a handler for the /pastes/:pasteId path
+const { pasteId } = req.params;
+	Defines the pasteId variable by destructuring it from req.params
+const foundPaste = pastes.find((paste) => paste.id === Number(pasteId));
+	Uses the find() array method to search for the paste by id. If no id matches, find() returns undefined.
+res.json({ data: foundPaste });
+	Sends data with the foundPaste object to the client as JSON
+next(`Paste not found: ${pasteId}`);
+	Calls next() with an error message to move the request to the error handler
+
+Ensure that your server is still running. Then visit http://localhost:5000/pastes/3, and you'll see the following:
+
+{
+
+  "data":
+
+  {
+
+     "id": 3,
+
+     "user_id": 2,
+
+     "name": "String Reverse in JavaScript",
+
+     "syntax": "Javascript",
+
+     "expiration": 24,
+
+     "exposure": "public",
+
+     "text": "const stringReverse = str => str.split('').reverse().join('');"
+
+  }
+
+}
+
+Next, visit http://localhost:5000/pastes/42. You'll see the message Paste id not found: 42.
+Completed example
+
+A completed example from this lesson can be found here:
+
+    Starter code: Robust server structure—01-static-data branch
 *** 31.3 RESTful APIs
 *** 31.4 API testing with SuperTest
 *** 31.5 Major error types and handling
