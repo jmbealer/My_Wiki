@@ -3,6 +3,8 @@
 :END:
 #+title: swe-dsa
 
+[[id:626859c7-4f90-41d5-a450-d37bf06f24fb][grokking-the-coding-interview]]
+
 * Data Structures and Algorithms - Modules 41-44
 ** Module 41 - Introduction to data structures and algorithms
 *** 41.1 - Overview: Intro to data structures and algorithms

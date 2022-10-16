@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       626859c7-4f90-41d5-a450-d37bf06f24fb
+:END:
+#+title: Grokking the Coding Interview: Patterns for Coding Questions
+
+sliding window
+
+two pointers
+
+fast & slow pointers
+
+merge intervals
+
+cyclic sort
+
+in-place reversal of a linkedlist
+
+tree breadth first search
+
+tree depth first search
+
+two heaps
+
+subsets
+
+modified binary search
+
+bitwise xor
+
+top 'k' elements
+
+k-way merge
+
+knapsack (dynamic programming)
+
+topological sort (graph)
+
+miscellaneous
