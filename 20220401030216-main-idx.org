@@ -31,6 +31,6 @@ this is the main index...
 
 change linux into my main wiki for my notes.
 
-need to work on this
+nice work let god
 
 #+end_src
