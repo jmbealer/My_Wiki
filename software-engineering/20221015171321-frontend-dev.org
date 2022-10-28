@@ -450,7 +450,376 @@ https://the-echoplex.net/flexyboxes/
 https://www.flexboxpatterns.com/
 *** 18.7 navigation
 
+Navigation
+1.5 hoursEstimated completion time
+Learning Objective
+
+By the end of this lesson, you will be able to build a responsive navigation.
+Overview
+
+Some common components of websites can be tricky to build if you don't know the methodology behind them. One of those tricky components is navigation; building a responsive navigation requires a bit of knowledge of how it's typically done. In this lesson, you'll learn how to build a responsive navigation step by step.
+Starter code
+
+This lesson continues using the project that you created in the previous lesson. If you need to, you can download that code here:
+
+    GitHub: Front-end Foundations Starter
+
+The files for this lesson are stored in the navigation folder. To get started, open the index.html file with VSCode Live Server. You will see a page with some plain, unstyled elements. You will be using the same repository in the next lesson, so make sure to save the work that you complete in this lesson.
 Responsive navigation
+
+Building navigation in responsive web design can be challenging—especially while maintaining a consistent look, feel, and experience on your site. There are many different ways to build and style a responsive navigation; this lesson will explore one of those ways.
+
+When you learned about flexbox and media queries earlier in this module, you were introduced to all of the code that you'll use to create responsive navigation. In this lesson, you'll go over the code step by step so that you have a solid understanding of how to apply those skills to a common web component.
+Mobile-first approach
+
+As you learned earlier in this module, it's best to build websites using the mobile-first approach. You'll be building the navigation that you can see in the image below:
+The navigation you'll be building.
+
+Now, you will learn how to build this CSS code piece by piece. You'll look at the CSS selectors that you need to target the various HTML elements, and you'll learn how to write declaration blocks that style each selected element to match the navigation shown in the image above.
+
+For each selector, the HTML element that the CSS selector targets will be marked by a red border (border: 1px solid red;). This will help you visually connect the code with the element and the space that it occupies in each of the images below.
+Do this
+
+Make sure to keep the style.css file open in VS Code, as you will be adding CSS code to that file for the remainder of this lesson.
+Style the header
+Navigation with a styled header.
+
+The header selector is the primary container to hold both the name of your page and its navigation.
+
+Add the following CSS to style the header:
+
+header {
+
+  /* Sets background color to black. */
+
+  background-color: #000;
+
+  /* Adds 40 pixels of space under the header
+
+     so that the main content isn't so close
+
+     to the navigation. */
+
+  margin-bottom: 40px;
+
+}
+
+Do this
+Style the title of your document
+Navigation with a styled title.
+
+The header h1 selector targets the title of your document. Adding a unique font will give this text more style, too.
+
+Add the following CSS to style the title of your document:
+
+header h1 {
+
+  /* Sets text color to white. */
+
+  color: #fff;
+
+  /* Centers the text. */
+
+  text-align: center;
+
+  /* Removes the default margin and spacing around the `h1` element. */
+
+  margin: 0;
+
+  /* Pushes the text down 20 pixels from the top of the page. */
+
+  padding-top: 20px;
+
+}
+
+Do this
+Style the container for the navigation
+Navigation in a styled container.
+
+The header nav selector targets the container for the navigation. Targeting only the nav container that's within the header allows for other navigation containers to be styled differently in the footer or elsewhere on the page.
+
+Add the following CSS to style the container for the navigation:
+
+header nav {
+
+  /* Changes the display property from its default to `flex`. */
+
+  display: flex;
+
+  /* Centers an element defined as `display: flex`. */
+
+  justify-content: center;
+
+}
+
+Do this
+Style the unordered list
+Navigation in a styled unordered list.
+
+This header nav ul selector targets the unordered list that is within the header's nav container.
+
+Add the following CSS to style the unordered list:
+
+header nav ul {
+
+  /* Changes the display property from its default to `flex`. */
+
+  display: flex;
+
+  /*
+
+    You want the navigation to display in a single row. This is 
+
+    the default value for `display: flex`, so you don't need
+
+    to define its `flex-direction` in this case.
+
+  */
+
+
+  /*
+
+    Removes the default padding to the left of the
+
+    unordered list.
+
+  */
+
+  padding-left: 0;
+
+
+  /*
+
+    Removes the bullet points from the list items within the 
+
+    unordered list.
+
+  */
+
+  list-style: none;
+
+}
+
+Do this
+Style the anchor tags of the list items
+Styled anchor tags of the list items.
+
+The header nav ul li a selector targets the anchor tag (link) of the list items within the unordered list that is within the header's nav container.
+
+Add the following CSS to style the anchor tags:
+
+header nav ul li a {
+
+  /* The link color is white. */
+
+  color: #fff;
+
+  /* Removes the underline from the link. */
+
+  text-decoration: none;
+
+  /* Applies 20 pixels of margin to the right of each link 
+
+     creating a visual gap between the navigation links. */
+
+  margin: 0 20px 0 0;
+
+}
+
+Do this
+Style the last list item's anchor
+Last list item of the navigation is styled.
+
+The header nav ul li:last-child a selector targets the last list item's contained anchor (link).
+
+Add the following CSS to style the last list item's anchor tag:
+
+header nav ul li:last-child a {
+
+  /* Removes the margin to the right of the last anchor tag 
+
+     so that the nav appears centered. */
+
+  margin-right: 0;
+
+}
+
+Great job on making it this far in the lesson! So far, you've created a navigation bar for the mobile view using flexbox. Next, you will add a media query for the desktop view.
+Media query for desktop
+
+As mentioned earlier, the code that you've worked through so far was designed to be viewed on mobile devices. To tell the browser how to change the header, title, and navigation when viewed on a desktop, you need to add a media query for desktop.
+Do this
+Add a media query
+
+Add the following media query for desktop:
+
+/* When a web browser is larger than 600 pixels,
+
+   apply these rules. */
+
+@media all and (min-width: 600px) {
+
+  header {
+
+    /* Changes the default setting from `block` to `flex`. */
+
+    display: flex;
+
+    /* Pushes the items (the title and nav) to the far sides of the 
+
+       browser with space between them. */
+
+    justify-content: space-between;
+
+    /* Adds 0 pixels padding top and bottom, and 30 pixels padding 
+
+       left and right. */
+
+    padding: 0 30px;
+
+  }
+
+
+  header h1 {
+
+    /* Sets 14 pixels of margin above and below the `h1` and sets 
+
+        0 pixels of margin to the left and right. */
+
+    margin: 14px 0;
+
+    /* Removes or sets 0 pixels of padding above the `h1`. */
+
+    padding-top: 0;
+
+  }
+
+
+  header nav {
+
+    /*
+
+      Pushes the navigation container down by 8 pixels to make it
+
+      present a little better visually within the space.
+
+    */
+
+    margin-top: 8px;
+
+  }
+
+  /* Users cannot hover on mobile devices, so that is why you
+
+     implement this behavior only for larger screens. */
+
+  header nav ul li a:hover {
+
+    /* Targets the change when a user holds the pointer over the anchor tag 
+
+       (link) within the list items within the unordered list that 
+
+       is within the navigation that is within the header. */
+
+    color: #bdbdbd;
+
+  }
+
+}
+
+At this point, your navigation bar will be fully responsive. Try it out in the browser.
+Linking navigation
+
+There are different navigation rules depending on if you are creating a single-page website or a multipage website.
+Single-page navigation
+
+When you create a single-page website, you'll add anchor IDs to the sections or other primary containers in your page. Don't forget to add the hash symbol # in the link; this will tell the link to look for the anchor ID somewhere on the page and jump to it when clicked. The navigation will look like this:
+
+<header>
+
+  <div class="title">Your Name</div>
+
+  <nav>
+
+    <ul id="menu">
+
+      <li><a href="#home">Home</a></li>
+
+      <li><a href="#about">About</a></li>
+
+      <li><a href="#portfolio">Portfolio</a></li>
+
+      <li><a href="#contact">Contact</a></li>
+
+    </ul>
+
+  </nav>
+
+</header>
+
+<main>
+
+  <section id="home">
+
+    <!-- All the Home section can be placed here. -->
+
+  </section>
+
+  <section id="about">
+
+    <!-- All the About section can be placed here. -->
+
+  </section>
+
+  <section id="portfolio">
+
+    <!-- All the Portfolio section can be placed here. -->
+
+  </section>
+
+  <section id="contact">
+
+    <!-- All the Contact section can be placed here. -->
+
+  </section>
+
+</main>
+
+Multi-page navigation
+
+When you're linking to other pages that are all within the same directory, the navigation will look like this:
+
+<header>
+
+  <div class="title">Your Name</div>
+
+  <nav>
+
+    <ul id="menu">
+
+      <li><a href="/">Home</a></li>
+
+      <li><a href="about.html">About</a></li>
+
+      <li><a href="portfolio.html">Portfolio</a></li>
+
+      <li><a href="contact.html">Contact</a></li>
+
+    </ul>
+
+  </nav>
+
+</header>
+
+Tip
+
+Websites usually set the home page link to the public root ("/"). This is because index.html is the default file in that directory, so it hides the /index.html filename from displaying in the browser address.
+Complete example
+
+A completed example from this lesson can be found here:
+
+    GitHub: Front-end foundations — Navigation solution
+
 
 **** Mobile-first approach
 
