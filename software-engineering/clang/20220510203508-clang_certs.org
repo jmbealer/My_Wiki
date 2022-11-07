@@ -4,7 +4,20 @@
 #+title: clang-certs
 #+date: [2022-05-10 Tue 20:35]
 
-* c certifid entry-level programmer certification (CLE)
+* CLE - C Certified Entry-Level Programming Certification
+
+CLE – C Certified Entry-Level Programmer certification is an interim step to the CLA – C Certified Associate Programmer certification and the starting point to launch a career in software development, low-level and middle-level programming, C programming, and related technologies. Becoming CLE certified will help you stand out from other candidates and get your foot in the door.
+
+CLE – C Certified Entry-Level Programmer certification shows that the individual is familiar with universal computer programming concepts like compilation, variables, data types, typecasting, operators, conditional execution, loops, arrays, pointers, memory management, functions, and the runtime environment.
+
+
+A test candidate should demonstrate sufficient knowledge of the following concepts:
+
+♦ the universal concepts of computer programming and developer tools;
+♦ the fundamentals of the C language syntax and semantics;
+♦ control and evaluations, data aggregates, functions, pointers, and memory management;
+♦ writing and debugging simple programs using standard language infrastructure.
+
 
 basic concepts (13.25%)
 data types, evaluations, and basic i/o operations (13.25%)

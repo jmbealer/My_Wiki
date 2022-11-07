@@ -263,5 +263,7 @@ programming paradigm
 - functional oriented
 - imperative oriented
 
+What is IDE?
+  IDE (Integrated Development Environment) is a software application that typically consists of a code editor, a compiler, a debugger, and a graphical user interface (GUI) builder.
 
   #programming
