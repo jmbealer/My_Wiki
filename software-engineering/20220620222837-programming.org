@@ -266,4 +266,15 @@ programming paradigm
 What is IDE?
   IDE (Integrated Development Environment) is a software application that typically consists of a code editor, a compiler, a debugger, and a graphical user interface (GUI) builder.
 
+For example, these rules determine which symbols (letters, digits, punctuation marks, and so on) could be used in the language. This part of the definition of the language is called lexicon.
+
+Another set of rules determines the appropriate ways of collating the symbols – this is the syntax of the language.
+
+We would also like to be able to recognize the meaning of every statement
+expressed in the given language – and this is what we call semantics.
+
+Any program we write must be correct in these three ways: lexically,
+syntactically and semantically, otherwise it will neither run nor produce any
+acceptable results.
+
   #programming

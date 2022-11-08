@@ -10,13 +10,21 @@
 
 #+begin_src C
 #include <stdio.h>
-int main()
+int main(void)
   {
     printf("Hello World");
     return 0;
   }
 #+end_src
 
+Whats is C?
+C is a general-purpose programming language.
+
+When was C created ?
+developed in 1972
+
+What was built in C?
+C has been used to develop operating systems, databases, applications, etc
 
 * unsorted
 
