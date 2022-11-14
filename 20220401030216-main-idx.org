@@ -21,7 +21,7 @@
 - templates
 - [[id:a186d3b9-2b81-4e50-8438-cf20798fa2e4][Text-Editor-Idx]]
 
-"Plan Your Work And Work Your Plan." - Napolean Hill
+"Plan Your Work And Work Your Plan.." - Napolean Hill
 
 * Readme
 #+begin_src org
