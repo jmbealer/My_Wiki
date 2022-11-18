@@ -14,3 +14,5 @@ globish
 new general service list
 [[id:d3300714-3697-443a-9405-39cf6f8c1879][ngsl words]]
 [[id:60fa282f-f313-48c6-9bab-c2a3607d6074][word-list]]
+
+[[id:7b4d2f49-59bc-49ce-a68c-6d94c4e31471][english-words]]

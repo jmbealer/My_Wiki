@@ -1,0 +1,163 @@
+:PROPERTIES:
+:ID:       7b4d2f49-59bc-49ce-a68c-6d94c4e31471
+:END:
+#+title: english-words
+
+* engilsh-words anki
+:PROPERTIES:
+:ANKI_DECK: 0-english-words-wip
+:ANKI_TAGS: english word
+:END:
+** the
+:PROPERTIES:
+:ANKI_NOTE_TYPE: english word basic copy
+:ANKI_NOTE_ID: 1668749747110
+:END:
+*** word
+the
+*** part of speech
+article
+*** pronunciation
+the | t͟hə
+*** meaning
+used as a function word to indicate that a following noun or noun equivalent is definite or has been previously specified by context or by circumstance
+*** image
+
+*** frequency
+
+1
+*** synonyms
+
+** of
+:PROPERTIES:
+:ANKI_NOTE_TYPE: english word basic copy
+:ANKI_NOTE_ID: 1668756317387
+:END:
+*** word
+of
+*** part of speech
+preposition
+*** pronunciation
+of | əv
+*** meaning
+used as a function word to indicate a point of reckoning
+*** image
+
+*** frequency
+2
+*** synonyms
+
+** and
+:PROPERTIES:
+:ANKI_NOTE_TYPE: english word basic copy
+:ANKI_NOTE_ID: 1668756317562
+:END:
+*** word
+and
+*** part of speech
+conjunction
+*** pronunciation
+and | ən(d)
+*** meaning
+used as a function word to indicate connection or addition especially of items within the same class or type—used to join sentence elements of the same grammatical rank or function
+*** image
+
+*** frequency
+3
+*** synonyms
+
+** to
+:PROPERTIES:
+:ANKI_NOTE_TYPE: english word basic copy
+:ANKI_NOTE_ID: 1668756317662
+:END:
+*** word
+to
+*** part of speech
+preposition
+*** pronunciation
+to | tə
+*** meaning
+used as a function word to indicate movement or an action or condition suggestive of movement toward a place, person, or thing reached
+*** image
+
+*** frequency
+4
+*** synonyms
+
+** a
+:PROPERTIES:
+:ANKI_NOTE_TYPE: english word basic copy
+:ANKI_NOTE_ID: 1668756317837
+:END:
+*** word
+a
+*** part of speech
+noun
+*** pronunciation
+a | ˈā
+*** meaning
+the 1st letter of the English alphabet
+*** image
+
+*** frequency
+5
+*** synonyms
+
+** in
+:PROPERTIES:
+:ANKI_NOTE_TYPE: english word basic copy
+:ANKI_NOTE_ID: 1668756317937
+:END:
+*** word
+in
+*** part of speech
+preposition
+*** pronunciation
+in | ˈin
+*** meaning
+used as a function word to indicate inclusion, location, or position within limits
+*** image
+
+*** frequency
+6
+*** synonyms
+
+** for
+:PROPERTIES:
+:ANKI_NOTE_TYPE: english word basic copy
+:ANKI_NOTE_ID: 1668756318036
+:END:
+*** word
+for
+*** part of speech
+preposition
+*** pronunciation
+for | fər
+*** meaning
+used as a function word to indicate purpose
+*** image
+
+*** frequency
+7
+*** synonyms
+
+** on
+:PROPERTIES:
+:ANKI_NOTE_TYPE: english word basic copy
+:ANKI_NOTE_ID: 1668756318211
+:END:
+*** word
+on
+*** part of speech
+preposition
+*** pronunciation
+on | ˈȯn
+*** meaning
+used as a function word to indicate position in contact with and supported by the top surface of
+*** image
+
+*** frequency
+9
+*** synonyms
+
