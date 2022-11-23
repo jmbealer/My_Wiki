@@ -29,7 +29,7 @@
 
 this is the main index..
 
-placeholder
+placeholder.
 
 change linux into my main wiki for my notes.
 
