@@ -13,8 +13,27 @@
 [[id:324faad9-bae1-4f60-ab3c-288034ed73b1][linux-install]]
 [[id:bd5737f0-dc66-4868-b607-8156becf8a0e][guix]]
 
-* unsorted certs
-[[id:8bb1d8d1-c11d-4a09-8ab4-1a8dc5995c15][LPI Linux Essentials Exam 010]]
+* Linux Certs
+
+elementary
+- [[id:8bb1d8d1-c11d-4a09-8ab4-1a8dc5995c15][LPI Linux Essentials Exam 010]]
+- Linux Foundation Certified IT Associate (LFCA)
+- CompTIA Linux+
+- LPI LPIC-1
+
+intermediate
+- LPI LPIC-2
+- Red Hat Certified System Administrator
+- Linux Foundation Certified System Administrator (LFCS)
+
+advanced
+- LPI LPIC-3 Security
+- LPI LPIC-3 Mixed Environments
+- LPI LPIC-3 Virtualization and Containerization
+- LPI LPIC-3 High Availability and Storage Cluster
+- Red Hat Certified Engineer (RHCE)
+- Red Hat Certified Architect (RHCA)
+
 * unsorted books notes
 
 [[id:89601283-3f61-4e49-9490-5a75d471bb6d][how-linux-works]]
