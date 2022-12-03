@@ -1,0 +1,1213 @@
+                                                010-150
+
+Number: 000-000
+Passing Score: 800
+Time Limit: 120 min
+File Version: 1.0
+
+010-150
+
+
+
+
+           
+
+Exam 010-150
+
+Linux Essentials Certificate Exam,
+Title
+version 1.5
+
+Updated Version: 6.0
+
+Product
+80 Q & A
+Type
+
+
+010-150
+
+
+
+
+                                        
+Экзамен A
+
+QUESTION 1
+Which statements are correct regarding distributions? (Choose two)
+
+A. Programs can be installed manually and without a packet manager.
+B. Only commercial distributions offer regular security updates.
+C. To start a new distribution a Linux International license is needed.
+D. Distributions restrict the user to its supported program packages.
+E. Program packages of one distribution can be adapted for another.
+
+Correct Answer: AE
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 2
+Which of the following is a requirement of the GPL license but not the BSD license?
+
+A. Users who modify and distribute the software under the GPL license, must make the modifications they made, available to the recipients under the same
+   license.
+B. The GPL license forbids the removal of copyright and license notices from source code files that are distributed.
+C. The GPL license contains a disclaimer of warranty requiring users not to hold the software authors liable for any damages.
+D. The GPL license requires that any legal disputes be settled with the mediation of the Free Software Foundation.
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 3
+Which of the following applications are popular Open Source relational database systems? (Choose two)
+
+A. PostgreSQL
+B. NoSQL
+
+
+                                                                     
+C. MySQL
+D. DB/2
+E. MongoDB
+
+Correct Answer: AC
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 4
+When using a web browser, what should a user do to prevent private data from being stored locally?
+
+
+
+
+         
+
+
+A. Browsers can be configured to use a private mode that does not store any data locally.
+B. Set up a second profile and use only that one to access sensitive sites.
+C. Delete the profile directory in the home directory and create a new one after the work is done.
+D. Use the secure versions of the browser available.
+E. There is no way to achieve that because Linux always logs network data.
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 5
+Which of the following programs is not a graphical web browser?
+
+A. Konqueror
+
+
+                                                                    
+B. Firefox
+C. Links
+D. Opera
+E. Chrome
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 6
+What does LAMP mean?
+
+A. The Linux Advanced Mode Programming Interface which gives advanced capabilities to application developers.
+B. The bus ID of an attached USB device that emits light.
+C. Short for Lightweight Access Management Protocol which synchronizes permissions in a network.
+D. The combination of Linux, Apache, MySQL and PHP or other programming languages.
+E. Short for lamport-clock which is important in distributed network computing.
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 7
+Which of the following software packages is a mail server?
+
+A. Postfix
+B. Thunderbird
+C. Apache
+D. GIMP
+E. MySQL
+
+Correct Answer: A
+
+
+                                                                
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 8
+Which of the following answers are true for cloud computing? (Choose two)
+
+A. Cloud Computing provides new tools to manage IT resources.
+B. From the business perspective, Cloud Computing means outsourcing or centralization of IT operations.
+C. Cloud Computing is the opposite of green IT; i.e. the use of fossil, non-regenerative energy for computing.
+D. Cloud Computing implies sharing all information with everyone else in 'the cloud'.
+
+Correct Answer: AB
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 9
+Which of the following possibilities is only available when using open source software?
+
+A. Download of all its existing versions.
+B. Free use.
+C. Access to its detailed help manual.
+D. Access to its source code.
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 10
+Which statements are true about virtualization? (Choose two)
+
+
+
+
+                                                                    
+A. Virtualization is not supported by Linux because of its permissions and multi-user requirements.
+B. Virtualization lets you run several operating systems on the same hardware in parallel.
+C. Virtualization is a proprietary technology that has additional licence costs even for Linux.
+D. Virtualization is a pure desktop technology that should not be used on servers.
+E. Virtualization allows separation of services, tasks and users in distinct virtual machines.
+
+Correct Answer: BE
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 11
+Which of the following is a Linux based operating system for use on mobile devices?
+
+A. iOS
+B. CentOS
+C. Android
+D. Debian
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 12
+Which of the following statements is true for a Linux distribution used in an enterprise environment?
+
+A. These distributions contain proprietary business-related software.
+B. These distributions contain software versions that have proven to be stable even if it is not the recent version in order to minimize problems.
+C. These distributions always contains the newest versions of all packages to minimize the time to market of new features.
+D. These distributions are only affordable by large companies.
+
+Correct Answer: B
+Section: (none)
+
+
+
+                                                                     
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 13
+Which one of the following is true about Open Source software?
+
+
+A. Open Source software cannot be copied for free.
+B. Open Source software is available for commercial use.
+C. The freedom to redistribute copies must include binary or executable forms of the software but not the source code.
+D. Open Source software is not for sale.
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 14
+Which of the following services are used for network file systems? (Choose two)
+
+A. Rumba
+B. Python
+C. Samba
+D. OpenLDAP
+E. NFS
+
+Correct Answer: CE
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 15
+Which of the following is a valid option for a typical command to get its built-in usage information?
+
+
+
+                                                                      
+A. -?
+B. -H
+C. help
+D. --manual
+E. help
+
+Correct Answer: E
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 16
+Which of the following commands will output a list of all of the file names, under your home directory and all subdirectories, which have file names ending with .pdf?
+
+A. search .pdf
+B. ls -name -R '*.pdf'
+C. find /home/*.pdf
+D. find ~ -name '*.pdf'
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 17
+Which of the following is an example of globbing?
+
+A. ls /etc/ 2> files.txt
+B. ls /etc/ > files.txt
+C. ls /etc/*.txt
+D. ls /etc/ | more
+
+Correct Answer: C
+
+
+
+                                                                     
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 18
+Which of the following commands increases the number of elements in a directory? (Choose two)
+
+A. touch newfile
+B. create newfile
+C. ls newfile
+D. rmdir newdirectory
+E. mkdir newdirectory
+
+Correct Answer: AE
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 19
+Which command is used to make a shell variable known to subsequently executed programs?
+
+A. export
+B. announce
+C. env
+D. transfer
+E. mv
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 20
+
+
+                                                                
+Which command shows if /usr/bin is in the current shell search path?
+
+A. cat PATH
+B. echo $PATH
+C. echo %PATH
+D. cat $PATH
+E. echo %PATH%
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 21
+Which command line can be used to search help files that mention the word "copy"?
+
+A. man -k copy
+B. whatis copy
+C. man copy
+D. copy help
+E. copy help
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 22
+When creating a new file, what can be done to make the file hidden from the default output of the ls command?
+
+A. Hide the file with a name commented out with a hash sign like #foobar.txt.
+B. Hide the file with a name beginning with a period like .foobar.txt.
+C. Hide the file with chvis +h filename.
+D. Hide the file with chmod a+h filename.
+
+
+                                                                   
+E. Hide the file with hide filename.
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 23
+While deleting all files beginning with the letter a there was still the file Access.txt left. Assuming that it had the correct ownership, why was it not deleted?
+
+A. Files with extensions need a different treatment.
+B. rm had to be called with the option -R to delete all files.
+C. The file Access.txt was probably opened by another application.
+D. The file Access.txt was hidden.
+E. Linux file names are case sensitive.
+
+Correct Answer: E
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 24
+Which of the following programs is used to search for files in a file system?
+
+A. locate
+B. showfiles
+C. flocate
+D. search
+E. findfiles
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+                                                                        
+QUESTION 25
+Given a file called birthdays containing lines like:
+YYYY-MM-DD Name
+1983-06-02 Tim
+1995-12-17 Sue
+Which command would you use to output the lines belonging to all people listed whose birthday is in May or June?
+
+A. grep '[56]' birthdays
+B. grep 05?6? birthdays
+C. grep '[0-9]*-0[56]-' birthdays
+D. grep 06 birthdays | grep 05
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 26
+What does the exit status 0 indicate about a process?
+
+A. The process ended without any problems.
+B. The process was terminated by the user.
+C. The process couldn't finish correctly.
+D. The process waited for an input but got none.
+E. The process finished in time.
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+
+
+                                                                  
+         
+
+
+QUESTION 27
+Which character starts a comment line in a shell script file?
+
+A. ;
+B. *
+C. #
+D. /
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 28
+What is the output of the following command?
+for token in a b c; do
+echo -n ${token};
+done
+
+A. anbncn
+B. abc
+C. $token$token$token
+D. {a}{b}{c}
+E. a b c
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+
+                                                                
+Explanation/Reference:
+
+
+QUESTION 29
+Which of the following commands can be used to extract content from a tar file?
+
+A. tar -xvf
+B. tar -vf
+C. tar -e
+D. tar -c
+E. tar v
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 30
+What is the correct command to extract the contents of the archive file download.bz2?
+
+A. unpack download.bz2
+B. unzip2 download.bz2
+C. bunzip2 download.bz2
+D. unzip download.bz2
+E. uncompress download.bz2
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 31
+Which command chain will count the number of regular files with the name of foo.txt within /home?
+
+
+
+                                                                   
+A. ls -lR /home | grep foo.txt | wc -l
+B. find /home -type f -name foo.txt | wc -l
+C. find /home -name foo.txt -count
+D. find /home -name foo.txt | wc -l
+E. grep -R foo.txt /home | wc -l
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 32
+Which of the following command sequences overwrites the file foobar.txt?
+
+A. echo "QUIDQUIDAGIS" >> foobar.txt
+B. echo "QUIDQUIDAGIS" < foobar.txt
+C. echo "QUIDQUIDAGIS" > foobar.txt
+D. echo "QUIDQUIDAGIS" | foobar.txt
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 33
+Which of the following commands will create an archive file, named backup.tar, containing all the files from the directory /home?
+
+A. tar /home backup.tar
+B. tar -cf /home backup.tar
+C. tar -xf /home backup.tar
+D. tar -xf backup.tar /home
+E. tar -cf backup.tar /home
+
+Correct Answer: E
+
+
+                                                                    
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 34
+How can the normal output of a command be written to a file while discarding the error output?
+
+A. command >2>file 1&>/dev/null
+B. command < output > /dev/null
+C. command > discard-error > file
+D. command > /dev/null 2&>1 output
+E. command >file 2>/dev/null
+
+Correct Answer: E
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 35
+How can the current directory and its subdirectories be searched for the file named MyFile.xml?
+
+A. find . -name MyFile.xml
+B. grep MyFile.xml | find
+C. grep -r MyFile.xml .
+D. less MyFile.xml
+E. search Myfile.xml ./
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 36
+
+
+                                                                   
+Which command will display the last line of the file foo.txt?
+
+A. head -n 1 foo.txt
+B. tail foo.txt
+C. last -n 1 foo.txt
+D. tail -n 1 foo.txt
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 37
+The output of the program date should be saved in the variable actdat. What is the correct statement?
+
+A. actdat=`date`
+B. set actdat='date'
+C. date | actdat
+D. date > $actdat
+E. actdat=date
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 38
+The script, script.sh, consists of the following lines:
+
+"Best Material, Great Results". www.certkingdom.com 12
+010-150
+
+#!/bin/bash
+echo $2 $1
+Which output will appear if the command, ./script.sh test1 test2, is entered?
+
+
+
+                                                                     
+A. test1 test2
+B. test2 test1
+C. script.sh test2
+D. script.sh test1
+E. test1 script.sh
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 39
+What two character sequence is present at the beginning of an interpreted script? (Please specify the TWO correct characters only)
+
+A.
+B.
+C.
+D.
+
+Correct Answer:
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 40
+What is the output of the following command sequence?
+for token in a b c; do
+echo -n "$token ";
+done
+
+A. anbncn
+B. a b c
+C. "a " "b " "c "
+
+
+
+                                                                   
+D. token token token
+E. abc
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 41
+Which of the following commands redirects the output of cmd to the file foo.txt, in which an existing file is overwritten?
+
+A. cmd || foo.txt
+B. cmd | foo.txt
+C. cmd && foo.txt
+D. cmd >> foo.txt
+E. cmd > foo.txt
+
+Correct Answer: E
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 42
+Which of the following commands will set the variable text to olaf is home? (Choose two)
+
+A. text=olaf\ is\ home
+B. text=$olaf is home
+C. $text='olaf is home'
+D. text=='olaf is home'
+E. text="olaf is home"
+
+Correct Answer: AE
+Section: (none)
+Explanation
+
+
+
+                                                                      
+Explanation/Reference:
+
+
+QUESTION 43
+After installing a new package, in which directory are you most likely find its configuration file?
+
+A. /lib
+B. /conf
+C. /etc
+D. /usr
+E. /opt
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 44
+With which command can you determine the time of the last restart of a system?
+
+A. current reboottime
+B. find reboot
+C. expect --reboot
+D. last | reboot
+E. last reboot
+
+Correct Answer: E
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 45
+Which of the following filesystems is most commonly used for Linux distributions?
+
+
+
+                                                                        
+A. HFS+
+B. ext4
+C. FAT32
+D. NTFS
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 46
+What is the command that will show system boot time messages?
+
+
+
+
+                                                                 
+
+
+A. dmesg
+B. echo
+C. lspci
+D. display system boot
+E. messages
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 47
+Which command will display running process information in real time?
+
+
+
+                                                                  
+A. top
+B. show current
+C. ps current
+D. process
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 48
+Which files will affect the domain name resolution system on Linux? (Choose two)
+
+A. /etc/hostname
+B. /etc/nameserver
+C. /etc/hosts
+D. /etc/which
+E. /etc/resolv.conf
+
+Correct Answer: CE
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 49
+Which of the following Ubuntu releases is considered most stable and fit to use for business purposes?
+
+A. LTS
+B. Xubuntu
+C. Ubuntu Vanilla
+D. Kubuntu
+E. Server
+
+Correct Answer: A
+
+
+                                                                   
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 50
+Where can a boot loader be installed?
+
+A. The boot ROM
+B. The MBR on a hard drive
+C. The /boot partition
+D. The boot RAM
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 51
+Where is the BIOS located?
+
+A. RAM
+B. hard drive
+C. motherboard
+D. LCD monitor
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 52
+Which of the following is a technology used to connect a hard drive directly to a computer's motherboard?
+
+
+
+
+                                                                   
+A. PCI
+B. Ethernet
+C. DSL
+D. SATA
+E. VGA
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 53
+Which network interface always exists in a Linux system?
+
+A. lo
+B. sit0
+C. wlan0
+D. vlan0
+E. eth0
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 54
+Which of the following filesystems is most commonly used for Linux distributions?
+
+A. HFS+
+B. ext4
+C. FAT32
+D. NTFS
+
+Correct Answer: B
+
+
+                                                                   
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 55
+A Linux computer has no access to the internet. Which command displays information about the network gateway for the system?
+
+A. traceroute
+B. ifconfig
+C. gateway
+D. route
+E. ipconfig
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 56
+Which criteria are useful when deciding which operating system to use? (Select THREE answers)
+
+A. License costs.
+B. Ideological preferences of the system administrator.
+C. Linux can do everything, there is no need for further evaluation.
+D. Availability of mandatory applications and tools.
+E. Skills of the administrators and staff.
+
+Correct Answer: ADE
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 57
+
+
+                                                                       
+In which directory are system log files kept?
+
+A. /log/syslog/
+B. /var/log/
+C. /sys/log/
+D. /var/log/sys/
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 58
+Which command shows, amongst other information, the IP address of the current DNS server for a Linux system?
+
+A. cat /etc/net/dns.conf
+B. ifconfig -v dns
+C. show net dns
+D. cat /etc/resolv.conf
+E. cat /etc/net/nameserver.conf
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 59
+Which of the following commands can be used to change both the owner AND group settings of a file?
+
+A. chmod
+B. chage
+C. chuser
+D. chown
+E. chgrp
+
+
+                                                                 
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 60
+Which of the following will change the group that is associated with a file?
+
+A. chmod
+B. chmod -w
+C. chown
+D. ls -g
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 61
+Which command displays the list of groups to which a user belongs?
+
+A. whoami
+B. lsgroup
+C. who
+D. id
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 62
+
+
+
+                                                                      
+Which of the following is the home folder for the root user?
+
+A. /user/root
+B. /
+C. /root
+D. /home/root
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 63
+Given a directory with the following information:
+drwxrwxrwxt 12 tu tg 36864 2012-03-15 /home/directory/
+Which of the following statements are true? (Choose two)
+
+A. Everybody can create files in the directory.
+B. Files in the directory are created with read, write and execute permissions for everyone.
+C. The directory is broken.
+D. Everybody can delete only his own files.
+E. The directory is a security risk.
+
+Correct Answer: AD
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 64
+Which statement about users and user groups is correct?
+
+A. A group can only have one main user.
+B. There can be only one user group on a system.
+C. User do not have to belong to a user group.
+
+
+
+                                                                    
+D. Every user belongs to a least one user group.
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 65
+Which of the following properties of a user account determines whether the user is given administrator privileges?
+
+A. Its primary group ID is 0 (zero).
+B. It is listed first in /etc/passwd
+C. Its username is root.
+D. Its user ID is 0 (zero).
+E. Its GECOS (name) field is set to "System Administrator"
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 66
+What is the command to change the password of a user?
+
+A. wpasswd
+B. gpasswd
+C. epasswd
+D. passwd
+E. password
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+                                                                    
+QUESTION 67
+What command line will create the user falco with home directory assigned to the group users as primary group?
+
+A. useradd -g users falco
+B. useradd -f users falco
+C. useradd -m -g users falco
+D. add user falco@users
+E. add -user falco -group users
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+
+
+         
+
+
+
+
+                                                                  

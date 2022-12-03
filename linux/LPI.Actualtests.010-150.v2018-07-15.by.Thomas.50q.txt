@@ -1,0 +1,930 @@
+                                                                 010-150.exam.50q
+
+Number: 010-150
+Passing Score: 0
+Time Limit: 120 min
+
+
+
+
+                                                              https://www.gratisexam.com/
+
+                                                                        010-150
+
+
+
+                                                     Linux Essentials Certificate Exam, version 1.5
+
+
+
+
+Sections
+1. The Linux Community and a Career in Open Source
+2. Finding Your Way on a Linux System
+3. The Power of the Command Line
+4. The Linux Operating System
+5. Security and File Permissions
+
+
+
+
+                                                              https://www.gratisexam.com/
+Exam A
+
+QUESTION 1
+Which of the following programs is not a graphical web browser?
+
+
+
+
+ https://www.gratisexam.com/
+
+A. Konqueror
+B. Firefox
+C. Links
+D. Opera
+E. Chrome
+
+Correct Answer: C
+Section: The Linux Community and a Career in Open Source
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 2
+Which of the following software packages is an e-mail server?
+
+A. Postfix
+B. Thunderbird
+C. Apache
+D. GIMP
+E. MySQL
+
+Correct Answer: A
+Section: The Linux Community and a Career in Open Source
+Explanation
+
+Explanation/Reference:
+
+
+
+                                                                  https://www.gratisexam.com/
+QUESTION 3
+What does LAMP mean?
+
+A. The Linux Advanced Mode Programming Interface which gives advanced capabilities to application developers.
+B. The bus ID of an attached USB device that emits light.
+C. Short for Lightweight Access Management Protocol which synchronizes permissions in a network.
+D. The combination of Linux, Apache, MySQL and PHP or other programming languages.
+E. Short for lamport-clock which is important in distributed network computing.
+
+Correct Answer: D
+Section: The Linux Community and a Career in Open Source
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 4
+Which of the following answers are true for cloud computing? (Choose TWO correct answers.)
+
+A. Cloud Computing provides new tools to manage IT resources.
+B. From the business perspective, Cloud Computing means outsourcing or centralization of IT operations.
+C. Cloud Computing is the opposite of green IT; i.e. the use of fossil, non-regenerative energy for computing.
+D. Cloud Computing implies sharing all information with everyone else in 'the cloud'.
+
+Correct Answer: AB
+Section: The Linux Community and a Career in Open Source
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 5
+Which of the following is a Linux based operating system for use on mobile devices?
+
+A. iOS
+B. CentOS
+C. Android
+
+
+
+                                                                   https://www.gratisexam.com/
+D. Debian
+
+Correct Answer: C
+Section: The Linux Community and a Career in Open Source
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 6
+Which one of the following is true about Open Source software?
+
+A. Open Source software can not be copied for free.
+B. Open Source software is available for commercial use.
+C. The freedom to redistribute copies must include binary or executable forms of the software but not the source code.
+D. Open Source software is not for sale.
+
+Correct Answer: B
+Section: The Linux Community and a Career in Open Source
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 7
+Which of the following is a requirement of the GPL license but not the BSD license?
+
+
+
+
+ https://www.gratisexam.com/
+
+A. Users who modify and distribute the software under the GPL license, must make the modifications they made, available to the recipients under the same
+   license.
+B. The GPL license forbids the removal of copyright and license notices from source code files that are distributed.
+C. The GPL license contains a disclaimer of warranty requiring users not to hold the software authors liable for any damages.
+D. The GPL license requires that any legal disputes be settled with the mediation of the Free Software Foundation.
+
+
+
+                                                                   https://www.gratisexam.com/
+Correct Answer: A
+Section: The Linux Community and a Career in Open Source
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 8
+What is the first character for file or directory names if they should not be displayed by commands such as ls unless specifically requested?
+
+A. \ (backslash)
+B. . (dot)
+C. - (minus)
+D. _ (underscore)
+
+Correct Answer: B
+Section: Finding Your Way on a Linux System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 9
+Which of the following commands moves the directory ~/summer-vacation and its content to ~/vacation/2011?
+
+A. mv ~/vacation/2011 ~/summer-vacation
+B. move -R ~/summer-vacation ~/vacation/2011
+C. mv /home/summer-vacation /home/vacation/2011
+D. mv ~/summer-vacation ~/vacation/2011
+E. mv -R ~/summer-vacation ~/vacation/2011
+
+Correct Answer: D
+Section: Finding Your Way on a Linux System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 10
+
+
+                                                                    https://www.gratisexam.com/
+Which is a suitable command to find the next appearance of the word hidden in a man page being viewed from the command line?
+
+A. find hidden
+B. /? hidden
+C. CTRL-F hidden
+D. /hidden
+
+Correct Answer: D
+Section: Finding Your Way on a Linux System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 11
+Which of the following are correct commands for changing the current directory to the user's home? (Choose TWO answers)
+
+A. cd /home
+B. cd ~
+C. cd ..
+D. cd
+E. cd /
+
+Correct Answer: BD
+Section: Finding Your Way on a Linux System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 12
+While deleting all files beginning with the letter a there was still the file Access.txt left. Assuming that it had the correct ownership, why was it not deleted?
+
+A. Files with extensions need a different treatment.
+B. rm had to be called with the option -R to delete all files.
+C. The file Access.txt was probably opened by another application.
+D. The file Access.txt was hidden.
+E. Linux file names are case sensitive.
+
+
+                                                                       https://www.gratisexam.com/
+Correct Answer: E
+Section: Finding Your Way on a Linux System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 13
+Which command line can be used to search help files that mention the word "copy"?
+
+
+
+
+ https://www.gratisexam.com/
+
+A. man -k copy
+B. whatis copy
+C. man copy
+D. copy help
+E. copy –help
+
+Correct Answer: A
+Section: Finding Your Way on a Linux System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 14
+Which command is used to make a shell variable known to subsequently executed programs?
+
+A. export
+B. announce
+C. env
+D. transfer
+E. mv
+
+
+
+                                                                https://www.gratisexam.com/
+Correct Answer: A
+Section: Finding Your Way on a Linux System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 15
+Which command lists all files in the current directory that start with a capital letter?
+
+A. ls [A-Z]*
+B. ls A-Z
+C. ls A-Z*
+D. ls --uppercasefiles
+E. list-uppercase-files
+
+Correct Answer: A
+Section: Finding Your Way on a Linux System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 16
+Which of the following commands will display a list of all files in the current directory, including those that may be hidden?
+
+A. ls -a
+B. ls --hidden
+C. ls -h
+D. ls –a
+
+Correct Answer: A
+Section: Finding Your Way on a Linux System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 17
+
+
+                                                                        https://www.gratisexam.com/
+Which of the following commands increases the number of elements in a directory? (Choose TWO answers)
+
+A. touch newfile
+B. create newfile
+C. ls newfile
+D. rmdir newdirectory
+E. mkdir newdirectory
+
+Correct Answer: AE
+Section: Finding Your Way on a Linux System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 18
+Which function does a shell program serve?
+
+A. It provides a graphical environment.
+B. It is responsible for establishing a connection to another computer.
+C. It receives user commands and executes them.
+D. It is responsible for logging a user into the system.
+
+Correct Answer: C
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 19
+Which of the following commands can be used to extract files from an archive?
+
+A. tar -vf
+B. tar -xvf
+C. tar -evf
+D. tar -e
+E. tar –v
+
+
+                                                                    https://www.gratisexam.com/
+Correct Answer: B
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 20
+How could one search for the file foo.txt under the directory /home?
+
+A. search /home -file foo.txt
+B. search /home foo.txt
+C. find /home -file foo.txt
+D. find /home -name foo.txt
+E. find /home foo.txt
+
+Correct Answer: D
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 21
+What is the output of the following command?
+
+ tail -n 20 test.txt
+
+A. The first 20 lines of test.txt.
+B. The last 20 lines of test.txt omitting the blank lines.
+C. The last 20 lines of test.txt with line numbers.
+D. The last 20 lines of test.txt including blank lines.
+
+Correct Answer: D
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+                                                                       https://www.gratisexam.com/
+QUESTION 22
+Which commands will archive /home and its content to /mnt/backup? (Choose TWO correct answers.)
+
+A. cp -ar /home /mnt/backup
+B. mv /home /mnt/backup
+C. sync -r /home /mnt/backup
+D. tar -cf /mnt/backup/archive.tar /home
+E. copy -r /home /mnt/backup
+
+Correct Answer: AD
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 23
+Why is the file data.txt empty after executing sort data.txt > data.txt?
+
+
+
+
+ https://www.gratisexam.com/
+
+A. Because, if data.txt is empty now, it must have been empty before.
+B. Because sort cannot sort text files, only binary files.
+C. Because sort detects that both files are the same.
+D. Because the file gets truncated before sort is executed.
+
+Correct Answer: D
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+
+
+                                                                       https://www.gratisexam.com/
+QUESTION 24
+What keyword is missing from the following segment of the shell script?
+
+  for i in *; _____
+     cat $i
+  done
+
+A. do
+B. then
+C. enod
+D. fi
+E. run
+
+Correct Answer: A
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 25
+Which of the following statements may be used to access the second command line argument to a script?
+
+A. "$ARG2"
+B. $1
+C. "$2"
+D. "$1"
+E. '$2'
+
+Correct Answer: C
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 26
+How can the current directory and its subdirectories be searched for the file named MyFile.xml?
+
+
+
+
+                                                                   https://www.gratisexam.com/
+A. find . -name MyFile.xml
+B. grep MyFile.xml | find
+C. grep -r MyFile.xml .
+D. less MyFile.xml
+E. search Myfile.xml ./
+
+Correct Answer: A
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 27
+Which of the following commands will set the variable text to olaf is home? (Select TWO answers)
+
+A. text=olaf\ is\ home
+B. text=$olaf is home
+C. $text='olaf is home'
+D. text=='olaf is home'
+E. text="olaf is home"
+
+Correct Answer: AE
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 28
+Which of the following commands will create an archive file, named backup.tar, containing all the files from the directory /home?
+
+A. tar /home backup.tar
+B. tar -cf /home backup.tar
+C. tar -xf /home backup.tar
+D. tar -xf backup.tar /home
+E. tar -cf backup.tar /home
+
+
+
+                                                                    https://www.gratisexam.com/
+Correct Answer: E
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 29
+What is the output of the following command?
+
+ for token in a b c; do
+  echo -n ${token};
+ done
+
+A. anbncn
+B. abc
+C. $token$token$token
+D. {a}{b}{c}
+E. a b c
+
+Correct Answer: B
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 30
+Which command will display the last line of the file foo.txt?
+
+A. head -n 1 foo.txt
+B. tail foo.txt
+C. last -n 1 foo.txt
+D. tail -n 1 foo.txt
+
+Correct Answer: D
+Section: The Power of the Command Line
+Explanation
+
+
+
+
+                                                                https://www.gratisexam.com/
+Explanation/Reference:
+
+
+QUESTION 31
+How can the normal output of a command be written to a file while discarding the error output?
+
+A. command >2>file 1&>/dev/null
+B. command < output > /dev/null
+C. command > discard-error > file
+D. command > /dev/null 2&>1 output
+E. command >file 2>/dev/null
+
+Correct Answer: E
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 32
+Which of the following commands can be used to extract content from a tar file?
+
+A. tar -xvf
+B. tar -vf
+C. tar -e
+D. tar -c
+E. tar –v
+
+Correct Answer: A
+Section: The Power of the Command Line
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 33
+Which of the following is a combined audio/video interface for transmission of digital data?
+
+A. ATI
+
+
+                                                                    https://www.gratisexam.com/
+B. DVD
+C. HDMI
+D. VGA
+E. DVI
+
+Correct Answer: C
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 34
+Which of the following commands is used to look up the current IP address of a system?
+
+A. less /proc/net/ipconfig
+B. ifconfig
+C. showip
+D. ipconfig
+E. sysinfo | grep ipaddress
+
+Correct Answer: B
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 35
+Which of the following hardware devices links a number of computers together to form an Ethernet LAN?
+
+
+
+
+ https://www.gratisexam.com/
+
+A. Server
+
+
+
+                                                                 https://www.gratisexam.com/
+B. Switch
+C. Connector
+D. Access point
+E. Terminal
+
+Correct Answer: B
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 36
+What is the number called that is used to identify a process?
+
+A. Proc Num
+B. PIN
+C. Process Entry
+D. PID
+
+Correct Answer: D
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 37
+Identify the proper device for the third partition, on the second hard disk, on the first IDE controller on a PC system.
+
+A. /dev/hdb3
+B. /dev/hd1b3
+C. /dev/hdc1d2p3
+D. dev/hdc1a3
+E. dev/hdc1b3
+
+Correct Answer: A
+Section: The Linux Operating System
+
+
+
+                                                                      https://www.gratisexam.com/
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 38
+A Linux computer has no access to the internet. Which command displays information about the network gateway for the system?
+
+A. traceroute
+B. ifconfig
+C. gateway
+D. route
+E. ipconfig
+
+Correct Answer: D
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 39
+Where is the BIOS located?
+
+A. RAM
+B. Hard drive
+C. Motherboard
+D. LCD monitor
+
+Correct Answer: C
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 40
+Which network interface always exists in a Linux system?
+
+
+
+
+                                                                https://www.gratisexam.com/
+A. lo
+B. sit0
+C. wlan0
+D. vlan0
+E. eth0
+
+Correct Answer: A
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 41
+Which command will display running process information in real time?
+
+A. top
+B. show current
+C. ps current
+D. process
+
+Correct Answer: A
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 42
+After installing a new package, in which directory are you most likely find its configuration file?
+
+A. /lib
+B. /conf
+C. /etc
+D. /usr
+E. /opt
+
+Correct Answer: C
+
+
+                                                                       https://www.gratisexam.com/
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 43
+Which of the following Ubuntu releases is considered most stable and fit to use for business purposes?
+
+A. LTS
+B. Xubuntu
+C. Ubuntu Vanilla
+D. Kubuntu
+E. Xubuntu Server
+
+Correct Answer: A
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 44
+What is the command that will show system boot time messages?
+
+A. dmesg
+B. echo
+C. lspci
+D. display system boot
+E. messages
+
+Correct Answer: A
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 45
+
+
+                                                                  https://www.gratisexam.com/
+Which of the following filesystems is most commonly used for Linux distributions?
+
+A. HFS+
+B. ext4
+C. FAT32
+D. NTFS
+
+Correct Answer: B
+Section: The Linux Operating System
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 46
+Which permissions should be given to a file that needs to be opened and edited by the file's owner and opened read-only by the file's group?
+
+A. 0751
+B. 0466
+C. 0540
+D. 0640
+E. 0444
+
+Correct Answer: D
+Section: Security and File Permissions
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 47
+Which of the following commands can be used to determine the time of the last login of a given user?
+
+A. showlog
+B. recent
+C. last
+D. history
+E. login
+
+
+                                                                   https://www.gratisexam.com/
+Correct Answer: C
+Section: Security and File Permissions
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 48
+Which of the following files holds the definition of the local user accounts?
+
+A. /etc/secret
+B. /etc/users
+C. /etc/passwd
+D. /etc/id
+E. /etc/home
+
+Correct Answer: C
+Section: Security and File Permissions
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 49
+What permissions are set on a file with the command chmod 654 file.txt?
+
+A. drw-r-xr--
+B. d--wxr-x--
+C. --wxr-x--x
+D. -rwxrw---x
+E. -rw-r-xr—
+
+Correct Answer: E
+Section: Security and File Permissions
+Explanation
+
+Explanation/Reference:
+
+
+
+                                                                      https://www.gratisexam.com/
+QUESTION 50
+Which statements about the directory /etc/skel are correct? (Choose TWO answers)
+
+A. The personal settings of root are in this directory.
+B. The files from the directory are copied to the home directory of the new user when starting the system.
+C. The files from the directory are copied to the home directory of a new user when the account is created.
+
+
+
+
+     https://www.gratisexam.com/
+
+D. The directory contains a default set of configuration files used by the useradd command.
+E. The directory contains the global settings for the Linux system.
+
+Correct Answer: CD
+Section: Security and File Permissions
+Explanation
+
+Explanation/Reference:
+
+
+
+
+                                                                   https://www.gratisexam.com/
+
+
+
+
+                                                                   https://www.gratisexam.com/
