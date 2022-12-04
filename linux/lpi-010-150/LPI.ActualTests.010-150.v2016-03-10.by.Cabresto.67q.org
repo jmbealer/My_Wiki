@@ -39,9 +39,6 @@ Program packages of one distribution can be adapted for another.
 *** Answers
 1 0 0 0 1
 *** Sources
-*** Answers
-0 0 0 0 0
-*** Sources
 *** Extra 1
 Correct Answer: AE
 ** Question 2
