@@ -1,0 +1,421 @@
+                              010-160
+
+Number: 010-160
+Passing Score: 800
+Time Limit: 120 min
+File Version: 1
+
+
+                               010-160
+
+
+
+
+                      https://www.gratisexam.com/
+
+
+
+
+                      https://www.gratisexam.com/
+Exam A
+
+QUESTION 1
+What are the differences between hard disk drives and solid state disks? (Choose two.)
+
+A. Hard disks have a motor and moving parts, solid state disks do not.
+
+
+
+
+                                                                       https://www.gratisexam.com/
+
+B. Hard disks can fail due to physical damage, while solid state disks cannot fail.
+C. Solid state disks can store many times as much data as hard disk drives.
+D. /dev/sda is a hard disk device while /dev/ssda is a solid state disk.
+E. Solid state disks provide faster access to stored data than hard disks.
+
+Correct Answer: AE
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 2
+Reverse DNS assigns hostnames to IP addresses. How is the name of the IP address 198.51.100.165 stored on a DNS server?
+
+A. In the A record for 165.100.51.198.ipv4.arpa.
+B. In the PTR record for 165.100.51.198.in-addr.arpa.
+C. In the RNAME record for 198-51-100-165.rev.arpa.
+D. In the ARPA record for 165.100.51.198.rev.
+E. In the REV record for arpa.in-addr.198.51.100.165.
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+
+
+
+                                                                     https://www.gratisexam.com/
+Explanation/Reference:
+
+
+QUESTION 3
+Which of the following outputs comes from the command free?
+
+A.
+
+B.
+
+
+
+
+C.
+
+
+
+
+D.
+
+E.
+
+
+
+
+Correct Answer: E
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 4
+Which permissions are set on a regular file once the permissions have been modified with the command chmod 654 file.txt?
+
+A. drw-r-xr--
+B. d—wxr-x--
+C. –wxr-x--x
+D. –rwxrw---x
+
+
+                                                              https://www.gratisexam.com/
+E. -rw-r-xr--
+
+Correct Answer: E
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 5
+What is true about the owner of a file?
+
+A. Each file is owned by exactly one user and one group.
+B. The owner of a file always has full permissions when accessing the file.
+C. The user owning a file must be a member of the file’s group.
+D. When a user is deleted, all files owned by the user disappear.
+E. The owner of a file cannot be changed once it is assigned to an owner.
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 6
+Which of the following permissions are set on the /tmp/ directory?
+
+A. rwxrwxrwt
+B. ------rwX
+C. rwSrw-rw-
+D. rwxrwS---
+E. r-xr-X--t
+
+Correct Answer: A
+Section: (none)
+Explanation
+
+
+
+
+                                                                   https://www.gratisexam.com/
+Explanation/Reference:
+
+
+QUESTION 7
+Which command adds the new user tux and creates the user’s home directory with default configuration files?
+
+A. defaultuser tux
+B. useradd –m tux
+C. usercreate tux
+D. useradd –o default tux
+E. passwd –a tux
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 8
+What information is stored in /etc/passwd? (Choose three.)
+
+A. The user’s storage space limit
+B. The numerical user ID
+C. The username
+D. The encrypted password
+E. The user\s default shell
+
+Correct Answer: BCD
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 9
+Which of the following tar options handle compression? (Choose two.)
+
+A. -bz
+
+
+                                                                https://www.gratisexam.com/
+B. -z
+C. -g
+D. -j
+E. -z2
+
+Correct Answer: BD
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 10
+Which of the following commands creates an archive file work.tar from the contents of the directory ./work/?
+
+A. tar --new work.tar ./work/
+B. tar –cf work.tar ./work/
+C. tar –create work.tgz –content ./work/
+D. tar work.tar < ./work/
+E. tar work > work.tar
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 11
+Which of the following keys can be pressed to exit less?
+
+A. l
+B. x
+C. e
+D. q
+E. !
+
+Correct Answer: D
+
+
+                                                                https://www.gratisexam.com/
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 12
+A directory contains the following files:
+
+
+
+
+What would be the output of the following shell script?
+for file in *.txt
+
+
+
+
+A. *.txt
+B. a b
+C. c.cav
+D. a.txt
+E. a. txt
+   b. txt
+
+Correct Answer: E
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+
+                                                          https://www.gratisexam.com/
+QUESTION 13
+Which of the following commands will search for the file foo.txt under the directory /home?
+
+A. search /home –file foo.txt
+B. search /home foo. txt
+C. find /home – file foo.txt
+D. find /home –name foo.txt
+E. find /home foo.txt
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 14
+The current directory contains the following file:
+
+-rw-r—r— 1 root exec 24551 Apr 2 12:36 test.sh
+
+The file contains a valid shell script, but executing this file using ./test.sh leads to this error:
+
+bash: ./test.sh: Permission denied
+
+What should be done in order to successfully execute the script?
+
+A. The file’s extension should be changed from .sh to .bin.
+B. The execute bit should be set in the file’s permissions.
+C. The user executing the script should be added to the exec group.
+D. The SetUID bit should be set in the file’s permissions
+E. The script should be run using #!./test. sh instead of ./test.sh.
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+
+
+
+                                                                       https://www.gratisexam.com/
+Explanation/Reference:
+
+
+QUESTION 15
+Which of the following programs is a graphical editor for vector graphics?
+
+A. Python
+B. NGINX
+C. Samba
+D. Inkscape
+E. MySQL
+
+Correct Answer: D
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 16
+Where is the operating system of a Raspberry Pi stored?
+
+A. On the master device attached to the Raspberry Pi’s IDE bus.
+B. On a read only partition on the Raspberry Pi’s firmware, next to the BIOS.
+C. On a removable SD card which is put into the Raspberry Pi.
+D. On a Linux extension module connected to the Raspberry Pi’s GPIO pins.
+E. On rewritable flash storage which is built into the Raspberry Pi.
+
+Correct Answer: C
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 17
+What is defined by a Free Software license?
+
+A. Details of the technical documentation each contributor has to provide.
+
+
+                                                                    https://www.gratisexam.com/
+B. The programming languages which may be used to extend the licensed program.
+C. A complete list of libraries required to compile the licensed software.
+D. Limits on the purposes for which the licensed software may be used.
+E. Conditions for modifying and distributing the licensed software.
+
+Correct Answer: E
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 18
+Which of the following are typical services offered by public cloud providers? (Choose three.)
+
+A. Platform as a Service(PaaS)
+B. Infrastructure as a Service(IaaS)
+C. Internet as a Service(IaaS)
+D. Graphics as a Service (GaaS)
+E. Software as a Service (SaaS)
+
+Correct Answer: ABE
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 19
+Which of the following commands adds the directory /new/dir/ to the PATH environment variable?
+
+A. $PATH=/new/dir: $PATH
+B. PATH=/new/dir: PATH
+C. export PATH=/new/dir: PATH
+D. export $PATH=/new/dir: $PATH
+E. export PATH=/new/dir: $PATH
+
+Correct Answer: E
+
+
+                                                                    https://www.gratisexam.com/
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+QUESTION 20
+A directory contains the following three files:
+
+texts 1.txt
+texts 2.txt
+texts 3.csv
+
+Which command copies the two files ending in .txt to the /tmp/ directory?
+
+A. cp ??.txt /tmp/
+B. cp *.txt /tmp/
+C. cp. \.txt /tmp/
+D. cp ?.txt /tmp/
+E. cp $?.txt /tmp/
+
+Correct Answer: B
+Section: (none)
+Explanation
+
+Explanation/Reference:
+
+
+
+
+                                                               https://www.gratisexam.com/
+
+
+
+
+                                                                https://www.gratisexam.com/

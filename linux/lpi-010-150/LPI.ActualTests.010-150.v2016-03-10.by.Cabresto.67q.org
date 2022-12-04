@@ -2,21 +2,15 @@ Number: 000-000
 Passing Score: 800
 Time Limit: 120 min
 File Version: 1.0
-
 010-150
-
 Exam 010-150
-
 Linux Essentials Certificate Exam,
 Title
 version 1.5
-
 Updated Version: 6.0
-
 Product
 80 Q & A
 Type
-
 * lpi linux essentials 010-150
 :PROPERTIES:
 :ANKI_DECK: lpi-linux-essentials-010-150-questions-bank
@@ -44,6 +38,9 @@ Distributions restrict the user to its supported program packages.
 Program packages of one distribution can be adapted for another.
 *** Answers
 1 0 0 0 1
+*** Sources
+*** Answers
+0 0 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: AE
@@ -121,7 +118,6 @@ There is no way to achieve that because Linux always logs network data.
 *** Sources
 *** Extra 1
 Correct Answer: A
-
 ** Question 5
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
@@ -147,7 +143,6 @@ Chrome
 *** Sources
 *** Extra 1
 Correct Answer: C
-
 ** Question 6
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
@@ -222,7 +217,6 @@ Cloud Computing implies sharing all information with everyone else in 'the cloud
 *** Sources
 *** Extra 1
 Correct Answer: AB
-
 ** Question 9
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
@@ -247,7 +241,6 @@ Access to its source code.
 *** Sources
 *** Extra 1
 Correct Answer: D
-
 ** Question 10
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
@@ -273,7 +266,6 @@ Virtualization allows separation of services, tasks and users in distinct virtua
 *** Sources
 *** Extra 1
 Correct Answer: BE
-
 ** Question 11
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
@@ -414,7 +406,6 @@ ls -name -R '*.pdf'
 find /home/*.pdf
 *** Q_4
 find ~ -name '*.pdf'
-
 *** Q_5
 *** Answers
 0 0 0 1
@@ -439,7 +430,6 @@ ls /etc/ > files.txt
 ls /etc/*.txt
 *** Q_4
 ls /etc/ | more
-
 *** Q_5
 *** Answers
 0 0 1 0
@@ -496,7 +486,6 @@ mv
 *** Sources
 *** Extra 1
 Correct Answer: A
-
 ** wip
 *** Question
 *** Title
@@ -511,7 +500,6 @@ Correct Answer: A
 1 0 0 0
 *** Sources
 *** Extra 1
-
 ** Question 20
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
@@ -537,10 +525,13 @@ echo %PATH%
 *** Sources
 *** Extra 1
 Correct Answer: B
-
 ** Question 21
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670132965629
+:END:
+*** Question
 Which command line can be used to search help files that mention the word "copy"?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -554,17 +545,18 @@ man copy
 copy help
 *** Q_5
 copy help
-
+*** Answers
+1 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 22
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670132966051
+:END:
+*** Question
 When creating a new file, what can be done to make the file hidden from the default output of the ls command?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -576,22 +568,20 @@ Hide the file with a name beginning with a period like .foobar.txt.
 Hide the file with chvis +h filename.
 *** Q_4
 Hide the file with chmod a+h filename.
-
-
-                                                                   
 *** Q_5
 Hide the file with hide filename.
-
+*** Answers
+0 1 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 23
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670132966452
+:END:
+*** Question
 While deleting all files beginning with the letter a there was still the file Access.txt left. Assuming that it had the correct ownership, why was it not deleted?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -605,17 +595,18 @@ The file Access.txt was probably opened by another application.
 The file Access.txt was hidden.
 *** Q_5
 Linux file names are case sensitive.
-
+*** Answers
+0 0 0 0 1
+*** Sources
 *** Extra 1
 Correct Answer: E
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 24
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670132966851
+:END:
+*** Question
 Which of the following programs is used to search for files in a file system?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -629,23 +620,24 @@ flocate
 search
 *** Q_5
 findfiles
-
+*** Answers
+1 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
-
 ** Question 25
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670132967283
+:END:
+*** Question
 Given a file called birthdays containing lines like:
 YYYY-MM-*** Q_4
 Name
 1983-06-02 Tim
 1995-12-17 Sue
-Which command would you use to output the lines belonging to all people listed whose birthday is in May or June?
 
+Which command would you use to output the lines belonging to all people listed whose birthday is in May or June?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -657,17 +649,18 @@ grep 05?6? birthdays
 grep '[0-9]*-0[56]-' birthdays
 *** Q_4
 grep 06 birthdays | grep 05
-
+*** Answers
+0 0 1 0 0
+*** Sources
 *** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 26
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670133334680
+:END:
+*** Question
 What does the exit status 0 indicate about a process?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -681,23 +674,18 @@ The process couldn't finish correctly.
 The process waited for an input but got none.
 *** Q_5
 The process finished in time.
-
+*** Answers
+1 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
-
-
-
-                                                                  
-         
-
 ** Question 27
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670133335079
+:END:
+*** Question
 Which character starts a comment line in a shell script file?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -706,23 +694,26 @@ Which character starts a comment line in a shell script file?
 *** Q_2
 *
 *** Q_3
+#+begin_src html
 #
+#+end_src
 *** Q_4
 /
-
+*** Answers
+0 0 1 0 0
+*** Sources
 *** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 28
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670133335479
+:END:
+*** Question
 What is the output of the following command?
 for token in a b c; do
 echo -n ${token};
 done
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -736,19 +727,18 @@ $token$token$token
 {a}{b}{c}
 *** Q_5
 a b c
-
+*** Answers
+0 1 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-
-                                                                
-Explanation/Reference:
-
 ** Question 29
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670133336005
+:END:
+*** Question
 Which of the following commands can be used to extract content from a tar file?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -762,17 +752,18 @@ tar -e
 tar -c
 *** Q_5
 tar v
-
+*** Answers
+1 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 30
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670133336430
+:END:
+*** Question
 What is the correct command to extract the contents of the archive file download.bz2?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -786,20 +777,20 @@ bunzip2 download.bz2
 unzip download.bz2
 *** Q_5
 uncompress download.bz2
-
+*** Answers
+0 0 1 0 0
+*** Sources
 *** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
 
-Explanation/Reference:
 
 ** Question 31
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670134715527
+:END:
+*** Question
 Which command chain will count the number of regular files with the name of foo.txt within /home?
-
-
-
-                                                                   
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -813,17 +804,18 @@ find /home -name foo.txt -count
 find /home -name foo.txt | wc -l
 *** Q_5
 grep -R foo.txt /home | wc -l
-
+*** Answers
+0 1 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 32
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670134716255
+:END:
+*** Question
 Which of the following command sequences overwrites the file foobar.txt?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -835,17 +827,18 @@ echo "QUIDQUIDAGIS" < foobar.txt
 echo "QUIDQUIDAGIS" > foobar.txt
 *** Q_4
 echo "QUIDQUIDAGIS" | foobar.txt
-
+*** Answers
+0 0 1 0 0
+*** Sources
 *** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 33
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670134717027
+:END:
+*** Question
 Which of the following commands will create an archive file, named backup.tar, containing all the files from the directory /home?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -859,20 +852,18 @@ tar -xf /home backup.tar
 tar -xf backup.tar /home
 *** Q_5
 tar -cf backup.tar /home
-
+*** Answers
+0 0 0 0 1
+*** Sources
 *** Extra 1
 Correct Answer: E
-
-
-                                                                    
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 34
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670134717827
+:END:
+*** Question
 How can the normal output of a command be written to a file while discarding the error output?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -886,17 +877,18 @@ command > discard-error > file
 command > /dev/null 2&>1 output
 *** Q_5
 command >file 2>/dev/null
-
+*** Answers
+0 0 0 0 1
+*** Sources
 *** Extra 1
 Correct Answer: E
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 35
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670134718605
+:END:
+*** Question
 How can the current directory and its subdirectories be searched for the file named MyFile.xml?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -910,20 +902,17 @@ grep -r MyFile.xml .
 less MyFile.xml
 *** Q_5
 search Myfile.xml ./
-
+*** Answers
+1 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
 
-Explanation/Reference:
+
 
 ** Question 36
-
-
-                                                                   
+*** Question
 Which command will display the last line of the file foo.txt?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -935,17 +924,14 @@ tail foo.txt
 last -n 1 foo.txt
 *** Q_4
 tail -n 1 foo.txt
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 37
-The output of the program date should be saved in the variable actdat. What is the correct statement?
-
+The output of the program date should be saved in the variable actdat. *** Question
+What is the correct statement?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -959,27 +945,20 @@ date | actdat
 date > $actdat
 *** Q_5
 actdat=date
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 38
 The script, script.sh, consists of the following lines:
-
 "Best Material, Great Results". www.certkingdom.com 12
 010-150
-
 #!/bin/bash
 echo $2 $1
+*** Question
 Which output will appear if the command, ./script.sh test1 test2, is entered?
 
-
-
-                                                                     
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -993,35 +972,29 @@ script.sh test2
 script.sh test1
 *** Q_5
 test1 script.sh
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 39
+*** Question
 What two character sequence is present at the beginning of an interpreted script? (Please specify the TWO correct characters only)
-
 A.
 B.
 C.
 D.
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer:
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 40
+*** Question
 What is the output of the following command sequence?
 for token in a b c; do
 echo -n "$token ";
 done
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1032,24 +1005,18 @@ a b c
 *** Q_3
 "a " "b " "c "
 
-
-
-                                                                   
 *** Q_4
 token token token
 *** Q_5
 abc
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 41
+*** Question
 Which of the following commands redirects the output of cmd to the file foo.txt, in which an existing file is overwritten?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1063,17 +1030,14 @@ cmd && foo.txt
 cmd >> foo.txt
 *** Q_5
 cmd > foo.txt
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: E
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 42
+*** Question
 Which of the following commands will set the variable text to olaf is home? (Choose two)
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1087,20 +1051,17 @@ $text='olaf is home'
 text=='olaf is home'
 *** Q_5
 text="olaf is home"
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: AE
 Section: (none)
 Explanation
 
-
-
-                                                                      
 Explanation/Reference:
-
 ** Question 43
 After installing a new package, in which directory are you most likely find its configuration file?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1114,17 +1075,13 @@ After installing a new package, in which directory are you most likely find its 
 /usr
 *** Q_5
 /opt
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 44
 With which command can you determine the time of the last restart of a system?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1138,20 +1095,15 @@ expect --reboot
 last | reboot
 *** Q_5
 last reboot
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: E
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 45
+*** Question
 Which of the following filesystems is most commonly used for Linux distributions?
 
-
-
-                                                                        
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1163,22 +1115,14 @@ ext4
 FAT32
 *** Q_4
 NTFS
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 46
+*** Question
 What is the command that will show system boot time messages?
-
-
-
-
-                                                                 
-
 
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
@@ -1193,20 +1137,15 @@ lspci
 display system boot
 *** Q_5
 messages
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 47
+*** Question
 Which command will display running process information in real time?
 
-
-
-                                                                  
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1218,17 +1157,14 @@ show current
 ps current
 *** Q_4
 process
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 48
+*** Question
 Which files will affect the domain name resolution system on Linux? (Choose two)
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1242,17 +1178,14 @@ Which files will affect the domain name resolution system on Linux? (Choose two)
 /etc/which
 *** Q_5
 /etc/resolv.conf
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: CE
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 49
+*** Question
 Which of the following Ubuntu releases is considered most stable and fit to use for business purposes?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1266,20 +1199,14 @@ Ubuntu Vanilla
 Kubuntu
 *** Q_5
 Server
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: A
 
-
-                                                                   
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 50
 Where can a boot loader be installed?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1292,17 +1219,13 @@ on a hard drive
 The /boot partition
 *** Q_4
 The boot RAM
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 51
 Where is the BIOS located?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1315,21 +1238,15 @@ motherboard
 *** Q_4
 L*** Q_3
 monitor
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 52
+*** Question
 Which of the following is a technology used to connect a hard drive directly to a computer's motherboard?
 
-
-
-
-                                                                   
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1343,17 +1260,14 @@ DSL
 SATA
 *** Q_5
 VGA
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 53
+*** Question
 Which network interface always exists in a Linux system?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1367,17 +1281,14 @@ wlan0
 vlan0
 *** Q_5
 eth0
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 54
+*** Question
 Which of the following filesystems is most commonly used for Linux distributions?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1389,20 +1300,15 @@ ext4
 FAT32
 *** Q_4
 NTFS
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: B
 
-
-                                                                   
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 55
-A Linux computer has no access to the internet. Which command displays information about the network gateway for the system?
-
+A Linux computer has no access to the internet. *** Question
+Which command displays information about the network gateway for the system?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1416,18 +1322,15 @@ gateway
 route
 *** Q_5
 ipconfig
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 56
+*** Question
 Which criteria are useful when deciding which operating system to use? (Select THR*** Q_5
 answers)
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1441,20 +1344,14 @@ Linux can do everything, there is no need for further evaluation.
 Availability of mandatory applications and tools.
 *** Q_5
 Skills of the administrators and staff.
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: ADE
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 57
 
-
-                                                                       
 In which directory are system log files kept?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1466,17 +1363,14 @@ In which directory are system log files kept?
 /sys/log/
 *** Q_4
 /var/log/sys/
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 58
+*** Question
 Which command shows, amongst other information, the IP address of the current DNS server for a Linux system?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1490,17 +1384,14 @@ show net dns
 cat /etc/resolv.conf
 *** Q_5
 cat /etc/net/nameserver.conf
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 59
+*** Question
 Which of the following commands can be used to change both the owner AND group settings of a file?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1515,18 +1406,14 @@ chown
 *** Q_5
 chgrp
 
-
-                                                                 
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 60
+*** Question
 Which of the following will change the group that is associated with a file?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1538,17 +1425,14 @@ chmod -w
 chown
 *** Q_4
 ls -g
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 61
+*** Question
 Which command displays the list of groups to which a user belongs?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1560,21 +1444,15 @@ lsgroup
 who
 *** Q_4
 id
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 62
 
-
-
-                                                                      
+*** Question
 Which of the following is the home folder for the root user?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1586,19 +1464,16 @@ Which of the following is the home folder for the root user?
 /root
 *** Q_4
 /home/root
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 63
 Given a directory with the following information:
 drwxrwxrwxt 12 tu tg 36864 2012-03-15 /home/directory/
+*** Question
 Which of the following statements are true? (Choose two)
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1612,17 +1487,14 @@ The directory is broken.
 Everybody can delete only his own files.
 *** Q_5
 The directory is a security risk.
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: AD
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 64
+*** Question
 Which statement about users and user groups is correct?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1633,22 +1505,16 @@ There can be only one user group on a system.
 *** Q_3
 User do not have to belong to a user group.
 
-
-
-                                                                    
 *** Q_4
 Every user belongs to a least one user group.
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 65
+*** Question
 Which of the following properties of a user account determines whether the user is given administrator privileges?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1662,17 +1528,14 @@ Its username is root.
 Its user ID is 0 (zero).
 *** Q_5
 Its GECOS (name) field is set to "System Administrator"
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
 ** Question 66
+*** Question
 What is the command to change the password of a user?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1686,18 +1549,14 @@ epasswd
 passwd
 *** Q_5
 password
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
-
 ** Question 67
+*** Question
 What command line will create the user falco with home directory assigned to the group users as primary group?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1711,20 +1570,8 @@ useradd -m -g users falco
 add user falco@users
 *** Q_5
 add -user falco -group users
-
+*** Answers
+0 0 0 0 0
+*** Sources
 *** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
-
-
-
-         
-
-
-
-
-                                                                  
