@@ -911,6 +911,10 @@ Correct Answer: A
 
 
 ** Question 36
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670186712251
+:END:
 *** Question
 Which command will display the last line of the file foo.txt?
 *** Title
@@ -925,12 +929,17 @@ last -n 1 foo.txt
 *** Q_4
 tail -n 1 foo.txt
 *** Answers
-0 0 0 0 0
+0 0 0 1 0
 *** Sources
 *** Extra 1
 Correct Answer: D
 ** Question 37
-The output of the program date should be saved in the variable actdat. *** Question
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187005601
+:END:
+*** Question
+The output of the program date should be saved in the variable actdat.
 What is the correct statement?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
@@ -946,19 +955,23 @@ date > $actdat
 *** Q_5
 actdat=date
 *** Answers
-0 0 0 0 0
+1 0 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: A
 ** Question 38
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187005954
+:END:
+*** Question
 The script, script.sh, consists of the following lines:
 "Best Material, Great Results". www.certkingdom.com 12
 010-150
 #!/bin/bash
 echo $2 $1
-*** Question
-Which output will appear if the command, ./script.sh test1 test2, is entered?
 
+Which output will appear if the command, ./script.sh test1 test2, is entered?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -973,11 +986,11 @@ script.sh test1
 *** Q_5
 test1 script.sh
 *** Answers
-0 0 0 0 0
+0 1 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: B
-** Question 39
+** Question 39 not working
 *** Question
 What two character sequence is present at the beginning of an interpreted script? (Please specify the TWO correct characters only)
 A.
@@ -990,8 +1003,13 @@ D.
 *** Extra 1
 Correct Answer:
 ** Question 40
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187006428
+:END:
 *** Question
 What is the output of the following command sequence?
+
 for token in a b c; do
 echo -n "$token ";
 done
@@ -1004,17 +1022,20 @@ anbncn
 a b c
 *** Q_3
 "a " "b " "c "
-
 *** Q_4
 token token token
 *** Q_5
 abc
 *** Answers
-0 0 0 0 0
+0 1 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: B
 ** Question 41
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187220354
+:END:
 *** Question
 Which of the following commands redirects the output of cmd to the file foo.txt, in which an existing file is overwritten?
 *** Title
@@ -1031,11 +1052,15 @@ cmd >> foo.txt
 *** Q_5
 cmd > foo.txt
 *** Answers
-0 0 0 0 0
+0 0 0 0 1
 *** Sources
 *** Extra 1
 Correct Answer: E
 ** Question 42
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187220703
+:END:
 *** Question
 Which of the following commands will set the variable text to olaf is home? (Choose two)
 *** Title
@@ -1052,15 +1077,16 @@ text=='olaf is home'
 *** Q_5
 text="olaf is home"
 *** Answers
-0 0 0 0 0
+1 0 0 0 1
 *** Sources
 *** Extra 1
 Correct Answer: AE
-Section: (none)
-Explanation
-
-Explanation/Reference:
 ** Question 43
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187221103
+:END:
+*** Question
 After installing a new package, in which directory are you most likely find its configuration file?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
@@ -1076,11 +1102,16 @@ After installing a new package, in which directory are you most likely find its 
 *** Q_5
 /opt
 *** Answers
-0 0 0 0 0
+0 0 1 0 0
 *** Sources
 *** Extra 1
 Correct Answer: C
 ** Question 44
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187221629
+:END:
+*** Question
 With which command can you determine the time of the last restart of a system?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
@@ -1096,14 +1127,17 @@ last | reboot
 *** Q_5
 last reboot
 *** Answers
-0 0 0 0 0
+0 0 0 0 1
 *** Sources
 *** Extra 1
 Correct Answer: E
 ** Question 45
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187222004
+:END:
 *** Question
 Which of the following filesystems is most commonly used for Linux distributions?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1116,14 +1150,17 @@ FAT32
 *** Q_4
 NTFS
 *** Answers
-0 0 0 0 0
+0 1 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: B
 ** Question 46
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187540054
+:END:
 *** Question
 What is the command that will show system boot time messages?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1138,14 +1175,17 @@ display system boot
 *** Q_5
 messages
 *** Answers
-0 0 0 0 0
+1 0 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: A
 ** Question 47
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187540403
+:END:
 *** Question
 Which command will display running process information in real time?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1158,11 +1198,15 @@ ps current
 *** Q_4
 process
 *** Answers
-0 0 0 0 0
+1 0 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: A
 ** Question 48
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187540778
+:END:
 *** Question
 Which files will affect the domain name resolution system on Linux? (Choose two)
 *** Title
@@ -1179,11 +1223,15 @@ Which files will affect the domain name resolution system on Linux? (Choose two)
 *** Q_5
 /etc/resolv.conf
 *** Answers
-0 0 0 0 0
+0 0 1 0 1
 *** Sources
 *** Extra 1
 Correct Answer: CE
 ** Question 49
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187541303
+:END:
 *** Question
 Which of the following Ubuntu releases is considered most stable and fit to use for business purposes?
 *** Title
@@ -1200,12 +1248,16 @@ Kubuntu
 *** Q_5
 Server
 *** Answers
-0 0 0 0 0
+1 0 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: A
-
 ** Question 50
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670187541651
+:END:
+*** Question
 Where can a boot loader be installed?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
@@ -1213,18 +1265,22 @@ Where can a boot loader be installed?
 *** Q_1
 The boot ROM
 *** Q_2
-The M*** Q_2
-on a hard drive
+The MBR on a hard drive
 *** Q_3
 The /boot partition
 *** Q_4
 The boot RAM
 *** Answers
-0 0 0 0 0
+0 1 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: B
 ** Question 51
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188036453
+:END:
+*** Question
 Where is the BIOS located?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
@@ -1239,14 +1295,17 @@ motherboard
 L*** Q_3
 monitor
 *** Answers
-0 0 0 0 0
+0 0 1 0 0
 *** Sources
 *** Extra 1
 Correct Answer: C
 ** Question 52
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188036979
+:END:
 *** Question
 Which of the following is a technology used to connect a hard drive directly to a computer's motherboard?
-
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1261,11 +1320,15 @@ SATA
 *** Q_5
 VGA
 *** Answers
-0 0 0 0 0
+0 0 0 1 0
 *** Sources
 *** Extra 1
 Correct Answer: D
 ** Question 53
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188037503
+:END:
 *** Question
 Which network interface always exists in a Linux system?
 *** Title
@@ -1282,11 +1345,11 @@ vlan0
 *** Q_5
 eth0
 *** Answers
-0 0 0 0 0
+1 0 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: A
-** Question 54
+** Question 54 copy not used
 *** Question
 Which of the following filesystems is most commonly used for Linux distributions?
 *** Title
@@ -1301,13 +1364,18 @@ FAT32
 *** Q_4
 NTFS
 *** Answers
-0 0 0 0 0
+0 1 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: B
-
 ** Question 55
-A Linux computer has no access to the internet. *** Question
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188038579
+:END:
+*** Question
+A Linux computer has no access to the internet.
+
 Which command displays information about the network gateway for the system?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
@@ -1323,14 +1391,18 @@ route
 *** Q_5
 ipconfig
 *** Answers
-0 0 0 0 0
+0 0 0 1 0
 *** Sources
 *** Extra 1
 Correct Answer: D
 ** Question 56
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188411504
+:END:
 *** Question
-Which criteria are useful when deciding which operating system to use? (Select THR*** Q_5
-answers)
+Which criteria are useful when deciding which operating system to use? (Select
+THREE answers)
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1345,12 +1417,16 @@ Availability of mandatory applications and tools.
 *** Q_5
 Skills of the administrators and staff.
 *** Answers
-0 0 0 0 0
+1 0 0 1 1
 *** Sources
 *** Extra 1
 Correct Answer: ADE
 ** Question 57
-
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188412053
+:END:
+*** Question
 In which directory are system log files kept?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
@@ -1364,11 +1440,15 @@ In which directory are system log files kept?
 *** Q_4
 /var/log/sys/
 *** Answers
-0 0 0 0 0
+0 1 0 0 0
 *** Sources
 *** Extra 1
 Correct Answer: B
 ** Question 58
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188412629
+:END:
 *** Question
 Which command shows, amongst other information, the IP address of the current DNS server for a Linux system?
 *** Title
@@ -1385,11 +1465,15 @@ cat /etc/resolv.conf
 *** Q_5
 cat /etc/net/nameserver.conf
 *** Answers
-0 0 0 0 0
+0 0 0 1 0
 *** Sources
 *** Extra 1
 Correct Answer: D
 ** Question 59
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188413204
+:END:
 *** Question
 Which of the following commands can be used to change both the owner AND group settings of a file?
 *** Title
@@ -1405,13 +1489,16 @@ chuser
 chown
 *** Q_5
 chgrp
-
 *** Answers
-0 0 0 0 0
+0 0 0 1 0
 *** Sources
 *** Extra 1
 Correct Answer: D
 ** Question 60
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188413754
+:END:
 *** Question
 Which of the following will change the group that is associated with a file?
 *** Title
@@ -1426,11 +1513,15 @@ chown
 *** Q_4
 ls -g
 *** Answers
-0 0 0 0 0
+0 0 1 0 0
 *** Sources
 *** Extra 1
 Correct Answer: C
 ** Question 61
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188753154
+:END:
 *** Question
 Which command displays the list of groups to which a user belongs?
 *** Title
@@ -1445,12 +1536,15 @@ who
 *** Q_4
 id
 *** Answers
-0 0 0 0 0
+0 0 0 1 0
 *** Sources
 *** Extra 1
 Correct Answer: D
 ** Question 62
-
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188753903
+:END:
 *** Question
 Which of the following is the home folder for the root user?
 *** Title
@@ -1465,14 +1559,19 @@ Which of the following is the home folder for the root user?
 *** Q_4
 /home/root
 *** Answers
-0 0 0 0 0
+0 0 1 0 0
 *** Sources
 *** Extra 1
 Correct Answer: C
 ** Question 63
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188754654
+:END:
+*** Question
 Given a directory with the following information:
 drwxrwxrwxt 12 tu tg 36864 2012-03-15 /home/directory/
-*** Question
+
 Which of the following statements are true? (Choose two)
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
@@ -1488,11 +1587,15 @@ Everybody can delete only his own files.
 *** Q_5
 The directory is a security risk.
 *** Answers
-0 0 0 0 0
+1 0 0 1 0
 *** Sources
 *** Extra 1
 Correct Answer: AD
 ** Question 64
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188755329
+:END:
 *** Question
 Which statement about users and user groups is correct?
 *** Title
@@ -1504,15 +1607,18 @@ A group can only have one main user.
 There can be only one user group on a system.
 *** Q_3
 User do not have to belong to a user group.
-
 *** Q_4
 Every user belongs to a least one user group.
 *** Answers
-0 0 0 0 0
+0 0 0 1 0
 *** Sources
 *** Extra 1
 Correct Answer: D
 ** Question 65
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670188756078
+:END:
 *** Question
 Which of the following properties of a user account determines whether the user is given administrator privileges?
 *** Title
@@ -1529,11 +1635,15 @@ Its user ID is 0 (zero).
 *** Q_5
 Its GECOS (name) field is set to "System Administrator"
 *** Answers
-0 0 0 0 0
+0 0 0 1 0
 *** Sources
 *** Extra 1
 Correct Answer: D
 ** Question 66
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670189292679
+:END:
 *** Question
 What is the command to change the password of a user?
 *** Title
@@ -1550,11 +1660,15 @@ passwd
 *** Q_5
 password
 *** Answers
-0 0 0 0 0
+0 0 0 1 0
 *** Sources
 *** Extra 1
 Correct Answer: D
 ** Question 67
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670189293454
+:END:
 *** Question
 What command line will create the user falco with home directory assigned to the group users as primary group?
 *** Title
@@ -1571,7 +1685,7 @@ add user falco@users
 *** Q_5
 add -user falco -group users
 *** Answers
-0 0 0 0 0
+0 0 1 0 0
 *** Sources
 *** Extra 1
 Correct Answer: C
