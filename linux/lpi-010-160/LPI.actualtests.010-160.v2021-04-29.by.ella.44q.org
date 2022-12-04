@@ -12,6 +12,7 @@ File Version: 1
 ** Question 1
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130450958
 :END:
 *** Question
 What are the differences between hard disk drives and solid state disks? (Choose two.)
@@ -56,6 +57,7 @@ Correct Answer: B
 ** Question 3
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130451151
 :END:
 *** Question
 What information can be displayed by top?
@@ -80,6 +82,7 @@ Correct Answer: B
 ** Question 4
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130451479
 :END:
 *** Question
 Which of the following commands can be used to resolve a DNS name to an IP address?
@@ -121,6 +124,7 @@ Correct Answer: E
 ** Question 6
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130451802
 :END:
 *** Question
 What is the UID of the user root?
@@ -145,6 +149,7 @@ Correct Answer: E
 ** Question 7
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130451976
 :END:
 *** Question
 What is true about the owner of a file?
@@ -169,6 +174,7 @@ Correct Answer: A
 ** Question 8
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130452280
 :END:
 *** Question
 What information is stored in /etc/passwd? (Choose three.)
@@ -193,6 +199,7 @@ Correct Answer: BCE
 ** Question 9
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130452579
 :END:
 *** Question
 Which of the following tar options handle compression? (Choose two.)
@@ -217,6 +224,7 @@ Correct Answer: BD
 ** Question 10
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130452754
 :END:
 *** Question
 Which of the following keys can be pressed to exit less?
@@ -241,6 +249,7 @@ Correct Answer: D
 ** Question 11
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130453054
 :END:
 *** Question
 Which of the following commands sorts the output of the command export-logs?
@@ -267,6 +276,7 @@ Correct Answer: D
 ** Question 12
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130453355
 :END:
 *** Question
 A directory contains the following files:
@@ -300,6 +310,7 @@ Correct Answer: E
 ** Question 13
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130453655
 :END:
 *** Question
 Which of the following commands will search for the file foo.txt under the directory /home?
@@ -324,6 +335,7 @@ Correct Answer: D
 ** Question 14
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130453830
 :END:
 *** Question
 The current directory contains the following file:
@@ -354,6 +366,7 @@ Correct Answer: B
 ** Question 15
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130454130
 :END:
 *** Question
 What is a Linux distribution?
@@ -378,6 +391,7 @@ Correct Answer: B
 ** Question 16
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130454452
 :END:
 *** Question
 Which package management tool is used in Red Hat-based Linux Systems?
@@ -422,6 +436,7 @@ Correct Answer: A
 ** Question 18
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130454629
 :END:
 *** Question
 Which of the following are typical services offered by public cloud providers? (Choose three.)
@@ -446,6 +461,7 @@ Correct Answer: ABE
 ** Question 19
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130454929
 :END:
 *** Question
 Which of the following characters in a shell prompt indicates the shell is running with root privileges?
@@ -470,6 +486,7 @@ Correct Answer: B
 ** Question 20
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130455229
 :END:
 *** Question
 What is true about a recursive directory listing?
@@ -494,6 +511,7 @@ Correct Answer: A
 ** Question 21
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130455554
 :END:
 *** Question
 Which of the following directories contains information, documentation and example configuration files for installed software packages?
@@ -518,6 +536,7 @@ Correct Answer: A
 ** Question 22
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130455754
 :END:
 *** Question
 Which of the following commands adds the directory /new/dir/ to the PATH environment variable?
@@ -565,6 +584,7 @@ Correct Answer: D
 ** Question 24
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130456079
 :END:
 *** Question
 Which of the following is a protocol used for automatic IP address configuration?
@@ -589,6 +609,7 @@ Correct Answer: E
 ** Question 25
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130456401
 :END:
 *** Question
 Which of the following devices represents a hard disk partition?
@@ -613,6 +634,7 @@ Correct Answer: D
 ** Question 26
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130456604
 :END:
 *** Question
 What can be found in the /proc/ directory?
@@ -637,6 +659,7 @@ Correct Answer: D
 ** Question 27
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130456980
 :END:
 *** Question
 A new server needs to be installed to host services for a period of several years. Throughout this time, the server should receive important security updates from its
@@ -664,6 +687,7 @@ Correct Answer: AE
 ** Question 28
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130457330
 :END:
 *** Question
 Which of the following directories must be mounted with read and write access if it resides on its own dedicated file system?
@@ -688,6 +712,7 @@ Correct Answer: D
 ** Question 29
  :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130457530
 :END:
 *** Question
 The ownership of the file doku.odt should be changed. The new owner is named tux. Which command accomplishes this change?
@@ -712,6 +737,7 @@ Correct Answer: C
 ** Question 30
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130457880
 :END:
 *** Question
 What happens to a file residing outside the home directory when the file owner's account is deleted? (Choose two.)
@@ -736,6 +762,7 @@ Correct Answer: CE
 ** Question 31
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130458230
 :END:
 *** Question
 What is true about links in a Linux file system?
@@ -760,6 +787,7 @@ Correct Answer: D
 ** Question 32
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130458580
 :END:
 *** Question
 Which files are the source of the information in the following output? (Choose two.)
@@ -785,6 +813,7 @@ Correct Answer: BC
 ** Question 33
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130458779
 :END:
 *** Question
 Which of the following tasks can the command passwd accomplish? (Choose two.)
@@ -809,6 +838,7 @@ Correct Answer: CE
 ** Question 34
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130459130
 :END:
 *** Question
 Which command displays file names only and no additional information?
@@ -833,6 +863,7 @@ Correct Answer: A
 ** Question 35
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130459479
 :END:
 *** Question
 Which of the following commands puts the lines of the file data.csv into alphabetical order?
@@ -857,6 +888,7 @@ Correct Answer: B
 ** Question 36
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130459679
 :END:
 *** Question
 Which of the following examples shows the general structure of a for loop in a shell script?
@@ -886,6 +918,7 @@ Correct Answer: C
 ** Question 37
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130460030
 :END:
 *** Question
 What is the return value of a shell script after successful execution?
@@ -910,6 +943,7 @@ Correct Answer: B
 ** Question 38
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130460381
 :END:
 *** Question
 Which of the following statements are true regarding a typical shell script? (Choose two.)
@@ -934,6 +968,7 @@ Correct Answer: AE
 ** Question 39
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130460580
 :END:
 *** Question
 Which of the following commands extracts the contents of the compressed archive file1.tar.gz?
@@ -958,6 +993,7 @@ Correct Answer: C
 ** Question 40
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130460930
 :END:
 *** Question
 Which of the following commands finds all lines in the file operating-systems.txt which contain the term linux, regardless of the case?
@@ -982,6 +1018,7 @@ Correct Answer: C
 ** Question 41
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130461279
 :END:
 *** Question
 Which of the following programs are web servers? (Choose two.)
@@ -1006,6 +1043,7 @@ Correct Answer: AE
 ** Question 42
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130461632
 :END:
 *** Question
 Which of the following Linux Distributions is derived from Red Hat Enterprise Linux?
@@ -1030,6 +1068,7 @@ Correct Answer: E
 ** Question 43
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130461830
 :END:
 *** Question
 What are the differences between a private web browser window and a regular web browser window? (Choose three.)
@@ -1054,6 +1093,7 @@ Correct Answer: BDE
 ** Question 44
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670130462179
 :END:
 *** Question
 What is the preferred source for the installation of new applications in a Linux based operating system?
