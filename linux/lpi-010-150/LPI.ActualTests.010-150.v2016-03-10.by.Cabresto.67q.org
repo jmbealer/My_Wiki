@@ -194,9 +194,11 @@ Correct Answer: A
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
 :ANKI_NOTE_ID: 1670105965429
+:ANKI_FAILURE_REASON: Note was not found: 1670105965429
 :END:
 *** Question
-Which of the following answers are true for cloud computing? (Choose two)
+Which of the following answers are true for cloud computing? (Choose TWO correct
+answers.)
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -437,9 +439,11 @@ Correct Answer: C
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
 :ANKI_NOTE_ID: 1670108045555
+:ANKI_FAILURE_REASON: Note was not found: 1670108045555
 :END:
 *** Question
-Which of the following commands increases the number of elements in a directory? (Choose two)
+Which of the following commands increases the number of elements in a directory?
+(Choose TWO correct answers.)
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1057,9 +1061,11 @@ Correct Answer: E
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
 :ANKI_NOTE_ID: 1670187220703
+:ANKI_FAILURE_REASON: Note was not found: 1670187220703
 :END:
 *** Question
-Which of the following commands will set the variable text to olaf is home? (Choose two)
+Which of the following commands will set the variable text to olaf is home?
+(Choose TWO correct answers.)
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
 2
@@ -1369,10 +1375,10 @@ Correct Answer: B
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
 :ANKI_NOTE_ID: 1670188038579
+:ANKI_FAILURE_REASON: Note was not found: 1670188038579
 :END:
 *** Question
 A Linux computer has no access to the internet.
-
 Which command displays information about the network gateway for the system?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
