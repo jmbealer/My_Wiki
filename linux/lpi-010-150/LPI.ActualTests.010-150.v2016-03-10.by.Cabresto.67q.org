@@ -11,6 +11,7 @@ Updated Version: 6.0
 Product
 80 Q & A
 Type
+
 * lpi linux essentials 010-150
 :PROPERTIES:
 :ANKI_DECK: lpi-linux-essentials-010-150-questions-bank
@@ -783,8 +784,6 @@ uncompress download.bz2
 *** Sources
 *** Extra 1
 Correct Answer: C
-
-
 ** Question 31
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
@@ -837,6 +836,7 @@ Correct Answer: C
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
 :ANKI_NOTE_ID: 1670134717027
+:ANKI_FAILURE_REASON: Note was not found: 1670134717027
 :END:
 *** Question
 Which of the following commands will create an archive file, named backup.tar, containing all the files from the directory /home?
@@ -938,6 +938,7 @@ Correct Answer: D
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
 :ANKI_NOTE_ID: 1670187005601
+:ANKI_FAILURE_REASON: Note was not found: 1670187005601
 :END:
 *** Question
 The output of the program date should be saved in the variable actdat.
@@ -1402,6 +1403,7 @@ Correct Answer: D
 :PROPERTIES:
 :ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
 :ANKI_NOTE_ID: 1670188411504
+:ANKI_FAILURE_REASON: Note was not found: 1670188411504
 :END:
 *** Question
 Which criteria are useful when deciding which operating system to use? (Select

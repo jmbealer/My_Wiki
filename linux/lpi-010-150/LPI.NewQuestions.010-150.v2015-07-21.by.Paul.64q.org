@@ -1,1084 +1,1418 @@
                                                  LPI-010-150
-
 Number: 010-150
 Passing Score: 800
 Time Limit: 120 min
 File Version: 5
 
-
-
-
-         http://www.gratisexam.com/
-
-
 LPI 010-150 Questions & Answers
-
 Linux Essentials Certificate Exam, version 1.5
-
 Version: 5.0
 LPI 010-150 Exam
 Exam A
 
-QUESTION 1
+* lpi linux essentials 010-150
+:PROPERTIES:
+:ANKI_DECK: lpi-linux-essentials-010-150-questions-bank
+:ANKI_TAGS: lpi linux essentials 010-150
+:END:
+** Question 1 duplicate
+*** Question
 Which of the following Linux distributions use the dpkg package management system? (Choose TWO
 correct answers.)
-
-A. Suse
-B. Red Hat
-C. Debian
-D. Ubuntu
-E. Mandriva
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+Suse
+*** Q_2
+Red Hat
+*** Q_3
+Debian
+*** Q_4
+Ubuntu
+*** Q_5
+Mandriva
+*** Answers
+0 0 1 1 0
+*** Sources
+*** Extra 1
 Correct Answer: CD
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 2
+** Question 2 duplicate
+*** Question
 Which of the following applications are used to play an MP3 file on a Linux system? (Choose THREE
 correct answers.)
-
-A. Xara Xtreme
-B. Banshee
-C. LibreOffice Player
-D. Amarok
-E. Audacious
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+Xara Xtreme
+*** Q_2
+Banshee
+*** Q_3
+LibreOffice Player
+*** Q_4
+Amarok
+*** Q_5
+Audacious
+*** Answers
+0 1 0 1 1
+*** Sources
+*** Extra 1
 Correct Answer: BDE
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 3
+** Question 3 duplicate
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_FAILURE_REASON: cannot create note because it is a duplicate
+:END:
+*** Question
 Which one of the following statements concerning Linux passwords is true?
-
-A. All passwords can be decrypted using the system administrator's master password.
-B. Passwords may never start with a non-letter.
-C. Users cannot change their password once it has been set.
-D. Passwords are only stored in encrypted form.
-E. Passwords may be at most six characters long.
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+All passwords can be decrypted using the system administrator's master password.
+*** Q_2
+Passwords may never start with a non-letter.
+*** Q_3
+Users cannot change their password once it has been set.
+*** Q_4
+Passwords are only stored in encrypted form.
+*** Q_5
+Passwords may be at most six characters long.
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 4
+** Question 4 duplicate
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_FAILURE_REASON: cannot create note because it is a duplicate
+:END:
+*** Question
 What is the preferred source for the installation of new applications?
-
-A. The vendor's version management system
-B. A CD-ROM disk
-C. The distribution's package repository
-D. The vendor's website
-E. A retail store
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+The vendor's version management system
+*** Q_2
+A CD-ROM disk
+*** Q_3
+The distribution's package repository
+*** Q_4
+The vendor's website
+*** Q_5
+A retail store
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 5
+** Question 5 duplicate
+*** Question
 Which of the following can be used to access the command line?
-
-
-
-
-         http://www.gratisexam.com/
-
-
-A. BIOS
-B. Terminal
-C. XWindow
-D. Firefox
-E. Xargs
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+BIOS
+*** Q_2
+Terminal
+*** Q_3
+XWindow
+*** Q_4
+Firefox
+*** Q_5
+Xargs
+*** Answers
+0 1 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 6
+** Question 6 duplicate
+*** Question
 Which Linux distribution is used as a basis for the creation of Ubuntu Linux?
-
-A. Red Hat Linux
-B. Arch Linux
-C. SUSE Linux
-D. Gentoo Linux
-E. Debian Linux
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+Red Hat Linux
+*** Q_2
+Arch Linux
+*** Q_3
+SUSE Linux
+*** Q_4
+Gentoo Linux
+*** Q_5
+Debian Linux
+*** Answers
+0 0 0 0 1
+*** Sources
+*** Extra 1
 Correct Answer: E
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 7
+** Question 7 duplicate
+*** Question
 Which of the following programs is not a graphical web browser?
-
-A. Konqueror
-B. Firefox
-C. Links
-D. Opera
-E. Chrome
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+Konqueror
+*** Q_2
+Firefox
+*** Q_3
+Links
+*** Q_4
+Opera
+*** Q_5
+Chrome
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 8
+** Question 8 duplicate
+*** Question
 What does LAMP mean?
-
-A. The Linux Advanced Mode Programming Interface which gives advanced capabilities to application
-   developers.
-B. The bus ID of an attached USB device that emits light.
-C. Short for Lightweight Access Management Protocol which synchronizes permissions in a network.
-D. The combination of Linux, Apache, MySQL and PHP or other programming languages.
-E. Short for lamport-clock which is important in distributed network computing.
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+The Linux Advanced Mode Programming Interface which gives advanced capabilities to application developers.
+*** Q_2
+The bus ID of an attached USB device that emits light.
+*** Q_3
+Short for Lightweight Access Management Protocol which synchronizes permissions in a network.
+*** Q_4
+The combination of Linux, Apache, MySQL and PHP or other programming languages.
+*** Q_5
+Short for lamport-clock which is important in distributed network computing.
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 9
+** Question 9 duplicate
+*** Question
 Which of the following is a Linux based operating system for use on mobile devices?
-
-A. iOS
-B. CentOS
-C. Android
-D. Debian
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+iOS
+*** Q_2
+CentOS
+*** Q_3
+Android
+*** Q_4
+Debian
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 10
+** Question 10 duplicate
+*** Question
 Which one of the following is true about Open Source software?
-
-A. Open Source software can not be copied for free.
-B. Open Source software is available for commercial use.
-C. The freedom to redistribute copies must include binary or executable forms of the software but not the
-   source code.
-D. Open Source software is not for sale.
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+Open Source software can not be copied for free.
+*** Q_2
+Open Source software is available for commercial use.
+*** Q_3
+The freedom to redistribute copies must include binary or executable forms of the software but not the source code.
+*** Q_4
+Open Source software is not for sale.
+*** Answers
+0 1 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 11
+** Question 11 duplicate
+*** Question
 What is the first character for file or directory names if they should not be displayed by commands such as
 ls unless specifically requested?
-
-A. \ (backslash)
-B. . (dot)
-C. - (minus)
-D. _ (underscore)
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+\ (backslash)
+*** Q_2
+. (dot)
+*** Q_3
+- (minus)
+*** Q_4
+_ (underscore)
+*** Answers
+0 1 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 12
+** Question 12 duplicate
+*** Question
 Which of the following commands moves the directory ~/summer-vacation and its content to ~/
 vacation/2011?
-
-A. mv ~/vacation/2011 ~/summer-vacation
-B. move -R ~/summer-vacation ~/vacation/2011
-C. mv /home/summer-vacation /home/vacation/2011
-D. mv ~/summer-vacation ~/vacation/2011
-E. mv -R ~/summer-vacation ~/vacation/2011
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+mv ~/vacation/2011 ~/summer-vacation
+*** Q_2
+move -R ~/summer-vacation ~/vacation/2011
+*** Q_3
+mv /home/summer-vacation /home/vacation/2011
+*** Q_4
+mv ~/summer-vacation ~/vacation/2011
+*** Q_5
+mv -R ~/summer-vacation ~/vacation/2011
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 13
+** Question 13 duplicate
+*** Question
 Which option will cause the echo command NOT to output a trailing newline?
-
-A. -e
-B. -p
-C. -n
-D. -s
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+-e
+*** Q_2
+-p
+*** Q_3
+-n
+*** Q_4
+-s
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 14
+** Question 14 duplicate
+*** Question
 Which commands provide help for a specific Linux command? (Choose TWO correct answers.)
-
-A. info
-B. man
-C. helpme
-D. ask
-E. whatdoes
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+info
+*** Q_2
+man
+*** Q_3
+helpme
+*** Q_4
+ask
+*** Q_5
+whatdoes
+*** Answers
+1 1 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: AB
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 15
+** Question 15 duplicate
+*** Question
 Which of the following are correct commands for changing the current directory to the user's home?
 (Choose TWO answers)
-
-A. cd /home
-B. cd ~
-C. cd ..
-D. cd
-E. cd /
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+cd /home
+*** Q_2
+cd ~
+*** Q_3
+cd ..
+*** Q_4
+cd
+*** Q_5
+cd /
+*** Answers
+0 1 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: BD
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 16
+** Question 16 duplicate
+*** Question
 Which command line can be used to search help files that mention the word "copy"?
-
-A. man -k copy
-B. whatis copy
-C. man copy
-D. copy help
-E. copy help
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+man -k copy
+*** Q_2
+whatis copy
+*** Q_3
+man copy
+*** Q_4
+copy help
+*** Q_5
+copy help
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 17
+** Question 17 duplicate
+*** Question
 Which command lists all files in the current directory that start with a capital letter?
-
-A. ls [A-Z]*
-B. ls A-Z
-C. ls A-Z*
-D. ls --uppercasefiles
-E. list-uppercase-files
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+ls [A-Z]*
+*** Q_2
+ls A-Z
+*** Q_3
+ls A-Z*
+*** Q_4
+ls --uppercasefiles
+*** Q_5
+list-uppercase-files
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 18
+** Question 18 duplicate
+*** Question
 Which command shows if /usr/bin is in the current shell search path?
-
-A. cat PATH
-B. echo $PATH
-C. echo %PATH
-D. cat $PATH
-E. echo %PATH%
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+cat PATH
+*** Q_2
+echo $PATH
+*** Q_3
+echo %PATH
+*** Q_4
+cat $PATH
+*** Q_5
+echo %PATH%
+*** Answers
+0 1 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 19
+** Question 19 duplicate
+*** Question
 Which of the following commands will display a list of all files in the current directory, including those that
 may be hidden?
-
-
-
-
-         http://www.gratisexam.com/
-
-
-A. ls -a
-B. ls --hidden
-C. ls -h
-D. ls a
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+ls -a
+*** Q_2
+ls --hidden
+*** Q_3
+ls -h
+*** Q_4
+ls a
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 20
+** Question 20 duplicate
+*** Question
 Which of the following commands increases the number of elements in a directory? (Choose TWO
 answers)
-
-A. touch newfile
-B. create newfile
-C. ls newfile
-D. rmdir newdirectory
-E. mkdir newdirectory
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+touch newfile
+*** Q_2
+create newfile
+*** Q_3
+ls newfile
+*** Q_4
+rmdir newdirectory
+*** Q_5
+mkdir newdirectory
+*** Answers
+1 0 0 0 1
+*** Sources
+*** Extra 1
 Correct Answer: AE
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 21
+** Question 21 duplicate
+*** Question
 What command would you use to get comprehensive documentation about any command in Linux?
-
-A. help command
-B. echo command
-C. locate command
-D. man command
-E. get command
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+help command
+*** Q_2
+echo command
+*** Q_3
+locate command
+*** Q_4
+man command
+*** Q_5
+get command
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-Explanation/Reference:
-Explanation:
-
 Topic 3, The Power of the Command Line
-
-QUESTION 22
+** Question 22 duplicate
+*** Question
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_FAILURE_REASON: Missing fields
+:END:
+*** Question
 How is it possible to determine if an executable file is a shell script which is read by Bash?
-
-A. The r bit is set.
-B. The file must end with .sh.
-C. The first line starts with #!/bin/bash.
-D. /bin/bash has to be run in debug mode.
-E. Scripts are never executable files.
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+The r bit is set.
+*** Q_2
+The file must end with .sh.
+*** Q_3
+The first line starts with #!/bin/bash.
+*** Q_4
+/bin/bash has to be run in debug mode.
+*** Q_5
+Scripts are never executable files.
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 23
+** Question 23
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670220386132
+:END:
+*** Question
 Which of the following commands can be used to view a file and do search operations within it while
 viewing the contents?
-
-A. less
-B. find
-C. grep
-D. report
-E. see
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+less
+*** Q_2
+find
+*** Q_3
+grep
+*** Q_4
+report
+*** Q_5
+see
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-
-QUESTION 24
+** Question 24 duplicate
+*** Question
 Which function does a shell program serve?
-
-A. It provides a graphical environment.
-B. It is responsible for establishing a connection to another computer.
-C. It receives user commands and executes them.
-D. It is responsible for logging a user into the system.
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+It provides a graphical environment.
+*** Q_2
+It is responsible for establishing a connection to another computer.
+*** Q_3
+It receives user commands and executes them.
+*** Q_4
+It is responsible for logging a user into the system.
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 25
+** Question 25 duplicate
+*** Question
 Which of the following commands can be used to extract files from an archive?
-
-A. tar -vf
-B. tar -xvf
-C. tar -evf
-D. tar -e
-E. tar v
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+tar -vf
+*** Q_2
+tar -xvf
+*** Q_3
+tar -evf
+*** Q_4
+tar -e
+*** Q_5
+tar v
+*** Answers
+0 1 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 26
+** Question 26 duplicate
+*** Question
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_FAILURE_REASON: Missing fields
+:END:
+*** Question
 How could one search for the file foo.txt under the directory /home?
-
-A. search /home -file foo.txt
-B. search /home foo.txt
-C. find /home -file foo.txt
-D. find /home -name foo.txt
-E. find /home foo.txt
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+search /home -file foo.txt
+*** Q_2
+search /home foo.txt
+*** Q_3
+find /home -file foo.txt
+*** Q_4
+find /home -name foo.txt
+*** Q_5
+find /home foo.txt
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
-
-QUESTION 27
+** Question 27 duplicate
+*** Question
 What is the output of the following command?
-
 tail -n 20 test.txt
-
-A. The first 20 lines of test.txt.
-B. The last 20 lines of test.txt omitting the blank lines.
-C. The last 20 lines of test.txt with line numbers.
-D. The last 20 lines of test.txt including blank lines.
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+The first 20 lines of test.txt.
+*** Q_2
+The last 20 lines of test.txt omitting the blank lines.
+*** Q_3
+The last 20 lines of test.txt with line numbers.
+*** Q_4
+The last 20 lines of test.txt including blank lines.
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 28
+** Question 28 duplicate
+*** Question
 Which commands will archive /home and its content to /mnt/backup? (Choose TWO correct answers.)
-
-A. cp -ar /home /mnt/backup
-B. mv /home /mnt/backup
-C. sync -r /home /mnt/backup
-D. tar -cf /mnt/backup/archive.tar /home
-E. copy -r /home /mnt/backup
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+cp -ar /home /mnt/backup
+*** Q_2
+mv /home /mnt/backup
+*** Q_3
+sync -r /home /mnt/backup
+*** Q_4
+tar -cf /mnt/backup/archive.tar /home
+*** Q_5
+copy -r /home /mnt/backup
+*** Answers
+1 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: AD
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 29
+** Question 29 duplicate
+*** Question
 Why is the file data.txt empty after executing sort data.txt > data.txt?
-
-A. Because, if data.txt is empty now, it must have been empty before.
-B. Because sort cannot sort text files, only binary files.
-C. Because sort detects that both files are the same.
-D. Because the file gets truncated before sort is executed.
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+Because, if data.txt is empty now, it must have been empty before.
+*** Q_2
+Because sort cannot sort text files, only binary files.
+*** Q_3
+Because sort detects that both files are the same.
+*** Q_4
+Because the file gets truncated before sort is executed.
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 30
+** Question 30 duplicate
+*** Question
 What keyword is missing from the following segment of the shell script?
-
 for i in *; _____
-
 cat $i
-
 done
-
-A. do
-B. then
-C. enod
-D. fi
-E. run
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+do
+*** Q_2
+then
+*** Q_3
+enod
+*** Q_4
+fi
+*** Q_5
+run
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 31
+** Question 31 duplicate
+*** Question
 Which of the following statements may be used to access the second command line argument to a script?
-
-A. "$ARG2"
-B. $1
-C. "$2"
-D. "$1"
-E. '$2'
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+"$ARG2"
+*** Q_2
+$1
+*** Q_3
+"$2"
+*** Q_4
+"$1"
+*** Q_5
+'$2'
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 32
+** Question 32
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670220765480
+:END:
+*** Question
 Which of the following commands will output all of the lines that contain either the string Fred or fred?
 (Choose TWO correct answers.)
-
-A. grep -v fred data_file
-B. grep '[f]red' data_file
-C. egrep fred data_file
-D. grep '[Ff]red' data_file
-E. grep -i fred data_file
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+grep -v fred data_file
+*** Q_2
+grep '[f]red' data_file
+*** Q_3
+egrep fred data_file
+*** Q_4
+grep '[Ff]red' data_file
+*** Q_5
+grep -i fred data_file
+*** Answers
+0 0 0 1 1
+*** Sources
+*** Extra 1
 Correct Answer: DE
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 33
-The output of the program date should be saved in the variable actdat. What is the correct statement?
-
-A. actdat=`date`
-B. set actdat='date'
-C. date | actdat
-D. date > $actdat
-E. actdat=date
-
+** Question 33
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670220950130
+:END:
+*** Question
+The output of the program date should be saved in the variable actdat.
+What is the correct statement?
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+actdat=`date`
+*** Q_2
+set actdat='date'
+*** Q_3
+date | actdat
+*** Q_4
+date > $actdat
+*** Q_5
+actdat=date
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 34
+** Question 34 duplicate
+*** Question
 How can the current directory and its subdirectories be searched for the file named MyFile.xml?
-
-A. find . -name MyFile.xml
-B. grep MyFile.xml | find
-C. grep -r MyFile.xml .
-D. less MyFile.xml
-E. search Myfile.xml ./
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+find . -name MyFile.xml
+*** Q_2
+grep MyFile.xml | find
+*** Q_3
+grep -r MyFile.xml .
+*** Q_4
+less MyFile.xml
+*** Q_5
+search Myfile.xml ./
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 35
+** Question 35 duplicate
+*** Question
 Which of the following commands will set the variable text to olaf is home? (Select TWO answers)
-
-
-
-
-         http://www.gratisexam.com/
-
-
-A. text=olaf\ is\ home
-B. text=$olaf is home
-C. $text='olaf is home'
-D. text=='olaf is home'
-E. text="olaf is home"
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+text=olaf\ is\ home
+*** Q_2
+text=$olaf is home
+*** Q_3
+$text='olaf is home'
+*** Q_4
+text=='olaf is home'
+*** Q_5
+text="olaf is home"
+*** Answers
+1 0 0 0 1
+*** Sources
+*** Extra 1
 Correct Answer: AE
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 36
+** Question 36 duplicate
+*** Question
 Which of the following commands will create an archive file, named backup.tar, containing all the files from
 the directory /home?
-
-A. tar /home backup.tar
-B. tar -cf /home backup.tar
-C. tar -xf /home backup.tar
-D. tar -xf backup.tar /home
-E. tar -cf backup.tar /home
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+tar /home backup.tar
+*** Q_2
+tar -cf /home backup.tar
+*** Q_3
+tar -xf /home backup.tar
+*** Q_4
+tar -xf backup.tar /home
+*** Q_5
+tar -cf backup.tar /home
+*** Answers
+0 0 0 0 1
+*** Sources
+*** Extra 1
 Correct Answer: E
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 37
+** Question 37 duplicate
+*** Question
 Which command will display the last line of the file foo.txt?
-
-A. head -n 1 foo.txt
-B. tail foo.txt
-C. last -n 1 foo.txt
-D. tail -n 1 foo.txt
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+head -n 1 foo.txt
+*** Q_2
+tail foo.txt
+*** Q_3
+last -n 1 foo.txt
+*** Q_4
+tail -n 1 foo.txt
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 38
+** Question 38 duplicate
+*** Question
 How can the normal output of a command be written to a file while discarding the error output?
-
-A. command >2>file 1&>/dev/null
-B. command < output > /dev/null
-C. command > discard-error > file
-D. command > /dev/null 2&>1 output
-E. command >file 2>/dev/null
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+command >2>file 1&>/dev/null
+*** Q_2
+command < output > /dev/null
+*** Q_3
+command > discard-error > file
+*** Q_4
+command > /dev/null 2&>1 output
+*** Q_5
+command >file 2>/dev/null
+*** Answers
+0 0 0 0 1
+*** Sources
+*** Extra 1
 Correct Answer: E
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
-
-QUESTION 39
+** Question 39 duplicate
+*** Question
 Which of the following commands can be used to extract content from a tar file?
-
-A. tar -xvf
-B. tar -vf
-C. tar -e
-D. tar -c
-E. tar v
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+tar -xvf
+*** Q_2
+tar -vf
+*** Q_3
+tar -e
+*** Q_4
+tar -c
+*** Q_5
+tar v
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
 Topic 4, The Linux Operating System
-
-QUESTION 40
+** Question 40 duplicate
+*** Question
 Which of the following is a combined audio/video interface for transmission of digital data?
-
-A. ATI
-B. DVD
-C. HDMI
-D. VGA
-E. DVI
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+ATI
+*** Q_2
+DVD
+*** Q_3
+HDMI
+*** Q_4
+VGA
+*** Q_5
+DVI
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 41
+** Question 41 duplicate
+*** Question
 Which of the following commands is used to look up the current IP address of a system?
-
-A. less /proc/net/ipconfig
-B. ifconfig
-C. showip
-D. ipconfig
-E. sysinfo | grep ipaddress
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+less /proc/net/ipconfig
+*** Q_2
+ifconfig
+*** Q_3
+showip
+*** Q_4
+ipconfig
+*** Q_5
+sysinfo | grep ipaddress
+*** Answers
+0 1 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-
-
-QUESTION 42
+** Question 42 duplicate
+*** Question
 Which of the following hardware devices links a number of computers together to form an Ethernet LAN?
-
-A. Server
-B. Switch
-C. Connector
-D. Access point
-E. Terminal
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+Server
+*** Q_2
+Switch
+*** Q_3
+Connector
+*** Q_4
+Access point
+*** Q_5
+Terminal
+*** Answers
+0 1 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 43
+** Question 43 duplicate
+*** Question
 What is the number called that is used to identify a process?
-
-A. Proc Num
-B. PIN
-C. Process Entry
-D. PID
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+Proc Num
+*** Q_2
+PIN
+*** Q_3
+Process Entry
+*** Q_4
+PID
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 44
+** Question 44 duplicate
+*** Question
 Which criteria are useful when deciding which operating system to use? (Choose THREE correct answers.)
-
-A. License costs.
-B. Ideological preferences of the system administrator.
-C. Linux can do everything, there is no need for further evaluation.
-D. Availability of mandatory applications and tools.
-E. Skills of the administrators and staff.
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+License costs.
+*** Q_2
+Ideological preferences of the system administrator.
+*** Q_3
+Linux can do everything, there is no need for further evaluation.
+*** Q_4
+Availability of mandatory applications and tools.
+*** Q_5
+Skills of the administrators and staff.
+*** Answers
+1 0 0 1 1
+*** Sources
+*** Extra 1
 Correct Answer: ADE
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 45
+** Question 45
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670221311030
+:END:
+*** Question
 Which of the following commands are used to view memory usage? (Choose TWO correct answers.)
-
-A. memory
-B. top
-C. ps
-D. free
-E. nice
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+memory
+*** Q_2
+top
+*** Q_3
+ps
+*** Q_4
+free
+*** Q_5
+nice
+*** Answers
+0 1 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: BD
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 46
+** Question 46
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670221311657
+:END:
+*** Question
 Which of the following directories is often used to store log files?
-
-A. /home
-B. /var
-C. /temp
-D. /dev
-E. /usr
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+/home
+*** Q_2
+/var
+*** Q_3
+/temp
+*** Q_4
+/dev
+*** Q_5
+/usr
+*** Answers
+0 1 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 47
+** Question 47
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670221312305
+:END:
+*** Question
 Identify the proper device for the third partition, on the second hard disk, on the first IDE controller on a PC
 system.
-
-A. /dev/hdb3
-B. /dev/hd1b3
-C. /dev/hdc1d2p3
-D. dev/hdc1a3
-E. dev/hdc1b3
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+/dev/hdb3
+*** Q_2
+/dev/hd1b3
+*** Q_3
+/dev/hdc1d2p3
+*** Q_4
+dev/hdc1a3
+*** Q_5
+dev/hdc1b3
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 48
-A Linux computer has no access to the internet. Which command displays information about the network
+** Question 48
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670221312905
+:END:
+*** Question
+A Linux computer has no access to the internet.
+Which command displays information about the network
 gateway for the system?
-
-A. traceroute
-B. ifconfig
-C. gateway
-D. route
-E. ipconfig
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+traceroute
+*** Q_2
+ifconfig
+*** Q_3
+gateway
+*** Q_4
+route
+*** Q_5
+ipconfig
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 49
+** Question 49 duplicate
+*** Question
 Where is the BIOS located?
-
-A. RAM
-B. Hard drive
-C. Motherboard
-D. LCD monitor
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+RAM
+*** Q_2
+Hard drive
+*** Q_3
+Motherboard
+*** Q_4
+LCD monitor
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-QUESTION 50
+** Question 50 duplicate
+*** Question
 Which network interface always exists in a Linux system?
-
-A. lo
-B. sit0
-C. wlan0
-D. vlan0
-E. eth0
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+lo
+*** Q_2
+sit0
+*** Q_3
+wlan0
+*** Q_4
+vlan0
+*** Q_5
+eth0
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 51
+** Question 51 duplicate
+*** Question
 Which command will display running process information in real time?
-
-A. top
-B. show current
-C. ps current
-D. process
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+top
+*** Q_2
+show current
+*** Q_3
+ps current
+*** Q_4
+process
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 52
+** Question 52 duplicate
+*** Question
 After installing a new package, in which directory are you most likely find its configuration file?
-
-A. /lib
-B. /conf
-C. /etc
-D. /usr
-E. /opt
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+/lib
+*** Q_2
+/conf
+*** Q_3
+/etc
+*** Q_4
+/usr
+*** Q_5
+/opt
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 53
+** Question 53 duplicate
+*** Question
 Which of the following Ubuntu releases is considered most stable and fit to use for business purposes?
-
-A. LTS
-B. Xubuntu
-C. Ubuntu Vanilla
-D. Kubuntu
-E. Xubuntu Server
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+LTS
+*** Q_2
+Xubuntu
+*** Q_3
+Ubuntu Vanilla
+*** Q_4
+Kubuntu
+*** Q_5
+Xubuntu Server
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 54
+** Question 54 duplicate
+*** Question
 What is the command that will show system boot time messages?
-
-A. dmesg
-B. echo
-C. lspci
-D. display system boot
-E. messages
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+dmesg
+*** Q_2
+echo
+*** Q_3
+lspci
+*** Q_4
+display system boot
+*** Q_5
+messages
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 55
+** Question 55 duplicate
+*** Question
 Which of the following filesystems is most commonly used for Linux distributions?
-
-A. HFS+
-B. ext4
-C. FAT32
-D. NTFS
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+HFS+
+*** Q_2
+ext4
+*** Q_3
+FAT32
+*** Q_4
+NTFS
+*** Answers
+0 1 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
 Topic 5, Security and File Permissions
-
-QUESTION 56
+** Question 56 duplicate
+*** Question
 Which permissions should be given to a file that needs to be opened and edited by the file's owner and
 opened read-only by the file's group?
-
-A. 0751
-B. 0466
-C. 0540
-D. 0640
-E. 0444
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+0751
+*** Q_2
+0466
+*** Q_3
+0540
+*** Q_4
+0640
+*** Q_5
+0444
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 57
+** Question 57 duplicate
+*** Question
 Which of the following commands can be used to determine the time of the last login of a given user?
-
-A. showlog
-B. recent
-C. last
-D. history
-E. login
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+showlog
+*** Q_2
+recent
+*** Q_3
+last
+*** Q_4
+history
+*** Q_5
+login
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 58
+** Question 58 duplicate
+*** Question
 What permissions are set on a file with the command chmod 654 file.txt?
-
-A. drw-r-xr--
-B. d--wxr-x--
-C. --wxr-x--x
-D. -rwxrw---x
-E. -rw-r-xr--
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+drw-r-xr--
+*** Q_2
+d--wxr-x--
+*** Q_3
+--wxr-x--x
+*** Q_4
+-rwxrw---x
+*** Q_5
+-rw-r-xr--
+*** Answers
+0 0 0 0 1
+*** Sources
+*** Extra 1
 Correct Answer: E
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 59
+** Question 59 duplicate
+*** Question
 Which statements about the directory /etc/skel are correct? (Choose TWO answers)
-
-A. The personal settings of root are in this directory.
-B. The files from the directory are copied to the home directory of the new user when starting the system.
-C. The files from the directory are copied to the home directory of a new user when the account is created.
-D. The directory contains a default set of configuration files used by the useradd command.
-E. The directory contains the global settings for the Linux system.
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+The personal settings of root are in this directory.
+*** Q_2
+The files from the directory are copied to the home directory of the new user when starting the system.
+*** Q_3
+The files from the directory are copied to the home directory of a new user when the account is created.
+*** Q_4
+The directory contains a default set of configuration files used by the useradd command.
+*** Q_5
+The directory contains the global settings for the Linux system.
+*** Answers
+0 0 1 1 0
+*** Sources
+*** Extra 1
 Correct Answer: CD
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 60
+** Question 60
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670221785607
+:END:
+*** Question
 The following line is found in which system file?
-
 root:x:0:0::/root:/bin/bash
-
-A. /etc/user.conf
-B. /etc/shadow
-C. /etc/passwd
-D. /usr/bin/shadow
-E. /etc/password
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+/etc/user.conf
+*** Q_2
+/etc/shadow
+*** Q_3
+/etc/passwd
+*** Q_4
+/usr/bin/shadow
+*** Q_5
+/etc/password
+*** Answers
+0 0 1 0 0
+*** Sources
+*** Extra 1
 Correct Answer: C
-Section: (none)
-Explanation
-Explanation/Reference:
-
-
-QUESTION 61
+** Question 61
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670221786283
+:END:
+*** Question
 Given the following directory permissions:
-
 drwxrwxrwt 14 root root 36864 2012-03-02 11:17 /tmp
-
 What does the letter t at the end of drwxrwxrwt indicate?
-
-A. It is the sticky bit that causes all commands in this directory to be launched as root.
-B. It means that even though the directory is globally writable only the owner can delete their own files.
-C. It makes the directory accessible for everybody.
-D. It indicates that this directory contains only temporary files that may be deleted.
-E. It is a temporary bit that prevents launching commands in this directory.
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+It is the sticky bit that causes all commands in this directory to be launched as root.
+*** Q_2
+It means that even though the directory is globally writable only the owner can delete their own files.
+*** Q_3
+It makes the directory accessible for everybody.
+*** Q_4
+It indicates that this directory contains only temporary files that may be deleted.
+*** Q_5
+It is a temporary bit that prevents launching commands in this directory.
+*** Answers
+0 1 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: B
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 62
+** Question 62
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670221787033
+:END:
+*** Question
 When a new user is added, where does the user ID get stored?
-
-A. /etc/users
-B. /etc/realm
-C. /etc/pass
-D. /etc/shpasswd
-E. /etc/passwd
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+/etc/users
+*** Q_2
+/etc/realm
+*** Q_3
+/etc/pass
+*** Q_4
+/etc/shpasswd
+*** Q_5
+/etc/passwd
+*** Answers
+0 0 0 0 1
+*** Sources
+*** Extra 1
 Correct Answer: E
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 63
+** Question 63
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670221787657
+:END:
+*** Question
 What are the three sets of permissions for a file?
-
-A. user, group, others
-B. administrator, group, others
-C. user, standard user, others
-D. administrator, standard user, others
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+user, group, others
+*** Q_2
+administrator, group, others
+*** Q_3
+user, standard user, others
+*** Q_4
+administrator, standard user, others
+*** Answers
+1 0 0 0 0
+*** Sources
+*** Extra 1
 Correct Answer: A
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-QUESTION 64
+** Question 64 duplicate
+*** Question
 Which command displays the list of groups to which a user belongs?
-
-A. whoami
-B. lsgroup
-C. who
-D. id
-
+*** Title
+*** QType (0=kprim,1=mc,2=sc)
+2
+*** Q_1
+whoami
+*** Q_2
+lsgroup
+*** Q_3
+who
+*** Q_4
+id
+*** Answers
+0 0 0 1 0
+*** Sources
+*** Extra 1
 Correct Answer: D
-Section: (none)
-Explanation
-
-Explanation/Reference:
-Explanation:
-
-
-
-
-         http://www.gratisexam.com/
