@@ -35,6 +35,11 @@ Solid state disks provide faster access to stored data than hard disks.
 *** Extra 1
 Correct Answer: AE
 ** Question 2
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670208995378
+:END:
+*** Question
 Reverse DNS assigns hostnames to IP addresses. How is the name of the IP address 198.51.100.165 stored on a DNS server?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
@@ -414,6 +419,11 @@ packagectl
 *** Extra 1
 Correct Answer: B
 ** Question 17
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670209024351
+:END:
+*** Question
 Why are web browser cookies considered dangerous?
 *** Title
 *** QType (0=kprim,1=mc,2=sc)
@@ -561,6 +571,10 @@ export PATH=/new/dir: $PATH
 *** Extra 1
 Correct Answer: E
 ** Question 23
+:PROPERTIES:
+:ANKI_NOTE_TYPE: AllInOne (kprim, mc, sc)
+:ANKI_NOTE_ID: 1670209037354
+:END:
 *** Question
 A user is currently in the directory /home/user/Downloads/ and runs the command
 ls ../Documents/
