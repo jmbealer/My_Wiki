@@ -68,20 +68,40 @@ ctrl-h
 deletes the last character typed
 ctrl-w
 deletes the last word typed
+deletes word backwards
 ctrl-u
 deletes the last line typed
 ctrl-r
 retrieves previously run commands so you can run them again
 ctrl-u
 removes text from the command line and places it in the clipboard
+deletes everything before the cursor
 ctrl-y
 grabs text from the clipboard and runs it
+undo
 ctrl-l
 clears the screen
 ctrl-a
 moves cursor to the beginning of the line
 ctrl-e
 moves cursor to the end of the line
+
+ctrl-f
+move cursor forward one char
+ctrl-b
+move cursor backwards one char
+alt-f
+move cursor forward one word
+alt-b
+move cursor backwards one word
+
+ctrl-k
+deletes everything after the cursor
+
+alt-d
+deletes word forwards
+
+alt-.
 
 
 

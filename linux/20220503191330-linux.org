@@ -13,6 +13,8 @@
 [[id:324faad9-bae1-4f60-ab3c-288034ed73b1][linux-install]]
 [[id:bd5737f0-dc66-4868-b607-8156becf8a0e][guix]]
 
+[[id:b242dcc5-4af4-462a-85fb-96d3fb1b5805][chezmoi]]
+
 * Linux Certs
 
 elementary
@@ -41,6 +43,8 @@ advanced
 make notes about chezmoi as my dotfile manager
   chezmoi.io
 
+
+need scratchpad for bspwm
 -----
 
 ** linux productivity tools
