@@ -17,6 +17,25 @@ int main(void)
   }
 #+end_src
 
+#+begin_src C
+#include <stdio.h>
+int square(int x) {
+  return x * x;
+}
+
+int main(void) {
+  printf("Hello World");
+  int res = square(10);
+  printf(res);
+  printf("Result is: %d", res);
+  printf(square(5));
+  return 0;
+}
+#+end_src
+
+#+RESULTS:
+
+
 Whats is C?
 C is a general-purpose programming language.
 
