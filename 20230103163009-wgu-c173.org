@@ -1,0 +1,95 @@
+:PROPERTIES:
+:ID:       372ca3cf-4fd4-4476-8a6a-9c687305be1c
+:END:
+#+title: wgu-c173
+
+* 1. Introduction
+
+1.1 Programming (general)
+program A computer program consists of instructions executing one at a time.
+Input Input: A program gets data, perhaps from a file, keyboard, touchscreen, network, etc.
+Process Process: A program performs computations on that data, such as adding two values like x + y.
+Output Output: A program puts that data somewhere, such as to a file, screen, network, etc.
+variables Programs use variables to refer to data, like x.
+computational thinking In the information age, many people believe computational thinking, or creating a sequence of instructions to solve a problem, will become increasingly important for work and everyday life.
+algorithm A sequence of instructions that solves a problem is called an algorithm.
+
+1.2 Programming basics
+flowchart
+A flowchart is a graphical language for creating or viewing computer programs.
+program / statement
+A program is a list of statements, each statement carrying out some action and executing one at a time.
+node
+In a Coral flowchart, each statement is in a graphical node, with different shapes for different types of statements.
+interpreter
+An interpreter runs a program's statements.
+Run / execute
+Run and execute are words for carrying out a program's statements.
+input statement
+In a Coral flowchart, a parallelogram represents an input statement, written as: variable = Get next input.
+output statement
+In a Coral flowchart, a parallelogram represents an output statement, written as: Put item to output.
+string literal
+A string literal consists of text (characters) within double quotes, as in "Go #57!".
+character
+A character includes any letter (a-z, A-Z), digit (0-9), or symbol (~, !, @, etc.).
+cursor
+A cursor indicates where the next output item will be placed in the output.
+newline
+A newline is a special two-character sequence \n whose appearance in an output string literal causes the cursor to move to the next output line.
+
+1.3 Comments and whitespace
+comment
+A comment is text a programmer adds to a program, to be read by humans to better understand the code, but ignored by the program when executing.
+Whitespace
+Whitespace refers to blank spaces (space and tab characters) between items within a statement, and to newlines.
+
+1.4 Brief history
+Moore's Law
+Engineers have reduced switch sizes by half about every 2 years, a trend known as Moore's Law.
+computer chip
+By the 1970's, an entire computer could fit on one coin-sized device known as a computer chip.
+agricultural age
+Civilization's earlier agricultural age lasted many thousands of years.
+industrial age
+The industrial age starting in the late 1700's transformed civilization towards manufacturing goods, leading to mass migration to cities, creation of strong nations, world wars, doubling of lifespans and thus dramatic world population growth (see figure below), and more.
+information age
+The information age just began in the 1990's, with human activity shifting from traditional industry to creating/managing/using computerized information.
+
+1.5 Computers all around us
+embedded computer
+An embedded computer is a computer inside another electrical device, like inside a TV, car, printer, thermostat, satellite, etc.
+
+1.6 Representing information as bits
+bit
+A single 0 or 1 is called a bit.
+byte
+Eight bits, like 11000101, are called a byte.
+character
+A character is a letter (a, b, ..., z, A, B, ..., Z), symbol (!, @, #, ...), or single-digit number (0, 1, ..., 9).
+ASCII
+ASCII is a popular code for characters.
+Unicode
+Unicode is another character encoding standard, published in 1991, whose codes can have more bits than ASCII and thus can represent over 100,000 items, such as symbols and non-English characters.
+decimal numbers
+Because early humans represented values using ten fingers, humans developed base ten numbers, known as decimal numbers ("dec" refers to ten).
+binary numbers
+Computers can only represent two values (0 or 1), so base two numbers, known as binary numbers ("bi" refers to two).
+
+1.7 Problem solving
+problem solving
+Programming is largely about problem solving: Creating a methodical solution to a given task.
+
+1.8 Why programming
+computational thinking
+The thought processes needed to build correct, precise, logical programs is sometimes called computational thinking and has benefits beyond programming.
+
+1.9 Why whitespace matters
+whitespace
+Whitespace is any blank space or newline.
+
+1.10 Code and pseudocode
+Pseudocode
+Pseudocode is text that resembles a program in a real programming language but is simplified to aid human understanding.
+Coral
+Coral: A simple language for learning to program.

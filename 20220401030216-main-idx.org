@@ -23,6 +23,8 @@
 
 "Plan Your Work And Work Your Plan." - Napolean Hill
 
+[[id:372ca3cf-4fd4-4476-8a6a-9c687305be1c][wgu-c173]]
+
 * Readme
 #+begin_src org
 ,#+Title: My Wiki Readme
