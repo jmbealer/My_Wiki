@@ -93,3 +93,121 @@ Pseudocode
 Pseudocode is text that resembles a program in a real programming language but is simplified to aid human understanding.
 Coral
 Coral: A simple language for learning to program.
+
+* 2. Variables / Assignments
+
+2.1 Variables and assignments (general)
+variable
+In a program, a variable is a named item, such as x or numPeople, used to hold a value.
+assignment statement
+An assignment statement assigns a variable with a value, such as x = 5.
+
+2.2 Variables (integer)
+variable declaration
+A variable declaration declares a new variable, specifying the variable's name and type.
+integer
+A variable of type integer can hold whole number values, like 1, 999, 0, or -25 (but not 3.5 or 0.001).
+assignment statement
+An assignment statement assigns the variable on the left-side of the = with the current value of the right-side expression.
+expression
+An expression may be a number like 80, a variable name like numApples, or a simple calculation like numApples + 1.
+
+2.3 Identifiers
+identifier
+A name created by a programmer for an item like a variable or function is called an identifier.
+_ / underscore
+_ is called an underscore.
+case sensitive
+Identifiers are case sensitive, meaning upper and lower case letters differ.
+reserved word / keyword
+A reserved word (or keyword) is a word that is part of the language, like integer, Get, or Put.
+naming conventions
+Identifier naming conventions: A set of style guidelines defined by a company, team, teacher, etc., for naming variables.
+Lower camel case
+Lower camel case abuts multiple words, capitalizing each word except the first, as in numApples or peopleOnBus.
+
+2.4 Arithmetic expressions (general)
+expression
+An expression is a combination of items, like variables, literals, operators, and parentheses, that evaluates to a value. Ex: 2 * (x + 1) is an expression. If x is 3, the expression evaluates to the value 8.
+literal
+A literal is a specific value in code, like 2.
+operator
+An operator is a symbol that performs a built-in calculation, like the operator + which performs addition.
+addition / +
+The addition operator is +, as in x + y.
+subtraction / -
+The subtraction operator is -, as in x - y.
+negation
+The - operator is for negation, as in -x + y, or x + -y.
+multiplication / *
+The multiplication operator is *, as in x * y.
+division / /
+The division operator is /, as in x / y.
+evaluates
+An expression evaluates to a value, which replaces the expression. Ex: If x is 5, then x + 1 evaluates to 6, and y = x + 1 assigns y with 6.
+precedence rules
+An expression is evaluated using the order of standard mathematics, such order known in programming as precedence rules.
+
+2.5 Arithmetic expressions (integer)
+unary minus
+Minus (-) used as negative is known as unary minus.
+
+2.6 Example: Health data
+Incremental development
+Incremental development is the process of writing, compiling, and testing a small amount of code, then writing, compiling, and testing a small amount more (an incremental amount), and so on.
+
+2.7 Floating-point numbers (float)
+floating-point number
+A floating-point number is a real number, like 98.6, 0.0001, or -666.667.
+float
+A variable declared as type float stores a floating-point number.
+floating-point literal
+A floating-point literal is a number with a fractional part, even if that fraction is 0, as in 1.0, 0.0, or 99.573.
+infinity / -infinity
+Dividing a nonzero floating-point number by zero results in infinity or -infinity, depending on the signs of the operands.
+Not a number
+Not a number indicates an unrepresentable or undefined value.
+
+2.8 Using math functions
+function / function call
+A function is a list of statements executed by invoking the function's name, with such invoking known as a function call.
+arguments
+Any function input values, or arguments, appear within ( ), and are separated by commas if more than one.
+
+2.9 Random numbers
+RandomNumber()
+The RandomNumber() function is a built-in Coral function that takes two arguments, lowValue and highValue, and returns a random integer in the range lowValue to highValue.
+seed
+For the first call to RandomNumber(), no previous random integer exists, so the function uses a built-in integer known as the seed.
+SeedRandomNumbers()
+A programmer can specify the seed using the function SeedRandomNumbers(), as in SeedRandomNumbers(10) or SeedRandomNumbers(99).
+
+2.10 Integer division
+divide-by-zero error
+A divide-by-zero error occurs at runtime if a divisor is 0, causing a program to terminate.
+
+2.11 Type conversions
+type conversion
+A type conversion is a conversion of one data type to another, such as an integer to a float.
+implicit conversion
+Coral automatically performs several common conversions between integer and float types, and such automatic conversion is known as implicit conversion.
+type cast
+A type cast converts a value of one type to another type.
+
+2.12 Modulo operator
+modulo operator / %
+The modulo operator (%) evaluates to the remainder of the division of two integer operands. Ex: 23 % 10 is 3.
+
+2.14 Constants
+constant
+A constant is a named value item that holds a value that cannot change.
+
+* 3. Branches
+* 4. Loops
+* 5. Arrays
+* 6. User-Defined Functions
+* 7. Algorithms
+* 8. The Design Process
+* 9. Software Topics
+* 10. Troubleshooting Process
+* 11. Program Debugging
