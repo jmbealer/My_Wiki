@@ -5,7 +5,7 @@
 
 * 1. Introduction
 
-1.1 Programming (general)
+** 1.1 Programming (general)
 program A computer program consists of instructions executing one at a time.
 Input Input: A program gets data, perhaps from a file, keyboard, touchscreen, network, etc.
 Process Process: A program performs computations on that data, such as adding two values like x + y.
@@ -14,7 +14,7 @@ variables Programs use variables to refer to data, like x.
 computational thinking In the information age, many people believe computational thinking, or creating a sequence of instructions to solve a problem, will become increasingly important for work and everyday life.
 algorithm A sequence of instructions that solves a problem is called an algorithm.
 
-1.2 Programming basics
+** 1.2 Programming basics
 flowchart
 A flowchart is a graphical language for creating or viewing computer programs.
 program / statement
@@ -38,13 +38,13 @@ A cursor indicates where the next output item will be placed in the output.
 newline
 A newline is a special two-character sequence \n whose appearance in an output string literal causes the cursor to move to the next output line.
 
-1.3 Comments and whitespace
+** 1.3 Comments and whitespace
 comment
 A comment is text a programmer adds to a program, to be read by humans to better understand the code, but ignored by the program when executing.
 Whitespace
 Whitespace refers to blank spaces (space and tab characters) between items within a statement, and to newlines.
 
-1.4 Brief history
+** 1.4 Brief history
 Moore's Law
 Engineers have reduced switch sizes by half about every 2 years, a trend known as Moore's Law.
 computer chip
@@ -56,11 +56,11 @@ The industrial age starting in the late 1700's transformed civilization towards 
 information age
 The information age just began in the 1990's, with human activity shifting from traditional industry to creating/managing/using computerized information.
 
-1.5 Computers all around us
+** 1.5 Computers all around us
 embedded computer
 An embedded computer is a computer inside another electrical device, like inside a TV, car, printer, thermostat, satellite, etc.
 
-1.6 Representing information as bits
+** 1.6 Representing information as bits
 bit
 A single 0 or 1 is called a bit.
 byte
@@ -76,19 +76,19 @@ Because early humans represented values using ten fingers, humans developed base
 binary numbers
 Computers can only represent two values (0 or 1), so base two numbers, known as binary numbers ("bi" refers to two).
 
-1.7 Problem solving
+** 1.7 Problem solving
 problem solving
 Programming is largely about problem solving: Creating a methodical solution to a given task.
 
-1.8 Why programming
+** 1.8 Why programming
 computational thinking
 The thought processes needed to build correct, precise, logical programs is sometimes called computational thinking and has benefits beyond programming.
 
-1.9 Why whitespace matters
+** 1.9 Why whitespace matters
 whitespace
 Whitespace is any blank space or newline.
 
-1.10 Code and pseudocode
+** 1.10 Code and pseudocode
 Pseudocode
 Pseudocode is text that resembles a program in a real programming language but is simplified to aid human understanding.
 Coral
@@ -96,13 +96,13 @@ Coral: A simple language for learning to program.
 
 * 2. Variables / Assignments
 
-2.1 Variables and assignments (general)
+** 2.1 Variables and assignments (general)
 variable
 In a program, a variable is a named item, such as x or numPeople, used to hold a value.
 assignment statement
 An assignment statement assigns a variable with a value, such as x = 5.
 
-2.2 Variables (integer)
+** 2.2 Variables (integer)
 variable declaration
 A variable declaration declares a new variable, specifying the variable's name and type.
 integer
@@ -112,7 +112,7 @@ An assignment statement assigns the variable on the left-side of the = with the 
 expression
 An expression may be a number like 80, a variable name like numApples, or a simple calculation like numApples + 1.
 
-2.3 Identifiers
+** 2.3 Identifiers
 identifier
 A name created by a programmer for an item like a variable or function is called an identifier.
 _ / underscore
@@ -126,7 +126,7 @@ Identifier naming conventions: A set of style guidelines defined by a company, t
 Lower camel case
 Lower camel case abuts multiple words, capitalizing each word except the first, as in numApples or peopleOnBus.
 
-2.4 Arithmetic expressions (general)
+** 2.4 Arithmetic expressions (general)
 expression
 An expression is a combination of items, like variables, literals, operators, and parentheses, that evaluates to a value. Ex: 2 * (x + 1) is an expression. If x is 3, the expression evaluates to the value 8.
 literal
@@ -148,15 +148,15 @@ An expression evaluates to a value, which replaces the expression. Ex: If x is 5
 precedence rules
 An expression is evaluated using the order of standard mathematics, such order known in programming as precedence rules.
 
-2.5 Arithmetic expressions (integer)
+** 2.5 Arithmetic expressions (integer)
 unary minus
 Minus (-) used as negative is known as unary minus.
 
-2.6 Example: Health data
+** 2.6 Example: Health data
 Incremental development
 Incremental development is the process of writing, compiling, and testing a small amount of code, then writing, compiling, and testing a small amount more (an incremental amount), and so on.
 
-2.7 Floating-point numbers (float)
+** 2.7 Floating-point numbers (float)
 floating-point number
 A floating-point number is a real number, like 98.6, 0.0001, or -666.667.
 float
@@ -168,13 +168,13 @@ Dividing a nonzero floating-point number by zero results in infinity or -infinit
 Not a number
 Not a number indicates an unrepresentable or undefined value.
 
-2.8 Using math functions
+** 2.8 Using math functions
 function / function call
 A function is a list of statements executed by invoking the function's name, with such invoking known as a function call.
 arguments
 Any function input values, or arguments, appear within ( ), and are separated by commas if more than one.
 
-2.9 Random numbers
+** 2.9 Random numbers
 RandomNumber()
 The RandomNumber() function is a built-in Coral function that takes two arguments, lowValue and highValue, and returns a random integer in the range lowValue to highValue.
 seed
@@ -182,11 +182,11 @@ For the first call to RandomNumber(), no previous random integer exists, so the 
 SeedRandomNumbers()
 A programmer can specify the seed using the function SeedRandomNumbers(), as in SeedRandomNumbers(10) or SeedRandomNumbers(99).
 
-2.10 Integer division
+** 2.10 Integer division
 divide-by-zero error
 A divide-by-zero error occurs at runtime if a divisor is 0, causing a program to terminate.
 
-2.11 Type conversions
+** 2.11 Type conversions
 type conversion
 A type conversion is a conversion of one data type to another, such as an integer to a float.
 implicit conversion
@@ -194,18 +194,200 @@ Coral automatically performs several common conversions between integer and floa
 type cast
 A type cast converts a value of one type to another type.
 
-2.12 Modulo operator
+** 2.12 Modulo operator
 modulo operator / %
 The modulo operator (%) evaluates to the remainder of the division of two integer operands. Ex: 23 % 10 is 3.
 
-2.14 Constants
+** 2.14 Constants
 constant
 A constant is a named value item that holds a value that cannot change.
 
 * 3. Branches
+
+** 3.1 Branches
+branch
+In a program, a branch is a sequence of statements only executed under a certain condition.
+decision
+In Coral flowcharts, a decision creates two branches: If the decision's expression is true, the first branch executes, else the second branch executes. Afterwards, the branches rejoin.
+if-else
+A decision and its two branches are often called if-else branches, because IF the decision's expression is true then the first branch executes, ELSE the second branch executes.
+if
+A decision whose false branch has no statements is often just called an if branch.
+if-elseif branches
+Commonly, a series of decisions appear cascaded in each decision's false branch, known as if-elseif branches.
+equality operator
+The equality operator == evaluates to true if the left and right sides are equal.
+
+** 3.2 More branches
+nested branches
+A branch's statements can include any valid statements, including another if-else branch, known as nested branches.
+multiple if branches
+In multiple if branches, each decision is independent, and thus more than one branch can execute.
+
+** 3.3 Equality and relational operators
+equality operator
+An equality operator checks whether two operands' values are the same (==) or different (!=).
+Boolean
+A Boolean is a type that has just two values: true or false.
+==
+A == b means a is equal to b.
+!=
+A != b means a is not equal to b.
+relational operator
+A relational operator checks how one operand's value relates to another, like being greater than.
+<
+A < b means a is less-than b.
+>
+A > b means a is greater-than b.
+<=
+A <= b means a is less-than-or-equal to b.
+>=
+A >= b means a is greater-than-or-equal to b.
+
+** 3.5 Logical operators
+logical operator
+A logical operator treats operands as being true or false, and evaluates to true or false. Logical operators include and, or, not.
+Logical and
+Logical and: true when both operands are true .
+Logical or
+Logical or: true when at least one of the two operands is true .
+Logical not
+Logical not: true when the one operand is false, and vice-versa.
+
+** 3.6 Order of evaluation
+precedence rules
+The order in which operators are evaluated in an expression are known as precedence rules.
+
+** 3.8 Floating-point comparison
+epsilon
+The difference threshold indicating that floating-point numbers are equal is often called the epsilon.
+
+** 3.9 Code: Branches
+if-else statement
+If-else statement: An if decision expression with the true branch's sub-statements, followed by an else part with any false branch sub-statements.
+if statement
+An if statement is an if decision expression followed by sub-statements, with no else part.
+if-elseif statement
+An if-elseif statement starts with an if decision expression, followed by elseif decision expressions, and ending with else; when a program reaches the statement, exactly one of those branches will execute.
+
+** 3.10 Code: More branches
+nested if-else statements
+A branch's statements can include any valid statements, including another if-else statement, known as nested if-else statements (or nested branches).
+
 * 4. Loops
+
+** 4.1 Loops (general)
+loop / loop body
+A loop is a program construct that repeatedly executes the loop's statements (known as the loop body) while the loop's expression is true; when false, execution proceeds past the loop.
+iteration
+Each time through a loop's statements is called an iteration.
+
+** 4.2 Loop basics
+loop / loop body
+A loop is a program construct that repeatedly executes a list of sub-statements (known as the loop body) while the loop's decision expression evaluates to true.
+iteration
+Each execution of the loop body is called an iteration.
+infinite loop
+An infinite loop is a loop that never stops iterating.
+
+** 4.3 More loop examples
+sentinel value
+A sentinel value is a special value indicating the end of a list, such as a list of positive integers ending with 0, as in 10 1 6 3 0.
+
+** 4.6 While and for loops
+while loop
+A while loop is a loop that repeatedly executes the loop body while the loop's expression evaluates to true.
+for loop
+A for loop is a loop consisting of a loop variable initialization, a loop expression, and a loop variable update that typically describes iterating for a specific number of times.
+
+** 4.7 Nested loops
+nested loop
+A nested loop is a loop that appears in the body of another loop.
+
+** 4.8 Code: While loops
+while loop
+In code, a loop can be written as a while loop: A while loop repeatedly executes the loop body while the loop's expression evaluates to true.
+
+** 4.9 Do-while loop
+do-while loop
+A do-while loop is a loop construct that first executes the loop body's statements, then checks the loop condition.
+do-while loop
+A do-while loop is a loop that first executes the loop body's statements, then checks the loop condition.
+
+** 4.10 Code: For loops
+for loop
+A for loop is a loop with three parts at the top: a loop variable initialization, a loop expression, and a loop variable update.
+
 * 5. Arrays
+
+** 5.1 Array concept (general)
+array
+An array is a special variable having one name, but storing a list of data items, with each item being directly accessible.
+vector
+Some languages use a construct similar to an array called a vector.
+element
+Each item in an array is known as an element.
+index
+In an array, each element's location number is called the index; myArray[2] has index 2.
+
+** 5.2 Arrays
+array
+An array variable is an ordered list of items of a given data type and size.
+element
+Each item in an array is called an element.
+index
+In an array access, the number in brackets is called the index of that element.
+brackets
+[ ] are brackets .
+braces
+{ } are braces .
+parentheses
+( ) are parentheses .
+scalar
+To contrast with array variables, a single-item (non-array) variable is called a scalar variable.
+size
+An array stores a size attribute, indicating the number of array elements.
+
+** 5.5 Swapping two variables (general)
+Swapping
+Swapping two variables x and y means to assign y's value with x, and x's value with y.
+
 * 6. User-Defined Functions
+
+** 6.1 User-defined function basics
+function
+A function is a named list of statements.
+function definition
+A function definition consists of the new function's name and a block of statements.
+function call
+A function call is an invocation of a function's name, causing the function's statements to execute.
+local variable
+A local variable is a variable declared in a function, which is then accessible only within that function.
+parameter
+A parameter is a function input specified in a function definition.
+argument
+An argument is a value provided to a function's parameter during a function call.
+
+** 6.2 Return
+return variable / return value
+A function may return one value by assigning a return variable with the return value.
+
+** 6.3 Reasons for defining functions
+Modular development
+Modular development is the process of dividing a program into separate modules that can be developed and tested separately and then integrated into a single program.
+Incremental development
+Incremental development is a process in which a programmer writes and tests a few statements, then writes and tests a small amount more (an incremental amount), and so on.
+function stub
+A function stub is a function definition whose statements have not yet been written.
+
+** 6.5 Code: Functions
+function definition
+A function definition begins with the word Function, the function's name, and a list of comma-separated parameters (if any) in parentheses, and a return indication.
+function call
+A function call consists of the function name and parentheses, within which comma-separated arguments (if any) appear.
+return statement
+In many programming languages, the return value is explicitly returned by a return statement, which returns the specified value and immediately exits the function.
+
 * 7. Algorithms
 * 8. The Design Process
 * 9. Software Topics
