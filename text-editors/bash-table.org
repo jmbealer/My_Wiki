@@ -1,0 +1,65 @@
+#+title: Bash-Table
+
+* Bash Shortcuts
+:PROPERTIES:
+:TABLE_EXPORT_FILE: bash-table-wip.csv
+:TABLE_EXPORT_FORMAT: orgtbl-to-csv
+:END:
+
+| c-a | move to beginning of line                                                      |   | bash motions |
+| c-e | moves to end of line                                                           |   | bash motions |
+| c-f | moves forward one character                                                    |   | bash motions |
+| c-b | moves backward one character                                                   |   | bash motions |
+| a-f | moves forward one word                                                         |   | bash motions |
+| a-b | moves backward one word                                                        |   | bash motions |
+| c-h | deletes one character under cursor (same as DELETE)                            |   | bash delete  |
+| c-d | deletes one character backward or logs out of current session, similar to exit |   | bash delete  |
+| c-u | kills backward from point to the beginning of line                             |   | bash delete  |
+| c-k | deletes (kill) forward to end of line                                          |   | bash delete  |
+| c-w | kills the word behind the cursor                                               |   | bash delete  |
+| a-d | deletes next word                                                              |   | bash delete  |
+| a-h | deletes one character backward                                                 |   | bash delete  |
+
+
+c-C | halts the current command
+c-G | aborts the current editing command and ring the terminal bell
+c-J | same as RETURN
+c-L | clears screen and redisplay the line
+c-M | same as RETURN
+c-N | next line in command history
+c-O | same as RETURN, then displays next line in history file
+c-P | previous line in command history
+c-Q | resumes suspended shell output
+c-R | searches backward
+c-S | searches forward or suspends shell output
+c-T | transposes two characters
+c-V | makes the next character typed verbatim
+c-X | lists the possible filename completions of the current word
+c-Y | retrieves (yank) last item killed
+c-Z | stops the current command, resume with fg in the foreground or bg in the background
+
+a-T | transposes two words
+a-. | pastes last word from the last command. Pressing it repeatedly traverses through command history.
+a-U | capitalizes every character from the current cursor position to the end of the word
+a-L | uncapitalizes every character from the current cursor position to the end of the word
+a-C | capitalizes the letter under the cursor. The cursor then moves to the end of the word.
+a-R | reverts any changes to a command you’ve pulled from your history if you’ve edited it.
+a-? | list possible completions to what is typed
+a-^ | expand line to most recent match from history
+
+c-X then ( | start recording a keyboard macro
+c-X then ) | finish recording keyboard macro
+c-X then E | recall last recorded keyboard macro
+c-X then c-E | invoke text editor (specified by $EDITOR) on current command line then execute resultes as shell commands
+c-A then D | logout from screen but don't kill it, if any command exist, it will continue
+
+BACKSPACE | deletes one character backward
+DELETE | deletes one character under cursor
+
+history | shows command line history
+!! | repeats the last command
+!<n> | refers to command line 'n'
+!<string> | refers to command starting with 'string'
+esc :wq | exits and saves script
+
+exit | logs out of current session
