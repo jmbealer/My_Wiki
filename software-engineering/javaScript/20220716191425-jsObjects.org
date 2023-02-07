@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       75a7ea1f-4030-407b-920a-4b8b11369b93
+:mtime:    20230206181433 20220717214659
+:ctime:    20220716191425
 :END:
 #+title: jsObjects
 #+date: [2022-07-16 Sat 19:14]

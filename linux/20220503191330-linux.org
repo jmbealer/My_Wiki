@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       7c74d046-30f1-4eac-b49f-5ea691ef5b76
+:mtime:    20230206181438 20221222165420
+:ctime:    20220503191330
 :END:
 #+title: Linux
 #+date: [2022-05-03 Tue 19:13]

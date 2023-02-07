@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       df04f836-c763-44d3-9f2a-5572ecb598c4
+:mtime:    20230206181557 20221107210428
+:ctime:    20221107184100
 :END:
 #+title: JavaScript LinkedIn Skill Assessements
 

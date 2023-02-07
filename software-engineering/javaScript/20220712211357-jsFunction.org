@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       bd8b25b9-7a35-4fe9-a0a9-854ff153e692
+:mtime:    20230206181529 20220716193223
+:ctime:    20220712211357
 :END:
 #+title: jsFunctions
 #+date: [2022-07-12 Tue 21:13]

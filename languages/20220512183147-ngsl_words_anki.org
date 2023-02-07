@@ -1,6 +1,8 @@
 :PROPERTIES:
 :ID:       6492455b-e1d1-486d-be86-6cee455cc816
 :ANKI_DECK: 00-english-words
+:mtime:    20230206181415 20220528222421
+:ctime:    20220512183147
 :END:
 #+title: ngsl-words-anki
 #+date: [2022-05-12 Thu 18:31]

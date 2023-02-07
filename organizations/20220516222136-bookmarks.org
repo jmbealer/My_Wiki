@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       bf0a254b-0ae7-4366-9f63-9433db6ce761
+:mtime:    20230206181532 20220528222421
+:ctime:    20220516222136
 :END:
 #+title: bookmarks
 #+date: [2022-05-16 Mon 22:21]

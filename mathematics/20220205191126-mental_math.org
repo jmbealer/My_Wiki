@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       8c3f7496-e06a-451f-a6b3-6111eb884ffd
+:mtime:    20230206181449 20220528222421
+:ctime:    20220205191126
 :END:
 #+title: mental-math
 

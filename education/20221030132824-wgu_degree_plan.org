@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       0389645f-4067-4194-8de2-15c18c508ed8
+:mtime:    20230206181309 20221030171305
+:ctime:    20221030132824
 :END:
 #+title: wgu-degree-plan
 

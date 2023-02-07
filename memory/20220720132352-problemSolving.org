@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       0b027db0-6cea-4c7a-81fa-05115bd10590
+:mtime:    20230206181313 20220720132419
+:ctime:    20220720132352
 :END:
 #+title: problemSolving
 #+date: [2022-07-20 Wed 13:23]

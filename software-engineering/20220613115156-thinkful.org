@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       c4ffc59c-65b7-4f0e-b749-bcd46ef75fb0
+:mtime:    20230206181541 20221015184505
+:ctime:    20220613115156
 :END:
 #+title: thinkful
 #+date: [2022-06-13 Mon 11:51]

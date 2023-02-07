@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       60fa282f-f313-48c6-9bab-c2a3607d6074
+:mtime:    20230206181408 20220528222421
+:ctime:    20220321195232
 :END:
 #+title: word-list
 

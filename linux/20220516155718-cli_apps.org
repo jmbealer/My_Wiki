@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       18810b42-f2d3-4e7a-86b1-a61c42a4e735
+:mtime:    20230206181325 20220528222421
+:ctime:    20220516155718
 :END:
 #+title: cli-apps
 #+date: [2022-05-16 Mon 15:57]

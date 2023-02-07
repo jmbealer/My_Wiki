@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       11525424-8401-4ff2-9bf5-d336f66b5a21
+:mtime:    20230206181319 20220607153744
+:ctime:    20220607141414
 :END:
 #+title: Modern States College Mathematics
 #+date: [2022-06-07 Tue 14:14]

@@ -2,6 +2,8 @@
 :ID:       1eac6cff-c4c4-4473-a181-984ebefa877c
 :date: [2022-04-06 Wed 16:33]
 :header-args: go :results silent :package main :imports "fmt" :no-expand
+:mtime:    20230206181333 20220602205653
+:ctime:    20220406163335
 :END:
 #+title: Go Language
 

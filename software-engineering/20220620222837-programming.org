@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       b96af39a-3d47-4c7c-9da5-b3c4cbc673ad
+:mtime:    20230206181520 20221106200917
+:ctime:    20220620222837
 :END:
 #+title: programming
 #+date: [2022-06-20 Mon 22:28]

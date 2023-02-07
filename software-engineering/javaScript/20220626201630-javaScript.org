@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       63bc8d8d-4fc8-4b34-8881-43ace1415a53
+:mtime:    20230206181413 20220930124217
+:ctime:    20220626201630
 :END:
 #+title: JavaScript
 #+date: [2022-06-26 Sun 20:16]

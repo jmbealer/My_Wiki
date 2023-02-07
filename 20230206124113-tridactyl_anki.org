@@ -1,0 +1,106 @@
+:PROPERTIES:
+:ID:       8a8f569e-87d1-433e-beb2-75c3d16050b5
+:mtime:    20230206181445 20230206152258
+:ctime:    20230206124113
+:END:
+#+title: tridactyl-anki
+
+* Added
+:PROPERTIES:
+:TABLE_EXPORT_FILE: tridactyl-anki.csv
+:TABLE_EXPORT_FORMAT: orgtbl-to-csv
+:END:
+
+| f                  | enter Hint Mode                                                    |   | tridactyl |
+| F                  | enter Hint Mode; open in a background tab                          |   | tridactyl |
+| c-a-esc            | enter Ignore Mode                                                  |   | tridactyl |
+| S                  | go back in the history                                             | H | tridactyl |
+| B                  | go forward in the history                                          | L | tridactyl |
+| c-,                | Escape Hatch                                                       |   | tridactyl |
+| /                  | open the find search box.                                          |   | tridactyl |
+| c-g                | go to the next search result.                                      |   | tridactyl |
+| c-G                | go to the previous search result.                                  |   | tridactyl |
+| h                  | search for a domain name or URL.                                   | s | tridactyl |
+| H                  | search current open tabs.                                          | S | tridactyl |
+| gi                 | go to last-used input on the page                                  |   | tridactyl |
+| gr                 | open Firefox reader mode                                           |   | tridactyl |
+| :bind              | Bind your own commands                                             |   | tridactyl |
+| yy                 | copy the current page URL to your clipboard.                       |   | tridactyl |
+| [[                 | navigate forward though paginated pages.                           |   | tridactyl |
+| ]]                 | navigate backward though paginated pages.                          |   | tridactyl |
+| ZZ                 | close all tabs and windows.                                        |   | tridactyl |
+| c-v                | send a single keystroke to the current website, bypassing bindings |   | tridactyl |
+| c-o                | run a single normal mode binding when in ignore mode               |   | tridactyl |
+| :help hint         | see all the other useful hint modes                                |   | tridactyl |
+| :help <keybinding> | to learn more about what a specific key binding does               |   | tridactyl |
+| :colors            | change Tridactyl's theme                                           |   | tridactyl |
+| .                  | repeat the last command                                            |   | tridactyl |
+| :                  | activate the command line                                          |   | tridactyl |
+|--------------------+--------------------------------------------------------------------+---+-----------|
+| t                  | scroll down                                                        | j | tridactyl |
+| n                  | scroll up                                                          | k | tridactyl |
+| ^                  | scroll to left margin                                              |   | tridactyl |
+| $                  | scroll to right margin                                             |   | tridactyl |
+| gg                 | scroll to start of page                                            |   | tridactyl |
+| G                  | scroll to end of page                                              |   | tridactyl |
+| gF                 | repeatedly open links until you press Escape.                      |   | tridactyl |
+| r                  | reload page                                                        |   | tridactyl |
+| R                  | hard reload page                                                   |   | tridactyl |
+| ]c                 | increment the current URL by 1                                     |   | tridactyl |
+| [c                 | decrement the current URL by 1                                     |   | tridactyl |
+| gu                 | go to the parent of the current URL                                |   | tridactyl |
+| gU                 | go to the root domain of the current URL                           |   | tridactyl |
+| zi                 | zoom in                                                            |   | tridactyl |
+| zo                 | zoom out                                                           |   | tridactyl |
+| zz                 | reset zoom                                                         |   | tridactyl |
+| c-b                | jump to the previous part of the page.                             |   | tridactyl |
+|--------------------+--------------------------------------------------------------------+---+-----------|
+| A                  | bookmark the current page                                          |   | tridactyl |
+| a                  | bookmark the current page and allow the URL to be modified         |   | tridactyl |
+| M<key>             | bind a quickmark to the given key                                  |   | tridactyl |
+| go<key>            | open a given quickmark in current tab                              |   | tridactyl |
+| gn<key>            | open a given quickmark in new tab                                  |   | tridactyl |
+| gw<key>            | open a given quickmark in new window                               |   | tridactyl |
+|--------------------+--------------------------------------------------------------------+---+-----------|
+| o                  | open a URL in this tab                                             |   | tridactyl |
+| O                  | open a pre-load current URL in this tab                            |   | tridactyl |
+| j                  | open a URL in a new tab                                            | t | tridactyl |
+| J                  | open a pre-load current URL in a new tab                           | T | tridactyl |
+| w                  | open a URL in a new window                                         |   | tridactyl |
+| W                  | open a pre-load current URL in a new window                        |   | tridactyl |
+| p                  | open the clipboard contents in the current tab                     |   | tridactyl |
+| p                  | open the clipboard contents in the new tab                         |   | tridactyl |
+|--------------------+--------------------------------------------------------------------+---+-----------|
+| d                  | close the current tab.                                             |   | tridactyl |
+| u                  | undo the last tab/window closure                                   |   | tridactyl |
+| gt                 | go to the next tab 2                                               |   | tridactyl |
+| T                  | go to the next tab                                                 |   | tridactyl |
+| gT                 | go to the previous tab 2                                           |   | tridactyl |
+| N                  | go to the previous tab                                             |   | tridactyl |
+| g^                 | go to the first tab 2                                              |   | tridactyl |
+| g0                 | go to the first tab                                                |   | tridactyl |
+| g$                 | go to the last tab                                                 |   | tridactyl |
+| ga                 | go to the tab currently playing audio                              |   | tridactyl |
+| c-^                | go to the last active tab                                          |   | tridactyl |
+| l                  | show a list of open tabs in the current window                     | b | tridactyl |
+| T                  | Next tab                                                           | K | tridactyl |
+| N                  | Previous tab                                                       | J | tridactyl |
+|--------------------+--------------------------------------------------------------------+---+-----------|
+| ;i                 | open an image in current tab                                       |   | tridactyl |
+| ;I                 | open an image in new tab                                           |   | tridactyl |
+| ;s                 | save the linked resource                                           |   | tridactyl |
+| ;a                 | save-as the linked resource                                        |   | tridactyl |
+| ;S                 | save the selected image                                            |   | tridactyl |
+| ;A                 | save-as the selected image                                         |   | tridactyl |
+| ;p                 | copy an element's text to the clipboard                            |   | tridactyl |
+| ;P                 | copy an element's text/alt text to the clipboard                   |   | tridactyl |
+| ;y                 | copy an element's link URL to the clipboard                        |   | tridactyl |
+| ;#                 | copy an element's anchor URL to the clipboard                      |   | tridactyl |
+| ;r                 | read the element's text with text-to-speech                        |   | tridactyl |
+| ;k                 | delete an element from the page                                    |   | tridactyl |
+| ;;                 | focus an element                                                   |   | tridactyl |
+
+* Not Added
+h/l scroll left/right
+c-f jump to the next part of the page
+gh/gH go to the pages you have set with set home [url1] [url2]

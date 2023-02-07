@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       b3646737-953b-47da-8a3a-be049dce1c99
+:mtime:    20230206181518 20220528222421
+:ctime:    20220404145758
 :END:
 #+title: orgMode
 #+date: [2022-04-04 Mon 14:57]

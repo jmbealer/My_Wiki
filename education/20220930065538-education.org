@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       6c5c4054-b96f-41b9-b6b7-d016752cfe29
+:mtime:    20230206181423 20221030132845
+:ctime:    20220930065538
 :END:
 #+title: Education
 #+date: [2022-09-30 Fri 06:55]

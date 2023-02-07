@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       324faad9-bae1-4f60-ab3c-288034ed73b1
+:mtime:    20230206181343 20220528222421
+:ctime:    20220525114205
 :END:
 #+title: linux-install
 #+date: [2022-05-25 Wed 11:42]

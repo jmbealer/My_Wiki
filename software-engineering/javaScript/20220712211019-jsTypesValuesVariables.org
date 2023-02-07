@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       f3061f7f-5181-4011-b516-3100217a9a59
+:mtime:    20230206181603 20220716191835
+:ctime:    20220712211019
 :END:
 #+title: jsTypesValuesVariables
 #+date: [2022-07-12 Tue 21:10]

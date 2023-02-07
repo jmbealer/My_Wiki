@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       ef3640e7-5eb4-4301-af10-2948e073cc9f
+:mtime:    20230206181601 20220930093224
+:ctime:    20220930093010
 :END:
 #+title: Programming-Idioms
 #+date: [2022-09-30 Fri 09:30]

@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       d4e35bd9-9139-4279-8953-fcf40329f240
+:mtime:    20230206181549 20220930105152
+:ctime:    20220930093121
 :END:
 #+title: jsIdioms
 #+date: [2022-09-30 Fri 09:31]

@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       d3300714-3697-443a-9405-39cf6f8c1879
+:mtime:    20230206181545 20220930092503
+:ctime:    20220321184854
 :END:
 #+title: ngsl-words
 

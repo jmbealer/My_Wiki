@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       bf0b716d-2624-4e94-acc3-f8e4453d0a0b
+:mtime:    20230206181534 20220528222421
+:ctime:    20220204124436
 :END:
 #+title: degree-plan
 

@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       6a288090-3352-4b6a-89c8-b6b81b3b8766
+:mtime:    20230206181420 20220628105537
+:ctime:    20220516155648
 :END:
 #+title: cli-commands
 #+date: [2022-05-16 Mon 15:56]

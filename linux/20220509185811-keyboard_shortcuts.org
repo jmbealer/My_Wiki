@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       380c2018-8c41-49bc-8f98-f17db74a9b8d
+:mtime:    20230206181348 20221222164507
+:ctime:    20220509185811
 :END:
 #+title: keyboard shortcuts
 #+date: [2022-05-09 Mon 18:58]

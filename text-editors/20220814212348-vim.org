@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       31f5df5e-341a-4a82-851b-bf3166d97066
+:mtime:    20230206181340 20220816154011
+:ctime:    20220814212348
 :END:
 #+title: Vim
 #+date: [2022-08-14 Sun 21:23]

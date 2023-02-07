@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       4e5f29f4-238d-4dff-891e-1bd7762345e5
+:mtime:    20230206181355 20220930123324
+:ctime:    20220930093215
 :END:
 #+title: cIdioms
 #+date: [2022-09-30 Fri 09:32]

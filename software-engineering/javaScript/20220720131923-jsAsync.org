@@ -1,5 +1,7 @@
 :PROPERTIES:
 :ID:       5e1d0783-31f5-4a58-80a9-c1580e9adbf1
+:mtime:    20230206181405 20220722110412
+:ctime:    20220720131923
 :END:
 #+title: jsAsync
 #+date: [2022-07-20 Wed 13:19]
