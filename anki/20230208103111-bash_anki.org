@@ -1,0 +1,31 @@
+:PROPERTIES:
+:ID:       bf75c0b4-9e27-4103-b113-dd55f439d727
+:mtime:    20230208103116
+:ctime:    20230208103111
+:END:
+#+title: bash-anki
+
+* Added
+:PROPERTIES:
+:TABLE_EXPORT_FILE: bash-anki.csv
+:TABLE_EXPORT_FORMAT: orgtbl-to-csv
+:END:
+
+| c-a | move to the beginning of line. |   | bash | bash left-right motions |
+| c-e | move to the end of line.       |   | bash | bash left-right motions |
+| c-f | move forward a character.      |   | bash | bash left-right motions |
+| c-b | move backward a character.     |   | bash | bash left-right motions |
+| m-f | move forward a word.           |   | bash | bash left-right motions |
+| m-b | move backward a word.          |   | bash | bash left-right motions |
+|-----+--------------------------------+---+------+-------------------------|
+| c-l | clear the screen               |   | bash | bash                    |
+|-----+--------------------------------+---+------+-------------------------|
+| c-d | delete character               |   | bash | bash edit-text          |
+| c-q | quoted insert                  |   | bash | bash edit-text          |
+| c-t | transpose characters           |   | bash | bash edit-text          |
+| m-t | transpose words                |   | bash | bash edit-text          |
+| m-u | uppercase word                 |   | bash | bash edit-text          |
+| m-l | lowercase word                 |   | bash | bash edit-text          |
+| m-c | capitalize word                |   | bash | bash edit-text          |
+
+* Not Added
