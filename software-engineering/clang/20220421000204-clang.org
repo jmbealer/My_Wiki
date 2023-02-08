@@ -1,6 +1,6 @@
 :PROPERTIES:
 :ID:       5c4573b4-c79d-4bcd-9fb8-7f22e64f1675
-:mtime:    20230206181403 20230129105124
+:mtime:    20230207102206 20230206181403 20230129105124
 :ctime:    20220421000204
 :END:
 #+title: C Programming Language
@@ -64,14 +64,22 @@ int main(void) {
 #+RESULTS:
 
 
-Whats is C?
+What is C?
 C is a general-purpose programming language.
 
 When was C created ?
-developed in 1972
+C started its developed in 1972 at Bell L
 
 What was built in C?
 C has been used to develop operating systems, databases, applications, etc
+
+Who created C?
+Dennis Ritchie
+
+Difference between C and C++
+C++ was developed as an extension of C, and both languages have almost the same syntax
+The main difference between C and C++ is that C++ support classes and objects,
+while C does not
 
 * unsorted
 
