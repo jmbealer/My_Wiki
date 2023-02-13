@@ -1,19 +1,20 @@
 s,move cursor left,h,vim,vim left-right motions
 b,move cursor right,l,vim,vim left-right motions
-0,go to the first character in the line,,vim,vim left-right motions
-^,go to the first non-blank character in the line,,vim,vim left-right motions
-$,go to the last character in the line,,vim,vim left-right motions
+0,move to the first character in the line,,vim,vim left-right motions
+^,move to the first non-blank character in the line,,vim,vim left-right motions
+$,move to the last character in the line (N-1 lines lower),,vim,vim left-right motions
 g_,go to the last non-blank character in the line,,vim,vim left-right motions
 g0,go to first character in screen line,,vim,vim left-right motions
 g^,go to first non-blank character in screen line,,vim,vim left-right motions
 g$,go to last character in screen line,,vim,vim left-right motions
 gm,go to middle or the screen line,,vim,vim left-right motions
-fx,go to Nth occurrence of x to the right,,vim,vim left-right motions
-Fx,go to Nth occurrence of x to the left,,vim,vim left-right motions
-jx,till before the Nth occurrence of x to the right,tx,vim,vim left-right motions
-Jx,till before the Nth occurrence of x to the left,Tx,vim,vim left-right motions
+fx,jump to Nth occurrence of x to the right,,vim,vim left-right motions
+Fx,jump to Nth occurrence of x to the left,,vim,vim left-right motions
+jx,jump till before the Nth occurrence of x to the right,tx,vim,vim left-right motions
+Jx,jump till before the Nth occurrence of x to the left,Tx,vim,vim left-right motions
 ;,"repeat the last ""f"", ""F"", ""j"", or ""J"" N times",,vim,vim left-right motions
 ",","repeat the last ""f"", ""F"", ""j"", or ""J"" N times in opposite direction",,vim,vim left-right motions
+\vert,move to column N (default: 1),,vim,vim left-right motions
 n,move up N lines,k,vim,vim up-down motions
 t,move down N lines,j,vim,vim up-down motions
 -,"move up N lines, on the first non-blank character",,vim,vim up-down motions
@@ -21,15 +22,15 @@ t,move down N lines,j,vim,vim up-down motions
 _,"move down N-1 lines, on the first non-blank character",,vim,vim up-down motions
 G,"go to line N: default: last line, on the first non-blank character",,vim,vim up-down motions
 gg,"go to line N; default: first line, on the first non-blank character",,vim,vim up-down motions
-N%,go to line N percentage down in the file. N must be given,,vim,vim up-down motions
-gk,move up N screen lines,,vim,vim up-down motions
-gj,move down N screen lines,,vim,vim up-down motions
+N%,move to line N percentage down in the file. N must be given,,vim,vim up-down motions
+gk,go up N screen lines,,vim,vim up-down motions
+gj,go down N screen lines,,vim,vim up-down motions
 w,move N words forward,,vim,vim text-object motions
 W,move N WORDS forward,,vim,vim text-object motions
 e,move forward to the end of the Nth word,,vim,vim text-object motions
 E,move forward to the end of the Nth WORD,,vim,vim text-object motions
-ge,move backward to the end of the Nth word,,vim,vim text-object motions
-gE,move backward to the end of the Nth WORD,,vim,vim text-object motions
+ge,go backward to the end of the Nth word,,vim,vim text-object motions
+gE,go backward to the end of the Nth WORD,,vim,vim text-object motions
 ),move N sentences forward,,vim,vim text-object motions
 (,move N sentences backward,,vim,vim text-object motions
 },move N paragraphs forward,,vim,vim text-object motions
@@ -50,6 +51,28 @@ gE,move backward to the end of the Nth WORD,,vim,vim text-object motions
 ]#,"move times forward to unclosed ""#else"" or ""#endif""",,vim,vim text-object motions
 [*,"move times back to start of comment ""/*""",,vim,vim text-object motions
 ]*,"move times forward to end of comment ""*/""",,vim,vim text-object motions
+aw,"select ""a word""",,vim,vim text-objects
+iw,"select ""inner word""",,vim,vim text-objects
+aW,"select ""a WORD""",,vim,vim text-objects
+iW,"select ""inner WORD""",,vim,vim text-objects
+as,"select ""a sentence""",,vim,vim text-objects
+is,"select ""inner sentence""",,vim,vim text-objects
+ap,"select ""a paragraph""",,vim,vim text-objects
+ip,"select ""inner paragraph""",,vim,vim text-objects
+ab,"select ""a block"" (from ""[("" to "")]"")",,vim,vim text-objects
+ib,"select ""inner block"" (from ""[("" to "")]"")",,vim,vim text-objects
+aB,"select ""a BLOCK"" (from ""[("" to "")]"")",,vim,vim text-objects
+iB,"select ""inner BLOCK"" (from ""[("" to "")]"")",,vim,vim text-objects
+a>,"select ""a <> block""",,vim,vim text-objects
+i>,"select ""inner <> block""",,vim,vim text-objects
+at,"select ""a tag block"" (from <aaa> to </aaa>)",,vim,vim text-objects
+it,"select ""inner tag block"" (from <aaa> to </aaa>)",,vim,vim text-objects
+a',"select ""a single quoted string""",,vim,vim text-objects
+i',"select ""inner single quoted string""",,vim,vim text-objects
+"a""","select ""a double quoted string""",,vim,vim text-objects
+"i""","select ""inner double quoted string""",,vim,vim text-objects
+a`,"select ""a backward quoted string""",,vim,vim text-objects
+i`,"select ""inner backward quoted string""",,vim,vim text-objects
 :help keyword,open help for keyword,,vim,vim global
 :o file,open file,,vim,vim global
 :saveas file,save file as,,vim,vim global

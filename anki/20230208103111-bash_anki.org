@@ -1,6 +1,6 @@
 :PROPERTIES:
 :ID:       bf75c0b4-9e27-4103-b113-dd55f439d727
-:mtime:    20230208103116
+:mtime:    20230208153034 20230208142820 20230208113557 20230208103116
 :ctime:    20230208103111
 :END:
 #+title: bash-anki
@@ -10,22 +10,82 @@
 :TABLE_EXPORT_FILE: bash-anki.csv
 :TABLE_EXPORT_FORMAT: orgtbl-to-csv
 :END:
-
-| c-a | move to the beginning of line. |   | bash | bash left-right motions |
-| c-e | move to the end of line.       |   | bash | bash left-right motions |
-| c-f | move forward a character.      |   | bash | bash left-right motions |
-| c-b | move backward a character.     |   | bash | bash left-right motions |
-| m-f | move forward a word.           |   | bash | bash left-right motions |
-| m-b | move backward a word.          |   | bash | bash left-right motions |
-|-----+--------------------------------+---+------+-------------------------|
-| c-l | clear the screen               |   | bash | bash                    |
-|-----+--------------------------------+---+------+-------------------------|
-| c-d | delete character               |   | bash | bash edit-text          |
-| c-q | quoted insert                  |   | bash | bash edit-text          |
-| c-t | transpose characters           |   | bash | bash edit-text          |
-| m-t | transpose words                |   | bash | bash edit-text          |
-| m-u | uppercase word                 |   | bash | bash edit-text          |
-| m-l | lowercase word                 |   | bash | bash edit-text          |
-| m-c | capitalize word                |   | bash | bash edit-text          |
-
+|---------+---------------------------------------------------------------+---+------+-------------------------|
+| c-a     | move to the beginning of line.                                |   | bash | bash left-right motions |
+| c-e     | move to the end of line.                                      |   | bash | bash left-right motions |
+| c-f     | move forward a character.                                     |   | bash | bash left-right motions |
+| c-b     | move backward a character.                                    |   | bash | bash left-right motions |
+| a-f     | move forward a word.                                          |   | bash | bash left-right motions |
+| a-b     | move backward a word.                                         |   | bash | bash left-right motions |
+| c-x x   | move between previous and current cursor position             |   | bash | bash left-right motions |
+|---------+---------------------------------------------------------------+---+------+-------------------------|
+| c-l     | clears screen and re-display the line                         |   | bash | bash process-control    |
+| c-c     | halts the current command                                     |   | bash | bash process-control    |
+| c-g     | aborts the current editing command and ring the terminal bell |   | bash | bash process-control    |
+| c-j     | same as *RETURN*                                                |   | bash | bash process-control    |
+| c-m     | go to next line                                               |   | bash | bash process-control    |
+|---------+---------------------------------------------------------------+---+------+-------------------------|
+| c-d     | delete character at cursor; log-out current session           |   | bash | bash edit-text          |
+| c-h     | delete character before the cursor                            |   | bash | bash edit-text          |
+| c-q     | quoted insert                                                 |   | bash | bash edit-text          |
+| c-x c-e | invoke text editor on current command line then execute       |   | bash | bash edit-text          |
+|---------+---------------------------------------------------------------+---+------+-------------------------|
+| c-k     | deletes from cursor to the end of the line.                   |   | bash | bash kill-yank          |
+| c-u     | deletes from cursor to the start of the line.                 |   | bash | bash kill-yank          |
+| c-w     | deletes previous word                                         |   | bash | bash kill-yank          |
+| a-h     | deletes previous character                                    |   | bash | bash kill-yank          |
+|---------+---------------------------------------------------------------+---+------+-------------------------|
+| c-y     | retrieves (yank) last item deleted                            |   | bash | bash kill-yank          |
+|---------+---------------------------------------------------------------+---+------+-------------------------|
+| c-x (   | start recording a keyboard macro                              |   | bash | bash macro              |
+| c-x )   | finish recording a keyboard macro                             |   | bash | bash macro              |
+| c-x e   | recall last recorded keyboard macro                           |   | bash | bash macro              |
+|---------+---------------------------------------------------------------+---+------+-------------------------|
+| c-p     | previous history                                              |   | bash | bash history            |
+| c-n     | next history                                                  |   | bash | bash history            |
+| c-r     | searches backward                                             |   | bash | bash history            |
+|---------+---------------------------------------------------------------+---+------+-------------------------|
+|---------+---------------------------------------------------------------+---+------+-------------------------|
 * Not Added
+|-------------+----------------------------------------+---+------+-----------------|
+| c-t         | transpose characters                   |   | bash | bash edit-text  |
+| m-t         | transpose words                        |   | bash | bash edit-text  |
+| m-u         | uppercase word                         |   | bash | bash edit-text  |
+| m-l         | lowercase word                         |   | bash | bash edit-text  |
+| m-c         | capitalize word                        |   | bash | bash edit-text  |
+|-------------+----------------------------------------+---+------+-----------------|
+| c-x         | backward kill line                     |   | bash | bash kill-yank  |
+| a-d         | kill word                              |   | bash | bash kill-yank  |
+| m-backspace | backward kill word                     |   | bash | bash kill-yank  |
+| m-\         | delete horizontal space                |   | bash | bash kill-yank  |
+| m-y         | yank than pop                          |   | bash | bash kill-yank  |
+|-------------+----------------------------------------+---+------+-----------------|
+| m-<         | beginning of history                   |   | bash | bash history    |
+| m->         | end of history                         |   | bash | bash history    |
+| c-s         | search history                         |   | bash | bash history    |
+| m-p         | non-incremental reverse search history |   | bash | bash history    |
+| m-n         | non-incremental search history         |   | bash | bash history    |
+| m-c-y       | yank nth arg                           |   | bash | bash history    |
+| m-.         | yank last arg                          |   | bash | bash history    |
+| m-_         | yank last arg 2                        |   | bash | bash history    |
+|-------------+----------------------------------------+---+------+-----------------|
+| m-?         | possible completions                   |   | bash | bash completion |
+| m-*         | insert completions                     |   | bash | bash completion |
+| c-q         | resumes suspended shell output         |   | bash | bash            |
+|-------------+----------------------------------------+---+------+-----------------|
+
+c-O | same as RETURN, then displays next line in history file
+c-S | searches forward or suspends shell output
+c-T | transposes two characters
+c-V | makes the next character typed verbatim
+c-X | lists the possible filename completions of the current word
+c-Z | stops the current command, resume with fg in the foreground or bg in the background
+a-T | transposes two words
+a-. | pastes last word from the last command. Pressing it repeatedly traverses through command history.
+a-U | capitalizes every character from the current cursor position to the end of the word
+a-L | uncapitalizes every character from the current cursor position to the end of the word
+a-C | capitalizes the letter under the cursor. The cursor then moves to the end of the word.
+a-R | reverts any changes to a command you’ve pulled from your history if you’ve edited it.
+a-? | list possible completions to what is typed
+a-^ | expand line to most recent match from history
+c-A then D | logout from screen but don't kill it, if any command exist, it will continue

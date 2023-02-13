@@ -1,17 +1,12 @@
 :PROPERTIES:
 :ID:       aba4c4fe-deb5-4f35-8099-264cb2217536
-:mtime:    20230206181508 20221106195818
+:mtime:    20230209000312 20230206181508 20221106195818
 :ctime:    20220510203508
 :END:
 #+title: clang-certs
 #+date: [2022-05-10 Tue 20:35]
 
-* CLE - C Certified Entry-Level Programming Certification
-
-CLE – C Certified Entry-Level Programmer certification is an interim step to the CLA – C Certified Associate Programmer certification and the starting point to launch a career in software development, low-level and middle-level programming, C programming, and related technologies. Becoming CLE certified will help you stand out from other candidates and get your foot in the door.
-
-CLE – C Certified Entry-Level Programmer certification shows that the individual is familiar with universal computer programming concepts like compilation, variables, data types, typecasting, operators, conditional execution, loops, arrays, pointers, memory management, functions, and the runtime environment.
-
+* CLE - C Certified Entry-Level Programmer Certification
 
 A test candidate should demonstrate sufficient knowledge of the following concepts:
 
@@ -20,18 +15,52 @@ A test candidate should demonstrate sufficient knowledge of the following concep
 ♦ control and evaluations, data aggregates, functions, pointers, and memory management;
 ♦ writing and debugging simple programs using standard language infrastructure.
 
+Skills measured
 
-basic concepts (13.25%)
-data types, evaluations, and basic i/o operations (13.25%)
-arithmetic, logical, and bitwise operators (13.25%)
-flow control: decision-making statements (13.25%)
-flow control: loops (16.50%)
-arrays, pointers, and memory management (16.50%)
-string manipulation (7%)
-the basics of functions (7%)
+Becoming CLE certified ensures that you are familiar with the universal concepts of computer programming as well as acquainted with the most essential means provided by the C language, which enable you to start your own studies at the next level of C programming education, and to continue your professional development.
 
+    Basic concepts
+        Installing and using your programming environment
+        Introduction to IDE
+        Compilation
+        Machine, natural, artificial languges
+        Variables
+        Comments
+        Portability
+    Basic data types, operations, and flow control (decision-making statements)
+        primary and derived data types
+        arithmetic, logical, and bitwise operators
+        priority and binding
+        pre-, post-incrementation, decrementation
+        basic library functions
+        computations
+        conditional execution and the if, else if, else keywords
+    Flow control (loops), int and float types, typecasting, and computer logic
+        conditional execution, nested conditions and loops
+        type conversions, typecast and its operators
+        the while, do…while, and the for loops
+        controlling the loop execution: break and continue
+        sorting
+    Switch, arrays, pointers, and the basics of strings
+        switch, case, default, control instructions
+        arrays (vectors)
+        initiators
+        pointers, the NULL pointer, pointer arithmetic
+        addresses, references, dereferences, the sizeof operator
+        pointers vs. arrays
+        strings and string manipulation
+    Advanced operations on arrays and pointers, memory management, and the basics of functions
+        array indexing, multidimensional arrays
+        arrays of pointers
+        the void type
+        memory allocation and deallocation: the malloc() and free() functions
+        functions, parameters, definitions, declarations, invocations
+        creating user-defined functions
+        using selected C library functions
 
-Exam block #1: Basic Concepts (13.25%)
+** Exam block #1: Basic Concepts (13.25%)
+
+Objectives covered by the block (4 exam items)
 
     fundamental concepts: compilation and the compiler, IDE, language elements, lexis, syntax and semantics, C keywords, instructions, machine/natural/artificial languages, portability
     literals: char; integer, floating-point, and double type numbers; scientific notations, strings
@@ -43,7 +72,9 @@ Exam block #1: Basic Concepts (13.25%)
     basic operators:  * / % / + – =
     variables
 
-Exam block #2: Data Types, Evaluations, and Basic I/O Operations (13.25%)
+** Exam block #2: Data Types, Evaluations, and Basic I/O Operations (13.25%)
+
+Objectives covered by the block (4 exam items)
 
     primary and derived data types, modifiers
     type casting and conversions
@@ -56,7 +87,9 @@ Exam block #2: Data Types, Evaluations, and Basic I/O Operations (13.25%)
     header files
     basic calculations
 
-Exam block #3: Arithmetic, logical, and bitwise operators (13.25%)
+** Exam block #3: Arithmetic, logical, and bitwise operators (13.25%)
+
+Objectives covered by the block (4 exam items)
 
     operators: unary and binary, priorities and binding
     basic calculations
@@ -67,7 +100,9 @@ Exam block #3: Arithmetic, logical, and bitwise operators (13.25%)
     logical operations: and, or, not
     the truth table
 
-Exam block #4: Flow control: decision-making statements (13.25%)
+** Exam block #4: Flow control: decision-making statements (13.25%)
+
+Objectives covered by the block (4 exam items)
 
     conditional statements: if, if-else, if-else if, if-else if-else
     multiple conditional statements
@@ -76,7 +111,9 @@ Exam block #4: Flow control: decision-making statements (13.25%)
     the default keyword
     control instructions
 
-Exam block #5: Flow control: loops (16.50%)
+** Exam block #5: Flow control: loops (16.50%)
+
+Objectives covered by the block (5 exam items)
 
     building loops: while, for, do…while
     iterating through sequences
@@ -85,7 +122,9 @@ Exam block #5: Flow control: loops (16.50%)
     nesting loops
     controlling loop execution: break, continue
 
-Exam block #6: Arrays, pointers, and memory management (16.50%)
+** Exam block #6: Arrays, pointers, and memory management (16.50%)
+
+Objectives covered by the block (5 exam items)
 
     creating and initializing arrays
     indexing and manipulating arrays
@@ -99,7 +138,9 @@ Exam block #6: Arrays, pointers, and memory management (16.50%)
     the void type
     memory allocation and deallocation: the malloc() and free() functions
 
-Exam block #7: String manipulation (7%)
+** Exam block #7: String manipulation (7%)
+
+Objectives covered by the block (2 exam items)
 
     character arrays, the ASCII code,
     string initialization
@@ -107,13 +148,15 @@ Exam block #7: String manipulation (7%)
     processing strings
     string header files
 
-Exam block #8: The Basics of Functions (7%)
+** Exam block #8: The Basics of Functions (7%)
+
+Objectives covered by the block (2 exam items)
 
     functions, parameters, definitions, declarations, invocations
     creating user-defined functions
     using selected C library functions
 
-* c programming language certified associate (CLA)
+* CLA - C Certified Associate Programmer Certification
 
 Absolute basics
  languages: natural and artificial,
@@ -209,7 +252,7 @@ Preprocessor and complex declarations
  pointers to functions,
  analyzing and creating complex declarations.
 
-* c certified professional programmer (CPL)
+* CLP - C Certified Professional Programmer Certification
 
 evolution of c - from past to eternity
 handling variable number of parameters (<stdarg.h>)

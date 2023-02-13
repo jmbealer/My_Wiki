@@ -1,6 +1,6 @@
 :PROPERTIES:
 :ID:       8a8f569e-87d1-433e-beb2-75c3d16050b5
-:mtime:    20230208093856 20230206181445 20230206152258
+:mtime:    20230208120646 20230208093856 20230206181445 20230206152258
 :ctime:    20230206124113
 :END:
 #+title: tridactyl-anki
@@ -74,17 +74,15 @@
 | d                  | close the current tab.                                             |   | tridactyl | tridactyl         |
 | u                  | undo the last tab/window closure                                   |   | tridactyl | tridactyl         |
 | gt                 | go to the next tab 2                                               |   | tridactyl | tridactyl         |
-| T                  | go to the next tab                                                 |   | tridactyl | tridactyl         |
+| T                  | go to the next tab                                                 | K | tridactyl | tridactyl         |
 | gT                 | go to the previous tab 2                                           |   | tridactyl | tridactyl         |
-| N                  | go to the previous tab                                             |   | tridactyl | tridactyl         |
+| N                  | go to the previous tab                                             | J | tridactyl | tridactyl         |
 | g^                 | go to the first tab 2                                              |   | tridactyl | tridactyl         |
 | g0                 | go to the first tab                                                |   | tridactyl | tridactyl         |
 | g$                 | go to the last tab                                                 |   | tridactyl | tridactyl         |
 | ga                 | go to the tab currently playing audio                              |   | tridactyl | tridactyl         |
 | c-^                | go to the last active tab                                          |   | tridactyl | tridactyl         |
 | l                  | show a list of open tabs in the current window                     | b | tridactyl | tridactyl         |
-| T                  | Next tab                                                           | K | tridactyl | tridactyl         |
-| N                  | Previous tab                                                       | J | tridactyl | tridactyl         |
 |--------------------+--------------------------------------------------------------------+---+-----------+-------------------|
 | ;i                 | open an image in current tab                                       |   | tridactyl | tridactyl         |
 | ;I                 | open an image in new tab                                           |   | tridactyl | tridactyl         |

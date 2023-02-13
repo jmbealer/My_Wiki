@@ -22,12 +22,12 @@ c-o,run a single normal mode binding when in ignore mode,,tridactyl,tridactyl
 :colors,change Tridactyl's theme,,tridactyl,tridactyl
 .,repeat the last command,,tridactyl,tridactyl
 :,activate the command line,,tridactyl,tridactyl
-t,scroll down,j,tridactyl,tridactyl
-n,scroll up,k,tridactyl,tridactyl
-^,scroll to left margin,,tridactyl,tridactyl
-$,scroll to right margin,,tridactyl,tridactyl
-gg,scroll to start of page,,tridactyl,tridactyl
-G,scroll to end of page,,tridactyl,tridactyl
+t,scroll down,j,tridactyl,tridactyl motions
+n,scroll up,k,tridactyl,tridactyl motions
+^,scroll to left margin,,tridactyl,tridactyl motions
+$,scroll to right margin,,tridactyl,tridactyl motions
+gg,scroll to start of page,,tridactyl,tridactyl motions
+G,scroll to end of page,,tridactyl,tridactyl motions
 gF,repeatedly open links until you press Escape.,,tridactyl,tridactyl
 r,reload page,,tridactyl,tridactyl
 R,hard reload page,,tridactyl,tridactyl
@@ -38,7 +38,7 @@ gU,go to the root domain of the current URL,,tridactyl,tridactyl
 zi,zoom in,,tridactyl,tridactyl
 zo,zoom out,,tridactyl,tridactyl
 zz,reset zoom,,tridactyl,tridactyl
-c-b,jump to the previous part of the page.,,tridactyl,tridactyl
+c-b,jump to the previous part of the page.,,tridactyl,tridactyl motions
 A,bookmark the current page,,tridactyl,tridactyl
 a,bookmark the current page and allow the URL to be modified,,tridactyl,tridactyl
 M<key>,bind a quickmark to the given key,,tridactyl,tridactyl
@@ -56,17 +56,15 @@ p,open the clipboard contents in the new tab,,tridactyl,tridactyl
 d,close the current tab.,,tridactyl,tridactyl
 u,undo the last tab/window closure,,tridactyl,tridactyl
 gt,go to the next tab 2,,tridactyl,tridactyl
-T,go to the next tab,,tridactyl,tridactyl
+T,go to the next tab,K,tridactyl,tridactyl
 gT,go to the previous tab 2,,tridactyl,tridactyl
-N,go to the previous tab,,tridactyl,tridactyl
+N,go to the previous tab,J,tridactyl,tridactyl
 g^,go to the first tab 2,,tridactyl,tridactyl
 g0,go to the first tab,,tridactyl,tridactyl
 g$,go to the last tab,,tridactyl,tridactyl
 ga,go to the tab currently playing audio,,tridactyl,tridactyl
 c-^,go to the last active tab,,tridactyl,tridactyl
 l,show a list of open tabs in the current window,b,tridactyl,tridactyl
-T,Next tab,K,tridactyl,tridactyl
-N,Previous tab,J,tridactyl,tridactyl
 ;i,open an image in current tab,,tridactyl,tridactyl
 ;I,open an image in new tab,,tridactyl,tridactyl
 ;s,save the linked resource,,tridactyl,tridactyl

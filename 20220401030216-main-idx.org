@@ -3,7 +3,7 @@
 :header-args: :tangle README.org
 :auto_tangle: t
 :TOC: include all :ignore this
-:mtime:    20230208104805 20230208090341 20230206181451 20230123092514
+:mtime:    20230209170605 20230208104805 20230208090341 20230206181451 20230123092514
 :ctime:    20220401030216
 :END:
 #+title: Main Index
@@ -28,6 +28,8 @@ anki
 [[id:02c3dfdd-dd5e-4347-9d7b-373efb1a5017][vim-anki]]
 [[id:8a8f569e-87d1-433e-beb2-75c3d16050b5][tridactyl-anki]]
 [[id:bf75c0b4-9e27-4103-b113-dd55f439d727][bash-anki]]
+
+[[id:94a99ca2-7716-4d19-a1cf-72f6ca68a39a][typing]]
 
 "Plan Your Work And Work Your Plan." - Napolean Hill
 
