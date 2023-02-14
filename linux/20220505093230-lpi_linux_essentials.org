@@ -1,9 +1,9 @@
 :PROPERTIES:
 :ID:       8bb1d8d1-c11d-4a09-8ab4-1a8dc5995c15
-:mtime:    20230206181447 20220528222421
+:mtime:    20230214111714 20230206181447 20220528222421
 :ctime:    20220505093230
 :END:
-#+title: LPI Linux Essentials Exam 010
+#+title: LPI Linux Essentials Exam 010-160
 #+date: [2022-05-05 Thu 09:32]
 
 * 1 the Linux community and a career in open source
