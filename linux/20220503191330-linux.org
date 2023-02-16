@@ -1,6 +1,6 @@
 :PROPERTIES:
 :ID:       7c74d046-30f1-4eac-b49f-5ea691ef5b76
-:mtime:    20230214112912 20230206181438 20221222165420
+:mtime:    20230216000938 20230214112912 20230206181438 20221222165420
 :ctime:    20220503191330
 :END:
 #+title: Linux
@@ -17,6 +17,8 @@
 [[id:bd5737f0-dc66-4868-b607-8156becf8a0e][guix]]
 
 [[id:b242dcc5-4af4-462a-85fb-96d3fb1b5805][chezmoi]]
+
+man whatis tldr
 
 * Linux Certs
 
