@@ -1,6 +1,6 @@
 :PROPERTIES:
 :ID:       7c74d046-30f1-4eac-b49f-5ea691ef5b76
-:mtime:    20230216000938 20230214112912 20230206181438 20221222165420
+:mtime:    20230226215138 20230216000938 20230214112912 20230206181438 20221222165420
 :ctime:    20220503191330
 :END:
 #+title: Linux
@@ -8,7 +8,8 @@
 #+filetags: :MOC:
 
 -[[id:8feb359d-2df0-42c1-8136-19d4a02b4384][ Main Index]]
-
+[[id:331bdd81-1b06-419d-8765-313282b832ec][linux foundation]]
+[[id:d5b9d454-d594-40fd-b3b8-230c0a4e1388][redhat-certs]]
 [[id:d7371bae-be68-4439-b06d-b0e536d7e031][Linux Professional Institute - LPI]]
  [[id:8bb1d8d1-c11d-4a09-8ab4-1a8dc5995c15][LPI Linux Essentials Exam 010]]
 [[id:adb127ea-0c62-4193-bec9-92f90f549fe8][cli]]
