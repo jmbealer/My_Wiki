@@ -3,7 +3,7 @@
 :header-args: :tangle README.org
 :auto_tangle: t
 :TOC: include all :ignore this
-:mtime:    20230206181454 20221013193133
+:mtime:    20230303115433 20230206181454 20221013193133
 :ctime:    20220401030602
 :END:
 #+title: Software Engineering Index
@@ -41,6 +41,7 @@ insert snippets
   SPC-i-s
 
 [[id:5c4573b4-c79d-4bcd-9fb8-7f22e64f1675][C Programming Language]]
+[[id:7266b338-b1ce-4beb-85c2-6c603dcd7796][C++]]
 c-cpp.md
 c-lang.md
 
@@ -50,6 +51,10 @@ c-lang.md
 HTML.md
 
 [[id:bbad4e71-066d-4231-953a-3b5ed0891141][CSS]]
+
+[[id:250f556f-145d-41cf-9178-57d26a5a37b2][Rust]]
+[[id:7ac9fc0d-c140-4772-8df4-271cba2b68d9][Perl]]
+[[id:864a671e-e437-4c35-9fe7-a92c2daaf451][PHP]]
 
 python
 
