@@ -1,30 +1,38 @@
 :PROPERTIES:
 :ID:       8bb1d8d1-c11d-4a09-8ab4-1a8dc5995c15
-:mtime:    20230306075742 20230214111714 20230206181447 20220528222421
+:mtime:    20230306085924 20230306075742 20230214111714 20230206181447 20220528222421
 :ctime:    20220505093230
 :options: toc:t
 :END:
 #+title: LPI Linux Essentials Exam 010-160
 
 * Table of Contents :toc:
-- [[#topic-1the-linux-community-and-a-career-in-open-source][Topic 1:The Linux Community and a Career in Open Source]]
+- [[#topic-1-the-linux-community-and-a-career-in-open-source][Topic 1: The Linux Community and a Career in Open Source]]
   - [[#11-linux-evolution-and-popular-operating-systems][1.1 Linux Evolution and Popular Operating Systems]]
   - [[#12-major-open-source-applications][1.2 Major Open Source Applications]]
   - [[#13-open-source-software-and-licensing][1.3 Open Source Software and Licensing]]
   - [[#14-ict-skills-and-working-in-linux][1.4 ICT Skills and Working in Linux]]
-- [[#topic-2finding-your-way-on-a-linux-system][Topic 2:Finding Your Way on a Linux System]]
+- [[#topic-2-finding-your-way-on-a-linux-system][Topic 2: Finding Your Way on a Linux System]]
   - [[#21-command-line-basics][2.1 Command Line Basics]]
   - [[#22-using-the-command-line-to-get-help][2.2 Using the Command Line to Get Help]]
   - [[#23-using-directories-and-listing-files][2.3 Using Directories and Listing Files]]
   - [[#24-creating-moving-and-deleting-files][2.4 Creating, Moving and Deleting Files]]
-- [[#topic-3the-power-of-the-command-line][Topic 3:The Power of the Command Line]]
+- [[#topic-3-the-power-of-the-command-line][Topic 3: The Power of the Command Line]]
   - [[#31-archiving-files-on-the-command-line][3.1 Archiving Files on the Command Line]]
   - [[#32-searching-and-extracting-data-from-files][3.2 Searching and Extracting Data from Files]]
   - [[#33-turning-commands-into-a-script][3.3 Turning Commands into a Script]]
-- [[#topic-4the-linux-operating-system][Topic 4:The Linux Operating System]]
-- [[#topic-5security-and-file-permissions][Topic 5:Security and File Permissions]]
+- [[#topic-4-the-linux-operating-system][Topic 4: The Linux Operating System]]
+  - [[#41-choosing-an-operating-system][4.1 Choosing an Operating System]]
+  - [[#42-understanding-computer-hardware][4.2 Understanding Computer Hardware]]
+  - [[#43-where-data-is-stored][4.3 Where Data is Stored]]
+  - [[#44-your-computer-on-the-network][4.4 Your Computer on the Network]]
+- [[#topic-5-security-and-file-permissions][Topic 5: Security and File Permissions]]
+  - [[#51-basic-security-and-identifying-user-types][5.1 Basic Security and Identifying User Types]]
+  - [[#52-creating-users-and-groups][5.2 Creating Users and Groups]]
+  - [[#53-managing-file-permissions-and-ownership][5.3 Managing File Permissions and Ownership]]
+  - [[#54-special-directories-and-files][5.4 Special Directories and Files]]
 
-* Topic 1:The Linux Community and a Career in Open Source
+* Topic 1: The Linux Community and a Career in Open Source
 ** 1.1 Linux Evolution and Popular Operating Systems
 - Weight: 2
 - Description: Knowledge of Linux development and major distributions.
@@ -63,6 +71,7 @@ Ubuntu is Debian-based distribution
 Ubuntu was created in 2004 by Mark Shuttleworth.
 Ubuntu aims to provide a easy to use Linux desktop environment.
 Ubuntu has a scheduled release every six months with a long-term support release every 2 years.
+
 Red Hat is a Linux distribution developed and maintained by Red Hat Inc.
 Red Hat Inc was acquired by IBM in 2019.
 Red Hat Linux was started in 1994.
@@ -80,6 +89,7 @@ Fedora is maintain by Ret Had.
 Fedora is very progressive and adopts new technologies very quickly.
 Fedora is sometimes considered a test-bed for RHEL.
 All Red Hat based distributions use the package format rpm.
+
 SUSE was founded in 1992 in Germany as a Unix service provider.
 The first version of SUSE Linux was released in 1994.
 SUSE Linux is known for its YaST configuration tool.
@@ -211,7 +221,7 @@ In this lesson you learned:
     Password issues
     Privacy issues and tools
     Use of common open source applications in presentations and projects
-* Topic 2:Finding Your Way on a Linux System
+* Topic 2: Finding Your Way on a Linux System
 ** 2.1 Command Line Basics
 - Weight: 3
 - Description: Basics of using the Linux command line.
@@ -262,7 +272,7 @@ In this lesson you learned:
 - The following is a partial list of the used files, terms and utilities:
     mv, cp, rm, touch
     mkdir, rmdir
-* Topic 3:The Power of the Command Line
+* Topic 3: The Power of the Command Line
 ** 3.1 Archiving Files on the Command Line
 - Weight:  2
 - Description: Archiving files in the user home directory.
@@ -1545,9 +1555,8 @@ fi
 fi
 done
 echo ""
-* Topic 4:The Linux Operating System
-Topic 4: The Linux Operating System
-4.1 Choosing an Operating System
+* Topic 4: The Linux Operating System
+** 4.1 Choosing an Operating System
 - Weight: 1
 - Description: Knowledge of major operating systems and Linux distributions.
 - Key Knowledge Areas:
@@ -1556,7 +1565,7 @@ Topic 4: The Linux Operating System
 - The following is a partial list of the used files, terms and utilities:
     GUI versus command line, desktop configuration
     Maintenance cycles, beta and stable
-4.2 Understanding Computer Hardware
+** 4.2 Understanding Computer Hardware
 - Weight: 2
 - Description: Familiarity with the components that go into building desktop and server computers.
 - Key Knowledge Areas:
@@ -1565,7 +1574,7 @@ Topic 4: The Linux Operating System
     Motherboards, processors, power supplies, optical drives, peripherals
     Hard drives, solid state disks and partitions, /dev/sd*
     Drivers
-4.3 Where Data is Stored
+** 4.3 Where Data is Stored
 - Weight: 3
 - Description: Where various types of information are stored on a Linux system.
 - Key Knowledge Areas:
@@ -1579,7 +1588,7 @@ Topic 4: The Linux Operating System
     syslog, dmesg
     /etc/, /var/log/
     /boot/, /proc/, /dev/, /sys/
-4.4 Your Computer on the Network
+** 4.4 Your Computer on the Network
 - Weight: 2
 - Description: Querying vital networking configuration and determining the basic requirements for a computer on a Local Area Network (LAN).
 - Key Knowledge Areas:
@@ -1594,9 +1603,8 @@ Topic 4: The Linux Operating System
     IPv4, IPv6
     ping
     host
-* Topic 5:Security and File Permissions
-Topic 5: Security and File Permissions
-5.1 Basic Security and Identifying User Types
+* Topic 5: Security and File Permissions
+** 5.1 Basic Security and Identifying User Types
 - Weight: 2
 - Description: Various types of users on a Linux system.
 - Key Knowledge Areas:
@@ -1606,7 +1614,7 @@ Topic 5: Security and File Permissions
     /etc/passwd, /etc/shadow, /etc/group
     id, last, who, w
     sudo, su
-5.2 Creating Users and Groups
+** 5.2 Creating Users and Groups
 - Weight: 2
 - Description: Creating users and groups on a Linux system.
 - Key Knowledge Areas:
@@ -1616,7 +1624,7 @@ Topic 5: Security and File Permissions
     /etc/passwd, /etc/shadow, /etc/group, /etc/skel/
     useradd, groupadd
     passwd
-5.3 Managing File Permissions and Ownership
+** 5.3 Managing File Permissions and Ownership
 - Weight: 2
 - Description: Understanding and manipulating file permissions and ownership settings.
 - Key Knowledge Areas:
@@ -1624,7 +1632,7 @@ Topic 5: Security and File Permissions
 - The following is a partial list of the used files, terms and utilities:
     ls -l, ls -a
     chmod, chown
-5.4 Special Directories and Files
+** 5.4 Special Directories and Files
 - Weight: 1
 - Description: Special directories and files on a Linux system including special permissions.
 - Key Knowledge Areas:
