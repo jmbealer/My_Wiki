@@ -1,14 +1,18 @@
+#separator:comma
+#html:true
+#tags column:5
 c-a,move to the beginning of line.,,bash,bash left-right motions
 c-e,move to the end of line.,,bash,bash left-right motions
 c-f,move forward a character.,,bash,bash left-right motions
 c-b,move backward a character.,,bash,bash left-right motions
 a-f,move forward a word.,,bash,bash left-right motions
 a-b,move backward a word.,,bash,bash left-right motions
-c-l,clears screen and re-display the line,,bash,bash
-c-c,halts the current command,,bash,bash
-c-g,aborts the current editing command and ring the terminal bell,,bash,bash
-c-j,same as *RETURN*,,bash,bash
-c-m,go to next line,,bash,bash
+c-x x,move between previous and current cursor position,,bash,bash left-right motions
+c-l,clears screen and re-display the line,,bash,bash process-control
+c-c,halts the current command,,bash,bash process-control
+c-g,aborts the current editing command and ring the terminal bell,,bash,bash process-control
+c-j,same as <b>RETURN</b>,,bash,bash process-control
+c-m,go to next line,,bash,bash process-control
 c-d,delete character at cursor; log-out current session,,bash,bash edit-text
 c-h,delete character before the cursor,,bash,bash edit-text
 c-q,quoted insert,,bash,bash edit-text
@@ -21,6 +25,6 @@ c-y,retrieves (yank) last item deleted,,bash,bash kill-yank
 c-x (,start recording a keyboard macro,,bash,bash macro
 c-x ),finish recording a keyboard macro,,bash,bash macro
 c-x e,recall last recorded keyboard macro,,bash,bash macro
-c-p,previous history,,bash,bash history
-c-n,next history,,bash,bash history
+c-p,<b>previous</b> history,,bash,bash history
+c-n,<b>next</b> history,,bash,bash history
 c-r,searches backward,,bash,bash history

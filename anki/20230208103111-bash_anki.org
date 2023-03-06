@@ -1,6 +1,6 @@
 :PROPERTIES:
 :ID:       bf75c0b4-9e27-4103-b113-dd55f439d727
-:mtime:    20230208153034 20230208142820 20230208113557 20230208103116
+:mtime:    20230306095454 20230208153034 20230208142820 20230208113557 20230208103116
 :ctime:    20230208103111
 :END:
 #+title: bash-anki
@@ -41,8 +41,8 @@
 | c-x )   | finish recording a keyboard macro                             |   | bash | bash macro              |
 | c-x e   | recall last recorded keyboard macro                           |   | bash | bash macro              |
 |---------+---------------------------------------------------------------+---+------+-------------------------|
-| c-p     | previous history                                              |   | bash | bash history            |
-| c-n     | next history                                                  |   | bash | bash history            |
+| c-p     | *previous* history                                              |   | bash | bash history            |
+| c-n     | *next* history                                                  |   | bash | bash history            |
 | c-r     | searches backward                                             |   | bash | bash history            |
 |---------+---------------------------------------------------------------+---+------+-------------------------|
 |---------+---------------------------------------------------------------+---+------+-------------------------|
