@@ -1,30 +1,33 @@
 #separator:comma
 #html:true
+#notetype column:1
+#deck column:2
 #tags column:5
-c-a,move to the beginning of line.,,bash,bash left-right motions
-c-e,move to the end of line.,,bash,bash left-right motions
-c-f,move forward a character.,,bash,bash left-right motions
-c-b,move backward a character.,,bash,bash left-right motions
-a-f,move forward a word.,,bash,bash left-right motions
-a-b,move backward a word.,,bash,bash left-right motions
-c-x x,move between previous and current cursor position,,bash,bash left-right motions
-c-l,clears screen and re-display the line,,bash,bash process-control
-c-c,halts the current command,,bash,bash process-control
-c-g,aborts the current editing command and ring the terminal bell,,bash,bash process-control
-c-j,same as <b>RETURN</b>,,bash,bash process-control
-c-m,go to next line,,bash,bash process-control
-c-d,delete character at cursor; log-out current session,,bash,bash edit-text
-c-h,delete character before the cursor,,bash,bash edit-text
-c-q,quoted insert,,bash,bash edit-text
-c-x c-e,invoke text editor on current command line then execute,,bash,bash edit-text
-c-k,deletes from cursor to the end of the line.,,bash,bash kill-yank
-c-u,deletes from cursor to the start of the line.,,bash,bash kill-yank
-c-w,deletes previous word,,bash,bash kill-yank
-a-h,deletes previous character,,bash,bash kill-yank
-c-y,retrieves (yank) last item deleted,,bash,bash kill-yank
-c-x (,start recording a keyboard macro,,bash,bash macro
-c-x ),finish recording a keyboard macro,,bash,bash macro
-c-x e,recall last recorded keyboard macro,,bash,bash macro
-c-p,<b>previous</b> history,,bash,bash history
-c-n,<b>next</b> history,,bash,bash history
-c-r,searches backward,,bash,bash history
+
+bash type,0-current-using::bash-wip,{{c1::c-a}} - <em>move</em> to the <strong>{{c2::beginning}}</strong> of line.,,bash left-right motions
+bash type,0-current-using::bash-wip,{{c1::c-e}} - <em>move</em> to the <strong>{{c2::end}}</strong> of line.,,bash left-right motions
+bash type,0-current-using::bash-wip,{{c1::c-f}} - <em>move</em> <strong>{{c2::forward}}</strong> a character.,,bash left-right motions
+bash type,0-current-using::bash-wip,{{c1::c-b}} - <em>move</em> <strong>{{c2::backward}}</strong> a character.,,bash left-right motions
+bash type,0-current-using::bash-wip,{{c1::a-f}} - <em>move</em> <strong>{{c2::forward}}</strong> a word.,,bash left-right motions
+bash type,0-current-using::bash-wip,{{c1::a-b}} - <em>move</em> <strong>{{c2::backward}}</strong> a word.,,bash left-right motions
+bash type,0-current-using::bash-wip,{{c1::c-x x}} - <em>move</em> <strong>{{c2::between}}</strong> previous and current cursor position.,,bash left-right motions
+bash type,0-current-using::bash-wip,{{c1::c-l}} - <strong>{{c2::clears screen}}</strong> and re-display the line.,,bash process-control
+bash type,0-current-using::bash-wip,{{c1::c-c}} - <strong>{{c2::halts}}</strong> the current command.,,bash process-control
+bash type,0-current-using::bash-wip,{{c1::c-g}} - <strong>{{c2::aborts}}</strong> the current editing command and ring the terminal bell.,,bash process-control
+bash type,0-current-using::bash-wip,{{c1::c-j}} - same as <strong>{{c2::return}}</strong>.,,bash process-control
+bash type,0-current-using::bash-wip,{{c1::c-m}} - <em>move</em> to <strong>{{c2::next}}</strong> line.,,bash process-control
+bash type,0-current-using::bash-wip,{{c1::c-d}} - <em>delete character</em> <strong>{{c2::at cursor}}</strong>; log-out current session.,,bash edit-text
+bash type,0-current-using::bash-wip,{{c1::c-h}} - <em>delete character</em> <strong>{{c2::before}}</strong> the cursor.,,bash edit-text
+bash type,0-current-using::bash-wip,{{c1::c-q}} - <strong>{{c2::quoted}}</strong> <em>insert</em>.,,bash edit-text
+bash type,0-current-using::bash-wip,{{c1::c-x c-e}} - <strong>{{c2::invoke}}</strong> text editor on current command line then execute.,,bash edit-text
+bash type,0-current-using::bash-wip,{{c1::c-k}} - <em>deletes</em> from cursor to the <strong>{{c2::end}}</strong> of the line.,,bash kill-yank
+bash type,0-current-using::bash-wip,{{c1::c-u}} - <em>deletes</em> from cursor to the <strong>{{c2::start}}</strong> of the line.,,bash kill-yank
+bash type,0-current-using::bash-wip,{{c1::c-w}} - <em>deletes</em> <strong>{{c2::previous}}</strong> word.,,bash kill-yank
+bash type,0-current-using::bash-wip,{{c1::a-h}} - <em>deletes</em> <strong>{{c2::previous}}</strong> character.,,bash kill-yank
+bash type,0-current-using::bash-wip,{{c1::c-y}} - retrieves (<strong>{{c2::yank}})</strong> last item deleted.,,bash kill-yank
+bash type,0-current-using::bash-wip,{{c1::c-x (}} - <strong>{{c2::start}}</strong> recording a keyboard macro.,,bash macro
+bash type,0-current-using::bash-wip,{{c1::c-x )}} - <strong>{{c2::finish}}</strong> recording a keyboard macro.,,bash macro
+bash type,0-current-using::bash-wip,{{c1::c-x e}} - <strong>{{c2::recall}}</strong> last recorded keyboard macro.,,bash macro
+bash type,0-current-using::bash-wip,{{c1::c-p}} - <strong>{{c2::previous}}</strong> <em>history</em>.,,bash history
+bash type,0-current-using::bash-wip,{{c1::c-n}} - <strong>{{c2::next}}</strong> <em>history</em>.,,bash history
+bash type,0-current-using::bash-wip,{{c1::c-r}} - <strong>{{c2::searches}}</strong> <em>backward</em>.,,bash history
