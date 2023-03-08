@@ -1,0 +1,115 @@
+:PROPERTIES:
+:ID:       54f97aa4-4b45-4b8a-95e9-679f2585bf7a
+:mtime:    20230308013030 20230308002041 20230215233815 20230212230128 20230212212830 20230211005650 20230210234525
+:ctime:    20230210234521
+:END:
+#+title: english-words-anki
+
+* Not Added
+:PROPERTIES:
+:TABLE_EXPORT_FILE: english-words-anki.csv
+:TABLE_EXPORT_FORMAT: orgtbl-to-csv
+:END:
+|---------+------------------------------------------------------------------------------+------+------+---------------+--------------------|
+| Word    | Definition                                                                   | Rank | PoS  | Pronunciation | Tags               |
+|---------+------------------------------------------------------------------------------+------+------+---------------+--------------------|
+| the     | "used to refer to something already mentioned"                               |    1 | det  | /ðiː/            | english words ngsl |
+| be      | "To exist; to be alive; used to give information about someone or something" |    2 | verb | /biː/            | english words ngsl |
+| and     | "used to refer to two or more things"                                        |    3 | conj | /ænd/           | english words ngsl |
+| of      | "belonging to or connected with something"                                   |    4 | prep | /ɑv/             | english words ngsl |
+| to      | "move towards; in the direction of"                                          |    5 | prep | /tu/            | english words ngsl |
+| a       | "one (of something)"                                                         |    6 | det  | /ɛɪ/             | english words ngsl |
+| in      | "being inside something"                                                     |    7 | prep | /ɪn/             | english words ngsl |
+| have    | "to own, possess, or hold something"                                         |    8 | aux  | /hæv/           | english words ngsl |
+| it      | "a thing that has been previously mentioned"                                 |    9 | pron | /ɪt/             | english words ngsl |
+| you     | "person someone is speaking or writing to"                                   |   10 | pron | /ju/            | english words ngsl |
+| he      | "object form of a male person you are talking about"                         |   11 | pron | /hiː/            | english words ngsl |
+| for     | "used to show the purpose, or need of something"                             |   12 | prep | /foɚ/            | english words ngsl |
+| they    | "used to refer to two or more people, animals, or things"                    |   13 | pron | /ðɛɪ/            | english words ngsl |
+| not     | "word indicating the negative of verbs, adjectives, etc."                    |   14 | adv  | /nɑt/            | english words ngsl |
+| that    | "used to show which person or thing we are talking about"                    |   15 | pron | /ðæt/           | english words ngsl |
+| we      | "used to refer to the speaker and other people together"                     |   16 | pron | /wiː/            | english words ngsl |
+| on      | "located on the surface of something (e.g., a table or wall)"                |   17 | prep | /ɑn/             | english words ngsl |
+| with    | "used to express that people or things are together"                         |   18 | prep | /wɪð/            | english words ngsl |
+| this    | "person, thing, or idea near you"                                            |   19 | pron | /ðɪs/            | english words ngsl |
+| I       | "the person who is speaking or writing"                                      |   20 | pron | /aɪ/             | english words ngsl |
+| do      | "to act; to perform actions"                                                 |   21 | verb | /du/            | english words ngsl |
+| as      | "a word used to compare two equal things"                                    |   22 | prep | /æs/            | english words ngsl |
+| at      | "in the place where something is"                                            |   23 | prep | /æt/            | english words ngsl |
+| she     | "female person or animal mentioned before"                                   |   24 | pron | /ʃiː/            | english words ngsl |
+| but     | "used before you say something different, opposite"                          |   25 | conj | /bʌt/            | english words ngsl |
+| from    | "starting at a particular place, time, or level"                             |   26 | prep | /frɑm/           | english words ngsl |
+| by      | "near; with"                                                                 |   27 | prep | /baɪ/            | english words ngsl |
+| will    | "used with verbs to express the future"                                      |   28 | aux  | /wɪl/            | english words ngsl |
+| or      | "used to link alternatives, to introduce another choice"                     |   29 | conj | /oɚ/             | english words ngsl |
+| say     | "to use words to tell a message"                                             |   30 | verb | /sɛɪ/            | english words ngsl |
+| go      | "to move or travel to another place"                                         |   31 | verb | /goʊ/            | english words ngsl |
+| so      | "for that reason"                                                            |   32 | conj | /soʊ/            | english words ngsl |
+| all     | "completely; totally"                                                        |   33 | adv  | /oɚl/            | english words ngsl |
+| if      | "introducing a condition for something to happen"                            |   34 | conj | /ɪf/             | english words ngsl |
+| one     | "number 1"                                                                   |   35 | num  | /wʌn/            | english words ngsl |
+| would   | "modal verb used to indicate possibility, request, etc."                     |   36 | aux  | /wʊd/            | english words ngsl |
+| about   | "of (a subject); concerning"                                                 |   37 | prep | /ə•baʊt/         | english words ngsl |
+| can     | "to be able to; have the skill to; have the time to"                         |   38 | aux  | /kæn/           | english words ngsl |
+| which   | "question word to ask about a person's choice"                               |   39 | adj  | /wɪtʃ/           | english words ngsl |
+| there   | "in that place or position, at that location"                                |   40 | adv  | /ðɛɚ/            | english words ngsl |
+| know    | "to have knowledge of things in your mind"                                   |   41 | verb | /noʊ/            | english words ngsl |
+| more    | "greater in amount, number, or size"                                         |   42 | adj  | /moɚ/            | english words ngsl |
+| get     | "to obtain, receive, or be given something"                                  |   43 | verb | /gɛt/            | english words ngsl |
+| who     | "what or which person or people, to ask about, talking about"                |   44 | pron | /hu/            | english words ngsl |
+| like    | "to find something pleasing; to prefer something"                            |   45 | verb | /laɪk/           | english words ngsl |
+| when    | "word you use to ask about the time or day"                                  |   46 | noun | /wɛn/            | english words ngsl |
+| think   | "to have an idea, opinion, or belief about something"                        |   47 | verb | /θɪŋk/           | english words ngsl |
+| make    | "to create something by putting things together"                             |   48 | verb | /mɛɪk/           | english words ngsl |
+| time    | "something measured in minutes, hours, days, etc."                           |   49 | noun | /taɪm/           | english words ngsl |
+| see     | "to use your eyes to look at something"                                      |   50 | verb | /siː/            | english words ngsl |
+| what    | "asking for information about someone or something"                          |   51 | adv  | /wɑt/            | english words ngsl |
+| up      | "move higher; raise"                                                         |   52 | prep | /ʌp/             | english words ngsl |
+| some    | "used to refer to a person or thing that is not known"                       |   53 | adj  | /sʌm/            | english words ngsl |
+| other   | "something else; not the first one"                                          |   54 | adj  | /ʌ•ðə/           | english words ngsl |
+| out     | "away from the inside or center"                                             |   55 | prep | /aʊt/            | english words ngsl |
+| good    | "excellent; high quality"                                                    |   56 | adj  | /gʊd/            | english words ngsl |
+| people  | "human beings in general; plural of person"                                  |   57 | noun | /piː•pl/         | english words ngsl |
+| year    | "unit of time equal to 12 months"                                            |   58 | noun | /jɚ/             | english words ngsl |
+| take    | "to pick up something and go away with it"                                   |   59 | verb | /tɛɪk/           | english words ngsl |
+| no      | "being none; not having or being"                                            |   60 | adv  | /noʊ/            | english words ngsl |
+| well    | "in a good way"                                                              |   61 | adj  | /wɛl/            | english words ngsl |
+| because | "for a reason"                                                               |   62 | conj | /bɪ•kɑz/         | english words ngsl |
+| very    | "much; great in amount"                                                      |   63 | verb | /vɛ•rɪ/          | english words ngsl |
+| just    | "only; a short time ago"                                                     |   64 | adv  | /dʒʌst/          | english words ngsl |
+| come    | "to move toward someone; go with someone"                                    |   65 | verb | /kʌm/            | english words ngsl |
+| could   | "used as the past form of can, to show possibility"                          |   66 | verb | /kʊd/            | english words ngsl |
+| work    | "activity you do in order to make money"                                     |   67 | noun | /wɚk/            | english words ngsl |
+| use     | "to do something with, for a task or purpose"                                |   68 | verb | /juz/           | english words ngsl |
+| than    | "used when comparing two things"                                             |   69 | conj | /ðæn/           | english words ngsl |
+| now     | "at the present time or moment"                                              |   70 | adv  | /naʊ/            | english words ngsl |
+| then    | "at that time not now"                                                       |   71 | adv  | /ðɛn/            | english words ngsl |
+| also    | "in addition; too; in a similar way"                                         |   72 | adv  | /oɚl•soʊ/        | english words ngsl |
+| into    | "going inside something"                                                     |   73 | prep | /ɪn•tʊ/          | english words ngsl |
+| only    | "just one; just that amount or thing; not more than"                         |   74 | adv  | /oʊn•lɪ/         | english words ngsl |
+| look    | "to turn your eyes in a particular direction"                                |   75 | verb | /lʊk/            | english words ngsl |
+| want    | "to desire or wish for something; hope for a thing"                          |   76 | verb | /wɑnt/           | english words ngsl |
+| give    | "to hand over or present something to someone"                               |   77 | verb | /gɪv/            | english words ngsl |
+| first   | "coming before all others in time or place"                                  |   78 | adj  | /fɚst/           | english words ngsl |
+| new     | "not old, recently born, built, or made"                                     |   79 | adj  | /nju/           | english words ngsl |
+| way     | "how something is done"                                                      |   80 | noun | /wɛɪ/            | english words ngsl |
+| find    | "to discover something by looking for it"                                    |   81 | verb | /faɪnd/          | english words ngsl |
+| over    | "above; across; more than; on the other side"                                |   82 | prep | /oʊ•və/          | english words ngsl |
+| any     | "one (thing) of many; some (thing)"                                          |   83 | adj  | /ɛ•nɪ/           | english words ngsl |
+| after   | "later than another time, or behind something"                               |   84 | adv  | /ɑɚf•tə/         | english words ngsl |
+| day     | "a period of 24 hours"                                                       |   85 | noun | /dɛɪ/            | english words ngsl |
+| where   | "word you use to ask the location of something"                              |   86 | noun | /wɛɚ/            | english words ngsl |
+| thing   | "something you cannot remember the name of"                                  |   87 | noun | /θɪŋ/            | english words ngsl |
+| most    | "nearly all of something"                                                    |   88 | pron | /moʊst/          | english words ngsl |
+| should  | "used to indicate what is proper or reasonable"                              |   89 | aux  | /ʃʊd/            | english words ngsl |
+| need    | "to be unable to manage without something; require"                          |   90 | verb | /niːd/           | english words ngsl |
+| much    | "a lot; large amount; a high degree of"                                      |   91 | pron | /mʌtʃ/           | english words ngsl |
+| right   | "on side where the hand that most people write with"                         |   92 | adj  | /raɪt/           | english words ngsl |
+| how     | "in what way something happens or is done"                                   |   93 | adv  | /haʊ/            | english words ngsl |
+| back    | "the place you were before"                                                  |   94 | noun | /bæk/           | english words ngsl |
+| mean    | "to have a particular meaning or value"                                      |   95 | verb | /miːn/           | english words ngsl |
+| even    | "as well; too"                                                               |   96 | adv  | /iː•vən/         | english words ngsl |
+| may     | "used to talk about what is possible"                                        |   97 | aux  | /mɛɪ/            | english words ngsl |
+| here    | "in, at, or to this position or place"                                       |   98 | adv  | /hiːɚ/           | english words ngsl |
+| many    | "used to refer to a large number of things"                                  |   99 | adj  | /mɛ•nɪ/          | english words ngsl |
+| such    | "like or similar"                                                            |  100 | adj  | /sʌtʃ/           | english words ngsl |
