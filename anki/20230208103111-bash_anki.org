@@ -1,6 +1,6 @@
 :PROPERTIES:
 :ID:       bf75c0b4-9e27-4103-b113-dd55f439d727
-:mtime:    20230308222832 20230307093921 20230307082420 20230306095454 20230208153034 20230208142820 20230208113557 20230208103116
+:mtime:    20230311145741 20230308222832 20230307093921 20230307082420 20230306095454 20230208153034 20230208142820 20230208113557 20230208103116
 :ctime:    20230208103111
 :END:
 #+title: bash-anki
@@ -23,7 +23,7 @@
 | bash type          | 0-current-using::bash-wip | {{c1::c-b}} - <i>move</i> <b>{{c2::backward}}</b> a character.                              |   | bash left-right motions |
 | bash type          | 0-current-using::bash-wip | {{c1::a-f}} - <i>move</i> <b>{{c2::forward}}</b> a word.                                    |   | bash left-right motions |
 | bash type          | 0-current-using::bash-wip | {{c1::a-b}} - <i>move</i> <b>{{c2::backward}}</b> a word.                                   |   | bash left-right motions |
-| bash type          | 0-current-using::bash-wip | {{c1::c-x x}} - <i>move</i> <b>{{c2::between}}</b> previous and current cursor position.    |   | bash left-right motions |
+| bash type          | 0-current-using::bash-wip | {{c1::c-x c-x}} - <i>move</i> <b>{{c2::between}}</b> previous and current cursor position.  |   | bash left-right motions |
 |--------------------+---------------------------+---------------------------------------------------------------------------------------------+---+-------------------------|
 | bash type          | 0-current-using::bash-wip | {{c1::c-l}} - <b>{{c2::clears screen}}</b> and re-display the line.                         |   | bash process-control    |
 | bash type          | 0-current-using::bash-wip | {{c1::c-c}} - <b>{{c2::halts}}</b> the current command.                                     |   | bash process-control    |
