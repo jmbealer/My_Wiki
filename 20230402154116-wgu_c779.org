@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       65228ca4-89a4-4284-afc4-b2d37c10d9de
+:mtime:    20230402154125
+:ctime:    20230402154116
+:END:
+#+title: wgu-c779
+
+short for
+
+What is the purpose of HTML?
+What is the difference between semantic and presentational HTML?
+What are different ways to divide or separate the various sections of a web page?
