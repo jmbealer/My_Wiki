@@ -1,6 +1,6 @@
 :PROPERTIES:
 :ID:       b0e30896-a000-48ec-a220-1a022eb43c2b
-:mtime:    20230206181513 20220904184139
+:mtime:    20230416023011 20230206181513 20220904184139
 :ctime:    20220509082558
 :END:
 #+title: yt-playlists
@@ -66,6 +66,12 @@
   + 55:Text Editor:TE
     11:TE:Vim
     11:TE:Emacs
++ 00-math
+  + 01-math-books
+  + 02-math-others
+  + math-arithmetic
+  + math-lectures
+  + math-problems
 
 
 55:Career
