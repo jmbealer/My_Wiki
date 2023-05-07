@@ -1,11 +1,18 @@
 :PROPERTIES:
 :ID:       372ca3cf-4fd4-4476-8a6a-9c687305be1c
-:mtime:    20230206181346 20230115085705
+:mtime:    20230507125344 20230206181346 20230115085705
 :ctime:    20230103163009
 :END:
-#+title: wgu-c173
-Time-stamp: "2023-02-06 18:13:46 jb"
+#+title: Scripting and Programming - Foundations - C173
+Time-stamp: "2023-05-07 13:02:07 jb"
 <2023-01-06 Fri>
+
+* Links
+https://my.wgu.edu/courses/course/25060007
+https://learn.zybooks.com/zybook/WGUC173v5
+
+https://srm--c.na127.visual.force.com/apex/FDP/CommonsExpandedSearch?courseCode=C173
+https://srm--c.na127.visual.force.com/apex/coursearticle?Id=kA03x000000spz1CAA
 
 * 1. Introduction
 
