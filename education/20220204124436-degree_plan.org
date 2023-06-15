@@ -1,56 +1,75 @@
 :PROPERTIES:
 :ID:       bf0b716d-2624-4e94-acc3-f8e4453d0a0b
-:mtime:    20230206181534 20220528222421
+:mtime:    20230609174624 20230609152039 20230206181534 20220528222421
 :ctime:    20220204124436
 :END:
 #+title: degree-plan
 
+[[id:0c7b547b-31d7-46f2-ad16-531585578257][Thomas Edison State University]]
+
+
 tesu: 114 transfer max
-  ba in computer science
-  ba in mathematics
+  BA in computer science
+  BA in mathematics
 
-  bs in electronics systems engineering technology
+  BS in electronics systems engineering technology
 
-  bs in cybersecurity
-  bs in information technology
+  BS in Cybersecurity
+  BS in Information Technology
 
-  bsba in finance
-  bsba in computer information systems
+  BSBA in Finance
+  BSBA in Computer Information Systems
 
-  bsba in accounting/cpa
-  bsba in accounting
+  BSBA in Accounting/cpa
+  BSBA in Accounting
 
-  ms in accounting
-  ms in cybersecurity
-  ms in data science and analytics
-  ms in information technology
+  MS in Accounting
+  MS in Cybersecurity
+  MS in Data Science and Analytics
+  MS in Information Technology
 
 excelsior: 113 transfer max
-  bs in cybersecurity
-  bs in electrical engineering technology
-  bs in information technology
+  BS in Cybersecurity
+  BS in Electrical Engineering Technology
+  BS in Information Technology
 
-  ms in cybersecurity
+  MS in Cybersecurity
 
 wgu: 90 transfer max
-  bs in computer science
-  bs in software development
-  bs in information technology
-  bs in cybersecurity and information assurance
+  BS in Computer Science
+  BS in Software Development
+  BS in Information Technology
+  BS in Cybersecurity and Information assurance
 
-  bsba in accounting
+  BSBA in Accounting
 
-  ms in cybersecurity and information assurance
+  MS in Cyber-Security and Information Assurance
 
 snhu: 90 transfer max
-  bs in computer science
-  bs in information technology
-  bs in computer information system
-  bs in cybersecurity
-  ba in mathematics
+  BS in Computer Science
+  BS in Information Technology
+  BS in Computer Information System
+  BS in Cybersecurity
+  BA in Mathematics
 
-  ms in cybersecurity
-  ms in information technology
+  MS in Cybersecurity
+  MS in Information technology
+
+pug:
+  BS in Cybersecurity
+  BS in Information Technology
+
+  BS in Analytics
+  BS in Cloud Computing and Solutions
+  BS in Accounting
+  BS in Business Administration
+  BS in Finance
+
+  MS in Information Technology
+  MS in Cybersecurity Management
+
+  MS in Finance
+  MS in Accounting
 
 thomas edison state university
 award of degrees policy:

@@ -1,0 +1,90 @@
+:PROPERTIES:
+:ID:       0c7b547b-31d7-46f2-ad16-531585578257
+:mtime:    20230609174406 20230609152143
+:ctime:    20230609152141
+:END:
+#+title: Thomas Edison State University
+
+limit to 90 credits of non-RA sources such as: ACE, NCCRS, CLEP, and DSSTs
+
+114 max limit at least 24 of those credits must be from RA sources
+
+
+Two Areas of Study Within One Degree
+  - only need to complete the Area of Study requirements
+  - No more than 9 credits can overlap
+
+* General Education Featured Courses (45 Credits)
+
+A. Intellectual and Practical Skills (15 Credits)
+ENC-101 	Writing for Success	3
+ENC-102 	English Composition II	3
+COM-209 	Public Speaking	3
+MAT-121 	College Algebra	3 Sophia-College Algebra
+SOS-110 	Fact, Fiction, or Fake? Information Literacy Today 	3
+
+B. Civic and Global Leadership (9 Credits)
+SOC-101 	Our Changing World An Introduction to Sociology	3
+ETH-220 	Leading the Way: A Path Towards Ethical Leadership	3
+POS-110 	American Government	3
+
+C. Knowledge of Human Cultures (15 Credits)
+SOC-210 	Marriage and the Family	3
+HIS-113 	American History I	3
+FIL-110 	Exploring American Cinema	3
+
+Select two featured courses from the list below:
+SOC-291 	Criminology	3
+HIS-114 	American History II	3
+HIS-121 	Introduction to World History I	3
+HUM-103 	Introduction to the Humanities III: Music	3
+PHI-130 	Introduction to Critical Reasoning	3
+
+D. Scientific Knowledge (6 Credits)
+EAS-101 	General Earth Science	3
+BIO-208 	The Science of Nutrition	3
+
+* Area of Study
+
+mat-231 4
+
+cs
+  II. Area of Study (45 Credits)
+    Required Courses (18 Credits)
+      COS-111 	Introduction to Programming	3
+      COS-241 	Data Structures	3
+      MAT-231 	Calculus I	4 Sophia-Calculus I
+      MAT-270 	Discrete Mathematics	3
+      COS-240 	Operating Systems	3
+      COS-330 	Computer Architecture	3
+    Computer Science Electives (18 Credits)
+      For computer science electives, please contact an academic advisor.
+    Natural Sciences, Math, and Computer Science Electives (6 Credits)
+      Natural Sciences Math and Computer Science Electives	6
+      Complete 6 credits in the Natural Sciences, Math, and Computer Science areas.
+    Capstone (3 Credits)
+      LIB-495 	Liberal Arts Capstone	3
+  III. Electives (30 Credits)
+    For TESU course options, go to Elective Courses.
+
+math
+  II. Area of Study (45 Credits)
+    A. Required Courses (15 Credits)
+      MAT-231 	Calculus I	4
+      MAT-232 	Calculus II	4
+      MAT-331 	Calculus III	3
+      STA-201 	Principles of Statistics	3 Sophia-Introduction to Statisitcs
+      MAT-321 	Linear Algebra	3
+    B. Mathematics Electives (15 Credits)
+      MAT-332 	Calculus IV	3
+      MAT-361 	College Geometry	3
+      MAT-301 	History of Mathematics	3
+      MAT-401 	Mathematical Logic	3
+      MAT-351 	Mathematical Modeling	3
+    C. Natural Science and Math Electives (12 Credits)
+      -	Natural Sciences and Mathematics Electives	12
+      Complete 12 credits in the Natural Sciences and Math areas.
+    D. Capstone (3 Credits)
+      LIB-495 	Liberal Arts Capstone	3
+  III. Electives (30 Credits)
+    For TESU course options, go to Elective Courses.
