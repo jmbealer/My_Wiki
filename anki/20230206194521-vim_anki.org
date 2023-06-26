@@ -1,9 +1,25 @@
 :PROPERTIES:
 :ID:       02c3dfdd-dd5e-4347-9d7b-373efb1a5017
-:mtime:    20230307142532 20230307130449 20230213003735 20230208093535 20230206230426 20230206220102 20230206194529
+:mtime:    20230625164226 20230307142532 20230307130449 20230213003735 20230208093535 20230206230426 20230206220102 20230206194529
 :ctime:    20230206194521
 :END:
 #+title: vim-anki
+
+nvim-surround
+ys (you surround/add)
+  ys<motion><delimiter>
+    ysw" does "test"
+    ysa"( does ( "test" )
+    yswf does func(test)
+cs (change surround)
+  cs<old delimiter><new delimiter>
+  cst replace html tag
+  csf
+ds (delete surround)
+  ds<delimiter>
+  dsf
+
+"test"
 
 * Added
 :PROPERTIES:
