@@ -3,12 +3,13 @@
 :header-args: :tangle README.org
 :auto_tangle: t
 :TOC: include all :ignore this
-:mtime:    20230625193714 20230615181323 20230507115221 20230402154128 20230209170605 20230208104805 20230208090341 20230206181451 20230123092514
+:mtime:    20230708223159 20230625193714 20230615181323 20230507115221 20230402154128 20230209170605 20230208104805 20230208090341 20230206181451 20230123092514
 :ctime:    20220401030216
 :END:
 #+title: Main Index
+#+author: Justin Bealer
 #+filetags: :MOC:
-#+last_modified: <2023-01-22 Sun>
+
 
 - [[id:e4cb556a-1a38-428a-b220-f8f536de1513][Computing]]
 - [[id:6c5c4054-b96f-41b9-b6b7-d016752cfe29][Education]]
@@ -32,6 +33,12 @@ anki
 [[id:94a99ca2-7716-4d19-a1cf-72f6ca68a39a][typing]]
 
 "Plan Your Work And Work Your Plan." - Napolean Hill
+
+*bold* /italic/ _underline_ %%*escaped*%%
+##*escaped*##
+
+----
+
 
 [[id:0389645f-4067-4194-8de2-15c18c508ed8][wgu-degree-plan]]
 [[id:372ca3cf-4fd4-4476-8a6a-9c687305be1c][wgu-c173]]
