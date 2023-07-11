@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       2d781bd3-2da9-4cbb-89e0-fba5e816bc4d
+:mtime:    20230711120937
+:ctime:    20230711120928
+:END:
+#+title: American Politics and the US Constitution - C963
+
+* Links
+
+[[https:lrps.wgu.edu/provision/368342113][Course Material]]
