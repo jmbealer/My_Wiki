@@ -1,6 +1,6 @@
 :PROPERTIES:
 :ID:       b0e30896-a000-48ec-a220-1a022eb43c2b
-:mtime:    20230416023011 20230206181513 20220904184139
+:mtime:    20230716113008 20230416023011 20230206181513 20220904184139
 :ctime:    20220509082558
 :END:
 #+title: yt-playlists
@@ -131,6 +131,8 @@ Anki
 
 Fitness
 
+  Training-Info
+
   Resistance Band
   Strength Training
   Facial-Training
@@ -139,35 +141,37 @@ Fitness
   Agility-Training
   Pull-Training
   Push-Training
-  Wrist & Midcarpals
-  Training-Info
-  Hip
-  Foot
+
+  Upper Limbs
+    Scapula & Clavicle
+    Shoulders
+    Elbow
+    Forearm
+    Wrist & Midcarpals
+    Hand
+  Lower Limbs
+    Hip
+    Knee
+    Foot
+    Ankle
+
   Spine
   Eyes-Training
   Warm Ups
   Mobility
   Locomotion
-  Knee
-  Elbow
-  Shoulders
-  Balance
-  Walking
-  Ankle
-  Forearm
   Posture
   Neck
-  Upper Limbs
-  Preventing Injuries
-  Lower Limbs
-  Scapula & Clavicle
-  Controlled Articular Rotation
   Abdomen
+  Controlled Articular Rotation
+
+  Balance
+  Walking
+  Preventing Injuries
   Jumping
   Running
   Parkour
   Throwing
-  Hand
   Swimming
   Conditioning
 

@@ -1,0 +1,49 @@
+:PROPERTIES:
+:ID:       7baf42e6-3a43-4b19-947d-8f55b27994ab
+:mtime:    20230729204453 20230729192801
+:ctime:    20230729192800
+:END:
+#+title: Vim Motions
+
+N is used to indicate an optional count that can be given before the command.
+
+* Left Right Motions
+
+/N/ *h* :: Go Nth characters to the *left*. s
+/N/ *l* :: Go Nth characters to the *right*. b
+*0* :: Go to the *first character* in the line.
+*^*	:: Go to the *first non-blank character* in the line.
+/N/ *$* :: Go to the *last character* in the line. N-1 lines lower.
+/N/ *g_* :: Go to the *last non-blank character* in the line and [count - 1] lines downward.
+*g0* :: Go to *first character* in screen line. Differs from "0" when lines wrap.
+*g^* :: Go to *first non-blank character* in screen line. Differs from "^" when lines wrap.
+/N/ *g$* :: Go to *last character* of the screen line  and [count -1] screen lines downward. Differs from "$" when lines wrap.
+*gm* :: Go to *middle* of the *screen line*.
+*gM* :: Go to *middle* of the *line*.
+/N/ *|* :: Go to *screen column* [count] in the current line. exclusive motion. Default: 1.
+/N/ *fx* :: Go to the Nth occurrence of {x} to the *right*.
+/N/ *Fx* :: Go to the Nth occurrence of {x} to the *left*.
+/N/ *tx* :: Go *till before* the Nth occurrence of {x} to the *right*. jx
+/N/ *Tx* :: Go *till before* the Nth occurrence of {x} to the *left*. Jx
+/N/ *;* :: repeat the last "f", "F", "t", or "T" N times.
+/N/ *,* :: repeat the last "f", "F", "t", or "T" N times in *opposite direction*.
+
+* Up Down Motions
+
+/N/ *k* :: Go Nth lines *upward*. n
+/N/ *j* :: Go Nth lines *downward*. t
+/N/ *-* :: Go Nth lines *upward*, on the *first non-blank character*.
+/N/ *+* :: Go Nth lines *downward*, on the *first non-blank character*.
+/N/ *_* :: Go Nth - 1 lines *downward*, on the *first non-blank character*.
+/N/ *G* :: Go to line N, default: *last line*, on the *first non-blank character*.
+/N/ *gg* :: Go to line N, default: *first line*, on the *first non-blank character*.
+\: /N/ :: set the cursor on the last line number in *[range]*.
+/N/  *%* :: Go to Nth *percentage* in the file, on the first non-blank in the line.
+/N/ *gk* :: Go Nth *display lines upward*. Differs from 'k' when lines wrap.
+/N/ *gj* :: Go Nth *display lines downward*. Differs from 'j' when lines wrap.
+
+* text object
+* pattern searches
+* marks
+* various
+* using tags
