@@ -1,9 +1,5 @@
-# My Wiki
-
-this is the main index..
-
-placeholder.
-
-change linux into my main wiki for my notes.
+# My Personal Wiki
 
 currently change this into a website using quartz.
+
+[My Knowledge Base](./content/README.md)
