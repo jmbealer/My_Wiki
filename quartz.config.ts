@@ -3,7 +3,6 @@ import * as Plugin from "./quartz/plugins"
 
 const config: QuartzConfig = {
   configuration: {
-    // pageTitle: "🪴 Quartz 4.0",
     pageTitle: "Justin Bealer Wiki",
     enableSPA: true,
     enablePopovers: true,
@@ -12,7 +11,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     // baseUrl: "quartz.jzhao.xyz",
-    baseUrl: "jmbealer.github.io/My_Wiki",
+    baseUrl: "jmbealer.github.io/my_wiki",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
     theme: {
