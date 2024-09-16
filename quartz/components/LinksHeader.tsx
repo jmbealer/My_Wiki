@@ -13,9 +13,7 @@ export default (() => {
           {/* <span> */}
           {/*   <a href="https://camargomau.com/">Blog</a> */}
           {/* </span> */}
-          <span><a href="/projects/pro.md">Projects</a></span>
-          <span><a href="/projects/pro">foo</a></span>
-          <span><a href="/projects/pro/">bar</a></span>
+          <span><a href="/projects">Projects</a></span>
           <span><a href="/resume/">Resume</a></span>
           <span> <a href="/about/">About</a></span>
           {/* <span> */}
