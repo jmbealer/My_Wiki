@@ -14,10 +14,10 @@ export default (() => {
           {/*   <a href="https://camargomau.com/">Blog</a> */}
           {/* </span> */}
           <span><a href="content/projects">projects</a></span>
-          <span><a href="/content/projects/">foo</a></span>
-          <span><a href="/content/projects">boo</a></span>
-          {/* <span><a href="./projects/">boo</a></span> */}
-          {/* <span><a href="./projects">far</a></span> */}
+          {/* <span><a href="/content/projects/">foo</a></span> */}
+          {/* <span><a href="/content/projects">boo</a></span> */}
+          <span><a href="./projects/">boo</a></span>
+          <span><a href="./projects">far</a></span>
           {/* <span><a href="projects">zar</a></span> */}
           <span><a href="/resume/">Resume</a></span>
           <span> <a href="/about/">About</a></span>
