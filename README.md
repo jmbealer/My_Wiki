@@ -21,6 +21,9 @@ Cool Looking Quartz Site:
 - [3D Artist's Handbook](https://sidney-eliot.github.io/3d-artists-handbook/)
 - [Data Glossary](https://glossary.airbyte.com/)
 
+https://notes.asterhu.com/
+https://www.gatekeeper.wiki/
+
 Add Social Links to the Footer:
 
 - Twitter
