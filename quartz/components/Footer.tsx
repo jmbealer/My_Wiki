@@ -16,7 +16,7 @@ export default ((opts?: Options) => {
         <ul>
           <li>
             <em>
-              <a href="jmbealer.github.io/my_wiki">Justin Bealer</a> © 2024
+              <a href="/my_wiki">Justin Bealer</a> © 2024
             </em>
           </li>
         </ul>
