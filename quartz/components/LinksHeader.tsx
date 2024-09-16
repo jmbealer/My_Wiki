@@ -21,6 +21,8 @@ export default (() => {
           {/* <span><a href="./projects">far</a></span> */}
           {/* <span><a href="/my_wiki/projects">zar</a></span> */}
           <span><a href="/resume">Resume</a></span>
+          <span><a href="/resume.md">resumm</a></span>
+          <span><a href="/resume.md/">rme</a></span>
           <span> <a href="/about/">About</a></span>
           {/* <span> */}
           {/*   <a href="/Lingvujo/Lingvujo">Langs</a> */}
