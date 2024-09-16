@@ -11,7 +11,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     // baseUrl: "quartz.jzhao.xyz",
-    baseUrl: "jmbealer.github.io/my_wiki",
+    baseUrl: "jmbealer.github.io",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "created",
     theme: {
