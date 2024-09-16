@@ -10,35 +10,9 @@ export default (() => {
     return (
       <div>
         <div id="links-header">
-          {/* <span> */}
-          {/*   <a href="https://camargomau.com/">Blog</a> */}
-          {/* </span> */}
-          {/* <span><a href="content/projects">projects</a></span> */}
           <span><a href="/my_wiki/projects">projects</a></span>
-          {/* <span><a href="/content/projects/">foo</a></span> */}
-          {/* <span><a href="/content/projects">boo</a></span> */}
-          {/* <span><a href="./projects/">boo</a></span> */}
-          {/* <span><a href="./projects">far</a></span> */}
-          {/* <span><a href="/my_wiki/projects">zar</a></span> */}
-          <span><a href="/resume/">Resume</a></span>
-          <span><a href="/resume.md">resumm</a></span>
-          <span><a href="https://jmbealer.github.io/my_wiki/resume">rme</a></span>
-          <span> <a href="/about/">About</a></span>
-          {/* <span> */}
-          {/*   <a href="/Lingvujo/Lingvujo">Langs</a> */}
-          {/* </span> */}
-          {/* <span> */}
-          {/*   <a href="/Sciujo/Mathematics">Maths</a> */}
-          {/* </span> */}
-          {/* <span> */}
-          {/*   <a href="/Sciujo/Computing">Comp</a> */}
-          {/* </span> */}
-          {/* <span> */}
-          {/*   <a href="/Sciujo/Computing">Comp</a> */}
-          {/* </span> */}
-          {/* <span> */}
-          {/*   <a href="/Sciujo/Computing">Comp</a> */}
-          {/* </span> */}
+          <span><a href="https://jmbealer.github.io/my_wiki/resume">resume</a></span>
+          <span> <a href="https://jmbealer.github.io/my_wiki/about_me">about me</a></span>
         </div>
         <hr style="background-color: var(--gray); border-top: 1px var(--gray) solid; margin-top: 1.3rem"></hr>
       </div>
