@@ -16,15 +16,15 @@ export default ((opts?: Options) => {
         <ul>
           <li>
             <em>
-              <a href="https://camargomau.com">Mau Camargo</a> © 2023
+              <a href="jmbealer.github.io/my_wiki">Justin Bealer</a> © 2024
             </em>
           </li>
         </ul>
         <ul style="margin-top: 0.5em">
           {Object.entries(links).map(([text, link]) => (
-          <li>
-            <a href={link}>{text}</a>
-          </li>
+            <li>
+              <a href={link}>{text}</a>
+            </li>
           ))}
         </ul>
       </footer>

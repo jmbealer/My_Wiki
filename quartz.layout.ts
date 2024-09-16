@@ -7,9 +7,8 @@ export const sharedPageComponents: SharedLayout = {
   header: [Component.LinksHeader()],
   footer: Component.Footer({
     links: {
-      "Site repo": "https://github.com/camargomau/notkesto-site",
-      "Sciujo repo": "https://github.com/camargomau/sciujo",
-      "Lingvujo repo": "https://github.com/camargomau/lingvujo",
+      "GitHub": "https://github.com/jmbealer",
+      // "Lingvujo repo": "https://github.com/camargomau/lingvujo",
     },
   }),
 }
@@ -34,7 +33,7 @@ export const defaultContentPageLayout: PageLayout = {
     })),
   ],
   right: [
-    Component.DesktopOnly(Component.Darkmode()),
+    // Component.DesktopOnly(Component.Darkmode()),
     Component.Graph(),
     Component.DesktopOnly(Component.TableOfContents()),
     Component.Backlinks(),
