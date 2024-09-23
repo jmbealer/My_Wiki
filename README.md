@@ -20,9 +20,8 @@ Cool Looking Quartz Site:
 - [Topo Da Mente Garden's Gate](https://www.pmcf.xyz/topo-da-mente/)
 - [3D Artist's Handbook](https://sidney-eliot.github.io/3d-artists-handbook/)
 - [Data Glossary](https://glossary.airbyte.com/)
-
-<https://notes.asterhu.com/>
-<https://www.gatekeeper.wiki/>
+- [asterhu note](https://notes.asterhu.com/)
+- [gatekeeper](https://www.gatekeeper.wiki/)
 
 ## TODO
 
